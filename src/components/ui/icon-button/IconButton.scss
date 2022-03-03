@@ -1,0 +1,32 @@
+.ui-icon-button {
+	border: none;
+	appearance: none;
+	background: none;
+	height: var(--input-height);
+	width: var(--input-height);
+	min-height: var(--input-height);
+	min-width: var(--input-height);
+	border-radius: 100%;
+	cursor: pointer;
+	justify-content: center;
+	padding: 0;
+	align-items: center;
+	display: inline-flex;
+	color: var(--body-color);
+
+	&.-sm {
+		border-radius: 100%;
+		height: var(--input-height-sm);
+		width: var(--input-height-sm);
+		min-height: var(--input-height-sm);
+		min-width: var(--input-height-sm);
+	}
+
+	&.-fab {
+		position: absolute;
+	}
+
+	.ui-icon {
+		font-size: 22px;
+	}
+}
