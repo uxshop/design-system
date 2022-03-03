@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+defineProps<{
+	alignV: string
+}>()
+
+const classList = ref<any>([])
+
+if (props.alignV) {
+	classList.value.push(`-align-items-${props.alignV}`)
+}
+</script>
+
+<template>
+	<div class="ui-row" :class="classList">
+		<slot />
+	</div>
+</template>
+
+<style lang="scss">
+@import './Row.scss';
+</style>

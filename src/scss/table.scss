@@ -1,0 +1,223 @@
+.table {
+	width: 100%;
+	margin-bottom: 0;
+	color: var(--body-color);
+	border-spacing: 0;
+	border-collapse: separate;
+
+	th,
+	td {
+		vertical-align: middle;
+		padding: 8px 10px;
+	}
+
+	tr th {
+		border-top: none;
+		font-weight: var(--font-weight-semi);
+		border-bottom: solid 1px var(--border-color);
+		font-size: 12px;
+		text-transform: uppercase;
+		opacity: 0.9;
+		font-weight: var(--font-weight-semi);
+	}
+
+	tr td {
+		border-top: none;
+		border-bottom: solid 1px var(--border-color);
+	}
+
+	&:not(.-excel) {
+		tr:last-child {
+			td {
+				border: none;
+			}
+		}
+	}
+
+	tr.-inactive {
+		td:not(.td-checkbox):not(.td-action) {
+			opacity: 0.6;
+		}
+	}
+
+	tbody + tbody {
+		border: none;
+		border-top: solid 1px var(--border-color);
+	}
+
+	.td-action {
+		width: 1px;
+		white-space: nowrap;
+
+		a {
+			display: inline-flex;
+		}
+	}
+
+	.td-drag {
+		padding: 0;
+		text-align: center;
+		cursor: grab !important;
+		width: 1px;
+
+		.ui-icon {
+			margin-left: 10px;
+			display: flex;
+		}
+	}
+
+	> .ui-icon {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	&.-pointer {
+		cursor: pointer;
+	}
+
+	&.-hover {
+		tbody {
+			td:not(.td-action):not(.td-checkbox) {
+				cursor: pointer;
+			}
+
+			tr:hover {
+				background-color: var(--gray-100);
+				color: var(--body-color);
+			}
+		}
+	}
+
+	&.-top {
+		td {
+			vertical-align: top;
+		}
+	}
+
+	&.-no-padding {
+		td,
+		th {
+			&:first-child {
+				padding-left: 0;
+			}
+
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+
+	&.-drag {
+		td:first-child {
+			cursor: grab;
+			width: 1px;
+
+			.ui-icon {
+				display: flex;
+				font-size: 18px;
+			}
+
+			&:hover {
+				.ui-icon {
+					color: var(--secondary);
+				}
+			}
+		}
+	}
+
+	&.-tiny {
+		td,
+		th {
+			padding: 14px;
+		}
+
+		td {
+			padding: 6px;
+		}
+	}
+
+	&.-hover {
+		tr {
+			cursor: pointer;
+		}
+	}
+
+	&.-th-primary {
+		th {
+			border-bottom: solid 2px var(--primary);
+		}
+	}
+
+	&.-radius {
+		border-radius: 4px;
+		overflow: hidden;
+	}
+
+	&.-excel {
+		border-collapse: unset;
+
+		input[readonly] {
+			background-color: var(--gray-100);
+		}
+
+		td,
+		th {
+			border: solid 1px var(--border-color);
+			padding: 10px 8px;
+			vertical-align: middle;
+		}
+
+		th {
+			background: var(--gray-100);
+			text-transform: uppercase;
+		}
+
+		tbody th {
+			text-align: center;
+		}
+
+		td {
+			padding: 0;
+
+			input {
+				border-radius: 0;
+				border: solid 1px transparent;
+				width: 100%;
+				border-radius: 0;
+				height: 40px;
+				padding: 6px;
+
+				&:focus {
+					border: solid 1px var(--primary);
+					border-radius: 0;
+					outline: none;
+					box-shadow: 0 0 0 1px var(--primary);
+				}
+			}
+
+			button {
+				background: none;
+				border: none;
+				appearance: none;
+				box-shadow: none;
+				display: flex;
+				align-items: center;
+				color: var(--body-color);
+				min-height: 40px;
+				outline: none;
+
+				.ui-icon {
+					font-size: 20px;
+				}
+
+				&:hover {
+					color: var(--danger);
+				}
+			}
+
+			&:last-child {
+				background: var(--gray-100);
+			}
+		}
+	}
+}

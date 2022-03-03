@@ -1,0 +1,19 @@
+.ui-row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: calc(var(--grid-gutter-width) * -0.5);
+	margin-left: calc(var(--grid-gutter-width) * -0.5);
+	margin-top: calc(var(--grid-gutter-width) * -1);
+
+	&.-align-items-center {
+		align-items: center;
+	}
+
+	&.-align-items-top {
+		align-items: flex-start;
+	}
+
+	&.-align-items-bottom {
+		align-items: flex-end;
+	}
+}

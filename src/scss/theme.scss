@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import './mixins.scss';
+@import './normalize.scss';
+@import './helpers.scss';
+@import './forms.scss';
+@import './table.scss';
+@import './tooltip.scss';
+
+$body-color: #38405e !default;
+$danger: #f25d5d !default;
+$primary: #3b9be0 !default;
+$secondary: #ffc200 !default;
+$success: #1fa563 !default;
+$warning: #ff9900 !default;
+$dark: #4e6380 !default;
+
+:root {
+	// --primary: #275efe;
+	--primary: #{$primary};
+	--primary-100: #{lighten($primary, 8%)};
+	--primary-200: #{darken($primary, 10%)};
+	--primary-300: #{darken($primary, 20%)};
+	--secondary: #{$secondary};
+	--secondary-100: #{lighten($secondary, 8%)};
+	--secondary-200: #{darken($secondary, 10%)};
+	--secondary-300: #{darken($secondary, 20%)};
+	--success: #{$success};
+	--success-100: #{lighten($success, 8%)};
+	--success-200: #{darken($success, 10%)};
+	--success-300: #{darken($success, 20%)};
+	--danger: #{$danger};
+	--danger-100: #{lighten($danger, 10%)};
+	--danger-200: #{darken($danger, 10%)};
+	--danger-300: #{darken($danger, 20%)};
+	--link-color: #0379da;
+	--dark: #{$dark};
+	--dark-hover: #{darken($dark, 20%)};
+
+	--warning: #{$warning};
+	--info: #3dadf1;
+	--featured: #9747c3;
+
+	--body-bg: #f5f7fa;
+	--body-color: #{$body-color};
+	--bg-white: #fff;
+	--drop-shadow-filter: drop-shadow(0px 0px 15px #e0e7ec);
+	--border-radius: 6px;
+
+	--card-padding: 20px;
+	--font-size-base: 13px;
+
+	--gray-100: #f6f9fb;
+	--gray-200: #e5eaef;
+	--gray-300: #{darken(#e5eaef, 5)};
+	--border-color: #e5eaef;
+
+	--input-border-width: 1px;
+	--input-height: 48px;
+	--input-height-sm: 32px;
+	--input-height-lg: 50px;
+	--input-border-color: #dee5e9;
+	--input-border-focus-color: var(--primary);
+	--input-border-focus-width: 2px;
+	--input-placeholder-color: #828282;
+	--input-padding-x: 14px;
+	--input-padding-x-sm: 12px;
+	--input-padding-y-sm: 10px;
+	--input-padding-x-lg: 20px;
+	--input-border-radius: 6px;
+	--input-border-radius-sm: 4px;
+	--input-border-width: 1px;
+	--checkbox-border-radius: 4px;
+
+	--form-group-margin-bottom: 15px;
+
+	--modal-backdrop-opacity: 0.8;
+	--modal-backdrop-bg: #536d73;
+	--modal-padding: 25px;
+
+	--text-muted: #{rgba($body-color, 0.7)};
+	// --headings-font-family: "NexaFreeBoldwebfont";
+	--font-headings-weight: 700;
+	--font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto;
+
+	--card-border-radius: 8px;
+	--grid-gutter-width: 10px;
+	--font-weight-nomal: 400;
+	--font-weight-semi: 600;
+	--font-weight-bold: 700;
+
+	--container-max-width: 1280px;
+	--tab-height: 48px;
+
+	--alert-border-radius: 2px;
+	--input-bg-color: white;
+}
+
+[data-theme='dark'] {
+	--body-color: #b1b9c9;
+	--dark-100: #3a4656;
+	--dark-200: #333c49;
+	--dark-300: #2f3845;
+	--bg-white: #333c49;
+	--border-color: #3a4656;
+	--text-muted: #{transparentize(#b1b9c9, 0.2)};
+	--gray-100: #3a4656;
+	--gray-200: #3a4656;
+	--gray-300: #{darken(#3a4656, 6)};
+	--drop-shadow-filter: #{drop-shadow(0px 0px 15px #000, 0.4)};
+	--text-muted: #{transparentize(#b1b9c9, 0.2)};
+	--modal-backdrop-bg: #15191f;
+	--link-color: var(--primary);
+	--input-border-color: var(--dark-100);
+	--input-bg-color: var(--dark-100);
+}
+
+body,
+html {
+	min-height: 100%;
+	height: 100%;
+}
+
+body {
+	color: var(--body-color);
+	font-size: var(--font-size-base);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-weight: 500;
+	font-family: var(--font-family);
+	text-align: left;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	@include darkmode {
+		background: var(--dark-300);
+	}
+
+	&.dialog-open,
+	&.modal-open {
+		overflow: hidden;
+	}
+}
+
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+:focus-visible {
+	outline: none;
+}
+
+a {
+	text-decoration: none;
+	color: var(--link-color);
+
+	&:hover {
+		color: var(--primary);
+		text-decoration: underline;
+	}
+}
+
+p {
+	margin-top: 0;
+}
