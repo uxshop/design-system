@@ -1,0 +1,28 @@
+.ui-rating {
+	user-select: none;
+	white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+
+	.ui-icon {
+		display: none;
+		color: var(--secondary);
+		transition: color 0.15s;
+	}
+
+	> span {
+		display: inline-flex;
+
+		.ui-icon:hover {
+			color: var(--body-color);
+		}
+	}
+
+	.star > .ui-icon:first-child {
+		display: block;
+	}
+
+	.star-border > .ui-icon:last-child {
+		display: block;
+	}
+}
