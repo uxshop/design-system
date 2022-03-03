@@ -26,8 +26,8 @@ const onClick = (n: number) => {
 <template>
 	<div class="ui-rating">
 		<span :class="getClass(n)" v-for="n in 5" :key="n" @click.stop="onClick(n)">
-			<icon name="star" type="solid" />
-			<icon name="star_border" />
+			<Icon name="star" type="solid" />
+			<Icon name="star_border" />
 		</span>
 	</div>
 </template>
