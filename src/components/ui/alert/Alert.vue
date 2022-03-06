@@ -2,10 +2,10 @@
 import { watchEffect, ref } from 'vue'
 import Icon from '../icon/Icon.vue'
 const props = defineProps<{
-	title: string
-	variant: string
-	icon: string
-	dismissible: boolean
+	title?: string
+	variant?: string
+	icon?: string
+	dismissible?: boolean
 	show: boolean
 }>()
 const emit = defineEmits(['dismissed'])

@@ -11,9 +11,11 @@
 		"typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+		"install": "vue-tsc --noEmit && vite build"
 	},
 	"dependencies": {
+		"@simonwep/pickr": "^1.8.2",
 		"pinia": "^2.0.11",
 		"vue": "^3.2.31"
 	},

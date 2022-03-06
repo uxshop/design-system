@@ -2,9 +2,9 @@
 import { reactive } from 'vue'
 
 interface Props {
-	border: string | number
-	size: string | number
-	color: string
+	border?: string | number
+	size?: string | number
+	color?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {

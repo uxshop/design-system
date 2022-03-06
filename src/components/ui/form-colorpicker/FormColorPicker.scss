@@ -1,0 +1,52 @@
+.ui-colorpicker {
+	display: inline-flex;
+}
+.pcr-interaction {
+	flex-wrap: nowrap !important;
+
+	input {
+		font-size: 11px !important;
+		letter-spacing: 0 !important;
+	}
+
+	.pcr-result {
+		min-width: 40px !important;
+	}
+
+	.pcr-save {
+		order: 2;
+	}
+}
+.pickr {
+	position: relative;
+	border-radius: 2px;
+
+	&:after {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		content: '';
+		display: block;
+		border: solid 1px;
+		z-index: 22;
+		border-radius: inherit;
+		opacity: 0.2;
+		cursor: pointer;
+	}
+
+	.pcr-button {
+		border-radius: inherit;
+		transition: none;
+		&::after,
+		&::before {
+			border-radius: inherit !important;
+			transition: none;
+		}
+
+		&.clear {
+			background-size: 60%;
+		}
+	}
+}
