@@ -1,0 +1,245 @@
+.ui-form-wrapper {
+	margin-bottom: var(--form-group-margin-bottom);
+	width: 100%;
+
+	> .form-wrapper-content-bx {
+		position: relative;
+		display: flex;
+		align-items: center;
+		border-radius: var(--input-border-radius);
+		background-color: var(--input-bg-color);
+	}
+
+	&.-disabled {
+		pointer-events: none;
+		> .form-wrapper-content-bx {
+			background-color: var(--border-color);
+		}
+	}
+
+	&.-with-leading-icon {
+		label {
+			left: 35px;
+		}
+	}
+
+	&.-with-leading-icon {
+		input {
+			padding-left: 0;
+		}
+	}
+
+	&.-with-trailing-icon {
+		input {
+			padding-right: 0;
+		}
+	}
+
+	&.-last {
+		margin-bottom: 0;
+	}
+
+	&.-float {
+		textarea {
+			margin-top: var(--input-padding-x);
+			padding-top: 0;
+
+			~ .form-wrapper-noteched .form-wrapper-noteched-label {
+				> label {
+					top: var(--input-padding-x);
+					transform: translateY(0);
+				}
+			}
+		}
+	}
+
+	&.-invalid {
+		.form-wrapper-noteched {
+			> div {
+				border-color: var(--danger) !important;
+				border-width: var(--input-border-focus-width);
+			}
+		}
+
+		label,
+		i {
+			color: var(--danger) !important;
+		}
+	}
+
+	&.-valid {
+		.form-control,
+		.form-wrapper-noteched {
+			border-color: var(--success) !important;
+		}
+
+		label,
+		i {
+			color: var(--success) !important;
+		}
+	}
+
+	.trailing-icon {
+		display: inline-flex;
+	}
+
+	.trailing-icon-text {
+		padding: 0 var(--input-padding-x);
+	}
+
+	.ui-icon {
+		margin-left: 12px;
+		margin-right: 12px;
+		position: relative;
+		z-index: 22;
+		overflow: visible;
+		font-size: 20px;
+	}
+
+	.form-control {
+		border: none;
+		resize: vertical;
+		position: relative;
+		background-color: transparent;
+
+		&.-sm {
+			~ .form-wrapper-noteched .form-wrapper-noteched-prepend {
+				width: calc(var(--input-padding-x-sm) - 6px);
+				border-top-left-radius: var(--input-border-radius-sm);
+				border-bottom-left-radius: var(--input-border-radius-sm);
+			}
+
+			~ .form-wrapper-noteched .form-wrapper-noteched-append {
+				width: calc(var(--input-padding-x-sm) - 6px);
+				border-top-right-radius: var(--input-border-radius-sm);
+				border-bottom-right-radius: var(--input-border-radius-sm);
+			}
+		}
+	}
+
+	.form-invalid-feedback {
+		color: var(--danger);
+		padding: 5px;
+		font-size: 10px;
+	}
+
+	.form-wrapper-noteched {
+		display: flex;
+		position: absolute;
+		right: 0;
+		left: 0;
+		box-sizing: border-box;
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		text-align: left;
+		pointer-events: none;
+		top: 0;
+		border-color: var(--input-border-color);
+
+		.form-wrapper-noteched-label {
+			flex: 0 0 auto;
+			width: auto;
+			max-width: calc(100% - calc(var(--input-padding-x) - 6px) * 2);
+		}
+
+		label {
+			color: var(--input-placeholder-color);
+			transition-property: top;
+			transition-duration: 0.15s;
+			transform-origin: top center;
+			will-change: top;
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			padding: 0 5px;
+			display: block;
+			opacity: 0.8;
+			font-weight: normal;
+		}
+
+		.form-wrapper-noteched-prepend {
+			border: var(--input-border-width) solid;
+			border-right: none;
+			width: calc(var(--input-padding-x) - 6px);
+			border-top-left-radius: var(--input-border-radius);
+			border-bottom-left-radius: var(--input-border-radius);
+		}
+
+		.form-wrapper-noteched-append {
+			border-left: none;
+			border-right: var(--input-border-width) solid;
+			flex-grow: 1;
+			border-top-right-radius: var(--input-border-radius);
+			border-bottom-right-radius: var(--input-border-radius);
+		}
+
+		.form-wrapper-noteched-append,
+		.form-wrapper-noteched-prepend,
+		.form-wrapper-noteched-label {
+			box-sizing: border-box;
+			height: 100%;
+			border-top: var(--input-border-width) solid;
+			border-bottom: var(--input-border-width) solid;
+			border-color: inherit;
+			pointer-events: none;
+		}
+	}
+
+	.form-control:focus {
+		~ .form-wrapper-noteched {
+			border-color: var(--input-border-focus-color);
+
+			> div {
+				border-width: var(--input-border-focus-width);
+			}
+
+			label {
+				color: var(--input-border-focus-color);
+			}
+		}
+	}
+
+	.form-control:focus,
+	input:not(:placeholder-shown),
+	select:not(:placeholder-shown),
+	textarea:not(:placeholder-shown) {
+		~ .form-wrapper-noteched {
+			.form-wrapper-noteched-label {
+				border-top: none;
+			}
+
+			label {
+				top: 0 !important;
+				transform: translateY(-50%) !important;
+				font-size: 11px;
+				left: 0;
+				opacity: 1;
+			}
+		}
+	}
+
+	> .form-wrapper-label {
+		position: relative;
+		display: flex;
+		align-items: center;
+
+		> .form-wrapper-count {
+			margin-left: auto;
+			padding-right: 5px;
+			font-weight: 600;
+		}
+
+		> .form-wrapper-label-icon {
+			display: inline-flex;
+			align-items: center;
+			margin-left: 5px;
+			.icon {
+				margin: 0;
+				font-size: 14px;
+				opacity: 0.5;
+			}
+			margin-bottom: 5px;
+		}
+	}
+}
