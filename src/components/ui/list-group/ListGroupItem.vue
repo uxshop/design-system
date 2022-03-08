@@ -1,16 +1,11 @@
-<script setup lang="ts">
-defineProps<{
-	button: boolean
-}>()
-</script>
+<script setup lang="ts"></script>
 
 <template>
-	<div class="ui-list-group-item" :class="{ '-button': button }">
+	<div class="ui-list-group-item">
 		<slot />
 	</div>
 </template>
 
 <style lang="scss">
-@import '../../../scss/mixins.scss';
 @import './ListGroupItem.scss';
 </style>

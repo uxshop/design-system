@@ -1,8 +1,4 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const classList = ref<string[]>()
-</script>
+<script setup lang="ts"></script>
 
 <template>
 	<div class="ui-list-group">
