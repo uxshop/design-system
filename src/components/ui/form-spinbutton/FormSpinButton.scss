@@ -1,0 +1,53 @@
+.ui-form-spinbutton {
+	@include form-control;
+	padding-left: 0;
+	padding-right: 0;
+
+	&.-sm {
+		min-height: var(--input-height-sm);
+		border-radius: var(--input-border-radius-sm);
+		padding-left: 0;
+		padding-right: 0;
+
+		button {
+			min-height: var(--input-height-sm);
+		}
+	}
+
+	.output {
+		flex-grow: 1;
+		text-align: center;
+		border: solid 1px var(--input-border-color);
+		border-top: 0;
+		border-bottom: 0;
+		min-width: 40px;
+		padding: 5px 0;
+		line-height: 1;
+	}
+
+	button {
+		padding: 0 10px;
+		color: var(--body-color);
+
+		&:last-child {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+			margin-left: -1px;
+		}
+
+		&:first-child {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			margin-right: -1px;
+		}
+
+		&:hover {
+			color: var(--primary);
+			background: none;
+		}
+	}
+
+	.ui-icon {
+		width: 18px;
+	}
+}

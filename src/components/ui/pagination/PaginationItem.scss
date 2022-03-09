@@ -1,0 +1,36 @@
+.ui-pagination-item {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	height: var(--input-height);
+	min-width: var(--input-height);
+	margin-left: -1px;
+	line-height: 1.25;
+	color: #007bff;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	cursor: pointer;
+
+	&:last-of-type {
+		border-top-right-radius: var(--input-border-radius);
+		border-bottom-right-radius: var(--input-border-radius);
+	}
+	&:first-of-type {
+		border-top-left-radius: var(--input-border-radius);
+		border-bottom-left-radius: var(--input-border-radius);
+	}
+
+	&:hover {
+		background-color: var(--gray-100);
+	}
+
+	&.-disabled {
+		color: #6c757d;
+		pointer-events: none;
+		cursor: auto;
+		background-color: #fff;
+		border-color: #dee2e6;
+	}
+}

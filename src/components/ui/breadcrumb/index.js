@@ -1,11 +1,11 @@
-import UiBreadcrumb from './Breadcrumb.vue'
-import UiBreadcrumbItem from './BreadcrumbItem.vue'
+import Breadcrumb from './Breadcrumb.vue'
+import BreadcrumbItem from './BreadcrumbItem.vue'
 
 export default {
-  install(app) {
-    app.component(UiBreadcrumb.name, UiBreadcrumb)
-    app.component(UiBreadcrumbItem.name, UiBreadcrumbItem)
-  }
+	install(app) {
+		app.component(Breadcrumb.name, Breadcrumb)
+		app.component(BreadcrumbItem.name, BreadcrumbItem)
+	}
 }
 
-export { UiBreadcrumb, UiBreadcrumbItem }
+export { Breadcrumb, BreadcrumbItem }

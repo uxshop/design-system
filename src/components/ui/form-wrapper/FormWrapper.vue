@@ -22,7 +22,8 @@ const props = defineProps<{
 }>()
 
 const elementRef = ref<Element>()
-const input = elementRef.value?.querySelectorAll('.form-control')
+
+const input = elementRef.value?.querySelector('.form-control')
 
 const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`)
 

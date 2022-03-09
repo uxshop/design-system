@@ -1,0 +1,188 @@
+.ui-form-checkbox {
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+
+	.ui-form-checkbox-text:empty {
+		display: none;
+	}
+
+	> input:not(.-switch):before {
+		position: absolute;
+		left: -10px;
+		right: -10px;
+		top: -10px;
+		bottom: -10px;
+		border-radius: 100%;
+		content: '';
+		background-color: rgba(var(--primary-rgb), 0.1);
+		transition-duration: 0.15s;
+		transition-property: transform;
+		transform: scale(0);
+		z-index: 0;
+	}
+
+	> input:focus:before,
+	> input:hover:before {
+		transform: scale(1);
+	}
+
+	&.-sm {
+		input[type='checkbox']:not(.-switch) {
+			height: 16px;
+			min-width: 16px;
+			max-width: 16px;
+
+			&:after {
+				left: 5px;
+				top: 2px;
+				height: 8px;
+				width: 4px;
+			}
+		}
+
+		.ui-form-checkbox-text {
+			font-size: 12px;
+			line-height: 15px;
+			padding-top: 0;
+		}
+	}
+}
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+	input[type='checkbox'] {
+		--active: var(--primary);
+		--active-inner: #fff;
+		--focus: 0 var(--primary);
+		--border: var(--input-border-color);
+		--border-hover: var(--primary);
+		--background: var(--bg-white);
+		--disabled: #f6f8ff;
+		--disabled-inner: #e1e6f9;
+		--d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		height: 21px;
+		outline: none;
+		display: inline-block;
+		vertical-align: top;
+		position: relative;
+		margin: 0;
+		cursor: pointer;
+		border: var(--input-border-width) solid var(--bc, var(--border));
+		background: var(--b, var(--background));
+		transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+		&:after {
+			content: '';
+			display: block;
+			left: 0;
+			top: 0;
+			position: absolute;
+		}
+		&:checked {
+			--b: var(--active);
+			--bc: var(--active);
+		}
+		&:disabled {
+			--b: var(--disabled);
+			cursor: not-allowed;
+			opacity: 0.9;
+			&:checked {
+				--b: var(--disabled-inner);
+				--bc: var(--border);
+			}
+			& + label {
+				cursor: not-allowed;
+			}
+		}
+		&:hover {
+			&:not(:checked) {
+				&:not(:disabled) {
+					--bc: var(--border-hover);
+				}
+			}
+		}
+		&:focus {
+			box-shadow: 0 0 0 var(--focus);
+		}
+		&:not(.-switch) {
+			width: 21px;
+			min-width: 21px;
+			&:after {
+				opacity: var(--o, 0);
+			}
+			&:checked {
+				--o: 1;
+			}
+		}
+
+		& + .ui-form-checkbox-text {
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 10px;
+			padding-top: 2px;
+		}
+
+		@include darkmode {
+			--background: var(--dark-100);
+			--border: var(--dark-300);
+		}
+	}
+
+	input[type='checkbox'] {
+		&:not(.-switch) {
+			border-radius: var(--checkbox-border-radius);
+			&:after {
+				width: 6px;
+				height: 9px;
+				border: 2px solid var(--active-inner);
+				border-top: 0;
+				border-left: 0;
+				left: calc(8px - var(--input-border-width));
+				top: calc(5px - var(--input-border-width));
+				transform: rotate(var(--r, 20deg));
+			}
+
+			&:checked {
+				--r: 43deg;
+			}
+
+			&:indeterminate {
+				background-color: var(--primary);
+				border-color: var(--primary);
+				&:after {
+					width: 5px;
+					opacity: 1;
+					transform: none;
+					border-right: 0;
+				}
+			}
+		}
+		&.-switch {
+			width: 38px;
+			min-width: 38px;
+			border-radius: 11px;
+			&:after {
+				left: 2px;
+				top: 2px;
+				border-radius: 50%;
+				width: calc(14px - var(--input-border-width));
+				height: calc(14px - var(--input-border-width));
+				background: var(--ab, var(--border));
+				transform: translateX(var(--x, 0));
+				transition: transform 0.15s var(--d-t-e), opacity 0.15s;
+			}
+			&:checked {
+				--ab: var(--active-inner);
+				--x: 17px;
+			}
+			&:disabled {
+				&:not(:checked) {
+					&:after {
+						opacity: 0.6;
+					}
+				}
+			}
+		}
+	}
+}

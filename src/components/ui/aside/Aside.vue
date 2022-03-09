@@ -44,7 +44,7 @@ const onClickBackdrop = () => {
 
 const onClose = () => emit('update:modelValue', false)
 
-const listener = (e) => {
+const listener = (e: { key: string }) => {
 	if (e.key == 'Escape') {
 		onClickBackdrop()
 	}

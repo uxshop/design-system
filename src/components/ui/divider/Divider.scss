@@ -1,0 +1,14 @@
+hr {
+	min-width: 100%;
+	border-width: 0;
+	background-color: var(--gray-200);
+	height: 3px;
+
+	&.-transparent {
+		background-color: transparent !important;
+	}
+
+	&.-hr-2 {
+		height: 6px;
+	}
+}

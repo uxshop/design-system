@@ -8,10 +8,10 @@ import type PickerInterface from '@simonwep/pickr'
 
 const props = defineProps<{
 	modelValue: undefined
-	switch: Boolean
-	label: String
-	required: Boolean
-	name: String
+	switch?: boolean
+	label?: string
+	required?: boolean
+	name?: string
 }>()
 const emit = defineEmits(['update', 'update:modelValue'])
 const uid = `colopicker-${getCurrentInstance()?.uid}`

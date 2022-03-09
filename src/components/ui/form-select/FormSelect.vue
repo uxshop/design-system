@@ -1,0 +1,119 @@
+<script setup lang="ts">
+import { isObject } from 'lodash'
+import { ref, watchEffect } from 'vue'
+import FormWrapper from '../form-wrapper/FormWrapper.vue'
+
+interface Props extends FromWrapper {
+	modelValue?: string | object | number
+	value?: string | object | number
+	placeholder?: string
+	label?: string
+	error?: string
+	type?: string
+	id?: string
+	size?: string | number
+	autofocus?: boolean
+	readonly?: boolean
+	tabindex?: string
+	name?: string
+	title?: string
+	required?: boolean
+	options?: any[]
+}
+const props = withDefaults(defineProps<Props>(), {
+	options: () => []
+})
+
+const emit = defineEmits(['update:modelValue', 'update'])
+
+const parseValue = (val: string) => {
+	if (/\{/.test(val)) {
+		return JSON.parse(val)
+	}
+
+	return val
+}
+
+const stringifyValue = (val: any) => {
+	if (isObject(val)) {
+		return JSON.stringify(val)
+	}
+
+	return val === null ? '' : val
+}
+
+const update = (evt: any) => {
+	const val = evt.target.value
+	emit('update:modelValue', parseValue(val))
+	emit('update', parseValue(val))
+	model.value = evt.target.value
+}
+
+const model = ref(stringifyValue(props.modelValue))
+const classList = ref([])
+
+if (props.value) {
+	model.value = stringifyValue(props.value)
+}
+
+watchEffect(() => {
+	if (props.value !== undefined) {
+		model.value = stringifyValue(props.value)
+	} else {
+		model.value = stringifyValue(props.modelValue)
+	}
+
+	if (props.modelValue === null) {
+		model.value = ''
+	}
+})
+
+if (props.size) {
+	classList.value.push(`-${props.size}`)
+}
+</script>
+
+<template>
+	<form-wrapper
+		v-bind="{
+			id: $props.id,
+			leadingIcon: $props.leadingIcon,
+			trailingIcon: $props.trailingIcon,
+			label: $props.label,
+			coutable: $props.coutable,
+			loading: $props.loading,
+			last: $props.last,
+			disabled: $props.disabled,
+			float: $props.float,
+			state: $props.state
+		}"
+		class="ui-form-select"
+	>
+		<select
+			v-model="model"
+			@input="update"
+			class="form-control -select"
+			:value="stringifyValue(value)"
+			:class="classList"
+			:autofocus="autofocus"
+			:readonly="readonly"
+			:tabindex="tabindex"
+			:name="name"
+			:title="title"
+			:id="id"
+			:required="required"
+		>
+			<option value selected disabled v-if="placeholder">{{ placeholder }}</option>
+			<slot />
+			<option
+				v-if="options.length"
+				v-for="item in options"
+				:value="stringifyValue(item.value)"
+				:key="item.value"
+				:disabled="item.disabled"
+			>
+				{{ item.text }}
+			</option>
+		</select>
+	</form-wrapper>
+</template>

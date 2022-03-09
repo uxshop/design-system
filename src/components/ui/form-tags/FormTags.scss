@@ -1,0 +1,45 @@
+.ui-form-tags {
+	.ts-control {
+		overflow: visible !important;
+		@include form-control;
+	}
+
+	.ts-dropdown {
+		margin: 0 !important;
+	}
+
+	.ts-wrapper.focus {
+		.ts-control {
+			&::after {
+				@include input-hover;
+			}
+		}
+		&.dropdown-active {
+			.ts-control::after {
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+		}
+	}
+
+	.ts-wrapper.multi .item {
+		background: var(--primary) !important;
+		padding: 0 0 0 5px !important;
+		min-height: 24px;
+		.remove {
+			font-size: 20px;
+			font-weight: 400;
+			line-height: 1;
+		}
+	}
+
+	.focus .ts-control {
+		box-shadow: none;
+	}
+
+	@include mobile {
+	}
+
+	@include darkmode {
+	}
+}

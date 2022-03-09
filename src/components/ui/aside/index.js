@@ -1,9 +1,9 @@
-import UiAside from './Aside.vue'
+import Aside from './Aside.vue'
 
 export default {
-  install(app) {
-    app.component(UiAside.name, UiAside)
-  }
+	install(app) {
+		app.component(Aside.name, Aside)
+	}
 }
 
-export { UiAside }
+export { Aside }
