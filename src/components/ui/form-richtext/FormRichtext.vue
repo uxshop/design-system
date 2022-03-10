@@ -3,13 +3,13 @@ import { getCurrentInstance, onMounted, onUnmounted, ref, watchEffect } from 'vu
 import './redactor/redactor'
 
 interface Props {
-	modelValue: undefined
+	modelValue: any
 	toolbar?: object
 	name?: string
 	placeholder?: string
 	label?: string
 	height?: string | number
-	config?: undefined
+	config?: any
 }
 
 const props = withDefaults(defineProps<Props>(), {

@@ -8,7 +8,7 @@ import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchE
 const emit = defineEmits(['update:modelValue', 'open', 'close'])
 
 interface Props {
-	modelValue: undefined
+	modelValue: any
 	placeholder: string
 	config: object
 	multiple: boolean

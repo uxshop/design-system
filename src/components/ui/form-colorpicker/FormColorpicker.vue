@@ -7,7 +7,7 @@ import * as Pickr from '@simonwep/pickr'
 import type PickerInterface from '@simonwep/pickr'
 
 const props = defineProps<{
-	modelValue: undefined
+	modelValue: any
 	switch?: boolean
 	label?: string
 	required?: boolean

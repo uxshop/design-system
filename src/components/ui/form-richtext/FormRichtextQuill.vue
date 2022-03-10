@@ -7,7 +7,7 @@ import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue
 // import Quill from 'quill'
 
 interface Props {
-	modelValue: undefined
+	modelValue: any
 	toolbar: object
 	height: string | number
 }

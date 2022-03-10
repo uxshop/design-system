@@ -6,17 +6,24 @@ import 'tom-select/dist/css/tom-select.default.css'
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close'])
 
 interface Props {
-	modelValue: undefined
+	modelValue: any
 	placeholder?: string
 	config?: object
+}
+
+interface SettingsInterface {
+	persist: boolean
+	createOnBlur: boolean
+	create: boolean
+	plugins: string[]
+	onChange(val: any): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione'
 })
 
-const instance = getCurrentInstance()
-const uid = `select-${instance?.uid}`
+const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const model = ref(null)
 const element = shallowRef()
 
@@ -25,12 +32,12 @@ const update = (val: any) => {
 	emit('update', val)
 }
 
-const settings = Object.assign(
+const settings: SettingsInterface = Object.assign(
 	{
 		persist: false,
 		createOnBlur: true,
 		create: true,
-		plugins: <string[]>[],
+		plugins: [],
 		onChange: update
 	},
 	props.config

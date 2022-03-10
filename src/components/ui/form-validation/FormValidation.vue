@@ -4,7 +4,7 @@ import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 
 const props = defineProps<{
-	modelValue: undefined
+	modelValue: any
 	translate: any
 }>()
 

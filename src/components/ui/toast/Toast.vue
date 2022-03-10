@@ -13,7 +13,7 @@ interface Props {
 	closeable?: boolean
 }
 
-interface State {
+interface StateInterface {
 	option: Record<string, any>
 	timer: NodeJS.Timeout | null
 	showing: boolean
@@ -27,7 +27,7 @@ const closed = ref(false)
 
 const classList = ref<string[]>([])
 
-const state = <State>reactive({
+const state = reactive<StateInterface>({
 	option: {},
 	showing: false,
 	timer: null
