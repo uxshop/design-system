@@ -2,21 +2,19 @@
 import { getCurrentInstance, ref } from 'vue'
 
 const props = defineProps<{
-	modelValue: undefined
-	switch: boolean
-	label: string
-	name: string
-	value: undefined
-	size: string
-	tabindex: string | number
-	required: boolean
-	indeterminate: boolean
+	modelValue?: any
+	switch?: boolean
+	label?: string
+	name?: string
+	value?: any
+	size?: string
+	tabindex?: string | number
+	required?: boolean
+	indeterminate?: boolean
 }>()
 
-const uid = getCurrentInstance()?.uid
-
+const uid = `ui-form-checkbox-${getCurrentInstance()?.uid}`
 const switcher = ref(props.switch)
-
 const classList = ref<string[]>([])
 
 if (props.size) {

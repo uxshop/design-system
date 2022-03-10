@@ -4,11 +4,11 @@ import { ref } from 'vue'
 const emit = defineEmits(['update:modelValue', 'change'])
 
 interface Props {
-	min: string | number
-	max: string | number
-	placeholder: string
-	size: string
-	step: string | number
+	min?: string | number
+	max?: string | number
+	placeholder?: string
+	size?: string | number
+	step?: string | number
 	modelValue: number
 }
 
@@ -16,21 +16,21 @@ const props = withDefaults(defineProps<Props>(), {
 	step: 1,
 	modelValue: 1
 })
-const classList = ref([])
-const update = (n: number) => {
-	emit('update:modelValue', n)
-	emit('change', n)
+const classList = ref<string[]>([])
+const update = (val: number) => {
+	emit('update:modelValue', val)
+	emit('change', val)
 }
 
 const increase = () => {
 	if (props.max === undefined || props.modelValue < props.max) {
-		update(props.modelValue + props.step)
+		update(props.modelValue + Number(props.step))
 	}
 }
 
 const decrease = () => {
 	if (props.min === undefined || props.modelValue > props.min) {
-		update(props.modelValue - props.step)
+		update(props.modelValue - Number(props.step))
 	}
 }
 

@@ -1,43 +1,43 @@
-import UiFormTextfield from './FormTextfield.vue'
+import FormTextField from './FormTextfield.vue'
 import { ref } from 'vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
   title: 'Ui/Forms/FormTextfield',
-  component: UiFormTextfield,
+  component: FormTextField,
   argTypes: {},
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  components: { UiFormTextfield },
+  components: { FormTextField },
   setup() {
     const model = ref()
     return { args, model }
   },
   template: `
     <div>
-      <ui-form-textfield v-bind="args" v-model="model" float/>
+      <FormTextField v-bind="args" v-model="model"/>
       <pre>{{ model }}</pre>
     </div>
   `,
 })
 
 const TemplateAfter = (args) => ({
-  components: { UiFormTextfield },
+  components: { FormTextField },
   setup() {
     const model = ref()
     return { args, model }
   },
   template: `
     <div>
-      <ui-form-textfield v-bind="args" v-model="model">
+      <FormTextField v-bind="args" v-model="model">
         <template #after>
           <span style="padding: 0 10px">
             ANY
           </span>
         </template>
-      </ui-form-textfield>
+      </FormTextField>
       <pre>{{ model }}</pre>
     </div>
   `,
@@ -47,6 +47,12 @@ export const Default = Template.bind({})
 Default.args = {
   label: 'Placeholder',
   placeholder: 'Placeholder',
+  labelInfo: 'Teste'
+}
+export const Float = Template.bind({})
+Float.args = {
+  float: true,
+  label: 'Placeholder',
   labelInfo: 'Teste'
 }
 

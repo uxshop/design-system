@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue'
+import Icon from '../icon/Icon.vue'
 
 interface Props {
-	id: string
-	className: string
+	id?: string
+	className?: string
 	// horizontalPosition: string,
 	// verticalPosition: string,
-	variant: string
-	duration: number
-	message: string
-	closeable: boolean
+	variant?: string
+	duration?: number
+	message?: string
+	closeable?: boolean
+}
+
+interface State {
+	option: Record<string, any>
+	timer: NodeJS.Timeout | null
+	showing: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -20,7 +27,7 @@ const closed = ref(false)
 
 const classList = ref<string[]>([])
 
-const state = reactive({
+const state = <State>reactive({
 	option: {},
 	showing: false,
 	timer: null
@@ -32,9 +39,11 @@ const close = () => {
 	state.showing = false
 	classList.value.push('-leave')
 	setTimeout(() => {
-		const ele = document.getElementById(props.id)
-		if (ele) {
-			document.body.removeChild(ele)
+		if (props.id) {
+			const ele = document.getElementById(props.id)
+			if (ele) {
+				document.body.removeChild(ele)
+			}
 		}
 	}, 300)
 }
@@ -66,7 +75,7 @@ const startTimer = () => {
 				<div v-html="message"></div>
 			</div>
 			<span @click="close" class="ui-toast-close" v-if="closeable">
-				<icon name="close" />
+				<Icon name="close" />
 			</span>
 		</div>
 	</div>

@@ -3,41 +3,43 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 
-const props = defineProps<{
-	id?: string
-	label?: string
-	labelInfo?: string
-	float?: boolean
+interface Props extends FormWrapperInterface {
 	leadingIcon?: string
 	trailingIcon?: string
+	labelInfo?: string
 	trailingText?: string
+	state?: undefined
+	coutable?: boolean
 	loading?: boolean
-	disabled?: boolean
-	autofocus?: boolean
-	size?: number | string
 	last?: boolean
-	state?: string
+	float?: boolean
+	disabled?: boolean
 	invalidFeedback?: string
-}>()
+	autofocus?: boolean
+	size?: string | number
+	label?: string
+	id?: string
+}
 
+const props = defineProps<Props>()
 const elementRef = ref<Element>()
-const input = elementRef.value?.querySelector('.form-control')
 const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`)
 
 onMounted(() => {
 	nextTick(() => {
-		if (props.autofocus) {
-			document.getElementById(uid.value)?.focus()
-		}
+		// @ts-ignore
+		const input: HTMLElement[] = elementRef.value?.querySelectorAll('input, textarea')
 
-		if (props.float) {
-			if (input) {
-				input.setAttribute('placeholder', ' ')
+		if (input && input[0]) {
+			input[0].setAttribute('id', uid.value)
+
+			if (props.autofocus) {
+				input[0].focus()
 			}
-		}
 
-		if (input) {
-			input.setAttribute('id', uid.value)
+			if (props.float) {
+				input[0].setAttribute('placeholder', ' ')
+			}
 		}
 	})
 })
@@ -90,37 +92,37 @@ const classList = computed(() => {
 </script>
 
 <template>
-	<div ref="refElement" :class="classList">
-		<div class="form-wrapper-label" v-if="!float && label">
-			<label class="form-control-label" :for="uid" v-html="label"></label>
+	<div ref="elementRef" :class="classList">
+		<div class="form-wrapper-label" v-if="!float && props.label">
+			<label class="form-control-label" :for="uid" v-html="props.label"></label>
 			<span v-if="labelInfo" v-tooltip:top="labelInfo" class="form-wrapper-label-icon">
-				<icon name="help" class="icon" />
+				<Icon name="help" class="icon" />
 			</span>
 		</div>
 		<div class="form-wrapper-content-item form-wrapper-content-bx">
-			<icon :name="leadingIcon" v-if="leadingIcon" />
+			<Icon :name="leadingIcon" v-if="leadingIcon" />
 			<slot />
 
 			<div class="form-wrapper-noteched">
 				<div class="form-wrapper-noteched-prepend"></div>
 				<div class="form-wrapper-noteched-label" v-if="float">
-					<label class="form-wrapper-label" :for="uid" v-html="label"></label>
+					<label class="form-wrapper-label" :for="uid" v-html="props.label"></label>
 				</div>
 				<div class="form-wrapper-noteched-append"></div>
 			</div>
 
 			<div class="trailing-icon">
-				<icon name="check" v-if="state === true" />
+				<Icon name="check" v-if="state === true" />
 			</div>
 
 			<div class="trailing-icon">
-				<icon :name="trailingIcon" v-if="trailingIcon && !loading" />
+				<Icon :name="trailingIcon" v-if="trailingIcon && !loading" />
 				<span class="trailing-icon-text" v-if="trailingText">{{ trailingText }}</span>
 				<slot name="trailingIcon" />
 			</div>
 
 			<div class="form-control-loader" v-if="loading">
-				<spinner class="form-control-loader-spinner" />
+				<Spinner class="form-control-loader-spinner" />
 			</div>
 		</div>
 

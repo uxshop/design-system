@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref } from 'vue'
+import { getCurrentInstance, ref, useSlots } from 'vue'
 
 interface Props {
-	modelValue: undefined
-	value: undefined
-	label: string
-	name: string
-	required: boolean
-	size: string
-	tabindex: string | number
+	modelValue?: any
+	value?: any
+	label?: string
+	name?: string
+	required?: boolean
+	size?: string
+	tabindex?: string | number
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	value: true
 })
 
-const uid = getCurrentInstance()?.uid
-const checkbox = ref(null)
+const uid = `ui-form-radio-${getCurrentInstance()?.uid}`
+const slots = useSlots()
 
 const emit = defineEmits(['update:modelValue'])
 

@@ -3,8 +3,20 @@ import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 const vMaska = maska
+
 interface Props extends FormWrapperInterface {
-	modelValue: string | number | null
+	leadingIcon?: string
+	trailingIcon?: string
+	labelInfo?: string
+	trailingText?: string
+	state?: undefined
+	coutable?: boolean
+	loading?: boolean
+	last?: boolean
+	float?: boolean
+	invalidFeedback?: string
+	//
+	modelValue: any
 	label?: string
 	id?: string
 	placeholder?: string
@@ -28,9 +40,7 @@ interface Props extends FormWrapperInterface {
 	raw?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-	type: 'text'
-})
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string): void
@@ -106,7 +116,7 @@ const onEnter = emit('enter')
 			:maxlength="maxlength"
 			:pattern="pattern"
 			:autofocus="autofocus"
-			:placeholder="placeholder"
+			:placeholder="!float ? placeholder : ''"
 			:readonly="readonly"
 			:tabindex="tabindex"
 			:name="name"

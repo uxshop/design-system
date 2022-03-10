@@ -2,13 +2,13 @@
 import { computed, getCurrentInstance, onMounted, ref } from 'vue'
 
 const props = defineProps<{
-	modelValue: undefined
-	label: string
-	required: boolean
-	name: string
-	min: string | number
-	max: string | number
-	step: string | number
+	modelValue?: undefined
+	label?: string
+	required?: boolean
+	name?: string
+	min?: string | number
+	max?: string | number
+	step?: string | number
 }>()
 
 const uid = getCurrentInstance()?.uid

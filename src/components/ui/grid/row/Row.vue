@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-defineProps<{
-	alignV: string
+const props = defineProps<{
+	alignV?: string
 }>()
 
 const classList = ref<any>([])

@@ -22,7 +22,8 @@
 		"perfect-scrollbar": "^1.5.5",
 		"pinia": "^2.0.11",
 		"tom-select": "^2.0.1",
-		"vue": "^3.2.31"
+		"vue": "^3.2.31",
+		"vue-currency-input": "^2.4.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",

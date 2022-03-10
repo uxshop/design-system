@@ -27,7 +27,7 @@ $dark: #4e6380 !default;
 	--success: #{$success};
 	--success-100: #{lighten($success, 8%)};
 	--success-200: #{darken($success, 10%)};
-	--success-300: #{darken($success, 20%)};
+	--success-dark: #{darken($success, 20%)};
 	--danger: #{$danger};
 	--danger-100: #{lighten($danger, 10%)};
 	--danger-200: #{darken($danger, 10%)};

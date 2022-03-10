@@ -24,12 +24,12 @@ interface Props {
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string
-	size?: string
+	size?: string | number
 	href?: string
 	flush?: string
 	block?: boolean
 	to?: object
-	spinnerBorder?: number
+	spinnerBorder?: number | string
 	type?: string
 	loading?: boolean
 }

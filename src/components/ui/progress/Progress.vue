@@ -2,21 +2,23 @@
 import { ref } from 'vue'
 
 interface Props {
-	height: string | number
+	height?: string | number
+	value?: string | number
+	max?: string | number
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	height: 3
 })
 const style = ref<{
-	height?: string
-}>({})
-
-style.value.height = `${props.height}px`
+	height: string
+}>({
+	height: `${props.height}px`
+})
 </script>
 
 <template>
-	<progress class="ui-progress" :style="style" />
+	<progress class="ui-progress" :style="style" :value="value" :max="max" />
 </template>
 
 <style lang="scss">

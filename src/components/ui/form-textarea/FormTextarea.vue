@@ -3,26 +3,46 @@ import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
 interface Props extends FormWrapperInterface {
-	modelValue: string | number
-	rows: string | number
-	label: string
-	placeholder: string
-	tabindex: string
-	inputmode: string
-	size: string
-	id: string
-	pattern: string
-	title: string
-	name: string
-	autocomplete: string
-	minlength: string | number
-	maxlength: string | number
-	autofocus: boolean
-	disabled: boolean
-	required: boolean
-	readonly: boolean
-	pill: string
+	leadingIcon?: string
+	trailingIcon?: string
+	labelInfo?: string
+	trailingText?: string
+	state?: undefined
+	coutable?: boolean
+	loading?: boolean
+	last?: boolean
+	float?: boolean
+	invalidFeedback?: string
+	//
+	modelValue: any
+	rows?: string | number
+	label?: string
+	placeholder?: string
+	tabindex?: string
+	inputmode?: 'search' | 'text' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | undefined
+	size?: string
+	id?: string
+	pattern?: string
+	title?: string
+	name?: string
+	autocomplete?: string
+	minlength?: string | number
+	maxlength?: string | number
+	autofocus?: boolean
+	disabled?: boolean
+	required?: boolean
+	readonly?: boolean
+	pill?: string
 }
+
+const emit = defineEmits<{
+	(e: 'update:modelValue', val: string): void
+	(e: 'update', val: string): void
+	(e: 'focus'): void
+	(e: 'blur'): void
+	(e: 'keydown'): void
+	(e: 'enter'): void
+}>()
 
 const props = withDefaults(defineProps<Props>(), {
 	rows: 4
@@ -32,6 +52,11 @@ const classList = ref<string[]>([])
 
 if (props.pill) {
 	classList.value.push('-pill')
+}
+
+const update = (evt: any) => {
+	emit('update:modelValue', evt.target.value)
+	emit('update', evt.target.value)
 }
 </script>
 

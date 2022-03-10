@@ -4,12 +4,12 @@ import './redactor/redactor'
 
 interface Props {
 	modelValue: undefined
-	toolbar: object
-	name: string
-	placeholder: string
-	label: string
-	height: string | number
-	config: undefined
+	toolbar?: object
+	name?: string
+	placeholder?: string
+	label?: string
+	height?: string | number
+	config?: undefined
 }
 
 const props = withDefaults(defineProps<Props>(), {

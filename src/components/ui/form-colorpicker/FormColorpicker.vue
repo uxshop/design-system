@@ -34,7 +34,8 @@ interface PickrCustom extends PickerInterface {
 
 const createPickrInstance = (options: PickerInterface.Options) => {
 	const noDefault = !options.default
-	const instance: PickrCustom = new Pickr.default({
+	// @ts-ignore
+	const instance: PickrCustom = new Pickr({
 		...options,
 		...(noDefault && { default: '#000000' })
 	})

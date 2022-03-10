@@ -4,7 +4,7 @@ import { ref } from 'vue'
 interface Props {
 	name: string
 	size?: number | string
-	type?: string
+	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'
 }
 
 const props = withDefaults(defineProps<Props>(), {

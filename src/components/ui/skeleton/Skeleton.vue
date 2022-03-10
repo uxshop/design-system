@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const props = defineProps<{
-	width: string
+	width?: string
 }>()
 
 const style = ref<{

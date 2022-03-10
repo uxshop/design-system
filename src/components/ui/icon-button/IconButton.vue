@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import Icon from '../icon/Icon.vue'
-// import UiButton from '../button/Button.vue'
+import Button from '../button/Button.vue'
 
 interface Props {
 	icon: string
-	variant: string
-	size: string
-	type: string
-	fab: boolean
+	variant?: string
+	size?: string | number
+	type?: string
+	fab?: boolean
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>
-	<ui-button class="ui-icon-button" :variant="variant" :class="{ '-fab': fab }" :size="size">
-		<icon :name="icon" :type="type" class="icon" />
-	</ui-button>
+	<Button class="ui-icon-button" :variant="variant" :class="{ '-fab': fab }" :size="size">
+		<Icon :name="icon" :type="type" class="icon" />
+	</Button>
 </template>
 
 <style lang="scss">

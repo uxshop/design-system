@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { getCurrentInstance, nextTick, onMounted, ref, shallowRef } from 'vue'
-import TomSelect from 'tom-select/dist/js/tom-select.complete.js'
+import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
 import 'tom-select/dist/css/tom-select.default.css'
 
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close'])
 
 interface Props {
 	modelValue: undefined
-	placeholder: string
-	config: object
+	placeholder?: string
+	config?: object
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -30,7 +30,7 @@ const settings = Object.assign(
 		persist: false,
 		createOnBlur: true,
 		create: true,
-		plugins: [],
+		plugins: <string[]>[],
 		onChange: update
 	},
 	props.config
@@ -40,6 +40,7 @@ settings.plugins.push('remove_button')
 
 onMounted(() => {
 	nextTick(() => {
+		// @ts-ignore
 		element.value = new TomSelect(`#${uid}`, settings)
 		// 	element.value = $(`#${uid}`)
 		// 	element.value = element.value.select2(settings)

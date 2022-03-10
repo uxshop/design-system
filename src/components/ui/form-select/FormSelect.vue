@@ -3,9 +3,20 @@ import { isObject } from 'lodash'
 import { ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
-interface Props extends FromWrapper {
-	modelValue?: string | object | number
-	value?: string | object | number
+interface Props {
+	leadingIcon?: string
+	trailingIcon?: string
+	labelInfo?: string
+	trailingText?: string
+	state?: undefined
+	coutable?: boolean
+	loading?: boolean
+	last?: boolean
+	float?: boolean
+	invalidFeedback?: string
+	//
+	modelValue?: any
+	value?: any
 	placeholder?: string
 	label?: string
 	error?: string
@@ -19,6 +30,7 @@ interface Props extends FromWrapper {
 	title?: string
 	required?: boolean
 	options?: any[]
+	disabled?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
 	options: () => []
@@ -75,18 +87,21 @@ if (props.size) {
 
 <template>
 	<form-wrapper
-		v-bind="{
-			id: $props.id,
-			leadingIcon: $props.leadingIcon,
-			trailingIcon: $props.trailingIcon,
-			label: $props.label,
-			coutable: $props.coutable,
-			loading: $props.loading,
-			last: $props.last,
-			disabled: $props.disabled,
-			float: $props.float,
-			state: $props.state
-		}"
+		:id="id"
+		:leadingIcon="leadingIcon"
+		:trailingIcon="trailingIcon"
+		:trailingText="trailingText"
+		:label="label"
+		:coutable="coutable"
+		:loading="loading"
+		:last="last"
+		:disabled="disabled"
+		:float="float"
+		:state="state"
+		:labelInfo="labelInfo"
+		:autofocus="autofocus"
+		:size="size"
+		:invalidFeedback="invalidFeedback"
 		class="ui-form-select"
 	>
 		<select

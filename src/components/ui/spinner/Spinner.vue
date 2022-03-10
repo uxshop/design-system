@@ -47,10 +47,10 @@ style.borderWidth = `${props.border}px`
 	border: v-bind('style.borderWidth') solid currentColor;
 	border-right-color: transparent;
 	border-radius: 50%;
-	-webkit-animation: spinner-border 0.75s linear infinite;
-	animation: spinner-border 0.75s linear infinite;
+	-webkit-animation: spinnerBorderer 0.75s linear infinite;
+	animation: spinnerBordere 0.75s linear infinite;
 
-	@keyframes spinner-border {
+	@keyframes spinnerBorderer {
 		to {
 			transform: rotate(360deg);
 		}

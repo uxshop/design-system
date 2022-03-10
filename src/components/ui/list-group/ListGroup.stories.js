@@ -16,14 +16,14 @@ const Template = (args) => ({
 		return { args }
 	},
 	template: `
-    <list-group v-bind="args">
-      <list-group-item> 
+    <ListGroup v-bind="args">
+      <ListGroupItem> 
         #LIST_GROUP_ITEM
-      </list-group-item>
-      <list-group-item-button> 
+      </ListGroupItem>
+      <ListGroupItemButton> 
         #LIST_GROUP_ITEM_BUTTON
-      </list-group-item>
-    </list-group>
+      </ListGroupItemButton>
+    </ListGroup>
   `
 })
 

@@ -1,45 +1,54 @@
 <script setup lang="ts">
-import { getCurrentInstance, watchEffect, ref } from 'vue'
+import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue'
 import Icon from '../icon/Icon.vue'
 
 const props = defineProps<{
-	modelValue: boolean
-	title: string
-	scrollable: boolean
-	noCloseOnBackdrop: boolean
-	show: boolean
-	size: string
-	inner: boolean
-	class: string
-	hideHeader: boolean
-	hideFooter: boolean
-	centered: boolean
-	id: string
-	width: string
-	params: object
+	modelValue?: boolean
+	title?: string
+	scrollable?: boolean
+	noCloseOnBackdrop?: boolean
+	show?: boolean
+	size?: string
+	inner?: boolean
+	class?: string
+	hideHeader?: boolean
+	hideFooter?: boolean
+	centered?: boolean
+	id?: string
+	width?: string
+	params?: Record<string, any>
 }>()
 
 const emit = defineEmits(['update:modelValue', 'close', 'open'])
 
+const slots = useSlots()
 const showDialog = ref(false)
 const classList = ref<string[]>([])
 const currentTitle = ref(props.title)
-const style = ref({})
+const style = ref<{
+	maxWidth?: string
+}>({})
 const onClickBackdrop = () => {
 	if (!props.noCloseOnBackdrop) {
 		close()
 	}
 }
 
+const uid = shallowRef(props.id)
+
+if (!props.id) {
+	uid.value = `modal-${getCurrentInstance()?.uid}`
+}
+
 const close = () => {
 	showDialog.value = false
 	setTimeout(() => {
-		emit('close')
 		emit('update:modelValue', false)
+		emit('close')
 	}, 300)
 }
 
-const haveSlot = (name) => {
+const haveSlot = (name: string) => {
 	return !!slots[name]
 }
 
@@ -55,7 +64,7 @@ if (props.width) {
 	style.value.maxWidth = `${props.width}px`
 }
 
-const listener = (e) => {
+const listener = (e: KeyboardEvent) => {
 	if (e.key == 'Escape') {
 		onClickBackdrop()
 	}
@@ -77,8 +86,8 @@ watchEffect(() => {
 <template>
 	<teleport to="body">
 		<div
-			:id="id"
 			v-if="modelValue"
+			:id="uid"
 			@keydown.esc="close()"
 			class="ui-modal"
 			:class="[
@@ -86,11 +95,11 @@ watchEffect(() => {
 				{
 					'-hide': !showDialog,
 					'-scrollable': scrollable,
-					'-inner': inner !== undefined
+					'-inner': inner
 				}
 			]"
 		>
-			<div class="ui-modal-overlay" :class="{ '-closable': !noCloseOnBackdrop }" @click="onClickBackdrop()"></div>
+			<div class="ui-modal-overlay" :class="{ '-closable': !noCloseOnBackdrop }" @click="onClickBackdrop"></div>
 
 			<div class="ui-modal-dialog" :style="style">
 				<div class="ui-modal-content">
@@ -118,5 +127,5 @@ watchEffect(() => {
 </template>
 
 <style lang="scss">
-@import './modal.scss';
+@import './Modal.scss';
 </style>

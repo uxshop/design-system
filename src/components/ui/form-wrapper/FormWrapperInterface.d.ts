@@ -3,11 +3,16 @@ declare interface FormWrapperInterface {
 	trailingIcon?: string
 	labelInfo?: string
 	trailingText?: string
-	state?: string
+	state?: undefined
 	coutable?: boolean
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	disabled?: boolean
 	invalidFeedback?: string
+	//
+	disabled?: boolean
+	autofocus?: boolean
+	size?: string | number
+	label?: string
+	id?: string
 }

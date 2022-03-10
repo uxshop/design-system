@@ -3,15 +3,16 @@ import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
 import Litepicker from 'litepicker'
-import moment from 'moment'
+import * as moment from 'moment'
+moment.locale('pt-br')
 
 const props = defineProps<{
-	modelValue: string
-	config: any
-	placeholder: string
-	range: boolean
-	noClear: boolean
-	size: string
+	modelValue?: string
+	config?: any
+	placeholder?: string
+	range?: boolean
+	noClear?: boolean
+	size?: string
 }>()
 
 const emit = defineEmits(['update:modelValue', 'update'])
@@ -29,8 +30,10 @@ const update = (value: null) => {
 const stopWatch = watchEffect(() => {
 	if (picker.value && props.modelValue) {
 		const dates = props.modelValue.split('TO')
+		// @ts-ignore
 		const date1 = moment(dates[0]).format(FORMAT_DATE)
 		if (props.range && dates.length > 1) {
+			// @ts-ignore
 			const date2 = moment(dates[1]).format(FORMAT_DATE)
 			console.log(date1, date2)
 			picker.value.setDateRange(date1, date2)
@@ -57,7 +60,7 @@ onMounted(() => {
 			element: document.getElementById(uid),
 			format: FORMAT_DATE,
 
-			setup: (picker: { on: (arg0: string, arg1: (date1: any, date2: any) => void) => void }) => {
+			setup: (picker: any) => {
 				picker.on(
 					'selected',
 					(
