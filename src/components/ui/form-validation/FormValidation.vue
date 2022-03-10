@@ -4,8 +4,34 @@ import { watchEffect } from 'vue'
 
 const props = defineProps<{
 	modelValue: undefined
-	translate: object
+	translate: any
 }>()
+
+const emit = defineEmits(['update:modelValue'])
+
+const trans = (val: string) => {
+	if (!props.translate) {
+		return val
+	}
+	if (val.indexOf('.') >= 0) {
+		const keys = val.split('.')
+		const key = keys[0]
+		const line = Number(keys[1]) + 1
+		const field = keys[2]
+		const object = props.translate[key]
+		if (object[field]) {
+			const name = object[key]
+			return `${name}: ${object[field]} #${line}`
+		} else {
+			return val
+		}
+	}
+	return props.translate[val] || val
+}
+
+const removeErrors = () => {
+	emit('update:modelValue', null)
+}
 
 watchEffect(() => {
 	const newVal = props.modelValue
@@ -32,7 +58,7 @@ watchEffect(() => {
 		<alert variant="danger" show title="Erros encontrados" dismissible @dismissed="removeErrors">
 			<ul v-for="(item, key) in modelValue" :key="key" class="text-lowercase">
 				<li v-for="val in item" :key="val">
-					<b>{{ trans(key) }}:</b> {{ val }}
+					<b>{{ trans(String(key)) }}:</b> {{ val }}
 				</li>
 			</ul>
 		</alert>

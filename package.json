@@ -16,7 +16,12 @@
 	},
 	"dependencies": {
 		"@simonwep/pickr": "^1.8.2",
+		"litepicker": "^2.0.12",
+		"maska": "^1.5.0",
+		"moment": "^2.29.1",
+		"perfect-scrollbar": "^1.5.5",
 		"pinia": "^2.0.11",
+		"tom-select": "^2.0.1",
 		"vue": "^3.2.31"
 	},
 	"devDependencies": {

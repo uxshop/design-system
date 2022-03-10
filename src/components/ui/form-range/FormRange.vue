@@ -70,6 +70,5 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@import '../../../scss/mixins.scss';
 @import './FormRange.scss';
 </style>

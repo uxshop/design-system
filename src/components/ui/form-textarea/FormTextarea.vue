@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
-interface Props {
+interface Props extends FormWrapperInterface {
 	modelValue: string | number
 	rows: string | number
 	label: string
@@ -28,29 +28,25 @@ const props = withDefaults(defineProps<Props>(), {
 	rows: 4
 })
 
-		const classList = ref<string[]>([])
+const classList = ref<string[]>([])
 
-		if (props.pill) {
-			classList.value.push('-pill')
-		}
-
+if (props.pill) {
+	classList.value.push('-pill')
 }
 </script>
 
 <template>
 	<form-wrapper
-		v-bind="{
-			id: $props.id,
-			leadingIcon: $props.leadingIcon,
-			trailingIcon: $props.trailingIcon,
-			label: $props.label,
-			coutable: $props.coutable,
-			loading: $props.loading,
-			last: $props.last,
-			disabled: $props.disabled,
-			float: $props.float,
-			state: $props.state
-		}"
+		:id="id"
+		:leadingIcon="leadingIcon"
+		:trailingIcon="trailingIcon"
+		:label="label"
+		:coutable="coutable"
+		:loading="loading"
+		:last="last"
+		:disabled="disabled"
+		:float="float"
+		:state="state"
 	>
 		<textarea
 			class="form-control"

@@ -10,7 +10,6 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits(['dismissed'])
-
 const classList = ref<string[]>([])
 
 const style = ref<{
@@ -22,7 +21,7 @@ const style = ref<{
 if (props.size) {
 	style.value.width = `${props.size}px`
 	style.value.height = `${props.size}px`
-	style.value.fontSize = `${props.size * 0.33}px`
+	style.value.fontSize = `${Number(props.size) * 0.33}px`
 }
 
 if (props.variant) {

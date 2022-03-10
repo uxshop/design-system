@@ -51,6 +51,5 @@ const empty = () => {
 </template>
 
 <style lang="scss">
-@import '../../../scss/mixins.scss';
 @import './FormRadio.scss';
 </style>

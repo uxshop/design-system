@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
 
-import 'select2/dist/js/select2.full'
-import 'select2/dist/css/select2.min.css'
-import $ from 'jquery'
+// import 'select2/dist/js/select2.full'
+// import 'select2/dist/css/select2.min.css'
+// import $ from 'jquery'
 
 const emit = defineEmits(['update:modelValue', 'open', 'close'])
 

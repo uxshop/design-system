@@ -14,14 +14,11 @@ const Template = (args) => ({
     return { args }
   },
   template: `
-    <Spinner v-bind="args">
-      meu spinner 
-    </Spinner>
+    <Spinner v-bind="args" />
   `,
 })
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Spinner',
-  spinnerBorder: 1,
+  border: 1,
 }

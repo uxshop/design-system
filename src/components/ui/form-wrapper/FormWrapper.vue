@@ -4,27 +4,24 @@ import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 
 const props = defineProps<{
-	id: string
-	label: string
-	labelInfo: string
-	float: boolean
-	leadingIcon: string
-	trailingIcon: string
-	trailingText: string
-	loading: boolean
-	disabled: boolean
-	autofocus: boolean
-	size: number
-	last: boolean
-	state: undefined
-	invalidFeedback: string
-	modelValue: undefined
+	id?: string
+	label?: string
+	labelInfo?: string
+	float?: boolean
+	leadingIcon?: string
+	trailingIcon?: string
+	trailingText?: string
+	loading?: boolean
+	disabled?: boolean
+	autofocus?: boolean
+	size?: number | string
+	last?: boolean
+	state?: string
+	invalidFeedback?: string
 }>()
 
 const elementRef = ref<Element>()
-
 const input = elementRef.value?.querySelector('.form-control')
-
 const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`)
 
 onMounted(() => {

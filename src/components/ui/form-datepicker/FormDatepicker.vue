@@ -6,8 +6,8 @@ import Litepicker from 'litepicker'
 import moment from 'moment'
 
 const props = defineProps<{
-	modelValue: undefined
-	config: object
+	modelValue: string
+	config: any
 	placeholder: string
 	range: boolean
 	noClear: boolean
@@ -16,9 +16,8 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:modelValue', 'update'])
 
-const model = ref()
 const picker = shallowRef()
-const classList = shallowRef([])
+const classList = shallowRef<string[]>([])
 const uid = `ui-form-datepicker-${getCurrentInstance()?.uid}`
 const FORMAT_DATE = 'DD/MM/YYYY'
 
@@ -84,22 +83,18 @@ const clearDate = () => {
 	update(null)
 }
 
-return {
-	uid,
-	model,
-	classList,
-	update,
-	clearDate
-}
+defineExpose({
+	clearDate: clearDate
+})
 </script>
 
 <template>
-	<form-wrapper v-bind="$props" class="ui-form-datepicker" leadingIcon="event" :class="classList">
+	<FormWrapper :size="size" class="ui-form-datepicker" leadingIcon="event" :class="classList">
 		<input class="form-control" :id="uid" autocomplete="off" :placeholder="placeholder" readonly :class="classList" />
 		<template #trailingIcon v-if="!noClear">
-			<icon name="close" class="btn-remove" @click="clearDate" v-if="modelValue" />
+			<Icon name="close" class="btn-remove" @click="clearDate" v-if="modelValue" />
 		</template>
-	</form-wrapper>
+	</FormWrapper>
 </template>
 
 <style lang="scss">

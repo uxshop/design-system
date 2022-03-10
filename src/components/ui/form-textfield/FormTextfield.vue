@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 const vMaska = maska
-interface Props extends FromWrapper {
+interface Props extends FormWrapperInterface {
 	modelValue: string | number | null
 	label?: string
 	id?: string
@@ -25,10 +25,13 @@ interface Props extends FromWrapper {
 	readonly?: boolean
 	type?: string
 	mask?: string | string[] | object | null
+	raw?: boolean
 }
+
 const props = withDefaults(defineProps<Props>(), {
 	type: 'text'
 })
+
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string): void
 	(e: 'update', val: string): void
@@ -37,13 +40,15 @@ const emit = defineEmits<{
 	(e: 'keydown'): void
 	(e: 'enter'): void
 }>()
-const classList = ref([])
 
-const update = (evt: { target: { value: any } }) => {
-	let val = evt.target.value
-	// if (props.mask) {
-	// 	val = rawValue.value
-	// }
+const classList = ref<string[]>([])
+const rawValue = ref()
+
+const update = (evt: any) => {
+	let val = evt.target?.value
+	if (props.mask && props.raw) {
+		val = rawValue.value
+	}
 	emit('update:modelValue', val)
 	emit('update', val)
 }
@@ -63,21 +68,22 @@ const onEnter = emit('enter')
 </script>
 
 <template>
-	<form-wrapper
-		v-bind="{
-			id: $props.id,
-			leadingIcon: $props.leadingIcon,
-			trailingIcon: $props.trailingIcon,
-			trailingText: $props.trailingText,
-			label: $props.label,
-			coutable: $props.coutable,
-			loading: $props.loading,
-			last: $props.last,
-			disabled: $props.disabled,
-			float: $props.float,
-			state: $props.state,
-			labelInfo: $props.labelInfo
-		}"
+	<FormWrapper
+		:id="id"
+		:leadingIcon="leadingIcon"
+		:trailingIcon="trailingIcon"
+		:trailingText="trailingText"
+		:label="label"
+		:coutable="coutable"
+		:loading="loading"
+		:last="last"
+		:disabled="disabled"
+		:float="float"
+		:state="state"
+		:labelInfo="labelInfo"
+		:autofocus="autofocus"
+		:size="size"
+		:invalidFeedback="invalidFeedback"
 		class="ui-form-textfield"
 	>
 		<slot name="before" />
@@ -110,5 +116,5 @@ const onEnter = emit('enter')
 			@maska="rawValue = $event.target.dataset.maskRawValue"
 		/>
 		<slot name="after" />
-	</form-wrapper>
+	</FormWrapper>
 </template>

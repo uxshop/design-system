@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, watchEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, useSlots, watchEffect } from 'vue'
 import Icon from '../icon/Icon.vue'
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close'])
@@ -25,12 +25,11 @@ const props = withDefaults(defineProps<Props>(), {
 	dropdownClosed: false
 })
 const isDropdown = ref(props.dropdown)
-
 const cardTitle = ref(props.title)
-
 const showBody = ref(!props.dropdownClosed)
-
 const uid = `card-${getCurrentInstance()?.uid}`
+
+const slots = useSlots()
 
 const haveSlot = (name = 'default') => {
 	return !!slots[name]

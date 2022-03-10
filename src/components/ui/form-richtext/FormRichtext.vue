@@ -18,10 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:modelValue', 'update'])
 
-let redactor: { editor: { isFocus: () => any; focus: () => void }; source: { setCode: (arg0: never) => void } } | null
-const model = ref()
-const classList = ref([])
-const style = ref({})
+let redactor: any
 const uid = `ui-form-richtext-${getCurrentInstance()?.uid}`
 const config = Object.assign(
 	{
@@ -83,22 +80,17 @@ const update = (val: any) => {
 }
 
 onMounted(() => {
+	// @ts-ignore
 	redactor = $R(`#${uid}`, config)
 })
 
 onUnmounted(() => {
 	setTimeout(() => {
+		// @ts-ignore
 		$R(`#${uid}`, 'destroy')
 		redactor = null
 	}, 300)
 })
-
-function $R(): {
-	editor: { isFocus: () => any; focus: () => void }
-	source: { setCode: (arg0: never) => void }
-} | null {
-	throw new Error('Function not implemented.')
-}
 </script>
 
 <template>

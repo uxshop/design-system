@@ -29,23 +29,25 @@ const listener = watchEffect(() => {
 })
 
 interface PickrCustom extends PickerInterface {
-	hasDefault?: boolean
+	init?: boolean
 }
 
 const createPickrInstance = (options: PickerInterface.Options) => {
 	const noDefault = !options.default
-	// @ts-expect-error
-	const instance: PickrCustom = new Pickr({
+	const instance: PickrCustom = new Pickr.default({
 		...options,
 		...(noDefault && { default: '#000000' })
 	})
 
+	instance.init = true
+
 	if (noDefault) {
-		instance.hasDefault = false
+		instance.init = false
+
 		const resetColor = () => {
 			instance.off('init', resetColor)
 			instance.setColor(null)
-			instance.hasDefault = true
+			instance.init = true
 		}
 
 		instance.on('init', resetColor)
@@ -116,11 +118,9 @@ onMounted(() => {
 	})
 
 	pickr.value
-		.on('init', (instance: PickerInterface) => {
-			listener()
-		})
+		.on('init', (instance: PickerInterface) => {})
 		.on('save', (color: PickerInterface.HSVaColor, instance: PickrCustom) => {
-			if (instance.hasDefault) {
+			if (instance.init) {
 				let hexa = null
 
 				if (color) {
@@ -152,6 +152,15 @@ onMounted(() => {
 	// .on('swatchselect', (color, instance) => {
 	// 	console.log('Event: "swatchselect"', color, instance)
 	// })
+	watchEffect(() => {
+		if (
+			pickr.value &&
+			props.modelValue != undefined &&
+			pickr.value.getColor().toHEXA().toString() != props.modelValue
+		) {
+			pickr.value.setColor(props.modelValue)
+		}
+	})
 })
 
 defineExpose({

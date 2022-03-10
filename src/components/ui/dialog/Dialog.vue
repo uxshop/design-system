@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { nextTick, onMounted, reactive, ref } from 'vue'
-
 import UiRow from '../grid/row/Row.vue'
 import UiCol from '../grid/col/Col.vue'
 import UiButton from '../button/Button.vue'
@@ -11,7 +10,7 @@ interface Props {
 	title: string
 	hideFooter: boolean
 	message: string
-	callback: function
+	callback(val: string | boolean): void
 	closeOnBackdrop: boolean
 	variant: string
 	size: string
@@ -35,11 +34,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits(['close', 'destrcut'])
-
 const closed = ref(false)
-
 const classList = ref<string[]>([])
-
 const isPrompt = ref(false)
 
 const style = ref<{
@@ -60,7 +56,7 @@ const config = reactive({
 	destructVariant: props.destructVariant
 })
 
-const close = (val: boolean | undefined) => {
+const close = (val?: boolean) => {
 	document.body.classList.remove('dialog-open')
 	window.removeEventListener('keydown', listener, false)
 	closed.value = true
@@ -75,7 +71,7 @@ const close = (val: boolean | undefined) => {
 	setTimeout(() => {
 		const ele = document.getElementById(props.id)
 		if (ele) {
-			document.body.removeChild(document.getElementById(props.id))
+			document.body.removeChild(ele)
 		}
 	}, 300)
 }
@@ -143,7 +139,7 @@ onMounted(() => {
 					<slot />
 					<div v-html="message"></div>
 					<div class="ui-dialog-prompt mt-5" v-if="isPrompt">
-						<form-textfield
+						<FormTextfield
 							:label="promptLabel"
 							:placeholder="promptPlaceholder"
 							:type="promptType"

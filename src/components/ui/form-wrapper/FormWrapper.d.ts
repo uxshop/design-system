@@ -1,4 +1,4 @@
-declare interface FromWrapper {
+declare interface FormWrapperInterface {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
@@ -9,4 +9,5 @@ declare interface FromWrapper {
 	last?: boolean
 	float?: boolean
 	disabled?: boolean
+	invalidFeedback?: string
 }

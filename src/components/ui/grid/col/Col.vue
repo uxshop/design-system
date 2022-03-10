@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 const props = defineProps<{
-	cols: string | number
-	sm: string | number
-	md: string | number
-	offset: string | number
-	offsetSm: string | number
-	auto: boolean
+	cols?: string | number
+	sm?: string | number
+	md?: string | number
+	offset?: string | number
+	offsetSm?: string | number
+	auto?: boolean
 }>()
 
 const classList = ref<any[]>(['ui-col'])

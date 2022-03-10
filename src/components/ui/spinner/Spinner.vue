@@ -7,12 +7,19 @@ interface Props {
 	color?: string
 }
 
+interface Style {
+	width?: string
+	height?: string
+	color?: string
+	borderWidth?: string
+}
+
 const props = withDefaults(defineProps<Props>(), {
 	border: 3,
 	size: 22
 })
 
-const style = reactive<any>({})
+const style = reactive<Style>({})
 
 if (props.size) {
 	style.width = `${props.size}px`
@@ -27,9 +34,26 @@ style.borderWidth = `${props.border}px`
 </script>
 
 <template>
-	<div class="ui-spinner" :style="style"></div>
+	<div class="ui-spinner" :style="style" />
 </template>
 
 <style lang="scss">
-@import './Spinner.scss';
+.ui-spinner {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: text-bottom;
+	color: v-bind('style.color');
+	border: v-bind('style.borderWidth') solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	-webkit-animation: spinner-border 0.75s linear infinite;
+	animation: spinner-border 0.75s linear infinite;
+
+	@keyframes spinner-border {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+}
 </style>

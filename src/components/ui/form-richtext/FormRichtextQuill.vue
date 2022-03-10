@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
-import 'quill/dist/quill.bubble.css'
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import Quill from 'quill'
+// import 'quill/dist/quill.bubble.css'
+// import 'quill/dist/quill.core.css'
+// import 'quill/dist/quill.snow.css'
+// import Quill from 'quill'
 
 interface Props {
 	modelValue: undefined
@@ -70,6 +70,5 @@ style.value.height = `${props.height}px`
 </template>
 
 <style lang="scss">
-@import '../../../scss/mixins.scss';
 @import './FormRichtextQuill.scss';
 </style>
