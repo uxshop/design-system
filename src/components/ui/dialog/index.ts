@@ -7,6 +7,9 @@ interface ConfigInterface {
 	destructIcon?: string
 	destructVariant?: string
 	hideCancel?: boolean
+	title?: string
+	message?: string
+	callback?(val: boolean): void
 }
 
 let globalConfig = {

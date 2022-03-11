@@ -61,10 +61,10 @@ const update = (evt: any) => {
 </script>
 
 <template>
-	<form-wrapper
+	<FormWrapper
 		:id="id"
 		:leadingIcon="leadingIcon"
-		:trailingIcon="trailingIcon"
+		:trailingcon="trailingIcon"
 		:label="label"
 		:coutable="coutable"
 		:loading="loading"
@@ -94,5 +94,5 @@ const update = (evt: any) => {
 			:required="required"
 			:rows="rows"
 		/>
-	</form-wrapper>
+	</FormWrapper>
 </template>

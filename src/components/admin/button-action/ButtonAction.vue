@@ -17,7 +17,7 @@ const attrs = useAttrs()
 const currentIcon = ref()
 const hasClick = attrs.click
 
-const activeIcon = (active: boolean) => {
+const activeIcon = (active?: boolean) => {
 	currentIcon.value = active ? 'visibility' : 'visibility_off'
 }
 

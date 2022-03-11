@@ -6,7 +6,7 @@ interface Props {
 	icon: string
 	variant?: string
 	size?: string | number
-	type?: string
+	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'
 	fab?: boolean
 }
 
