@@ -1,38 +1,38 @@
-import UiDropdown from './Dropdown.vue'
-import UiDropdownItem from './DropdownItem.vue'
-import UiDropdownItemButton from './DropdownItemButton.vue'
+import Dropdown from './Dropdown.vue'
+import DropdownItem from './DropdownItem.vue'
+import DropdownItemButton from './DropdownItemButton.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-  title: 'Ui/Dropdown',
-  component: UiDropdown,
-  argTypes: {},
+	title: 'Ui/Dropdown',
+	component: Dropdown,
+	argTypes: {}
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  components: { UiDropdown, UiDropdownItem, UiDropdownItemButton },
-  setup() {
-    return { args }
-  },
-  template: `
+	components: { Dropdown, DropdownItem, DropdownItemButton },
+	setup() {
+		return { args }
+	},
+	template: `
     <div style="width: 200px">
-      <ui-dropdown v-bind="args">
+      <Dropdown v-bind="args">
         <template #button-content>
           <button>#button-content</button>
         </template>
-        <ui-dropdown-item>
+        <Dropdown-item>
           teste
-        </ui-dropdown-item>
-        <ui-dropdown-item-button>
+        </Dropdown-item>
+        <Dropdown-item-button>
           teste
-        </ui-dropdown-item-button>
-      </ui-dropdown>
+        </Dropdown-item-button>
+      </Dropdown>
     </div>
-  `,
+  `
 })
 
 export const Default = Template.bind({})
 Default.args = {
-  label: 'Dropdown',
+	label: 'Dropdown'
 }

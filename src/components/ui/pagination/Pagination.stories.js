@@ -1,31 +1,30 @@
-import UiPagination from './Pagination.vue'
-import UiPaginationItem from './PaginationItem.vue'
+import Pagination from './Pagination.vue'
+import PaginationItem from './PaginationItem.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-  title: 'Ui/Pagination',
-  component: UiPagination,
-  argTypes: {},
-  args: {
-  }
+	title: 'Ui/Pagination',
+	component: Pagination,
+	argTypes: {},
+	args: {}
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  components: { UiPagination, UiPaginationItem },
-  setup() {
-    return { args }
-  },
-  template: `
-    <ui-pagination v-bind="args">
-      <ui-pagination-item disabled>1</ui-pagination-item>
-      <ui-pagination-item>1</ui-pagination-item>
-      <ui-pagination-item>1</ui-pagination-item>
-    </ui-pagination>
-  `,
+	components: { Pagination, PaginationItem },
+	setup() {
+		return { args }
+	},
+	template: `
+    <Pagination v-bind="args">
+      <PaginationItem disabled>1</PaginationItem>
+      <PaginationItem>1</PaginationItem>
+      <PaginationItem>1</PaginationItem>
+    </Pagination>
+  `
 })
 
 export const Default = Template.bind({})
 Default.args = {
-  size: 60
+	size: 60
 }

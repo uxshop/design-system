@@ -1,10 +1,10 @@
-import UiBadge from './Badge.vue'
+import Badge from './Badge.vue'
 import { ref } from 'vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
 	title: 'Ui/Badge',
-	component: UiBadge,
+	component: Badge,
 	args: {
 		type: 'md'
 	},
@@ -18,14 +18,14 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-	components: { UiBadge },
+	components: { Badge },
 	setup() {
 		return { args }
 	},
 	template: `
-    <ui-badge v-bind="args">
+    <Badge v-bind="args">
       #dafault slot
-    </ui-badge>
+    </Badge>
   `
 })
 
