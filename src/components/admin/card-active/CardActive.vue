@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import UiRow from '../../ui/grid/row/Row.vue'
-import UiCol from '../../ui/grid/col/Col.vue'
+import Row from '../../ui/grid/row/Row.vue'
+import Col from '../../ui/grid/col/Col.vue'
 import Card from '../../ui/card/Card.vue'
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
 import ButtonAction from '../button-action/ButtonAction.vue'
 
 interface Props {
-	resource: object
 	modelValue: any
+	resource: object
 	canDelete: boolean
+	delete(val: string): Promise<void>
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -31,23 +32,23 @@ const changeActive = () => {
 </script>
 
 <template>
-	<card class="ui-card-active">
-		<ui-row alignV="center">
-			<ui-col>
-				<form-checkbox v-model="modelValue.active" switch @update="changeActive">
+	<Card class="ui-card-active">
+		<Row alignV="center">
+			<Col>
+				<FormCheckbox v-model="modelValue.active" switch @update="changeActive">
 					<span v-show="modelValue.active">Ativo</span>
 					<span v-show="!modelValue.active">Inativo</span>
-				</form-checkbox>
-			</ui-col>
-			<ui-col auto>
-				<button-action
+				</FormCheckbox>
+			</Col>
+			<Col auto>
+				<ButtonAction
 					v-if="canDelete"
 					v-show="modelValue.id"
 					type="delete"
 					@delete="onDelete"
 					:deleteName="modelValue.name"
 				/>
-			</ui-col>
-		</ui-row>
-	</card>
+			</Col>
+		</Row>
+	</Card>
 </template>
