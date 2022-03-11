@@ -1,22 +1,22 @@
-import UiDivider from './Divider.vue'
+import Divider from './Divider.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
   title: 'Ui/Divider',
-  component: UiDivider,
+  component: Divider,
   argTypes: {},
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-  components: { UiDivider },
+  components: { Divider },
   setup() {
     return { args }
   },
   template: `
-    <ui-divider v-bind="args">
+    <Divider v-bind="args">
       meu divider 
-    </ui-divider>
+    </Divider>
   `,
 })
 

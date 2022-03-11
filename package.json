@@ -1,6 +1,7 @@
 {
 	"name": "design-system",
 	"version": "0.0.0",
+	"main": "src/main.ts",
 	"scripts": {
 		"dev": "vite",
 		"build": "vue-tsc --noEmit && vite build",

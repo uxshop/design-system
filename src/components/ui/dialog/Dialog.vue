@@ -6,22 +6,22 @@ import UiButton from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
 
 interface Props {
-	id: string
-	title: string
-	hideFooter: boolean
-	message: string
-	callback(val: string | boolean): void
-	closeOnBackdrop: boolean
-	variant: string
-	size: string
-	promptLabel: string
-	promptType: string
-	promptPlaceholder: string
-	cancelLabel: string
-	destructLabel: string
-	destructVariant: string
-	destructIcon: string
-	type: string
+	id?: string
+	title?: string
+	hideFooter?: boolean
+	message?: string
+	callback?(val: string | boolean): void
+	closeOnBackdrop?: boolean
+	variant?: string
+	size?: string
+	promptLabel?: string
+	promptType?: string
+	promptPlaceholder?: string
+	cancelLabel?: string
+	destructLabel?: string
+	destructVariant?: string
+	destructIcon?: string
+	type?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -69,9 +69,11 @@ const close = (val?: boolean) => {
 	}
 
 	setTimeout(() => {
-		const ele = document.getElementById(props.id)
-		if (ele) {
-			document.body.removeChild(ele)
+		if (props.id) {
+			const ele = document.getElementById(props.id)
+			if (ele) {
+				document.body.removeChild(ele)
+			}
 		}
 	}, 300)
 }
@@ -152,9 +154,9 @@ onMounted(() => {
 					</div>
 				</div>
 				<div class="ui-dialog-footer" v-if="!hideFooter">
-					<ui-row align-v="center">
-						<ui-col>
-							<ui-button
+					<UiRow align-v="center">
+						<UiCol>
+							<UiButton
 								v-if="type != 'confirm'"
 								@click="close(false)"
 								variant="link"
@@ -163,10 +165,10 @@ onMounted(() => {
 								size="sm"
 							>
 								{{ cancelLabel }}
-							</ui-button>
-						</ui-col>
-						<ui-col auto>
-							<ui-button
+							</UiButton>
+						</UiCol>
+						<UiCol auto>
+							<UiButton
 								:leadingIcon="config.destructIcon"
 								:variant="destructVariant"
 								type="submit"
@@ -175,9 +177,9 @@ onMounted(() => {
 								tabindex="0"
 							>
 								{{ config.destructLabel }}
-							</ui-button>
-						</ui-col>
-					</ui-row>
+							</UiButton>
+						</UiCol>
+					</UiRow>
 				</div>
 			</form>
 		</div>

@@ -6,14 +6,18 @@ import Litepicker from 'litepicker'
 import * as moment from 'moment'
 moment.locale('pt-br')
 
-const props = defineProps<{
+interface Props {
 	modelValue?: string
 	config?: any
 	placeholder?: string
 	range?: boolean
 	noClear?: boolean
 	size?: string
-}>()
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	config: {}
+})
 
 const emit = defineEmits(['update:modelValue', 'update'])
 

@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 
 const props = defineProps<{
-	size: number
-	pill: boolean
-	variant: string
+	size?: number
+	pill?: boolean
+	variant?: string
 }>()
 
 const classList = ref<string[]>([])

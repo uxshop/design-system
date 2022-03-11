@@ -2,14 +2,14 @@
 import { getCurrentInstance, ref } from 'vue'
 
 defineProps<{
-	variant: string
-	right: boolean
-	left: boolean
+	variant?: string
+	right?: boolean
+	left?: boolean
 }>()
 
 const show = ref(false)
 
-const uid = `dropdown-${getCurrentInstance()?.uid}`
+const uid = `ui-dropdown-${getCurrentInstance()?.uid}`
 
 const listener = () => {
 	setTimeout(() => {

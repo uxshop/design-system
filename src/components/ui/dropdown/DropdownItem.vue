@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
-	href: string
-	to: object
+	href?: string
+	to?: object
 }>()
 </script>
 

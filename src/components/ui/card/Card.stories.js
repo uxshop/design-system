@@ -31,6 +31,7 @@ export const Dropdown = Template.bind({});
 Dropdown.args = {
   title: 'Card dropdown',
   dropdownClosed: true,
+  dropdown: true
 };
 
 const Template2 = (args) => ({

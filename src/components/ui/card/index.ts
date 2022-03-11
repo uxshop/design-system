@@ -3,7 +3,7 @@ import CardItem from './CardItem.vue'
 import CardTitle from './CardTitle.vue'
 
 export default {
-	install(app) {
+	install(app: any) {
 		app.component('Card', Card)
 		app.component('CardItem', CardItem)
 		app.component('CardTitle', CardTitle)

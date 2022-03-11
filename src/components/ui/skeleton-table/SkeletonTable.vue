@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import UiSkeleton from '../skeleton/Skeleton.vue'
 
 interface Props {
-	cols: string | number
-	rows: string | number
-	hideHeader: boolean
-	width: string
+	cols?: string | number
+	rows?: string | number
+	hideHeader?: boolean
+	width?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {

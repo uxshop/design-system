@@ -5,20 +5,20 @@ import Icon from '../icon/Icon.vue'
 const emit = defineEmits(['toggleShowBody', 'open', 'close'])
 
 interface Props {
-	title: string
-	titleMuted: string
-	caption: string
-	dropdown: boolean
-	dropdownLabel: string
-	fullHeight: boolean
-	success: boolean
-	noBorder: boolean
-	dropdownClosed: boolean
-	closeCaption: string
-	gray: boolean
-	last: boolean
-	blocked: boolean
-	dropdownMobile: string
+	title?: string
+	titleMuted?: string
+	caption?: string
+	dropdown?: boolean
+	dropdownLabel?: string
+	fullHeight?: boolean
+	success?: boolean
+	noBorder?: boolean
+	dropdownClosed?: boolean
+	closeCaption?: string
+	gray?: boolean
+	last?: boolean
+	blocked?: boolean
+	dropdownMobile?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
 const isDropdown = ref(props.dropdown)
 const cardTitle = ref(props.title)
 const showBody = ref(!props.dropdownClosed)
-const uid = `card-${getCurrentInstance()?.uid}`
+const uid = `ui-card-${getCurrentInstance()?.uid}`
 
 const slots = useSlots()
 
@@ -101,11 +101,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 					<slot name="header-button" v-if="haveSlot('header-button')" />
 					<button type="button" class="btn-collapse" v-if="isDropdown">
 						<div v-if="showBody">
-							<icon name="expand_less" />
+							<Icon name="expand_less" />
 						</div>
 						<div v-if="!showBody">
 							<span v-if="dropdownLabel">{{ dropdownLabel }}</span>
-							<icon v-else name="expand_more" />
+							<Icon v-else name="expand_more" />
 						</div>
 					</button>
 				</div>
@@ -135,8 +135,8 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 
 		<div class="ui-card-block" @click="onBlockedClick">
 			<span class="ui-card-block-info">
-				<icon name="lock" type="round" />
-				<icon name="lock_open" type="round" />
+				<Icon name="lock" type="rounded" />
+				<Icon name="lock_open" type="rounded" />
 				<span class="ui-card-block-text">Bloqueado</span>
 			</span>
 		</div>

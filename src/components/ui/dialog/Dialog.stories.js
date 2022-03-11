@@ -1,5 +1,5 @@
 import UiDialog from './Dialog.vue'
-import UiDialogService from './index.js'
+import UiDialogService from './index'
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
   title: 'Ui/Dialog',

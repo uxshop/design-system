@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-	transparent: boolean
+	transparent?: boolean
 }>()
 </script>
 
