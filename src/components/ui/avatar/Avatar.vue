@@ -15,7 +15,7 @@ const classList = ref<string[]>([])
 const style = ref<{
 	width?: string
 	height?: string
-	fontSize?: string
+	fontSize?: string | number
 }>({})
 
 if (props.size) {

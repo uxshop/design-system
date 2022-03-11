@@ -1,0 +1,35 @@
+.ui-gmaps {
+	.ui-gmaps-link {
+		position: relative;
+		display: inline-block;
+		overflow: hidden;
+		border-radius: var(--border-radius);
+
+		> img {
+			display: block;
+			max-width: 100%;
+		}
+
+		> .overlay {
+			position: absolute;
+			background-color: #000;
+			opacity: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 9;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			transition: opacity 0.18s;
+		}
+
+		&:hover {
+			> .overlay {
+				opacity: 0.7;
+			}
+		}
+	}
+}
