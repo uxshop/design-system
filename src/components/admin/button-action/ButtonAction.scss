@@ -1,0 +1,65 @@
+.actions {
+	display: flex;
+	align-items: center;
+}
+
+.ui-button-action {
+	color: var(--body-color);
+	opacity: 0.8;
+	background: var(--gray-100);
+	border-radius: 6px;
+
+	&:last-child {
+		margin: 0;
+	}
+
+	&:hover:not(.btn-active),
+	&:focus:not(.btn-active) {
+		text-decoration: none;
+		opacity: 1;
+	}
+
+	&.-delete {
+		&:hover {
+			> .ui-icon {
+				color: #fff;
+			}
+
+			&::before {
+				background: var(--danger);
+			}
+		}
+	}
+
+	&.-lg {
+		width: 50px;
+
+		> .ui-icon {
+			font-size: 30px;
+		}
+	}
+
+	&.-preview {
+		color: var(--link-color);
+		> .ui-icon {
+			font-size: 21px;
+		}
+	}
+
+	&.-btn-active {
+		// color: var(--danger);
+
+		&.-inactive {
+			opacity: 0.5;
+		}
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
