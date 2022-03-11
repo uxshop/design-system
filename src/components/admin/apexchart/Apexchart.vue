@@ -3,10 +3,26 @@ import ApexCharts from 'apexcharts'
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
 interface Props {
-	options: object
-	series: array
-	type: string
-	height: string
+	options?: ApexCharts.ApexOptions
+	series: string[]
+	height?: string
+	type:
+		| 'line'
+		| 'area'
+		| 'bar'
+		| 'histogram'
+		| 'pie'
+		| 'donut'
+		| 'radialBar'
+		| 'scatter'
+		| 'bubble'
+		| 'heatmap'
+		| 'candlestick'
+		| 'boxPlot'
+		| 'radar'
+		| 'polarArea'
+		| 'rangeBar'
+		| 'treemap'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,7 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 const uid = `apex-${getCurrentInstance()?.uid}`
 
-const options = ref({
+const settings = ref<ApexCharts.ApexOptions>({
 	...{
 		chart: {
 			type: props.type
@@ -32,8 +48,10 @@ const options = ref({
 const chart = shallowRef()
 
 watchEffect(() => {
-	options.value.chart.type = props.type
-	options.value.chart.height = props.height
+	if (settings.value.chart) {
+		settings.value.chart.type = props.type
+		settings.value.chart.height = props.height
+	}
 
 	if (chart.value) {
 		chart.value.updateSeries(props.series)
@@ -41,7 +59,7 @@ watchEffect(() => {
 })
 
 onMounted(() => {
-	chart.value = new ApexCharts(document.querySelector(`#${uid}`), options.value)
+	chart.value = new ApexCharts(document.querySelector(`#${uid}`), settings.value)
 	chart.value.render()
 })
 </script>
@@ -51,5 +69,5 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@import './apexchart.scss';
+@import './Apexchart.scss';
 </style>

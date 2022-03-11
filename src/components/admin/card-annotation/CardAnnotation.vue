@@ -2,8 +2,8 @@
 import { useSlots } from 'vue'
 
 defineProps<{
-	title: string
-	text: string
+	title?: string
+	text?: string
 }>()
 
 const slots = useSlots()

@@ -15,7 +15,10 @@ const Template = (args) => ({
   },
   template: `
     <UiCardAnnotation v-bind="args">
-      Loren ipsum
+      #LorenIpsum
+      <template v-slot:link="item">
+       #slotLink
+      </template>
     </UiCardAnnotation>
   `,
 })
