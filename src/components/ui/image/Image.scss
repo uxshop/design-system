@@ -1,0 +1,39 @@
+.ui-image {
+	background: var(--bg-white);
+	position: relative;
+	padding: 0;
+	display: block;
+	overflow: hidden;
+	border: solid 1px rgba(0, 0, 0, 0.05);
+
+	&.-circle {
+		border-radius: 100%;
+		border-width: 2px;
+	}
+
+	&.-no-image {
+		background: var(--gray-100);
+	}
+
+	.image-content {
+		position: absolute;
+		max-width: 110%;
+		max-height: 110%;
+		display: block;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		margin: auto;
+
+		.ui-icon {
+			color: var(--gray-300);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 22px;
+		}
+	}
+}

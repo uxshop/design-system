@@ -35,6 +35,7 @@ interface Props {
 	pill?: boolean
 	options?: any
 }
+
 const props = defineProps<Props>()
 const classList = ref<string[]>([])
 
@@ -56,6 +57,9 @@ const settings: CurrencyInputOptions = {
 	...props.options
 }
 const { inputRef } = useCurrencyInput(settings)
+
+const number = Number('1200.00')
+console.log(new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number))
 
 if (props.pill) {
 	classList.value.push('-pill')

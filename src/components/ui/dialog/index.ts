@@ -16,7 +16,7 @@ let globalConfig = {
 let seed = 1
 
 class Dialog {
-	constructor(options: any = {}) {
+	constructor(options = {}) {
 		globalConfig = Object.assign({}, globalConfig, options)
 	}
 	open(config = {}) {

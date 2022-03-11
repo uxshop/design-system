@@ -3,9 +3,9 @@ import Breadcrumb from './Breadcrumb.vue'
 import BreadcrumbItem from './BreadcrumbItem.vue'
 
 export default {
-	install(app: ComponentOptions) {
-		app.component(Breadcrumb.name, Breadcrumb)
-		app.component(BreadcrumbItem.name, BreadcrumbItem)
+	install(app: ComponentOptions, { prefix }: any) {
+		app.component(`${prefix}Breadcrumb`, Breadcrumb)
+		app.component(`${prefix}BreadcrumbItem`, BreadcrumbItem)
 	}
 }
 

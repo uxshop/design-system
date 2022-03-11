@@ -4,9 +4,9 @@ import Col from './col/Col.vue'
 import type { ComponentOptions } from 'vue'
 
 export default {
-	install(app: ComponentOptions) {
-		app.component('Container', Container)
-		app.component('Row', Row)
-		app.component('Col', Col)
+	install(app: ComponentOptions, { prefix }: any) {
+		app.component(`${prefix}Container`, Container)
+		app.component(`${prefix}Row`, Row)
+		app.component(`${prefix}Col`, Col)
 	}
 }

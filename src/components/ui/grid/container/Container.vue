@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-const classList = ref(['container'])
+import { shallowRef } from 'vue'
+const classList = shallowRef(['container'])
 </script>
 
 <template>
