@@ -1,0 +1,58 @@
+<script setup lang="ts">
+import IconButton from '../../../ui/icon-button/IconButton.vue'
+const props = defineProps<{
+	meta: any
+	queryParams: any
+	setQueryParams(a: Record<string, any>): void
+}>()
+
+const prevPage = () => {
+	let page = props.queryParams.page
+	if (page > 1) {
+		props.setQueryParams({
+			page: --page
+		})
+	}
+}
+
+const nextPage = () => {
+	let page = props.queryParams.page
+	if (props.meta.last_page > page) {
+		props.setQueryParams({
+			page: ++page
+		})
+	}
+}
+</script>
+
+<template>
+	<div class="table-list-pagination">
+		<div class="table-list-pagination-list">
+			<div class="table-list-pagination-item meta" v-show="meta.from">
+				{{ meta.from }} – {{ meta.to }} {{ meta.total ? 'de ' + meta.total : '' }}
+			</div>
+			<div class="table-list-pagination-item prev">
+				<IconButton
+					@click="prevPage"
+					size="sm"
+					icon="arrow_back"
+					:disabled="1 == meta.current_page"
+					class="table-list-nav-btn prev"
+				/>
+			</div>
+			<div class="table-list-pagination-item next">
+				<IconButton
+					@click="nextPage"
+					size="sm"
+					icon="arrow_forward"
+					:disabled="meta.last_page == meta.current_page || !meta.total"
+					class="table-list-nav-btn next"
+				/>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style lang="scss">
+@import './TableListNavPagination.scss';
+</style>

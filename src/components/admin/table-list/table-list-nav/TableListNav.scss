@@ -1,0 +1,75 @@
+@import '../../../../scss/mixins.scss';
+
+.table-list-nav {
+	position: sticky;
+	z-index: 88;
+	top: 74px;
+
+	.table-list-nav-wrapper {
+		z-index: 88;
+		border-bottom: solid 1px var(--border-color);
+	}
+
+	.table-list-nav-content {
+		position: relative;
+		flex-wrap: nowrap;
+		display: flex;
+		background: #fff;
+		padding: 0;
+		z-index: 2;
+		align-items: center;
+		height: 80px;
+		text-transform: lowercase;
+	}
+
+	.table-list-nav-item {
+		padding: 0 5px;
+	}
+
+	@include mobile {
+		position: relative;
+		top: 0;
+
+		.table-list-nav-content {
+			height: 60px;
+		}
+	}
+}
+
+.table-list-nav-item {
+	.table-search-input {
+		position: relative;
+		margin: 0;
+
+		> .box-icon {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 5;
+			left: 10px;
+			display: flex;
+			opacity: 0.6;
+
+			> .ui-icon {
+				font-size: 15px;
+			}
+
+			&.-clear {
+				cursor: pointer;
+				left: auto;
+				right: 10px;
+
+				&:hover {
+					.ui-icon {
+						color: var(--danger);
+					}
+				}
+			}
+		}
+
+		> .form-control {
+			padding-left: 35px;
+			min-height: var(--input-height-sm);
+		}
+	}
+}

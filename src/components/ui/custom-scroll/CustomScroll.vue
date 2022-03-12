@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import { getCurrentInstance, onMounted } from 'vue'
+import { getCurrentInstance, onMounted, shallowRef } from 'vue'
 
 const props = defineProps<{
 	settings?: PerfectScrollbar.Options
+	height: string | number
+	width: string | number
 }>()
 
 const uid = `perfect-scroll-${getCurrentInstance()?.uid}`

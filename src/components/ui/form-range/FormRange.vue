@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, ref } from 'vue'
+import { computed, getCurrentInstance, onMounted, ref, type HtmlHTMLAttributes } from 'vue'
 
 const props = defineProps<{
 	modelValue?: undefined
@@ -11,7 +11,7 @@ const props = defineProps<{
 	step?: string | number
 }>()
 
-const uid = getCurrentInstance()?.uid
+const uid = `ui-form-range-${getCurrentInstance()?.uid}`
 const slider = computed(() => {
 	return props.modelValue
 })
@@ -23,31 +23,34 @@ const update = (value: any) => {
 	emit('update:modelValue', value)
 }
 
-const onChange = (evt: { target: { value: any } }) => {
+const onChange = (evt: any) => {
 	update(evt.target.value)
 	showBubble.value = false
+}
+
+function setBubble(range: any, bubble: HTMLElement) {
+	const val = range.value
+	const min = range.min ? range.min : 0
+	const max = range.max ? range.max : 100
+	const newVal = Number(((val - min) * 100) / (max - min))
+	bubble.innerHTML = val
+	bubble.style.left = `calc(${newVal}%)`
 }
 
 onMounted(() => {
 	const allRanges = document.querySelectorAll('.ui-slider')
 	allRanges.forEach((wrap) => {
-		const range = wrap.querySelector('.ui-slider-range')
-		const bubble = wrap.querySelector('.ui-slider-bubble')
+		const range: HTMLElement | null = wrap.querySelector('.ui-slider-range')
+		const bubble: HTMLElement | null = wrap.querySelector('.ui-slider-bubble')
 
-		range.addEventListener('input', () => {
+		if (range && bubble) {
+			range.addEventListener('input', () => {
+				setBubble(range, bubble)
+			})
+
 			setBubble(range, bubble)
-		})
-		setBubble(range, bubble)
+		}
 	})
-
-	function setBubble(range: Element | null, bubble: Element | null) {
-		const val = range.value
-		const min = range.min ? range.min : 0
-		const max = range.max ? range.max : 100
-		const newVal = Number(((val - min) * 100) / (max - min))
-		bubble.innerHTML = val
-		bubble.style.left = `calc(${newVal}%)`
-	}
 })
 </script>
 

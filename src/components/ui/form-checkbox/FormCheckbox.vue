@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref } from 'vue'
+import { getCurrentInstance, ref, watchEffect } from 'vue'
 
+const emit = defineEmits(['update:modelValue'])
 const props = defineProps<{
-	modelValue?: any
+	modelValue?: unknown
+	value?: unknown
 	switch?: boolean
 	label?: string
 	name?: string
-	value?: any
 	size?: string
 	tabindex?: string | number
 	required?: boolean
@@ -16,14 +17,17 @@ const props = defineProps<{
 const uid = `ui-form-checkbox-${getCurrentInstance()?.uid}`
 const switcher = ref(props.switch)
 const classList = ref<string[]>([])
+const model = ref()
 
 if (props.size) {
 	classList.value.push(`-${props.size}`)
 }
 
-const emit = defineEmits(['update:modelValue'])
+watchEffect(() => {
+	model.value = props.modelValue
+})
 
-const update = (val: any) => {
+const update = (val: unknown) => {
 	emit('update:modelValue', val)
 }
 </script>
@@ -31,7 +35,7 @@ const update = (val: any) => {
 <template>
 	<label class="ui-form-checkbox" :for="uid" :class="classList">
 		<input
-			v-model="modelValue"
+			v-model="model"
 			type="checkbox"
 			:id="uid"
 			:class="{ '-switch': switcher }"
@@ -47,6 +51,5 @@ const update = (val: any) => {
 </template>
 
 <style lang="scss">
-@import '../../../scss/mixins.scss';
 @import './FormCheckbox.scss';
 </style>

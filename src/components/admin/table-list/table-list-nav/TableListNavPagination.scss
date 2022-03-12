@@ -1,0 +1,62 @@
+@import '../../../../scss/mixins.scss';
+
+.table-list-pagination {
+	margin-left: auto;
+
+	.table-list-pagination-list {
+		line-height: 0;
+		text-align: right;
+		margin: 0;
+		display: flex;
+		align-items: center;
+		padding: 0 20px;
+	}
+
+	.table-list-pagination-item {
+		display: inline-block;
+		vertical-align: top;
+		padding: 0 2px;
+		order: 2;
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
+		}
+
+		&.meta {
+			padding: 0 10px;
+			opacity: 0.6;
+		}
+	}
+
+	@include mobile {
+		position: fixed;
+		bottom: 0;
+		border-top: solid 1px var(--border-color);
+		background: #fff;
+		width: 100%;
+		left: 0;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.table-list-pagination-list {
+			.table-list-nav-btn {
+				width: 36px;
+				height: 36px;
+			}
+		}
+
+		.table-list-pagination-item.prev {
+			order: 1;
+		}
+	}
+
+	@include mobile {
+		background: var(--dark-200);
+	}
+}

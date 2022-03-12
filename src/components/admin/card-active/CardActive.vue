@@ -12,12 +12,11 @@ interface Props {
 	delete(val: string): Promise<void>
 }
 
+const emit = defineEmits(['delete', 'active'])
 const props = withDefaults(defineProps<Props>(), {
 	modelValue: () => ({}),
 	canDelete: true
 })
-
-const emit = defineEmits(['delete', 'active'])
 
 const onDelete = async () => {
 	if (props.resource) {
@@ -35,7 +34,7 @@ const changeActive = () => {
 	<Card class="ui-card-active">
 		<Row alignV="center">
 			<Col>
-				<FormCheckbox v-model="modelValue.active" switch @update="changeActive">
+				<FormCheckbox :value="modelValue.active" switch @update="changeActive">
 					<span v-show="modelValue.active">Ativo</span>
 					<span v-show="!modelValue.active">Inativo</span>
 				</FormCheckbox>
@@ -45,8 +44,8 @@ const changeActive = () => {
 					v-if="canDelete"
 					v-show="modelValue.id"
 					type="delete"
-					@delete="onDelete"
 					:deleteName="modelValue.name"
+					@delete="onDelete"
 				/>
 			</Col>
 		</Row>

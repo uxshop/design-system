@@ -1,0 +1,105 @@
+@import '../../../scss/mixins.scss';
+
+.titlebar {
+	margin: 0 0 20px;
+	display: flex;
+	align-items: center;
+	min-height: 60px;
+
+	.titlebar-actions {
+		margin-left: auto;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+	}
+
+	.titlebar-title {
+		color: var(--body-color);
+		display: block;
+
+		&.-mobile {
+			display: none;
+		}
+
+		a {
+			padding: 0 5px;
+		}
+
+		.titlebar-text {
+			font-size: 26px;
+			font-weight: var(--font-weight-bold);
+			line-height: 1.3;
+			margin: 0;
+		}
+	}
+
+	> .ui-icon {
+		height: 100%;
+		align-items: center;
+		display: flex;
+		flex-grow: 1;
+	}
+
+	.ui-button + .ui-button,
+	.ui-dropdown + .ui-dropdown {
+		margin-left: 10px;
+	}
+
+	@include mobile {
+		border-left: none;
+		border-right: none;
+		margin: 0 calc(var(--main-padding-x) * -1);
+		padding: 0 20px;
+		position: sticky;
+		top: 0;
+		background: var(--bg-white);
+		z-index: 88;
+		margin-bottom: 25px;
+		filter: var(--drop-shadow-filter);
+
+		.titlebar-actions {
+			> .btn-icon {
+				border: none;
+			}
+		}
+
+		.titlebar-content {
+			flex: 1;
+			overflow: hidden;
+		}
+
+		.titlebar-title {
+			align-items: center;
+
+			&.-dekstop {
+				display: none;
+			}
+
+			&.-mobile {
+				display: flex;
+			}
+
+			a {
+				display: flex;
+				align-items: center;
+				line-height: 1.5;
+				.ui-icon {
+					font-size: 28px;
+				}
+			}
+
+			.titlebar-text {
+				font-size: 18px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+
+			.titlebar-backlink > .ui-icon {
+				color: var(--secondary);
+				margin-right: 5px;
+				margin-left: -5px;
+			}
+		}
+	}
+}

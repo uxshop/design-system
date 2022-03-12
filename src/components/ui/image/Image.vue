@@ -4,7 +4,7 @@ import Icon from '../icon/Icon.vue'
 
 interface Props {
 	src: string
-	size: number | string
+	size?: number | string
 }
 
 interface StyleInterface {

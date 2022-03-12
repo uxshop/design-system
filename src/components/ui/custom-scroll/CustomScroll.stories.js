@@ -28,4 +28,6 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
+  width: 200,
+  height: 200
 }

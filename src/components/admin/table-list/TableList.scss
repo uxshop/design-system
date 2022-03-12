@@ -1,0 +1,246 @@
+@import "../../../scss/mixins.scss";
+
+.table-list {
+  --td-padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+  border-collapse: collapse;
+
+  table {
+    margin-bottom: 0;
+    background-color: #fff;
+
+    .td-checkbox {
+      width: 30px;
+      text-align: right;
+      cursor: pointer;
+      padding-left: 20px;
+    }
+
+    .td-action {
+      button + button {
+        margin-left: 5px;
+      }
+    }
+
+    th {
+      padding: 10px var(--td-padding);
+      text-transform: uppercase;
+      line-height: 1.2;
+      font-size: 12px;
+      border: none;
+      border-bottom: solid 1px var(--primary);
+      user-select: none;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    td {
+      border-left: none;
+      line-height: 1.3;
+      padding: 10px var(--td-padding);
+
+      &.-date {
+        font-size: 12px;
+        white-space: nowrap;
+        width: 10px;
+      }
+
+      &.-code {
+        font-weight: normal;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: all 0.15s;
+        font-weight: var(--font-weight-semi);
+
+        &:hover {
+          background-color: var(--gray-100);
+          cursor: pointer;
+          .hover {
+            opacity: 1;
+          }
+        }
+
+        &.-selected {
+          background: rgba(var(--primary-rgb), 0.1);
+
+          td {
+            border-bottom-color: var(--primary);
+          }
+        }
+
+        &.-inactive {
+          .aspect-ratio-square {
+            border-color: var(--danger);
+          }
+
+          .badge {
+            background: var(--danger);
+            color: #fff;
+          }
+        }
+
+        .hover-content {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .table-list-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .table-list-footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 88;
+  }
+
+  .table-search {
+    flex-grow: 1;
+    display: flex;
+    max-width: 300px;
+
+    form {
+      flex-grow: 1;
+    }
+
+    .table-search-input {
+      background: var(--gray-100);
+    }
+  }
+
+  .table-list-search {
+    margin-bottom: 20px;
+
+    input {
+      background: var(--gray-100);
+    }
+  }
+
+  .table-list-wrapper {
+    margin-bottom: 15px;
+    position: relative;
+    overflow-x: auto;
+    flex-grow: 1;
+    min-height: 100px;
+    filter: var(--drop-shadow-filter);
+
+    .td-fixed {
+      position: sticky;
+      left: 0;
+      z-index: 22;
+
+      + .td-fixed {
+        left: 53px;
+      }
+    }
+
+    &.-scroll {
+      .td-fixed {
+        background: #fff;
+        box-shadow: inset -1px 0 0 var(--gray-100);
+      }
+    }
+  }
+
+  .device {
+    opacity: 0.6;
+  }
+
+  .table-list-nav-item {
+    padding: 0 8px;
+
+    &:hover {
+      color: var(--secondary);
+    }
+
+    &.-checkbox {
+      width: auto;
+      padding-left: 0;
+    }
+
+    &.-danger {
+      &:hover {
+        background-color: var(--danger);
+        color: #fff;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &[disabled] {
+      background: var(--gray-100);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.5;
+    }
+  }
+
+  @include darkmode {
+    .table-search-input {
+      background: none;
+    }
+
+    table,
+    .table-list-wrapper,
+    .table-list-nav-content {
+      background: var(--dark-200);
+    }
+
+    .table tr td {
+      border-color: var(--dark-300);
+    }
+
+    .table-list-nav-btn {
+      background: inherit;
+    }
+
+    .table-list-wrapper.-scroll .td-fixed {
+      background: var(--dark-200);
+    }
+  }
+}
+
+// .grid {
+//   display: grid;
+//   grid-template-columns: min-content auto auto min-content;
+//   // grid-auto-columns: auto;
+
+//   > strong {
+//     padding: 10px 15px;
+//     display: flex;
+//     align-items: center;
+//     text-transform: uppercase;
+//   }
+
+//   > div {
+//     padding: 10px 15px;
+//     border-top: solid 1px gray;
+//     background: var(--bg-white);
+//     display: flex;
+//     align-items: center;
+//   }
+
+//   + .grid {
+//     border-top: solid 1px gray;
+//   }
+
+//   @include darkmode {
+//     > div {
+//       border-top-color: var(--dark-300);
+//     }
+//   }
+// }
