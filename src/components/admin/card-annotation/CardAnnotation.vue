@@ -26,6 +26,5 @@ const haveSlot = (name = 'default') => {
 </template>
 
 <style lang="scss">
-@import '../../../scss/mixins.scss';
 @import './CardAnnotation.scss';
 </style>

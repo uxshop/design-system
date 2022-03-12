@@ -3,7 +3,7 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 
-interface Props extends FormWrapperInterface {
+interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string

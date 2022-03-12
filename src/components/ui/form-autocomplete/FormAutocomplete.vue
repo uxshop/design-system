@@ -84,6 +84,5 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@import '../../../../src/scss/mixins.scss';
 @import './FormAutocomplete.scss';
 </style>

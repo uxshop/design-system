@@ -19,7 +19,7 @@ const onRemove = () => {
 <template>
 	<span class="ui-tag-button" :class="classList">
 		<slot />
-		<icon name="close" class="ui-tag-button-close" @click="onRemove" />
+		<Icon name="close" class="ui-tag-button-close" @click="onRemove" />
 	</span>
 </template>
 

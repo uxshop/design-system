@@ -1,0 +1,24 @@
+.selectable-list {
+	.selectable-list-content {
+		padding: 20px 0;
+	}
+	.selectable-list-item {
+		display: flex;
+		padding: 15px;
+		border: solid 1px transparent;
+		border-radius: var(--input-border-radius);
+		cursor: pointer;
+		background: var(--gray-100);
+		transition: all 0.14s;
+
+		+ .selectable-list-item {
+			margin-top: 2px;
+		}
+
+		&:hover {
+			background: var(--gray-100);
+			background: var(--bg-white);
+			border-color: var(--border-color);
+		}
+	}
+}

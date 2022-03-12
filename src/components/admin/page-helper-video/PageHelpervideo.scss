@@ -1,0 +1,42 @@
+@import '../../../scss/mixins.scss';
+
+.ui-page-helper-video {
+	margin-bottom: var(--grid-gutter-width);
+
+	.ui-page-helper-video-message {
+		display: flex;
+		align-items: center;
+		padding: 10px 15px;
+		transition: all ease 0.2s;
+		border: solid 1px var(--border-color);
+		background: #fff;
+		border-radius: 6px;
+
+		.ui-page-helper-video-icon {
+			margin-right: 10px;
+			color: var(--primary);
+		}
+
+		&:hover {
+			cursor: pointer;
+			color: var(--primary);
+		}
+	}
+
+	@include mobile {
+		margin-top: 0;
+		margin-bottom: 20px;
+
+		.ui-page-helper-video-message {
+			background: var(--gray-300);
+			font-size: 11px;
+		}
+	}
+
+	@include darkmode {
+		.ui-page-helper-video-message {
+			background: var(--dark-100);
+			border-color: var(--dark-100);
+		}
+	}
+}

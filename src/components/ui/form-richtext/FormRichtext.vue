@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, onUnmounted, ref, watchEffect } from 'vue'
+import { getCurrentInstance, onMounted, onUnmounted } from 'vue'
 import './redactor/redactor'
 
 interface Props {
@@ -63,30 +63,22 @@ const config = Object.assign(
 	props.config
 )
 
-const stopWatch = watchEffect(() => {
-	const newVal = props.modelValue
-	if (redactor && newVal && !redactor.editor.isFocus()) {
-		redactor.source.setCode(newVal)
-	}
-})
-
 const focus = () => {
 	redactor.editor.focus()
 }
 
-const update = (val: any) => {
-	emit('update:modelValue', val)
-	emit('update', val)
-}
-
 onMounted(() => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
+	// eslint-disable-next-line no-undef
 	redactor = $R(`#${uid}`, config)
 })
 
 onUnmounted(() => {
 	setTimeout(() => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
+		// eslint-disable-next-line no-undef
 		$R(`#${uid}`, 'destroy')
 		redactor = null
 	}, 300)

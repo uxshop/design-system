@@ -4,7 +4,7 @@ import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 const vMaska = maska
 
-interface Props extends FormWrapperInterface {
+interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string

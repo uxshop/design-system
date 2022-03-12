@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref, useSlots } from 'vue'
+import { getCurrentInstance } from 'vue'
 
 interface Props {
 	modelValue?: any
@@ -11,21 +11,16 @@ interface Props {
 	tabindex?: string | number
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
 	value: true
 })
 
 const uid = `ui-form-radio-${getCurrentInstance()?.uid}`
-const slots = useSlots()
 
 const emit = defineEmits(['update:modelValue'])
 
 const update = (val: any) => {
 	emit('update:modelValue', val)
-}
-
-const empty = () => {
-	return !props.label || !slots.length
 }
 </script>
 

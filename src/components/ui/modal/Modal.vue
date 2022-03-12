@@ -84,7 +84,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<teleport to="body">
+	<Teleport to="body">
 		<div
 			v-if="modelValue"
 			:id="uid"
@@ -123,7 +123,7 @@ watchEffect(() => {
 				</div>
 			</div>
 		</div>
-	</teleport>
+	</Teleport>
 </template>
 
 <style lang="scss">

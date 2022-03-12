@@ -47,6 +47,7 @@ settings.plugins.push('remove_button')
 
 onMounted(() => {
 	nextTick(() => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		element.value = new TomSelect(`#${uid}`, settings)
 		// 	element.value = $(`#${uid}`)
@@ -74,6 +75,5 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@import '../../../../src/scss/mixins.scss';
 @import './FormTags.scss';
 </style>

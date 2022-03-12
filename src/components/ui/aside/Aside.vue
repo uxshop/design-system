@@ -66,7 +66,7 @@ defineExpose({
 </script>
 
 <template>
-	<teleport to="body">
+	<Teleport to="body">
 		<div class="ui-aside">
 			<div
 				v-if="isOpen"
@@ -89,7 +89,7 @@ defineExpose({
 						</h4>
 						<button @click="onClose" class="close" id="btn-close">
 							<span>fechar</span>
-							<icon name="close" />
+							<Icon name="close" />
 						</button>
 					</div>
 
@@ -103,7 +103,7 @@ defineExpose({
 				</div>
 			</div>
 		</div>
-	</teleport>
+	</Teleport>
 </template>
 
 <style lang="scss">

@@ -117,6 +117,5 @@ if (props.size) {
 </template>
 
 <style lang="scss">
-@import '../../../../src/scss/mixins.scss';
 @import './FormSpinbutton.scss';
 </style>

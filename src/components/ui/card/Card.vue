@@ -24,9 +24,13 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	dropdownClosed: false
 })
+
 const isDropdown = ref(props.dropdown)
+
 const cardTitle = ref(props.title)
+
 const showBody = ref(!props.dropdownClosed)
+
 const uid = `ui-card-${getCurrentInstance()?.uid}`
 
 const slots = useSlots()
@@ -34,20 +38,6 @@ const slots = useSlots()
 const haveSlot = (name = 'default') => {
 	return !!slots[name]
 }
-
-onMounted(() => {
-	if (props.blocked !== undefined) {
-		// isBlocked.value = this.$plan.exclude(props.blocked.target, props.blocked.value)
-	}
-
-	// if (window.isMobile() && props.dropdownMobile != undefined) {
-	// 	isDropdown.value = true;
-	// 	showBody.value = false;
-	// 	if (props.dropdownMobile) {
-	// 		cardTitle.value = props.dropdownMobile;
-	// 	}
-	// }
-})
 
 const toggleShowBody = () => {
 	emit('toggleShowBody')
@@ -145,14 +135,4 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 
 <style lang="scss">
 @import './Card.scss';
-
-.accordion-enter-active,
-.accordion-leave-active {
-	transition: all 0.3s ease;
-	overflow: hidden;
-}
-.accordion-enter,
-.accordion-leave-to {
-	opacity: 0;
-}
 </style>

@@ -3,22 +3,6 @@ import { ref } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
 
-function createRipple(event) {
-	const button = event.currentTarget
-	const circle = document.createElement('span')
-	const diameter = Math.max(button.clientWidth, button.clientHeight)
-	const radius = diameter / 2
-	circle.style.width = circle.style.height = `${diameter}px`
-	circle.style.left = `${event.clientX - button.offsetLeft - radius}px`
-	circle.style.top = `${event.clientY - button.offsetTop - radius}px`
-	circle.classList.add('ripple')
-	const ripple = button.getElementsByClassName('ripple')[0]
-	if (ripple) {
-		ripple.remove()
-	}
-	button.appendChild(circle)
-}
-
 interface Props {
 	variant?: string
 	label?: string
@@ -73,7 +57,7 @@ if (props.block) {
 </script>
 
 <template>
-	<component
+	<Component
 		class="ui-button"
 		:is="component"
 		:type="type"
@@ -83,15 +67,15 @@ if (props.block) {
 		:href="href"
 	>
 		<div class="ui-button-content">
-			<icon :name="leadingIcon" v-if="leadingIcon" />
-			<spinner v-if="loading" :size="15" :border="spinnerBorder" />
+			<Icon :name="leadingIcon" v-if="leadingIcon" />
+			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
 			<div>
 				<slot />
 				{{ label }}
 			</div>
 			<icon :name="trailingIcon" v-if="trailingIcon" />
 		</div>
-	</component>
+	</Component>
 </template>
 
 <style lang="scss">

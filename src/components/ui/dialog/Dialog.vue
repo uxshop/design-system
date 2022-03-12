@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { nextTick, onMounted, reactive, ref } from 'vue'
-import UiRow from '../grid/row/Row.vue'
-import UiCol from '../grid/col/Col.vue'
-import UiButton from '../button/Button.vue'
+import Row from '../grid/row/Row.vue'
+import Col from '../grid/col/Col.vue'
+import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
 
 interface Props {
@@ -154,9 +154,9 @@ onMounted(() => {
 					</div>
 				</div>
 				<div class="ui-dialog-footer" v-if="!hideFooter">
-					<UiRow align-v="center">
-						<UiCol>
-							<UiButton
+					<Row align-v="center">
+						<Col>
+							<Button
 								v-if="type != 'confirm'"
 								@click="close(false)"
 								variant="link"
@@ -165,10 +165,10 @@ onMounted(() => {
 								size="sm"
 							>
 								{{ cancelLabel }}
-							</UiButton>
-						</UiCol>
-						<UiCol auto>
-							<UiButton
+							</Button>
+						</Col>
+						<Col auto>
+							<Button
 								:leadingIcon="config.destructIcon"
 								:variant="destructVariant"
 								type="submit"
@@ -177,9 +177,9 @@ onMounted(() => {
 								tabindex="0"
 							>
 								{{ config.destructLabel }}
-							</UiButton>
-						</UiCol>
-					</UiRow>
+							</Button>
+						</Col>
+					</Row>
 				</div>
 			</form>
 		</div>

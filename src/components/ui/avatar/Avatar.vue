@@ -9,7 +9,6 @@ const props = defineProps<{
 	src?: string
 }>()
 
-const emit = defineEmits(['dismissed'])
 const classList = ref<string[]>([])
 
 const style = ref<{

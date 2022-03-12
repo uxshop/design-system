@@ -62,7 +62,7 @@ const update = (evt: any) => {
 }
 
 const model = ref(stringifyValue(props.modelValue))
-const classList = ref([])
+const classList = ref<string[]>([])
 
 if (props.value) {
 	model.value = stringifyValue(props.value)
@@ -86,7 +86,7 @@ if (props.size) {
 </script>
 
 <template>
-	<form-wrapper
+	<FormWrapper
 		:id="id"
 		:leadingIcon="leadingIcon"
 		:trailingIcon="trailingIcon"
@@ -130,5 +130,5 @@ if (props.size) {
 				{{ item.text }}
 			</option>
 		</select>
-	</form-wrapper>
+	</FormWrapper>
 </template>

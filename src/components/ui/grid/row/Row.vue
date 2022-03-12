@@ -5,7 +5,7 @@ const props = defineProps<{
 	alignV?: string
 }>()
 
-const classList = ref<any>([])
+const classList = ref<string[]>([])
 
 if (props.alignV) {
 	classList.value.push(`-align-items-${props.alignV}`)

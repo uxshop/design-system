@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import UiSkeleton from '../skeleton/Skeleton.vue'
+import Skeleton from '../skeleton/Skeleton.vue'
 
 interface Props {
 	cols?: string | number

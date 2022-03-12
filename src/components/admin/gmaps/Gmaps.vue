@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const image = ref<string | null>(null)
-let timer: NodeJS.Timeout
+let timer: ReturnType<typeof setTimeout>
 
 const gmAddress = (val: AddressInterface) => {
 	if (val) {
