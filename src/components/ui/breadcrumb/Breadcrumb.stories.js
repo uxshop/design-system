@@ -20,11 +20,11 @@ const Template = (args) => ({
 		return { args }
 	},
 	template: `
-    <-breadcrumb v-bind="args">
+    <Breadcrumb v-bind="args">
       <BreadcrumbItem :to="{}">Item</BreadcrumbItem>
       <BreadcrumbItem :to="{}">Item2</BreadcrumbItem>
       <BreadcrumbItem :to="{}">Item3</BreadcrumbItem>
-    </-breadcrumb>
+    </Breadcrumb>
   `
 })
 

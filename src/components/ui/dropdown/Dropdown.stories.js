@@ -1,3 +1,4 @@
+import vueRouter from 'storybook-vue3-router'
 import Dropdown from './Dropdown.vue'
 import DropdownItem from './DropdownItem.vue'
 import DropdownItemButton from './DropdownItemButton.vue'
@@ -36,3 +37,5 @@ export const Default = Template.bind({})
 Default.args = {
 	label: 'Dropdown'
 }
+
+Default.decorators = [vueRouter()]

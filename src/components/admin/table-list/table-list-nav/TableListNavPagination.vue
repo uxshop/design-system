@@ -37,8 +37,7 @@ const nextPage = () => {
 					size="sm"
 					icon="arrow_back"
 					:disabled="1 == meta.current_page"
-					class="table-list-nav-btn prev"
-				/>
+					class="table-list-nav-btn prev" />
 			</div>
 			<div class="table-list-pagination-item next">
 				<IconButton
@@ -46,8 +45,7 @@ const nextPage = () => {
 					size="sm"
 					icon="arrow_forward"
 					:disabled="meta.last_page == meta.current_page || !meta.total"
-					class="table-list-nav-btn next"
-				/>
+					class="table-list-nav-btn next" />
 			</div>
 		</div>
 	</div>

@@ -41,6 +41,6 @@ const toggleDropdown = () => {
 </template>
 
 <style lang="scss">
-@import './dropdown.scss';
+@import './Dropdown.scss';
 </style>
 >

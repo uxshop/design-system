@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const scrolled = ref(false)
 
-const onScroll = (e: number) => {
+const onScroll = (e: any) => {
 	scrolled.value = e.target.scrollTop > 20
 }
 </script>

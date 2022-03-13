@@ -24,19 +24,17 @@ const autoLanguage = EditorState.transactionExtender.of((tr) => {
 })
 
 const props = defineProps<{
-	value: string
-	config: object
+	value?: string
+	config?: object
 }>()
 
 const emit = defineEmits(['update'])
-
 const editorRef = ref()
-
 const cm = shallowRef()
-
 const noUpdate = shallowRef()
 
 onMounted(() => {
+	const el = document.querySelector('#editor') as Element
 	const updateListenerExtension = EditorView.updateListener.of((update: any) => {
 		if (update.docChanged && !noUpdate.value) {
 			stopWatch()
@@ -47,22 +45,24 @@ onMounted(() => {
 		noUpdate.value = false
 	})
 
-	cm.value = new EditorView({
-		parent: document.querySelector('#editor'),
-		state: EditorState.create({
-			doc: props.value,
-			extensions: [
-				// myTheme,
-				updateListenerExtension,
-				history(),
-				defaultHighlightStyle,
-				basicSetup,
-				languageConf.of(css()),
-				autoLanguage,
-				keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab])
-			]
+	if (el) {
+		cm.value = new EditorView({
+			parent: el,
+			state: EditorState.create({
+				doc: props.value,
+				extensions: [
+					// myTheme,
+					updateListenerExtension,
+					history(),
+					defaultHighlightStyle,
+					basicSetup,
+					languageConf.of(css()),
+					autoLanguage,
+					keymap.of([...defaultKeymap, ...historyKeymap, indentWithTab])
+				]
+			})
 		})
-	})
+	}
 
 	const stopWatch = watchEffect(() => {
 		const update = cm.value.state.update({

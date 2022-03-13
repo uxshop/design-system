@@ -78,8 +78,7 @@ defineExpose({
 						'-scrollable': scrollable,
 						'-inner': inner
 					}
-				]"
-			>
+				]">
 				<div class="ui-aside-overlay" :class="{ '-close': !noCloseOnBackdrop }" @click="onClickBackdrop"></div>
 
 				<div class="ui-aside-content">

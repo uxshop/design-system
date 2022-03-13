@@ -4,12 +4,10 @@ import Icon from '../../ui/icon/Icon.vue'
 
 defineProps<{
 	text?: string
-	value?: undefined
-	perc?: undefined
+	value?: string | number
+	perc?: string | number
 	info?: string
 }>()
-
-/* 	directives: { tooltip }, */
 </script>
 
 <template>
@@ -21,7 +19,7 @@ defineProps<{
 			</small>
 			<b class="card-info-value">{{ value }}</b>
 
-			<div class="card-info-perc" v-if="perc != undefined" :class="{ positive: perc > 0 }">
+			<div class="card-info-perc" v-if="perc != undefined" :class="{ positive: Number(perc) > 0 }">
 				<icon name="south" />
 				<icon name="north" />
 				<span>{{ perc }}%</span>

@@ -2,8 +2,12 @@
 import { onMounted, onUnmounted } from 'vue'
 import _find from 'lodash/find'
 
+interface OwnerInterface {
+	email?: string
+}
+
 interface Props {
-	owner: object
+	owner?: OwnerInterface
 }
 
 withDefaults(defineProps<Props>(), {
@@ -17,17 +21,6 @@ onMounted(() => {
 onUnmounted(() => {
 	document.body.classList.remove('forbidden')
 })
-
-// mounted() {
-// 	this.$model
-// 		.users()
-// 		.get({
-// 			owner: 1
-// 		})
-// 		.then((res) => {
-// 			this.owner = _find(res.data, { owner: true })
-// 		})
-// },
 </script>
 
 <template>

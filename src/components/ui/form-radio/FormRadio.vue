@@ -35,8 +35,7 @@ const update = (val: any) => {
 				:required="required"
 				:name="name"
 				v-model="modelValue"
-				@update:modelValue="update"
-			/>
+				@update:modelValue="update" />
 			<div class="ui-form-radio-text">
 				<slot />
 				{{ label }}

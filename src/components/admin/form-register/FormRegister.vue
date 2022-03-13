@@ -44,7 +44,6 @@ const onSubmit = async () => {
 		<button
 			ref="buttonSubmitRef"
 			tabindex="-1"
-			style="opacity: 0; width: 0; height: 0; border: none; padding: 0; position: absolute"
-		/>
+			style="opacity: 0; width: 0; height: 0; border: none; padding: 0; position: absolute" />
 	</form>
 </template>

@@ -128,8 +128,7 @@ onMounted(() => {
 		class="ui-dialog"
 		tabindex="0"
 		ref="dialogRef"
-		:class="[{ '-hide': state.showing === false, '-show': state.showing }, classList]"
-	>
+		:class="[{ '-hide': state.showing === false, '-show': state.showing }, classList]">
 		<div class="ui-dialog-wrapper" :style="style">
 			<div class="ui-dialog-overlay" @click="onClickBackdrop"></div>
 
@@ -149,8 +148,7 @@ onMounted(() => {
 							size="sm"
 							id="prompt"
 							required
-							last
-						/>
+							last />
 					</div>
 				</div>
 				<div class="ui-dialog-footer" v-if="!hideFooter">
@@ -162,8 +160,7 @@ onMounted(() => {
 								variant="link"
 								flush="left"
 								class="ui-dialog-btn-cancel"
-								size="sm"
-							>
+								size="sm">
 								{{ cancelLabel }}
 							</Button>
 						</Col>
@@ -174,8 +171,7 @@ onMounted(() => {
 								type="submit"
 								class="btn-destruct"
 								block
-								tabindex="0"
-							>
+								tabindex="0">
 								{{ config.destructLabel }}
 							</Button>
 						</Col>

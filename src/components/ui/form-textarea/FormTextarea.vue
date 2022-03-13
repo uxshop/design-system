@@ -71,8 +71,7 @@ const update = (evt: any) => {
 		:last="last"
 		:disabled="disabled"
 		:float="float"
-		:state="state"
-	>
+		:state="state">
 		<textarea
 			class="form-control"
 			@input="update"
@@ -92,7 +91,6 @@ const update = (evt: any) => {
 			:title="title"
 			:id="id"
 			:required="required"
-			:rows="rows"
-		/>
+			:rows="rows" />
 	</FormWrapper>
 </template>

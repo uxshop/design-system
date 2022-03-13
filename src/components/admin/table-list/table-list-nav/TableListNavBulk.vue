@@ -111,8 +111,7 @@ onMounted(() => {
 			@click="onCheckAll"
 			class="table-list-nav-item -checkbox"
 			v-tooltip:top="`Marcar todos`"
-			v-show="!config.hideCheckbox"
-		>
+			v-show="!config.hideCheckbox">
 			<FormCheckbox :indeterminate="indeterminate" :value="allSelected" v-model="checkbox" />
 		</div>
 
@@ -121,8 +120,7 @@ onMounted(() => {
 				v-show="selected.length && config.actions?.includes('remove')"
 				icon="delete"
 				@click="onRemoveDialog"
-				size="sm"
-			/>
+				size="sm" />
 		</span>
 		<ui-dropdown variant="white" v-show="selected.length && bulkActions && bulkActions.length > 0" class="ml-2">
 			<template #button-content>
@@ -137,8 +135,7 @@ onMounted(() => {
 				v-for="action in bulkActions"
 				@click="action.action(selected)"
 				:key="action.label"
-				:variant="action.variant"
-			>
+				:variant="action.variant">
 				{{ action.label }}
 			</ui-dropdown-item-button>
 		</ui-dropdown>

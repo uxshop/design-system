@@ -97,8 +97,7 @@ watchEffect(() => {
 					'-scrollable': scrollable,
 					'-inner': inner
 				}
-			]"
-		>
+			]">
 			<div class="ui-modal-overlay" :class="{ '-closable': !noCloseOnBackdrop }" @click="onClickBackdrop"></div>
 
 			<div class="ui-modal-dialog" :style="style">

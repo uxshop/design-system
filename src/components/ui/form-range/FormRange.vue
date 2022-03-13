@@ -66,8 +66,7 @@ onMounted(() => {
 			:name="name"
 			class="ui-slider-range"
 			@change="onChange"
-			@mousedown="showBubble = true"
-		/>
+			@mousedown="showBubble = true" />
 		<output class="ui-slider-bubble" :class="{ '-active': showBubble }"></output>
 	</label>
 </template>

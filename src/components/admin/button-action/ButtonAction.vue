@@ -89,8 +89,7 @@ const onClick = (evt: MouseEvent) => {
 		class="ui-button-action"
 		@click="onClick"
 		:icon="currentIcon"
-		:class="[classType, { '-inactive': !active }]"
-	/>
+		:class="[classType, { '-inactive': !active }]" />
 </template>
 
 <style lang="scss">

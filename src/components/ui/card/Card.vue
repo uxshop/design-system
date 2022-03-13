@@ -73,13 +73,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			'-full-height': fullHeight,
 			'-blocked': blocked,
 			'-success': success
-		}"
-	>
+		}">
 		<div
 			class="ui-card-header"
 			@click="isDropdown ? toggleShowBody() : null"
-			v-if="cardTitle || haveSlot('header-title')"
-		>
+			v-if="cardTitle || haveSlot('header-title')">
 			<div class="ui-card-header-content">
 				<slot name="header-title">
 					<h4 v-if="cardTitle" class="ui-card-title">

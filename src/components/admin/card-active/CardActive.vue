@@ -8,8 +8,8 @@ import ButtonAction from '../button-action/ButtonAction.vue'
 interface Props {
 	modelValue: any
 	resource: object
-	canDelete: boolean
-	delete(val: string): Promise<void>
+	canDelete?: boolean
+	delete?(val: string): Promise<void>
 }
 
 const emit = defineEmits(['delete', 'active'])
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const onDelete = async () => {
-	if (props.resource) {
+	if (props.resource && props.delete) {
 		await props.delete(props.modelValue.id)
 	}
 	emit('delete', { id: props.modelValue.id })
@@ -45,8 +45,7 @@ const changeActive = () => {
 					v-show="modelValue.id"
 					type="delete"
 					:deleteName="modelValue.name"
-					@delete="onDelete"
-				/>
+					@delete="onDelete" />
 			</Col>
 		</Row>
 	</Card>

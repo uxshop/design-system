@@ -9,8 +9,7 @@
 			:disabled="disableButton"
 			no-flip
 			@show="onShowDropdown"
-			@hide="onHideDropdown"
-		>
+			@hide="onHideDropdown">
 			<template v-slot:button-content>
 				<span class="d-flex-center" v-if="checkTabSave">
 					<icon name="bookmark_border" />
@@ -29,8 +28,7 @@
 					autofocus
 					v-model="reg.name"
 					required
-					pill
-				/>
+					pill />
 				<small class="d-block px-2">Os filtros são salvos como uma nova aba no topo desta lista.</small>
 				<div class="row align-items-center mt-3">
 					<div class="col">

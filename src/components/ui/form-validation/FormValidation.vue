@@ -36,16 +36,21 @@ const removeErrors = () => {
 
 watchEffect(() => {
 	const newVal = props.modelValue
+	const items: NodeListOf<HTMLElement> | undefined = document.querySelectorAll("[class*='form-error-']")
 
-	for (var item of document.querySelectorAll("[class*='form-error-']")) {
+	each(items, (item: HTMLElement) => {
 		item.classList.remove('-invalid')
-	}
+	})
+
+	// for (var item of items) {
+	// 	item.classList.remove('-invalid')
+	// 	// items[item].classList.remove('-invalid')
+	// }
 
 	if (newVal) {
 		window.scrollTo(0, 0)
 		each(newVal, (item, key) => {
 			const ele = document.getElementsByClassName(`error.${key}`)
-			console.log(ele)
 			if (ele[0]) {
 				ele[0].classList.add('-invalid')
 			}

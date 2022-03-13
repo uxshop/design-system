@@ -70,8 +70,7 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 				:class="{
 					'-selected': selected.includes(item.id),
 					'-inactive': item.active == false
-				}"
-			>
+				}">
 				<td v-if="!hideCheckbox" @click="onCheckOne($event, item)" class="td-fixed td-checkbox">
 					<FormCheckbox v-model="selected" :value="item.id" />
 				</td>
@@ -83,15 +82,13 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 						v-if="actions.includes('remove')"
 						@delete="onDeleteOne(item)"
 						:deleteName="item.name"
-						type="delete"
-					/>
+						type="delete" />
 					<ButtonAction
 						v-if="actions.includes('active')"
 						v-model="item.active"
 						@active="onActiveOne(item, true)"
 						@inactive="onActiveOne(item, false)"
-						type="active"
-					/>
+						type="active" />
 				</td>
 			</tr>
 		</tbody>

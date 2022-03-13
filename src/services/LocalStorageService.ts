@@ -7,7 +7,7 @@ export default {
 		localStorage.setItem(key, val)
 	},
 	getObj: (key: string): Record<string, any> | null => {
-		let val = localStorage.getItem(key)
+		const val = localStorage.getItem(key)
 		if (val) {
 			return JSON.parse(val)
 		}

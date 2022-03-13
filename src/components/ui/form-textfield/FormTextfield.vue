@@ -94,8 +94,7 @@ const onEnter = emit('enter')
 		:autofocus="autofocus"
 		:size="size"
 		:invalidFeedback="invalidFeedback"
-		class="ui-form-textfield"
-	>
+		class="ui-form-textfield">
 		<slot name="before" />
 		<input
 			v-maska="mask"
@@ -123,8 +122,7 @@ const onEnter = emit('enter')
 			:title="title"
 			:id="id"
 			:required="required"
-			@maska="rawValue = $event.target.dataset.maskRawValue"
-		/>
+			@maska="rawValue = $event.target.dataset.maskRawValue" />
 		<slot name="after" />
 	</FormWrapper>
 </template>

@@ -41,9 +41,9 @@ const TemplateService = (args) => ({
 		return { args, onClick }
 	},
 	template: `
-    <Button @click="onClick">
+    <button @click="onClick">
       open as service
-    </Button>
+    </button>
   `
 })
 

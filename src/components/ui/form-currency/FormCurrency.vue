@@ -77,8 +77,7 @@ if (props.pill) {
 		:disabled="disabled"
 		:float="float"
 		:state="state"
-		:invalidFeedback="invalidFeedback"
-	>
+		:invalidFeedback="invalidFeedback">
 		<input ref="inputRef" class="form-control" />
 	</FormWrapper>
 </template>

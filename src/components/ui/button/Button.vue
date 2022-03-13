@@ -64,8 +64,7 @@ if (props.block) {
 		:class="[classList, { '-loading': loading }]"
 		:disabled="loading"
 		:to="to"
-		:href="href"
-	>
+		:href="href">
 		<div class="ui-button-content">
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
 			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />

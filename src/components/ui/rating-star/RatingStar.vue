@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import Icon from '../icon/Icon.vue'
 
-const emit = defineEmits(['update:modelValue', 'change'])
-
 interface Props {
 	modelValue: number
 }
 
+const emit = defineEmits(['update:modelValue', 'change'])
 const props = withDefaults(defineProps<Props>(), {
 	modelValue: 1
 })
@@ -26,7 +25,7 @@ const onClick = (n: number) => {
 <template>
 	<div class="ui-rating">
 		<span :class="getClass(n)" v-for="n in 5" :key="n" @click.stop="onClick(n)">
-			<Icon name="star" type="solid" />
+			<Icon name="star" />
 			<Icon name="star_border" />
 		</span>
 	</div>

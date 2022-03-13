@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import Icon from '../icon/Icon.vue'
 
 interface Props {
-	src: string
+	src: string | null
 	size?: number | string
 }
 

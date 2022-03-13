@@ -3,8 +3,8 @@ import { ref } from 'vue'
 import CardInfoGroupItem from './CardInfoGroupItem.vue'
 
 const props = defineProps<{
-	wrap: string
-	infos: any[]
+	wrap?: string
+	infos?: { text: string; value: string }[]
 }>()
 
 const classList = ref<string[]>([])
@@ -26,5 +26,5 @@ if (props.wrap) {
 </template>
 
 <style lang="scss">
-@import './card-info-group.scss';
+@import './CardInfoGroup.scss';
 </style>

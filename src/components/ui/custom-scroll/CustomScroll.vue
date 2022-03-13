@@ -5,8 +5,6 @@ import { getCurrentInstance, onMounted, shallowRef } from 'vue'
 
 const props = defineProps<{
 	settings?: PerfectScrollbar.Options
-	height: string | number
-	width: string | number
 }>()
 
 const uid = `perfect-scroll-${getCurrentInstance()?.uid}`

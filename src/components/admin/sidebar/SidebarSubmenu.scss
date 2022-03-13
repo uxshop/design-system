@@ -1,0 +1,136 @@
+.ui-sidebar-sub {
+	top: 0;
+	bottom: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 88;
+	transition: transform 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	will-change: transform;
+	transform: translateX(100%);
+
+	&::after {
+		content: '';
+		left: 0;
+		background: var(--primary);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		transition: width 0.2s;
+		width: 8px;
+	}
+
+	&.-active {
+		transform: translateX(0);
+	}
+
+	> .ui-sidebar-sub-content {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		padding-left: 44px;
+		overflow-y: auto;
+		overflow-x: hidden;
+
+		> .spacer {
+			display: flex;
+			flex: 1;
+			flex-grow: 1;
+		}
+
+		> .title {
+			font-size: 20px;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			position: relative;
+			padding: 8px 0;
+			margin: 10px 0 20px;
+			font-family: var(--headings-font-family);
+
+			&::after {
+				content: '';
+				background: var(--secondary);
+				width: 40px;
+				height: 2px;
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+		}
+
+		> .close {
+			display: flex;
+			align-items: center;
+			padding: 26px 0;
+			cursor: pointer;
+			font-weight: 600;
+			position: sticky;
+			top: 0;
+			z-index: 88;
+			margin-right: 1px;
+			user-select: none;
+			background: inherit;
+			margin-left: -0.3px;
+
+			&:hover {
+				.ui-icon {
+					left: -5px;
+				}
+			}
+
+			.ui-icon {
+				left: 0;
+				margin-right: 5px;
+				transition: all 0.2s;
+				position: relative;
+				color: var(--primary);
+			}
+		}
+	}
+
+	.sub-list {
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+
+		> .item {
+			position: relative;
+			list-style: none;
+
+			> .link {
+				padding: 6px 0;
+				cursor: pointer;
+				font-weight: 600;
+				font-size: 16px;
+				outline: none;
+				user-select: none;
+				color: var(--body-color);
+				font-family: var(--headings-font-family);
+				display: flex;
+				align-items: center;
+				text-decoration: none;
+
+				&:focus {
+					text-decoration: none;
+				}
+
+				b {
+					font-weight: 700;
+				}
+
+				&:hover {
+					text-decoration: none;
+					color: var(--secondary);
+				}
+
+				&.router-link-active,
+				&.active {
+					border: none;
+					color: var(--primary);
+				}
+			}
+		}
+	}
+}

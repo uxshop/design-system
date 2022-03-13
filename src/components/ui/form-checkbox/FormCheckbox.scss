@@ -64,7 +64,7 @@
 
 		-webkit-appearance: none;
 		-moz-appearance: none;
-		height: 21px;
+		height: 19px;
 		outline: none;
 		display: inline-block;
 		vertical-align: top;
@@ -160,10 +160,15 @@
 				}
 			}
 		}
+
 		&.-switch {
 			width: 38px;
 			min-width: 38px;
 			border-radius: 11px;
+			&:checked {
+				--ab: var(--active-inner);
+				--x: 19px;
+			}
 			&:after {
 				left: 2px;
 				top: 2px;
@@ -173,10 +178,6 @@
 				background: var(--ab, var(--border));
 				transform: translateX(var(--x, 0));
 				transition: transform 0.15s var(--d-t-e), opacity 0.15s;
-			}
-			&:checked {
-				--ab: var(--active-inner);
-				--x: 17px;
 			}
 			&:disabled {
 				&:not(:checked) {

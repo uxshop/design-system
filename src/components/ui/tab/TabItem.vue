@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { inject, ref, watchEffect } from 'vue'
+import type { TabProviderInterface } from './TabProviderInterface'
 
-const tabsProvider = inject('tabs')
+const tabsProvider: TabProviderInterface | undefined = inject('tabs')
 const active = ref(false)
-const index = tabsProvider.tabs.length
+const index = tabsProvider?.tabs.length
 
-const onClick = (evt) => {
-	tabsProvider.active(index, evt)
+const onClick = (evt: MouseEvent) => {
+	if (tabsProvider) {
+		tabsProvider.active(index, evt)
+	}
 }
 
-tabsProvider.tabs.push(index)
+if (tabsProvider) {
+	tabsProvider.tabs.push(index)
+}
 
 watchEffect(() => {
-	if (tabsProvider.activeTabIndex == index) {
+	if (tabsProvider?.activeTabIndex == index) {
 		active.value = true
 	} else {
 		active.value = false

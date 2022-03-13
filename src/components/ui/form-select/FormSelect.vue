@@ -102,8 +102,7 @@ if (props.size) {
 		:autofocus="autofocus"
 		:size="size"
 		:invalidFeedback="invalidFeedback"
-		class="ui-form-select"
-	>
+		class="ui-form-select">
 		<select
 			v-model="model"
 			@input="update"
@@ -116,8 +115,7 @@ if (props.size) {
 			:name="name"
 			:title="title"
 			:id="id"
-			:required="required"
-		>
+			:required="required">
 			<option value selected disabled v-if="placeholder">{{ placeholder }}</option>
 			<slot />
 			<option
@@ -125,8 +123,7 @@ if (props.size) {
 				v-for="item in options"
 				:value="stringifyValue(item.value)"
 				:key="item.value"
-				:disabled="item.disabled"
-			>
+				:disabled="item.disabled">
 				{{ item.text }}
 			</option>
 		</select>

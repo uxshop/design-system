@@ -10,8 +10,7 @@
 				v-for="item in sortable"
 				@click="onSortBy(item)"
 				:key="item.sort"
-				:active="queryParams.sort == item.sort"
-			>
+				:active="queryParams.sort == item.sort">
 				<input type="radio" v-model="queryParams.sort" :value="item.sort" />
 				<span class="ml-2">
 					{{ item.name }}

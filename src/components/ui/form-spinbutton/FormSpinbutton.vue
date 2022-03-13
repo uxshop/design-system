@@ -48,8 +48,7 @@ if (props.size) {
 			aria-label="Decrement"
 			aria-keyshortcuts="ArrowDown"
 			class="ui-button"
-			@click="decrease"
-		>
+			@click="decrease">
 			<svg
 				viewBox="0 0 16 16"
 				width="1em"
@@ -60,8 +59,7 @@ if (props.size) {
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
-				class="icon"
-			>
+				class="icon">
 				<g transform="translate(8 8) scale(1.25 1.25) translate(-8 -8)">
 					<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
 				</g>
@@ -76,8 +74,7 @@ if (props.size) {
 			aria-valuemin="1"
 			aria-valuemax="100"
 			aria-valuenow="50"
-			aria-valuetext="50"
-		>
+			aria-valuetext="50">
 			<bdi v-if="modelValue !== undefined">
 				{{ modelValue }}
 			</bdi>
@@ -92,8 +89,7 @@ if (props.size) {
 			aria-label="Increment"
 			aria-keyshortcuts="ArrowUp"
 			class="ui-button"
-			@click="increase"
-		>
+			@click="increase">
 			<svg
 				viewBox="0 0 16 16"
 				width="1em"
@@ -104,12 +100,10 @@ if (props.size) {
 				aria-hidden="true"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"
-				class="icon"
-			>
+				class="icon">
 				<g transform="translate(8 8) scale(1.25 1.25) translate(-8 -8)">
 					<path
-						d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-					></path>
+						d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
 				</g>
 			</svg>
 		</button>

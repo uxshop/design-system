@@ -95,8 +95,7 @@ onMounted(() => {
 					v-for="(filter, key) in filters"
 					:key="filter.name"
 					class="filter-list-item"
-					:class="{ '-active': accordion[key], '-checked': hasFilterSelected(filter, key) }"
-				>
+					:class="{ '-active': accordion[key], '-checked': hasFilterSelected(filter, key) }">
 					<div class="filter-list-title" @click="onCollapse(filter)">
 						<span>{{ filter.name }}</span>
 						<Icon name="expand_more" />
@@ -120,8 +119,7 @@ onMounted(() => {
 								class="d-block mb-2"
 								:name="`check_${key}`"
 								:placeholder="filter.placeholder"
-								:type="filter.type"
-							/>
+								:type="filter.type" />
 						</div>
 
 						<div v-else v-for="item in filter.filters" :key="item.key">
@@ -131,8 +129,7 @@ onMounted(() => {
 									v-model="selected[key]"
 									:name="`radio_${key}`"
 									:value="item.value"
-									tabindex="1"
-								>
+									tabindex="1">
 									{{ item.name }}
 								</FormRadio>
 							</div>
@@ -142,8 +139,7 @@ onMounted(() => {
 									v-model="selected[key]"
 									:name="`check_${key}`"
 									:value="item.value"
-									tabindex="1"
-								>
+									tabindex="1">
 									{{ item.name }}
 								</FormCheckbox>
 							</div>
@@ -154,8 +150,7 @@ onMounted(() => {
 								flush="left"
 								@click="onClearFilter(filter, key)"
 								:disabled="!hasFilterSelected(filter, key)"
-								size="sm"
-							>
+								size="sm">
 								Limpar
 							</Button>
 						</div>

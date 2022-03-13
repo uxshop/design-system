@@ -203,8 +203,7 @@ defineExpose({
 			@remove-selecteds="removeSelecteds"
 			@active-selecteds="activeInactiveSelecteds(true)"
 			@inactive-selecteds="activeInactiveSelecteds(false)"
-			@reset-query-params="resetQueryParams"
-		>
+			@reset-query-params="resetQueryParams">
 			<TableListNavBulk
 				@checkAll="checkAll"
 				@refresh="init"
@@ -213,16 +212,14 @@ defineExpose({
 				@remove="removeSelecteds"
 				:selected="selected"
 				:config="cfg"
-				:rows="rows"
-			/>
+				:rows="rows" />
 			<TableListNavRefresh @refresh="init" />
 			<TableListNavSearch
 				v-bind:model-value="term"
 				@refresh="init"
 				:placeholder="cfg.placeholder"
 				:remove-filter="removeFilter"
-				:set-query-params="setQueryParams"
-			/>
+				:set-query-params="setQueryParams" />
 			<!-- <TableListNavCustomFilter
 					v-if="$refs.tabs"
 					:currentTab="$refs.tabs.currentTab"
@@ -246,8 +243,7 @@ defineExpose({
 				:loading="loading"
 				@clickRow="clickRow"
 				@delete="deleteOne"
-				@toggleActive="activeOne"
-			>
+				@toggleActive="activeOne">
 				<template #head v-if="haveSlot('head')">
 					<slot name="head" />
 				</template>

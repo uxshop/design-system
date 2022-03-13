@@ -41,10 +41,10 @@ function slugify(val: string) {
 		val = val.replace(/^\s+|\s+$/g, '') // trim
 		val = val.toLowerCase()
 
-		var from = 'ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;'
-		var to = 'aaaaaeeeeeiiiiooooouuuunc------'
+		const from = 'ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;'
+		const to = 'aaaaaeeeeeiiiiooooouuuunc------'
 
-		for (var i = 0, l = from.length; i < l; i++) {
+		for (let i = 0, l = from.length; i < l; i++) {
 			val = val.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
 		}
 
