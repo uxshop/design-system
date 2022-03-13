@@ -12,7 +12,7 @@ const uid = `ui-tab-${getCurrentInstance()?.uid}`
 const state = reactive<TabProviderInterface>({
 	tabs: [],
 	activeTabIndex: props.modelValue,
-	active: (index: string, evt: MouseEvent) => {
+	active: (index: number, evt: MouseEvent) => {
 		emit('update:modelValue', index)
 
 		const ele: HTMLElement | null = document.getElementById(uid)
