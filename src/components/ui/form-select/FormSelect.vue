@@ -15,8 +15,8 @@ interface Props {
 	float?: boolean
 	invalidFeedback?: string
 	//
-	modelValue?: any
-	value?: any
+	modelValue: string
+	value?: string | undefined
 	placeholder?: string
 	label?: string
 	error?: string
@@ -29,11 +29,17 @@ interface Props {
 	name?: string
 	title?: string
 	required?: boolean
-	options?: any[]
+	options?: Array<{
+		value: string
+		text: string
+		disabled: boolean
+	}>
 	disabled?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
-	options: () => []
+	options: () => {
+		return []
+	}
 })
 
 const emit = defineEmits(['update:modelValue', 'update'])
@@ -46,7 +52,7 @@ const parseValue = (val: string) => {
 	return val
 }
 
-const stringifyValue = (val: any) => {
+const stringifyValue = (val: string | undefined) => {
 	if (isObject(val)) {
 		return JSON.stringify(val)
 	}
@@ -54,11 +60,12 @@ const stringifyValue = (val: any) => {
 	return val === null ? '' : val
 }
 
-const update = (evt: any) => {
-	const val = evt.target.value
+const update = (evt: Event) => {
+	const target = evt.target as HTMLSelectElement
+	const val = target.value
 	emit('update:modelValue', parseValue(val))
 	emit('update', parseValue(val))
-	model.value = evt.target.value
+	model.value = target.value
 }
 
 const model = ref(stringifyValue(props.modelValue))
@@ -119,7 +126,7 @@ if (props.size) {
 			<option value selected disabled v-if="placeholder">{{ placeholder }}</option>
 			<slot />
 			<option
-				v-if="options.length"
+				v-show="options.length"
 				v-for="item in options"
 				:value="stringifyValue(item.value)"
 				:key="item.value"

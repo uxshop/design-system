@@ -4,7 +4,7 @@ import FormValidation from '../../ui/form-validation/FormValidation.vue'
 import Savebar from '../savebar/Savebar.vue'
 
 const props = defineProps<{
-	resource: any
+	resource: { save(): void }
 	validate: object
 	editing: boolean
 }>()

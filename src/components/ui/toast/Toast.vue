@@ -14,8 +14,8 @@ interface Props {
 }
 
 interface StateInterface {
-	option: Record<string, any>
-	timer: NodeJS.Timeout | null
+	option: Record<string, string>
+	timer: ReturnType<typeof setTimeout> | null
 	showing: boolean
 }
 
@@ -24,9 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const closed = ref(false)
-
 const classList = ref<string[]>([])
-
 const state = reactive<StateInterface>({
 	option: {},
 	showing: false,

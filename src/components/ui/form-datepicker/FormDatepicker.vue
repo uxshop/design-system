@@ -8,7 +8,7 @@ moment.locale('pt-br')
 
 interface Props {
 	modelValue?: string
-	config?: any
+	config?: Record<string, unknown>
 	placeholder?: string
 	range?: boolean
 	noClear?: boolean
@@ -16,7 +16,9 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	config: {}
+	config: () => {
+		return {}
+	}
 })
 
 const emit = defineEmits(['update:modelValue', 'update'])
@@ -34,9 +36,11 @@ const update = (value: null) => {
 const stopWatch = watchEffect(() => {
 	if (picker.value && props.modelValue) {
 		const dates = props.modelValue.split('TO')
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		const date1 = moment(dates[0]).format(FORMAT_DATE)
 		if (props.range && dates.length > 1) {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			const date2 = moment(dates[1]).format(FORMAT_DATE)
 			console.log(date1, date2)
@@ -59,30 +63,33 @@ if (props.size) {
 }
 
 onMounted(() => {
-	picker.value = new Litepicker({
-		...{
-			element: document.getElementById(uid),
-			format: FORMAT_DATE,
+	const el = document.getElementById(uid)
+	if (el) {
+		picker.value = new Litepicker({
+			...{
+				element: el,
+				format: FORMAT_DATE,
 
-			setup: (picker: any) => {
-				picker.on(
-					'selected',
-					(
-						date1: { dateInstance: { toISOString: () => any } },
-						date2: { dateInstance: { toISOString: () => any } }
-					) => {
-						stopWatch()
-						let dateFormat = date1.dateInstance.toISOString()
-						if (props.range) {
-							dateFormat = `${date1.dateInstance.toISOString()}TO${date2.dateInstance.toISOString()}`
+				setup: (picker: any) => {
+					picker.on(
+						'selected',
+						(
+							date1: { dateInstance: { toISOString: () => any } },
+							date2: { dateInstance: { toISOString: () => any } }
+						) => {
+							stopWatch()
+							let dateFormat = date1.dateInstance.toISOString()
+							if (props.range) {
+								dateFormat = `${date1.dateInstance.toISOString()}TO${date2.dateInstance.toISOString()}`
+							}
+							update(dateFormat)
 						}
-						update(dateFormat)
-					}
-				)
-			}
-		},
-		...props.config
-	})
+					)
+				}
+			},
+			...props.config
+		})
+	}
 })
 
 const clearDate = () => {

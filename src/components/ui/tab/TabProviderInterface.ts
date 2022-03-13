@@ -1,5 +1,5 @@
 export interface TabProviderInterface {
-	tabs: any[]
+	tabs: string[]
 	activeTabIndex: number
-	active(index: any, evt: any): void
+	active(index: string, evt: unknown): void
 }

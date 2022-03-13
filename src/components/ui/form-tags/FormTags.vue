@@ -6,7 +6,7 @@ import 'tom-select/dist/css/tom-select.default.css'
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close'])
 
 interface Props {
-	modelValue: any
+	modelValue: string
 	placeholder?: string
 	config?: object
 }
@@ -16,7 +16,7 @@ interface SettingsInterface {
 	createOnBlur: boolean
 	create: boolean
 	plugins: string[]
-	onChange(val: any): void
+	onChange(val: string): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,7 +27,7 @@ const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const model = ref(null)
 const element = shallowRef()
 
-const update = (val: any) => {
+const update = (val: string) => {
 	emit('update:modelValue', val)
 	emit('update', val)
 }

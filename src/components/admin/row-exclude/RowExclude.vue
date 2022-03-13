@@ -3,9 +3,14 @@ import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
 import { ref } from 'vue'
 import { indexOf } from 'lodash'
 
+interface Rows {
+	id: number
+	name: string
+}
+
 interface Props {
-	rows: any
-	modelValue: any
+	rows: Array<Rows> | null
+	modelValue: string[]
 }
 
 interface ItemInterface {
@@ -13,11 +18,7 @@ interface ItemInterface {
 }
 
 const emit = defineEmits(['update:modelValue'])
-const props = withDefaults(defineProps<Props>(), {
-	rows: [],
-	modelValue: []
-})
-
+const props = defineProps<Props>()
 const includes = ref<number[]>([])
 
 const onClickRowExclude = (item: ItemInterface) => {
@@ -32,23 +33,14 @@ const onClickRowExclude = (item: ItemInterface) => {
 }
 
 const updateExcludes = () => {
-	const excludes: Array<number> = []
-	props.rows.map((item: ItemInterface) => {
-		if (indexOf(includes.value, item.id) == -1) {
-			excludes.push(item.id)
-		}
-	})
-	emit('update:modelValue', excludes)
-}
-
-const updateIncludes = () => {
-	if (props.rows && props.modelValue) {
-		includes.value = []
+	if (props.rows) {
+		const excludes: Array<number> = []
 		props.rows.map((item: ItemInterface) => {
-			if (indexOf(props.modelValue, item.id) == -1) {
-				includes.value.push(item.id)
+			if (indexOf(includes.value, item.id) == -1) {
+				excludes.push(item.id)
 			}
 		})
+		emit('update:modelValue', excludes)
 	}
 }
 </script>

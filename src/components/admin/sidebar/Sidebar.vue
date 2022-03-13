@@ -6,6 +6,7 @@ import { onMounted } from 'vue'
 import Logo from '../logo/Logo.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import MobileDetector from '../../../services/MobileDetectorService'
+import type { SidebarInterface } from './SidebarInterface'
 
 interface PermissionInterface {
 	has(rule: string): boolean
@@ -23,7 +24,9 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	clickLink: () => {}
+	clickLink: () => {
+		return {}
+	}
 })
 
 const currentMenu = shallowRef()
@@ -94,7 +97,9 @@ const onClickLink = (sec: string, item: SidebarInterface.Item) => {
 	if (item.nodes) {
 		activeSection.value = item.section
 	} else {
-		router.push({ name: item.to }).catch(() => {})
+		router.push({ name: item.to }).catch(() => {
+			//
+		})
 	}
 }
 

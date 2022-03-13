@@ -1,9 +1,9 @@
 <script setup lang="ts">
 interface Props {
 	title?: undefined
-	backlink?: any
+	backlink?: { to: string }
 }
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>

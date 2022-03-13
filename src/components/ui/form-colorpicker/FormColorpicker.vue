@@ -34,6 +34,7 @@ interface PickrCustom extends PickerInterface {
 
 const createPickrInstance = (options: PickerInterface.Options) => {
 	const noDefault = !options.default
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
 	const instance: PickrCustom = new Pickr({
 		...options,

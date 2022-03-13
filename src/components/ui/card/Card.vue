@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, useSlots, watchEffect } from 'vue'
+import { getCurrentInstance, ref, useSlots, watchEffect } from 'vue'
 import Icon from '../icon/Icon.vue'
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close'])

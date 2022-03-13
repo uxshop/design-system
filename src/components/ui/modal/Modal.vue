@@ -16,7 +16,7 @@ const props = defineProps<{
 	centered?: boolean
 	id?: string
 	width?: string
-	params?: Record<string, any>
+	params?: Record<string, unknown>
 }>()
 
 const emit = defineEmits(['update:modelValue', 'close', 'open'])

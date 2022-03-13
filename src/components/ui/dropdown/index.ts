@@ -5,7 +5,7 @@ import DropdownDivider from './DropdownDivider.vue'
 import type { ComponentOptions } from 'vue'
 
 export default {
-	install(app: ComponentOptions, { prefix }: any) {
+	install(app: ComponentOptions, { prefix }: { prefix: string }) {
 		app.component(`${prefix}Dropdown`, Dropdown)
 		app.component(`${prefix}DropdownItem`, DropdownItem)
 		app.component(`${prefix}DropdownItemButton`, DropdownItemButton)

@@ -3,8 +3,9 @@ import { ref } from 'vue'
 
 const scrolled = ref(false)
 
-const onScroll = (e: any) => {
-	scrolled.value = e.target.scrollTop > 20
+const onScroll = (e: UIEvent) => {
+	const target = e.target as HTMLDivElement
+	scrolled.value = target.scrollTop > 20
 }
 </script>
 

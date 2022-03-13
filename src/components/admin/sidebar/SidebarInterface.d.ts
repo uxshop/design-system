@@ -1,10 +1,10 @@
-declare namespace SidebarInterface {
-	interface Item {
+export namespace SidebarInterface {
+	export interface Item {
 		section: string
 		name: string
 		permissions: string
 		to?: string
-		nodes?: Item[]
+		nodes?: SidebarInterface.Item[]
 		spacer?: boolean
 		last?: boolean
 		disabled?: boolean

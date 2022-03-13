@@ -28,7 +28,7 @@ if (props.width) {
 		<thead v-if="!hideHeader">
 			<tr>
 				<th v-for="c in cols" :key="c">
-					<ui-skeleton />
+					<Skeleton />
 				</th>
 			</tr>
 		</thead>

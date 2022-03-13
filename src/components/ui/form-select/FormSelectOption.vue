@@ -2,7 +2,7 @@
 import { isObject } from 'lodash'
 
 defineProps<{
-	value: any
+	value: string | object
 }>()
 
 const stringifyValue = (val: string | object) => {

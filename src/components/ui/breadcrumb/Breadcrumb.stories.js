@@ -1,4 +1,4 @@
-import Breadcrumb from './Breadcrumb.vue'
+import Breadcrumb from './UiBreadcrumb.vue'
 import BreadcrumbItem from './BreadcrumbItem.vue'
 import vueRouter from 'storybook-vue3-router'
 

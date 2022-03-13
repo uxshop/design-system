@@ -4,8 +4,8 @@ import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 
 const props = defineProps<{
-	modelValue: any
-	translate: any
+	modelValue: string
+	translate: Record<string, Record<string, string>>
 }>()
 
 const emit = defineEmits(['update:modelValue'])
@@ -36,6 +36,7 @@ const removeErrors = () => {
 
 watchEffect(() => {
 	const newVal = props.modelValue
+	// eslint-disable-next-line no-undef
 	const items: NodeListOf<HTMLElement> | undefined = document.querySelectorAll("[class*='form-error-']")
 
 	each(items, (item: HTMLElement) => {

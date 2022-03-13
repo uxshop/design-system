@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
-import _find from 'lodash/find'
 
 interface OwnerInterface {
 	email?: string

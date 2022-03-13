@@ -6,10 +6,10 @@ import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
 import ButtonAction from '../button-action/ButtonAction.vue'
 
 interface Props {
-	modelValue: any
+	modelValue: { id?: number; active?: boolean; name?: string }
 	resource: object
 	canDelete?: boolean
-	delete?(val: string): Promise<void>
+	delete?(val: number): Promise<void>
 }
 
 const emit = defineEmits(['delete', 'active'])
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const onDelete = async () => {
-	if (props.resource && props.delete) {
+	if (props.resource && props.delete && props.modelValue.id) {
 		await props.delete(props.modelValue.id)
 	}
 	emit('delete', { id: props.modelValue.id })
@@ -44,7 +44,7 @@ const changeActive = () => {
 					v-if="canDelete"
 					v-show="modelValue.id"
 					type="delete"
-					:deleteName="modelValue.name"
+					:delete-name="modelValue.name"
 					@delete="onDelete" />
 			</Col>
 		</Row>

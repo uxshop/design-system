@@ -1,4 +1,4 @@
-import Pagination from './Pagination.vue'
+import Pagination from './UiPagination.vue'
 import PaginationItem from './PaginationItem.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export

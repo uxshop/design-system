@@ -3,13 +3,13 @@ import { getCurrentInstance, onMounted, onUnmounted } from 'vue'
 import './redactor/redactor'
 
 interface Props {
-	modelValue: any
+	modelValue: string
 	toolbar?: object
 	name?: string
 	placeholder?: string
 	label?: string
 	height?: string | number
-	config?: any
+	config?: Record<string, string>
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:modelValue', 'update'])
 
-let redactor: any
+let redactor: { editor: { focus(): void } } | null
 const uid = `ui-form-richtext-${getCurrentInstance()?.uid}`
 const config = Object.assign(
 	{
@@ -35,7 +35,7 @@ const config = Object.assign(
 		minHeight: '120px',
 		multipleUpload: false,
 		callbacks: {
-			changed: (html: any) => {
+			changed: (html: string) => {
 				emit('update:modelValue', html)
 				return html
 			}
@@ -64,7 +64,9 @@ const config = Object.assign(
 )
 
 const focus = () => {
-	redactor.editor.focus()
+	if (redactor) {
+		redactor.editor.focus()
+	}
 }
 
 onMounted(() => {

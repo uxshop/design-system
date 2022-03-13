@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue'
+import type { SidebarInterface } from './SidebarInterface'
 
 defineProps<{
 	menus: Record<string, SidebarInterface.Item>

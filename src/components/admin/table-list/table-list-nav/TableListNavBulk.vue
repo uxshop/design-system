@@ -5,7 +5,7 @@ import dialog from '../../../ui/dialog/index'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
 import { each } from 'lodash'
 import IconButton from '../../../ui/icon-button/IconButton.vue'
-import type TableListConfigInterface from '../TableListConfigInterface'
+import type TableListConfigInterface from '../types/TableListConfigInterface'
 
 const emit = defineEmits<{
 	(event: 'refresh'): void

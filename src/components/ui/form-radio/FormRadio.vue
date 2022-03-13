@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { getCurrentInstance } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 
 interface Props {
-	modelValue?: any
-	value?: any
+	modelValue?: string | boolean
+	value?: string | boolean
 	label?: string
 	name?: string
 	required?: boolean
@@ -11,15 +11,17 @@ interface Props {
 	tabindex?: string | number
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
 	value: true
 })
 
-const uid = `ui-form-radio-${getCurrentInstance()?.uid}`
-
 const emit = defineEmits(['update:modelValue'])
+const uid = `ui-form-radio-${getCurrentInstance()?.uid}`
+const model = computed(() => {
+	return props.modelValue
+})
 
-const update = (val: any) => {
+const update = (val: string | boolean) => {
 	emit('update:modelValue', val)
 }
 </script>
@@ -34,7 +36,7 @@ const update = (val: any) => {
 				:tabindex="tabindex"
 				:required="required"
 				:name="name"
-				v-model="modelValue"
+				v-model="model"
 				@update:modelValue="update" />
 			<div class="ui-form-radio-text">
 				<slot />

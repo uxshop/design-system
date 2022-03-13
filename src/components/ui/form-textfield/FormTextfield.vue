@@ -16,7 +16,7 @@ interface Props {
 	float?: boolean
 	invalidFeedback?: string
 	//
-	modelValue: any
+	modelValue: string
 	label?: string
 	id?: string
 	placeholder?: string
@@ -54,8 +54,9 @@ const emit = defineEmits<{
 const classList = ref<string[]>([])
 const rawValue = ref()
 
-const update = (evt: any) => {
-	let val = evt.target?.value
+const update = (evt: Event): void => {
+	const target = evt.target as HTMLInputElement
+	let val = target.value
 	if (props.mask && props.raw) {
 		val = rawValue.value
 	}

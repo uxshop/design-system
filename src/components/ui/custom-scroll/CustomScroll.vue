@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import { getCurrentInstance, onMounted, shallowRef } from 'vue'
+import { getCurrentInstance, onMounted } from 'vue'
 
 const props = defineProps<{
 	settings?: PerfectScrollbar.Options
@@ -27,7 +27,7 @@ const config: PerfectScrollbar.Options = {
 }
 
 onMounted(() => {
-	const ps = new PerfectScrollbar(`#${uid}`, config)
+	new PerfectScrollbar(`#${uid}`, config)
 })
 </script>
 

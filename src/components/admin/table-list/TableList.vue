@@ -4,17 +4,18 @@ import TableListNav from './table-list-nav/TableListNav.vue'
 import TableListTable from './TableListTable.vue'
 import { useRoute } from 'vue-router'
 import { onMounted, watch, ref, useSlots } from 'vue'
-import { union, clone, omit, map } from 'lodash'
+import { union, clone, omit } from 'lodash'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorageService from '../../../services/LocalStorageService'
 import TableListEmptySearch from './TableListEmptySearch.vue'
 import TableListEmptyMessage from './TableListEmptyMessage.vue'
-import type TableListConfigInterface from './TableListConfigInterface'
+import type TableListConfigInterface from './types/TableListConfigInterface'
 import TableListNavBulk from './table-list-nav/TableListNavBulk.vue'
 import TableListNavRefresh from './table-list-nav/TableListNavRefresh.vue'
 import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
 import TableListNavPagination from './table-list-nav/TableListNavPagination.vue'
 import TableListNavFilter from './table-list-nav/TableListNavFilter.vue'
+import type { ApiData } from './types/ResourceServiceInterface'
 
 const props = defineProps<{
 	config: TableListConfigInterface
@@ -22,17 +23,17 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-	(event: 'clickRow', i: Record<string, any>): void
+	(event: 'clickRow', i: Record<string, string>): void
 }>()
 
-const rows = ref<Record<string, any>[]>([])
+const rows = ref<ApiData[]>([])
 const scrollLeft = ref(false)
 const selected = ref<number[]>([])
 const firstGet = ref(false)
 const noData = ref(false)
 const omitFilters = ref({})
 const queryParams = ref<any>({})
-const route: Record<string, any> = useRoute()
+const route: Record<string, string> = useRoute()
 const slots = useSlots()
 const term = ref()
 const loading = ref(false)
@@ -56,8 +57,8 @@ const removeFilter = (key: string) => {
 	queryParams.value.selectedView = 'all'
 }
 
-const setUrlParams = (query: Record<string, any>) => HistoryReplaceState(query, ['_', 'limit'])
-const setQueryParams = (params: Record<string, any>) => {
+const setUrlParams = (query: Record<string, string>) => HistoryReplaceState(query, ['_', 'limit'])
+const setQueryParams = (params: Record<string, string>) => {
 	queryParams.value = Object.assign({}, queryParams.value, params)
 }
 const resetQueryParams = (params = {}) => {
@@ -91,8 +92,8 @@ const init = async () => {
 const checkAll = (val: boolean) => {
 	if (val && rows.value) {
 		const data: number[] = []
-		rows.value.forEach((item: Record<string, any>) => {
-			data.push(item.id)
+		rows.value.forEach((item: Record<string, string>) => {
+			data.push(Number(item.id))
 		})
 		selected.value = data
 	} else {
@@ -100,7 +101,7 @@ const checkAll = (val: boolean) => {
 	}
 }
 
-const deleteOne = async (item: Record<string, any>) => {
+const deleteOne = async (item: Record<string, string>) => {
 	if (props.config.remove) {
 		await props.config.remove(item)
 	} else {
@@ -110,11 +111,11 @@ const deleteOne = async (item: Record<string, any>) => {
 	init()
 }
 
-const activeOne = (item: Record<string, any>, active: boolean) => {
+const activeOne = (item: Record<string, undefined>, active: boolean) => {
 	return props.config.service.update(item.id, { active: active })
 }
 
-const onGet = (data: Array<Record<string, any>>) => {
+const onGet = (data: ApiData[]) => {
 	firstGet.value = true
 	rows.value = data
 
@@ -123,9 +124,12 @@ const onGet = (data: Array<Record<string, any>>) => {
 	}
 }
 
-const clickRow = (item: any) => emit('clickRow', item)
-const onScrollHorizontal = (e: any) => (scrollLeft.value = e.target.scrollLeft > 10)
-const unshiftItem = (item: any) => {
+const clickRow = (item: Record<string, string>) => emit('clickRow', item)
+const onScrollHorizontal = (e: UIEvent) => {
+	const target = e.target as HTMLDivElement
+	return (scrollLeft.value = target.scrollLeft > 10)
+}
+const unshiftItem = (item: Record<string, string>) => {
 	if (rows.value) {
 		rows.value.unshift(item)
 	}

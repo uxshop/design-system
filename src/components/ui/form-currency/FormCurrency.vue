@@ -33,7 +33,7 @@ interface Props {
 	required?: boolean
 	readonly?: boolean
 	pill?: boolean
-	options?: any
+	options?: Record<string, unknown>
 }
 
 const props = defineProps<Props>()

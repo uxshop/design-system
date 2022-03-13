@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { keymap } from '@codemirror/view'
+import { keymap, ViewUpdate } from '@codemirror/view'
 import { EditorView, basicSetup } from '@codemirror/basic-setup'
-import { EditorState, Compartment } from '@codemirror/state'
+import { EditorState, Compartment, Text } from '@codemirror/state'
 import { defaultHighlightStyle } from '@codemirror/highlight'
 import { javascript } from '@codemirror/lang-javascript'
 import { htmlLanguage, html } from '@codemirror/lang-html'
@@ -35,10 +35,12 @@ const noUpdate = shallowRef()
 
 onMounted(() => {
 	const el = document.querySelector('#editor') as Element
-	const updateListenerExtension = EditorView.updateListener.of((update: any) => {
+	const updateListenerExtension = EditorView.updateListener.of((update: ViewUpdate) => {
 		if (update.docChanged && !noUpdate.value) {
 			stopWatch()
-			const value = update.state.doc.text.join('\n')
+			const doc = update.state.doc as Text
+			const docFinal = Array(doc)
+			const value = docFinal.join('\n')
 			emit('update', value)
 		}
 

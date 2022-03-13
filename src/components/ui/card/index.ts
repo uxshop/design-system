@@ -4,7 +4,7 @@ import CardItem from './CardItem.vue'
 import CardTitle from './CardTitle.vue'
 
 export default {
-	install(app: ComponentOptions, { prefix }: any) {
+	install(app: ComponentOptions, { prefix }: { prefix: string }) {
 		app.component(`${prefix}Card`, Card)
 		app.component(`${prefix}CardItem`, CardItem)
 		app.component(`${prefix}CardTitle`, CardTitle)

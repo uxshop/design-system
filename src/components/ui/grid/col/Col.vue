@@ -9,7 +9,7 @@ const props = defineProps<{
 	auto?: boolean
 }>()
 
-const classList = ref<any[]>(['ui-col'])
+const classList = ref<string[]>(['ui-col'])
 
 if (props.cols == 'auto' || props.auto) {
 	classList.value.push('ui-col-auto')
@@ -18,11 +18,11 @@ if (props.cols == 'auto' || props.auto) {
 }
 
 if (props.sm) {
-	classList.value.push([`-sm-${props.sm}`])
+	classList.value.push(`-sm-${props.sm}`)
 }
 
 if (props.md) {
-	classList.value.push([`-md-${props.md}`])
+	classList.value.push(`-md-${props.md}`)
 }
 
 if (props.offset) {

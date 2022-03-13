@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import tooltip from '../../../directives/tooltip'
 import Icon from '../../ui/icon/Icon.vue'
 
 defineProps<{

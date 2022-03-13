@@ -1,5 +1,4 @@
 import PageHelperVideo from './PageHelperVideo.vue'
-import vueRouter from 'storybook-vue3-router'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {

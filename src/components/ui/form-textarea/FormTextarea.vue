@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
-interface Props extends FormWrapperInterface {
+interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
@@ -14,7 +14,7 @@ interface Props extends FormWrapperInterface {
 	float?: boolean
 	invalidFeedback?: string
 	//
-	modelValue: any
+	modelValue: string
 	rows?: string | number
 	label?: string
 	placeholder?: string
@@ -54,9 +54,10 @@ if (props.pill) {
 	classList.value.push('-pill')
 }
 
-const update = (evt: any) => {
-	emit('update:modelValue', evt.target.value)
-	emit('update', evt.target.value)
+const update = (evt: Event) => {
+	const target = evt.target as HTMLTextAreaElement
+	emit('update:modelValue', target.value)
+	emit('update', target.value)
 }
 </script>
 

@@ -27,6 +27,7 @@ const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`)
 
 onMounted(() => {
 	nextTick(() => {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		const input: HTMLElement[] = elementRef.value?.querySelectorAll('input, textarea')
 
