@@ -4,7 +4,7 @@ import Row from '../../ui/grid/row/Row.vue'
 import CardAnnotation from '../card-annotation/CardAnnotation.vue'
 
 defineProps<{
-	title: string
+	title?: string
 }>()
 </script>
 

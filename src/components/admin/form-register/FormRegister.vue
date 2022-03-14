@@ -4,19 +4,17 @@ import FormValidation from '../../ui/form-validation/FormValidation.vue'
 import Savebar from '../savebar/Savebar.vue'
 
 const props = defineProps<{
-	resource: { save(): void }
-	validate: object
-	editing: boolean
+	resource?: { save(): Promise<void> }
+	validate?: Record<string, Record<string, string>>
+	editing?: boolean
 }>()
 
 const sending = ref()
-
-const formError = ref()
-
+const formError = ref<Record<string, string> | null>(null)
 const buttonSubmitRef = ref()
 
 const onSubmit = async () => {
-	if (!props.editing) {
+	if (!props.editing || !props.resource) {
 		return
 	}
 
@@ -26,7 +24,7 @@ const onSubmit = async () => {
 		try {
 			await props.resource.save()
 		} catch (error) {
-			formError.value = error
+			formError.value = error as Record<string, string>
 		}
 
 		setTimeout(() => {

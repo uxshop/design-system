@@ -3,12 +3,11 @@ import { each } from 'lodash'
 import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 
-const props = defineProps<{
-	modelValue: string
-	translate: Record<string, Record<string, string>>
-}>()
-
 const emit = defineEmits(['update:modelValue'])
+const props = defineProps<{
+	modelValue: Record<string, string> | null
+	translate?: Record<string, Record<string, string>>
+}>()
 
 const trans = (val: string) => {
 	if (!props.translate) {
