@@ -15,6 +15,7 @@ import RowExclude from './components/admin/row-exclude/RowExclude.vue'
 import CardActive from './components/admin/card-active/CardActive.vue'
 import CardInfoGroup from './components/admin/card-info-group/CardInfoGroup.vue'
 import Codemirror from './components/admin/codemirror/Codemirror.vue'
+import Savebar from './components/admin/savebar/Savebar.vue'
 // import Userbar from './components/admin/userbar/Userbar.vue'
 // import Seo from './components/admin/seo/Seo.vue'
 
@@ -37,6 +38,7 @@ export default {
 		app.component(`${prefix}CardActive`, CardActive)
 		app.component(`${prefix}CardInfoGroup`, CardInfoGroup)
 		app.component(`${prefix}Codemirror`, Codemirror)
+		app.component(`${prefix}Savebar`, Savebar)
 		// app.component(`${prefix}Userbar`, Userbar)
 		// app.component(`${prefix}Seo`, Seo)
 	}

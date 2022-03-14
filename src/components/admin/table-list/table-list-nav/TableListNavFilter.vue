@@ -6,7 +6,7 @@ import each from 'lodash/each'
 import TableListNavFilterSidebar from './TableListNavFilterSidebar.vue'
 
 defineProps<{
-	filters: Record<string, any> | undefined
+	filters?: Record<string, string> | null
 }>()
 const emit = defineEmits(['resetQueryParams'])
 

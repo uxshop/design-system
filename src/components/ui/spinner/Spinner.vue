@@ -48,12 +48,11 @@ style.borderWidth = `${props.border}px`
 	border-right-color: transparent;
 	border-radius: 50%;
 	-webkit-animation: spinnerBorderer 0.75s linear infinite;
-	animation: spinnerBordere 0.75s linear infinite;
-
-	@keyframes spinnerBorderer {
-		to {
-			transform: rotate(360deg);
-		}
+	animation: spinnerBorderer 0.75s linear infinite;
+}
+@keyframes spinnerBorderer {
+	to {
+		transform: rotate(360deg);
 	}
 }
 </style>

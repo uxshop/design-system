@@ -5,6 +5,7 @@ interface ProvideRegisterInterface {
 	editing: boolean
 	discard: () => void
 }
+
 const register = inject('register') as ProvideRegisterInterface
 
 const show = computed(() => {

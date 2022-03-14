@@ -3,6 +3,8 @@ import { isObject } from 'lodash-es'
 import { ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
+type ModelValue = string | object | undefined | null | number
+
 interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
@@ -15,8 +17,8 @@ interface Props {
 	float?: boolean
 	invalidFeedback?: string
 	//
-	modelValue: string
-	value?: string | undefined
+	modelValue?: ModelValue
+	value?: ModelValue
 	placeholder?: string
 	label?: string
 	error?: string
@@ -52,7 +54,7 @@ const parseValue = (val: string) => {
 	return val
 }
 
-const stringifyValue = (val: string | undefined) => {
+const stringifyValue = (val: ModelValue) => {
 	if (isObject(val)) {
 		return JSON.stringify(val)
 	}

@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { computed, inject, ref } from 'vue'
+import { computed, inject } from 'vue'
 import Logo from '../logo/Logo.vue'
 import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
-import Breadcrumb from '../../ui/breadcrumb/Breadcrumb.vue'
+import Breadcrumb from '../../ui/breadcrumb/UiBreadcrumb.vue'
 import BreadcrumbItem from '../../ui/breadcrumb/BreadcrumbItem.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
-import DropdownItem from '../../ui/dropdown/DropdownItem.vue'
-import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
-import DropdownDivider from '../../ui/dropdown/DropdownDivider.vue'
 import Icon from '../../ui/icon/Icon.vue'
 import { initials as filterInitials } from '../../../filters'
 
@@ -20,20 +17,8 @@ const props = defineProps<{
 	user: { name: string; image: string | any }
 }>()
 
-const emit = defineEmits(['toggleMenu'])
-
-const menu = inject<any>('menu')
-
-const onDropDrownItem = (item: any) => {
-	switch (item.type) {
-		case 'divider':
-			return 'ui-dropdown-divider'
-		case 'link':
-			return 'ui-dropdown-item'
-		case 'button':
-			return 'ui-dropdown-item-button'
-	}
-}
+const emit = defineEmits(['toggleMenu', 'toggleNotification'])
+const menu = inject<{ toggle(): void }>('menu')
 
 const initials = computed(() => {
 	return filterInitials(props.user.name)
@@ -41,83 +26,13 @@ const initials = computed(() => {
 
 const onToggleMenu = () => {
 	emit('toggleMenu')
-	menu.toggle()
+
+	if (menu) menu.toggle()
 }
-// data() {
-// 	return {
-// 		breadcrumb: [],
-// 		notifications: false
-// 	}
-// }
-// computed: {
-// 	...mapGetters(['user', 'shop']),
 
-// 	backlink() {
-// 		return this.$store.state.metaBacklink
-// 	},
-
-// 	dropdownComponent() {
-// 		if (window.partner) {
-// 			return 'ThePartnerSidebarMenu'
-// 		}
-// 		if (window.erp) {
-// 			return 'TheErpSidebarMenu'
-// 		}
-
-// 		return 'TheDefaultSidebarMenu'
-// 	}
-// },
-// created() {
-// 	this.$model
-// 		.message_viewed()
-// 		.get()
-// 		.then(res => {
-// 			if (res) {
-// 				if (res.viewed.includes(this.user.id.toString())) {
-// 					this.notifications = false
-// 				} else {
-// 					this.notifications = true
-// 				}
-// 			}
-// 		})
-// },
-// methods: {
-// 	onNotification() {
-// 		this.notifications = false
-// 		this.$refs.modal.open().then()
-// 	},
-// 	onAffiliate() {
-// 		this.$refs.modalAffiliate.open().then()
-// 	},
-
-// 	onLogout() {
-// 		this.$store.dispatch('logout')
-// 	}
-// },
-// watch: {
-// 	$route: {
-// 		immediate: true,
-// 		handler: function (to) {
-// 			this.$store.dispatch('metaBacklink', null)
-// 			this.breadcrumb = to.meta.breadcrumb
-
-// 			if (to.meta.title) {
-// 				this.$store.dispatch('metaTitle', to.meta.title)
-// 			}
-
-// 			if (to.meta.breadcrumb) {
-// 				const backlink = to.meta.breadcrumb[to.meta.breadcrumb.length - 1]
-
-// 				if (backlink.to) {
-// 					this.$store.dispatch('metaBacklink', {
-// 						to: backlink.to,
-// 						name: backlink.name
-// 					})
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+const onNotification = () => {
+	emit('toggleNotification')
+}
 </script>
 
 <template>
@@ -186,5 +101,5 @@ const onToggleMenu = () => {
 </template>
 
 <style lang="scss">
-@import './userbar.scss';
+@import './Userbar.scss';
 </style>

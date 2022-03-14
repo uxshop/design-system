@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import FormValidation from '../../ui/form-validation/FormValidation.vue'
 import Savebar from '../savebar/Savebar.vue'
 
+const emit = defineEmits(['save'])
 const props = defineProps<{
 	resource?: { save(): Promise<void> }
 	validate?: Record<string, Record<string, string>>
@@ -22,7 +23,7 @@ const onSubmit = async () => {
 		sending.value = true
 
 		try {
-			await props.resource.save()
+			emit('save')
 		} catch (error) {
 			formError.value = error as Record<string, string>
 		}
@@ -42,6 +43,7 @@ const onSubmit = async () => {
 		<button
 			ref="buttonSubmitRef"
 			tabindex="-1"
+			type="submit"
 			style="opacity: 0; width: 0; height: 0; border: none; padding: 0; position: absolute" />
 	</form>
 </template>

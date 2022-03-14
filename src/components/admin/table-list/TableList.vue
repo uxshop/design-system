@@ -32,14 +32,14 @@ const selected = ref<number[]>([])
 const firstGet = ref(false)
 const noData = ref(false)
 const omitFilters = ref({})
-const queryParams = ref<any>({})
-const route: Record<string, string> = useRoute()
+const queryParams = ref<Record<string, string>>({})
+const route = useRoute()
 const slots = useSlots()
 const term = ref()
 const loading = ref(false)
 const meta = ref({})
 const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false }, props.config)
-const storageNameFilters = `adm_table_filters_${route.name}`
+const storageNameFilters = `adm_table_filters_${String(route.name)}`
 const queryDefault = Object.assign(
 	{
 		sort: '-id',
