@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { each } from 'lodash'
+import { each } from 'lodash-es'
 import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 

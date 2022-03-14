@@ -1,4 +1,4 @@
-import { omit } from 'lodash'
+import { omit } from 'lodash-es'
 
 export default (query: Record<string, string>, omitter: string[] = []) => {
 	const newQuery: Record<string, string> = omit(query, omitter)

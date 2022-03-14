@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isObject } from 'lodash'
+import { isObject } from 'lodash-es'
 import { ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 

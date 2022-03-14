@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
 import { ref } from 'vue'
-import { indexOf } from 'lodash'
+import { indexOf } from 'lodash-es'
 
 interface Rows {
 	id: number

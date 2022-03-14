@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { each, isObject } from 'lodash'
+import { each, isObject } from 'lodash-es'
 import { slugify } from '../../../filters'
 import CustomScroll from '../../ui/custom-scroll/CustomScroll.vue'
 

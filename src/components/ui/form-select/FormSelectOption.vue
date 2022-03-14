@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isObject } from 'lodash'
+import { isObject } from 'lodash-es'
 
 defineProps<{
 	value: string | object

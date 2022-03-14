@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isFunction } from 'lodash'
+import { isFunction } from 'lodash-es'
 import { computed, inject } from 'vue'
 interface ProvideRegisterInterface {
 	editing: boolean

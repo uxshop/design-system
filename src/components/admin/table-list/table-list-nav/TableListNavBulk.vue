@@ -3,7 +3,7 @@ import { onMounted, ref, watchEffect } from 'vue'
 import { zerofill } from '../../../../filters'
 import dialog from '../../../ui/dialog/index'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
-import { each } from 'lodash'
+import { each } from 'lodash-es'
 import IconButton from '../../../ui/icon-button/IconButton.vue'
 import type TableListConfigInterface from '../types/TableListConfigInterface'
 
