@@ -6,6 +6,8 @@ import '@simonwep/pickr/dist/themes/nano.min.css' // 'nano' theme
 import * as Pickr from '@simonwep/pickr/dist/pickr.es5.min'
 import type PickerInterface from '@simonwep/pickr'
 
+console.log(Pickr)
+
 const props = defineProps<{
 	modelValue?: string | null
 	switch?: boolean
