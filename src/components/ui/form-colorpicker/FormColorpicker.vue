@@ -3,11 +3,11 @@ import { getCurrentInstance, onMounted, shallowRef, watchEffect } from 'vue'
 import '@simonwep/pickr/dist/themes/classic.min.css' // 'classic' theme
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import '@simonwep/pickr/dist/themes/nano.min.css' // 'nano' theme
-import * as Pickr from '@simonwep/pickr'
+import Pickr from '@simonwep/pickr'
 import type PickerInterface from '@simonwep/pickr'
 
 const props = defineProps<{
-	modelValue: string | undefined
+	modelValue?: string | null
 	switch?: boolean
 	label?: string
 	required?: boolean
@@ -34,9 +34,8 @@ interface PickrCustom extends PickerInterface {
 
 const createPickrInstance = (options: PickerInterface.Options) => {
 	const noDefault = !options.default
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	const instance: PickrCustom = new Pickr({
+
+	const instance: PickrCustom = Pickr.create({
 		...options,
 		...(noDefault && { default: '#000000' })
 	})
@@ -62,7 +61,7 @@ onMounted(() => {
 	pickr.value = createPickrInstance({
 		el: `#${uid}`,
 		theme: 'monolith',
-		default: props.modelValue,
+		default: props.modelValue || undefined,
 		defaultRepresentation: 'HEXA',
 		// container: 'body',
 		// lockOpacity: true,
