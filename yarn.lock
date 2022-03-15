@@ -1798,10 +1798,9 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@simonwep/pickr@^1.8.2":
+"@simonwep/pickr@https://github.com/DoocaCommerce/pickr":
   version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@simonwep/pickr/-/pickr-1.8.2.tgz#96dc86675940d7cad63d69c22083dd1cbb9797cb"
-  integrity sha512-/l5w8BIkrpP6n1xsetx9MWPWlU6OblN5YgZZphxan0Tq4BByTCETL6lyIeY8lagalS2Nbt4F2W034KHLIiunKA==
+  resolved "https://github.com/DoocaCommerce/pickr#92b7ab4339945b2d1f78b73ce0ba645391ba8f3c"
   dependencies:
     core-js "^3.15.1"
     nanopop "^2.1.0"

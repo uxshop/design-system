@@ -3,10 +3,8 @@ import { getCurrentInstance, onMounted, shallowRef, watchEffect } from 'vue'
 import '@simonwep/pickr/dist/themes/classic.min.css' // 'classic' theme
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import '@simonwep/pickr/dist/themes/nano.min.css' // 'nano' theme
-import Pickr from '@simonwep/pickr'
+import Pickr from '@simonwep/pickr/src/js/pickr.js'
 import type PickerInterface from '@simonwep/pickr'
-
-console.log(Pickr)
 
 const props = defineProps<{
 	modelValue?: string | null

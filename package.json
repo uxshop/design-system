@@ -1,6 +1,6 @@
 {
 	"name": "design-system",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"main": "src/main.ts",
 	"scripts": {
 		"dev": "vite",
@@ -26,7 +26,7 @@
 		"@codemirror/language": "^0.19.8",
 		"@codemirror/state": "^0.19.9",
 		"@codemirror/view": "^0.19.47",
-		"@simonwep/pickr": "^1.8.2",
+		"@simonwep/pickr": "https://github.com/DoocaCommerce/pickr",
 		"apexcharts": "^3.33.2",
 		"litepicker": "^2.0.12",
 		"lodash-es": "^4.17.21",
