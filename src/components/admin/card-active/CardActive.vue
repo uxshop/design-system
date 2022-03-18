@@ -5,8 +5,14 @@ import Card from '../../ui/card/Card.vue'
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
 import ButtonAction from '../button-action/ButtonAction.vue'
 
+interface ModelInterface {
+	id?: number
+	active?: boolean
+	name?: string
+}
+
 interface Props {
-	modelValue: { id?: number; active?: boolean; name?: string }
+	modelValue: ModelInterface
 	resource: object
 	canDelete?: boolean
 	delete?(val: number): Promise<void>

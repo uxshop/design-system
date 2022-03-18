@@ -29,7 +29,7 @@ onMounted(() => {
 	nextTick(() => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		const input: HTMLElement[] = elementRef.value?.querySelectorAll('input, textarea')
+		const input: HTMLElement[] = elementRef.value?.querySelectorAll('input, textarea, select')
 
 		if (input && input[0]) {
 			input[0].setAttribute('id', uid.value)
