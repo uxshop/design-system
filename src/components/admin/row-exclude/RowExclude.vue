@@ -46,8 +46,6 @@ const updateExcludes = () => {
 }
 
 const updateIncludes = () => {
-	console.log('updateIncludes')
-
 	if (props.rows) {
 		includes.value = []
 		props.rows.map((item: IRow) => {
