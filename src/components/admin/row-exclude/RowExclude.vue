@@ -60,7 +60,6 @@ watch([props.rows, props.modelValue], () => updateIncludes(), { immediate: true 
 </script>
 
 <template>
-	includes: {{ includes }}
 	<div class="selectable-list">
 		<div class="selectable-list-item" v-for="item in rows" :key="item.id" @click.stop="onClickRowExclude(item)">
 			<span class="selectable-list-item-text">{{ item.name }}</span>
