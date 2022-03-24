@@ -337,6 +337,9 @@ label {
 		.btn-collapse {
 			min-height: 0;
 			height: 20px;
+		}
+
+		.ui-button.-link {
 			margin-right: calc(var(--input-padding-x) * -1);
 		}
 

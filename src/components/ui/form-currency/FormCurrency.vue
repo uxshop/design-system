@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useCurrencyInput, type CurrencyInputOptions } from 'vue-currency-input'
+// import { useCurrencyInput, type CurrencyInputOptions } from 'vue-currency-input'
+// import useCurrencyInput from 'vue-currency-input/dist/index.esm.js'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
 interface Props {
@@ -58,8 +59,8 @@ const settings: CurrencyInputOptions = {
 }
 const { inputRef } = useCurrencyInput(settings)
 
-const number = Number('1200.00')
-console.log(new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number))
+// const number = Number('1200.00')
+// console.log(new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number))
 
 if (props.pill) {
 	classList.value.push('-pill')

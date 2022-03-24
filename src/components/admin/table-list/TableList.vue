@@ -9,16 +9,18 @@ import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorageService from '../../../services/LocalStorageService'
 import TableListEmptySearch from './TableListEmptySearch.vue'
 import TableListEmptyMessage from './TableListEmptyMessage.vue'
-import type TableListConfigInterface from './types/TableListConfigInterface'
+import type { ITableListConfig } from './types/ITableListConfig'
 import TableListNavBulk from './table-list-nav/TableListNavBulk.vue'
 import TableListNavRefresh from './table-list-nav/TableListNavRefresh.vue'
 import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
 import TableListNavPagination from './table-list-nav/TableListNavPagination.vue'
 import TableListNavFilter from './table-list-nav/TableListNavFilter.vue'
-import type { ApiData } from './types/ResourceServiceInterface'
+import type { ApiData } from './types/IResourceService'
+
+type TQueryParams = Record<string, string | number>
 
 const props = defineProps<{
-	config: TableListConfigInterface
+	config: ITableListConfig
 	filters?: object
 }>()
 
@@ -32,7 +34,7 @@ const selected = ref<number[]>([])
 const firstGet = ref(false)
 const noData = ref(false)
 const omitFilters = ref({})
-const queryParams = ref<Record<string, string>>({})
+const queryParams = ref<TQueryParams>({})
 const route = useRoute()
 const slots = useSlots()
 const term = ref()
@@ -57,8 +59,8 @@ const removeFilter = (key: string) => {
 	queryParams.value.selectedView = 'all'
 }
 
-const setUrlParams = (query: Record<string, string>) => HistoryReplaceState(query, ['_', 'limit'])
-const setQueryParams = (params: Record<string, string>) => {
+const setUrlParams = (query: TQueryParams) => HistoryReplaceState(query, ['_', 'limit'])
+const setQueryParams = (params: TQueryParams) => {
 	queryParams.value = Object.assign({}, queryParams.value, params)
 }
 const resetQueryParams = (params = {}) => {
@@ -69,6 +71,7 @@ const resetQueryParams = (params = {}) => {
 const init = async () => {
 	// store.dispatch('noLoader', firstGet.value)
 	const params = queryParams.value
+	selected.value = []
 	loading.value = true
 	omitFilters.value = omit(params, omitFiltersValues)
 	setUrlParams(params)
@@ -92,7 +95,7 @@ const init = async () => {
 const checkAll = (val: boolean) => {
 	if (val && rows.value) {
 		const data: number[] = []
-		rows.value.forEach((item: Record<string, string>) => {
+		rows.value.forEach((item: ApiData) => {
 			data.push(Number(item.id))
 		})
 		selected.value = data
@@ -101,23 +104,22 @@ const checkAll = (val: boolean) => {
 	}
 }
 
-const deleteOne = async (item: Record<string, string>) => {
+const deleteOne = async (item: Record<string, number>) => {
 	if (props.config.remove) {
 		await props.config.remove(item)
 	} else {
-		await props.config.service.delete(item.id)
+		await props.config.service.delete(Number(item.id))
 	}
 
 	init()
 }
 
-const activeOne = (item: Record<string, undefined>, active: boolean) => {
-	return props.config.service.update(item.id, { active: active })
+const activeOne = (item: Record<string, number>, active: boolean) => {
+	return props.config.service.update(Number(item.id), { active: active })
 }
 
 const onGet = (data: ApiData[]) => {
 	firstGet.value = true
-	rows.value = data
 
 	if (props.config.onGet && typeof props.config.onGet === 'function') {
 		props.config.onGet(data)
@@ -154,9 +156,9 @@ onMounted(() => {
 	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
 
 	if (LocalStorageService.getObj(storageNameFilters)) {
-		queryParams.value = LocalStorageService.getObj(storageNameFilters)
+		queryParams.value = LocalStorageService.getObj(storageNameFilters) as TQueryParams
 	} else {
-		queryParams.value = Object.assign(clone(queryDefault), clone(useRoute().query))
+		queryParams.value = Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
 	}
 })
 

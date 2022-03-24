@@ -17,10 +17,6 @@ export default {
 				'white',
 				'danger',
 				'dark',
-				'primary-outline',
-				'danger-outline',
-				'secondary-outline',
-				'success-outline',
 				'link'
 			],
 			control: { type: 'select' }

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, onUnmounted } from 'vue'
+import { getCurrentInstance, onMounted, onUnmounted, watchEffect } from 'vue'
 import './redactor/redactor'
 
 interface Props {
-	modelValue: string
+	modelValue?: string
 	toolbar?: object
 	name?: string
 	placeholder?: string
@@ -12,13 +12,23 @@ interface Props {
 	config?: Record<string, string>
 }
 
+type TRedactor = {
+	editor: {
+		focus(): void
+		source: {
+			setCode(val: any): void
+		}
+	}
+} | null
+
 const props = withDefaults(defineProps<Props>(), {
 	height: 100
 })
 
 const emit = defineEmits(['update:modelValue', 'update'])
 
-let redactor: { editor: { focus(): void } } | null
+let redactor: TRedactor
+let focused = false
 const uid = `ui-form-richtext-${getCurrentInstance()?.uid}`
 const config = Object.assign(
 	{
@@ -35,6 +45,12 @@ const config = Object.assign(
 		minHeight: '120px',
 		multipleUpload: false,
 		callbacks: {
+			focus: function () {
+				focused = true
+			},
+			blur: function () {
+				focused = false
+			},
 			changed: (html: string) => {
 				emit('update:modelValue', html)
 				return html
@@ -74,6 +90,13 @@ onMounted(() => {
 	// @ts-ignore
 	// eslint-disable-next-line no-undef
 	redactor = $R(`#${uid}`, config)
+})
+
+watchEffect(() => {
+	const value = props.modelValue
+	if (redactor && !focused) {
+		redactor.editor.source.setCode(value)
+	}
 })
 
 onUnmounted(() => {

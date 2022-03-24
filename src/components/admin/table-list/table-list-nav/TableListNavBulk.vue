@@ -5,7 +5,7 @@ import dialog from '../../../ui/dialog/index'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
 import { each } from 'lodash-es'
 import IconButton from '../../../ui/icon-button/IconButton.vue'
-import type TableListConfigInterface from '../types/TableListConfigInterface'
+import type { TBulkActions, ITableListConfig } from '../types/ITableListConfig'
 
 const emit = defineEmits<{
 	(event: 'refresh'): void
@@ -19,7 +19,7 @@ const emit = defineEmits<{
 interface Props {
 	rows: any
 	selected: any
-	config: TableListConfigInterface
+	config: ITableListConfig
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,14 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
 	selected: []
 })
 
-const bulkActions = ref<
-	Array<{
-		label: string
-		variant?: string
-		action(a: number[]): void
-	}>
->([])
-
+const bulkActions = ref<TBulkActions>([])
 const indeterminate = ref<boolean>(false)
 const allSelected = ref<boolean>(false)
 const checkbox = ref<boolean>(false)
@@ -52,17 +45,9 @@ const onRemoveDialog = () => {
 	})
 }
 
-const remove = async () => {
-	emit('remove')
-}
-
-const active = async () => {
-	emit('active')
-}
-
-const inactive = async () => {
-	emit('inactive')
-}
+const remove = () => emit('remove')
+const active = () => emit('active')
+const inactive = () => emit('inactive')
 
 watchEffect(() => {
 	if (props.rows.length && props.selected.length == props.rows.length) {

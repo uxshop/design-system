@@ -13,25 +13,24 @@ interface ModelInterface {
 
 interface Props {
 	modelValue: ModelInterface
-	resource: object
-	canDelete?: boolean
-	delete?(val: number): Promise<void>
+	hideDelete?: boolean
+	delete?(id: number): Promise<void>
 }
 
-const emit = defineEmits(['delete', 'active'])
+const emit = defineEmits(['delete', 'active', 'update:modelValue'])
 const props = withDefaults(defineProps<Props>(), {
-	modelValue: () => ({}),
-	canDelete: true
+	modelValue: () => ({})
 })
 
 const onDelete = async () => {
-	if (props.resource && props.delete && props.modelValue.id) {
+	if (props.delete && props.modelValue.id) {
 		await props.delete(props.modelValue.id)
 	}
 	emit('delete', { id: props.modelValue.id })
 }
 
 const changeActive = () => {
+	emit('update:modelValue', { ...props.modelValue, ...{ active: !props.modelValue.active } })
 	emit('active', props.modelValue.active)
 }
 </script>
@@ -40,14 +39,14 @@ const changeActive = () => {
 	<Card class="ui-card-active">
 		<Row alignV="center">
 			<Col>
-				<FormCheckbox :value="modelValue.active" switch @update="changeActive">
+				<FormCheckbox :value="modelValue.active" switch @change="changeActive">
 					<span v-show="modelValue.active">Ativo</span>
 					<span v-show="!modelValue.active">Inativo</span>
 				</FormCheckbox>
 			</Col>
 			<Col auto>
 				<ButtonAction
-					v-if="canDelete"
+					v-if="!hideDelete"
 					v-show="modelValue.id"
 					type="delete"
 					:delete-name="modelValue.name"

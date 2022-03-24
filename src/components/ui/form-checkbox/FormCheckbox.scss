@@ -122,7 +122,7 @@
 			display: inline-block;
 			vertical-align: top;
 			margin-left: 10px;
-			padding-top: 2px;
+			padding-top: 0;
 		}
 
 		@include darkmode {
@@ -172,10 +172,10 @@
 			}
 			&:after {
 				left: 2px;
-				top: 2px;
+				top: calc(4px - var(--input-border-width));
 				border-radius: 50%;
-				width: calc(14px - var(--input-border-width));
-				height: calc(14px - var(--input-border-width));
+				width: calc(13px - var(--input-border-width));
+				height: calc(13px - var(--input-border-width));
 				background: var(--ab, var(--border));
 				transform: translateX(var(--x, 0));
 				transition: transform 0.15s var(--d-t-e), opacity 0.15s;

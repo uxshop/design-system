@@ -4,7 +4,7 @@ import type { SidebarInterface } from './SidebarInterface'
 
 defineProps<{
 	menus: Record<string, SidebarInterface.Item>
-	activeSection: string | null
+	activeSection?: string | null
 	hasPermission(a: SidebarInterface.Item): boolean
 	clickLink(section: string, node: SidebarInterface.Item): void
 }>()

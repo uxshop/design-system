@@ -29,5 +29,5 @@ const onScroll = (e: UIEvent) => {
 </template>
 
 <style lang="scss">
-@import './layout.scss';
+@import './Layout.scss';
 </style>

@@ -12,7 +12,7 @@ const props = defineProps<{
 	noEvents?: boolean
 }>()
 
-const emit = defineEmits(['delete', 'inactive', 'active', 'close', 'click', 'update:active'])
+const emit = defineEmits(['delete', 'inactive', 'active', 'close', 'click', 'update:active', 'toggleActive'])
 const attrs = useAttrs()
 const currentIcon = ref()
 const hasClick = attrs.click
@@ -75,6 +75,7 @@ const onClick = (evt: MouseEvent) => {
 
 	if (props.type == 'active') {
 		emit('update:active', !props.active)
+		emit('toggleActive')
 		if (props.active) {
 			emit('inactive')
 		} else {

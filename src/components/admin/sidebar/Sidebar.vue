@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import SidebarSubmenu from './SidebarSubmenu.vue'
-import { inject, ref, shallowRef } from 'vue'
+import { inject, ref, shallowRef, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { onMounted } from 'vue'
 import Logo from '../logo/Logo.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import MobileDetector from '../../../services/MobileDetectorService'
@@ -21,6 +20,7 @@ interface Props {
 	menuOpen?: boolean
 	menus: Record<string, SidebarInterface.Item>
 	clickLink?(): void
+	currentSection?: string | null
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -31,22 +31,24 @@ const props = withDefaults(defineProps<Props>(), {
 
 const currentMenu = shallowRef()
 const section = shallowRef<string>()
-const activeSection = ref<string | null>(null)
+const activeSection = ref<string | null | undefined>()
 const router = useRouter()
 const route = useRoute()
 const menu = inject('menu') as MenuProviderInterface
 
-onMounted(() => {
-	section.value = String(route.meta.section)
-	if (props.menus) {
-		currentMenu.value = props.menus[section.value]
-		if (currentMenu.value && currentMenu.value.nodes) {
-			activeSection.value = section.value
-		} else {
-			activeSection.value = null
-		}
-	}
-})
+// onMounted(() => {
+// 	section.value = String(route.meta.section)
+// 	if (props.menus) {
+// 		currentMenu.value = props.menus[section.value]
+// 		if (currentMenu.value && currentMenu.value.nodes) {
+// 			activeSection.value = section.value
+// 		} else {
+// 			activeSection.value = null
+// 		}
+
+// 		console.log(activeSection.value, currentMenu.value, section.value, props.menus)
+// 	}
+// })
 
 const hasPermission = (item: SidebarInterface.Item) => {
 	if (props.permissionService.has(item.permissions)) {
@@ -104,6 +106,10 @@ const onClickLink = (sec: string, item: SidebarInterface.Item) => {
 }
 
 const onBack = () => (activeSection.value = null)
+
+watchEffect(() => {
+	activeSection.value = props.currentSection
+})
 </script>
 
 <template>
@@ -133,7 +139,7 @@ const onBack = () => (activeSection.value = null)
 								<div
 									@click="onClickLink(key, item)"
 									:class="{
-										'-active': key == $route.meta.section,
+										'-active': key == currentSection,
 										'-disabled': item.disabled
 									}"
 									class="link">

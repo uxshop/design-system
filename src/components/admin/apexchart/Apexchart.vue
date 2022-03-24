@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ApexCharts from 'apexcharts'
+import apexcharts from 'apexcharts/src/apexcharts.js'
+import type ApexCharts from 'apexcharts'
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
 interface Props {
@@ -59,7 +60,7 @@ watchEffect(() => {
 })
 
 onMounted(() => {
-	chart.value = new ApexCharts(document.querySelector(`#${uid}`), settings.value)
+	chart.value = new apexcharts(document.querySelector(`#${uid}`), settings.value)
 	chart.value.render()
 })
 </script>

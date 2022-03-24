@@ -1,38 +1,38 @@
-$colors: ("primary", "secondary", "danger", "dark");
+$colors: ('primary', 'secondary', 'danger', 'dark');
 
 @each $name in $colors {
-  .text-#{$name} {
-    color: var(--#{$name});
-  }
+	.text-#{$name} {
+		color: var(--#{$name});
+	}
 }
 
 code {
-  color: crimson;
-  background-color: #f1f1f1;
-  padding: 2px;
-  font-size: 105%;
+	color: crimson;
+	background-color: #f1f1f1;
+	padding: 2px;
+	font-size: 105%;
 }
 
 .d-sm-none {
-  @include mobile {
-    display: none;
-  }
+	@include mobile {
+		display: none;
+	}
 }
 
 .d-block {
-  display: block !important;
+	display: block !important;
 }
 
 .d-flex {
-  display: flex !important;
+	display: flex !important;
 }
 
 .d-inline-block {
-  display: inline-block !important;
+	display: inline-block !important;
 }
 
 .align-items-center {
-  align-items: center;
+	align-items: center;
 }
 
 .h1,
@@ -47,181 +47,187 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0;
-  font-weight: var(--font-headings-weight);
-  font-family: var(--headings-font-family);
-  margin-bottom: 15px;
+	margin-top: 0;
+	font-weight: var(--font-headings-weight);
+	font-family: var(--headings-font-family);
+	margin-bottom: 15px;
 }
 
 h1 {
-  font-size: calc(var(--font-size-base) * 1.8);
+	font-size: calc(var(--font-size-base) * 1.8);
 }
 h2 {
-  font-size: calc(var(--font-size-base) * 1.6);
+	font-size: calc(var(--font-size-base) * 1.6);
 }
 h3 {
-  font-size: calc(var(--font-size-base) * 1.5);
+	font-size: calc(var(--font-size-base) * 1.5);
 }
 h4 {
-  font-size: calc(var(--font-size-base) * 1.4);
+	font-size: calc(var(--font-size-base) * 1.4);
 }
 h5 {
-  font-size: calc(var(--font-size-base) * 1.2);
+	font-size: calc(var(--font-size-base) * 1.2);
 }
 h6 {
-  font-size: calc(var(--font-size-base) * 1.1);
+	font-size: calc(var(--font-size-base) * 1.1);
 }
 
 .text-lowercase {
-  text-transform: lowercase !important;
+	text-transform: lowercase !important;
 }
 
 .text-uppercase {
-  text-transform: uppercase !important;
+	text-transform: uppercase !important;
 }
 
 .text-muted {
-  color: var(--text-muted) !important;
+	color: var(--text-muted) !important;
 }
 
 .text-right {
-  text-align: right !important;
+	text-align: right !important;
 }
 
 .text-left {
-  text-align: left !important;
+	text-align: left !important;
 }
 
 .text-link {
-  color: var(--link-color) !important;
+	color: var(--link-color) !important;
 }
 
 .text-primary {
-  color: var(--primary) !important;
+	color: var(--primary) !important;
 }
 
 .text-danger {
-  color: var(--danger) !important;
+	color: var(--danger) !important;
 }
 
 .text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .text-nowrap {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 
 .stretched-link::after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	content: '';
 }
 
 .ml-auto {
-  margin-left: auto !important;
+	margin-left: auto !important;
 }
 
 .mr-auto {
-  margin-right: auto !important;
+	margin-right: auto !important;
 }
 
 hr {
-  border-top: 0.1rem solid #e5eaef;
-  margin-top: 50px;
-  margin-bottom: 50px;
+	border-top: 0.1rem solid #e5eaef;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 @for $i from 0 through 5 {
-  .m-#{$i} {
-    margin: #{$i * 5}px #{$i * 5}px !important;
-  }
+	.m-#{$i} {
+		margin: #{$i * 5}px #{$i * 5}px !important;
+	}
 
-  .mx-#{$i} {
-    margin-left: #{$i * 5}px !important;
-    margin-right: #{$i * 5}px !important;
-  }
+	.mx-#{$i} {
+		margin-left: #{$i * 5}px !important;
+		margin-right: #{$i * 5}px !important;
+	}
 
-  .mt-#{$i} {
-    margin-top: #{$i * 5}px !important;
-  }
+	.mt-#{$i} {
+		margin-top: #{$i * 5}px !important;
+	}
 
-  .ml-#{$i} {
-    margin-left: #{$i * 5}px !important;
-  }
+	.ml-#{$i} {
+		margin-left: #{$i * 5}px !important;
+	}
 
-  .mb-#{$i} {
-    margin-bottom: #{$i * 5}px !important;
-  }
+	.mb-#{$i} {
+		margin-bottom: #{$i * 5}px !important;
+	}
 
-  .mr-#{$i} {
-    margin-right: #{$i * 5}px !important;
-  }
+	.mr-#{$i} {
+		margin-right: #{$i * 5}px !important;
+	}
 
-  .p-#{$i} {
-    padding: #{$i * 5}px !important;
-  }
+	.p-#{$i} {
+		padding: #{$i * 5}px !important;
+	}
 
-  .py-#{$i} {
-    padding-top: #{$i * 5}px !important;
-    padding-bottom: #{$i * 5}px !important;
-  }
+	.py-#{$i} {
+		padding-top: #{$i * 5}px !important;
+		padding-bottom: #{$i * 5}px !important;
+	}
 
-  .px-#{$i} {
-    padding-left: #{$i * 5}px !important;
-    padding-right: #{$i * 5}px !important;
-  }
+	.px-#{$i} {
+		padding-left: #{$i * 5}px !important;
+		padding-right: #{$i * 5}px !important;
+	}
 
-  .pl-#{$i} {
-    padding-left: #{$i * 5}px !important;
-  }
+	.pl-#{$i} {
+		padding-left: #{$i * 5}px !important;
+	}
 
-  .pr-#{$i} {
-    padding-right: #{$i * 5}px !important;
-  }
+	.pr-#{$i} {
+		padding-right: #{$i * 5}px !important;
+	}
 
-  .pt-#{$i} {
-    padding-top: #{$i * 5}px !important;
-  }
+	.pt-#{$i} {
+		padding-top: #{$i * 5}px !important;
+	}
 
-  .pb-#{$i} {
-    padding-top: #{$i * 5}px !important;
-  }
+	.pb-#{$i} {
+		padding-top: #{$i * 5}px !important;
+	}
 }
 
 .w-100 {
-  width: 100%;
+	width: 100%;
 }
 
 .mt-form {
-  margin-top: var(--form-group-margin-bottom) !important;
+	margin-top: var(--form-group-margin-bottom) !important;
 }
 
 .mb-form {
-  margin-bottom: var(--form-group-margin-bottom) !important;
+	margin-bottom: var(--form-group-margin-bottom) !important;
 }
 
 .sticky-top {
-  position: sticky !important;
-  top: 0;
+	position: sticky !important;
+	top: 0;
 }
 
 @for $i from 0 through 5 {
-  .order-#{$i} {
-    order: #{$i} !important;
-  }
+	.order-#{$i} {
+		order: #{$i} !important;
+	}
 }
 
 @for $i from 0 through 3 {
-  @include desktop {
-    .order-#{$i} {
-      order: #{$i} !important;
-    }
-  }
+	@include desktop {
+		.order-#{$i} {
+			order: #{$i} !important;
+		}
+	}
+}
+
+ul,
+ol,
+dl {
+	margin-top: 0;
 }

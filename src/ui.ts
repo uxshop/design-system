@@ -20,7 +20,8 @@ import FormTextfield from './components/ui/form-textfield/FormTextfield.vue'
 import FormTextarea from './components/ui/form-textarea/FormTextarea.vue'
 import FormRadio from './components/ui/form-radio/FormRadio.vue'
 import FormRange from './components/ui/form-range/FormRange.vue'
-// import FormCurrency from './components/ui/form-currency/FormCurrency.vue'
+import FormLabel from './components/ui/form-label/FormLabel.vue'
+import FormCurrency from './components/ui/form-currency/FormCurrency.vue'
 import Divider from './components/ui/divider/Divider.vue'
 import Select from './components/ui/form-autocomplete/FormAutocomplete.vue'
 import Icon from './components/ui/icon/Icon.vue'
@@ -71,8 +72,9 @@ export default {
 		app.component(`${prefix}FormTags`, FormTags)
 		app.component(`${prefix}FormTextarea`, FormTextarea)
 		app.component(`${prefix}FormRadio`, FormRadio)
+		app.component(`${prefix}FormLabel`, FormLabel)
 		app.component(`${prefix}FormRange`, FormRange)
-		// app.component(`${prefix}FormCurrency`, FormCurrency)
+		app.component(`${prefix}FormCurrency`, FormCurrency)
 		app.component(`${prefix}Divider`, Divider)
 		app.component(`${prefix}Select`, Select)
 		app.component(`${prefix}FormSpinbutton`, FormSpinbutton)

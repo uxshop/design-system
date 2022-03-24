@@ -16,6 +16,7 @@ interface Props {
 	spinnerBorder?: number | string
 	type?: string
 	loading?: boolean
+	outline?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,14 +26,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 const classList = ref<string[]>([])
 
-const component = ref('button')
+const componentButton = ref('button')
 
 if (props.to) {
-	component.value = 'router-link'
+	componentButton.value = 'router-link'
 }
 
 if (props.href) {
-	component.value = 'a'
+	componentButton.value = 'a'
 }
 
 if (props.size) {
@@ -54,12 +55,16 @@ if (props.flush) {
 if (props.block) {
 	classList.value.push(`-block`)
 }
+
+if (props.outline) {
+	classList.value.push(`-outline`)
+}
 </script>
 
 <template>
-	<Component
+	<component
 		class="ui-button"
-		:is="component"
+		:is="componentButton"
 		:type="type"
 		:class="[classList, { '-loading': loading }]"
 		:disabled="loading"
@@ -74,7 +79,7 @@ if (props.block) {
 			</div>
 			<icon :name="trailingIcon" v-if="trailingIcon" />
 		</div>
-	</Component>
+	</component>
 </template>
 
 <style lang="scss">
