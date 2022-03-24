@@ -13,6 +13,9 @@ const Template = (args) => ({
 	components: { RowExclude },
 	setup() {
 		const model = ref([])
+		setTimeout(() => {
+			model.value = [1]
+		}, 2000)
 		return { args, model }
 	},
 	template: `

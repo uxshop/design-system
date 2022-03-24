@@ -16,7 +16,7 @@ interface Props {
 	float?: boolean
 	invalidFeedback?: string
 	//
-	modelValue?: string | number | null | undefined
+	modelValue?: string | number | string[] | undefined
 	label?: string
 	id?: string
 	placeholder?: string

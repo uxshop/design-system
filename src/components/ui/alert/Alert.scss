@@ -15,6 +15,10 @@
 		margin-bottom: 0;
 	}
 
+	&.-dismissible {
+		padding-right: 50px;
+	}
+
 	&.-success {
 		background-color: #e2f3eb;
 		border-color: #79c8a2;

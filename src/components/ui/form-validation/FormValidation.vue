@@ -5,7 +5,7 @@ import Alert from '../alert/Alert.vue'
 
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps<{
-	modelValue: Record<string, string> | null
+	modelValue?: Record<string, string> | null
 	translate?: Record<string, Record<string, string>>
 }>()
 

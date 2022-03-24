@@ -16,6 +16,10 @@ if (props.variant) {
 	classList.value.push(`-${props.variant}`)
 }
 
+if (props.dismissible) {
+	classList.value.push(`-dismissible`)
+}
+
 const close = () => {
 	open.value = false
 	emit('dismissed')
