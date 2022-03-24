@@ -41,24 +41,23 @@ const props = defineProps<Props>()
 const classList = ref<string[]>([])
 
 /* @see https://dm4t2.github.io/vue-currency-input/config.html */
-const settings: CurrencyInputOptions = {
-	...{
-		locale: 'pt-BR',
-		currency: 'BRL',
-		// currencyDisplay: 'symbol',
-		hideCurrencySymbolOnFocus: false,
-		hideGroupingSeparatorOnFocus: false,
-		// hideNegligibleDecimalDigitsOnFocus: true,
-		autoDecimalDigits: true,
-		// valueScaling: 'precision',
-		// autoSign: true,
-		useGrouping: true
-		// accountingSign: false
-	},
-	...props.options
-}
-const { inputRef } = useCurrencyInput(settings)
-
+// const settings: CurrencyInputOptions = {
+// 	...{
+// 		locale: 'pt-BR',
+// 		currency: 'BRL',
+// 		// currencyDisplay: 'symbol',
+// 		hideCurrencySymbolOnFocus: false,
+// 		hideGroupingSeparatorOnFocus: false,
+// 		// hideNegligibleDecimalDigitsOnFocus: true,
+// 		autoDecimalDigits: true,
+// 		// valueScaling: 'precision',
+// 		// autoSign: true,
+// 		useGrouping: true
+// 		// accountingSign: false
+// 	},
+// 	...props.options
+// }
+// const { inputRef } = useCurrencyInput(settings)
 // const number = Number('1200.00')
 // console.log(new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(number))
 

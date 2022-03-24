@@ -46,6 +46,8 @@ const updateExcludes = () => {
 }
 
 const updateIncludes = () => {
+	console.log('updateIncludes')
+
 	if (props.rows) {
 		includes.value = []
 		props.rows.map((item: IRow) => {
@@ -56,7 +58,7 @@ const updateIncludes = () => {
 	}
 }
 
-watch([props.rows, props.modelValue], () => updateIncludes(), { immediate: true })
+watch([() => props.modelValue, () => props.rows], () => updateIncludes(), { immediate: true })
 </script>
 
 <template>

@@ -2,8 +2,8 @@
 import { computed, getCurrentInstance } from 'vue'
 
 interface Props {
-	modelValue?: string | boolean
-	value?: string | boolean
+	modelValue?: string | number | boolean
+	value?: string | number | boolean
 	label?: string
 	name?: string
 	required?: boolean
