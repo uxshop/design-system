@@ -169,5 +169,5 @@ watchEffect(() => {
 </template>
 
 <style lang="scss">
-@import './sidebar.scss';
+@import './Sidebar.scss';
 </style>
