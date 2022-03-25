@@ -34,11 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
 const bulkActions = ref<TBulkActions>([])
 const indeterminate = ref<boolean>(false)
 const allSelected = ref<boolean>(false)
-// const checkbox = ref<boolean>(false)
-
-const checkbox = computed(() => {
-	return allSelected.value
-})
+const checkbox = ref<boolean>(false)
 
 const onCheckAll = () => emit('checkAll', !checkbox.value)
 const onRemoveDialog = () => {
@@ -68,6 +64,8 @@ watchEffect(() => {
 		allSelected.value = false
 		indeterminate.value = false
 	}
+
+	checkbox.value = allSelected.value
 })
 
 onMounted(() => {
@@ -139,7 +137,7 @@ onMounted(() => {
 .table-list-nav-bulk {
 	display: flex;
 	align-items: center;
-	padding-left: 20px;
+	padding-left: 12px;
 	height: 100%;
 
 	&.-active {
