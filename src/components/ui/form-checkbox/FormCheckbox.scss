@@ -9,6 +9,10 @@
 		display: none;
 	}
 
+	&:hover > input:before {
+		transform: scale(1.2);
+	}
+
 	> input:not(.-switch):before {
 		position: absolute;
 		left: -10px;
@@ -26,7 +30,7 @@
 
 	> input:focus:before,
 	> input:hover:before {
-		transform: scale(1);
+		transform: scale(1.2);
 	}
 
 	&.-sm {
@@ -50,6 +54,7 @@
 		}
 	}
 }
+
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
 	input[type='checkbox'] {
 		--active: var(--primary);

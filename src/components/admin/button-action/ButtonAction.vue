@@ -5,7 +5,6 @@ import IconButton from '../../ui/icon-button/IconButton.vue'
 
 const props = defineProps<{
 	type: string
-	modelValue?: boolean
 	active?: boolean
 	size?: string
 	deleteName?: string

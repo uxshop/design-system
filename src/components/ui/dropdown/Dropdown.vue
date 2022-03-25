@@ -13,15 +13,15 @@ const uid = `ui-dropdown-${getCurrentInstance()?.uid}`
 
 const listener = () => {
 	setTimeout(() => {
-		show.value = false
 		window.removeEventListener('keydown', listener, false)
-		window.removeEventListener('mousedown', listener, false)
+		window.removeEventListener('mouseup', listener, false)
+		show.value = false
 	}, 100)
 }
 
 const toggleDropdown = () => {
 	if (!show.value) {
-		window.addEventListener('mousedown', listener, false)
+		window.addEventListener('mouseup', listener, false)
 		window.addEventListener('keydown', listener, false)
 	}
 

@@ -9,19 +9,19 @@ import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorageService from '../../../services/LocalStorageService'
 import TableListEmptySearch from './TableListEmptySearch.vue'
 import TableListEmptyMessage from './TableListEmptyMessage.vue'
-import type { ITableListConfig } from './types/ITableListConfig'
 import TableListNavBulk from './table-list-nav/TableListNavBulk.vue'
 import TableListNavRefresh from './table-list-nav/TableListNavRefresh.vue'
 import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
 import TableListNavPagination from './table-list-nav/TableListNavPagination.vue'
 import TableListNavFilter from './table-list-nav/TableListNavFilter.vue'
+import type { ITableListConfig } from './types/ITableListConfig'
 import type { ApiData } from './types/IResourceService'
 
 type TQueryParams = Record<string, string | number>
 
 const props = defineProps<{
 	config: ITableListConfig
-	filters?: object
+	filters?: any
 }>()
 
 const emit = defineEmits<{

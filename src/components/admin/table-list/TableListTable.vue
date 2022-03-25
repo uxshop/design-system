@@ -81,11 +81,11 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 					<ButtonAction
 						v-if="actions.includes('remove')"
 						@delete="onDeleteOne(item)"
-						:deleteName="item.name"
+						:delete-name="item.name"
 						type="delete" />
 					<ButtonAction
 						v-if="actions.includes('active')"
-						v-model="item.active"
+						v-model:active="item.active"
 						@active="onActiveOne(item, true)"
 						@inactive="onActiveOne(item, false)"
 						type="active" />

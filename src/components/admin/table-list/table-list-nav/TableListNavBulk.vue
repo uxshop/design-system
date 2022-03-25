@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watchEffect } from 'vue'
+import { computed, onMounted, ref, watchEffect } from 'vue'
 import { zerofill } from '../../../../filters'
 import dialog from '../../../ui/dialog/index'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
@@ -17,20 +17,28 @@ const emit = defineEmits<{
 }>()
 
 interface Props {
-	rows: any
-	selected: any
+	rows: unknown[]
+	selected: number[]
 	config: ITableListConfig
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	rows: [],
-	selected: []
+	selected: () => {
+		return []
+	},
+	rows: () => {
+		return []
+	}
 })
 
 const bulkActions = ref<TBulkActions>([])
 const indeterminate = ref<boolean>(false)
 const allSelected = ref<boolean>(false)
-const checkbox = ref<boolean>(false)
+// const checkbox = ref<boolean>(false)
+
+const checkbox = computed(() => {
+	return allSelected.value
+})
 
 const onCheckAll = () => emit('checkAll', !checkbox.value)
 const onRemoveDialog = () => {
@@ -118,7 +126,7 @@ onMounted(() => {
 
 			<ui-dropdown-item-button
 				v-for="action in bulkActions"
-				@click="action.action(selected)"
+				@click.stop="action.action(selected)"
 				:key="action.label"
 				:variant="action.variant">
 				{{ action.label }}
