@@ -61,9 +61,10 @@
 		text-align: center;
 		cursor: grab !important;
 		width: 1px;
+		color: var(--dark);
+		padding-left: 5px;
 
 		.ui-icon {
-			margin-left: 10px;
 			display: flex;
 		}
 	}
