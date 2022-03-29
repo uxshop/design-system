@@ -30,8 +30,8 @@ const onDelete = async () => {
 }
 
 const changeActive = () => {
-	emit('update:modelValue', { ...props.modelValue, ...{ active: !props.modelValue.active } })
 	emit('active', props.modelValue.active)
+	// emit('update:modelValue', { ...props.modelValue, ...{ active: props.modelValue.active } })
 }
 </script>
 
@@ -39,7 +39,7 @@ const changeActive = () => {
 	<Card class="ui-card-active">
 		<Row alignV="center">
 			<Col>
-				<FormCheckbox :value="modelValue.active" switch @change="changeActive">
+				<FormCheckbox v-model="modelValue.active" switch @change="changeActive">
 					<span v-show="modelValue.active">Ativo</span>
 					<span v-show="!modelValue.active">Inativo</span>
 				</FormCheckbox>

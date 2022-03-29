@@ -60,7 +60,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div v-if="modelValue != null" class="mb-4">
+	<div v-if="modelValue != null" class="ui-form-validation mb-4">
 		<Alert variant="danger" show title="Erros encontrados" dismissible @dismissed="removeErrors">
 			<ul v-for="(item, key) in modelValue" :key="key" class="text-lowercase">
 				<li v-for="val in item" :key="val">
@@ -70,3 +70,9 @@ watchEffect(() => {
 		</Alert>
 	</div>
 </template>
+
+<style>
+.ui-form-validation b {
+	text-transform: uppercase;
+}
+</style>

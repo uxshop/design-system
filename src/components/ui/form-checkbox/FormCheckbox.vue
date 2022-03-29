@@ -44,6 +44,7 @@ const update = (val: unknown) => {
 			:required="required"
 			:indeterminate="indeterminate"
 			:name="name"
+			:true-value="true"
 			@update:modelValue="update" />
 		<div class="ui-form-checkbox-text"><slot />{{ label }}</div>
 	</label>

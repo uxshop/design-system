@@ -177,10 +177,10 @@
 			}
 			&:after {
 				left: 2px;
-				top: calc(4px - var(--input-border-width));
+				top: 1px;
 				border-radius: 50%;
-				width: calc(13px - var(--input-border-width));
-				height: calc(13px - var(--input-border-width));
+				width: calc(18px - var(--input-border-width) * 2 - 2px);
+				height: calc(18px - var(--input-border-width) * 2 - 2px);
 				background: var(--ab, var(--border));
 				transform: translateX(var(--x, 0));
 				transition: transform 0.15s var(--d-t-e), opacity 0.15s;
