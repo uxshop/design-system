@@ -40,8 +40,6 @@ const settings: SettingsInterface = Object.assign(
 		create: true,
 		plugins: [],
 		onChange: update
-		// items: ['opt1'],
-		// options: ['opt1']
 	},
 	props.config
 )

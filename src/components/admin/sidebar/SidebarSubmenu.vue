@@ -11,7 +11,6 @@ defineProps<{
 
 const emit = defineEmits(['back'])
 const onBack = () => emit('back')
-const handleSubmenuSpacer = onBack
 </script>
 
 <template>
@@ -40,7 +39,7 @@ const handleSubmenuSpacer = onBack
 							event="" />
 					</li>
 				</ul>
-				<div class="spacer" @click="handleSubmenuSpacer"></div>
+				<div class="spacer" @click="onBack"></div>
 			</div>
 		</div>
 	</div>
