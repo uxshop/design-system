@@ -32,7 +32,7 @@ watchEffect(() => {
 <template>
 	<div class="ui-alert" :class="classList" v-if="open">
 		<Icon name="cancel" type="outlined" v-if="variant == 'danger'" />
-		<Icon name="check_circle" type="outlined" v-if="variant == 'success'" />
+		<Icon name="check_circle" type="rounded" v-if="variant == 'success'" />
 		<div class="ui-alert-content">
 			<h6 class="ui-alert-title" v-if="title">
 				{{ title }}

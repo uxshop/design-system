@@ -91,12 +91,12 @@ const onNotification = () => {
 				</Col>
 			</Row>
 		</div>
-		<Modal ref="modal" title="Notificações" size="sm">
-			<!-- <MessageShow /> -->
+		<!-- <Modal ref="modal" title="Notificações" size="sm">
+			<MessageShow />
 		</Modal>
 		<Modal ref="modalAffiliate" :title="'Indique & Ganhe!'">
-			<!-- <AffiliateModal /> -->
-		</Modal>
+			<AffiliateModal />
+		</Modal> -->
 	</div>
 </template>
 
