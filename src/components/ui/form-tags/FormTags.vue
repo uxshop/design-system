@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { getCurrentInstance, nextTick, onMounted, ref, shallowRef } from 'vue'
-import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
+import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watchEffect } from 'vue'
+import * as TomSelect from 'tom-select/dist/js/tom-select.complete.js'
 import 'tom-select/dist/css/tom-select.default.css'
+import { isString } from 'lodash'
 
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close'])
 
 interface Props {
-	modelValue: string
+	modelValue?: string
 	placeholder?: string
 	config?: object
 }
@@ -24,53 +25,52 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
-const model = ref(null)
+const model = ref<string | null>(null)
 const element = shallowRef()
 
 const update = (val: string) => {
-	emit('update:modelValue', val)
-	emit('update', val)
+	// emit('update:modelValue', val)
+	// emit('update', val)
 }
 
 const settings: SettingsInterface = Object.assign(
 	{
-		persist: false,
+		persist: true,
 		createOnBlur: true,
 		create: true,
 		plugins: [],
 		onChange: update
+		// items: ['opt1'],
+		// options: ['opt1']
 	},
 	props.config
 )
+
+console.log(settings)
 
 settings.plugins.push('remove_button')
 
 onMounted(() => {
 	nextTick(() => {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
+		// @ts-expect-error: no interface
 		element.value = new TomSelect(`#${uid}`, settings)
-		// 	element.value = $(`#${uid}`)
-		// 	element.value = element.value.select2(settings)
-		// 	element.value.on('select2:select', () => update(element.value.select2('val')))
-		// 	element.value.on('select2:unselecting', () => element.value.select2('close'))
-		// 	element.value.on('select2:open', (evt) => emit('open', evt))
-		// 	watchEffect(() => {
-		// 		updateSelect2(props.modelValue)
-		// 	})
-		// 	watch(
-		// 		() => props.config,
-		// 		(newVal) => {
-		// 			console.log(newVal)
-		// 		}
-		// 	)
 	})
+})
+
+watchEffect(() => {
+	model.value = props.modelValue
+	setTimeout(() => {
+		if (element.value) {
+			element.value.sync()
+		}
+	}, 250)
 })
 </script>
 
 <template>
 	<div class="ui-form-tags">
-		<input v-model="model" ref="selectRef" :id="uid" autocomplete="off" :placeholder="placeholder" />
+		{{ modelValue }}
+		<input :value="modelValue" ref="selectRef" :id="uid" autocomplete="off" :placeholder="placeholder" />
 	</div>
 </template>
 

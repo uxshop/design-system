@@ -5,7 +5,7 @@ import Savebar from '../savebar/Savebar.vue'
 
 const emit = defineEmits(['save'])
 const props = defineProps<{
-	resource?: { save(): Promise<void> }
+	resource: any
 	validate?: Record<string, Record<string, string>>
 	editing?: boolean
 }>()

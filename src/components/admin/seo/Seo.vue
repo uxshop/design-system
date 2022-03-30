@@ -20,7 +20,7 @@ interface Props {
 	keyTitle?: string
 	keySubTitle?: string
 	keyDescription?: string
-	metaTitle: string
+	metaTitle?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -117,5 +117,5 @@ watchEffect(() => {
 </template>
 
 <style lang="scss">
-@import './seo.scss';
+@import './Seo.scss';
 </style>

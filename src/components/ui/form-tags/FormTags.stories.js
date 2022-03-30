@@ -14,7 +14,8 @@ const Template = (args) => ({
 	setup() {
 		const model = ref(null)
 		setTimeout(() => {
-			model.value = ['1', '2']
+			// model.value = ['1', '2']
+			model.value = 'teste, teste2'
 		}, 1000)
 		return { args, model }
 	},
