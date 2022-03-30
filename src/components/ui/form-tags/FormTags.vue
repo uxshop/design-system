@@ -29,8 +29,8 @@ const model = ref<string | null>(null)
 const element = shallowRef()
 
 const update = (val: string) => {
-	// emit('update:modelValue', val)
-	// emit('update', val)
+	emit('update:modelValue', val)
+	emit('update', val)
 }
 
 const settings: SettingsInterface = Object.assign(
@@ -45,8 +45,6 @@ const settings: SettingsInterface = Object.assign(
 	},
 	props.config
 )
-
-console.log(settings)
 
 settings.plugins.push('remove_button')
 
@@ -69,7 +67,6 @@ watchEffect(() => {
 
 <template>
 	<div class="ui-form-tags">
-		{{ modelValue }}
 		<input :value="modelValue" ref="selectRef" :id="uid" autocomplete="off" :placeholder="placeholder" />
 	</div>
 </template>
