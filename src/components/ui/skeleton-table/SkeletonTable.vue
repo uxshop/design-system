@@ -6,6 +6,7 @@ interface Props {
 	cols?: string | number
 	rows?: string | number
 	hideHeader?: boolean
+	noBorder?: boolean
 	width?: string
 }
 
@@ -24,17 +25,17 @@ if (props.width) {
 </script>
 
 <template>
-	<table class="ui-table ui-skeleton-table" :style="style">
+	<table class="ui-table ui-skeleton-table" :style="style" :class="{ '-no-border': noBorder }">
 		<thead v-if="!hideHeader">
 			<tr>
-				<th v-for="c in cols" :key="c">
+				<th v-for="c in Number(cols)" :key="c">
 					<Skeleton />
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr v-for="r in rows" :key="r">
-				<td v-for="c in cols" :key="c">
+			<tr v-for="r in Number(rows)" :key="r">
+				<td v-for="c in Number(cols)" :key="c">
 					<ui-skeleton width="85%" />
 				</td>
 			</tr>

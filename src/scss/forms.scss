@@ -1,5 +1,5 @@
 ::placeholder {
-  color: var(--input-placeholder-color);
+	color: var(--input-placeholder-color);
 }
 
 // input:-webkit-autofill {
@@ -8,66 +8,66 @@
 // }
 
 @include theme-dark {
-  ::placeholder {
-    color: rgba(#b1b9c9, 0.4) !important;
-  }
+	::placeholder {
+		color: rgba(#b1b9c9, 0.4) !important;
+	}
 }
 
 .form-control-loader {
-  position: absolute;
-  right: var(--input-padding-x);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  top: 0;
+	position: absolute;
+	right: var(--input-padding-x);
+	height: 100%;
+	display: flex;
+	align-items: center;
+	top: 0;
 
-  > .form-control-loader-spinner {
-    width: calc(var(--input-height) * 0.4) !important;
-    height: calc(var(--input-height) * 0.4) !important;
-  }
+	> .form-control-loader-spinner {
+		width: calc(var(--input-height) * 0.4) !important;
+		height: calc(var(--input-height) * 0.4) !important;
+	}
 }
 
 .invalid-feedback {
-  color: var(--danger);
-  padding: 5px;
-  font-size: 10px;
+	color: var(--danger);
+	padding: 5px;
+	font-size: 10px;
 }
 
 .form-control-label {
-  font-size: 12px;
-  text-align: left;
-  margin-bottom: 5px;
-  display: inline-block;
+	font-size: 12px;
+	text-align: left;
+	margin-bottom: 5px;
+	display: inline-block;
 }
 
 textarea {
-  &.form-control {
-    padding-top: var(--input-padding-x);
-  }
+	&.form-control {
+		padding-top: var(--input-padding-x);
+	}
 }
 
 .form-control {
-  @include form-control;
-  display: inline-flex;
-  justify-content: space-between;
+	@include form-control;
+	display: inline-flex;
+	justify-content: space-between;
 
-  &.-pill {
-    border-radius: 30px;
-    padding-inline-start: 15px;
-    padding-inline-end: 15px;
-  }
+	&.-pill {
+		border-radius: 30px;
+		padding-inline-start: 15px;
+		padding-inline-end: 15px;
+	}
 
-  @include darkmode {
-    color: var(--body-color);
+	@include darkmode {
+		color: var(--body-color);
 
-    &:focus {
-      border-color: var(--body-color);
-      box-shadow: none;
-    }
-  }
+		&:focus {
+			border-color: var(--body-color);
+			box-shadow: none;
+		}
+	}
 }
 
 .form-control.-select {
-  padding-right: 25px;
-  @include select-arrow;
+	padding-right: 25px;
+	@include select-arrow;
 }

@@ -19,10 +19,14 @@ import Savebar from './components/admin/savebar/Savebar.vue'
 import Userbar from './components/admin/userbar/Userbar.vue'
 import Seo from './components/admin/seo/Seo.vue'
 
+import table from './components/admin/table/index'
+
 const prefix = 'Ui'
 
 export default {
 	install: (app: ComponentOptions) => {
+		app.use(table, { prefix: prefix })
+
 		app.component(`${prefix}Layout`, Layout)
 		app.component(`${prefix}Titlebar`, Titlebar)
 		app.component(`${prefix}EmptyData`, EmptyData)

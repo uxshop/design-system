@@ -3,7 +3,7 @@ import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 
 interface Props {
-	icon: string
+	icon?: string
 	variant?: string
 	size?: string | number
 	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'

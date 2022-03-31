@@ -95,9 +95,14 @@
 		}
 	}
 
+	&.-white {
+		background-color: white;
+		box-shadow: rgba(0, 0, 0, 0.1) 0 2px 0 0;
+	}
+
 	&.-primary {
 		background-color: var(--primary);
-		box-shadow: var(--primary-300) 0 2px 0 0;
+		box-shadow: var(--primary-dark) 0 2px 0 0;
 		color: white;
 
 		// &:after {

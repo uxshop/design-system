@@ -108,17 +108,8 @@ const onClickLink = (sec: string, item: SidebarInterface.Item) => {
 
 const onBack = () => (activeSection.value = null)
 
-// watchEffect(() => {
-// 	activeSection.value = props.currentSection
-// })
-
-onMounted(() => {
-	each(props.menus, (item) => {
-		const section = find(item.nodes, { to: route.name })
-		if (section) {
-			activeSection.value = item.section
-		}
-	})
+watchEffect(() => {
+	activeSection.value = props.currentSection
 })
 </script>
 

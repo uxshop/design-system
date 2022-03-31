@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { watchEffect, ref, useAttrs } from 'vue'
+import { watchEffect, ref, useAttrs, onMounted } from 'vue'
 import dialog from '../../ui/dialog'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 
@@ -13,7 +13,7 @@ const props = defineProps<{
 
 const emit = defineEmits(['delete', 'inactive', 'active', 'close', 'click', 'update:active', 'toggleActive'])
 const attrs = useAttrs()
-const currentIcon = ref()
+const currentIcon = ref<string | undefined>()
 const hasClick = attrs.click
 
 const activeIcon = (active?: boolean) => {
@@ -26,23 +26,19 @@ if (props.size) {
 	classType.value.push(`-${props.size}`)
 }
 
-switch (props.type) {
-	case 'add':
-		currentIcon.value = 'add'
-		break
-	case 'edit':
-		currentIcon.value = 'edit'
-		break
-	case 'delete':
-		currentIcon.value = 'delete'
-		break
-	case 'remove':
-		currentIcon.value = 'close'
-		break
-	case 'active':
-		activeIcon(props.active)
-		break
-}
+onMounted(() => {
+	switch (props.type) {
+		case 'remove':
+			currentIcon.value = 'close'
+			break
+		case 'active':
+			activeIcon(props.active)
+			break
+		default:
+			currentIcon.value = props.type
+			break
+	}
+})
 
 if (props.type == 'active') {
 	watchEffect(() => {

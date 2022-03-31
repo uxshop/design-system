@@ -17,21 +17,13 @@ $dark: #4e6380 !default;
 :root {
 	// --primary: #275efe;
 	--primary: #{$primary};
-	--primary-100: #{lighten($primary, 8%)};
-	--primary-200: #{darken($primary, 10%)};
-	--primary-300: #{darken($primary, 20%)};
+	--primary-light: #{lighten($primary, 8%)};
+	--primary-dark: #{darken($primary, 20%)};
 	--secondary: #{$secondary};
-	--secondary-100: #{lighten($secondary, 8%)};
-	--secondary-200: #{darken($secondary, 10%)};
-	--secondary-300: #{darken($secondary, 20%)};
 	--success: #{$success};
-	--success-100: #{lighten($success, 8%)};
-	--success-200: #{darken($success, 10%)};
+	--success-light: #{lighten($success, 8%)};
 	--success-dark: #{darken($success, 20%)};
 	--danger: #{$danger};
-	--danger-100: #{lighten($danger, 10%)};
-	--danger-200: #{darken($danger, 10%)};
-	--danger-300: #{darken($danger, 20%)};
 	--link-color: #0379da;
 	--dark: #{$dark};
 	--dark-hover: #{darken($dark, 20%)};
@@ -108,9 +100,9 @@ $dark: #4e6380 !default;
 	--drop-shadow-filter: #{drop-shadow(0px 0px 15px #000, 0.4)};
 	--text-muted: #{transparentize(#b1b9c9, 0.2)};
 	--modal-backdrop-bg: #15191f;
-	--link-color: var(--primary);
 	--input-border-color: var(--dark-100);
 	--input-bg-color: var(--dark-100);
+	--link-color: var(--primary);
 }
 
 body,

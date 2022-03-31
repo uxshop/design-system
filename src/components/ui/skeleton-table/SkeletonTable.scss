@@ -12,10 +12,18 @@
 	}
 
 	th {
-		border-bottom: 2px solid #dee2e6;
+		border-bottom: 1px solid #dee2e6;
 	}
 
 	tbody tr:nth-of-type(odd) {
 		background-color: rgba(0, 0, 0, 0.03);
+	}
+
+	&.-no-border {
+		th,
+		td {
+			border-left: none;
+			border-right: none;
+		}
 	}
 }
