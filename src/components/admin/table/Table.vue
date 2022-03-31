@@ -9,7 +9,7 @@ defineProps<Props>()
 </script>
 <template>
 	<div class="table-responsive">
-		<table class="table" :class="{ '-hover': hover, '-no-padding': !noPadding }">
+		<table class="table" :class="{ '-hover': hover, '-no-padding': noPadding }">
 			<thead>
 				<tr>
 					<slot name="header" />

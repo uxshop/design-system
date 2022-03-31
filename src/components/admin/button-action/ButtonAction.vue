@@ -47,6 +47,10 @@ if (props.type == 'active') {
 }
 
 const onClick = (evt: MouseEvent) => {
+	if (props.type == 'edit') {
+		return
+	}
+
 	emit('click')
 
 	if (!props.noEvents) {

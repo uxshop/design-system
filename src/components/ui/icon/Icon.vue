@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 interface Props {
-	name: string
+	name?: string
 	size?: number | string
 	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'
 }
