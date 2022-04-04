@@ -1,0 +1,36 @@
+.ui-browser-select {
+	.ui-browser-list-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		+ .ui-browser-list-row {
+			border-top: solid 1px var(--border-color);
+		}
+
+		.ui-browser-list-cell {
+			padding: 8px;
+			flex-grow: 1;
+			&.-auto {
+				flex-grow: 0;
+			}
+		}
+	}
+
+	.ui-browser-list-more {
+		padding: 10px;
+		margin: 0 auto;
+		display: block;
+		text-align: center;
+	}
+
+	.ui-browser-item .grid-list-item {
+		:first-child {
+			padding-left: 0;
+		}
+
+		:last-child {
+			padding-right: 0;
+		}
+	}
+}

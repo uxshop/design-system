@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watchEffect } from 'vue'
-import * as TomSelect from 'tom-select/dist/js/tom-select.complete.js'
+import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
 import 'tom-select/dist/css/tom-select.default.css'
-import { isString } from 'lodash'
 
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close'])
 
 interface Props {
-	modelValue?: string
+	modelValue?: string | null
 	placeholder?: string
 	config?: object
 }
@@ -25,7 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
-const model = ref<string | null>(null)
+const model = ref<string | null | undefined>(null)
 const element = shallowRef()
 
 const update = (val: string) => {
@@ -48,7 +47,6 @@ settings.plugins.push('remove_button')
 
 onMounted(() => {
 	nextTick(() => {
-		// @ts-expect-error: no interface
 		element.value = new TomSelect(`#${uid}`, settings)
 	})
 })

@@ -12,6 +12,7 @@ const props = defineProps<{
 	tabindex?: string | number
 	required?: boolean
 	indeterminate?: boolean
+	noEvents?: boolean
 }>()
 
 const uid = `ui-form-checkbox-${getCurrentInstance()?.uid}`
@@ -21,6 +22,10 @@ const model = ref()
 
 if (props.size) {
 	classList.value.push(`-${props.size}`)
+}
+
+if (props.noEvents) {
+	classList.value.push(`-no-events`)
 }
 
 watchEffect(() => {

@@ -1,4 +1,4 @@
-import type { ApiData, IResourceService } from './IResourceService'
+import type { IResourceService, TApiData } from 'src/types/IApiResource'
 
 export type TBulkActions = Array<{
 	label: string
@@ -9,8 +9,8 @@ export type TBulkActions = Array<{
 export interface ITableListConfig {
 	service: IResourceService
 	queryParams: object
-	onGet(i: ApiData[] | null): void
-	remove(i: ApiData): Promise<void>
+	onGet(i: TApiData[] | null): void
+	remove(i: TApiData): Promise<void>
 	omitFilters?: string[]
 	hideCheckbox?: boolean
 	empty?: string

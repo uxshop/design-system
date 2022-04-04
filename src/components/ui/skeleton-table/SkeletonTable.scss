@@ -7,16 +7,12 @@
 
 	th,
 	td {
-		border: 1px solid var(--border-color);
+		border-top: 1px solid var(--border-color);
 		padding: 10px;
 	}
 
-	th {
-		border-bottom: 1px solid #dee2e6;
-	}
-
 	tbody tr:nth-of-type(odd) {
-		background-color: rgba(0, 0, 0, 0.03);
+		background-color: var(--gray-100);
 	}
 
 	&.-no-border {

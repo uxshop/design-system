@@ -44,6 +44,7 @@ import Dialog from './components/ui/dialog/Dialog.vue'
 import FormColorpicker from './components/ui/form-colorpicker/FormColorpicker.vue'
 import FormRichtext from './components/ui/form-richtext/FormRichtext.vue'
 import FormDatepicker from './components/ui/form-datepicker/FormDatepicker.vue'
+import FormAutocomplete from './components/ui/form-autocomplete/FormAutocomplete.vue'
 
 export default {
 	install: (app: ComponentOptions) => {
@@ -94,5 +95,6 @@ export default {
 		app.component(`${prefix}FormRichtext`, FormRichtext)
 		app.component(`${prefix}FormColorpicker`, FormColorpicker)
 		app.component(`${prefix}FormDatepicker`, FormDatepicker)
+		app.component(`${prefix}FormAutocomplete`, FormAutocomplete)
 	}
 }

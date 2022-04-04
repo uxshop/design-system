@@ -55,13 +55,13 @@
 				background: white;
 				position: sticky;
 				top: 0;
-				z-index: 222;
+				z-index: 99;
 			}
 
 			.ui-aside-footer {
 				position: sticky;
 				bottom: 0;
-				z-index: 222;
+				z-index: 99;
 			}
 		}
 	}
@@ -187,7 +187,6 @@
 		display: flex;
 		align-items: flex-end;
 		width: 100%;
-		z-index: 888;
 		margin-top: 20px;
 		justify-content: flex-start;
 

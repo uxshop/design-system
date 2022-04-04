@@ -103,15 +103,9 @@
 	&.-primary {
 		background-color: var(--primary);
 		box-shadow: var(--primary-dark) 0 2px 0 0;
-		color: white;
+		border-bottom: solid 1px var(--primary-dark);
 
-		// &:after {
-		// 	content: '';
-		// 	position: absolute;
-		// 	left: 0;
-		// 	z-index: 0;
-		// 	background: ;
-		// }
+		color: white;
 
 		&.-outline {
 			background: white;
@@ -148,6 +142,13 @@
 		background-color: var(--dark);
 		color: white;
 		box-shadow: #000 0 2px 0 0;
+		// border-bottom: solid 2px #000;
+
+		// &:active {
+		// 	transform: translate(0, 2px);
+		// 	border-bottom-width: 0;
+		// 	border-top: solid 2px transparent;
+		// }
 
 		&.-outline {
 			border: 2px solid var(--dark);
@@ -167,6 +168,7 @@
 
 	&:active {
 		box-shadow: var(--primary) 0 0 0 0;
+		border-bottom: 0;
 		transform: translate(0, 2px);
 		border-bottom-width: 2px;
 	}

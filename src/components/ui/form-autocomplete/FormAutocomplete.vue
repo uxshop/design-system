@@ -1,85 +1,121 @@
 <script setup lang="ts">
 import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
+import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
+import 'tom-select/dist/css/tom-select.default.css'
+import { config } from 'process'
+import { keys } from 'lodash'
 
-// import 'select2/dist/js/select2.full'
-// import 'select2/dist/css/select2.min.css'
-// import $ from 'jquery'
+const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 
-const emit = defineEmits(['update:modelValue', 'open', 'close'])
+interface ConfigInterface {
+	persist?: boolean
+	createOnBlur?: boolean
+	create?: boolean
+	closeAfterSelect?: boolean
+	plugins?: string[]
+	searchField?: string
+	labelField?: string
+	render: {
+		option?: () => string
+		item?: () => string
+		option_create?: () => string
+		no_results?: () => string
+		not_loading?: () => string
+		optgroup?: () => HTMLElement
+		optgroup_header?: () => string
+		loading?: () => string
+		dropdown?: () => string
+	}
+
+	onChange?: (val: string) => void
+}
 
 interface Props {
-	modelValue: any
-	placeholder: string
-	config: object
-	multiple: boolean
+	modelValue?: any
+	placeholder?: string
+	config?: ConfigInterface
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione'
 })
 
-const instance = getCurrentInstance()
-const uid = `select-${instance?.uid}`
-const settings = ref({})
-const model = ref(null)
+const uid = `ui-form-select-${getCurrentInstance()?.uid}`
+const model = ref<string | null | undefined>(null)
 const element = shallowRef()
 
-settings.value = Object.assign(
-	{
-		data: [],
-		allowClear: true,
-		closeOnSelect: true,
-		tags: false,
-		multiple: props.multiple,
-		placeholder: props.placeholder,
-		tokenSeparators: [',', ' '],
-		language: 'pt-BR',
-		width: '100%'
-	},
-	props.config
-)
-
-const update = (val: null) => {
+const update = (val: string) => {
 	emit('update:modelValue', val)
+	emit('update', val)
 }
 
-const updateSelect2 = (value: undefined) => {
-	element.value.val(value).trigger('change')
+const getSettings = () => {
+	const newConfig: ConfigInterface = props.config || {}
+
+	if (newConfig.labelField && !newConfig.searchField) {
+		newConfig.searchField = newConfig.labelField
+	}
+
+	const config: ConfigInterface = {
+		...{
+			plugins: [],
+			persist: false,
+			createOnBlur: false,
+			create: false,
+			closeAfterSelect: true,
+			valueField: 'id',
+			labelField: 'text',
+			searchField: 'text',
+			options: props.options,
+			onChange: update
+		},
+		...newConfig
+	}
+
+	return config
 }
 
-onMounted(() => {
-	element.value = $(`#${uid}`)
-	element.value = element.value.select2(settings.value)
-
-	element.value.on('select2:select', () => update(element.value.select2('val')))
-	element.value.on('select2:unselecting', () => element.value.select2('close'))
-	element.value.on('select2:open', (evt: any) => emit('open', evt))
-	element.value.on('select2:clearing', () => {})
-	element.value.on('select2:clear', () => {
-		update(null)
-		setTimeout(() => {
-			element.value.select2('close')
-		}, 50)
-	})
+const init = () => {
+	console.log('init')
 
 	nextTick(() => {
-		watchEffect(() => {
-			updateSelect2(props.modelValue)
-		})
-
-		watch(
-			() => props.config,
-			(newVal) => {
-				console.log(newVal)
-			}
-		)
+		if (element.value) {
+			element.value.destroy()
+			console.log('destroy')
+		}
+		// @ts-expect-error: no interface
+		element.value = new TomSelect(`#${uid}`, getSettings())
 	})
-})
+}
+
+const checkModelValue = () => {
+	nextTick(() => {
+		if (element.value) {
+			element.value.setValue(props.modelValue)
+		}
+	})
+}
+
+onMounted(init)
+
+watch(
+	() => props.modelValue,
+	() => {
+		checkModelValue()
+	}
+)
+
+watch(
+	() => props.config,
+	() => {
+		init()
+	}
+)
 </script>
 
 <template>
-	<div class="ui-form-select">
-		<select v-model="model" class="ui-select" :value="modelValue" :id="uid" :multiple="settings.multiple"></select>
+	<div class="ui-form-autocomplete">
+		<select :value="model" class="ui-form-select" :id="uid" :placeholder="placeholder"></select>
 	</div>
 </template>
 

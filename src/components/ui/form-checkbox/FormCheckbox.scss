@@ -53,6 +53,10 @@
 			padding-top: 0;
 		}
 	}
+
+	&.-no-events {
+		pointer-events: none;
+	}
 }
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
