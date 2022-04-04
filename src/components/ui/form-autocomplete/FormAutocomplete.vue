@@ -3,7 +3,7 @@ import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchE
 import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
 import 'tom-select/dist/css/tom-select.default.css'
 import { config } from 'process'
-import { keys } from 'lodash'
+import { clone, cloneDeep, keys } from 'lodash'
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 
@@ -15,7 +15,8 @@ interface ConfigInterface {
 	plugins?: string[]
 	searchField?: string
 	labelField?: string
-	render: {
+	options?: any[]
+	render?: {
 		option?: () => string
 		item?: () => string
 		option_create?: () => string
@@ -26,18 +27,19 @@ interface ConfigInterface {
 		loading?: () => string
 		dropdown?: () => string
 	}
-
 	onChange?: (val: string) => void
 }
 
 interface Props {
 	modelValue?: any
+	options?: any[]
 	placeholder?: string
 	config?: ConfigInterface
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	placeholder: 'Selecione'
+	placeholder: 'Selecione',
+	config: () => ({})
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
@@ -50,7 +52,7 @@ const update = (val: string) => {
 }
 
 const getSettings = () => {
-	const newConfig: ConfigInterface = props.config || {}
+	const newConfig: ConfigInterface = cloneDeep(props.config)
 
 	if (newConfig.labelField && !newConfig.searchField) {
 		newConfig.searchField = newConfig.labelField
@@ -66,7 +68,7 @@ const getSettings = () => {
 			valueField: 'id',
 			labelField: 'text',
 			searchField: 'text',
-			options: props.options,
+			options: cloneDeep(props.options),
 			onChange: update
 		},
 		...newConfig
@@ -76,13 +78,13 @@ const getSettings = () => {
 }
 
 const init = () => {
-	console.log('init')
-
 	nextTick(() => {
 		if (element.value) {
 			element.value.destroy()
 			console.log('destroy')
 		}
+
+		console.log('init')
 		// @ts-expect-error: no interface
 		element.value = new TomSelect(`#${uid}`, getSettings())
 	})
@@ -106,10 +108,9 @@ watch(
 )
 
 watch(
-	() => props.config,
-	() => {
-		init()
-	}
+	() => [props.config],
+	() => init(),
+	{ deep: true }
 )
 </script>
 

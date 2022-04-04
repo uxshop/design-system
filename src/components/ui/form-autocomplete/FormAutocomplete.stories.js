@@ -23,11 +23,12 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
-	config: {},
-	options: [
-		{ id: 1, text: 'Hello' },
-		{ id: 2, text: 'World' }
-	]
+	config: {
+		options: [
+			{ id: 1, text: 'Hello' },
+			{ id: 2, text: 'World' }
+		]
+	}
 }
 
 const Template2 = (args) => ({
@@ -35,19 +36,19 @@ const Template2 = (args) => ({
 	setup() {
 		const model = ref(2)
 		const options = ref([])
-
+		const config = ref(args.config)
 		setTimeout(() => {
-			options.value = [
+			config.value.options = [
 				{ id: 1, title: 'DIY', url: 'https://diy.org' },
 				{ id: 2, title: 'Google', url: 'http://google.com' },
 				{ id: 3, title: 'Yahoo', url: 'http://yahoo.com' }
 			]
 		}, 1000)
 
-		return { options, model, args }
+		return { options, model, args, config }
 	},
 	template: `
-    <FormAutocomplete v-bind="args" :options="options" v-model="model" />
+    <FormAutocomplete  :config=config  v-model="model" />
     <pre>{{ model }}</pre>
   `
 })
@@ -55,7 +56,6 @@ const Template2 = (args) => ({
 export const RenderTemplate = Template2.bind({})
 RenderTemplate.args = {
 	placeholder: 'Selecione Custom',
-
 	config: {
 		searchField: 'title',
 		render: {
