@@ -2,8 +2,7 @@
 import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
 import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
 import 'tom-select/dist/css/tom-select.default.css'
-import { config } from 'process'
-import { clone, cloneDeep, keys } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, shallowRef } from 'vue'
+import { onMounted, ref } from 'vue'
 import { each, clone, isFunction, keys } from 'lodash-es'
 import Icon from '../../../ui/icon/Icon.vue'
 import Row from '../../../ui/grid/row/Row.vue'

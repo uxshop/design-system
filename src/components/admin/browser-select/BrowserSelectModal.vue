@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { clone, cloneDeep, each } from 'lodash'
+import { clone, cloneDeep, each } from 'lodash-es'
 import { ref, watch } from 'vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Icon from '../../ui/icon/Icon.vue'

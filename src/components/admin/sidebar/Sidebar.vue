@@ -6,7 +6,7 @@ import Logo from '../logo/Logo.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import MobileDetector from '../../../services/MobileDetectorService'
 import type { SidebarInterface } from './SidebarInterface'
-import { each, find } from 'lodash'
+import { each, find } from 'lodash-es'
 
 interface PermissionInterface {
 	has(rule: string): boolean

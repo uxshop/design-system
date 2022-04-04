@@ -1,4 +1,4 @@
-import { filter, find } from 'lodash'
+import { filter } from 'lodash-es'
 import BrowserSelect from './BrowserSelect.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export

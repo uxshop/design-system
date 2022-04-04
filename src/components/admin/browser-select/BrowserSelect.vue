@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import BrowserSelectModal from './BrowserSelectModal.vue'
-import { cloneDeep, each, find, first, isArray } from 'lodash'
+import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import { ref, watch } from 'vue'
 import ButtonAction from '../button-action/ButtonAction.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'

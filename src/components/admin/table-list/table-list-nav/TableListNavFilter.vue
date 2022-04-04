@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import Icon from '../../../ui/icon/Icon.vue'
 import IconButton from '../../..//ui/icon-button/IconButton.vue'
-import each from 'lodash/each'
+import { each } from 'lodash-es'
 import TableListNavFilterSidebar from './TableListNavFilterSidebar.vue'
 
 defineProps<{
