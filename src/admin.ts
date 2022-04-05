@@ -18,6 +18,7 @@ import Codemirror from './components/admin/codemirror/Codemirror.vue'
 import Savebar from './components/admin/savebar/Savebar.vue'
 import Userbar from './components/admin/userbar/Userbar.vue'
 import Seo from './components/admin/seo/Seo.vue'
+import CardSeo from './components/admin/card-seo/CardSeo.vue'
 
 import table from './components/admin/table/index'
 
@@ -45,5 +46,6 @@ export default {
 		app.component(`${prefix}Savebar`, Savebar)
 		app.component(`${prefix}Userbar`, Userbar)
 		app.component(`${prefix}Seo`, Seo)
+		app.component(`${prefix}CardSeo`, CardSeo)
 	}
 }

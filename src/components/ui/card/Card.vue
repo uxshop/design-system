@@ -10,10 +10,10 @@ interface Props {
 	caption?: string
 	dropdown?: boolean
 	dropdownLabel?: string
+	dropdownClosed?: boolean
 	fullHeight?: boolean
 	success?: boolean
 	noBorder?: boolean
-	dropdownClosed?: boolean
 	closeCaption?: string
 	gray?: boolean
 	last?: boolean

@@ -3,7 +3,6 @@ import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
 import Alert from '../../ui/alert/Alert.vue'
 import AlertTitle from '../../ui/alert/AlertTitle.vue'
-
 import { computed, ref, watchEffect } from 'vue'
 import { slugify, truncate } from '../../../filters'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
@@ -11,7 +10,7 @@ import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 interface Props {
 	title?: string
 	domain?: string
-	modelValue: Record<string, any>
+	modelValue?: any
 	viewOnly?: boolean
 	writeOnly?: boolean
 	isMetaTitle?: boolean
