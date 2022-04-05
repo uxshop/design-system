@@ -16,7 +16,7 @@ if (props.drag) {
 }
 </script>
 <template>
-	<td :class="classList">
+	<td :class="classList" class="ui-table-cell">
 		<slot />
 	</td>
 </template>

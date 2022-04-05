@@ -2,7 +2,8 @@ import type { ComponentOptions } from 'vue'
 import Table from './Table.vue'
 import TableCell from './TableCell.vue'
 import TableRow from './TableRow.vue'
-import TableHeadCell from '././TableHeadCell.vue'
+import TableHeadCell from './TableHeadCell.vue'
+import TableBody from './TableBody.vue'
 
 export default {
 	install(app: ComponentOptions, { prefix }: { prefix: string }) {
@@ -10,5 +11,6 @@ export default {
 		app.component(`${prefix}TableCell`, TableCell)
 		app.component(`${prefix}TableRow`, TableRow)
 		app.component(`${prefix}TableHeadCell`, TableHeadCell)
+		app.component(`${prefix}TableBody`, TableBody)
 	}
 }

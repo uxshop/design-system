@@ -1,5 +1,6 @@
+<script setup lang="ts"></script>
 <template>
-	<tr>
+	<tr class="ui-table-row">
 		<slot />
 	</tr>
 </template>

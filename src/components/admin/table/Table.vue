@@ -9,9 +9,9 @@ defineProps<Props>()
 </script>
 <template>
 	<div class="table-responsive">
-		<table class="table" :class="{ '-hover': hover, '-no-padding': noPadding }">
-			<thead>
-				<tr>
+		<table class="ui-table table" :class="{ '-hover': hover, '-no-padding': noPadding }">
+			<thead class="ui-table-header">
+				<tr class="ui-table-row">
 					<slot name="header" />
 				</tr>
 			</thead>

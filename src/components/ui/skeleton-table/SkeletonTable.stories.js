@@ -22,8 +22,8 @@ const Template = (args) => ({
 export const Default = Template.bind({})
 Default.args = {}
 
-export const NoBorder = Template.bind({})
-NoBorder.args = {
+export const WithAction = Template.bind({})
+WithAction.args = {
 	noBorder: true,
-	action: true
+	withAction: 2
 }

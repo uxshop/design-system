@@ -80,15 +80,14 @@
 	}
 
 	&.-hover {
-		tbody {
-			td:not(.td-action):not(.td-checkbox) {
-				cursor: pointer;
-			}
+		td:not(.td-action):not(.td-checkbox) {
+			cursor: pointer;
+		}
 
-			tr:hover {
-				background-color: var(--gray-100);
-				color: var(--body-color);
-			}
+		> tr:hover,
+		tbody tr:hover {
+			background-color: var(--gray-100);
+			color: var(--body-color);
 		}
 	}
 

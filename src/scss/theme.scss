@@ -18,7 +18,7 @@ $dark: #4e6380 !default;
 	// --primary: #275efe;
 	--primary: #{$primary};
 	--primary-light: #{lighten($primary, 8%)};
-	--primary-dark: #{darken($primary, 20%)};
+	--primary-dark: #{darken($primary, 5%)};
 	--secondary: #{$secondary};
 	--success: #{$success};
 	--success-light: #{lighten($success, 8%)};

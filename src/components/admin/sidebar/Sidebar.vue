@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import SidebarSubmenu from './SidebarSubmenu.vue'
-import { inject, onMounted, ref, shallowRef, watchEffect } from 'vue'
+import { inject, ref, shallowRef, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Logo from '../logo/Logo.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import MobileDetector from '../../../services/MobileDetectorService'
 import type { SidebarInterface } from './SidebarInterface'
-import { each, find } from 'lodash-es'
 
 interface PermissionInterface {
 	has(rule: string): boolean
@@ -140,7 +139,7 @@ watchEffect(() => {
 								<div
 									@click="onClickLink(key, item)"
 									:class="{
-										'-active': key == currentSection,
+										'-active': key == route.name,
 										'-disabled': item.disabled
 									}"
 									class="link">
