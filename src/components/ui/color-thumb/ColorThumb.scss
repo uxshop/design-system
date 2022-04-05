@@ -1,0 +1,55 @@
+.color-thumb {
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	position: relative;
+	border-radius: 100%;
+	overflow: hidden;
+	vertical-align: middle;
+
+	&::after {
+		content: '';
+		display: block;
+		border: solid 2px rgba(#fff, 0.2);
+		position: absolute;
+		left: 2px;
+		top: 2px;
+		right: 2px;
+		bottom: 2px;
+		z-index: 8;
+		border-radius: 100%;
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		border: solid 2px rgba(0, 0, 0, 0.1);
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 8;
+		border-radius: 100%;
+	}
+
+	.color-thumb-color {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		background-size: cover;
+		border-radius: 100%;
+
+		&.color-thumb-secondary {
+			top: 48%;
+			transform: rotate(-45deg);
+			width: 130%;
+		}
+	}
+
+	+ span {
+		margin-left: 5px;
+	}
+}
