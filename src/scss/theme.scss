@@ -16,6 +16,7 @@ $dark: #4e6380 !default;
 
 :root {
 	// --primary: #275efe;
+
 	--primary: #{$primary};
 	--primary-light: #{lighten($primary, 8%)};
 	--primary-dark: #{darken($primary, 5%)};
@@ -79,6 +80,7 @@ $dark: #4e6380 !default;
 	--font-weight-semi: 600;
 	--font-weight-bold: 700;
 
+	--layout-content-padding-x: 40px;
 	--container-max-width: 1280px;
 	--tab-height: 48px;
 

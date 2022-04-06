@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Skeleton from '../skeleton/Skeleton.vue'
-import ButtonAction from '../../admin/button-action/ButtonAction.vue'
-import IconButton from '../icon-button/IconButton.vue'
 
 interface Props {
 	cols?: string | number
 	rows?: string | number
 	hideHeader?: boolean
 	noBorder?: boolean
-	withAction?: boolean
+	withAction?: boolean | string | number
 	width?: string
 }
 

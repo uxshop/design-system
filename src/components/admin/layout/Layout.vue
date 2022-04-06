@@ -10,16 +10,19 @@ const onScroll = (e: UIEvent) => {
 </script>
 
 <template>
-	<div class="wrapper" @scroll="onScroll" id="wrapper">
-		<slot name="sidebar" />
-		<div class="main" :class="{ 'main-scrolled': scrolled }">
-			<div class="main-navbar">
-				<slot name="navbar" />
-			</div>
-			<!-- <not-found v-if="notFound" /> -->
+	<div class="ui-layout" @scroll="onScroll" id="wrapper" :class="{ '-scrolled': scrolled }">
+		<div class="ui-layout-sidebar">
+			<slot name="sidebar" />
+		</div>
+		<div class="ui-layout-navbar">
+			<slot name="navbar" />
+		</div>
+		<!-- <not-found v-if="notFound" /> -->
+
+		<div class="ui-layout-content">
 			<router-view v-slot="{ Component }">
 				<transition name="slide-fade" mode="out-in">
-					<div class="main-content">
+					<div class="ui-layout-content-page">
 						<component :is="Component" />
 					</div>
 				</transition>

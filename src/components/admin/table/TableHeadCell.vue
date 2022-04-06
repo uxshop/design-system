@@ -1,5 +1,5 @@
 <template>
-	<th class="ui-table-head-cell">
+	<div class="ui-table-cell -head">
 		<slot />
-	</th>
+	</div>
 </template>

@@ -9,14 +9,18 @@ defineProps<Props>()
 </script>
 <template>
 	<div class="table-responsive">
-		<table class="ui-table table" :class="{ '-hover': hover, '-no-padding': noPadding }">
-			<thead class="ui-table-header">
-				<tr class="ui-table-row">
+		<div class="ui-table" :class="{ '-hover': hover, '-no-padding': noPadding }">
+			<div class="ui-table-header">
+				<div class="ui-table-row">
 					<slot name="header" />
-				</tr>
-			</thead>
+				</div>
+			</div>
 			<slot name="body" />
 			<slot />
-		</table>
+		</div>
 	</div>
 </template>
+
+<style lang="scss">
+@import './Table.scss';
+</style>

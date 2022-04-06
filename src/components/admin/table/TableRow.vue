@@ -1,6 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Link from '../../ui/link/Link.vue'
+const props = defineProps<{
+	to?: any
+}>()
+
+const getComponent = () => {
+	return !props.to ? 'div' : Link
+}
+</script>
 <template>
-	<tr class="ui-table-row">
+	<component :is="getComponent()" class="ui-table-row" :to="to">
 		<slot />
-	</tr>
+	</component>
 </template>

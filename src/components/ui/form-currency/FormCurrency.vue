@@ -78,6 +78,6 @@ if (props.pill) {
 		:float="float"
 		:state="state"
 		:invalidFeedback="invalidFeedback">
-		<input ref="inputRef" class="form-control" />
+		<input ref="inputRef" class="form-control" :value="modelValue" />
 	</FormWrapper>
 </template>

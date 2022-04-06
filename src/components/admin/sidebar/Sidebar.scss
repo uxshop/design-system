@@ -7,8 +7,8 @@
 
 	> .ui-sidebar-wrapper {
 		border-right: solid 1px var(--border-color);
-		min-width: 244px;
-		max-width: 244px;
+		min-width: var(--sidebar-width);
+		max-width: var(--sidebar-width);
 		z-index: 888;
 		display: flex;
 		flex-direction: column;
