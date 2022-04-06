@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getCurrentInstance, ref, watchEffect } from 'vue'
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'update'])
 const props = defineProps<{
 	modelValue?: unknown
 	value?: unknown
@@ -33,6 +33,7 @@ watchEffect(() => {
 })
 
 const update = (val: unknown) => {
+	emit('update', val)
 	emit('update:modelValue', val)
 }
 </script>

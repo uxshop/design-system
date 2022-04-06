@@ -2,27 +2,30 @@
 import Icon from '../icon/Icon.vue'
 import { ref } from 'vue'
 
-defineProps<{
-	variant: string
-	size: string
+const props = defineProps<{
+	variant?: string
+	size?: string
 }>()
 
 const emit = defineEmits(['remove'])
-
 const classList = ref<string[]>([])
 
 const onRemove = () => {
 	emit('remove')
 }
+
+if (props.variant) {
+	classList.value.push(`-${props.variant}`)
+}
 </script>
 
 <template>
-	<span class="ui-tag-button" :class="classList">
+	<span class="ui-tag" :class="classList">
 		<slot />
-		<Icon name="close" class="ui-tag-button-close" @click="onRemove" />
+		<Icon name="close" class="ui-tag-close" @click="onRemove" />
 	</span>
 </template>
 
 <style lang="scss">
-@import './TagButton.scss';
+@import './Tag.scss';
 </style>

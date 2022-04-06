@@ -2,10 +2,10 @@
 import { isObject } from 'lodash-es'
 
 defineProps<{
-	value: string | object
+	value?: string | object | number
 }>()
 
-const stringifyValue = (val: string | object) => {
+const stringifyValue = (val?: string | object | number) => {
 	if (isObject(val)) {
 		return JSON.stringify(val)
 	}
