@@ -34,6 +34,7 @@ import Avatar from './components/ui/avatar/Avatar.vue'
 import Progress from './components/ui/progress/Progress.vue'
 import Skeleton from './components/ui/skeleton/Skeleton.vue'
 import SkeletonTable from './components/ui/skeleton-table/SkeletonTable.vue'
+import SkeletonList from './components/ui/skeleton-list/SkeletonList.vue'
 import Image from './components/ui/image/Image.vue'
 import IconButton from './components/ui/icon-button/IconButton.vue'
 import FormTags from './components/ui/form-tags/FormTags.vue'
@@ -86,6 +87,7 @@ export default {
 		app.component(`${prefix}Progress`, Progress)
 		app.component(`${prefix}Skeleton`, Skeleton)
 		app.component(`${prefix}SkeletonTable`, SkeletonTable)
+		app.component(`${prefix}SkeletonList`, SkeletonList)
 		app.component(`${prefix}Image`, Image)
 		app.component(`${prefix}FormHelper`, FormHelper)
 		app.component(`${prefix}Tag`, Tag)

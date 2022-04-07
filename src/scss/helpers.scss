@@ -231,3 +231,11 @@ ol,
 dl {
 	margin-top: 0;
 }
+
+.handle {
+	cursor: grab;
+
+	&:active {
+		cursor: grabbing;
+	}
+}

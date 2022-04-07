@@ -34,7 +34,8 @@ Default.args = {
 			name: 'marcas',
 			to: 'brands'
 		}
-	]
+	],
+	dropdown: [{ text: 'My Store', icon: 'local_mall' }, { type: 'divider' }, { text: 'User', to: "{ name: 'users' }" }]
 }
 
 Default.decorators = [

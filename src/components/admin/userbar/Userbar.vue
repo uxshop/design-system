@@ -9,13 +9,28 @@ import Dropdown from '../../ui/dropdown/Dropdown.vue'
 import Icon from '../../ui/icon/Icon.vue'
 import { initials as filterInitials } from '../../../filters'
 
-const props = defineProps<{
+import DropdownDividerVue from '../../ui/dropdown/DropdownDivider.vue'
+import DropdownItemButtonVue from '../../ui/dropdown/DropdownItemButton.vue'
+import DropdownItemVue from '../../ui/dropdown/DropdownItem.vue'
+
+interface Props {
+	user: { name: string; image: any }
 	slug?: string
 	backlink?: { to: string }
 	breadcrumb?: { to: string; name: string }[]
 	notifications?: object
-	user: { name: string; image: string | any }
-}>()
+	dropdown?: any[]
+}
+
+interface IDropdownItem {
+	text?: string
+	action?: () => void
+	icon?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	dropdown: () => []
+})
 
 const emit = defineEmits(['toggleMenu', 'toggleNotification'])
 const menu = inject<{ toggle(): void }>('menu')
@@ -32,6 +47,18 @@ const onToggleMenu = () => {
 
 const onNotification = () => {
 	emit('toggleNotification')
+}
+
+const getComponent = (item: IDropdownItem) => {
+	if (!item.text) {
+		return DropdownDividerVue
+	}
+
+	if (!item.action) {
+		return DropdownItemButtonVue
+	}
+
+	return DropdownItemVue
 }
 </script>
 
@@ -86,6 +113,11 @@ const onNotification = () => {
 								</div>
 							</template>
 							<slot name="user-links" />
+							<component :is="getComponent(item)" v-for="item in dropdown" :key="item">
+								<Icon :name="item.icon" v-if="item.icon" />
+								<span>{{ item.text }}</span>
+								<!-- <Icon name="open_in_new" style="font-size: 13px; margin-left: auto; opacity: 0.3" v-if="item.href" /> -->
+							</component>
 						</Dropdown>
 					</div>
 				</Col>

@@ -26,9 +26,11 @@
 	}
 
 	&.-hover {
-		cursor: pointer;
+		&:not(.ui-table-header) .ui-table-row {
+			cursor: pointer;
+		}
 
-		> .ui-table-row:hover {
+		&:not(.ui-table-header) .ui-table-row:hover {
 			background-color: var(--gray-100);
 			color: var(--body-color);
 		}
@@ -44,6 +46,7 @@
 	.ui-table-row {
 		display: table-row;
 		color: inherit;
+
 		&:hover {
 			text-decoration: none;
 		}
@@ -56,5 +59,9 @@
 		width: 1px;
 		z-index: 2;
 		white-space: nowrap;
+	}
+
+	.table-list-body {
+		display: table-row-group;
 	}
 }

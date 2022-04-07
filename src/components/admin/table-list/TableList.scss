@@ -32,7 +32,8 @@
 			line-height: 1.2;
 			font-size: 12px;
 			border: none;
-			border-bottom: solid 1px var(--primary);
+			border-top: solid 1px var(--primary);
+			border-bottom: solid 1px var(--border-color);
 			user-select: none;
 			vertical-align: middle;
 			line-height: 1;
