@@ -10,6 +10,7 @@ import CardAnnotation from './components/admin/card-annotation/CardAnnotation.vu
 import Sidebar from './components/admin/sidebar/Sidebar.vue'
 import TableList from './components/admin/table-list/TableList.vue'
 import PageHelperVideo from './components/admin/page-helper-video/PageHelperVideo.vue'
+import PageHelper from './components/admin/page-helper/PageHelper.vue'
 import ButtonAction from './components/admin/button-action/ButtonAction.vue'
 import RowExclude from './components/admin/row-exclude/RowExclude.vue'
 import CardActive from './components/admin/card-active/CardActive.vue'
@@ -37,6 +38,7 @@ export default {
 		app.component(`${prefix}CardAnnotation`, CardAnnotation)
 		app.component(`${prefix}Sidebar`, Sidebar)
 		app.component(`${prefix}PageHelperVideo`, PageHelperVideo)
+		app.component(`${prefix}PageHelper`, PageHelper)
 		app.component(`${prefix}ButtonAction`, ButtonAction)
 		app.component(`${prefix}TableList`, TableList)
 		app.component(`${prefix}RowExclude`, RowExclude)
