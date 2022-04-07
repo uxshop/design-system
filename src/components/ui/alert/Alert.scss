@@ -58,12 +58,17 @@
 
 	> .ui-alert-content {
 		flex-grow: 1;
+
 		> .ui-alert-title {
 			margin: 0;
 			margin-bottom: 5px;
 			line-height: 1.4;
 			font-weight: 600;
 			font-size: 15px;
+		}
+
+		> .ui-alert-text {
+			word-break: break-word;
 		}
 
 		ul ~ ul {
