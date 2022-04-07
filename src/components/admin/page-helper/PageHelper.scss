@@ -1,7 +1,7 @@
 .ui-page-helper {
-	display: inline-flex;
+	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 	padding: 10px 15px;
 	margin-bottom: var(--grid-gutter-width);
 	border: solid 1px var(--border-color);
@@ -10,5 +10,6 @@
 
 	> .ui-icon {
 		margin-right: 10px;
+		color: var(--primary);
 	}
 }
