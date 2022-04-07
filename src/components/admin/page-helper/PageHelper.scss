@@ -2,7 +2,11 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: auto;
+	padding: 10px 15px;
+	margin-bottom: var(--grid-gutter-width);
+	border: solid 1px var(--border-color);
+	background-color: #fff;
+	border-radius: 6px;
 
 	> .ui-icon {
 		margin-right: 10px;
