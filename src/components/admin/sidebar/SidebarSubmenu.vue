@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import Icon from '../../ui/icon/Icon.vue'
 import type { SidebarInterface } from './SidebarInterface'
 
@@ -11,6 +12,10 @@ defineProps<{
 
 const emit = defineEmits(['back'])
 const onBack = () => emit('back')
+const route = useRoute()
+const subIsActive = (input: string) => {
+	return route.path.startsWith(input)
+}
 </script>
 
 <template>
@@ -29,14 +34,17 @@ const onBack = () => emit('back')
 				<div class="title">{{ s.name }}</div>
 				<ul class="sub-list">
 					<li v-for="node in s.nodes" :key="node.to" class="item">
-						<router-link
-							@click.prevent="clickLink(key, node)"
-							v-html="node.name"
-							:to="{ name: node.to }"
-							:disabled="!hasPermission(node)"
-							class="link"
-							tabindex="-1"
-							event="" />
+						<router-link custom v-slot="{ href }" :to="{ name: node.to }">
+							<a
+								:href="href"
+								event=""
+								tabindex="-1"
+								class="link"
+								:class="{ 'router-link-active': subIsActive(href) }"
+								@click.prevent="clickLink(key, node)">
+								{{ node.name }}
+							</a>
+						</router-link>
 					</li>
 				</ul>
 				<div class="spacer" @click="onBack"></div>

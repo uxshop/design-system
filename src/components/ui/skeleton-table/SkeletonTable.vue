@@ -40,7 +40,7 @@ if (props.width) {
 				<td v-for="c in Number(cols)" :key="c">
 					<ui-skeleton width="85%" />
 				</td>
-				<td v-for="c in Number(withAction)" :key="c">
+				<td width="1" v-for="c in Number(withAction)" :key="c">
 					<ui-skeleton width="32px" height="32px" />
 				</td>
 			</tr>
