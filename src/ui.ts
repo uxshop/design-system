@@ -27,6 +27,7 @@ import Select from './components/ui/form-autocomplete/FormAutocomplete.vue'
 import Icon from './components/ui/icon/Icon.vue'
 import FormSpinbutton from './components/ui/form-spinbutton/FormSpinbutton.vue'
 import FormHelper from './components/ui/form-helper/FormHelper.vue'
+import Stack from './components/ui/stack/Stack.vue'
 import Spinner from './components/ui/spinner/Spinner.vue'
 import Link from './components/ui/link/Link.vue'
 import FormValidation from './components/ui/form-validation/FormValidation.vue'
@@ -82,6 +83,7 @@ export default {
 		app.component(`${prefix}Select`, Select)
 		app.component(`${prefix}FormSpinbutton`, FormSpinbutton)
 		app.component(`${prefix}Spinner`, Spinner)
+		app.component(`${prefix}Stack`, Stack)
 		app.component(`${prefix}Link`, Link)
 		app.component(`${prefix}FormValidation`, FormValidation)
 		app.component(`${prefix}Avatar`, Avatar)

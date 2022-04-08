@@ -1,0 +1,76 @@
+.ui-stack {
+	display: flex;
+
+	&.-distribute {
+		&-left {
+			&:not(.-vertical) {
+				justify-content: flex-start;
+			}
+
+			&.-vertical {
+				align-items: flex-start;
+			}
+		}
+
+		&-center {
+			&:not(.-vertical) {
+				justify-content: center;
+			}
+
+			&.-vertical {
+				align-items: center;
+			}
+		}
+
+		&-right {
+			&:not(.-vertical) {
+				justify-content: flex-end;
+			}
+
+			&.-vertical {
+				align-items: flex-end;
+			}
+		}
+
+		&-around {
+			justify-content: space-around;
+		}
+
+		&-evenly {
+			justify-content: space-evenly;
+		}
+
+		&-between {
+			justify-content: space-between;
+		}
+	}
+
+	&.-spacing {
+		&-xs {
+			gap: 0.4em;
+		}
+
+		&-sm {
+			gap: 0.8em;
+		}
+
+		&-md {
+			gap: 1.4em;
+		}
+
+		&-lg {
+			gap: 2.2em;
+		}
+
+		&-xl {
+			gap: 3.2em;
+		}
+	}
+
+	&.-vertical {
+		flex-direction: column;
+	}
+	&.-no-wrap {
+		flex-wrap: nowrap;
+	}
+}
