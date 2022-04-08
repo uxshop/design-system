@@ -39,6 +39,7 @@ import Image from './components/ui/image/Image.vue'
 import IconButton from './components/ui/icon-button/IconButton.vue'
 import FormTags from './components/ui/form-tags/FormTags.vue'
 import Tag from './components/ui/tag/Tag.vue'
+import Toast from './components/ui/toast/Toast.vue'
 import Dialog from './components/ui/dialog/Dialog.vue'
 
 // plus / com externos
@@ -91,6 +92,7 @@ export default {
 		app.component(`${prefix}Image`, Image)
 		app.component(`${prefix}FormHelper`, FormHelper)
 		app.component(`${prefix}Tag`, Tag)
+		app.component(`${prefix}Toast`, Toast)
 		app.component(`${prefix}Dialog`, Dialog)
 
 		// plus
