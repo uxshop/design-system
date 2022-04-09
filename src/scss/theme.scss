@@ -28,6 +28,7 @@ $dark: #4e6380 !default;
 	--link-color: #0379da;
 	--dark: #{$dark};
 	--dark-hover: #{darken($dark, 20%)};
+	--border-width: 1px;
 
 	--warning: #{$warning};
 	--info: #3dadf1;
@@ -37,20 +38,23 @@ $dark: #4e6380 !default;
 	--body-color: #{$body-color};
 	--bg-white: #fff;
 	--drop-shadow-filter: drop-shadow(0px 0px 15px #e0e7ec);
+	--drop-shadow: drop-shadow(0px 0px 15px #e0e7ec);
 	--border-radius: 6px;
 
-	--card-padding: 20px;
+	--card-padding: 25px;
 	--font-size-base: 13px;
 
 	--gray-100: #f6f9fb;
 	--gray-200: #e5eaef;
 	--gray-300: #{darken(#e5eaef, 5)};
 	--border-color: #e5eaef;
+	--card-sparcer-x: 30px;
 
-	--input-height: 48px;
+	--input-height: 38px;
 	--input-height-sm: 32px;
 	--input-height-lg: 50px;
-	--input-border-color: #dee5e9;
+	// --input-border-color: #dee5e9;
+	--input-border-color: rgba(201, 204, 207, 1);
 	--input-border-focus-color: var(--primary);
 	--input-border-focus-width: 2px;
 	--input-placeholder-color: #828282;
@@ -61,13 +65,13 @@ $dark: #4e6380 !default;
 	--input-border-radius: 6px;
 	--input-border-radius-sm: 4px;
 	--input-border-width: 2px;
+	--input-bg-color: white;
 	--checkbox-border-radius: 4px;
-
 	--form-group-margin-bottom: 15px;
 
 	--modal-backdrop-opacity: 0.8;
 	--modal-backdrop-bg: #536d73;
-	--modal-padding: 25px;
+	--modal-padding: 30px;
 
 	--text-muted: #{rgba($body-color, 0.7)};
 	// --headings-font-family: "NexaFreeBoldwebfont";
@@ -75,7 +79,7 @@ $dark: #4e6380 !default;
 	--font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto;
 
 	--card-border-radius: 8px;
-	--grid-gutter-width: 10px;
+	--grid-gutter-width: 15px;
 	--font-weight-nomal: 400;
 	--font-weight-semi: 600;
 	--font-weight-bold: 700;
@@ -85,7 +89,6 @@ $dark: #4e6380 !default;
 	--tab-height: 48px;
 
 	--alert-border-radius: 2px;
-	--input-bg-color: white;
 	--sidebar-width: 244px;
 }
 

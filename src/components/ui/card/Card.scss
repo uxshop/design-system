@@ -17,7 +17,8 @@ label {
 	border: none;
 	margin-bottom: var(--grid-gutter-width);
 	background: var(--bg-white);
-	filter: var(--drop-shadow-filter);
+	// filter: var(--drop-shadow-filter);
+	box-shadow: 0 0 5px rgba(23, 24, 24, 0.05), 0 0 2px rgba(0, 0, 0, 0.15);
 
 	&.-primary {
 		border-color: var(--primary);

@@ -16,6 +16,10 @@ import TableListNavPagination from './table-list-nav/TableListNavPagination.vue'
 import TableListNavFilter from './table-list-nav/TableListNavFilter.vue'
 import type { ITableListConfig } from './types/ITableListConfig'
 import type { ApiData } from './types/IResourceService'
+import SkeletonTable from '../../ui/skeleton-table/SkeletonTable.vue'
+import Skeleton from '../../ui/skeleton/Skeleton.vue'
+import Row from '../../ui/grid/row/Row.vue'
+import Col from '../../ui/grid/col/Col.vue'
 
 type TQueryParams = Record<string, string | number>
 
@@ -189,6 +193,14 @@ defineExpose({
 </script>
 
 <template>
+	<div class="table-list-skeleton" v-if="loading && !firstGet">
+		<div class="tabs">
+			<div style="margin: 20px 10px">
+				<Skeleton width="100px" />
+			</div>
+		</div>
+		<SkeletonTable cols="4" rows="6" />
+	</div>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />
 	<div class="table-list" v-show="firstGet" v-else>
 		<TableListTabs v-if="rows.length" :presetFilters="config.presetFilters" :hideCheckbox="config.hideCheckbox" />

@@ -5,6 +5,7 @@ const emit = defineEmits(['update:modelValue', 'open', 'close'])
 const props = defineProps<{
 	modelValue: boolean
 	title?: string
+	subtitle?: string
 	scrollable?: boolean
 	noCloseOnBackdrop?: boolean
 	size?: string
@@ -14,7 +15,6 @@ const props = defineProps<{
 const slots = useSlots()
 const isOpen = ref(false)
 const modalSize = props.size ? `-${props.size}` : '-md'
-const currentTitle = ref(props.title)
 
 const haveSlot = (name = 'default') => {
 	return !!slots[name]
@@ -57,12 +57,6 @@ watchEffect(() => {
 		close()
 	}
 })
-
-defineExpose({
-	changeTitle: (newTitle: string) => {
-		currentTitle.value = newTitle
-	}
-})
 </script>
 
 <template>
@@ -83,9 +77,12 @@ defineExpose({
 
 				<div class="ui-aside-content">
 					<div class="ui-aside-header">
-						<h4 class="title">
-							{{ currentTitle }}
-						</h4>
+						<div>
+							<h4 class="title">
+								{{ title }}
+							</h4>
+							<small class="d-block text-muted" v-if="subtitle">Por Dooca Commerce</small>
+						</div>
 						<button @click="onClose" class="close" id="btn-close">
 							<span>fechar</span>
 							<Icon name="close" />

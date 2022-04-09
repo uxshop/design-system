@@ -26,13 +26,9 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const isDropdown = ref(props.dropdown)
-
 const cardTitle = ref(props.title)
-
 const showBody = ref(!props.dropdownClosed)
-
 const uid = `ui-card-${getCurrentInstance()?.uid}`
-
 const slots = useSlots()
 
 const haveSlot = (name = 'default') => {
