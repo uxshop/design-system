@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, onMounted, ref } from 'vue'
+import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 
@@ -24,7 +24,7 @@ interface Props {
 const props = defineProps<Props>()
 const elementRef = ref<Element>()
 const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`)
-
+const slots = useSlots()
 onMounted(() => {
 	nextTick(() => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -100,30 +100,36 @@ const classList = computed(() => {
 				<Icon name="help" class="icon" />
 			</span>
 		</div>
-		<div class="form-wrapper-content-item form-wrapper-content-bx">
-			<Icon :name="leadingIcon" v-if="leadingIcon" />
-			<slot />
 
-			<div class="form-wrapper-noteched">
-				<div class="form-wrapper-noteched-prepend"></div>
-				<div class="form-wrapper-noteched-label" v-if="float">
-					<label class="form-wrapper-label" :for="uid" v-html="props.label"></label>
+		<div class="ui-form-wrapper-main">
+			<div class="form-wrapper-content-item form-wrapper-content-bx">
+				<Icon :name="leadingIcon" v-if="leadingIcon" />
+				<slot />
+
+				<div class="form-wrapper-noteched">
+					<div class="form-wrapper-noteched-prepend"></div>
+					<div class="form-wrapper-noteched-label" v-if="float">
+						<label class="form-wrapper-label" :for="uid" v-html="props.label"></label>
+					</div>
+					<div class="form-wrapper-noteched-append"></div>
 				</div>
-				<div class="form-wrapper-noteched-append"></div>
-			</div>
 
-			<div class="trailing-icon">
-				<Icon name="check" v-if="state === true" />
-			</div>
+				<div class="trailing-icon">
+					<Icon name="check" v-if="state === true" />
+				</div>
 
-			<div class="trailing-icon">
-				<Icon :name="trailingIcon" v-if="trailingIcon && !loading" />
-				<span class="trailing-icon-text" v-if="trailingText">{{ trailingText }}</span>
-				<slot name="trailingIcon" />
-			</div>
+				<div class="trailing-icon">
+					<Icon :name="trailingIcon" v-if="trailingIcon && !loading" />
+					<span class="trailing-icon-text" v-if="trailingText">{{ trailingText }}</span>
+					<slot name="trailingIcon" />
+				</div>
 
-			<div class="form-control-loader" v-if="loading">
-				<Spinner class="form-control-loader-spinner" />
+				<div class="form-control-loader" v-if="loading">
+					<Spinner class="form-control-loader-spinner" />
+				</div>
+			</div>
+			<div class="form-wrapper-append" v-if="slots.append">
+				<slot name="append" />
 			</div>
 		</div>
 

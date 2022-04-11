@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, useSlots } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 const vMaska = maska
@@ -76,6 +76,8 @@ const onFocus = emit('focus')
 const onBlur = emit('blur')
 const onKeydown = emit('keydown')
 const onEnter = emit('enter')
+
+const slots = useSlots()
 </script>
 
 <template>
@@ -125,5 +127,8 @@ const onEnter = emit('enter')
 			:required="required"
 			@maska="rawValue = $event.target.dataset.maskRawValue" />
 		<slot name="after" />
+		<template #append v-if="slots.append">
+			<slot name="append" />
+		</template>
 	</FormWrapper>
 </template>

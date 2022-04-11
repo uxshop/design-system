@@ -2,7 +2,13 @@
 	margin-bottom: var(--form-group-margin-bottom);
 	width: 100%;
 
-	> .form-wrapper-content-bx {
+	.ui-form-wrapper-main {
+		display: flex;
+		gap: var(--grid-gutter-width);
+	}
+
+	.form-wrapper-content-bx {
+		flex-grow: 1;
 		position: relative;
 		display: flex;
 		align-items: center;
