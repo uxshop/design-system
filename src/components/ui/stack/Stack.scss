@@ -1,5 +1,19 @@
 .ui-stack {
-	display: flex;
+	@import '../../../scss/mixins.scss';
+
+	align-items: center;
+
+	&.-custom-grid {
+		display: grid;
+	}
+
+	&:not(.-custom-grid) {
+		display: flex;
+
+		@include mobile {
+			flex-direction: column;
+		}
+	}
 
 	&.-distribute {
 		&-left {
@@ -47,29 +61,55 @@
 
 	&.-spacing {
 		&-xs {
-			gap: 0.4em;
+			&:not(.-vertical) {
+				column-gap: calc(var(--grid-gutter-width) * 0.5);
+			}
+
+			&.-vertical {
+				row-gap: var(--grid-gutter-width);
+			}
 		}
 
 		&-sm {
-			gap: 0.8em;
-		}
+			&:not(.-vertical) {
+				column-gap: calc(var(--grid-gutter-width) * 0.75);
+			}
 
-		&-md {
-			gap: 1.4em;
+			&.-vertical {
+				row-gap: calc(var(--grid-gutter-width) * 1.5);
+			}
 		}
 
 		&-lg {
-			gap: 2.2em;
+			&:not(.-vertical) {
+				column-gap: calc(var(--grid-gutter-width) * 1.25);
+			}
+
+			&.-vertical {
+				row-gap: calc(var(--grid-gutter-width) * 2.5);
+			}
 		}
 
 		&-xl {
-			gap: 3.2em;
+			&:not(.-vertical) {
+				column-gap: calc(var(--grid-gutter-width) * 1.5);
+			}
+
+			&.-vertical {
+				row-gap: calc(var(--grid-gutter-width) * 3);
+			}
 		}
 	}
 
 	&.-vertical {
 		flex-direction: column;
+		row-gap: calc(var(--grid-gutter-width) * 2);
 	}
+
+	&:not(.-vertical) {
+		column-gap: var(--grid-gutter-width);
+	}
+
 	&.-no-wrap {
 		flex-wrap: nowrap;
 	}

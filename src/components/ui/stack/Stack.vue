@@ -6,15 +6,16 @@ const props = defineProps<{
 	spacing?: string
 	vertical?: boolean
 	wrap?: boolean
+	columns?: string | number
 }>()
 
 const classList = ref<string[]>([])
 
-if ((props.distribuition != 'default', props.distribuition != undefined)) {
+if (props.distribuition != 'default' && props.distribuition != undefined) {
 	classList.value.push(`-distribute-${props.distribuition}`)
 }
 
-if ((props.spacing != 'default', props.spacing != undefined)) {
+if (props.spacing != 'default' && props.spacing != undefined) {
 	classList.value.push(`-spacing-${props.spacing}`)
 }
 
@@ -22,12 +23,19 @@ if (props.vertical == true) {
 	classList.value.push('-vertical')
 }
 
-if (props.wrap == null || false) {
+if (props.wrap == null && props.wrap == false) {
 	classList.value.push('-no-wrap')
+}
+
+const styleList = ref<string[]>([])
+
+if (props.columns && props.columns != 1) {
+	classList.value.push('-custom-grid')
+	styleList.value.push(`grid-template-columns: repeat(${props.columns}, auto)`)
 }
 </script>
 <template>
-	<div class="ui-stack" :class="classList">
+	<div class="ui-stack" :class="classList" :style="styleList">
 		<slot />
 	</div>
 </template>

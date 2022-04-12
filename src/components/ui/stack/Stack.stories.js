@@ -11,7 +11,7 @@ export default {
 		},
 		spacing: {
 			control: { type: 'select' },
-			options: ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+			options: ['xs', 'sm', 'default', 'lg', 'xl']
 		}
 	}
 }

@@ -16,6 +16,12 @@
 		background-color: var(--input-bg-color);
 	}
 
+	.form-wrapper-append {
+		display: flex;
+		gap: var(--grid-gutter-width);
+		align-items: center;
+	}
+
 	&.-disabled {
 		pointer-events: none;
 		> .form-wrapper-content-bx {

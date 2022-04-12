@@ -4,6 +4,7 @@
 	display: inline-block;
 	cursor: pointer;
 	position: relative;
+	white-space: nowrap;
 
 	.ui-form-checkbox-text:empty {
 		display: none;
