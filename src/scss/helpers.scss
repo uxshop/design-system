@@ -72,6 +72,22 @@ h6 {
 	font-size: calc(var(--font-size-base) * 1.1);
 }
 
+.font-md {
+	font-size: calc(var(--font-size-base) * 1.1);
+}
+
+.font-lg {
+	font-size: calc(var(--font-size-base) * 1.2);
+}
+
+.font-sm {
+	font-size: calc(var(--font-size-base) * 0.9);
+}
+
+.text-center {
+	text-align: center !important;
+}
+
 .text-lowercase {
 	text-transform: lowercase !important;
 }
@@ -146,6 +162,11 @@ hr {
 	.mx-#{$i} {
 		margin-left: #{$i * 5}px !important;
 		margin-right: #{$i * 5}px !important;
+	}
+
+	.my-#{$i} {
+		margin-top: #{$i * 5}px !important;
+		margin-bottom: #{$i * 5}px !important;
 	}
 
 	.mt-#{$i} {

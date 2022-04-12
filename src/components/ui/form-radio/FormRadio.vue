@@ -27,23 +27,21 @@ const update = (val: string | boolean) => {
 </script>
 
 <template>
-	<span>
-		<label class="ui-form-radio" :for="uid">
-			<input
-				type="radio"
-				:id="uid"
-				:value="value"
-				:tabindex="tabindex"
-				:required="required"
-				:name="name"
-				v-model="model"
-				@update:modelValue="update" />
-			<div class="ui-form-radio-text">
-				<slot />
-				{{ label }}
-			</div>
-		</label>
-	</span>
+	<label class="ui-form-radio" :for="uid">
+		<input
+			type="radio"
+			:id="uid"
+			:value="value"
+			:tabindex="tabindex"
+			:required="required"
+			:name="name"
+			v-model="model"
+			@update:modelValue="update" />
+		<div class="ui-form-radio-text">
+			<slot />
+			{{ label }}
+		</div>
+	</label>
 </template>
 
 <style lang="scss">

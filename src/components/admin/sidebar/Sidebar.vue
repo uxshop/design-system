@@ -36,20 +36,6 @@ const router = useRouter()
 const route = useRoute()
 const menu = inject('menu') as MenuProviderInterface
 
-// onMounted(() => {
-// 	section.value = String(route.meta.section)
-// 	if (props.menus) {
-// 		currentMenu.value = props.menus[section.value]
-// 		if (currentMenu.value && currentMenu.value.nodes) {
-// 			activeSection.value = section.value
-// 		} else {
-// 			activeSection.value = null
-// 		}
-
-// 		console.log(activeSection.value, currentMenu.value, section.value, props.menus)
-// 	}
-// })
-
 const hasPermission = (item: SidebarInterface.Item) => {
 	if (props.permissionService.has(item.permissions)) {
 		return true
@@ -108,7 +94,9 @@ const onClickLink = (sec: string, item: SidebarInterface.Item) => {
 const onBack = () => (activeSection.value = null)
 
 watchEffect(() => {
+	// if (props.currentSection !== undefined && activeSection.value !== props.currentSection) {
 	activeSection.value = props.currentSection
+	// }
 })
 </script>
 

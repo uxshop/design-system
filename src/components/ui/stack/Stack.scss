@@ -1,6 +1,7 @@
 .ui-stack {
 	@import '../../../scss/mixins.scss';
-
+	display: flex;
+	gap: var(--grid-gutter-width);
 	align-items: center;
 
 	&.-custom-grid {

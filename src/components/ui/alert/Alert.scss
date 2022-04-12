@@ -9,7 +9,7 @@
 	border: solid 1px transparent;
 	margin-bottom: var(--grid-gutter-width);
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -54,6 +54,7 @@
 	> .ui-icon {
 		margin-right: 8px;
 		font-size: 20px;
+		align-self: baseline;
 	}
 
 	> .ui-alert-content {

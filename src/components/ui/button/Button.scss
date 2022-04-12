@@ -218,9 +218,8 @@
 	min-height: var(--input-height);
 	justify-content: center;
 	position: relative;
-	color: var(--primary);
-	// border: solid 1px transparent;
-	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 0 1px var(--border-color), 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+	background-color: white;
 
 	&:hover {
 		filter: brightness(1.08);
