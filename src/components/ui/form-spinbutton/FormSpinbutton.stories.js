@@ -5,7 +5,20 @@ import { ref } from 'vue'
 export default {
 	title: 'Ui/Forms/FormSpinbutton',
 	component: FormSpinbutton,
-	argTypes: {}
+	argTypes: {
+		size: {
+			options: [
+				'md',
+				'sm',
+				'lg',
+			],
+			control: { type: 'select' }
+		},
+		type: {
+			options: ['button', 'submit'],
+			control: { type: 'select' }
+		}
+	}
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args

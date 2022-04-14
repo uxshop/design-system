@@ -5,8 +5,16 @@
 	padding-left: 0;
 	padding-right: 0;
 
+	&.-lg {
+		padding-left: 0;
+		padding-right: 0;
+		button {
+			font-size: 16px;
+		}
+	}
+
 	&.-sm {
-		min-height: var(--input-height-sm);
+		height: unset;
 		border-radius: var(--input-border-radius-sm);
 		padding-left: 0;
 		padding-right: 0;
