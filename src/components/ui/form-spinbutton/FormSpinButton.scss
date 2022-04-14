@@ -30,6 +30,8 @@
 	button {
 		padding: 0 10px;
 		color: var(--body-color);
+		box-shadow: none;
+		filter: none;
 
 		&:last-child {
 			border-top-left-radius: 0;
