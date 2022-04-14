@@ -1,0 +1,20 @@
+.ui-text-style {
+	&.-muted {
+		color: var(--text-muted);
+	}
+	&.-success {
+		color: var(--success);
+	}
+	&.-danger {
+		color: var(--danger);
+	}
+	&.-primary {
+		color: var(--primary);
+	}
+	&.-secondary {
+		color: var(--secondary);
+	}
+	&.-highlight {
+		background-color: #fff9c0;
+	}
+}

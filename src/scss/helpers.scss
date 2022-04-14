@@ -50,7 +50,8 @@ h6 {
 	margin-top: 0;
 	font-weight: var(--font-headings-weight);
 	font-family: var(--headings-font-family);
-	margin-bottom: 15px;
+	margin-bottom: 5px;
+	line-height: 1.2;
 }
 
 h1 {
@@ -244,6 +245,23 @@ hr {
 		.order-#{$i} {
 			order: #{$i} !important;
 		}
+	}
+}
+
+mark {
+	background-color: #fff9c0;
+	position: relative;
+	&:before {
+		background-color: #46b96c;
+
+		content: '';
+		position: absolute;
+		width: calc(100% + 4px);
+		height: 60%;
+		left: -2px;
+		bottom: 0;
+		z-index: -1;
+		transform: rotate(-2deg);
 	}
 }
 

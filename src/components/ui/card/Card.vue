@@ -17,8 +17,8 @@ interface Props {
 	closeCaption?: string
 	gray?: boolean
 	last?: boolean
-	blocked?: boolean
 	dropdownMobile?: string
+	loading?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -49,10 +49,6 @@ const toggleShowBody = () => {
 	showBody.value = !showBody.value
 }
 
-const onBlockedClick = () => {
-	// bus.$emit('upgrade-dialog', this.blocked)
-}
-
 watchEffect(() => (showBody.value = !props.dropdownClosed))
 </script>
 
@@ -67,9 +63,12 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			'-no-border': noBorder,
 			'-last': last,
 			'-full-height': fullHeight,
-			'-blocked': blocked,
-			'-success': success
+			'-success': success,
+			'-loading': loading
 		}">
+		<div class="ui-card-loading" v-if="loading">
+			<ui-spinner size="50" />
+		</div>
 		<div
 			class="ui-card-header"
 			@click="isDropdown ? toggleShowBody() : null"
@@ -115,14 +114,6 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			<div v-show="showBody">
 				<slot name="footer" />
 			</div>
-		</div>
-
-		<div class="ui-card-block" @click="onBlockedClick">
-			<span class="ui-card-block-info">
-				<Icon name="lock" type="rounded" />
-				<Icon name="lock_open" type="rounded" />
-				<span class="ui-card-block-text">Bloqueado</span>
-			</span>
 		</div>
 	</div>
 </template>
