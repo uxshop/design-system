@@ -28,7 +28,7 @@ $dark: #4e6380 !default;
 	--link-color: #0379da;
 	--dark: #{$dark};
 	--dark-hover: #{darken($dark, 20%)};
-	--border-width: 1px;
+	--border-width: 2px;
 	--light: #f6f9fb;
 
 	--warning: #{$warning};

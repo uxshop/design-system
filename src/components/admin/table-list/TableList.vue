@@ -15,11 +15,11 @@ import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
 import TableListNavPagination from './table-list-nav/TableListNavPagination.vue'
 import TableListNavFilter from './table-list-nav/TableListNavFilter.vue'
 import type { ITableListConfig } from './types/ITableListConfig'
-import type { ApiData } from './types/IResourceService'
 import SkeletonTable from '../../ui/skeleton-table/SkeletonTable.vue'
 import Skeleton from '../../ui/skeleton/Skeleton.vue'
 import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
+import type { TApiData } from 'src/types/IApiResource'
 
 type TQueryParams = Record<string, string | number>
 
@@ -32,7 +32,7 @@ const emit = defineEmits<{
 	(event: 'clickRow', i: Record<string, string>): void
 }>()
 
-const rows = ref<ApiData[]>([])
+const rows = ref<TApiData[]>([])
 const scrollLeft = ref(false)
 const selected = ref<number[]>([])
 const firstGet = ref(false)
@@ -99,7 +99,7 @@ const init = async () => {
 const checkAll = (val: boolean) => {
 	if (val && rows.value) {
 		const data: number[] = []
-		rows.value.forEach((item: ApiData) => {
+		rows.value.forEach((item: any) => {
 			data.push(Number(item.id))
 		})
 		selected.value = data
@@ -122,7 +122,7 @@ const activeOne = (item: Record<string, number>, active: boolean) => {
 	return props.config.service.update(Number(item.id), { active: active })
 }
 
-const onGet = (data: ApiData[]) => {
+const onGet = (data: TApiData[]) => {
 	firstGet.value = true
 
 	if (props.config.onGet && typeof props.config.onGet === 'function') {
@@ -199,7 +199,7 @@ defineExpose({
 				<Skeleton width="100px" />
 			</div>
 		</div>
-		<SkeletonTable cols="4" rows="6" />
+		<SkeletonTable cols="3" rows="6" with-action />
 	</div>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />
 	<div class="table-list" v-show="firstGet" v-else>

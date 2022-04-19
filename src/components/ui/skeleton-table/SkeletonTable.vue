@@ -11,11 +11,13 @@ interface Props {
 	withAvatar?: boolean
 	width?: string
 	lines?: string | number
+	padding: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	cols: 5,
-	rows: 3
+	rows: 3,
+	padding: '10px'
 })
 
 const style = ref<{
@@ -31,6 +33,7 @@ if (props.width) {
 	<table class="ui-table ui-skeleton-table" :style="style" :class="{ '-no-border': noBorder }">
 		<thead v-if="!hideHeader">
 			<tr>
+				<th v-if="withAvatar"></th>
 				<th v-for="c in Number(cols)" :key="c">
 					<Skeleton />
 				</th>
@@ -40,17 +43,15 @@ if (props.width) {
 		<tbody>
 			<tr v-for="r in Number(rows)" :key="r">
 				<td width="1" v-if="withAvatar">
-					<ui-skeleton width="40px" height="40px" />
+					<Skeleton width="40px" height="40px" style="border-radius: 100%" />
 				</td>
-				<td width="45%" v-if="withAvatar">
-					<ui-skeleton width="85%" />
-				</td>
+
 				<td v-for="c in Number(cols)" :key="c">
-					<ui-skeleton width="85%" />
-					<ui-skeleton width="40%" height="10px" v-if="Number(lines) > 1" />
+					<Skeleton width="85%" />
+					<Skeleton width="40%" height="10px" v-if="Number(lines) > 1" />
 				</td>
 				<td width="1" v-for="c in Number(withAction)" :key="c">
-					<ui-skeleton width="32px" height="32px" />
+					<Skeleton width="32px" height="32px" />
 				</td>
 			</tr>
 		</tbody>
@@ -59,4 +60,8 @@ if (props.width) {
 
 <style lang="scss">
 @import './SkeletonTable.scss';
+.ui-skeleton-table th,
+.ui-skeleton-table td {
+	padding: v-bind('padding');
+}
 </style>

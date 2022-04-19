@@ -36,6 +36,12 @@
 		}
 	}
 
+	.ui-table-row:first-child {
+		.ui-table-cell {
+			border-top: none;
+		}
+	}
+
 	.ui-table-cell {
 		display: table-cell;
 		vertical-align: middle;

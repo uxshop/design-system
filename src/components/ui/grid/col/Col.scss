@@ -45,7 +45,7 @@ $columns: 12;
 	.ui-col.-sm-#{$i} {
 		@include mobile {
 			flex: 0 0 calc(100% / (12 / $i));
-			max-width: calc(100% / (12 / $i));
+			min-width: calc(100% / (12 / $i));
 			// flex: 0 0 100%;
 			// max-width: 100%;
 		}

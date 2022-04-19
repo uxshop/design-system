@@ -10,7 +10,7 @@ defineProps<Props>()
 <template>
 	<div class="table-responsive">
 		<div class="ui-table" :class="{ '-hover': hover, '-no-padding': noPadding }">
-			<div class="ui-table-header">
+			<div v-if="$slots.header" class="ui-table-header">
 				<div class="ui-table-row">
 					<slot name="header" />
 				</div>

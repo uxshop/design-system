@@ -3,6 +3,7 @@
 .ui-form-radio {
 	display: inline-flex;
 	cursor: pointer;
+	align-items: center;
 
 	@supports (-webkit-appearance: none) or (-moz-appearance: none) {
 		input[type='radio'] {
@@ -75,10 +76,9 @@
 				position: relative;
 				display: flex;
 				margin-left: 8px;
-				align-items: flex-start;
 				flex-grow: 1;
-				top: 3px;
 				white-space: nowrap;
+				top: -1px;
 
 				&.-empty {
 					display: none;
