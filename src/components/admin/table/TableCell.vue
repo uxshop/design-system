@@ -5,6 +5,7 @@ const props = defineProps<{
 	action?: boolean
 	drag?: boolean
 	auto?: boolean
+	handle?: boolean
 	width?: string | number
 }>()
 
@@ -19,6 +20,9 @@ onMounted(() => {
 	}
 	if (props.drag) {
 		classList.value.push('td-drag')
+	}
+	if (props.handle) {
+		classList.value.push('-handle')
 	}
 	if (props.auto) {
 		classList.value.push('-auto')

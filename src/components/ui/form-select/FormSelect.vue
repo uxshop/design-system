@@ -33,8 +33,8 @@ interface Props {
 	required?: boolean
 	options?: Array<{
 		value: any
-		text: string
-		disabled: boolean
+		text?: string | null
+		disabled?: boolean
 	}>
 	disabled?: boolean
 }

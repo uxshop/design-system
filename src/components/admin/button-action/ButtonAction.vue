@@ -66,7 +66,7 @@ const onClick = (evt: MouseEvent) => {
 		dialog.delete({
 			title: 'Excluir registro',
 			message: msg,
-			callback: (val: boolean) => {
+			onCallback: (val: boolean) => {
 				emit('delete', val)
 			}
 		})

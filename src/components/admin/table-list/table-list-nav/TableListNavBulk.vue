@@ -45,7 +45,7 @@ const onRemoveDialog = () => {
 		destructIcon: 'delete',
 		destructLabel: `Deletar registros`,
 		message: `Você confirma a exclusão dos registros selecionados? <br><small><b>${count}</b> selecionados.</small>`,
-		callback: remove
+		onCallback: remove
 	})
 }
 

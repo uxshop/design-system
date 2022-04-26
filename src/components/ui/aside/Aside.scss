@@ -201,8 +201,9 @@
 
 	@include mobile {
 		.ui-aside-content {
-			width: calc(100vw - 20px);
-			max-width: calc(100vw - 20px);
+			min-width: auto !important;
+			width: calc(100vw - 20px) !important;
+			max-width: calc(100vw - 20px) !important;
 			padding: 0 25px;
 		}
 

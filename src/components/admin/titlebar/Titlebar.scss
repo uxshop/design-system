@@ -1,7 +1,7 @@
 @import '../../../scss/mixins.scss';
 
 .titlebar {
-	margin: 0 0 20px;
+	margin: 10px 0 20px;
 	display: flex;
 	align-items: center;
 	min-height: 60px;
@@ -27,7 +27,6 @@
 
 		.titlebar-text {
 			font-size: 26px;
-			font-weight: var(--font-weight-bold);
 			line-height: 1.3;
 			margin: 0;
 		}
@@ -48,8 +47,8 @@
 	@include mobile {
 		border-left: none;
 		border-right: none;
-		margin: 0 calc(var(--main-padding-x) * -1);
-		padding: 0 20px;
+		margin: 0 calc(var(--layout-content-padding-x) * -1);
+		padding: 0 var(--layout-content-padding-x);
 		position: sticky;
 		top: 0;
 		background: var(--bg-white);

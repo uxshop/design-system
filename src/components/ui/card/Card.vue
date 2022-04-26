@@ -1,29 +1,34 @@
 <script setup lang="ts">
+import './Card.scss'
 import { getCurrentInstance, ref, useSlots, watchEffect } from 'vue'
 import Icon from '../icon/Icon.vue'
+import Spinner from '../spinner/Spinner.vue'
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close'])
 
-interface Props {
-	title?: string
-	titleMuted?: string
-	caption?: string
-	dropdown?: boolean
-	dropdownLabel?: string
-	dropdownClosed?: boolean
-	fullHeight?: boolean
-	success?: boolean
-	noBorder?: boolean
-	closeCaption?: string
-	gray?: boolean
-	last?: boolean
-	dropdownMobile?: string
-	loading?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-	dropdownClosed: false
-})
+const props = withDefaults(
+	defineProps<{
+		title?: string
+		titleMuted?: string
+		caption?: string
+		dropdown?: boolean
+		dropdownLabel?: string
+		dropdownClosed?: boolean
+		fullHeight?: boolean
+		success?: boolean
+		noBorder?: boolean
+		closeCaption?: string
+		gray?: boolean
+		last?: boolean
+		dropdownMobile?: string
+		loading?: boolean
+		transparent?: boolean
+		plain?: boolean
+	}>(),
+	{
+		dropdownClosed: false
+	}
+)
 
 const isDropdown = ref(props.dropdown)
 const cardTitle = ref(props.title)
@@ -64,10 +69,12 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			'-last': last,
 			'-full-height': fullHeight,
 			'-success': success,
-			'-loading': loading
+			'-loading': loading,
+			'-transparent': transparent,
+			'-plain': plain
 		}">
 		<div class="ui-card-loading" v-if="loading">
-			<ui-spinner size="50" />
+			<Spinner size="50" />
 		</div>
 		<div
 			class="ui-card-header"
@@ -117,7 +124,3 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 		</div>
 	</div>
 </template>
-
-<style lang="scss">
-@import './Card.scss';
-</style>

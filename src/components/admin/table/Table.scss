@@ -47,6 +47,13 @@
 		vertical-align: middle;
 		padding: 10px;
 		border-top: solid 1px var(--border-color);
+
+		&.-handle {
+			> .ui-icon {
+				font-size: 18px;
+				color: var(--gray-300);
+			}
+		}
 	}
 
 	.ui-table-row {

@@ -14,11 +14,11 @@ import TableListNavRefresh from './table-list-nav/TableListNavRefresh.vue'
 import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
 import TableListNavPagination from './table-list-nav/TableListNavPagination.vue'
 import TableListNavFilter from './table-list-nav/TableListNavFilter.vue'
-import type { ITableListConfig } from './types/ITableListConfig'
 import SkeletonTable from '../../ui/skeleton-table/SkeletonTable.vue'
 import Skeleton from '../../ui/skeleton/Skeleton.vue'
 import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
+import type { ITableListConfig } from './types/ITableListConfig'
 import type { TApiData } from 'src/types/IApiResource'
 
 type TQueryParams = Record<string, string | number>

@@ -10,6 +10,8 @@
 	border-collapse: collapse;
 
 	table {
+		transform: rotateZ(0);
+
 		margin-bottom: 0;
 		background-color: #fff;
 
@@ -101,7 +103,7 @@
 	}
 
 	.table-list-footer {
-		position: sticky;
+		// position: sticky;
 		bottom: 0;
 		z-index: 88;
 	}
@@ -137,7 +139,7 @@
 		filter: var(--drop-shadow-filter);
 
 		.td-fixed {
-			position: sticky;
+			// position: sticky;
 			left: 0;
 			z-index: 22;
 
@@ -161,10 +163,6 @@
 	.table-list-nav-item {
 		padding: 0;
 		margin: 0 8px;
-
-		&:hover {
-			color: var(--secondary);
-		}
 
 		&.-checkbox {
 			width: auto;

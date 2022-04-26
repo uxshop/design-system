@@ -9,34 +9,31 @@ interface ConfigInterface {
 	hideCancel?: boolean
 	title?: string
 	message?: string
-	callback?(val: boolean): void
+	onCallback?(val: boolean): void
 }
 
-let globalConfig = {
-	className: ''
+const globalConfig = {
+	opened: true
 }
 
 let seed = 1
 
 class Dialog {
-	constructor(options = {}) {
-		globalConfig = Object.assign({}, globalConfig, options)
-	}
-	open(config = {}) {
+	// constructor(options = {}) {
+	// 	globalConfig = Object.assign({}, globalConfig, options)
+	// }
+	open(config: ConfigInterface = {}) {
 		let dialogWrapper = null
 		let dialogVM = null
 		const id = 'ui-dialog-' + seed++
 		dialogWrapper = document.createElement('div')
 		dialogWrapper.id = id
-		dialogVM = createVNode(
-			DialogComponent,
-			{
-				...globalConfig,
-				...config,
-				id
-			},
-			null
-		)
+		dialogVM = createVNode(DialogComponent, {
+			...globalConfig,
+			...config,
+			id
+		})
+
 		render(dialogVM, dialogWrapper)
 		document.body.appendChild(dialogWrapper)
 	}

@@ -4,7 +4,6 @@
 	display: inline-block;
 	cursor: pointer;
 	position: relative;
-	white-space: nowrap;
 
 	.ui-form-checkbox-text:empty {
 		display: none;
@@ -181,7 +180,7 @@
 				--x: 19px;
 			}
 			&:after {
-				left: 2px;
+				left: 1.5px;
 				top: 1px;
 				border-radius: 50%;
 				width: calc(18px - var(--input-border-width) * 2 - 2px);

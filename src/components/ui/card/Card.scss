@@ -68,8 +68,13 @@ label {
 		filter: none;
 	}
 
-	&.-no-border {
-		border: none;
+	&.-transparent {
+		background: none;
+	}
+
+	&.-plain {
+		box-shadow: none;
+		border: solid var(--border-width) var(--border-color);
 	}
 
 	&.-image {

@@ -1,18 +1,25 @@
-Te
-<script lang="ts" setup>
-interface Props {
-	tag?: string
-	variant?: string
-}
+<script setup lang="ts">
+import './TextStyle.scss'
 
-const props = withDefaults(defineProps<Props>(), {
-	tag: 'span'
-})
+const props = withDefaults(
+	defineProps<{
+		tag?: string
+		variant?: string
+		block?: boolean
+	}>(),
+	{
+		tag: 'span'
+	}
+)
 
-const classList: any[] = []
+const classList: string[] = []
 
 if (props.variant) {
 	classList.push(`-${props.variant}`)
+}
+
+if (props.block) {
+	classList.push(`-block`)
 }
 </script>
 
@@ -21,7 +28,3 @@ if (props.variant) {
 		<slot />
 	</component>
 </template>
-
-<style lang="scss">
-@import './TextStyle.scss';
-</style>

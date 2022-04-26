@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
-import Logo from '../logo/Logo.vue'
 import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
 import Breadcrumb from '../../ui/breadcrumb/UiBreadcrumb.vue'
@@ -71,7 +70,7 @@ const getComponent = (item: IDropdownItem) => {
 						<button class="ui-userbar-menu" @click="onToggleMenu">
 							<Icon name="menu" />
 						</button>
-						<Logo class="logo logo-small" />
+						<!-- <Logo class="logo logo-small" /> -->
 					</div>
 					<Breadcrumb>
 						<BreadcrumbItem :to="{ name: backlink.to }" class="btn-back" v-if="backlink">

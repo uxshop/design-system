@@ -2,7 +2,6 @@
 import SidebarSubmenu from './SidebarSubmenu.vue'
 import { inject, ref, shallowRef, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import Logo from '../logo/Logo.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import MobileDetector from '../../../services/MobileDetectorService'
 import type { SidebarInterface } from './SidebarInterface'
@@ -107,11 +106,9 @@ watchEffect(() => {
 				<div class="ui-sidebar-content" :class="{ '-hide': activeSection }">
 					<div class="ui-sidebar-nav">
 						<router-link class="ui-sidebar-logo" :to="{ name: 'home' }">
-							<Logo class="logo logo-small" />
+							<slot name="logo" />
 						</router-link>
 						<slot name="select-button" />
-						<IconButton icon="brightness_7" class="btn-darkmode" type="rounded" @click="toggleDarkmode" />
-						<IconButton icon="brightness_4" class="btn-darkmode" @click="toggleDarkmode" />
 					</div>
 					<div class="ui-sidebar-items">
 						<ul class="ui-sidebar-list -primary">

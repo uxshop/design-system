@@ -3,7 +3,8 @@
 .ui-userbar {
 	background: inherit;
 	background-color: var(--dark-300, var(--body-bg));
-	padding: 0 var(--main-padding-x);
+	padding: 0 var(--layout-content-padding-x);
+	height: 100%;
 
 	.-scrolled & {
 		&::after {

@@ -1,8 +1,7 @@
 import { render, createVNode } from 'vue'
 import ToastComponent from './Toast.vue'
 
-let globalConfig = {
-	className: '',
+const globalConfig = {
 	horizontalPosition: 'center',
 	verticalPosition: 'bottom',
 	transition: 'slide-down',
@@ -14,9 +13,9 @@ let globalConfig = {
 let seed = 1
 
 class Toast {
-	constructor(options = {}) {
-		globalConfig = Object.assign({}, globalConfig, options)
-	}
+	// constructor(options = {}) {
+	// 	globalConfig = Object.assign({}, globalConfig, options)
+	// }
 	open(text: string, config = {}) {
 		let toastWrapper = null
 		let toastVM = null

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import './FormCheckbox.scss'
 import { getCurrentInstance, ref, watchEffect } from 'vue'
 
 const emit = defineEmits(['update:modelValue', 'update'])
@@ -55,7 +56,3 @@ const update = (val: unknown) => {
 		<div class="ui-form-checkbox-text"><slot />{{ label }}</div>
 	</label>
 </template>
-
-<style lang="scss">
-@import './FormCheckbox.scss';
-</style>

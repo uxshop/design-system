@@ -11,7 +11,7 @@ interface Props {
 	withAvatar?: boolean
 	width?: string
 	lines?: string | number
-	padding: string
+	padding?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {

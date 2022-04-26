@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import './Button.scss'
 import { ref } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
@@ -81,7 +82,3 @@ if (props.outline) {
 		</div>
 	</component>
 </template>
-
-<style lang="scss">
-@import './Button.scss';
-</style>

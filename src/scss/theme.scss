@@ -90,7 +90,13 @@ $dark: #4e6380 !default;
 	--tab-height: 48px;
 
 	--alert-border-radius: 4px;
-	--sidebar-width: 244px;
+	--layout-sidebar-width: 244px;
+	--layout-navbar-height: 74px;
+
+	@include mobile {
+		--layout-content-padding-x: 10px;
+		--layout-sidebar-width: 300px;
+	}
 }
 
 [data-theme='dark'] {

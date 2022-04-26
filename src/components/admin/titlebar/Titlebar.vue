@@ -14,7 +14,7 @@ defineProps<Props>()
 					<ui-icon name="arrow_back" />
 					<h2 class="titlebar-text">{{ title }}</h2>
 				</router-link>
-				<span v-else class="titlebar-text">{{ title }}</span>
+				<h2 v-else class="titlebar-text">{{ title }}</h2>
 			</div>
 			<div class="titlebar-title -dekstop">
 				<h2 class="titlebar-text">{{ title }}</h2>

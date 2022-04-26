@@ -1,20 +1,22 @@
 @import '../../../scss/mixins.scss';
 
 .ui-sidebar {
+	--sidebar-padding-left: 44px;
 	position: sticky;
 	top: 0;
 	z-index: 888;
+	height: 100vh;
 
 	> .ui-sidebar-wrapper {
 		border-right: solid 1px var(--border-color);
-		min-width: var(--sidebar-width);
-		max-width: var(--sidebar-width);
+		min-width: var(--layout-sidebar-width);
+		max-width: var(--layout-sidebar-width);
 		z-index: 888;
 		display: flex;
 		flex-direction: column;
 		position: sticky;
 		top: 0;
-		height: 100vh;
+		height: 100%;
 		overflow: hidden;
 		background: var(--dark-200, #fff);
 
@@ -48,7 +50,6 @@
 				overflow-x: hidden;
 				flex-grow: 1;
 				transition: transform 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-				padding-left: 44px;
 				will-change: transform;
 
 				&.-hide {
@@ -127,6 +128,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		padding-left: var(--sidebar-padding-left);
 	}
 
 	.ui-sidebar-items {
@@ -191,6 +193,7 @@
 					height: 36px;
 					align-items: center;
 					letter-spacing: 0.01em;
+					padding-left: var(--sidebar-padding-left);
 
 					> .link-text {
 						display: inline-flex;
@@ -254,7 +257,7 @@
 		}
 
 		.ui-sidebar-nav {
-			padding: 20px 0;
+			padding: 20px auto;
 		}
 	}
 

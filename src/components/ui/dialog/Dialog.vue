@@ -4,36 +4,39 @@ import Row from '../grid/row/Row.vue'
 import Col from '../grid/col/Col.vue'
 import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
+import './Dialog.scss'
 
-interface Props {
-	id?: string
-	title?: string
-	hideFooter?: boolean
-	message?: string
-	callback?(val: string | boolean): void
-	closeOnBackdrop?: boolean
-	variant?: string
-	size?: string
-	promptLabel?: string
-	promptType?: string
-	promptPlaceholder?: string
-	cancelLabel?: string
-	destructLabel?: string
-	destructVariant?: string
-	destructIcon?: string
-	type?: string
-}
+const props = withDefaults(
+	defineProps<{
+		id?: string
+		title?: string
+		hideFooter?: boolean
+		message?: string
+		onCallback?(val: string | boolean): void
+		closeOnBackdrop?: boolean
+		variant?: string
+		size?: string
+		promptLabel?: string
+		promptType?: string
+		promptPlaceholder?: string
+		cancelLabel?: string
+		destructLabel?: string
+		destructVariant?: string
+		destructIcon?: string
+		type?: string
+		opened?: boolean
+	}>(),
+	{
+		variant: '',
+		size: 'md',
+		promptType: 'text',
+		cancelLabel: 'Cancelar',
+		destructLabel: 'Deletar',
+		destructVariant: 'danger'
+	}
+)
 
-const props = withDefaults(defineProps<Props>(), {
-	variant: '',
-	size: 'md',
-	promptType: 'text',
-	cancelLabel: 'Cancelar',
-	destructLabel: 'Deletar',
-	destructVariant: 'danger'
-})
-
-const emit = defineEmits(['close', 'destrcut'])
+const emit = defineEmits(['close', 'callback'])
 const closed = ref(false)
 const classList = ref<string[]>([])
 const isPrompt = ref(false)
@@ -63,9 +66,8 @@ const close = (val?: boolean) => {
 	state.timer = null
 	state.showing = false
 
-	if (props.callback && val) {
-		props.callback(val)
-		emit('destrcut', val)
+	if (val) {
+		emit('callback', val)
 	}
 
 	setTimeout(() => {
@@ -112,7 +114,7 @@ const listener = (e: { key: string }) => {
 	}
 }
 
-onMounted(() => {
+const open = () => {
 	state.showing = true
 	window.addEventListener('keydown', listener, false)
 	document.body.classList.add('dialog-open')
@@ -120,25 +122,30 @@ onMounted(() => {
 	nextTick(() => {
 		dialogRef.value.focus()
 	})
+}
+
+onMounted(() => {
+	if (props.opened) {
+		open()
+	}
+})
+
+defineExpose({
+	open
 })
 </script>
 
 <template>
-	<div
-		class="ui-dialog"
-		tabindex="0"
-		ref="dialogRef"
-		:class="[{ '-hide': state.showing === false, '-show': state.showing }, classList]">
+	<div v-if="state.showing" class="ui-dialog -show" :class="classList" tabindex="0" ref="dialogRef">
 		<div class="ui-dialog-wrapper" :style="style">
 			<div class="ui-dialog-overlay" @click="onClickBackdrop"></div>
-
 			<form class="ui-dialog-content" @submit.prevent="onConfirm" ref="form">
 				<div class="ui-dialog-header" v-if="title">
-					<h4 class="title" v-html="title"></h4>
+					<h4 class="title" v-html="title" />
 				</div>
 				<div class="ui-dialog-body">
 					<slot />
-					<div v-html="message"></div>
+					<div v-html="message" />
 					<div class="ui-dialog-prompt mt-5" v-if="isPrompt">
 						<FormTextfield
 							:label="promptLabel"
@@ -181,7 +188,3 @@ onMounted(() => {
 		</div>
 	</div>
 </template>
-
-<style lang="scss">
-@import './Dialog.scss';
-</style>

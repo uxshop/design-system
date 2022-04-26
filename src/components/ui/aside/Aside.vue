@@ -81,7 +81,7 @@ watchEffect(() => {
 							<h4 class="title">
 								{{ title }}
 							</h4>
-							<small class="d-block text-muted" v-if="subtitle">Por Dooca Commerce</small>
+							<small class="d-block text-muted" v-if="subtitle">{{ subtitle }}</small>
 						</div>
 						<button @click="onClose" class="close" id="btn-close">
 							<span>fechar</span>

@@ -1,13 +1,13 @@
 .ui-gmaps {
 	.ui-gmaps-link {
 		position: relative;
-		display: inline-block;
+		display: block;
 		overflow: hidden;
 		border-radius: var(--border-radius);
 
 		> img {
 			display: block;
-			max-width: 100%;
+			width: 100%;
 		}
 
 		> .overlay {

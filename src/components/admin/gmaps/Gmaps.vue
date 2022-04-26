@@ -2,6 +2,23 @@
 import { watchEffect, ref } from 'vue'
 import Link from '../../ui/link/Link.vue'
 
+interface AddressInterface {
+  id?: number | null
+  customer_id?: number | null
+  name?: string
+  receiver?: string
+  street?: string
+  zipcode?: string | number
+  number?: string | number
+  district?: string
+  state?: string
+  city?: string
+  detail?: string | null
+  readonly city_ibge_id?: string
+  readonly created_at?: string
+  readonly updated_at?: string
+}
+
 interface Props {
 	address: AddressInterface
 	linkOnly?: boolean
@@ -9,14 +26,6 @@ interface Props {
 	width?: string | number
 	height?: string | number
 	zoom?: string | number
-}
-
-interface AddressInterface {
-	city: string
-	state: string
-	street: string
-	number: string | number
-	zipcode: string | number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -55,7 +64,7 @@ watchEffect(() => {
 	<div class="ui-gmaps">
 		<Link v-if="linkOnly" :href="getMapLinkPlace" target="_blank"> ver no mapa </Link>
 
-		<a :href="getMapLinkPlace" target="_blank" class="ui-gmaps-link" v-if="!linkOnly && image">
+		<a :href="getMapLinkPlace()" target="_blank" class="ui-gmaps-link" v-if="!linkOnly && image">
 			<img class="" :src="image" alt="Google Maps" />
 			<div class="overlay">
 				<small>Ver no</small>

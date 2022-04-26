@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import './CardInfoGroup.scss'
 import { ref } from 'vue'
 import CardInfoGroupItem from './CardInfoGroupItem.vue'
 
@@ -24,7 +25,3 @@ if (props.wrap) {
 		</div>
 	</div>
 </template>
-
-<style lang="scss">
-@import './CardInfoGroup.scss';
-</style>
