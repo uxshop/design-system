@@ -84,10 +84,7 @@ const init = () => {
 	nextTick(() => {
 		if (element.value) {
 			element.value.destroy()
-			console.log('destroy')
 		}
-
-		console.log('init')
 		// @ts-expect-error: no interface
 		element.value = new TomSelect(`#${uid}`, getSettings())
 	})

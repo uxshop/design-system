@@ -6,35 +6,21 @@ import Icon from '../../ui/icon/Icon.vue'
 import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
 import Button from '../../ui/button/Button.vue'
-import Avatar from '../../ui/avatar/Avatar.vue'
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
-import EmptyData from '../empty-data/EmptyData.vue'
 import { VueEternalLoading, type LoadAction } from '@ts-pro/vue-eternal-loading'
 import type { IApiResource } from '../../../types/IApiResource'
 import Spinner from '../../ui/spinner/Spinner.vue'
 import { zerofill } from '../../../filters'
-
 import BrowserSelectDefaultVue from './snippets/BrowserSelectDefault.vue'
 import BrowserSelectBrandVue from './snippets/BrowserSelectBrand.vue'
 import BrowserSelectCustomerVue from './snippets/BrowserSelectCustomer.vue'
 import Aside from '../../ui/aside/Aside.vue'
 import BrowserSelectCategoryVue from './snippets/BrowserSelectCategory.vue'
 
-const templates = {
-	default: BrowserSelectDefaultVue,
-	customer: BrowserSelectCustomerVue,
-	brand: BrowserSelectBrandVue,
-	category: BrowserSelectCategoryVue
-}
-
-type IService = {
-	get(params: never): Promise<IApiResource>
-}
-
-type TypeItem = Record<string, unknown>
-
-interface Props {
-	service: IService
+export interface Props {
+	service: {
+		get(params: never): Promise<IApiResource>
+	}
 	type: 'customer' | 'brand' | 'customer_group' | 'products' | 'variants' | 'default'
 	selectOne?: boolean
 	selecteds?: number[]
@@ -43,15 +29,26 @@ interface Props {
 	identifier?: string
 	limit?: string | number
 	title?: string
+	modelValue?: any
 }
 
+const templates = {
+	default: BrowserSelectDefaultVue,
+	customer: BrowserSelectCustomerVue,
+	brand: BrowserSelectBrandVue,
+	category: BrowserSelectCategoryVue
+}
+
+type TypeItem = Record<string, unknown>
+
+const emit = defineEmits(['close'])
 const props = withDefaults(defineProps<Props>(), {
 	selecteds: () => [],
 	type: 'default',
 	identifier: 'id',
 	limit: 0
 })
-const emit = defineEmits(['close'])
+
 const TIMER_INSTANT_SEARCH = 500
 
 const term = ref(props.searchBy)

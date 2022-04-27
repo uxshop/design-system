@@ -52,7 +52,9 @@ const update = (val: unknown) => {
 			:name="name"
 			:true-value="true"
 			@update:modelValue="update" />
-		<div class="ui-form-checkbox-text"><slot />{{ label }}</div>
+		<div class="ui-form-checkbox-text">
+			<slot>{{ label }}</slot>
+		</div>
 	</label>
 </template>
 

@@ -9,7 +9,7 @@ import Col from '../../ui/grid/col/Col.vue'
 import Button from '../../ui/button/Button.vue'
 import Link from '../../ui/link/Link.vue'
 
-interface Props {
+export interface Props {
 	modelValue: any
 	id?: string
 	service?: any
