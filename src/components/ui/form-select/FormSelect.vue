@@ -4,7 +4,11 @@ import { ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
 type ModelValue = string | object | undefined | null | number
-
+interface IOptions {
+		value: any
+		text?: string | null
+		disabled?: boolean
+}
 interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
@@ -17,8 +21,8 @@ interface Props {
 	float?: boolean
 	invalidFeedback?: string
 	//
-	modelValue?: ModelValue
-	value?: ModelValue
+	modelValue?: any
+	value?: any
 	placeholder?: string
 	label?: string
 	error?: string
@@ -31,11 +35,7 @@ interface Props {
 	name?: string
 	title?: string
 	required?: boolean
-	options?: Array<{
-		value: any
-		text?: string | null
-		disabled?: boolean
-	}>
+	options?: Array<IOptions>
 	disabled?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {

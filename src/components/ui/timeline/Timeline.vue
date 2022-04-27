@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import './Timeline.scss'
 import { ref } from 'vue'
 import Link from '../link/Link.vue'
 import Avatar from '../avatar/Avatar.vue'
@@ -67,3 +66,7 @@ const myComponent = (item: any) => {
 		</ul>
 	</div>
 </template>
+
+<style lang="scss">
+@import './Timeline.scss';
+</style>

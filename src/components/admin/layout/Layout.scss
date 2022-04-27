@@ -20,7 +20,7 @@
 		height: var(--layout-navbar-height);
 		position: sticky;
 		top: 0;
-		z-index: 333;
+		z-index: 444;
 	}
 
 	.ui-layout-content {
@@ -51,3 +51,14 @@
 		}
 	}
 }
+
+// .slide-fade-enter-active {
+// 	transition: all 0.2s ease;
+// }
+// .slide-fade-leave-active {
+// 	transition: all 0.2s;
+// }
+// .slide-fade-enter,
+// .slide-fade-leave-to {
+// 	opacity: 0;
+// }

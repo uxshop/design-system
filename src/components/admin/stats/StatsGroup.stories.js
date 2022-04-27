@@ -1,22 +1,22 @@
-import CardInfoGroup from './CardInfoGroup.vue'
+import StatsGroup from './StatsGroup.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-	title: 'Components/CardInfoGroup',
-	component: CardInfoGroup,
+	title: 'Components/StatsGroup',
+	component: StatsGroup,
 	argTypes: {}
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-	components: { CardInfoGroup },
+	components: { StatsGroup },
 	setup() {
 		return { args }
 	},
 	template: `
-    <CardInfoGroup v-bind="args">
+    <StatsGroup v-bind="args">
       Loren ipsum
-    </CardInfoGroup>
+    </StatsGroup>
   `
 })
 

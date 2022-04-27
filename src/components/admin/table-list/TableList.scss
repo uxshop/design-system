@@ -8,6 +8,10 @@
 	flex-grow: 1;
 	position: relative;
 	border-collapse: collapse;
+	background: white;
+	border-radius: 6px;
+	border: solid 1px var(--border-color);
+	filter: var(--drop-shadow-filter);
 
 	table {
 		transform: rotateZ(0);
@@ -136,7 +140,6 @@
 		overflow-x: auto;
 		flex-grow: 1;
 		min-height: 100px;
-		filter: var(--drop-shadow-filter);
 
 		.td-fixed {
 			// position: sticky;

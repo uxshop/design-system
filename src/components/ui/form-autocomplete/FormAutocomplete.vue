@@ -3,10 +3,9 @@ import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchE
 import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
 import 'tom-select/dist/css/tom-select.default.css'
 import { cloneDeep } from 'lodash-es'
+import FormLabel from '../form-label/FormLabel.vue'
 
-const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
-
-interface ConfigInterface {
+export interface IConfigSelect {
 	persist?: boolean
 	createOnBlur?: boolean
 	create?: boolean
@@ -16,7 +15,7 @@ interface ConfigInterface {
 	labelField?: string
 	options?: any[]
 	render?: {
-		option?: () => string
+		option?: (item: any) => string
 		item?: () => string
 		option_create?: () => string
 		no_results?: () => string
@@ -29,13 +28,15 @@ interface ConfigInterface {
 	onChange?: (val: string) => void
 }
 
-interface Props {
+export interface Props {
 	modelValue?: any
 	options?: any[]
 	placeholder?: string
-	config?: ConfigInterface
+	config?: IConfigSelect
+	label?: string
 }
 
+const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
 	config: () => ({})
@@ -44,6 +45,7 @@ const props = withDefaults(defineProps<Props>(), {
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const model = ref<string | null | undefined>(null)
 const element = shallowRef()
+const focus = ref(false)
 
 const update = (val: string) => {
 	emit('update:modelValue', val)
@@ -51,15 +53,15 @@ const update = (val: string) => {
 }
 
 const getSettings = () => {
-	const newConfig: ConfigInterface = cloneDeep(props.config)
+	const newConfig: IConfigSelect = cloneDeep(props.config)
 
 	if (newConfig.labelField && !newConfig.searchField) {
 		newConfig.searchField = newConfig.labelField
 	}
 
-	const config: ConfigInterface = {
+	const config: IConfigSelect = {
 		...{
-			plugins: [],
+			plugins: ['clear_button'],
 			persist: false,
 			createOnBlur: false,
 			create: false,
@@ -68,7 +70,9 @@ const getSettings = () => {
 			labelField: 'text',
 			searchField: 'text',
 			options: cloneDeep(props.options),
-			onChange: update
+			onChange: update,
+			onFocus: () => (focus.value = true),
+			onBlur: () => (focus.value = false)
 		},
 		...newConfig
 	}
@@ -114,7 +118,8 @@ watch(
 </script>
 
 <template>
-	<div class="ui-form-autocomplete">
+	<div class="ui-form-autocomplete" :class="{ '-focus': focus }">
+		<FormLabel :text="label" />
 		<select :value="model" class="ui-form-select" :id="uid" :placeholder="placeholder"></select>
 	</div>
 </template>

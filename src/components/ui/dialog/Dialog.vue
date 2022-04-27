@@ -4,7 +4,6 @@ import Row from '../grid/row/Row.vue'
 import Col from '../grid/col/Col.vue'
 import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
-import './Dialog.scss'
 
 const props = withDefaults(
 	defineProps<{
@@ -188,3 +187,7 @@ defineExpose({
 		</div>
 	</div>
 </template>
+
+<style lang="scss">
+@import './Dialog.scss';
+</style>

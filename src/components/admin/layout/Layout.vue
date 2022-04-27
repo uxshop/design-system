@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import './Layout.scss'
 
 const scrolled = ref(false)
-
 const onScroll = (e: UIEvent) => {
 	const target = e.target as HTMLDivElement
 	scrolled.value = target.scrollTop > 20
@@ -20,17 +20,11 @@ const onScroll = (e: UIEvent) => {
 		<!-- <not-found v-if="notFound" /> -->
 
 		<div class="ui-layout-content">
-			<router-view v-slot="{ Component }">
-				<transition name="slide-fade" mode="out-in">
-					<div class="ui-layout-content-page">
-						<component :is="Component" />
-					</div>
-				</transition>
-			</router-view>
+			<div class="ui-layout-content-page">
+				<router-view v-slot="{ Component }">
+					<component :is="Component" />
+				</router-view>
+			</div>
 		</div>
 	</div>
 </template>
-
-<style lang="scss">
-@import './Layout.scss';
-</style>

@@ -66,6 +66,10 @@ label {
 		background: var(--gray-200);
 		border-color: transparent;
 		filter: none;
+
+		hr {
+			background-color: white;
+		}
 	}
 
 	&.-transparent {
@@ -232,7 +236,7 @@ label {
 	}
 
 	hr {
-		border-top-width: 1px;
+		height: 2px;
 		&:not(.hr-center) {
 			margin-top: var(--card-padding);
 			margin-bottom: var(--card-padding);
@@ -309,7 +313,7 @@ label {
 
 		.ui-button.-link,
 		.btn-collapse {
-			min-height: 0;
+			min-height: 24px;
 		}
 
 		.ui-button.-link {
@@ -333,7 +337,7 @@ label {
 
 		> .ui-card-title,
 		> span:first-child {
-			font-size: 18px;
+			font-size: 16px;
 			// text-overflow: ellipsis;
 			// overflow: hidden;
 			// white-space: nowrap;

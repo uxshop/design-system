@@ -1,41 +1,41 @@
 @import '../../../scss/mixins.scss';
 
-.card-info-group {
+.stats-group {
 	position: relative;
 	margin-bottom: var(--grid-gutter-width);
 
-	.card-info-group-wrapper {
+	.stats-group-wrapper {
 		display: flex;
 		margin: -5px;
 		flex-wrap: wrap;
 		justify-content: space-around;
 	}
 
-	&.card-info-group-wrap3 {
-		.card-info-item {
+	&.-wrap3 {
+		.stats-item {
 			width: 33.33%;
 		}
 	}
 
-	&.card-info-group-wrap4 {
-		.card-info-item {
+	&.-wrap4 {
+		.stats-item {
 			width: 25%;
 		}
 	}
 
-	.card-info-item {
+	.stats-item {
 		padding: 5px;
 		height: 100%;
 	}
 
 	@include darkmode {
-		.card-info-content {
+		.stats-content {
 			background: var(--dark-100);
 		}
 	}
 }
 
-.card-info-item {
+.stats-item {
 	flex-grow: 1;
 
 	@include mobile {
@@ -43,7 +43,7 @@
 	}
 }
 
-.card-info-content {
+.stats-content {
 	background: var(--gray-200);
 	text-align: center;
 	padding: 25px 10px;
@@ -54,19 +54,19 @@
 	flex-direction: column;
 	position: relative;
 
-	.card-info-value {
+	.stats-value {
 		font-size: 16px;
 		padding-top: 5px;
 		display: block;
 	}
 
-	.card-info-export {
+	.stats-export {
 		position: absolute;
 		bottom: 5px;
 		right: 5px;
 	}
 
-	.card-info-text {
+	.stats-text {
 		text-transform: uppercase;
 		font-size: 12px;
 
@@ -78,7 +78,7 @@
 		}
 	}
 
-	.card-info-perc {
+	.stats-perc {
 		display: flex;
 		align-items: center;
 		line-height: 1;
@@ -108,7 +108,7 @@
 		}
 	}
 
-	.card-info-extra {
+	.stats-extra {
 		font-size: 14px;
 		margin-top: 10px;
 	}

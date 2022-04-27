@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import './TextStyle.scss'
-
 const props = withDefaults(
 	defineProps<{
 		tag?: string
@@ -28,3 +26,7 @@ if (props.block) {
 		<slot />
 	</component>
 </template>
+
+<style lang="scss">
+@import './TextStyle.scss';
+</style>

@@ -194,11 +194,6 @@ defineExpose({
 
 <template>
 	<div class="table-list-skeleton" v-if="loading && !firstGet">
-		<div class="tabs">
-			<div style="margin: 20px 10px">
-				<Skeleton width="100px" />
-			</div>
-		</div>
 		<SkeletonTable cols="3" rows="6" with-action />
 	</div>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />

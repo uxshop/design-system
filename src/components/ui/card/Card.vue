@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import './Card.scss'
 import { getCurrentInstance, ref, useSlots, watchEffect } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
@@ -124,3 +123,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 		</div>
 	</div>
 </template>
+
+<style lang="scss">
+@import './Card.scss';
+</style>

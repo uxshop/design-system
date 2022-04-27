@@ -10,15 +10,15 @@ defineProps<{
 </script>
 
 <template>
-	<div class="card-info-item">
-		<div class="card-info-content">
-			<small class="card-info-text">
+	<div class="stats-item">
+		<div class="stats-content">
+			<small class="stats-text">
 				{{ text }}
 				<icon name="info" v-if="info" v-tooltip:top="info" />
 			</small>
-			<b class="card-info-value">{{ value }}</b>
+			<b class="stats-value">{{ value }}</b>
 
-			<div class="card-info-perc" v-if="perc != undefined" :class="{ positive: Number(perc) > 0 }">
+			<div class="stats-perc" v-if="perc != undefined" :class="{ positive: Number(perc) > 0 }">
 				<icon name="south" />
 				<icon name="north" />
 				<span>{{ perc }}%</span>

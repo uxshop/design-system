@@ -67,7 +67,7 @@ watchEffect(() => {
 <template>
 	<div class="ui-seo" :class="{ '-gray': gray }">
 		<Row>
-			<Col md="6" v-if="!viewOnly">
+			<Col v-if="!viewOnly">
 				<FormTextfield v-model="modelValue.meta_title" placeholder="Meta title" label="Meta title" countable />
 				<FormTextfield
 					v-model="modelValue.meta_description"
@@ -84,7 +84,7 @@ watchEffect(() => {
 					countable />
 				<FormTextfield v-model="modelValue.slug" placeholder="Ex: minha-url-amigavel" label="Url amigável" />
 			</Col>
-			<Col cols="6" v-if="!writeOnly">
+			<Col auto v-if="!writeOnly">
 				<div class="ui-seo-card">
 					<b class="ui-seo-title">
 						{{ metaTitle }}
