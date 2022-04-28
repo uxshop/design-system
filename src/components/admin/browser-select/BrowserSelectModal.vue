@@ -16,16 +16,26 @@ import BrowserSelectBrandVue from './snippets/BrowserSelectBrand.vue'
 import BrowserSelectCustomerVue from './snippets/BrowserSelectCustomer.vue'
 import Aside from '../../ui/aside/Aside.vue'
 import BrowserSelectCategoryVue from './snippets/BrowserSelectCategory.vue'
+import TextStyle from '../../ui/text-style/TextStyle.vue'
 
 export interface Props {
 	service: {
 		get(params: never): Promise<IApiResource>
 	}
-	type: 'customer' | 'brand' | 'customer_group' | 'products' | 'variants' | 'default'
+	type?:
+		| 'product'
+		| 'brand'
+		| 'category'
+		| 'landing'
+		| 'customer'
+		| 'customer_group'
+		| 'variant'
+		| 'feature'
+		| 'default'
 	selectOne?: boolean
 	selecteds?: number[]
 	baseParams?: never
-	searchBy?: string
+	searchBy?: string | null
 	identifier?: string
 	limit?: string | number
 	title?: string
@@ -41,24 +51,25 @@ const templates = {
 
 type TypeItem = Record<string, unknown>
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['update'])
 const props = withDefaults(defineProps<Props>(), {
 	selecteds: () => [],
 	type: 'default',
 	identifier: 'id',
+	title: 'Buscar',
 	limit: 0
 })
 
 const TIMER_INSTANT_SEARCH = 500
 
-const term = ref(props.searchBy)
+const term = ref()
 const params = ref({ q: null, page: 1 })
 const isInitial = ref(false)
 const rows = ref<TypeItem[]>([])
 const ids = ref(clone(props.selecteds))
 const fetching = ref(true)
 const typing = ref(false)
-const aside = ref(true)
+const aside = ref(false)
 const memoryList = ref([])
 
 const onEmptyTerm = () => {
@@ -67,7 +78,8 @@ const onEmptyTerm = () => {
 }
 
 const apply = () => {
-	emit('close', ids.value, memoryList.value)
+	emit('update', { ids: ids.value, memoryList: memoryList.value })
+	aside.value = false
 }
 
 const onRegisterBrandQuickly = () => {
@@ -86,40 +98,9 @@ const onRegisterCustomerQuickly = () => {
 	// })
 }
 
-const onCheckOne = (item: TypeItem, e: MouseEvent) => {
+const onCheckOne = (item: TypeItem, e: MouseEvent | KeyboardEvent) => {
 	e.preventDefault()
-
-	if (props.type !== 'variants') {
-		pushOne(item)
-	}
-
-	// let allSelected = true
-	// let partialSelected = false
-	// let remainingVariations = []
-	// each(item.variations, (variation) => {
-	// 	if (ids.value.includes(variation.id)) {
-	// 		partialSelected = true
-	// 	} else {
-	// 		remainingVariations.push(variation)
-	// 		allSelected = false
-	// 	}
-	// })
-	// if (!allSelected && partialSelected) {
-	// 	each(remainingVariations, (variation) => {
-	// 		pushOne(variation)
-	// 	})
-	// } else {
-	// 	// Caso for tudo selecionado ou tudo não selecionado, irá inverter
-	// 	each(item.variations, (variation) => {
-	// 		pushOne({
-	// 			id: variation.id,
-	// 			name: item.name,
-	// 			// variant: this.$options.filters.variant(variation),
-	// 			price: variation.price != null ? variation.price : item.price,
-	// 			quantity: 1
-	// 		})
-	// 	})
-	// }
+	pushOne(item)
 }
 
 const pushOne = (item: TypeItem) => {
@@ -143,29 +124,20 @@ const pushOne = (item: TypeItem) => {
 // }
 
 const load = async (context: LoadAction) => {
-	fetching.value = false
+	params.value.q = term.value
 	const newParams = cloneDeep(params.value) as never
 	const res = await props.service.get(newParams)
-	rows.value = res.data
+	params.value.page++
+
+	rows.value = rows.value.concat(res.data)
 	fetching.value = false
+
 	if (res.meta.current_page == res.meta.last_page) {
 		context.noMore()
 	} else {
 		context.loaded()
 	}
 }
-
-// const onCheckOneVariation = (item, product, e) => {
-// 	e.preventDefault()
-// 	e.stopPropagation()
-// 	pushOne({
-// 		id: item.id,
-// 		name: product.name,
-// 		// variant: this.$options.filters.variant(item),
-// 		price: item.price != null ? item.price : product.price,
-// 		quantity: 1
-// 	})
-// }
 
 const isSelected = (item) => {
 	if (props.type === 'variants') {
@@ -179,14 +151,12 @@ const isSelected = (item) => {
 				indeterminate = true
 
 				if (!isSelected) {
-					// early return
 					return
 				}
 			} else {
 				isSelected = false
 
 				if (indeterminate) {
-					// early return
 					return
 				}
 			}
@@ -222,6 +192,8 @@ watch(
 				page: 1
 			})
 			rows.value = []
+			console.log('okkkk')
+
 			isInitial.value = true
 		}, TIMER_INSTANT_SEARCH)
 	}
@@ -231,24 +203,24 @@ const getTemplate = () => {
 	return templates[props.type] || templates.default
 }
 
-/*
+const open = ({ searchBy }) => {
+	aside.value = true
+	term.value = searchBy
+}
 
-	mounted() {
-		params.value = _.extend(params.value, this.$props.baseParams)
-	},
-
-*/
+defineExpose({
+	open
+})
 </script>
 
 <template>
-	<Aside v-model="aside" :title="title">
-		<pre>{{ ids }}</pre>
+	<Aside v-model="aside" :title="title" scrollable noCloseOnBackdrop>
 		<div class="browser">
 			<div class="browser-search" :class="type">
-				<Row align-v="center">
+				<Row alignV="center">
 					<Col>
 						<div class="browser-serach-input">
-							<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="sm">
+							<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="sm" autocomplete="off">
 								<template #before>
 									<div class="box-icon">
 										<Spinner class="icon" size="15" border="2" v-show="typing" variant="primary" />
@@ -274,7 +246,7 @@ const getTemplate = () => {
 			<div class="browser-search-list">
 				<div
 					v-for="item in rows"
-					:key="item[identifier]"
+					:key="String(item[identifier])"
 					:class="{
 						inactive: type == 'variants' && !item.active,
 						disabled: limit >= 1 && limit == ids.length && !ids.includes(item[identifier])
@@ -291,17 +263,19 @@ const getTemplate = () => {
 				</div>
 				<VueEternalLoading class="browser-search-loading" :load="load" v-model:is-initial="isInitial">
 					<template #loading>
-						<div style="height: 10px"></div>
+						<Spinner border="2" size="25" variant="dark" />
 					</template>
 					<template #no-more>
-						<div class="loading-info">Sem mais resultados</div>
+						<div class="loading-info">
+							<TextStyle variant="muted">Sem mais resultados</TextStyle>
+						</div>
 					</template>
 				</VueEternalLoading>
 			</div>
 		</div>
 
 		<template #footer>
-			<Button variant="primary" @click="apply" block> Aplicar ({{ zerofill(ids.length) }} selecionados) </Button>
+			<Button variant="primary" @click="apply"> Aplicar ({{ zerofill(ids.length) }} selecionados) </Button>
 		</template>
 	</Aside>
 	<!-- <div class="browser">

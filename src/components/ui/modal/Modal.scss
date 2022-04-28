@@ -96,7 +96,7 @@
 
 			> .ui-modal-header {
 				background: rgba(255, 255, 255, 0.95);
-				padding: var(--modal-padding);
+				padding: var(--modal-padding-x);
 				display: flex;
 				border: none;
 				margin-bottom: 0;
@@ -152,7 +152,7 @@
 	}
 
 	.ui-modal-body {
-		padding: 0 var(--modal-padding);
+		padding: 0 var(--modal-padding-x);
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
@@ -160,13 +160,13 @@
 		> .ui-modal-footer {
 			padding-left: 0;
 			padding-right: 0;
-			margin-bottom: calc(var(--modal-padding) * -1);
+			margin-bottom: calc(var(--modal-padding-x) * -1);
 		}
 	}
 
 	.ui-modal-item {
-		padding: 20px var(--modal-padding);
-		margin: 0 calc(var(--modal-padding) * -1);
+		padding: 20px var(--modal-padding-x);
+		margin: 0 calc(var(--modal-padding-x) * -1);
 
 		+ .ui-modal-item {
 			border-top: solid 1px var(--border-color);
@@ -180,7 +180,7 @@
 	.ui-modal-footer {
 		border: none;
 		bottom: 0;
-		padding: var(--modal-padding);
+		padding: var(--modal-padding-x-x);
 		background: #fff;
 		right: 0;
 		left: 0;

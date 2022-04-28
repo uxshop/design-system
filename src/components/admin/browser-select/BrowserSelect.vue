@@ -8,11 +8,14 @@ import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
 import Button from '../../ui/button/Button.vue'
 import Link from '../../ui/link/Link.vue'
+import BrowserSelectModal from './BrowserSelectModal.vue'
 
 export interface Props {
 	modelValue: any
 	id?: string
-	service?: any
+	service: {
+		get(params: any): any
+	}
 	selectOne?: boolean
 	title?: string
 	hideList?: boolean
@@ -29,7 +32,7 @@ export interface Props {
 	type?: 'product' | 'brand' | 'category' | 'landing' | 'customer' | 'customer_group' | 'variant' | 'feature'
 }
 
-const emit = defineEmits(['remove-item', 'change', 'update:modelValue', 'update'])
+const emit = defineEmits(['remove', 'change', 'update:modelValue', 'update'])
 const props = withDefaults(defineProps<Props>(), {
 	thumbSize: 50,
 	type: 'product',
@@ -40,20 +43,23 @@ const props = withDefaults(defineProps<Props>(), {
 
 const searchBy = ref<string | null>(null)
 const term = ref<string | null>(null)
-const ids = ref<number[]>([])
-const rows = ref([])
+const selectedIds = ref<number[]>([])
+const rows = ref<any[]>([])
 const memoryList = ref([])
 const paginateLimit = ref(5)
+const browserSelectModalRef = ref()
 
 const onClickSearch = () => {
-	// modal open
+	browserSelectModalRef.value.open({
+		searchBy: searchBy.value
+	})
 }
 
 const onChangeTerm = () => {
-	if (term.value && term.value.length > 2) {
-		onClickSearch()
+	if (term.value && term.value.length > 1) {
 		searchBy.value = String(term.value)
 		term.value = null
+		onClickSearch()
 	}
 }
 
@@ -61,8 +67,8 @@ const nextPage = () => {
 	paginateLimit.value += 5
 }
 
-const onRemoveItem = (item) => {
-	emit('remove-item', item)
+const onRemoveItem = (item: any) => {
+	emit('remove', item)
 
 	if (find(rows.value, { [props.identifier]: item[props.identifier] })) {
 		rows.value = rows.value.filter((obj) => {
@@ -72,62 +78,68 @@ const onRemoveItem = (item) => {
 		rows.value.push(item[props.identifier])
 	}
 
-	ids.value = rows.value.map((item) => {
+	selectedIds.value = rows.value.map((item) => {
 		return item[props.identifier]
 	})
 
-	updateInput(ids.value)
+	updateInput(selectedIds.value)
 }
 
-const updateInput = (ids) => {
+const updateInput = (ids: number[]) => {
 	const input = formatInput(ids)
-	emit('change', input)
 	emit('update:modelValue', input)
+	emit('update', input)
 }
 
-const formatInput = (ids) => {
+const formatInput = (ids: number[]) => {
 	if (props.selectOne) {
 		return first(ids) || null
 	}
 	return ids
 }
 
+const getFromMemoryList = (newRows: unknown[]) => {
+	each(selectedIds.value, (id) => {
+		const item = find(memoryList.value, { [props.identifier]: id })
+
+		if (item) {
+			newRows.push(item)
+		}
+	})
+}
+
 const fetch = async () => {
-	let newRows = []
+	console.log('fetch')
 
-	if (ids.value.length) {
-		each(ids.value, (id) => {
-			const item = find(memoryList.value, { [props.identifier]: id })
+	let newRows: unknown[] = []
 
-			if (item) {
-				newRows.push(item)
-			}
-		})
+	if (selectedIds.value.length) {
+		getFromMemoryList(newRows)
 
-		if (newRows.length != ids.value.length) {
+		if (newRows.length != selectedIds.value.length) {
 			let params = cloneDeep(props.baseParams || {})
 
 			if (props.selectOne) {
-				params.id = ids.value[0]
-				newRows = await props.service.first(params)
-				newRows = [newRows]
+				// params.id = selectedIds.value[0]
+				// newRows = await props.service.first(params)
+				// newRows = [newRows]
 			} else {
-				params.ids = ids.value.join(',')
-				newRows = await props.service.get(params)
-				newRows = newRows.data
+				params.ids = selectedIds.value.join(',')
+				const res = await props.service.get(params)
+				newRows = res.data
 			}
 		}
 
 		if (props.selectOne) {
-			newRows = [newRows[0]]
+			// newRows = [newRows[0]]
 		}
 	}
 
-	pushToMemoryList(newRows)
+	// pushToMemoryList(newRows)
 	rows.value = newRows
 }
 
-const populateList = (newVal) => {
+const populateList = (newVal: any) => {
 	if (newVal) {
 		if (!isArray(newVal)) {
 			newVal = [newVal]
@@ -137,18 +149,30 @@ const populateList = (newVal) => {
 	}
 }
 
-const pushToMemoryList = (items) => {
-	items.map((item) => {
+const pushToMemoryList = (items: any[]) => {
+	items.map((item: any) => {
 		if (item.id && !find(memoryList.value, { [props.identifier]: item[props.identifier] })) {
+			//@ts-expect-error: cloneDeep
 			memoryList.value.push(cloneDeep(item))
 		}
 	})
+}
+
+const updateByModal = ({ memoryList, ids }: any) => {
+	console.log(memoryList, ids)
+
+	searchBy.value = null
+	pushToMemoryList(memoryList)
+	if (ids) {
+		updateInput(ids)
+	}
 }
 
 watch(
 	() => props.list,
 	(newVal) => {
 		populateList(newVal)
+		rows.value = props.list || []
 	},
 	{ deep: true, immediate: true }
 )
@@ -156,21 +180,21 @@ watch(
 watch(
 	() => rows.value,
 	(newVal) => {
-		emit('update', newVal)
+		emit('change', newVal)
 	}
 )
 
 watch(
 	() => props.modelValue,
 	(newVal) => {
-		if (newVal == ids.value) {
+		if (newVal == selectedIds.value) {
 			return
 		}
 
 		if (newVal) {
-			ids.value = isArray(newVal) ? newVal : [newVal]
+			selectedIds.value = isArray(newVal) ? newVal : [newVal]
 		} else {
-			ids.value = []
+			selectedIds.value = []
 		}
 
 		if (!memoryList.value.length) {
@@ -186,18 +210,7 @@ watch(
 </script>
 
 <template>
-	<!-- <BrowserSelectModal
-		@close="onClose"
-		:selecteds="ids"
-		:service="service"
-		:base-params="baseParams"
-		:search-by="searchBy"
-		:select-one="selectOne"
-		:type="type"
-		:identifier="identifier"
-		:limit="limit" /> -->
 	<div class="ui-browser-select">
-		{{ ids }}
 		<div class="ui-browser-select-button">
 			<slot name="button" v-if="selectType == 'btn' && !hideBtn">
 				<div class="area-select" @click="onClickSearch" :class="{ disabled: limit > 0 && rows.length == limit }">
@@ -209,7 +222,7 @@ watch(
 			<div class="ui-browser-select-input">
 				<Row>
 					<Col>
-						<FormTextfield v-model="term" placeholder="Procurar..." @keyup="onChangeTerm" />
+						<FormTextfield v-model="term" placeholder="Procurar..." @keyup="onChangeTerm" autocomplete="off" />
 					</Col>
 					<Col auto>
 						<Button variant="dark" @click="onClickSearch">Pesquisar</Button>
@@ -217,11 +230,13 @@ watch(
 				</Row>
 			</div>
 
-			<div class="ui-browser-list mt-5" _v-if="!hideList && rows.length">
+			<div class="ui-browser-list" _v-if="!hideList && rows.length">
 				<div class="ui-browser-list-row" v-for="item in rows.slice(0, paginateLimit)" :key="item[identifier]">
-					<div class="ui-browser-list-cell">
-						{{ item.name }}
-					</div>
+					<slot v-bind="item">
+						<div class="ui-browser-list-cell">
+							{{ item.name }}
+						</div>
+					</slot>
 					<div class="ui-browser-list-cell -auto">
 						<ButtonAction size="sm" type="remove" @click="onRemoveItem(item)" />
 					</div>
@@ -230,6 +245,18 @@ watch(
 			</div>
 		</div>
 	</div>
+
+	<BrowserSelectModal
+		ref="browserSelectModalRef"
+		@update="updateByModal"
+		:selecteds="selectedIds"
+		:service="service"
+		:baseParams="baseParams"
+		:searchBy="searchBy"
+		:selectOne="selectOne"
+		:type="type"
+		:identifier="identifier"
+		:limit="limit" />
 </template>
 
 <style lang="scss">

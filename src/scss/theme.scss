@@ -10,7 +10,7 @@ $body-color: #1f2435 !default;
 $danger: #f25d5d !default;
 $primary: #3b9be0 !default;
 $secondary: #ffc200 !default;
-$success: #1fa563 !default;
+$success: #019b7f !default;
 $warning: #ff9900 !default;
 $dark: #4e6380 !default;
 
@@ -72,7 +72,7 @@ $dark: #4e6380 !default;
 
 	--modal-backdrop-opacity: 0.8;
 	--modal-backdrop-bg: #536d73;
-	--modal-padding: 30px;
+	--modal-padding-x: 30px;
 
 	--text-muted: #{rgba($body-color, 0.7)};
 	// --headings-font-family: "NexaFreeBoldwebfont";

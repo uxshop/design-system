@@ -31,12 +31,14 @@
 	}
 
 	.browser-search {
+		margin: 0 calc(var(--modal-padding-x) * -1);
+		padding: 10px var(--modal-padding-x);
 		position: sticky;
-		top: 1rem;
+		top: 58px;
 		z-index: 778;
 		background: inherit;
-		padding-top: 1.5rem;
-		padding-bottom: 1.5rem;
+		border-bottom: solid 1px var(--border-color);
+		background: white;
 
 		.browser-serach-input {
 			.box-icon {
@@ -52,7 +54,6 @@
 	}
 
 	.browser-search-loading {
-		opacity: 0.5;
 		padding: 10px;
 	}
 

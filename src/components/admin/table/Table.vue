@@ -1,11 +1,9 @@
 <script setup lang="ts">
-interface Props {
+defineEmits(['click'])
+defineProps<{
 	hover?: boolean
 	noPadding?: boolean
-}
-
-defineEmits(['click'])
-defineProps<Props>()
+}>()
 </script>
 <template>
 	<div class="table-responsive">

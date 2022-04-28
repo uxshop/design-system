@@ -19,7 +19,7 @@ onMounted(() => {
 		classList.value.push('-auto')
 	}
 	if (props.drag) {
-		classList.value.push('td-drag')
+		classList.value.push('-drag')
 	}
 	if (props.handle) {
 		classList.value.push('-handle')

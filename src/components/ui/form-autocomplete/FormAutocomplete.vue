@@ -85,7 +85,7 @@ const init = () => {
 		if (element.value) {
 			element.value.destroy()
 		}
-		// @ts-expect-error: no interface
+		//@ts-expect-error: sem interface do plugins 3rd
 		element.value = new TomSelect(`#${uid}`, getSettings())
 	})
 }

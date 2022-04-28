@@ -64,6 +64,10 @@ style.borderWidth = `${props.border}px`
 		color: var(--danger);
 	}
 
+	&.-dark {
+		color: var(--dark);
+	}
+
 	&.-success {
 		color: var(--success);
 	}

@@ -10,15 +10,7 @@ export default {
 	},
 	argTypes: {
 		variant: {
-			options: [
-				'primary',
-				'secondary',
-				'success',
-				'white',
-				'danger',
-				'dark',
-				'link'
-			],
+			options: ['primary', 'secondary', 'success', 'white', 'danger', 'dark', 'link'],
 			control: { type: 'select' }
 		},
 		type: {
@@ -34,7 +26,17 @@ const Template = (args) => ({
 	setup() {
 		return { args }
 	},
-	template: '<Button v-bind="args"></Button>'
+	template: `
+		<Button v-bind="args" />
+		-
+		<Button v-bind="args" variant=primary />
+		-
+		<Button v-bind="args" variant=success />
+		-
+		<Button v-bind="args" size=sm />
+		-
+		<Button v-bind="args" size=lg />
+	`
 })
 
 export const Default = Template.bind({})

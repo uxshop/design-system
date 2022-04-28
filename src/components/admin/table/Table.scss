@@ -54,6 +54,19 @@
 				color: var(--gray-300);
 			}
 		}
+
+		&.-drag {
+			padding: 0;
+			text-align: center;
+			cursor: grab !important;
+			width: 1px;
+			color: var(--gray-300);
+
+			.ui-icon {
+				display: flex;
+				font-size: 18px;
+			}
+		}
 	}
 
 	.ui-table-row {

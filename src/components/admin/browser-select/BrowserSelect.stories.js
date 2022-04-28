@@ -1,5 +1,6 @@
 import { filter } from 'lodash-es'
 import BrowserSelect from './BrowserSelect.vue'
+import { service } from './__mocks__/BrowserSelect'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
@@ -14,33 +15,12 @@ const Template = (args) => ({
 	setup() {
 		return { args }
 	},
-	template: `
-    <BrowserSelect v-bind="args">
-      My BrowserSelect 
-    </BrowserSelect>
-  `
+	template: `<BrowserSelect v-bind="args" />`
 })
 
-const service = {
-	get(params) {
-		const res = {
-			data: [
-				{ id: 1, name: 'Hello World 1' },
-				{ id: 2, name: 'Hello World 2' },
-				{ id: 3, name: 'Hello World 3' },
-				{ id: 4, name: 'Hello World 4' },
-				{ id: 5, name: 'Hello World 5' },
-				{ id: 6, name: 'Hello World 6' },
-				{ id: 7, name: 'Hello World 7' },
-				{ id: 8, name: 'Hello World 8' }
-			],
-			links: {
-				first: 'http://localhost/dooca/apiv1/public/customers/groups?_=1649029751750&page=1',
-				last: 'http://localhost/dooca/apiv1/public/customers/groups?_=1649029751750&page=1',
-				prev: null,
-				next: null
-			}
-		}
+const serviceFiltered = {
+	async get(params) {
+		const res = await service.get(params)
 
 		if (params.ids) {
 			const ids = params.ids.split(',')
@@ -49,6 +29,8 @@ const service = {
 			})
 		}
 
+		console.log(res)
+
 		return res
 	}
 }
@@ -56,5 +38,5 @@ const service = {
 export const Default = Template.bind({})
 Default.args = {
 	modelValue: [1, 3],
-	service: service
+	service: serviceFiltered
 }
