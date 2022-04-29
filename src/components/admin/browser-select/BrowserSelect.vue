@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import BrowserSelectModal from './BrowserSelectModal.vue'
 import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import { ref, watch } from 'vue'
 import ButtonAction from '../button-action/ButtonAction.vue'
@@ -12,6 +11,7 @@ import BrowserSelectModal from './BrowserSelectModal.vue'
 
 export interface Props {
 	modelValue: any
+	templateCustom: any
 	id?: string
 	service: {
 		get(params: any): any
@@ -19,7 +19,6 @@ export interface Props {
 	selectOne?: boolean
 	title?: string
 	hideList?: boolean
-	baseParams?: any
 	noFetch?: boolean
 	hideBtn?: boolean
 	size?: string | number
@@ -29,7 +28,6 @@ export interface Props {
 	limit?: number | string
 	identifier?: string
 	placeholder?: string
-	type?: 'product' | 'brand' | 'category' | 'landing' | 'customer' | 'customer_group' | 'variant' | 'feature'
 }
 
 const emit = defineEmits(['remove', 'change', 'update:modelValue', 'update'])
@@ -51,6 +49,7 @@ const browserSelectModalRef = ref()
 
 const onClickSearch = () => {
 	browserSelectModalRef.value.open({
+		selectedIds: selectedIds.value,
 		searchBy: searchBy.value
 	})
 }
@@ -109,23 +108,20 @@ const getFromMemoryList = (newRows: unknown[]) => {
 }
 
 const fetch = async () => {
-	console.log('fetch')
-
 	let newRows: unknown[] = []
 
 	if (selectedIds.value.length) {
 		getFromMemoryList(newRows)
 
 		if (newRows.length != selectedIds.value.length) {
-			let params = cloneDeep(props.baseParams || {})
-
 			if (props.selectOne) {
 				// params.id = selectedIds.value[0]
 				// newRows = await props.service.first(params)
 				// newRows = [newRows]
 			} else {
-				params.ids = selectedIds.value.join(',')
-				const res = await props.service.get(params)
+				const res = await props.service.get({
+					ids: selectedIds.value.join(',')
+				})
 				newRows = res.data
 			}
 		}
@@ -230,13 +226,9 @@ watch(
 				</Row>
 			</div>
 
-			<div class="ui-browser-list" _v-if="!hideList && rows.length">
+			<div class="ui-browser-list" v-if="!hideList && rows.length">
 				<div class="ui-browser-list-row" v-for="item in rows.slice(0, paginateLimit)" :key="item[identifier]">
-					<slot v-bind="item">
-						<div class="ui-browser-list-cell">
-							{{ item.name }}
-						</div>
-					</slot>
+					<component :is="templateCustom" :item="item" />
 					<div class="ui-browser-list-cell -auto">
 						<ButtonAction size="sm" type="remove" @click="onRemoveItem(item)" />
 					</div>
@@ -249,12 +241,10 @@ watch(
 	<BrowserSelectModal
 		ref="browserSelectModalRef"
 		@update="updateByModal"
-		:selecteds="selectedIds"
+		:templateCustom="templateCustom"
 		:service="service"
-		:baseParams="baseParams"
 		:searchBy="searchBy"
 		:selectOne="selectOne"
-		:type="type"
 		:identifier="identifier"
 		:limit="limit" />
 </template>

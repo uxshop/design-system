@@ -1,6 +1,9 @@
 .ui-colorpicker {
 	display: inline-flex;
+	height: var(--input-height);
+	width: var(--input-height);
 }
+
 .pcr-interaction {
 	flex-wrap: nowrap !important;
 
@@ -17,9 +20,12 @@
 		order: 2;
 	}
 }
+
 .pickr {
 	position: relative;
-	border-radius: 2px;
+	border-radius: var(--input-border-radius);
+	height: 100%;
+	width: 100%;
 
 	&:after {
 		position: absolute;
@@ -29,7 +35,7 @@
 		right: 0;
 		content: '';
 		display: block;
-		border: solid 1px;
+		border: solid var(--border-width);
 		z-index: 22;
 		border-radius: inherit;
 		opacity: 0.2;
@@ -39,6 +45,8 @@
 	.pcr-button {
 		border-radius: inherit;
 		transition: none;
+		height: 100%;
+		width: 100%;
 		&::after,
 		&::before {
 			border-radius: inherit !important;

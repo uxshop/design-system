@@ -3,7 +3,7 @@ import { getCurrentInstance, onMounted, onUnmounted, watchEffect } from 'vue'
 import './redactor/redactor'
 
 interface Props {
-	modelValue?: string
+	modelValue?: any
 	toolbar?: object
 	name?: string
 	placeholder?: string

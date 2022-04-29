@@ -26,6 +26,7 @@
 	.ui-layout-content {
 		grid-area: ui-layout-content;
 		display: flex;
+		min-height: 100%;
 	}
 
 	.ui-layout-sidebar {
@@ -40,6 +41,7 @@
 		margin: 0 auto;
 		padding: 0 var(--layout-content-padding-x);
 		flex: 1;
+		flex-grow: 1;
 	}
 
 	@include mobile {

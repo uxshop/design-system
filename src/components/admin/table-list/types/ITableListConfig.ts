@@ -7,7 +7,7 @@ export type TBulkActions = Array<{
 }>
 
 export interface ITableListConfig {
-	service?: any
+	service: any
 	queryParams?: object
 	onGet?(i: TApiData[] | null): void
 	remove?(i: TApiData): Promise<void>

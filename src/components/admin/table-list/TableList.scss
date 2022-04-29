@@ -1,7 +1,7 @@
 @import '../../../scss/mixins.scss';
 
 .table-list {
-	--td-padding: 20px;
+	--td-padding: 15px;
 
 	display: flex;
 	flex-direction: column;
@@ -14,8 +14,7 @@
 	box-shadow: 0 0 18px rgb(23 24 24 / 5%), 0 0 1px rgb(0 0 0 / 15%);
 
 	table {
-		transform: rotateZ(0);
-
+		transform: rotatetbodyZ(0);
 		margin-bottom: 0;
 		background-color: #fff;
 
@@ -48,7 +47,7 @@
 		td {
 			border-left: none;
 			line-height: 1.3;
-			padding: 5px var(--td-padding);
+			padding: 8px var(--td-padding);
 
 			&.-date {
 				font-size: 12px;
@@ -64,7 +63,6 @@
 		tbody {
 			tr {
 				transition: all 0.15s;
-				font-weight: var(--font-weight-semi);
 
 				&:hover {
 					background-color: var(--gray-100);

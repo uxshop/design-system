@@ -26,6 +26,7 @@ type TQueryParams = Record<string, string | number>
 const props = defineProps<{
 	config: ITableListConfig
 	filters?: any
+	placeholder?: string
 }>()
 
 const emit = defineEmits<{

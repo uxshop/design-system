@@ -1,21 +1,26 @@
-.color-thumb {
-	width: 48px;
-	height: 48px;
+.ui-color-thumb {
+	width: var(--input-height);
+	height: var(--input-height);
 	display: inline-block;
 	position: relative;
 	border-radius: 100%;
 	overflow: hidden;
 	vertical-align: middle;
 
+	&.-sm {
+		width: var(--input-height-sm);
+		height: var(--input-height-sm);
+	}
+
 	&::after {
 		content: '';
 		display: block;
 		border: solid 2px rgba(#fff, 0.2);
 		position: absolute;
-		left: 2px;
-		top: 2px;
-		right: 2px;
-		bottom: 2px;
+		left: 1px;
+		top: 1px;
+		right: 1px;
+		bottom: 1px;
 		z-index: 8;
 		border-radius: 100%;
 	}
@@ -23,7 +28,7 @@
 	&::before {
 		content: '';
 		display: block;
-		border: solid 2px rgba(0, 0, 0, 0.1);
+		border: solid 1px rgba(0, 0, 0, 0.1);
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -33,7 +38,7 @@
 		border-radius: 100%;
 	}
 
-	.color-thumb-color {
+	.ui-color-thumb-color {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -42,7 +47,7 @@
 		background-size: cover;
 		border-radius: 100%;
 
-		&.color-thumb-secondary {
+		&.-secondary {
 			top: 48%;
 			transform: rotate(-45deg);
 			width: 130%;

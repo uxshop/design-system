@@ -1,36 +1,34 @@
-<script seutp lang="ts">
+<script setup lang="ts">
 import { ref, watchEffect } from 'vue'
 
-defineProps<{
-	item?: { src: string }
+const props = defineProps<{
+	hexadecimal?: string
+	hexadecimalSecondary?: string
+	image?: string
+	size?: string
+	width?: string
 }>()
 
-const color = ref(null)
-const colorSecondary = ref(null)
+const customStyle = ref<{
+	width?: string
+	height?: string
+}>({})
 
-watchEffect(() => {
-	handler((value: any) => {
-		const item = value || {}
+const classList: any[] = []
 
-		if (item.image && item.image.src) {
-			value.color = `background-image: url(${value.$options.filters.img_url(item.image.src)}); background-size: cover`
-		} else {
-			value.color = `background: ${item.hexadecimal}`
-		}
+if (props.size) {
+	classList.push(`-${props.size}`)
+}
 
-		if (item.image_secondary && item.image_secondary.src) {
-			value.colorSecondary = `background-image: url(${item.image_secondary.src})`
-		} else {
-			value.colorSecondary = `background: ${item.hexadecimal_secondary}`
-		}
-	})
-})
+if (props.width) {
+	customStyle.value.width = `${props.width}`
+}
 </script>
 
 <template>
-	<span class="color-thumb">
-		<span class="color-thumb-color" :style="color"></span>
-		<span class="color-thumb-color color-thumb-color-secondary" :style="colorSecondary"></span>
+	<span class="ui-color-thumb" :class="classList">
+		<span class="ui-color-thumb-color" :style="{ backgroundColor: hexadecimal }"></span>
+		<span class="ui-color-thumb-color -secondary" :style="{ backgroundColor: hexadecimalSecondary }"></span>
 	</span>
 </template>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, shallowRef, watchEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import Pickr from '@simonwep/pickr/src/js/pickr'
 import type PickerInterface from '@simonwep/pickr'
@@ -10,10 +10,18 @@ const props = defineProps<{
 	label?: string
 	required?: boolean
 	name?: string
+	width?: string
 }>()
 const emit = defineEmits(['update', 'update:modelValue'])
 const uid = `colopicker-${getCurrentInstance()?.uid}`
 const pickr = shallowRef()
+const customStyle = ref<{
+	width?: string
+}>({})
+
+if (props.width) {
+	customStyle.value.width = props.width
+}
 
 const update = (value: string | null) => {
 	emit('update:modelValue', value)
@@ -134,7 +142,7 @@ defineExpose({
 </script>
 
 <template>
-	<label class="ui-colorpicker">
+	<label class="ui-colorpicker" :style="customStyle">
 		<div class="pickr" :id="uid"></div>
 	</label>
 </template>

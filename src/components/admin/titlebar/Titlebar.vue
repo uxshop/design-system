@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-	title?: string
+	title?: string | null
 	backlink?: { to: string }
 }
 defineProps<Props>()
