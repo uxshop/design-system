@@ -2,7 +2,7 @@
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
-import Litepicker from 'litepicker'
+import * as Litepicker from 'litepicker'
 import * as moment from 'moment'
 moment.locale('pt-br')
 
