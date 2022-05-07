@@ -1,11 +1,21 @@
 <script setup lang="ts">
-defineProps<{
-	transparent?: boolean
-}>()
+const props = withDefaults(
+	defineProps<{
+		transparent?: boolean
+		height?: string
+	}>(),
+	{
+		height: '5px'
+	}
+)
+
+const customStyle = {
+	height: props.height
+}
 </script>
 
 <template>
-	<hr class="ui-divider -hr-2" :class="{ '-transparent': transparent }" />
+	<hr class="ui-divider" :class="{ '-transparent': transparent }" :style="customStyle" />
 </template>
 
 <style lang="scss">

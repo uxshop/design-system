@@ -1,0 +1,24 @@
+@import '../../../../scss/mixins.scss';
+
+.table-list-tabs {
+	.table-list-tab {
+		height: 50px;
+	}
+	@include mobile {
+	}
+
+	.ps .ps__rail-x {
+		max-height: 4px;
+		&:hover {
+			background: rgba(0, 0, 0, 0.2) !important;
+		}
+	}
+
+	.ps__rail-x > .ps__thumb-x {
+		max-height: 0;
+	}
+
+	.ps__rail-x:hover > .ps__thumb-x {
+		height: 0;
+	}
+}

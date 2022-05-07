@@ -6,6 +6,9 @@ import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
 import { each } from 'lodash-es'
 import IconButton from '../../../ui/icon-button/IconButton.vue'
 import type { TBulkActions, ITableListConfig } from '../types/ITableListConfig'
+import Dropdown from '../../../ui/dropdown/Dropdown.vue'
+import Button from '../../../ui/button/Button.vue'
+import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue'
 
 const emit = defineEmits<{
 	(event: 'refresh'): void
@@ -106,30 +109,29 @@ onMounted(() => {
 			<FormCheckbox :indeterminate="indeterminate" :value="allSelected" v-model="checkbox" />
 		</div>
 
-		<span v-tooltip:top="`Deletar selecionados`" class="table-list-nav-item">
-			<IconButton
-				v-show="selected.length && config.actions?.includes('remove')"
-				icon="delete"
-				@click="onRemoveDialog"
-				size="sm" />
+		<span
+			v-show="selected.length && config.actions?.includes('remove')"
+			v-tooltip:top="`Deletar selecionados`"
+			class="table-list-nav-item">
+			<IconButton icon="delete" @click="onRemoveDialog" size="sm" />
 		</span>
-		<ui-dropdown variant="white" v-show="selected.length && bulkActions && bulkActions.length > 0" class="ml-2">
+
+		<Dropdown variant="white" v-show="selected.length && bulkActions && bulkActions.length > 0" class="ml-2">
 			<template #button-content>
-				<ui-button size="sm" variant="dark-outline" trailingIcon="unfold_more">
+				<Button size="sm" variant="dark-outline" trailingIcon="unfold_more">
 					<span>
 						ações para <b>{{ zerofill(selected.length) }}</b> selecionados
 					</span>
-				</ui-button>
+				</Button>
 			</template>
 
-			<ui-dropdown-item-button
+			<DropdownItemButton
 				v-for="action in bulkActions"
 				@click.stop="action.action(selected)"
 				:key="action.label"
-				:variant="action.variant">
-				{{ action.label }}
-			</ui-dropdown-item-button>
-		</ui-dropdown>
+				:variant="action.variant"
+				:label="action.label" />
+		</Dropdown>
 	</div>
 </template>
 

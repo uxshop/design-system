@@ -2,22 +2,27 @@
 import { inject, ref, watchEffect } from 'vue'
 import type { TabProviderInterface } from './TabProviderInterface'
 
+const props = defineProps<{
+	label?: string
+	index?: string
+}>()
+
 const tabsProvider: TabProviderInterface | undefined = inject('tabs')
 const active = ref(false)
-const index = tabsProvider?.tabs.length
+const _index = props.index || tabsProvider?.tabs.length
 
 const onClick = (evt: MouseEvent) => {
 	if (tabsProvider) {
-		tabsProvider.active(index, evt)
+		tabsProvider.active(_index, evt)
 	}
 }
 
 if (tabsProvider) {
-	tabsProvider.tabs.push(index)
+	tabsProvider.tabs.push(_index)
 }
 
 watchEffect(() => {
-	if (tabsProvider?.activeTabIndex == index) {
+	if (tabsProvider?.activeTabIndex == _index) {
 		active.value = true
 	} else {
 		active.value = false
@@ -27,11 +32,9 @@ watchEffect(() => {
 
 <template>
 	<button class="ui-tab-item" :class="{ '-active': active }" @click="onClick">
-		<span class="ui-tab-item-area"></span>
-		<span>
-			<slot />
+		<span class="ui-tab-item-content">
+			<slot>{{ label }}</slot>
 		</span>
-		<span class="ui-tab-item-indicator"></span>
 	</button>
 </template>
 

@@ -1,25 +1,27 @@
 <script setup lang="ts">
-import TableListTabs from './TableListTabs.vue'
+import TableListTabs from './snippets/TableListTabs.vue'
 import TableListNav from './table-list-nav/TableListNav.vue'
-import TableListTable from './TableListTable.vue'
+import TableListTable from './snippets/TableListTable.vue'
 import { useRoute } from 'vue-router'
 import { onMounted, watch, ref, useSlots } from 'vue'
 import { union, clone, omit } from 'lodash-es'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorageService from '../../../services/LocalStorageService'
-import TableListEmptySearch from './TableListEmptySearch.vue'
-import TableListEmptyMessage from './TableListEmptyMessage.vue'
-import TableListNavBulk from './table-list-nav/TableListNavBulk.vue'
+import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
+import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue'
+import TableListNavBulk from './table-list-nav-bulk/TableListNavBulk.vue'
 import TableListNavRefresh from './table-list-nav/TableListNavRefresh.vue'
 import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
-import TableListNavPagination from './table-list-nav/TableListNavPagination.vue'
-import TableListNavFilter from './table-list-nav/TableListNavFilter.vue'
+import TableListNavPagination from './table-list-nav-pagination/TableListNavPagination.vue'
+import TableListNavFilter from './table-list-nav-filter/TableListNavFilter.vue'
 import SkeletonTable from '../../ui/skeleton-table/SkeletonTable.vue'
-import Skeleton from '../../ui/skeleton/Skeleton.vue'
-import Row from '../../ui/grid/row/Row.vue'
-import Col from '../../ui/grid/col/Col.vue'
 import type { ITableListConfig } from './types/ITableListConfig'
 import type { TApiData } from 'src/types/IApiResource'
+import Card from '../../ui/card/Card.vue'
+import TableListNavSortable from './table-list-nav/TableListNavSortable.vue'
+import TableListTags from './table-list-tags/TableListTags.vue'
+import TableListNavCustomFilter from './table-list-nav/TableListNavCustomFilter.vue'
+// import TableListNavCustomFilter from './table-list-nav/TableListNavCustomFilter.vue'
 
 type TQueryParams = Record<string, string | number>
 
@@ -41,7 +43,6 @@ const noData = ref(false)
 const omitFilters = ref({})
 const queryParams = ref<TQueryParams>({})
 const route = useRoute()
-const slots = useSlots()
 const term = ref()
 const loading = ref(false)
 const meta = ref({})
@@ -66,6 +67,8 @@ const removeFilter = (key: string) => {
 
 const setUrlParams = (query: TQueryParams) => HistoryReplaceState(query, ['_', 'limit'])
 const setQueryParams = (params: TQueryParams) => {
+	console.log(params)
+
 	queryParams.value = Object.assign({}, queryParams.value, params)
 }
 const resetQueryParams = (params = {}) => {
@@ -183,9 +186,13 @@ watch(
 		init()
 	}
 )
-const haveSlot = (name: string) => {
-	return !!slots[name]
-}
+
+// watch(
+// 	() => props.config.presetFilters,
+// 	(newVal) => {
+// 		console.log(newVal)
+// 	}
+// )
 
 defineExpose({
 	unshiftItem: unshiftItem,
@@ -194,30 +201,33 @@ defineExpose({
 </script>
 
 <template>
-	<div class="table-list-skeleton" v-if="loading && !firstGet">
-		<SkeletonTable cols="3" rows="6" with-action />
-	</div>
+	<Card class="table-list-skeleton" v-if="loading && !firstGet">
+		<SkeletonTable cols="3" rows="6" withAction hideHeader />
+	</Card>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />
 	<div class="table-list" v-show="firstGet" v-else>
-		<TableListTabs v-if="rows.length" :presetFilters="config.presetFilters" :hideCheckbox="config.hideCheckbox" />
+		<TableListTabs
+			:presetFilters="config.presetFilters"
+			:hideCheckbox="config.hideCheckbox"
+			:setQueryParams="setQueryParams"
+			@resetQueryParams="resetQueryParams" />
 		<TableListNav
-			v-if="rows.length"
 			v-model:selected="selected"
 			v-model:noData="noData"
 			:config="cfg"
 			:meta="meta"
 			:loading="loading"
 			:rows="rows"
-			:set-query-params="setQueryParams"
-			:remove-filter="removeFilter"
-			:query-params="queryParams"
+			:setQueryParams="setQueryParams"
+			:removeFilter="removeFilter"
+			:queryParams="queryParams"
 			:filters="cfg.filters"
 			@checkAll="checkAll"
 			@refresh="init"
-			@remove-selecteds="removeSelecteds"
-			@active-selecteds="activeInactiveSelecteds(true)"
-			@inactive-selecteds="activeInactiveSelecteds(false)"
-			@reset-query-params="resetQueryParams">
+			@removeSelecteds="removeSelecteds"
+			@activeSelecteds="activeInactiveSelecteds(true)"
+			@inactiveSelecteds="activeInactiveSelecteds(false)"
+			@resetQueryParams="resetQueryParams">
 			<TableListNavBulk
 				@checkAll="checkAll"
 				@refresh="init"
@@ -229,24 +239,17 @@ defineExpose({
 				:rows="rows" />
 			<TableListNavRefresh @refresh="init" />
 			<TableListNavSearch
-				v-bind:model-value="term"
+				v-model="term"
 				@refresh="init"
 				:placeholder="cfg.placeholder"
-				:remove-filter="removeFilter"
-				:set-query-params="setQueryParams" />
-			<!-- <TableListNavCustomFilter
-					v-if="$refs.tabs"
-					:currentTab="$refs.tabs.currentTab"
-					:queryParams="queryParams"
-					:tabs="$refs.tabs.tabs"
-					:omitFilters="omitFilters"
-					@remove-tab="$refs.tabs.removeTab"
-					@add-tab="$refs.tabs.addTab"
-				/> -->
-			<!-- <table-list-nav-sortable :configSortable="config.sortable" :queryParams="queryParams" /> -->
-			<TableListNavFilter :filters="cfg.filters" @reset-query-params="resetQueryParams" />
+				:removeFilter="removeFilter"
+				:setQueryParams="setQueryParams" />
+			<TableListNavCustomFilter :queryParams="queryParams" :omitFilters="omitFilters" />
+			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />
+			<TableListNavFilter :filters="cfg.filters" :currentFilters="omitFilters" @resetQueryParams="resetQueryParams" />
 			<TableListNavPagination :meta="meta" :queryParams="queryParams" :setQueryParams="setQueryParams" />
 		</TableListNav>
+		<TableListTags :filters="cfg.filters" :omitFilters="omitFilters" />
 		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
 			<TableListTable
@@ -258,7 +261,7 @@ defineExpose({
 				@clickRow="clickRow"
 				@delete="deleteOne"
 				@toggleActive="activeOne">
-				<template #head v-if="haveSlot('head')">
+				<template #head v-if="$slots.head">
 					<slot name="head" />
 				</template>
 				<template #default="{ item }">

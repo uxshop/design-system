@@ -2,7 +2,7 @@
 import { getCurrentInstance, onMounted, onUnmounted, watchEffect } from 'vue'
 import './redactor/redactor'
 
-interface Props {
+export interface Props {
 	modelValue?: any
 	toolbar?: object
 	name?: string
@@ -22,7 +22,7 @@ type TRedactor = {
 } | null
 
 const props = withDefaults(defineProps<Props>(), {
-	height: 100
+	height: 120
 })
 
 const emit = defineEmits(['update:modelValue', 'update'])
@@ -42,7 +42,7 @@ const config = Object.assign(
 		plugins: ['source', 'video', 'table', 'alignment', 'fullscreen', 'imagemanager'],
 		buttons: ['html', 'formatting', 'bold', 'italic', 'lists', 'link', 'horizontalrule', 'image'],
 		maxHeight: '600px',
-		minHeight: '120px',
+		minHeight: `${props.height}px`,
 		multipleUpload: false,
 		callbacks: {
 			focus: function () {
@@ -118,5 +118,5 @@ onUnmounted(() => {
 </template>
 
 <style lang="scss">
-@import './redactor.scss';
+@import './FormRichtext.scss';
 </style>

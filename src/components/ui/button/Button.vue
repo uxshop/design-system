@@ -4,7 +4,7 @@ import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
 
 interface Props {
-	variant?: string
+	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'white'
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string

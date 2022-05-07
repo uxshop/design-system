@@ -25,6 +25,17 @@
 		font-weight: var(--font-weight-semi);
 	}
 
+	&.-no-padding {
+		.ui-table-cell {
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+
 	&.-hover {
 		&:not(.ui-table-header) .ui-table-row {
 			cursor: pointer;

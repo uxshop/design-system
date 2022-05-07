@@ -20,14 +20,14 @@
 	position: relative;
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 	background-color: white;
-	font-weight: 600;
+	font-weight: 500;
 
 	&.-default {
-		border: solid 1px var(--border-color);
-		box-shadow: none;
+		border: solid 1px var(--input-border-color);
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 		&:hover {
 			filter: none;
-			background-color: var(--border-color);
+			background-color: var(--gray-100);
 		}
 	}
 
@@ -36,13 +36,8 @@
 		text-decoration: none;
 	}
 
-	// &:hover:before,
-	// &:focus:before {
-	// 	opacity: 0.1;
-	// }
-
 	&:active {
-		transform: translate(0, 1px);
+		transform: scale(0.98);
 	}
 
 	&.-loading {
@@ -86,6 +81,16 @@
 	&.-primary {
 		background-color: var(--primary);
 		color: white;
+
+		&.-outline {
+			background-color: transparent;
+			color: var(--body-color);
+
+			&:hover {
+				background-color: var(--primary);
+				color: white;
+			}
+		}
 	}
 
 	&.-light {
@@ -107,26 +112,39 @@
 	&.-danger {
 		background-color: var(--danger);
 		color: white;
+
+		&.-outline {
+			border: 2px solid var(--danger);
+			background-color: transparent;
+			box-shadow: none;
+			color: var(--danger);
+
+			&:hover {
+				background-color: var(--danger);
+				color: white;
+			}
+		}
 	}
 
 	&.-dark {
 		background-color: var(--dark);
 		color: white;
+
+		&.-outline {
+			border: 2px solid var(--dark);
+			background-color: transparent;
+			color: var(--body-color);
+
+			&:hover {
+				background-color: var(--dark);
+				color: white;
+			}
+		}
 	}
 
 	&.-white {
 		background-color: white;
 		color: var(--body-color);
-	}
-
-	&.-outline-primary {
-		background-color: transparent;
-		color: var(--body-color);
-
-		&:hover {
-			background-color: var(--primary);
-			color: white;
-		}
 	}
 
 	&.-outline-secondary {
@@ -140,17 +158,6 @@
 		}
 	}
 
-	&.-outline-danger {
-		border: 2px solid var(--danger);
-		background-color: transparent;
-		color: var(--body-color);
-
-		&:hover {
-			background-color: var(--danger);
-			color: white;
-		}
-	}
-
 	&.-outline-success {
 		border: 2px solid var(--success);
 		background-color: transparent;
@@ -158,17 +165,6 @@
 
 		&:hover {
 			background-color: var(--success);
-			color: white;
-		}
-	}
-
-	&.-outline-dark {
-		border: 2px solid var(--dark);
-		background-color: transparent;
-		color: var(--body-color);
-
-		&:hover {
-			background-color: var(--dark);
 			color: white;
 		}
 	}

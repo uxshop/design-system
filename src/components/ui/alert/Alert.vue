@@ -7,6 +7,7 @@ const props = defineProps<{
 	icon?: string
 	dismissible?: boolean
 	show: boolean
+	text?: string
 }>()
 const emit = defineEmits(['dismissed'])
 const classList = ref<string[]>([])
@@ -33,12 +34,13 @@ watchEffect(() => {
 	<div class="ui-alert" :class="classList" v-if="open">
 		<Icon name="cancel" type="outlined" v-if="variant == 'danger'" />
 		<Icon name="check_circle" type="rounded" v-if="variant == 'success'" />
+		<Icon :name="icon" type="rounded" v-if="icon" />
 		<div class="ui-alert-content">
 			<h6 class="ui-alert-title" v-if="title">
 				{{ title }}
 			</h6>
 			<div class="ui-alert-text">
-				<slot />
+				<slot>{{ text }}</slot>
 			</div>
 		</div>
 		<button class="ui-alert-close" v-if="dismissible" @click="close">

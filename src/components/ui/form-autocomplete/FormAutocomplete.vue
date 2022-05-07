@@ -11,8 +11,9 @@ export interface IConfigSelect {
 	create?: boolean
 	closeAfterSelect?: boolean
 	plugins?: string[]
-	searchField?: string
+	valueField?: string
 	labelField?: string
+	searchField?: string
 	options?: any[]
 	render?: {
 		option?: (item: any) => string
@@ -34,6 +35,8 @@ export interface Props {
 	placeholder?: string
 	config?: IConfigSelect
 	label?: string
+	size?: string
+	last?: boolean
 }
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
@@ -65,6 +68,7 @@ const getSettings = () => {
 			persist: false,
 			createOnBlur: false,
 			create: false,
+			items: ['2'],
 			closeAfterSelect: true,
 			valueField: 'id',
 			labelField: 'text',
@@ -115,8 +119,8 @@ watch(
 </script>
 
 <template>
-	<div class="ui-form-autocomplete" :class="{ '-focus': focus }">
-		<FormLabel :text="label" />
+	<div class="ui-form-autocomplete" :class="[{ '-focus': focus, 'mb-0': last }, `-${size}`]">
+		<FormLabel v-if="label" :text="label" />
 		<select :value="model" class="ui-form-select" :id="uid" :placeholder="placeholder"></select>
 	</div>
 </template>

@@ -34,7 +34,7 @@
 }
 
 .form-control-label {
-	font-size: 12px;
+	font-size: 13px;
 	text-align: left;
 	margin-bottom: 5px;
 	display: inline-block;
@@ -68,6 +68,6 @@ textarea {
 }
 
 .form-control.-select {
-	padding-right: 25px;
+	padding-right: 40px;
 	@include select-arrow;
 }

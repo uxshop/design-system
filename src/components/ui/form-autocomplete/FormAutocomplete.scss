@@ -9,16 +9,33 @@
 		z-index: 310;
 	}
 
+	&.-sm {
+		.ts-wrapper.single .ts-control {
+			height: var(--input-height-sm);
+			padding: 0 var(--input-padding-x-sm);
+			border-radius: var(--input-border-radius-sm);
+			display: flex;
+			align-items: center;
+
+			.item {
+				margin-right: 10px;
+			}
+		}
+	}
+
 	.has-items .ts-control {
+		line-height: 1.6;
 		> input {
 			font-size: 12px;
 		}
 
 		.clear-button {
 			opacity: 1;
-			font-size: 24px;
-			line-height: 1;
-			top: 5px;
+			font-size: 26px;
+			top: 0;
+			height: 100%;
+			display: flex;
+			align-items: center;
 
 			&:hover {
 				color: var(--danger);
@@ -32,6 +49,7 @@
 		border-radius: var(--input-border-radius);
 		padding-left: var(--input-padding-x);
 		height: var(--input-height);
+		box-shadow: none;
 	}
 
 	.ts-wrapper.single .ts-control:after {

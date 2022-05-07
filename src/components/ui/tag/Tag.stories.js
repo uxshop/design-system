@@ -14,12 +14,10 @@ const Template = (args) => ({
 	setup() {
 		return { args }
 	},
-	template: `
-    <Tag v-bind="args">
-			Hello World
-		</Tag> 
-  `
+	template: `<Tag v-bind="args" text="Hello" />`
 })
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+
+}

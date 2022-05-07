@@ -18,6 +18,8 @@ const term = ref()
 
 const onClearTerm = () => {
 	props.removeFilter('q')
+	term.value = null
+	update()
 }
 
 const onSubmitTerm = () => {
@@ -27,8 +29,8 @@ const onSubmitTerm = () => {
 	})
 }
 
-const update = () => {
-	emit('update:modelValue', term.value)
+const update = (val = null) => {
+	emit('update:modelValue', val)
 }
 </script>
 
@@ -37,11 +39,11 @@ const update = () => {
 		<form @submit.prevent="onSubmitTerm" autocomplete="off">
 			<div class="table-search-input">
 				<label class="box-icon" for="term">
-					<icon name="search" class="icon" />
+					<Icon name="search" class="icon" />
 				</label>
 				<input v-model="term" id="term" :placeholder="placeholder" class="form-control" @update:modelValue="update" />
 				<div class="box-icon -clear" @click="onClearTerm" v-if="term">
-					<icon name="close" class="icon" />
+					<Icon name="close" class="icon" />
 				</div>
 			</div>
 		</form>

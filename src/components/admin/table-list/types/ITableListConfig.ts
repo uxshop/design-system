@@ -14,8 +14,9 @@ export interface ITableListConfig {
 	omitFilters?: string[]
 	hideCheckbox?: boolean
 	empty?: string
-	presetFilters?: Record<string, string>[]
-	filters?: Record<string, string>
+	presetFilters?: Record<string, string>
+	filters?: Record<string, any>
+	sortable?: Record<string, string>
 	bulk?: TBulkActions
 	actions?: string[]
 	placeholder?: string

@@ -43,7 +43,10 @@ const onCollapse = (key: string) => {
 }
 
 const onClearAll = reset
-const onApply = () => emit('close', selected.value)
+const onApply = () => {
+	emit('close', selected.value)
+	aside.value = false
+}
 
 const hasSelected = () => {
 	return JSON.stringify(selected.value) != JSON.stringify(selectedDefault)
@@ -64,12 +67,7 @@ const hasFilterSelected = (filter: { type: string }, key: string | number) => {
 	return selected.value[key] !== null && selected.value[key] !== undefined
 }
 
-const toggle = () => {
-	aside.value = !aside.value
-}
-
-onMounted(() => {
-	reset()
+const setCurrentFilters = () => {
 	const newCurrentFilters: Record<string, any> = {}
 	each(props.currentFilters, (item, key) => {
 		if (props.filters[key] !== undefined && ['checkbox', 'browser'].indexOf(props.filters[key].type) >= 0) {
@@ -84,19 +82,29 @@ onMounted(() => {
 		const key = keys(props.filters)[0]
 		onCollapse(key)
 	}
+}
+
+const open = () => {
+	reset()
+	setCurrentFilters()
+	aside.value = true
+}
+
+defineExpose({
+	open
 })
 </script>
 
 <template>
 	<Aside v-model="aside" title="Filtros" scrollable>
-		<form @submit.prevent="onApply" id="formFilter">
+		<form @submit.prevent="onApply" id="form-filter">
 			<div class="filter-list">
 				<div
 					v-for="(filter, key) in filters"
 					:key="filter.name"
 					class="filter-list-item"
 					:class="{ '-active': accordion[key], '-checked': hasFilterSelected(filter, key) }">
-					<div class="filter-list-title" @click="onCollapse(filter)">
+					<div class="filter-list-title" @click="onCollapse(String(key))">
 						<span>{{ filter.name }}</span>
 						<Icon name="expand_more" />
 					</div>
@@ -123,25 +131,21 @@ onMounted(() => {
 						</div>
 
 						<div v-else v-for="item in filter.filters" :key="item.key">
-							<div v-if="filter.type == 'radio'">
+							<div v-if="filter.type == 'radio'" class="d-block mb-2">
 								<FormRadio
-									class="d-block mb-2"
 									v-model="selected[key]"
 									:name="`radio_${key}`"
 									:value="item.value"
-									tabindex="1">
-									{{ item.name }}
-								</FormRadio>
+									tabindex="1"
+									:label="item.name" />
 							</div>
-							<div v-if="filter.type == 'checkbox'">
+							<div v-if="filter.type == 'checkbox'" class="d-block mb-2">
 								<FormCheckbox
-									class="d-block mb-2"
 									v-model="selected[key]"
 									:name="`check_${key}`"
 									:value="item.value"
-									tabindex="1">
-									{{ item.name }}
-								</FormCheckbox>
+									tabindex="1"
+									:label="item.name" />
 							</div>
 						</div>
 						<div class="text-left mt-3">
@@ -150,9 +154,8 @@ onMounted(() => {
 								flush="left"
 								@click="onClearFilter(filter, key)"
 								:disabled="!hasFilterSelected(filter, key)"
-								size="sm">
-								Limpar
-							</Button>
+								size="sm"
+								label="Limpar" />
 						</div>
 					</div>
 				</div>
@@ -161,10 +164,10 @@ onMounted(() => {
 		<template #footer>
 			<Row alignV="center">
 				<Col>
-					<Button type="submit" form="formFilter" block variant="primary" leadingIcon="check"> Aplicar </Button>
+					<Button type="submit" form="form-filter" block variant="primary" leadingIcon="check"> Aplicar </Button>
 				</Col>
 				<Col>
-					<Button variant="white" size="sm" @click="onClearAll" :disabled="!hasSelected()"> limpar os filtros </Button>
+					<Button size="sm" @click="onClearAll" :disabled="!hasSelected()"> limpar os filtros </Button>
 				</Col>
 			</Row>
 		</template>

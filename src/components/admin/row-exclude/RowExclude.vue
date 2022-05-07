@@ -9,7 +9,7 @@ interface Rows {
 }
 
 interface Props {
-	rows: Array<Rows> | null
+	rows: any
 	modelValue: number[]
 }
 

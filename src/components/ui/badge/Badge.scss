@@ -9,6 +9,10 @@
 	font-size: 12px;
 	line-height: 1;
 
+	& + .ui-badge {
+		margin-left: 5px;
+	}
+
 	&.-light {
 		background-color: var(--dark-100);
 		color: var(--body-color);

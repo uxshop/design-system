@@ -7,6 +7,7 @@ defineProps<{
 	left?: boolean
 }>()
 
+const emit = defineEmits(['show', 'hide'])
 const show = ref(false)
 
 const uid = `ui-dropdown-${getCurrentInstance()?.uid}`
@@ -15,8 +16,17 @@ const listener = () => {
 	setTimeout(() => {
 		window.removeEventListener('keydown', listener, false)
 		window.removeEventListener('mouseup', listener, false)
-		show.value = false
+		toggle(false)
 	}, 100)
+}
+
+const toggle = (val) => {
+	show.value = val
+	if (val) {
+		emit('show')
+	} else {
+		emit('hide')
+	}
 }
 
 const toggleDropdown = () => {
@@ -25,7 +35,7 @@ const toggleDropdown = () => {
 		window.addEventListener('keydown', listener, false)
 	}
 
-	show.value = !show.value
+	toggle(!show.value)
 }
 </script>
 
@@ -43,4 +53,3 @@ const toggleDropdown = () => {
 <style lang="scss">
 @import './Dropdown.scss';
 </style>
->

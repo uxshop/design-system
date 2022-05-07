@@ -4,7 +4,7 @@ import { ref } from 'vue'
 // import useCurrencyInput from 'vue-currency-input/dist/index.esm.js'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
-interface Props {
+export interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
@@ -16,9 +16,9 @@ interface Props {
 	float?: boolean
 	invalidFeedback?: string
 	//
-	modelValue?: string | number
+	modelValue?: string | number | null
 	label?: string
-	placeholder?: string
+	placeholder?: any
 	tabindex?: string
 	inputmode?: string
 	size?: string
@@ -37,7 +37,9 @@ interface Props {
 	options?: Record<string, unknown>
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+	placeholder: '0.00'
+})
 const classList = ref<string[]>([])
 
 /* @see https://dm4t2.github.io/vue-currency-input/config.html */
@@ -77,7 +79,8 @@ if (props.pill) {
 		:disabled="disabled"
 		:float="float"
 		:state="state"
+		:size="size"
 		:invalidFeedback="invalidFeedback">
-		<input ref="inputRef" class="form-control" :value="modelValue" />
+		<input ref="inputRef" class="form-control" :value="modelValue" :placeholder="placeholder" />
 	</FormWrapper>
 </template>

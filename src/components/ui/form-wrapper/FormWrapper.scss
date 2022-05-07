@@ -7,6 +7,12 @@
 		gap: var(--grid-gutter-width);
 	}
 
+	&.-sm {
+		.form-wrapper-content-bx {
+			height: var(--input-height-sm);
+		}
+	}
+
 	.form-wrapper-content-bx {
 		flex-grow: 1;
 		position: relative;
@@ -90,6 +96,10 @@
 		i {
 			color: var(--success) !important;
 		}
+	}
+
+	&.ui-form-select {
+		min-width: 120px;
 	}
 
 	.trailing-icon {

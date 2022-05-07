@@ -2,9 +2,10 @@
 import { ref } from 'vue'
 
 const props = defineProps<{
-	size?: number
+	size?: string
 	pill?: boolean
 	variant?: string
+	text?: string
 }>()
 
 const classList = ref<string[]>([])
@@ -26,7 +27,7 @@ if (props.variant) {
 
 <template>
 	<span class="ui-badge" :class="classList" :style="style">
-		<slot />
+		<slot>{{ text }}</slot>
 	</span>
 </template>
 

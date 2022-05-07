@@ -1,9 +1,9 @@
 .ui-tab {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	overflow-x: auto;
-	overflow-y: visible;
+	justify-content: flex-start;
+	border-bottom: solid 1px var(--border-color);
+	height: var(--tab-height);
 }
 
 .ui-tab::-webkit-scrollbar {

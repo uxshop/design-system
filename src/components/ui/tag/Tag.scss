@@ -7,9 +7,19 @@
 	position: relative;
 	padding-right: 30px;
 	overflow: hidden;
+	font-size: 12px;
+
+	+ .ui-tag {
+		margin-left: 5px;
+	}
 
 	&.-dark {
 		background-color: var(--dark);
+		color: white;
+	}
+
+	&.-primary {
+		background-color: var(--primary);
 		color: white;
 	}
 

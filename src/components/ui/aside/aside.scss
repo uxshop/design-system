@@ -59,6 +59,10 @@
 				border-bottom: solid 2px var(--border-color);
 			}
 
+			.ui-aside-body {
+				padding-top: calc(var(--modal-padding-x) / 2);
+			}
+
 			.ui-aside-footer {
 				position: sticky;
 				bottom: 0;

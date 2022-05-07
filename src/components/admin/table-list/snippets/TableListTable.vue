@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSlots } from 'vue'
-import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
-import ButtonAction from '../button-action/ButtonAction.vue'
+import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
+import ButtonAction from '../../button-action/ButtonAction.vue'
 
 const props = defineProps<{
 	rows: Record<string, any>[]

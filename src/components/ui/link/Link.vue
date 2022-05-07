@@ -2,7 +2,7 @@
 interface Props {
 	to?: string | object
 	href?: string
-	text?: string
+	text?: string | null
 }
 withDefaults(defineProps<Props>(), { href: 'javascript:;' })
 </script>

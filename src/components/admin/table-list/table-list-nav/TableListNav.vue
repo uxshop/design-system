@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TableListNavLoader from './TableListNavLoader.vue'
+import TableListNavLoader from '../table-list-nav-loader/TableListNavLoader.vue'
 
 interface Props {
 	config: any

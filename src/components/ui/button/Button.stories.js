@@ -36,6 +36,8 @@ const Template = (args) => ({
 		<Button v-bind="args" size=sm />
 		-
 		<Button v-bind="args" size=lg />
+		-
+		<Button v-bind="args" href="http://" />
 	`
 })
 
