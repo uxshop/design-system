@@ -12,7 +12,6 @@
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
-		"install": "vue-tsc --noEmit && vite build"
 	},
 	"dependencies": {
 		"@codemirror/basic-setup": "^0.19.1",
