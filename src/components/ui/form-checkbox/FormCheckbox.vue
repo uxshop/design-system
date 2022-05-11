@@ -13,6 +13,7 @@ const props = defineProps<{
 	required?: boolean
 	indeterminate?: boolean
 	noEvents?: boolean
+	disabled?: boolean
 }>()
 
 const uid = `ui-form-checkbox-${getCurrentInstance()?.uid}`
@@ -50,6 +51,7 @@ const update = (val: unknown) => {
 			:required="required"
 			:indeterminate="indeterminate"
 			:name="name"
+			:disabled="disabled"
 			:true-value="true"
 			@update:modelValue="update" />
 		<div class="ui-form-checkbox-text">

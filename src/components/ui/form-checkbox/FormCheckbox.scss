@@ -80,9 +80,10 @@
 		position: relative;
 		margin: 0;
 		cursor: pointer;
-		border: var(--control-border-width, 2px) solid var(--bc, var(--border));
+		border: var(--checkbox-border-width, 2px) solid var(--bc, var(--border));
 		background: var(--b, var(--background));
 		transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+
 		&:after {
 			content: '';
 			display: block;
@@ -90,10 +91,12 @@
 			top: 0;
 			position: absolute;
 		}
+
 		&:checked {
 			--b: var(--active);
 			--bc: var(--active);
 		}
+
 		&:disabled {
 			--b: var(--disabled);
 			cursor: not-allowed;
@@ -106,6 +109,7 @@
 				cursor: not-allowed;
 			}
 		}
+
 		&:hover {
 			&:not(:checked) {
 				&:not(:disabled) {
@@ -113,13 +117,15 @@
 				}
 			}
 		}
+
 		&:focus {
 			box-shadow: 0 0 0 var(--focus);
 		}
+
 		&:not(.-switch) {
-			width: calc(21px - var(--input-border-width));
-			height: calc(21px - var(--input-border-width));
-			min-width: calc(21px - var(--input-border-width));
+			width: calc(21px - var(--checkbox-border-width, 2px));
+			height: calc(21px - var(--checkbox-border-width, 2px));
+			min-width: calc(21px - var(--checkbox-border-width, 2px));
 			&:after {
 				opacity: var(--o, 0);
 			}
@@ -132,7 +138,7 @@
 			display: inline-block;
 			vertical-align: top;
 			margin-left: 10px;
-			padding-top: 3px;
+			padding-top: 2px;
 			line-height: 15px;
 		}
 
@@ -153,7 +159,7 @@
 				border: 2px solid var(--active-inner);
 				border-top: 0;
 				border-left: 0;
-				left: calc(7px - var(--input-border-width));
+				left: calc(7px - var(--checkbox-border-width, 2px));
 				top: calc(50% - 1px);
 				transform: translateY(-50%) rotate(43deg);
 			}
@@ -182,8 +188,8 @@
 				left: 1.5px;
 				top: 1px;
 				border-radius: 50%;
-				width: calc(18px - var(--input-border-width) * 2 - 2px);
-				height: calc(18px - var(--input-border-width) * 2 - 2px);
+				padding-left: calc(18px - var(--checkbox-border-width, 2px) - 4px);
+				bottom: 1px;
 				background: var(--ab, var(--border));
 				transform: translateX(var(--x, 0));
 				transition: transform 0.15s var(--d-t-e), opacity 0.15s;
@@ -194,6 +200,9 @@
 						opacity: 0.6;
 					}
 				}
+			}
+
+			.ui-form-checkbox-text {
 			}
 		}
 	}

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance } from 'vue'
 
-interface Props {
+export interface Props {
 	modelValue?: string | number | boolean
 	value?: string | number | boolean
 	label?: string
 	name?: string
 	required?: boolean
+	noEvents?: boolean
+	disabled?: boolean
 	size?: string
 	tabindex?: string | number
 }
@@ -27,7 +29,7 @@ const update = (val: string | boolean) => {
 </script>
 
 <template>
-	<label class="ui-form-radio" :for="uid">
+	<label class="ui-form-radio" :for="uid" :class="{ 'no-events': noEvents }">
 		<input
 			type="radio"
 			:id="uid"
@@ -35,11 +37,11 @@ const update = (val: string | boolean) => {
 			:tabindex="tabindex"
 			:required="required"
 			:name="name"
+			:disabled="disabled"
 			v-model="model"
 			@update:modelValue="update" />
 		<div class="ui-form-radio-text">
-			<slot />
-			{{ label }}
+			<slot>{{ label }}</slot>
 		</div>
 	</label>
 </template>
