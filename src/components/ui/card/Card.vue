@@ -78,14 +78,20 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 		<div
 			class="ui-card-header"
 			@click="isDropdown ? toggleShowBody() : null"
-			v-if="cardTitle || haveSlot('header-title')">
+			v-if="title || haveSlot('header-title')">
 			<div class="ui-card-header-content">
-				<slot name="header-title">
-					<h4 v-if="cardTitle" class="ui-card-title">
-						<span>{{ cardTitle }}</span>
-					</h4>
-					<span v-if="titleMuted" class="muted" v-html="titleMuted"></span>
-				</slot>
+				<div class="ui-header-content-title">
+					<slot name="header-title">
+						<h4 v-if="title" class="ui-card-title">
+							<span>{{ title }}</span>
+						</h4>
+						<span v-if="titleMuted" class="muted" v-html="titleMuted"></span>
+					</slot>
+					<div v-if="caption" class="ui-card-caption" v-html="caption"></div>
+					<span v-if="haveSlot('caption')" class="ui-card-caption">
+						<slot name="caption" />
+					</span>
+				</div>
 				<div class="ui-card-header-content-button">
 					<slot name="header-button" v-if="haveSlot('header-button')" />
 					<button type="button" class="btn-collapse" v-if="isDropdown">
@@ -99,10 +105,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 					</button>
 				</div>
 			</div>
-			<div v-if="caption" class="ui-card-caption" v-html="caption"></div>
-			<span v-if="haveSlot('caption')" class="ui-card-caption">
-				<slot name="caption" />
-			</span>
+
 			<div v-if="closeCaption && !showBody" class="ui-card-caption">{{ closeCaption }}</div>
 			<div v-if="haveSlot('close-caption') && !showBody" class="ui-card-caption">
 				<slot name="close-caption" />

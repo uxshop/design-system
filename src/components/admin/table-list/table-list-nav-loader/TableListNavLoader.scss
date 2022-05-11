@@ -7,15 +7,17 @@
 	padding: 15px;
 	overflow: hidden;
 	transform: translateY(0);
-	transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 0.3s;
 	color: var(--success-300);
 	font-weight: 500;
 	z-index: -1;
 	display: flex;
 	align-items: center;
+	opacity: 0;
 
 	&.-show {
 		transform: translateY(100%);
+		opacity: 1;
 	}
 
 	> .table-list-loader-spinner {

@@ -10,19 +10,11 @@ import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import Button from '../../../ui/button/Button.vue'
 import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue'
 
-const emit = defineEmits<{
-	(event: 'refresh'): void
-	(event: 'selected'): void
-	(event: 'checkAll', val: boolean): void
-	(event: 'remove'): void
-	(event: 'active'): void
-	(event: 'inactive'): void
-}>()
-
 interface Props {
 	rows: unknown[]
 	selected: number[]
 	config: ITableListConfig
+	state: any
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -39,7 +31,7 @@ const indeterminate = ref<boolean>(false)
 const allSelected = ref<boolean>(false)
 const checkbox = ref<boolean>(false)
 
-const onCheckAll = () => emit('checkAll', !checkbox.value)
+const onCheckAll = () => props.state.checkAll(!checkbox.value)
 const onRemoveDialog = () => {
 	const count = zerofill(props.selected.length, 2)
 
@@ -52,9 +44,9 @@ const onRemoveDialog = () => {
 	})
 }
 
-const remove = () => emit('remove')
-const active = () => emit('active')
-const inactive = () => emit('inactive')
+const remove = () => props.state.remove
+const active = () => props.state.toggleActiveSelecteds(true)
+const inactive = () => props.state.toggleActiveSelecteds(true)
 
 watchEffect(() => {
 	if (props.rows.length && props.selected.length == props.rows.length) {
@@ -100,28 +92,19 @@ onMounted(() => {
 </script>
 
 <template>
-	<div class="table-list-nav-bulk" :class="{ '-active': selected.length }">
-		<div
-			@click="onCheckAll"
-			class="table-list-nav-item -checkbox"
-			v-tooltip:top="`Marcar todos`"
-			v-show="!config.hideCheckbox">
+	<div v-show="!config.hideCheckbox" class="table-list-nav-bulk" :class="{ '-active': selected.length }">
+		<div @click="onCheckAll" class="-checkbox">
 			<FormCheckbox :indeterminate="indeterminate" :value="allSelected" v-model="checkbox" />
 		</div>
 
-		<span
-			v-show="selected.length && config.actions?.includes('remove')"
-			v-tooltip:top="`Deletar selecionados`"
-			class="table-list-nav-item">
+		<span v-show="selected.length && config.actions?.includes('remove')" class="table-list-nav-item">
 			<IconButton icon="delete" @click="onRemoveDialog" size="sm" />
 		</span>
 
 		<Dropdown variant="white" v-show="selected.length && bulkActions && bulkActions.length > 0" class="ml-2">
 			<template #button-content>
-				<Button size="sm" variant="dark-outline" trailingIcon="unfold_more">
-					<span>
-						ações para <b>{{ zerofill(selected.length) }}</b> selecionados
-					</span>
+				<Button size="sm" variant="dark" trailingIcon="unfold_more">
+					ações para <b>{{ zerofill(selected.length) }}</b> selecionados
 				</Button>
 			</template>
 
@@ -139,10 +122,12 @@ onMounted(() => {
 .table-list-nav-bulk {
 	display: flex;
 	align-items: center;
-	padding-left: 12px;
 	height: 100%;
+	gap: 10px;
+	padding-right: 20px;
 
 	&.-active {
+		padding-left: 15px;
 		width: 100%;
 		position: absolute;
 		top: 0;

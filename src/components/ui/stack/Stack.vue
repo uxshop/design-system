@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const props = defineProps<{
-	distribuition?: string
+	distribuition?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
 	spacing?: string
 	vertical?: boolean
 	wrap?: boolean

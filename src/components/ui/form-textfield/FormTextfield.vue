@@ -2,6 +2,7 @@
 import { ref, useSlots } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
+import Icon from '../icon/Icon.vue'
 const vMaska = maska
 
 interface Props {
@@ -28,6 +29,7 @@ interface Props {
 	title?: string
 	name?: string
 	pill?: boolean
+	clearable?: boolean
 	autocomplete?: string
 	minlength?: string | number
 	maxlength?: string | number
@@ -43,12 +45,13 @@ interface Props {
 const props = defineProps<Props>()
 
 const emit = defineEmits<{
-	(e: 'update:modelValue', val: string): void
-	(e: 'update', val: string): void
+	(e: 'update:modelValue', val: string | null): void
+	(e: 'update', val: string | null): void
 	(e: 'focus'): void
 	(e: 'blur'): void
 	(e: 'keydown'): void
 	(e: 'enter'): void
+	(e: 'clear'): void
 }>()
 
 const classList = ref<string[]>([])
@@ -77,7 +80,11 @@ const onBlur = emit('blur')
 const onKeydown = emit('keydown')
 const onEnter = emit('enter')
 
-const slots = useSlots()
+const onClear = () => {
+	emit('clear')
+	emit('update:modelValue', null)
+	emit('update', null)
+}
 </script>
 
 <template>
@@ -127,7 +134,10 @@ const slots = useSlots()
 			:required="required"
 			@maska="rawValue = $event.target.dataset.maskRawValue" />
 		<slot name="after" />
-		<template #append v-if="slots.append">
+		<div class="close" v-if="clearable && modelValue?.length" @click="onClear">
+			<Icon name="cancel" type="filled" />
+		</div>
+		<template #append v-if="$slots.append">
 			<slot name="append" />
 		</template>
 	</FormWrapper>

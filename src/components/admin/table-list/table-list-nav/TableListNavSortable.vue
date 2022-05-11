@@ -18,7 +18,7 @@ const props = withDefaults(
 	}
 )
 
-console.log(props)
+const dropdownRef = ref()
 
 const sortableFinal = ref<
 	Array<{
@@ -28,6 +28,9 @@ const sortableFinal = ref<
 >([])
 
 const onSortBy = (item: any) => {
+	console.log('sort')
+
+	dropdownRef.value.hide()
 	props.setQueryParams({
 		sort: item.sort,
 		page: 1
@@ -63,19 +66,20 @@ onMounted(() => {
 
 <template>
 	<span class="table-list-nav-item" v-show="sortableFinal.length">
-		<Dropdown variant="default" right>
+		<Dropdown variant="default" right ref="dropdownRef">
 			<template #button-content>
 				<span class="table-list-nav-btn">
 					<!-- <IconButton icon="sort_by_alpha" size="sm" /> -->
-					<Button size="sm" label="Ordenar" leadingIcon="sort_by_alpha" />
+					<Button size="sm" label="Ordenar" leadingIcon="swap_vert" />
 				</span>
 			</template>
 			<DropdownItemButton
 				v-for="item in sortableFinal"
-				@click="onSortBy(item)"
+				data-close="true"
 				:key="item.sort"
+				@click="onSortBy(item)"
 				:active="queryParams.sort == item.sort">
-				<FormRadio v-model="queryParams.sort" :value="item.sort" :label="item.name" />
+				<FormRadio v-model="queryParams.sort" :value="item.sort" :label="item.name" noEvents />
 			</DropdownItemButton>
 		</Dropdown>
 	</span>

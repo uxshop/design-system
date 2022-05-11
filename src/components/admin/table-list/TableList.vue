@@ -3,7 +3,7 @@ import TableListTabs from './snippets/TableListTabs.vue'
 import TableListNav from './table-list-nav/TableListNav.vue'
 import TableListTable from './snippets/TableListTable.vue'
 import { useRoute } from 'vue-router'
-import { onMounted, watch, ref, useSlots } from 'vue'
+import { onMounted, watch, ref, reactive } from 'vue'
 import { union, clone, omit } from 'lodash-es'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorageService from '../../../services/LocalStorageService'
@@ -21,7 +21,6 @@ import Card from '../../ui/card/Card.vue'
 import TableListNavSortable from './table-list-nav/TableListNavSortable.vue'
 import TableListTags from './table-list-tags/TableListTags.vue'
 import TableListNavCustomFilter from './table-list-nav/TableListNavCustomFilter.vue'
-// import TableListNavCustomFilter from './table-list-nav/TableListNavCustomFilter.vue'
 
 type TQueryParams = Record<string, string | number>
 
@@ -43,7 +42,6 @@ const noData = ref(false)
 const omitFilters = ref({})
 const queryParams = ref<TQueryParams>({})
 const route = useRoute()
-const term = ref()
 const loading = ref(false)
 const meta = ref({})
 const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false }, props.config)
@@ -66,19 +64,20 @@ const removeFilter = (key: string) => {
 }
 
 const setUrlParams = (query: TQueryParams) => HistoryReplaceState(query, ['_', 'limit'])
-const setQueryParams = (params: TQueryParams) => {
-	console.log(params)
 
-	queryParams.value = Object.assign({}, queryParams.value, params)
+const setQueryParams = (params: TQueryParams) => {
+	const query = Object.assign({}, queryParams.value, { selectedView: 'all' }, params)
+	queryParams.value = query
 }
+
 const resetQueryParams = (params = {}) => {
-	term.value = null
+	state.term = null
 	queryParams.value = Object.assign(clone(queryDefault), params)
 }
 
 const init = async () => {
 	// store.dispatch('noLoader', firstGet.value)
-	const params = queryParams.value
+	const params = clone(queryParams.value)
 	selected.value = []
 	loading.value = true
 	omitFilters.value = omit(params, omitFiltersValues)
@@ -135,15 +134,18 @@ const onGet = (data: TApiData[]) => {
 }
 
 const clickRow = (item: Record<string, string>) => emit('clickRow', item)
+
 const onScrollHorizontal = (e: UIEvent) => {
 	const target = e.target as HTMLDivElement
 	return (scrollLeft.value = target.scrollLeft > 10)
 }
+
 const unshiftItem = (item: Record<string, string>) => {
 	if (rows.value) {
 		rows.value.unshift(item)
 	}
 }
+
 const activeInactiveSelecteds = async (val: boolean) => {
 	for (const itemId of selected.value) {
 		await activeOne({ id: itemId }, val)
@@ -170,29 +172,48 @@ onMounted(() => {
 	}
 })
 
+let timerQ: ReturnType<typeof setTimeout>
+
 watch(
 	() => queryParams.value,
-	(newVal) => {
-		if (newVal.q) {
-			term.value = newVal.q
-		} else {
-			term.value = null
-		}
+	(newVal: any) => {
+		clearTimeout(timerQ)
+		timerQ = setTimeout(() => {
+			console.log('queryParams', JSON.stringify(newVal))
 
-		if (!newVal.selectedView && !newVal.customFilterId) {
-			newVal.selectedView = 'all'
-		}
+			if (newVal.q) {
+				state.term = newVal.q
+			}
 
-		init()
-	}
+			if (!newVal.selectedView && !newVal.customFilterId) {
+				newVal.selectedView = 'all'
+			}
+
+			init()
+		})
+	},
+	{ deep: true }
 )
 
-// watch(
-// 	() => props.config.presetFilters,
-// 	(newVal) => {
-// 		console.log(newVal)
-// 	}
-// )
+const state = reactive({
+	queryParams: queryParams,
+	omitFilters: omitFilters,
+	config: cfg,
+	tabs: [],
+	currentTab: {},
+	term: null,
+	omitFiltersValues: omitFiltersValues,
+	init: init,
+	checkAll: checkAll,
+	setQueryParams: setQueryParams,
+	resetQueryParams: resetQueryParams,
+	removeFilter: removeFilter,
+	removeSelecteds: removeSelecteds,
+	toggleActiveSelecteds: activeInactiveSelecteds,
+	activeOne: activeOne,
+	deleteOne: deleteOne,
+	clickRow: clickRow
+})
 
 defineExpose({
 	unshiftItem: unshiftItem,
@@ -201,66 +222,30 @@ defineExpose({
 </script>
 
 <template>
-	<Card class="table-list-skeleton" v-if="loading && !firstGet">
+	<Card v-if="loading && !firstGet" class="table-list-skeleton">
 		<SkeletonTable cols="3" rows="6" withAction hideHeader />
 	</Card>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />
-	<div class="table-list" v-show="firstGet" v-else>
-		<TableListTabs
-			:presetFilters="config.presetFilters"
-			:hideCheckbox="config.hideCheckbox"
-			:setQueryParams="setQueryParams"
-			@resetQueryParams="resetQueryParams" />
-		<TableListNav
-			v-model:selected="selected"
-			v-model:noData="noData"
-			:config="cfg"
-			:meta="meta"
-			:loading="loading"
-			:rows="rows"
-			:setQueryParams="setQueryParams"
-			:removeFilter="removeFilter"
-			:queryParams="queryParams"
-			:filters="cfg.filters"
-			@checkAll="checkAll"
-			@refresh="init"
-			@removeSelecteds="removeSelecteds"
-			@activeSelecteds="activeInactiveSelecteds(true)"
-			@inactiveSelecteds="activeInactiveSelecteds(false)"
-			@resetQueryParams="resetQueryParams">
-			<TableListNavBulk
-				@checkAll="checkAll"
-				@refresh="init"
-				@active="activeInactiveSelecteds(true)"
-				@inactive="activeInactiveSelecteds(false)"
-				@remove="removeSelecteds"
-				:selected="selected"
-				:config="cfg"
-				:rows="rows" />
-			<TableListNavRefresh @refresh="init" />
-			<TableListNavSearch
-				v-model="term"
-				@refresh="init"
-				:placeholder="cfg.placeholder"
-				:removeFilter="removeFilter"
-				:setQueryParams="setQueryParams" />
-			<TableListNavCustomFilter :queryParams="queryParams" :omitFilters="omitFilters" />
+	<div v-else class="table-list" v-show="firstGet">
+		<TableListTabs :state="state" />
+		<TableListNav :loading="loading">
+			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
+			<TableListNavRefresh :state="state" />
+			<TableListNavSearch @refresh="init" :placeholder="cfg.placeholder" :state="state" />
+			<TableListNavCustomFilter
+				v-if="config.customFilterService"
+				:service="config.customFilterService"
+				:state="state" />
 			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />
-			<TableListNavFilter :filters="cfg.filters" :currentFilters="omitFilters" @resetQueryParams="resetQueryParams" />
-			<TableListNavPagination :meta="meta" :queryParams="queryParams" :setQueryParams="setQueryParams" />
+			<TableListNavFilter :state="state" />
+			<TableListNavPagination :meta="meta" :state="state" />
 		</TableListNav>
-		<TableListTags :filters="cfg.filters" :omitFilters="omitFilters" />
+
+		<TableListTags :state="state" />
+
 		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
-			<TableListTable
-				v-model:selected="selected"
-				:rows="rows"
-				:actions="cfg.actions"
-				:hideCheckbox="cfg.hideCheckbox"
-				:loading="loading"
-				@clickRow="clickRow"
-				@delete="deleteOne"
-				@toggleActive="activeOne">
+			<TableListTable v-model:selected="selected" :rows="rows" :loading="loading" :state="state">
 				<template #head v-if="$slots.head">
 					<slot name="head" />
 				</template>

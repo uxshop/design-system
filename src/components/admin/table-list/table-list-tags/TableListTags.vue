@@ -1,21 +1,17 @@
 <script setup lang="ts">
 import { each, find, isFunction } from 'lodash'
+import type { ITableListState } from '../types/ITableListState'
 import Tag from '../../../ui/tag/Tag.vue'
 
 const props = defineProps<{
-	omitFilters: any
-	filters: any
+	state: ITableListState
 }>()
 
-const emit = defineEmits(['remove'])
-
-const removeFilter = (key: string) => {
-	emit('remove', key)
-}
+const removeFilter = props.state.removeFilter
 
 const translateKey = (item: string) => {
 	let val = item
-	each(props.filters, (filter, key) => {
+	each(props.state.config.filters, (filter, key) => {
 		if (item == key) {
 			val = filter.name
 		}
@@ -31,13 +27,13 @@ const translateValue = (item: any, key: string) => {
 		return item
 	}
 
-	if (props.filters[key].type == 'browser') {
-		let count = props.omitFilters[key].split(',').length
+	if (props.state.config.filters[key].type == 'browser') {
+		let count = props.state.omitFilters[key].split(',').length
 		let text = count == 1 ? 'filtro' : 'filtros'
 		return `${count} ${text}`
 	}
 
-	if (['text', 'number'].indexOf(props.filters[key].type) >= 0) {
+	if (['text', 'number'].indexOf(props.state.config.filters[key].type) >= 0) {
 		return item
 	}
 
@@ -47,11 +43,10 @@ const translateValue = (item: any, key: string) => {
 		values = [item]
 	}
 
-	each(props.filters, (filter, k) => {
+	each(props.state.config.filters, (item, k) => {
 		if (k == key) {
-			if (isFunction(filter.filters)) {
-				// Executar e colocar como valor
-				filter.filters = filter.filters()
+			if (isFunction(item.filters)) {
+				item.filters = item.filters()
 			}
 
 			each(values, (v) => {
@@ -59,7 +54,7 @@ const translateValue = (item: any, key: string) => {
 					v = Number(v)
 				}
 
-				const obj = find(filter.filters, { value: v })
+				const obj = find(item.filters, { value: v })
 				if (obj) {
 					val.push(obj.name)
 				}
@@ -72,8 +67,8 @@ const translateValue = (item: any, key: string) => {
 </script>
 
 <template>
-	<div class="table-list-tags" v-if="Object.keys(omitFilters).length > 0">
-		<span v-for="(item, key) in omitFilters" v-show="String(key) != 'q'" :key="item" class="table-list-tags-item">
+	<div class="table-list-tags" v-if="Object.keys(state.omitFilters).length > 0">
+		<span v-for="(item, key) in state.omitFilters" v-show="String(key) != 'q'" :key="item" class="table-list-tags-item">
 			<Tag variant="dark" @remove="removeFilter(String(key))" class="mr-1">
 				{{ translateKey(String(key)) }}: {{ translateValue(item, String(key)) }}
 			</Tag>
@@ -83,21 +78,11 @@ const translateValue = (item: any, key: string) => {
 
 <style lang="scss">
 .table-list-tags {
-	padding: 10px 20px;
+	padding: 10px 15px;
 
 	.table-list-tags-item {
 		display: inline-flex;
 		margin-bottom: 5px;
-
-		// .badge {
-		// 	color: #0b7bda;
-		// 	background: #02b9ff38;
-		// 	border-radius: 3rem;
-		// }
-
-		// .close {
-		// 	opacity: 1;
-		// }
 	}
 }
 </style>

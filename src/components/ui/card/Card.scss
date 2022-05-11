@@ -66,6 +66,7 @@ label {
 		background: var(--gray-200);
 		border-color: transparent;
 		filter: none;
+		box-shadow: none;
 
 		hr {
 			background-color: white;
@@ -274,7 +275,6 @@ label {
 		}
 
 		.ui-card-caption {
-			margin-top: 5px;
 			display: block;
 
 			&:empty {
@@ -304,8 +304,8 @@ label {
 		flex-grow: 1;
 		display: inline-flex;
 		justify-content: flex-end;
-		// align-self: flex-start;
 		align-items: center;
+		gap: 10px;
 
 		.ui-button .ui-icon {
 			font-size: 22px;
@@ -333,34 +333,34 @@ label {
 	.ui-card-header-content {
 		display: flex;
 		width: 100%;
-		align-items: center;
+		align-items: flex-start;
+		gap: var(--grid-gutter-width);
 
-		> .ui-card-title,
-		> span:first-child {
-			font-size: 16px;
-			// text-overflow: ellipsis;
-			// overflow: hidden;
-			// white-space: nowrap;
-			display: flex;
-			line-height: 1.3;
-			align-items: center;
+		> .ui-header-content-title {
+			> .ui-card-title,
+			> span:first-child {
+				font-size: 16px;
+				display: flex;
+				line-height: 1.3;
+				align-items: center;
 
-			i {
-				font-size: 18px;
-				margin-left: 5px;
+				i {
+					font-size: 18px;
+					margin-left: 5px;
+				}
 			}
-		}
 
-		> span:last-child:not(:first-child) {
-			display: flex;
-			align-items: center;
-			margin-left: auto;
-		}
+			> span:last-child:not(:first-child) {
+				display: flex;
+				align-items: center;
+				margin-left: auto;
+			}
 
-		> .muted {
-			font-weight: 400;
-			margin-left: 5px;
-			line-height: 1.2;
+			> .muted {
+				font-weight: 400;
+				margin-left: 5px;
+				line-height: 1.2;
+			}
 		}
 	}
 

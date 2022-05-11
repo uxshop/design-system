@@ -148,7 +148,7 @@ defineExpose({
 									:label="item.name" />
 							</div>
 						</div>
-						<div class="text-left mt-3">
+						<div class="text-left mt-2">
 							<Button
 								variant="link"
 								flush="left"

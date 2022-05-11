@@ -1,19 +1,16 @@
 <script setup lang="ts">
+import type { ITableListState } from '../types/ITableListState'
 import { useSlots } from 'vue'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
 import ButtonAction from '../../button-action/ButtonAction.vue'
 
 const props = defineProps<{
+	state: ITableListState
 	rows: Record<string, any>[]
-	actions: string[]
 	selected: number[]
-	hideCheckbox: boolean
 }>()
 
 const emit = defineEmits<{
-	(event: 'toggleActive', item: any, active: boolean): void
-	(event: 'clickRow', item: any): void
-	(event: 'delete', item: any): void
 	(event: 'update:selected', seleted: number[]): void
 }>()
 
@@ -26,16 +23,11 @@ const onClickRow = (event: any, item: any) => {
 	if (event.target.getAttribute('class') == 'custom-control-label' || event.target.href) {
 		return
 	}
-	emit('clickRow', item)
+	props.state.clickRow(item)
 }
 
-const onActiveOne = (item: any, active: boolean) => {
-	emit('toggleActive', item, active)
-}
-
-const onDeleteOne = async (item: any) => {
-	emit('delete', item)
-}
+const onActiveOne = props.state.activeOne
+const onDeleteOne = props.state.deleteOne
 
 const onCheckOne = (e: MouseEvent, item: any) => {
 	e.stopPropagation()
@@ -57,9 +49,9 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 	<table class="table table-hover" v-if="rows.length">
 		<thead v-if="haveSlot('head')">
 			<tr>
-				<th v-if="!hideCheckbox" class="td-fixed"></th>
+				<th v-if="!state.config.hideCheckbox" class="td-fixed"></th>
 				<slot name="head" />
-				<th v-if="actions.length"></th>
+				<th v-if="state.config.actions.length"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -71,20 +63,20 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 					'-selected': selected.includes(item.id),
 					'-inactive': item.active == false
 				}">
-				<td v-if="!hideCheckbox" @click="onCheckOne($event, item)" class="td-fixed td-checkbox">
+				<td v-if="!state.config.hideCheckbox" @click="onCheckOne($event, item)" class="td-fixed td-checkbox">
 					<FormCheckbox v-model="selected" :value="item.id" />
 				</td>
 
 				<slot v-bind:item="item" />
 
-				<td class="td-action" width="1" v-if="actions.length">
+				<td class="td-action" width="1" v-if="state.config.actions.length">
 					<ButtonAction
-						v-if="actions.includes('remove')"
+						v-if="state.config.actions.includes('remove')"
 						@delete="onDeleteOne(item)"
 						:delete-name="item.name"
 						type="delete" />
 					<ButtonAction
-						v-if="actions.includes('active')"
+						v-if="state.config.actions.includes('active')"
 						v-model:active="item.active"
 						@active="onActiveOne(item, true)"
 						@inactive="onActiveOne(item, false)"

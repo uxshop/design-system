@@ -36,12 +36,19 @@ const Template = (args) => ({
   `
 })
 
+const customFilterService = {
+	delete: (id) => {
+		console.log('deletar id');
+	}
+}
+
 export const Default = Template.bind({})
 Default.args = {
 	config: {
 		placeholder: 'placeholder...',
 		actions: ['remove'],
 		sortable: ['name', 'created_at', 'updated_at'],
+		customFilterService: customFilterService,
 		presetFilters: [
 			{
 				name: 'Aguardando pagamento',

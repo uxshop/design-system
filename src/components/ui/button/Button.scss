@@ -13,7 +13,6 @@
 	border-radius: var(--input-border-radius);
 	cursor: pointer;
 	padding: 0 var(--input-padding-x);
-	line-height: 1.2;
 	align-items: center;
 	min-height: var(--input-height);
 	justify-content: center;
@@ -202,14 +201,21 @@
 
 	&:disabled {
 		pointer-events: none;
-		opacity: 0.5;
+		opacity: 0.6;
 		background-color: var(--gray-200);
-		color: var(--dark);
+		color: var(--text-muted);
+		border: solid 1px var(--gray-300);
+		box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
+
+		&.-link {
+			border: none;
+			box-shadow: none;
+		}
 	}
 
 	&:focus {
-		// outline: -webkit-focus-ring-color auto 1px;
-		outline: none;
+		outline: -webkit-focus-ring-color auto 1px;
+		// outline: none;
 	}
 
 	.ui-button-content {
@@ -217,6 +223,7 @@
 		z-index: 4;
 		display: flex;
 		line-height: 1;
+		gap: 5px;
 
 		> span,
 		> div {
@@ -224,12 +231,8 @@
 			align-items: center;
 		}
 
-		> div ~ .ui-icon {
-			margin-left: 10px;
-		}
-
-		> .ui-icon:not(:last-child) {
-			margin-right: 10px;
+		.ui-icon:last-child {
+			margin-right: -5px;
 		}
 	}
 

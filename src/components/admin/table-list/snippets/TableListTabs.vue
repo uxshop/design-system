@@ -1,74 +1,49 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { each, isObject } from 'lodash-es'
-import { slugify } from '../../../../filters'
 import CustomScroll from '../../../ui/custom-scroll/CustomScroll.vue'
 import Tab from '../../../ui/tab/Tab.vue'
 import TabItem from '../../../ui/tab/TabItem.vue'
 
-interface TabInterface {
-	name: string
-	view: string
-	filter: Record<string, any>
-}
-
 interface FilterInterface {
+	id: number | string
 	name: string
-	view: string
+	view: string | number
 	filter: Record<string, any>
 }
 
 const props = defineProps<{
-	presetFilters?: Record<string, any>
 	queryParams?: Record<string, any>
-}>()
-
-const emit = defineEmits<{
-	(e: 'resetQueryParams', val: any): void
-	(e: 'setQueryParams', val: any): void
+	state: any
 }>()
 
 const tabs = ref<FilterInterface[]>([])
-const modelTab = ref(0)
 
-const setPresetFilter = (item: Record<string, any>) => {
+const setPresetFilter = (item: Record<string, any>, e: MouseEvent) => {
+	e.preventDefault()
+	e.stopPropagation()
 	const params = item.filter
 
-	if (item.view) {
+	if (item.id) {
+		params.selectedView = item.view
+	} else if (item.view) {
 		params.selectedView = item.view
 	}
 
-	if (item.id) {
-		// this.$delete(this.$parent.queryParams, 'selectedView')
-		// this.$set(this.$parent.queryParams, 'customFilterId', item.id)
-	}
-
-	emit('resetQueryParams', params)
+	props.state.resetQueryParams(params)
+	props.state.currentTab = item
 }
 
-const resetFilters = () => emit('resetQueryParams', { selectedView: 'all' })
-
-const getCustomFilters = () => {
-	console.log(props.presetFilters)
-
-	const _tabs: any = []
-
-	each(props.presetFilters, (item: FilterInterface | string) => {
-		if (isObject(item)) {
-			item.view = slugify(item.name)
-			_tabs.push(item)
-		}
-
-		if (item == 'active') {
-			_tabs.push({ name: 'Ativo', view: 'ativo', filter: { active: 1 } })
-			_tabs.push({ name: 'Inativo', view: 'inativo', filter: { active: 0 } })
-		}
-	})
-
-	tabs.value = _tabs
+const resetFilters = () => {
+	props.state.resetQueryParams({ selectedView: 'all' })
 }
 
-watch(() => props.presetFilters, getCustomFilters, { deep: true, immediate: true })
+watch(
+	() => props.state.queryParams,
+	(newVal) => {
+		props.state.currentTab = newVal.selectedView || 'all'
+	},
+	{ deep: true }
+)
 </script>
 
 <template>
@@ -79,9 +54,15 @@ watch(() => props.presetFilters, getCustomFilters, { deep: true, immediate: true
 			useBothWheelAxes: true,
 			suppressScrollY: true
 		}">
-		<Tab v-model="modelTab" class="table-list-tab">
-			<TabItem label="Todos" @click="resetFilters" />
-			<TabItem v-for="item in tabs" :label="item.name" :key="item.name" @click="setPresetFilter(item)" />
+		<Tab v-model="state.currentTab" class="table-list-tab">
+			<TabItem label="Todos" @click="resetFilters" index="all" />
+			<TabItem
+				v-for="(item, index) in state.tabs"
+				:key="index"
+				@click="setPresetFilter(item, $event)"
+				:index="item.view">
+				{{ item.name }}
+			</TabItem>
 		</Tab>
 	</CustomScroll>
 </template>

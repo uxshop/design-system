@@ -109,6 +109,9 @@
 
 			> .ui-dialog-footer {
 				padding-top: 20px;
+				gap: 10px;
+				display: flex;
+				justify-content: flex-end;
 
 				.btn-destruct {
 					min-width: 100px;

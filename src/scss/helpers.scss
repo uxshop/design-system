@@ -48,6 +48,10 @@ code {
 	flex-direction: column;
 }
 
+.no-events {
+	pointer-events: none;
+}
+
 .h1,
 .h2,
 .h3,

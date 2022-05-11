@@ -1,12 +1,13 @@
 @import '../../../scss/mixins.scss';
 
 .ui-dropdown {
+	--dropdown-secton-padding: 20px;
+
 	position: relative;
 	z-index: 111;
 
 	.ui-dropdown-button {
 		position: relative;
-		cursor: pointer;
 		user-select: none;
 		display: flex;
 		align-items: center;
@@ -18,6 +19,7 @@
 
 	&.-open {
 		outline: none;
+		z-index: 444;
 
 		> .ui-dropdown-menu {
 			display: block;
@@ -32,13 +34,27 @@
 		}
 	}
 
-	> .ui-dropdown-menu {
-		padding: 10px 0;
+	.ui-dropdown-divider {
+		border-top: solid 1px darken(#2e3338, 5%);
+		border-bottom: solid 1px rgba(255, 255, 255, 0);
+		margin: 10px -10px;
+	}
+
+	.ui-dropdown-item-wrapper {
+		&:first-child {
+			margin-top: 10px;
+		}
+
+		&:last-child {
+			margin-bottom: 10px;
+		}
+	}
+
+	.ui-dropdown-menu {
 		min-width: 100%;
 		margin-top: 5px;
 		border: none;
 		border-radius: 8px;
-		padding: 10px;
 		background: #2e3338;
 		color: #fff;
 		display: none;
@@ -51,12 +67,6 @@
 			border: none;
 		}
 
-		> .ui-dropdown-divider {
-			border-top: solid 1px darken(#2e3338, 5%);
-			border-bottom: solid 1px rgba(255, 255, 255, 0);
-			margin: 10px -10px;
-		}
-
 		a.ui-dropdown-item {
 			&:hover {
 				text-decoration: none;
@@ -65,7 +75,6 @@
 
 		.ui-dropdown-item {
 			font-weight: 500;
-			padding: 6px;
 			color: #f1f1f1;
 			display: flex;
 			align-items: center;
@@ -73,6 +82,7 @@
 			background: none;
 			border: 0;
 			white-space: nowrap;
+			padding: 8px 20px;
 
 			&.-button {
 				width: 100%;
@@ -109,6 +119,14 @@
 					background: var(--danger);
 				}
 			}
+		}
+	}
+
+	.ui-dropdown-section {
+		padding: var(--dropdown-secton-padding);
+
+		+ .ui-dropdown-section {
+			border-top: solid 1px darken(#2e3338, 5%);
 		}
 	}
 

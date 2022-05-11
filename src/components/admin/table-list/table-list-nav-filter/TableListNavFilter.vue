@@ -1,16 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Icon from '../../../ui/icon/Icon.vue'
-import IconButton from '../../../ui/icon-button/IconButton.vue'
 import { each } from 'lodash-es'
 import TableListNavFilterSidebar from './TableListNavFilterSidebar.vue'
 import Button from '../../../ui/button/Button.vue'
+import type { ITableListState } from '../types/ITableListState'
 
-defineProps<{
-	filters?: Record<string, string> | null
-	currentFilters?: any
+const props = defineProps<{
+	state: ITableListState
 }>()
-const emit = defineEmits(['resetQueryParams'])
 
 const filterSidebarRef = ref()
 
@@ -28,20 +25,19 @@ const closeFilter = (resFilters: Record<string, any>) => {
 		}
 	})
 
-	emit('resetQueryParams', current)
+	props.state.resetQueryParams(current)
 	filterSidebarRef.value.open()
 }
 </script>
 
 <template>
-	<span class="table-list-nav-item" v-if="filters">
-		<!-- <IconButton class="table-list-nav-btn" @click="filterSidebarRef.open()" icon="tune" size="sm" /> -->
+	<span class="table-list-nav-item" v-if="props.state.config.filters">
 		<Button size="sm" label="Filtrar" @click="filterSidebarRef.open()" class="table-list-nav-btn" />
 		<TableListNavFilterSidebar
 			ref="filterSidebarRef"
 			size="sm"
 			@close="closeFilter"
-			:filters="filters"
-			:currentFilters="currentFilters" />
+			:filters="props.state.config.filters"
+			:currentFilters="state.omitFilters" />
 	</span>
 </template>

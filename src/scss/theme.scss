@@ -22,7 +22,7 @@ $dark: #4e6380 !default;
 	--primary-dark: #{darken($primary, 5%)};
 	--secondary: #{$secondary};
 	--success: #{$success};
-	--success-light: #{lighten($success, 50%)};
+	--success-light: #{lighten($success, 15%)};
 	--success-dark: #{darken($success, 20%)};
 	--danger: #{$danger};
 	--link-color: #0050dc;
@@ -67,6 +67,7 @@ $dark: #4e6380 !default;
 	--input-border-width: 1px;
 	--input-bg-color: white;
 	--checkbox-border-radius: 4px;
+	--checkbox-border-width: 2px;
 	--form-group-margin-bottom: 15px;
 
 	--modal-backdrop-opacity: 0.8;
@@ -129,7 +130,6 @@ body {
 	font-size: var(--font-size-base);
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-weight: 400;
 	font-family: var(--font-family);
 	text-align: left;

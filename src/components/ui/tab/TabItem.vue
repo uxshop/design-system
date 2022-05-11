@@ -4,21 +4,22 @@ import type { TabProviderInterface } from './TabProviderInterface'
 
 const props = defineProps<{
 	label?: string
-	index?: string
+	index?: any
 }>()
 
-const tabsProvider: TabProviderInterface | undefined = inject('tabs')
 const active = ref(false)
-const _index = props.index || tabsProvider?.tabs.length
+const tabsProvider: TabProviderInterface | undefined = inject('tabs')
+let _index: string | number = 0
+
+if (tabsProvider) {
+	_index = props.index || tabsProvider.tabs.length
+	tabsProvider.tabs.push(_index)
+}
 
 const onClick = (evt: MouseEvent) => {
 	if (tabsProvider) {
 		tabsProvider.active(_index, evt)
 	}
-}
-
-if (tabsProvider) {
-	tabsProvider.tabs.push(_index)
 }
 
 watchEffect(() => {

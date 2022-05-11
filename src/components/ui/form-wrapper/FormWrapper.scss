@@ -7,9 +7,34 @@
 		gap: var(--grid-gutter-width);
 	}
 
+	.close {
+		height: 100%;
+		display: inline-flex;
+		align-items: center;
+		cursor: pointer;
+		&:hover {
+			color: var(--danger);
+		}
+	}
+
 	&.-sm {
+		.form-control {
+			height: auto;
+		}
 		.form-wrapper-content-bx {
 			height: var(--input-height-sm);
+		}
+
+		.form-wrapper-noteched .form-wrapper-noteched-prepend {
+			width: calc(var(--input-padding-x-sm) - 6px);
+			border-top-left-radius: var(--input-border-radius-sm);
+			border-bottom-left-radius: var(--input-border-radius-sm);
+		}
+
+		.form-wrapper-noteched .form-wrapper-noteched-append {
+			width: calc(var(--input-padding-x-sm) - 6px);
+			border-top-right-radius: var(--input-border-radius-sm);
+			border-bottom-right-radius: var(--input-border-radius-sm);
 		}
 	}
 
@@ -124,20 +149,6 @@
 		resize: vertical;
 		position: relative;
 		background-color: transparent;
-
-		&.-sm {
-			~ .form-wrapper-noteched .form-wrapper-noteched-prepend {
-				width: calc(var(--input-padding-x-sm) - 6px);
-				border-top-left-radius: var(--input-border-radius-sm);
-				border-bottom-left-radius: var(--input-border-radius-sm);
-			}
-
-			~ .form-wrapper-noteched .form-wrapper-noteched-append {
-				width: calc(var(--input-padding-x-sm) - 6px);
-				border-top-right-radius: var(--input-border-radius-sm);
-				border-bottom-right-radius: var(--input-border-radius-sm);
-			}
-		}
 	}
 
 	.form-invalid-feedback {

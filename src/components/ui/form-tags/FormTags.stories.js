@@ -12,30 +12,26 @@ export default {
 const Template = (args) => ({
 	components: { FormTags },
 	setup() {
-		const model = ref(null)
-		setTimeout(() => {
-			// model.value = ['1', '2']
-			model.value = 'teste, teste2'
-		}, 1000)
+		const model = ref('2')
 		return { args, model }
 	},
 	template: `
-    <FormTags v-bind="args" v-model="model" />
+    <FormTags v-bind="args"  v-model="model"  />
     <pre>{{ model }}</pre>
   `
 })
 
-const data = []
-for (let index = 1; index < 20; index++) {
-	data.push({
-		id: index,
-		text: `Valor ${index}`
-	})
-}
-
 export const Default = Template.bind({})
 Default.args = {
-	config: {
-		data: data
-	}
+	// config: {
+	// 	create: true,
+	// 	choices: [
+	// 		{ value: 1,label: 'Teste 01',  customProperties: {fixed: true}, selected: true },
+	// 		{ value: 2,label: 'Teste 02' }
+	// 	]
+	// }
+}
+
+export const Selectable = Template.bind({})
+Selectable.args = {
 }

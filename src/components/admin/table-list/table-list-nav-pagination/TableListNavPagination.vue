@@ -1,24 +1,24 @@
 <script setup lang="ts">
+import type { ITableListState } from '../types/ITableListState'
 import IconButton from '../../../ui/icon-button/IconButton.vue'
 const props = defineProps<{
 	meta: any
-	queryParams: any
-	setQueryParams(a: Record<string, any>): void
+	state: ITableListState
 }>()
 
 const prevPage = () => {
-	let page = props.queryParams.page
+	let page = props.state.queryParams.page
 	if (page > 1) {
-		props.setQueryParams({
+		props.state.setQueryParams({
 			page: --page
 		})
 	}
 }
 
 const nextPage = () => {
-	let page = props.queryParams.page
+	let page = props.state.queryParams.page
 	if (props.meta.last_page > page) {
-		props.setQueryParams({
+		props.state.setQueryParams({
 			page: ++page
 		})
 	}

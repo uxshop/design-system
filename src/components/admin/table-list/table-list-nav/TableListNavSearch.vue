@@ -1,50 +1,58 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Icon from '../../../ui/icon/Icon.vue'
+import type { ITableListState } from '../types/ITableListState'
+import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
 
-interface Props {
-	modelValue: any
-	setQueryParams(a: Record<string, any>): void
-	removeFilter(a: string): void
+export interface Props {
+	state: ITableListState
 	placeholder: string
 }
 
-const emit = defineEmits(['update:modelValue'])
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Procurar registros'
 })
 
-const term = ref()
-
-const onClearTerm = () => {
-	props.removeFilter('q')
-	term.value = null
-	update()
-}
-
-const onSubmitTerm = () => {
-	props.setQueryParams({
-		q: props.modelValue,
+const onSubmit = () => {
+	props.state.setQueryParams({
+		q: props.state.term,
 		page: 1
 	})
 }
 
-const update = (val = null) => {
-	emit('update:modelValue', val)
+let timerT: ReturnType<typeof setTimeout>
+
+const update = (e = null) => {
+	clearTimeout(timerT)
+	timerT = setTimeout(
+		() => {
+			props.state.setQueryParams({
+				q: props.state.term,
+				page: 1
+			})
+		},
+		e ? 750 : 0
+	)
+}
+
+const onClear = () => {
+	props.state.term = null
+	update()
 }
 </script>
 
 <template>
 	<span class="table-list-nav-item table-search">
-		<form @submit.prevent="onSubmitTerm" autocomplete="off">
+		<form autocomplete="off">
 			<div class="table-search-input">
-				<label class="box-icon" for="term">
-					<Icon name="search" class="icon" />
-				</label>
-				<input v-model="term" id="term" :placeholder="placeholder" class="form-control" @update:modelValue="update" />
-				<div class="box-icon -clear" @click="onClearTerm" v-if="term">
-					<Icon name="close" class="icon" />
-				</div>
+				<FormTextfield
+					size="sm"
+					leadingIcon="search"
+					clearable
+					@keypress="update"
+					@clear="onClear"
+					v-model="state.term"
+					id="term"
+					:placeholder="placeholder"
+					last />
 			</div>
 		</form>
 	</span>

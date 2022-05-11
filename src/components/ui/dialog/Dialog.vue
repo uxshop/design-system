@@ -20,7 +20,7 @@ const props = withDefaults(
 		promptPlaceholder?: string
 		cancelLabel?: string
 		destructLabel?: string
-		destructVariant?: string
+		destructVariant?: 'success' | 'danger' | 'primary'
 		destructIcon?: string
 		type?: string
 		opened?: boolean
@@ -158,30 +158,17 @@ defineExpose({
 					</div>
 				</div>
 				<div class="ui-dialog-footer" v-if="!hideFooter">
-					<Row align-v="center">
-						<Col>
-							<Button
-								v-if="type != 'confirm'"
-								@click="close(false)"
-								variant="link"
-								flush="left"
-								class="ui-dialog-btn-cancel"
-								size="sm">
-								{{ cancelLabel }}
-							</Button>
-						</Col>
-						<Col auto>
-							<Button
-								:leadingIcon="config.destructIcon"
-								:variant="destructVariant"
-								type="submit"
-								class="btn-destruct"
-								block
-								tabindex="0">
-								{{ config.destructLabel }}
-							</Button>
-						</Col>
-					</Row>
+					<Button v-if="type != 'confirm'" @click="close(false)" class="ui-dialog-btn-cancel">
+						{{ cancelLabel }}
+					</Button>
+					<Button
+						:leadingIcon="config.destructIcon"
+						:variant="destructVariant"
+						type="submit"
+						class="btn-destruct"
+						tabindex="0">
+						{{ config.destructLabel }}
+					</Button>
 				</div>
 			</form>
 		</div>

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
+import { propsToAttrMap } from '@vue/shared'
 
 interface Props {
 	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'white'
@@ -17,6 +18,7 @@ interface Props {
 	type?: string
 	loading?: boolean
 	outline?: boolean
+	disclosure?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,6 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const classList = ref<string[]>([])
+const trailingIcon = ref(props.trailingIcon)
 
 const componentButton = ref('button')
 
@@ -61,6 +64,11 @@ if (props.block) {
 if (props.outline) {
 	classList.value.push(`-outline`)
 }
+
+if (props.disclosure) {
+	trailingIcon.value = 'arrow_drop_down'
+	classList.value.push('-disclousure')
+}
 </script>
 
 <template>
@@ -79,7 +87,7 @@ if (props.outline) {
 				<slot />
 				{{ label }}
 			</div>
-			<icon :name="trailingIcon" v-if="trailingIcon" />
+			<Icon :name="trailingIcon" v-if="trailingIcon" />
 		</div>
 	</component>
 </template>

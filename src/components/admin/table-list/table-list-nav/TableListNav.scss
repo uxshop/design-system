@@ -18,11 +18,8 @@
 		z-index: 2;
 		align-items: center;
 		height: 80px;
-		text-transform: lowercase;
-	}
-
-	.table-list-nav-item {
-		padding: 0 5px;
+		padding: 0 15px;
+		gap: 10px;
 	}
 
 	@include mobile {

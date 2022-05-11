@@ -2,9 +2,9 @@
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 
-interface Props {
+export interface Props {
 	icon?: string
-	variant?: string
+	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'white'
 	size?: string | number
 	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'
 	fab?: boolean
