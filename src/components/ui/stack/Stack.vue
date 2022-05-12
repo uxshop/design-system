@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const props = defineProps<{
 	distribuition?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
 	spacing?: string
+	alignment?: 'start' | 'center' | 'end' | 'fill'
 	vertical?: boolean
 	wrap?: boolean
 	columns?: string | number
@@ -21,6 +22,10 @@ if (props.spacing != 'default' && props.spacing != undefined) {
 
 if (props.vertical == true) {
 	classList.value.push('-vertical')
+}
+
+if (props.alignment) {
+	classList.value.push(`-align-${props.alignment}`)
 }
 
 if (props.wrap == null && props.wrap == false) {

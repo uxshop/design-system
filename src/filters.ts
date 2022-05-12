@@ -1,5 +1,4 @@
-import * as moment from 'moment'
-moment.locale('pt-br')
+import { DateTime } from 'luxon'
 
 const initials = (name: string) => {
 	if (name) {
@@ -17,8 +16,8 @@ const initials = (name: string) => {
 }
 
 const datetime = (value: string, format: string, valueFormat = true) => {
-	format = format || 'DD/MM/YYYY HH:mm'
-	return moment.default(value, valueFormat).format(format)
+	format = format || 'dd/MM/yyyy HH:mm'
+	return DateTime.fromSQL(value).toFormat(format)
 }
 
 const number = (val: string, decimal = 2) => {

@@ -3,8 +3,7 @@ import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
 import * as Litepicker from 'litepicker'
-import * as moment from 'moment'
-moment.locale('pt-br')
+import { DateTime } from 'luxon'
 
 interface Props {
 	modelValue?: string
@@ -26,7 +25,7 @@ const emit = defineEmits(['update:modelValue', 'update'])
 const picker = shallowRef()
 const classList = shallowRef<string[]>([])
 const uid = `ui-form-datepicker-${getCurrentInstance()?.uid}`
-const FORMAT_DATE = 'DD/MM/YYYY'
+const FORMAT_DATE = 'dd/MM/yy'
 
 const update = (value: null) => {
 	emit('update:modelValue', value)
@@ -38,11 +37,11 @@ const stopWatch = watchEffect(() => {
 		const dates = props.modelValue.split('TO')
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		const date1 = moment(dates[0]).format(FORMAT_DATE)
+		const date1 = DateTime.fromSQL(dates[0]).toFormat(FORMAT_DATE)
 		if (props.range && dates.length > 1) {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
-			const date2 = moment(dates[1]).format(FORMAT_DATE)
+			const date2 = DateTime.fromSQL(dates[1]).toFormat(FORMAT_DATE)
 			console.log(date1, date2)
 			picker.value.setDateRange(date1, date2)
 		} else {

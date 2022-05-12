@@ -12,7 +12,7 @@
 	line-height: 1;
 	border-radius: var(--input-border-radius);
 	cursor: pointer;
-	padding: 0 var(--input-padding-x);
+	padding: 7px var(--input-padding-x);
 	align-items: center;
 	min-height: var(--input-height);
 	justify-content: center;
@@ -20,6 +20,10 @@
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 	background-color: white;
 	font-weight: 500;
+
+	&.-outline {
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+	}
 
 	&.-default {
 		border: solid 1px var(--input-border-color);
@@ -101,11 +105,33 @@
 	&.-secondary {
 		background-color: var(--secondary);
 		color: white;
+
+		&.-outline {
+			border: 2px solid var(--secondary);
+			background-color: transparent;
+			color: var(--body-color);
+
+			&:hover {
+				background-color: var(--secondary);
+				color: white;
+			}
+		}
 	}
 
 	&.-success {
 		background-color: var(--success);
 		color: white;
+
+		&.-success {
+			border: 2px solid var(--success);
+			background-color: transparent;
+			color: var(--body-color);
+
+			&:hover {
+				background-color: var(--success);
+				color: white;
+			}
+		}
 	}
 
 	&.-danger {
@@ -144,28 +170,6 @@
 	&.-white {
 		background-color: white;
 		color: var(--body-color);
-	}
-
-	&.-outline-secondary {
-		border: 2px solid var(--secondary);
-		background-color: transparent;
-		color: var(--body-color);
-
-		&:hover {
-			background-color: var(--secondary);
-			color: white;
-		}
-	}
-
-	&.-outline-success {
-		border: 2px solid var(--success);
-		background-color: transparent;
-		color: var(--body-color);
-
-		&:hover {
-			background-color: var(--success);
-			color: white;
-		}
 	}
 
 	&.-flush-left {
@@ -231,7 +235,7 @@
 			align-items: center;
 		}
 
-		.ui-icon:last-child {
+		.ui-icon:last-child:not(:first-child) {
 			margin-right: -5px;
 		}
 	}

@@ -16,6 +16,14 @@
 		}
 	}
 
+	&.-align-start {
+		align-items: flex-start;
+	}
+
+	&.-align-end {
+		justify-content: flex-end;
+	}
+
 	&.-distribute {
 		&-left {
 			&:not(.-vertical) {

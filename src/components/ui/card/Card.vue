@@ -75,17 +75,14 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 		<div class="ui-card-loading" v-if="loading">
 			<Spinner size="50" />
 		</div>
-		<div
-			class="ui-card-header"
-			@click="isDropdown ? toggleShowBody() : null"
-			v-if="title || haveSlot('header-title')">
+		<div class="ui-card-header" @click="isDropdown ? toggleShowBody() : null" v-if="title || haveSlot('header-title')">
 			<div class="ui-card-header-content">
 				<div class="ui-header-content-title">
 					<slot name="header-title">
 						<h4 v-if="title" class="ui-card-title">
 							<span>{{ title }}</span>
+							<span v-if="titleMuted" class="muted" v-html="titleMuted"></span>
 						</h4>
-						<span v-if="titleMuted" class="muted" v-html="titleMuted"></span>
 					</slot>
 					<div v-if="caption" class="ui-card-caption" v-html="caption"></div>
 					<span v-if="haveSlot('caption')" class="ui-card-caption">

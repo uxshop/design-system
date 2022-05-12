@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import aside from 'src/components/ui/aside'
 import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue'
 import Icon from '../icon/Icon.vue'
 
