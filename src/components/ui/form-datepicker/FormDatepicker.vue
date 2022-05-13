@@ -5,7 +5,7 @@ import Icon from '../icon/Icon.vue'
 import * as Litepicker from 'litepicker'
 import { DateTime } from 'luxon'
 
-interface Props {
+export interface Props {
 	modelValue?: string
 	config?: Record<string, unknown>
 	placeholder?: string

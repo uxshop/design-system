@@ -84,7 +84,7 @@ watchEffect(() => {
 					countable />
 				<FormTextfield v-model="modelValue.slug" placeholder="Ex: minha-url-amigavel" label="Url amigável" />
 			</Col>
-			<Col auto v-if="!writeOnly">
+			<Col v-if="!writeOnly">
 				<div class="ui-seo-card">
 					<b class="ui-seo-title">
 						{{ metaTitle }}

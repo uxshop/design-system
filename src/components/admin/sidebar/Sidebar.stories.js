@@ -1,24 +1,24 @@
-import UiSidebar from './Sidebar.vue'
+import Sidebar from './Sidebar.vue'
 import vueRouter from 'storybook-vue3-router'
 import menus from './Sidebar.mock'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
 	title: 'Components/Sidebar',
-	component: UiSidebar,
+	component: Sidebar,
 	argTypes: {}
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-	components: { UiSidebar },
+	components: { Sidebar },
 	setup() {
 		return {
 			args
 		}
 	},
 	template: `
-    <ui-sidebar v-bind="args" />
+    <Sidebar v-bind="args" />
   `
 })
 

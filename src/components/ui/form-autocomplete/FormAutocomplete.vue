@@ -120,7 +120,7 @@ watch(
 
 <template>
 	<div class="ui-form-autocomplete" :class="[{ '-focus': focus, 'mb-0': last }, `-${size}`]">
-		<FormLabel v-if="label" :text="label" />
+		<FormLabel v-if="label" :label="label" />
 		<select :value="model" class="ui-form-select" :id="uid" :placeholder="placeholder"></select>
 	</div>
 </template>

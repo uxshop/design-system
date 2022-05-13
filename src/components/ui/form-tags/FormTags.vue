@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
+import { getCurrentInstance, nextTick, onMounted, shallowRef, watch } from 'vue'
 import choices from 'choices.js'
-
 import FormLabel from '../form-label/FormLabel.vue'
-import { cloneDeep } from 'lodash'
+import { cloneDeep, isArray } from 'lodash-es'
 
 export interface Props {
 	modelValue?: string | null
@@ -105,10 +104,11 @@ const init = () => {
 const checkModelValue = () => {
 	nextTick(() => {
 		if (element.value) {
-			console.log(props.modelValue)
-
-			// const val = props.modelValue?.split(',')
-			// element.value.setValue(val)
+			if (props.modelValue && !isArray(props.modelValue)) {
+				const val = props.modelValue.split(',')
+				console.log(props.modelValue, val)
+				element.value.setValue(val)
+			}
 		}
 	})
 }
@@ -131,7 +131,7 @@ watch(
 
 <template>
 	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length }">
-		<FormLabel v-if="label" :text="label" />
+		<FormLabel v-if="label" :label="label" />
 		<input v-if="config.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
 		<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
 	</div>

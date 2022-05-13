@@ -3,7 +3,7 @@ import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchE
 import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
 import 'tom-select/dist/css/tom-select.default.css'
 import FormLabel from '../form-label/FormLabel.vue'
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 
 export interface Props {
 	modelValue?: string | null
@@ -112,7 +112,7 @@ watch(
 
 <template>
 	<div class="ui-form-tags">
-		<FormLabel v-if="label" :text="label" />
+		<FormLabel v-if="label" :label="label" />
 		<input ref="selectRef" :id="uid" autocomplete="off" :placeholder="placeholder" />
 	</div>
 </template>

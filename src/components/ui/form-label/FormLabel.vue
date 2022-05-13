@@ -1,11 +1,11 @@
 <script setup lang="ts">
 defineProps<{
-	text?: string
+	label?: string | null
 }>()
 </script>
 <template>
 	<label class="form-control-label" style="display: block">
-		{{ text }}
+		{{ label }}
 		<slot />
 	</label>
 </template>

@@ -3,9 +3,9 @@ import apexcharts from 'apexcharts/src/apexcharts.js'
 import type ApexCharts from 'apexcharts'
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
-interface Props {
+export interface Props {
 	options?: ApexCharts.ApexOptions
-	series: string[]
+	series: any[]
 	height?: string
 	type:
 		| 'line'
