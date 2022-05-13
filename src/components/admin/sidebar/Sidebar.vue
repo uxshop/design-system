@@ -2,7 +2,6 @@
 import SidebarSubmenu from './SidebarSubmenu.vue'
 import { inject, ref, shallowRef, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import IconButton from '../../ui/icon-button/IconButton.vue'
 import MobileDetector from '../../../services/MobileDetectorService'
 import type { SidebarInterface } from './SidebarInterface'
 

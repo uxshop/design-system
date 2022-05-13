@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { each, find, isFunction } from 'lodash'
+import { each, find, isFunction } from 'lodash-es'
 import type { ITableListState } from '../types/ITableListState'
 import Tag from '../../../ui/tag/Tag.vue'
 

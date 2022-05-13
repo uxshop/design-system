@@ -60,9 +60,14 @@
 		border-top: solid 1px var(--border-color);
 
 		&.-handle {
-			> .ui-icon {
+			cursor: grab;
+			> i {
 				font-size: 18px;
 				color: var(--gray-300);
+			}
+
+			&:hover i {
+				color: var(--primary);
 			}
 		}
 
