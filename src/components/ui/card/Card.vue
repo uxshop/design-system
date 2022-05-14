@@ -16,6 +16,7 @@ const props = withDefaults(
 		fullHeight?: boolean
 		success?: boolean
 		noBorder?: boolean
+		noPadding?: boolean
 		closeCaption?: string
 		gray?: boolean
 		last?: boolean
@@ -70,6 +71,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			'-success': success,
 			'-loading': loading,
 			'-transparent': transparent,
+			'-no-padding': noPadding,
 			'-plain': plain
 		}">
 		<div class="ui-card-loading" v-if="loading">

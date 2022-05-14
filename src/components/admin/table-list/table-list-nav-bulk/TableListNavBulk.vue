@@ -94,17 +94,18 @@ onMounted(() => {
 <template>
 	<div v-show="!config.hideCheckbox" class="table-list-nav-bulk" :class="{ '-active': selected.length }">
 		<div @click="onCheckAll" class="-checkbox">
-			<FormCheckbox :indeterminate="indeterminate" :value="allSelected" v-model="checkbox" />
+			<FormCheckbox :indeterminate="indeterminate" :value="allSelected" v-model="checkbox" noEvents />
 		</div>
 
 		<span v-show="selected.length && config.actions?.includes('remove')" class="table-list-nav-item">
-			<IconButton icon="delete" @click="onRemoveDialog" size="sm" />
+			<!-- <IconButton icon="delete" @click="onRemoveDialog" size="sm" /> -->
+			<Button leadingIcon="delete" @click="onRemoveDialog" size="sm" label="Deletar" />
 		</span>
 
-		<Dropdown variant="white" v-show="selected.length && bulkActions && bulkActions.length > 0" class="ml-2">
+		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0">
 			<template #button-content>
-				<Button size="sm" variant="dark" trailingIcon="unfold_more">
-					ações para <b>{{ zerofill(selected.length) }}</b> selecionados
+				<Button size="sm" trailingIcon="unfold_more">
+					Ações para <b>{{ zerofill(selected.length) }}</b> selecionados
 				</Button>
 			</template>
 
@@ -124,7 +125,7 @@ onMounted(() => {
 	align-items: center;
 	height: 100%;
 	gap: 10px;
-	padding-right: 20px;
+	padding-right: 15px;
 
 	&.-active {
 		padding-left: 15px;

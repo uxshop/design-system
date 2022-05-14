@@ -5,7 +5,7 @@ const props = defineProps<{
 	title?: string
 	variant?: string
 	size?: string | number
-	text?: string
+	label?: string
 	src?: string
 }>()
 
@@ -32,8 +32,8 @@ if (props.variant) {
 	<div class="ui-avatar" :class="classList" :style="style">
 		<div class="ui-avatar-content">
 			<img :src="src" v-if="src" />
-			<slot v-else-if="!text" />
-			<span v-else>{{ text }}</span>
+			<slot v-else-if="!label" />
+			<span v-else>{{ label }}</span>
 		</div>
 	</div>
 </template>

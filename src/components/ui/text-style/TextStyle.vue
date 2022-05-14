@@ -2,7 +2,8 @@
 const props = withDefaults(
 	defineProps<{
 		tag?: string
-		variant?: 'muted' | 'primary' | 'danger'
+		label?: string
+		variant?: 'muted' | 'primary' | 'danger' | 'success'
 		block?: boolean
 	}>(),
 	{
@@ -23,7 +24,7 @@ if (props.block) {
 
 <template>
 	<component :is="tag" class="ui-text-style" :class="classList">
-		<slot />
+		<slot>{{ label }}</slot>
 	</component>
 </template>
 

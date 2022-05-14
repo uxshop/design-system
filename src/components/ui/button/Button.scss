@@ -20,6 +20,7 @@
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 	background-color: white;
 	font-weight: 500;
+	color: var(--body-color);
 
 	&.-outline {
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
@@ -228,12 +229,7 @@
 		display: flex;
 		line-height: 1;
 		gap: 5px;
-
-		> span,
-		> div {
-			display: inline-flex;
-			align-items: center;
-		}
+		align-items: center;
 
 		.ui-icon:last-child:not(:first-child) {
 			margin-right: -5px;

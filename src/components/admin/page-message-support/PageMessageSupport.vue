@@ -58,7 +58,7 @@ defineProps<{
 		.ui-icon {
 			font-size: 12px;
 			position: relative;
-			top: 1px;
+			top: 4px;
 		}
 	}
 }

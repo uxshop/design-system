@@ -17,7 +17,7 @@ if (props.wrap) {
 <template>
 	<div class="stats-group" :class="classList">
 		<div class="stats-group-wrapper" v-if="infos">
-			<StatsItem v-for="item in infos" :key="item.text" :value="item.value" :text="item.text" />
+			<StatsItem v-for="item in infos" :key="item.text" :value="item.value" :label="item.text" />
 		</div>
 		<div class="stats-group-wrapper" v-else>
 			<slot />

@@ -2,7 +2,7 @@
 import Icon from '../../ui/icon/Icon.vue'
 
 defineProps<{
-	text?: string
+	label?: string
 	value?: string | number
 	perc?: string | number
 	info?: string
@@ -13,7 +13,7 @@ defineProps<{
 	<div class="stats-item">
 		<div class="stats-content">
 			<small class="stats-text">
-				{{ text }}
+				{{ label }}
 				<icon name="info" v-if="info" v-tooltip:top="info" />
 			</small>
 			<b class="stats-value">{{ value }}</b>

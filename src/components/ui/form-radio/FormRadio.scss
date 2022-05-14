@@ -1,107 +1,63 @@
 @import '../../../scss/mixins.scss';
 
 .ui-form-radio {
-	display: inline-flex;
+	display: flex;
+	position: relative;
 	cursor: pointer;
-	align-items: center;
+	user-select: none;
 
-	@supports (-webkit-appearance: none) or (-moz-appearance: none) {
-		input[type='radio'] {
-			--active: var(--primary);
-			--active-inner: #fff;
-			--focus: 0 var(--primary);
-			--border: var(--input-border-color);
-			--border-hover: var(--primary);
-			--background: var(--bg-white);
-			--disabled: #f6f8ff;
-			--disabled-inner: #e1e6f9;
-
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			width: 20px;
-			min-width: 20px;
-			height: 20px;
-			outline: none;
-			display: inline-block;
-			vertical-align: top;
-			position: relative;
-			margin: 0;
-			cursor: pointer;
-			border: 1px solid var(--bc, var(--border));
-			background: var(--b, var(--background));
-			transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
-
-			&:after {
-				opacity: var(--o, 0);
-				content: '';
-				display: block;
-				left: 0;
-				top: 0;
-				position: absolute;
-				transition: transform var(--d-t, 0.15s) var(--d-t-e, ease), opacity var(--d-o, 0.15s);
-			}
-			&:checked {
-				--b: var(--active);
-				--bc: var(--active);
-				--d-o: 0.15s;
-				--d-t: 0s;
-				--d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
-				--o: 1;
-			}
-			&:disabled {
-				--b: var(--disabled);
-				cursor: not-allowed;
-				opacity: 0.9;
-				&:checked {
-					--b: var(--disabled-inner);
-					--bc: var(--border);
-				}
-				& + label {
-					cursor: not-allowed;
-				}
-			}
-			&:hover {
-				&:not(:checked) {
-					&:not(:disabled) {
-						--bc: var(--border-hover);
-					}
-				}
-			}
-			&:focus {
-				box-shadow: 0 0 0 var(--focus);
-			}
-
-			& + .ui-form-radio-text {
-				position: relative;
-				display: flex;
-				margin-left: 8px;
-				flex-grow: 1;
-
-				&.-empty {
-					display: none;
-				}
-			}
-
-			@include darkmode {
-				--background: var(--dark-100);
-				--border: var(--dark-300);
-			}
+	&:hover {
+		.ui-form-radio-checkmark {
+			border-color: var(--primary);
 		}
+	}
 
-		input[type='radio'] {
-			border-radius: 50%;
+	input {
+		position: absolute;
+		opacity: 0;
+		cursor: pointer;
+		height: 0;
+		width: 0;
+
+		&:checked ~ .ui-form-radio-checkmark {
+			background-color: var(--primary);
+			border-color: transparent;
+		}
+	}
+
+	.ui-form-radio-checkmark {
+		position: relative;
+		margin-right: 8px;
+		top: 0;
+		left: 0;
+		height: var(--form-check-height);
+		width: var(--form-check-height);
+		background-color: white;
+		border-radius: 100%;
+		border: solid var(--form-check-border-width) var(--input-border-color);
+
+		&:after {
+			display: block;
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			top: 0;
+			border: solid 2px white;
+			background-color: transparent;
+			border-radius: 100%;
+		}
+	}
+
+	.ui-form-radio-text {
+		margin-top: 1px;
+	}
+
+	&:disabled {
+		&:not(:checked) {
 			&:after {
-				left: 0;
-				right: 0;
-				top: 0;
-				bottom: 0;
-				border-radius: 50%;
-				background: var(--active-inner);
-				opacity: var(--o);
-				transform: scale(var(--s, 0.7));
-			}
-			&:checked {
-				--s: 0.6;
+				opacity: 0.6;
 			}
 		}
 	}

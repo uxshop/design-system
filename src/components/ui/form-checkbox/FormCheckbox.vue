@@ -17,7 +17,6 @@ const props = defineProps<{
 }>()
 
 const uid = `ui-form-checkbox-${getCurrentInstance()?.uid}`
-const switcher = ref(props.switch)
 const classList = ref<string[]>([])
 const model = ref()
 
@@ -27,6 +26,9 @@ if (props.size) {
 
 if (props.noEvents) {
 	classList.value.push(`-no-events`)
+}
+if (props.switch) {
+	classList.value.push(`-switch`)
 }
 
 watchEffect(() => {
@@ -40,12 +42,11 @@ const update = (val: unknown) => {
 </script>
 
 <template>
-	<label class="ui-form-checkbox" :for="uid" :class="classList">
+	<label class="ui-form-checkbox" :for="uid" :class="[classList, { '-disabled': disabled }]">
 		<input
 			v-model="model"
 			type="checkbox"
 			:id="uid"
-			:class="{ '-switch': switcher }"
 			:value="value"
 			:tabindex="tabindex"
 			:required="required"
@@ -54,6 +55,7 @@ const update = (val: unknown) => {
 			:disabled="disabled"
 			:true-value="true"
 			@update:modelValue="update" />
+		<span class="ui-form-checkbox-checkmark"></span>
 		<div class="ui-form-checkbox-text">
 			<slot>{{ label }}</slot>
 		</div>

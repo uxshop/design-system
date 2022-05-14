@@ -22,32 +22,26 @@
 			width: 30px;
 			text-align: right;
 			cursor: pointer;
-			// padding-left: 20px;
-		}
-
-		.td-action {
-			button + button {
-				margin-left: 5px;
-			}
 		}
 
 		th {
 			padding: 10px var(--td-padding);
 			text-transform: uppercase;
-			line-height: 1.2;
 			font-size: 12px;
 			border: none;
 			border-top: none;
 			border-bottom: solid 1px var(--border-color);
 			user-select: none;
 			vertical-align: middle;
-			line-height: 1;
 		}
 
 		td {
 			border-left: none;
-			line-height: 1.3;
 			padding: 8px var(--td-padding);
+
+			.ui-icon {
+				line-height: 1.3;
+			}
 
 			&.-date {
 				font-size: 12px;

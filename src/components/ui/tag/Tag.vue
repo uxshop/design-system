@@ -5,7 +5,7 @@ import { ref } from 'vue'
 const props = defineProps<{
 	variant?: string
 	size?: string
-	text?: string
+	label?: string
 }>()
 
 const emit = defineEmits(['remove'])
@@ -22,7 +22,7 @@ if (props.variant) {
 
 <template>
 	<span class="ui-tag" :class="classList">
-		<slot>{{ text }}</slot>
+		<slot>{{ label }}</slot>
 		<Icon name="close" class="ui-tag-close" @click="onRemove" />
 	</span>
 </template>

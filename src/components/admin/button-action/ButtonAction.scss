@@ -7,7 +7,7 @@
 	color: var(--body-color);
 	opacity: 0.8;
 	background: var(--gray-100);
-	border-radius: 6px;
+	border-radius: var(--input-border-radius);
 
 	&:last-child {
 		margin: 0;
@@ -47,11 +47,10 @@
 	}
 
 	&.-btn-active {
-		// color: var(--danger);
-
-		// &.-inactive {
-		// 	opacity: 0.5;
-		// }
+		color: var(--success);
+		&.-inactive {
+			color: var(--danger);
+		}
 
 		&:hover {
 			opacity: 1;

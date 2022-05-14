@@ -1,6 +1,5 @@
 .ui-alert {
 	text-align: left;
-	line-height: 1.3;
 	position: relative;
 	font-size: 12px;
 	padding: 15px;
@@ -42,7 +41,7 @@
 	&.-info {
 		background-color: #e8f0fe;
 		border-color: #95bbf9;
-		color: darken(#95bbf9, 20);
+		color: darken(#95bbf9, 22);
 	}
 
 	&.-warning {
@@ -63,7 +62,6 @@
 		> .ui-alert-title {
 			margin: 0;
 			margin-bottom: 5px;
-			line-height: 1.4;
 			font-weight: 600;
 			font-size: 15px;
 		}

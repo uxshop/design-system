@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TableListTabs from './snippets/TableListTabs.vue'
+import TableListTabs from './table-list-tabs/TableListTabs.vue'
 import TableListNav from './table-list-nav/TableListNav.vue'
-import TableListTable from './snippets/TableListTable.vue'
+import TableListTable from './table-list-table/TableListTable.vue'
 import { useRoute } from 'vue-router'
 import { onMounted, watch, ref, reactive } from 'vue'
 import { union, clone, omit } from 'lodash-es'
@@ -222,8 +222,8 @@ defineExpose({
 </script>
 
 <template>
-	<Card v-if="loading && !firstGet" class="table-list-skeleton">
-		<SkeletonTable cols="3" rows="6" withAction hideHeader />
+	<Card v-if="loading && !firstGet" class="table-list-skeleton" noPadding>
+		<SkeletonTable cols="3" rows="6" />
 	</Card>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />
 	<div v-else class="table-list" v-show="firstGet">

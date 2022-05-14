@@ -27,7 +27,7 @@ if (props.variant) {
 
 <template>
 	<span class="ui-badge" :class="classList" :style="style">
-		<slot>{{ text }}</slot>
+		<slot>{{ label }}</slot>
 	</span>
 </template>
 

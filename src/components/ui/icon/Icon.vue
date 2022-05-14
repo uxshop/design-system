@@ -51,7 +51,6 @@ if (props.size) {
 
 .ui-icon {
 	width: auto;
-	display: inline-flex;
 	align-items: center;
 	color: inherit;
 }

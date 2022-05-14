@@ -84,8 +84,7 @@ if (props.disclosure) {
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
 			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
 			<div>
-				<slot />
-				{{ label }}
+				<slot>{{ label }}</slot>
 			</div>
 			<Icon :name="trailingIcon" v-if="trailingIcon" />
 		</div>

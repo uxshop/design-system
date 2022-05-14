@@ -3,6 +3,8 @@ import type { ITableListState } from '../types/ITableListState'
 import { useSlots } from 'vue'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
 import ButtonAction from '../../button-action/ButtonAction.vue'
+import Badge from '../../../ui/badge/Badge.vue'
+import TextStyle from '../../../ui/text-style/TextStyle.vue'
 
 const props = defineProps<{
 	state: ITableListState
@@ -26,8 +28,12 @@ const onClickRow = (event: any, item: any) => {
 	props.state.clickRow(item)
 }
 
-const onActiveOne = props.state.activeOne
+// const onActiveOne = props.state.activeOne
 const onDeleteOne = props.state.deleteOne
+const onActiveOne = (item: any) => {
+	item.active = !item.active
+	props.state.activeOne(item, item.active)
+}
 
 const onCheckOne = (e: MouseEvent, item: any) => {
 	e.stopPropagation()
@@ -63,14 +69,18 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 					'-selected': selected.includes(item.id),
 					'-inactive': item.active == false
 				}">
-				<td v-if="!state.config.hideCheckbox" @click="onCheckOne($event, item)" class="td-fixed td-checkbox">
-					<FormCheckbox v-model="selected" :value="item.id" />
+				<td v-if="!state.config.hideCheckbox" @click.stop="onCheckOne($event, item)" class="td-fixed td-checkbox">
+					<FormCheckbox v-model="selected" :value="item.id" noEvents />
 				</td>
 
 				<slot v-bind:item="item" />
 
-				<td class="td-action" width="1" v-if="state.config.actions.length">
-					<ButtonAction
+				<td class="td-action" width="1" v-if="state.config.actions?.length">
+					<div v-if="state.config.actions && state.config.actions.includes('active')" @click.stop="onActiveOne(item)">
+						<TextStyle v-if="item.active" variant="success" label="Ativo" />
+						<TextStyle v-else variant="danger" label="Inativo" />
+					</div>
+					<!-- <ButtonAction
 						v-if="state.config.actions.includes('remove')"
 						@delete="onDeleteOne(item)"
 						:delete-name="item.name"
@@ -80,7 +90,7 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 						v-model:active="item.active"
 						@active="onActiveOne(item, true)"
 						@inactive="onActiveOne(item, false)"
-						type="active" />
+						type="active" /> -->
 				</td>
 			</tr>
 		</tbody>

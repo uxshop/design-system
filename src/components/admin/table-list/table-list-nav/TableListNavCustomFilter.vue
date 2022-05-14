@@ -131,7 +131,7 @@ const onShowDropdown = () => {
 
 <template>
 	<span class="table-list-nav-item -custom-filter">
-		<Dropdown right variant="white" ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown">
+		<Dropdown right ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown">
 			<template #button-content>
 				<Button
 					v-if="Number(state.currentTab) >= 1"
@@ -168,7 +168,7 @@ const onShowDropdown = () => {
 							outline
 							@click="onRemoveTab" />
 					</div>
-					<Button size="sm" label="Salvar" tabindex="2" type="submit" form="form-custom-filter" variant="white" />
+					<Button size="sm" label="Salvar" tabindex="2" type="submit" form="form-custom-filter" />
 				</Stack>
 			</DropdownSection>
 		</Dropdown>

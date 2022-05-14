@@ -40,6 +40,7 @@ const update = (val: string | boolean) => {
 			:disabled="disabled"
 			v-model="model"
 			@update:modelValue="update" />
+		<span class="ui-form-radio-checkmark" />
 		<div class="ui-form-radio-text">
 			<slot>{{ label }}</slot>
 		</div>

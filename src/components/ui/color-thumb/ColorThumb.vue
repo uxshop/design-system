@@ -21,12 +21,13 @@ if (props.size) {
 }
 
 if (props.width) {
-	customStyle.value.width = `${props.width}`
+	customStyle.value.width = `${props.width}px`
+	customStyle.value.height = `${props.width}px`
 }
 </script>
 
 <template>
-	<span class="ui-color-thumb" :class="classList">
+	<span class="ui-color-thumb" :class="classList" :style="customStyle">
 		<span class="ui-color-thumb-color" :style="{ backgroundColor: hexadecimal }"></span>
 		<span class="ui-color-thumb-color -secondary" :style="{ backgroundColor: hexadecimalSecondary }"></span>
 	</span>

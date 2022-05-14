@@ -17,7 +17,7 @@ const currentIcon = ref<string | undefined>()
 const hasClick = attrs.click
 
 const activeIcon = (active?: boolean) => {
-	currentIcon.value = active ? 'visibility' : 'visibility_off'
+	currentIcon.value = active ? 'toggle_on' : 'toggle_off'
 }
 
 const classType = ref(['-btn-' + props.type])

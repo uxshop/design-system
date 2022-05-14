@@ -16,7 +16,7 @@ const Template = (args) => ({
 		return { args, model }
 	},
 	template: `
-    <FormCheckbox v-bind="args" v-model="model" value="Mike" />
+    <p><FormCheckbox v-bind="args"  v-model="model" value="Mike" /></p>
     <pre>{{ model }}</pre>
   `
 })

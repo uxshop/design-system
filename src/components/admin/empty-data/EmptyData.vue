@@ -2,7 +2,7 @@
 import Icon from '../../ui/icon/Icon.vue'
 
 defineProps<{
-	text?: string
+	label?: string
 	icon?: string
 	iconType?: 'outlined' | 'filled' | 'rounded' | 'twotone' | undefined
 	link?: boolean
@@ -13,7 +13,7 @@ defineProps<{
 	<div class="ui-empty-data" :class="{ 'ui-empty-data-link': link }">
 		<Icon v-if="icon" :name="icon" :type="iconType" v-show="icon" class="ui-empty-data-icon" />
 		<span class="ui-empty-data-icon-text">
-			{{ text }}
+			{{ label }}
 			<slot />
 		</span>
 	</div>
