@@ -6,7 +6,6 @@
 .ui-button-action {
 	color: var(--body-color);
 	opacity: 0.8;
-	// background: var(--gray-100);
 	border-radius: var(--input-border-radius);
 
 	&:last-child {
@@ -57,10 +56,10 @@
 		}
 	}
 
-	&:focus,
-	&:active {
-		outline: none;
-	}
+	// &:focus,
+	// &:active {
+	// 	outline: none;
+	// }
 
 	+ .ui-button-action {
 		margin-left: 5px;

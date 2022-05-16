@@ -3,7 +3,7 @@ import { getCurrentInstance, provide, reactive, watchEffect } from 'vue'
 import type { TabProviderInterface } from './TabProviderInterface'
 
 const props = defineProps<{
-	modelValue: number | string
+	modelValue: any
 }>()
 
 const emit = defineEmits(['update:modelValue'])

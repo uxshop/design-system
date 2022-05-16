@@ -3,7 +3,7 @@ import { watchEffect, ref, useSlots } from 'vue'
 import Icon from '../icon/Icon.vue'
 const emit = defineEmits(['update:modelValue', 'open', 'close'])
 const props = defineProps<{
-	modelValue: boolean
+	modelValue?: boolean
 	title?: string
 	subtitle?: string
 	scrollable?: boolean

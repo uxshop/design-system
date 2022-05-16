@@ -5,7 +5,7 @@ const props = defineProps<{
 	size?: string
 	pill?: boolean
 	variant?: string
-	label?: string
+	label?: string | number
 }>()
 
 const classList = ref<string[]>([])

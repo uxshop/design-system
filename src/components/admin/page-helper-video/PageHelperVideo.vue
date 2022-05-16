@@ -33,7 +33,7 @@ const onClick = () => {
 			</span>
 		</div>
 	</div>
-	<PageHelperVideoModal ref="pageHelperVideoModalRef" :video="video" />
+	<PageHelperVideoModal ref="pageHelperVideoModalRef" />
 </template>
 
 <style lang="scss">
