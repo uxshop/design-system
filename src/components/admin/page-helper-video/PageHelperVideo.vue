@@ -1,22 +1,30 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
+import PageHelperVideoModal from './PageHelperVideoModal.vue'
 
-interface Props {
-	video?: VideoInterface
-}
-
-interface VideoInterface {
+export interface VideoInterface {
 	name?: string
 	video_id?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
-	video: () => ({})
-})
+const props = withDefaults(
+	defineProps<{
+		video?: VideoInterface
+	}>(),
+	{
+		video: () => ({})
+	}
+)
+
+const pageHelperVideoModalRef = ref()
+const onClick = () => {
+	pageHelperVideoModalRef.value.open(props.video)
+}
 </script>
 
 <template>
-	<div class="ui-page-helper-video" @keydown.esc="close" v-if="video.video_id">
+	<div class="ui-page-helper-video" v-if="video.video_id" @click="onClick">
 		<div class="ui-page-helper-video-message">
 			<Icon class="ui-page-helper-video-icon" name="play_circle_filled"></Icon>
 			<span>
@@ -24,8 +32,8 @@ withDefaults(defineProps<Props>(), {
 				<b class="text-lowercase">{{ video.name }}</b>
 			</span>
 		</div>
-		<!-- <base-dialog-video-helper ref="dialog" :video="video" /> -->
 	</div>
+	<PageHelperVideoModal ref="pageHelperVideoModalRef" :video="video" />
 </template>
 
 <style lang="scss">

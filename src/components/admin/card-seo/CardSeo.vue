@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-	<Card dropdown white class="card-seo" dropdown-label="Editar" title="SEO" dropdown-closed>
+	<Card dropdown white class="card-seo" dropdownLabel="Editar" title="Pré-visualização no Google" dropdownClosed>
 		<template #header-caption>
 			<Seo
 				v-model="modelValue"

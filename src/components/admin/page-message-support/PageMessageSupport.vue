@@ -22,7 +22,7 @@ defineProps<{
 			<span class="page-message-support-link">
 				<Link :href="href" target="_blank">
 					<span>{{ name }}</span>
-					<Icon name="open_in_new"></Icon>
+					<Icon name="open_in_new" />
 				</Link>
 			</span>
 			na base de conhecimento.

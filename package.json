@@ -37,7 +37,8 @@
 		"postcss": "^8.4.13",
 		"tom-select": "^2.0.1",
 		"vue-currency-input": "^2.4.0",
-		"vue-tsc": "^0.31.4"
+		"vue-tsc": "^0.31.4",
+		"youtube-vue3": "^0.1.15"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",

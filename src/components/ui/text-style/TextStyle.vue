@@ -3,7 +3,7 @@ const props = withDefaults(
 	defineProps<{
 		tag?: string
 		label?: string
-		variant?: 'muted' | 'primary' | 'danger' | 'success'
+		variant?: 'muted' | 'primary' | 'danger' | 'success' | 'secondary'
 		block?: boolean
 	}>(),
 	{

@@ -338,6 +338,8 @@ label {
 		gap: var(--grid-gutter-width);
 
 		> .ui-header-content-title {
+			align-self: center;
+
 			> .ui-card-title,
 			> span:first-child {
 				font-size: 16px;

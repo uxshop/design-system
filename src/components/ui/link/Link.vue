@@ -4,7 +4,7 @@ interface Props {
 	href?: string
 	label?: string | null
 }
-withDefaults(defineProps<Props>(), { href: 'javascript:;' })
+withDefaults(defineProps<Props>(), { href: null })
 </script>
 
 <template>

@@ -13,6 +13,10 @@ code {
 	font-size: 105%;
 }
 
+a {
+	cursor: pointer;
+}
+
 .d-sm-none {
 	@include mobile {
 		display: none;

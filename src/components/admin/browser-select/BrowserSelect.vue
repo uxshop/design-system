@@ -233,7 +233,10 @@ watch(
 						<ButtonAction size="sm" type="remove" @click="onRemoveItem(item)" />
 					</div>
 				</div>
-				<Link class="ui-browser-list-more" @click="nextPage" v-if="rows.length > paginateLimit"> Exibir mais </Link>
+
+				<div class="ui-browser-list-more">
+					<Link @click="nextPage" v-if="rows.length > paginateLimit" label="Exibir mais" />
+				</div>
 			</div>
 		</div>
 	</div>

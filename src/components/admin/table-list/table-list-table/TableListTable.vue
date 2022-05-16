@@ -5,6 +5,7 @@ import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
 import ButtonAction from '../../button-action/ButtonAction.vue'
 import Badge from '../../../ui/badge/Badge.vue'
 import TextStyle from '../../../ui/text-style/TextStyle.vue'
+import Button from '../../../ui/button/Button.vue'
 
 const props = defineProps<{
 	state: ITableListState
