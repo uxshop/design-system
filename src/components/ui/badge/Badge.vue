@@ -9,7 +9,6 @@ const props = defineProps<{
 }>()
 
 const classList = ref<string[]>([])
-
 const style = ref<string[]>([])
 
 if (props.pill) {
@@ -22,6 +21,8 @@ if (props.size) {
 
 if (props.variant) {
 	classList.value.push(`-${props.variant}`)
+} else {
+	classList.value.push(`-default`)
 }
 </script>
 
