@@ -53,11 +53,7 @@ const getComponent = (item: IDropdownItem) => {
 		return DropdownDividerVue
 	}
 
-	if (!item.action) {
-		return DropdownItemButtonVue
-	}
-
-	return DropdownItemVue
+	return DropdownItemButtonVue
 }
 </script>
 
@@ -112,10 +108,9 @@ const getComponent = (item: IDropdownItem) => {
 								</div>
 							</template>
 							<slot name="user-links" />
-							<component :is="getComponent(item)" v-for="item in dropdown" :key="item">
+							<component :is="getComponent(item)" v-for="item in dropdown" :key="item" @click="item.onAction">
 								<Icon :name="item.icon" v-if="item.icon" />
 								<span>{{ item.text }}</span>
-								<!-- <Icon name="open_in_new" style="font-size: 13px; margin-left: auto; opacity: 0.3" v-if="item.href" /> -->
 							</component>
 						</Dropdown>
 					</div>

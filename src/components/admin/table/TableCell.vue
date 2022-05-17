@@ -15,7 +15,7 @@ const styleCustom = ref<{
 }>({})
 
 onMounted(() => {
-	if (props.action) {
+	if (props.onAction) {
 		classList.value.push('-auto')
 	}
 	if (props.drag) {

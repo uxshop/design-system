@@ -3,7 +3,7 @@ import type { IResourceService, TApiData } from 'src/types/IApiResource'
 export type TBulkActions = Array<{
 	label: string
 	variant?: string
-	action(a: number[]): void
+	onAction(a: number[]): void
 }>
 
 export interface ITableListConfig {

@@ -32,8 +32,8 @@
 	appearance: none;
 	border-radius: var(--input-border-radius);
 	border: solid var(--input-border-width) var(--input-border-color);
-	outline: transparent solid 2px;
-	outline-offset: 2px;
+	outline: none;
+	outline-offset: 0;
 	position: relative;
 	box-shadow: none;
 	font-weight: var(--input-font-weight, normal);

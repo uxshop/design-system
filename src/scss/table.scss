@@ -4,6 +4,7 @@
 	color: var(--body-color);
 	border-spacing: 0;
 	border-collapse: separate;
+	line-height: 1.3;
 
 	th,
 	td {
@@ -73,6 +74,10 @@
 	> .ui-icon {
 		display: inline-block;
 		vertical-align: middle;
+	}
+
+	.ui-badge {
+		white-space: nowrap;
 	}
 
 	&.-pointer {

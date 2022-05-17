@@ -64,6 +64,8 @@
 		left: 0;
 		height: var(--form-check-height);
 		width: var(--form-check-height);
+		min-height: var(--form-check-height);
+		min-width: var(--form-check-height);
 		background-color: white;
 		border-radius: var(--form-check-border-radius);
 		border: solid var(--form-check-border-width) var(--input-border-color);

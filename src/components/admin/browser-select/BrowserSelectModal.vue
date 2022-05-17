@@ -191,7 +191,7 @@ defineExpose({
 				</Row>
 			</div>
 
-			<!-- <EmptyData _v-show="!fetching && !rows.length" icon="youtube_searched_for" text="Nenhum registro encontrado" /> -->
+			<!-- <EmptyData _v-show="!fetching && !rows.length" icon="youtube_searched_for" label="Nenhum registro encontrado" /> -->
 			<div class="ui-browser-search-list">
 				<div
 					v-for="item in rows"

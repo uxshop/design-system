@@ -68,11 +68,11 @@ onMounted(() => {
 		if (item == 'active') {
 			bulkActions.value.push({
 				label: 'Ativar registros',
-				action: active
+				onAction: active
 			})
 			bulkActions.value.push({
 				label: 'Inativar registros',
-				action: inactive
+				onAction: inactive
 			})
 		}
 
@@ -80,7 +80,7 @@ onMounted(() => {
 			bulkActions.value.push({
 				label: 'Remover registros',
 				variant: 'danger',
-				action: onRemoveDialog
+				onAction: onRemoveDialog
 			})
 		}
 	})
@@ -104,14 +104,12 @@ onMounted(() => {
 
 		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0">
 			<template #button-content>
-				<Button size="sm" trailingIcon="unfold_more">
-					Ações para <b>{{ zerofill(selected.length) }}</b> selecionados
-				</Button>
+				<Button size="sm" trailingIcon="unfold_more"> Ação em massa </Button>
 			</template>
 
 			<DropdownItemButton
 				v-for="action in bulkActions"
-				@click.stop="action.action(selected)"
+				@click.stop="action.onAction(selected)"
 				:key="action.label"
 				:variant="action.variant"
 				:label="action.label" />

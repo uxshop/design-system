@@ -29,7 +29,9 @@
 	&.-default {
 		border: solid 1px var(--input-border-color);
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+
 		&:hover {
+			color: var(--body-color);
 			filter: none;
 			background-color: var(--gray-100);
 		}
@@ -55,6 +57,10 @@
 		background: none;
 		color: var(--link-color);
 		box-shadow: none;
+
+		&:focus {
+			outline: none;
+		}
 
 		&:hover .ui-button-content {
 			text-decoration: none;
@@ -220,8 +226,8 @@
 	}
 
 	&:focus {
-		outline: -webkit-focus-ring-color auto 1px;
-		// outline: none;
+		// outline: -webkit-focus-ring-color auto 1px;
+		outline: var(--primary) auto 1px;
 	}
 
 	.ui-button-content {

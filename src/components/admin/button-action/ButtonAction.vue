@@ -2,6 +2,7 @@
 import { watchEffect, ref, useAttrs, onMounted } from 'vue'
 import dialog from '../../ui/dialog'
 import IconButton from '../../ui/icon-button/IconButton.vue'
+import TextStyle from '../../ui/text-style/TextStyle.vue'
 
 const props = defineProps<{
 	type: string
@@ -59,10 +60,13 @@ const onClick = (evt: MouseEvent) => {
 
 	if (props.type == 'delete' && !hasClick) {
 		let msg = 'Você confirma a exclusão do registro'
+
 		if (props.deleteName) {
 			msg += ` ${props.deleteName}`
 		}
+
 		msg += '?'
+
 		dialog.delete({
 			title: 'Excluir registro',
 			message: msg,
@@ -85,11 +89,17 @@ const onClick = (evt: MouseEvent) => {
 </script>
 
 <template>
-	<IconButton
+	<!-- 
+		<IconButton
 		class="ui-button-action"
 		@click="onClick"
 		:icon="currentIcon"
-		:class="[classType, { '-inactive': !active }]" />
+		:class="[classType, { '-inactive': !active }]" /> 
+	-->
+	<div v-if="type == 'active'" class="text-right" @click="onClick">
+		<TextStyle v-if="active" variant="success" label="Ativo" />
+		<TextStyle v-else variant="danger" label="Inativo" />
+	</div>
 </template>
 
 <style lang="scss">

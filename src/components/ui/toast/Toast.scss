@@ -29,14 +29,6 @@
 			animation-fill-mode: both;
 		}
 
-		&.-success {
-			background: var(--success);
-
-			> .ui-toast-close > .ui-icon {
-				color: var(--success-300);
-			}
-		}
-
 		&.-danger {
 			background: var(--danger);
 

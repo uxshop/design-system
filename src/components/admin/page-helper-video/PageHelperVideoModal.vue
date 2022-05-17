@@ -22,7 +22,7 @@ defineExpose({
 </script>
 
 <template>
-	<Aside v-model="aside" :title="video.title">
+	<Aside v-model="aside" :title="video.title || 'Ajuda'">
 		<div class="page-helper-video-modal">
 			<div class="videoWrapper">
 				<YoutubeVue3

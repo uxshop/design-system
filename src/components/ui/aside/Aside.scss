@@ -113,7 +113,7 @@
 
 	.ui-aside-header {
 		background: rgba(255, 255, 255, 0.95);
-		padding: 10px var(--modal-padding-x);
+		padding: 15px var(--modal-padding-x);
 		display: flex;
 		border: none;
 		margin-bottom: 0;
@@ -211,7 +211,6 @@
 			min-width: auto !important;
 			width: calc(100vw - 20px) !important;
 			max-width: calc(100vw - 20px) !important;
-			padding: 0 25px;
 		}
 
 		.ui-aside-footer {
@@ -220,8 +219,6 @@
 		}
 
 		.ui-aside-header {
-			padding: 20px 0;
-
 			> .title {
 				font-size: 24px;
 				line-height: 1;

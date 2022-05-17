@@ -1,10 +1,25 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue'
-export interface Props {
+import IconButton from '../../ui/icon-button/IconButton.vue'
+import Dropdown from '../../ui/dropdown/Dropdown.vue'
+import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
+import Button from '../../ui/button/Button.vue'
+
+export interface IAction {
+	label: string
+	onAction(): void
+}
+
+defineProps<{
 	title?: string | null
 	backlink?: { to: string }
-}
-defineProps<Props>()
+	primaryAction?: IAction
+	secondaryActions?: IAction[]
+	groupActions?: {
+		name: string
+		actions: IAction[]
+	}
+}>()
 </script>
 
 <template>
@@ -23,7 +38,19 @@ defineProps<Props>()
 			<slot name="subtitle" class="titlebar-subtitle" />
 		</div>
 		<div class="titlebar-actions">
-			<slot name="buttons" />
+			<div class="titlebar-actions-secondary">
+				<!-- <slot name="secondary-action" /> -->
+				<Button v-for="item in secondaryActions" variant="link" :label="item.label" @click="item.onAction" />
+				<!-- <Dropdown v-if="secondaryActions" right>
+					<template #button-content>
+						<IconButton icon="more_horiz" />
+					</template>
+					<DropdownItemButton v-for="item in secondaryActions" :label="item.label" @click="item.onAction" />
+				</Dropdown> -->
+			</div>
+			<div v-if="primaryAction" class="titlebar-actions-primary">
+				<Button variant="primary" :label="primaryAction.label" @click="primaryAction.onAction" />
+			</div>
 		</div>
 	</div>
 </template>
