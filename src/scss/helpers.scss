@@ -19,7 +19,7 @@ a {
 
 .d-sm-none {
 	@include mobile {
-		display: none;
+		display: none !important;
 	}
 }
 
@@ -107,7 +107,7 @@ h6 {
 }
 
 .font-semibold {
-	font-weight: var(--font-weight-semi);
+	font-weight: var(--font-weight-semibold);
 }
 
 .font-bold {

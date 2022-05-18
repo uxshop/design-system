@@ -73,6 +73,6 @@ watchEffect(() => {
 
 <style>
 .ui-form-validation b {
-	text-transform: uppercase;
+	text-transform:capitalize;
 }
 </style>

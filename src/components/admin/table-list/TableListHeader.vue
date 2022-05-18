@@ -1,5 +1,5 @@
 <template>
-	<th>
+	<div class="table-list-item -header">
 		<slot />
-	</th>
+	</div>
 </template>

@@ -27,10 +27,6 @@
 			display: none;
 		}
 
-		a {
-			padding: 0 5px;
-		}
-
 		.titlebar-text {
 			font-size: 26px;
 			margin: 0;
@@ -42,6 +38,12 @@
 		align-items: center;
 		display: flex;
 		flex-grow: 1;
+	}
+
+	.titlebar-backlink {
+		display: flex;
+		gap: 10px;
+		color: var(--body-color);
 	}
 
 	@include mobile {

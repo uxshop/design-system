@@ -21,15 +21,15 @@ const Template = (args) => ({
 	template: `
     <TableList v-bind="args">
       <template #head>
-				<TableListHeader>Logo</TableListHeader>
-				<TableListHeader>Nome</TableListHeader>
-				<TableListHeader>Criado em</TableListHeader>
+				<TableListItem auto>Logo</TableListItem>
+				<TableListItem>Nome</TableListItem>
+				<TableListItem>Criado em</TableListItem>
 			</template>
       <template #default="{ item }">
-        <TableListItem width="1">
+        <TableListItem auto>
           <Image src="https://picsum.photos/id/11/500/300" />
         </TableListItem>
-        <TableListItem>{{ item.name }}</TableListItem>
+        <TableListItem @click.prevent="javascript:;">{{ item.name }}</TableListItem>
         <TableListItem class="date">{{ item.created_at }}</TableListItem>   
       </template>
     </TableList>
@@ -48,7 +48,7 @@ Default.args = {
 		placeholder: 'placeholder...',
 		actions: ['remove'],
 		sortable: ['name', 'created_at', 'updated_at'],
-		customFilterService: customFilterService,
+		// customFilterService: customFilterService,
 		presetFilters: [
 			{
 				name: 'Aguardando pagamento',

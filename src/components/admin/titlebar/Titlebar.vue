@@ -27,7 +27,8 @@ defineProps<{
 		<div class="titlebar-content">
 			<div class="titlebar-title -mobile">
 				<router-link :to="{ name: backlink.to }" v-if="backlink" class="titlebar-backlink">
-					<Icon name="arrow_back" />
+					<!-- <Icon name="arrow_back" /> -->
+					<IconButton icon="arrow_back" />
 					<h2 class="titlebar-text">{{ title }}</h2>
 				</router-link>
 				<h2 v-else class="titlebar-text">{{ title }}</h2>

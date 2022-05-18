@@ -91,6 +91,7 @@
 		cursor: pointer;
 		position: absolute;
 		right: 10px;
+		align-self: center;
 
 		&:hover {
 			background-color: rgba(0, 0, 0, 0.05);
@@ -102,7 +103,8 @@
 	}
 
 	ul {
-		padding-left: 12px;
+		list-style: inside;
+		padding: 0;
 		margin: 0;
 
 		li + li {

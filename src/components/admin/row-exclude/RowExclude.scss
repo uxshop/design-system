@@ -11,6 +11,7 @@
 		background: var(--gray-100);
 		transition: all 0.14s;
 		align-items: center;
+		gap: 10px;
 
 		+ .selectable-list-item {
 			margin-top: 2px;

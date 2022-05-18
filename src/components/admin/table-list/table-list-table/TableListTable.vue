@@ -6,11 +6,14 @@ import ButtonAction from '../../button-action/ButtonAction.vue'
 import Badge from '../../../ui/badge/Badge.vue'
 import TextStyle from '../../../ui/text-style/TextStyle.vue'
 import Button from '../../../ui/button/Button.vue'
+import TableListItem from '../TableListItem.vue'
+import TableListRow from '../TableListRow.vue'
 
 const props = defineProps<{
 	state: ITableListState
 	rows: Record<string, any>[]
 	selected: number[]
+	to?: any
 }>()
 
 const emit = defineEmits<{
@@ -37,8 +40,6 @@ const onActiveOne = (item: any) => {
 }
 
 const onCheckOne = (e: MouseEvent, item: any) => {
-	e.stopPropagation()
-
 	if (props.selected.includes(item.id)) {
 		item.__checked = false
 		const selectedNew = props.selected.filter((id) => {
@@ -53,35 +54,40 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 </script>
 
 <template>
-	<table class="table table-hover" v-if="rows.length">
-		<thead v-if="haveSlot('head')">
-			<tr>
-				<th v-if="!state.config.hideCheckbox" class="td-fixed"></th>
-				<slot name="head" />
-				<th v-if="state.config.actions.length"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-				v-for="(item, key) in rows"
-				@click="onClickRow($event, item)"
-				:key="item.id"
-				:class="{
-					'-selected': selected.includes(item.id),
-					'-inactive': item.active == false
-				}">
-				<td v-if="!state.config.hideCheckbox" @click.stop="onCheckOne($event, item)" class="td-fixed td-checkbox">
-					<FormCheckbox v-model="selected" :value="item.id" noEvents />
-				</td>
+	<div class="table table-flex table-hover" v-if="rows.length">
+		<div class="table-list-header">
+			<TableListItem v-if="!state.config.hideCheckbox" auto class="-checkbox" />
+			<slot name="head" />
+			<TableListItem v-if="state.config.actions.length" />
+		</div>
+		<component
+			v-for="(item, key) in rows"
+			:is="to ? 'router-link' : 'div'"
+			:to="{ name: to, params: { id: item.id } }"
+			@click="onClickRow($event, item)"
+			:key="item.id"
+			class="table-list-row"
+			:class="{
+				'-selected': selected.includes(item.id),
+				'-inactive': item.active == false
+			}">
+			<TableListItem v-if="!state.config.hideCheckbox" @click.prevent="onCheckOne($event, item)" class="">
+				<FormCheckbox v-model="selected" :value="item.id" noEvents />
+			</TableListItem>
 
-				<slot v-bind:item="item" />
+			<slot v-bind:item="item" />
 
-				<td class="td-action" width="1" v-if="state.config.actions?.length">
-					<div v-if="state.config.actions && state.config.actions.includes('active')" @click.stop="onActiveOne(item)">
-						<TextStyle v-if="item.active" variant="success" label="Ativo" />
-						<TextStyle v-else variant="danger" label="Inativo" />
-					</div>
-					<!-- <ButtonAction
+			<TableListItem v-if="state.config.actions?.length" auto>
+				<div
+					v-if="state.config.actions && state.config.actions.includes('active')"
+					@click.stop.prevent="onActiveOne(item)">
+					<TextStyle v-if="item.active" variant="success" label="Ativo" />
+					<TextStyle v-else variant="danger" label="Inativo" />
+				</div>
+			</TableListItem>
+
+			<!-- <td class="td-action" width="1"> -->
+			<!-- <ButtonAction
 						v-if="state.config.actions.includes('remove')"
 						@delete="onDeleteOne(item)"
 						:delete-name="item.name"
@@ -92,8 +98,12 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 						@active="onActiveOne(item, true)"
 						@inactive="onActiveOne(item, false)"
 						type="active" /> -->
-				</td>
-			</tr>
-		</tbody>
-	</table>
+			<!-- </td> -->
+		</component>
+		<!-- </tbody> -->
+	</div>
 </template>
+
+<style lang="scss">
+@import './TableListTable.scss';
+</style>
