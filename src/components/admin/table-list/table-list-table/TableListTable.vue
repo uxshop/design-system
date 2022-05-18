@@ -71,7 +71,7 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 				'-selected': selected.includes(item.id),
 				'-inactive': item.active == false
 			}">
-			<TableListItem v-if="!state.config.hideCheckbox" @click.prevent="onCheckOne($event, item)" class="">
+			<TableListItem v-if="!state.config.hideCheckbox" @click.stop.prevent="onCheckOne($event, item)" auto>
 				<FormCheckbox v-model="selected" :value="item.id" noEvents />
 			</TableListItem>
 
