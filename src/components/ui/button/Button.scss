@@ -1,3 +1,5 @@
+@import '../../../scss//mixins.scss';
+
 .ui-button {
 	display: inline-flex;
 	text-align: center;
@@ -175,9 +177,17 @@
 		}
 	}
 
-	&.-white {
-		background-color: white;
+	&.-plain {
+		background: transparent;
+		box-shadow: none;
+		filter: none;
+		border: none;
 		color: var(--body-color);
+
+		&:hover {
+			filter: none;
+			background-color: var(--gray-200);
+		}
 	}
 
 	&.-flush-left {
@@ -223,7 +233,7 @@
 
 	&:focus {
 		// outline: -webkit-focus-ring-color auto 1px;
-		outline: var(--primary) auto 1px;
+		outline: var(--primary) solid 1px;
 	}
 
 	.ui-button-content {
@@ -231,7 +241,7 @@
 		z-index: 4;
 		display: flex;
 		line-height: 1;
-		gap: 5px;
+		gap: 8px;
 		align-items: center;
 
 		.ui-icon:last-child:not(:first-child) {
@@ -246,5 +256,11 @@
 	.ui-icon {
 		color: inherit;
 		font-size: 18px;
+	}
+
+	@include darkmode {
+		&:hover {
+			color: var(--dark);
+		}
 	}
 }

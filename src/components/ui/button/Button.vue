@@ -2,10 +2,9 @@
 import { ref } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
-import { propsToAttrMap } from '@vue/shared'
 
-interface Props {
-	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'white'
+export interface Props {
+	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain'
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string
@@ -28,8 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const classList = ref<string[]>([])
 const trailingIcon = ref(props.trailingIcon)
-
-const componentButton = ref('button')
+const componentButton = ref('BUTTON')
 
 if (props.to) {
 	componentButton.value = 'router-link'
