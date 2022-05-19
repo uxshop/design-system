@@ -2,6 +2,8 @@
 import { each, find, isFunction } from 'lodash-es'
 import type { ITableListState } from '../types/ITableListState'
 import Tag from '../../../ui/tag/Tag.vue'
+import { computed } from '@vue/reactivity'
+import { omit } from 'lodash-es'
 
 const props = defineProps<{
 	state: ITableListState
@@ -64,10 +66,15 @@ const translateValue = (item: any, key: string) => {
 
 	return val.join(', ')
 }
+
+const showTags = computed(() => {
+	const filters = omit(props.state.omitFilters, ['q'])
+	return filters.length > 0
+})
 </script>
 
 <template>
-	<div class="table-list-tags" v-if="Object.keys(state.omitFilters).length > 0">
+	<div class="table-list-tags" v-if="showTags">
 		<span v-for="(item, key) in state.omitFilters" v-show="String(key) != 'q'" :key="item" class="table-list-tags-item">
 			<Tag variant="dark" @remove="removeFilter(String(key))" class="mr-1">
 				{{ translateKey(String(key)) }}: {{ translateValue(item, String(key)) }}

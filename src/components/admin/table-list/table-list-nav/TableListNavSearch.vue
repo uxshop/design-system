@@ -47,7 +47,7 @@ const onClear = () => {
 					size="sm"
 					leadingIcon="search"
 					clearable
-					@keypress="update"
+					@update:modelValue="update"
 					@clear="onClear"
 					v-model="state.term"
 					id="term"
