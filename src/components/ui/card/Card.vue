@@ -2,33 +2,38 @@
 import { getCurrentInstance, ref, useSlots, watchEffect } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
+import Button from '../button/Button.vue'
+import Link from '../link/Link.vue'
+
+export interface Props {
+	title?: string
+	titleMuted?: string
+	caption?: string
+	dropdown?: boolean
+	dropdownLabel?: string
+	dropdownClosed?: boolean
+	fullHeight?: boolean
+	success?: boolean
+	noBorder?: boolean
+	noPadding?: boolean
+	closeCaption?: string
+	gray?: boolean
+	last?: boolean
+	dropdownMobile?: string
+	loading?: boolean
+	transparent?: boolean
+	plain?: boolean
+	actions?: Array<{
+		label: string
+		onAction(): void
+	}>
+}
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close'])
 
-const props = withDefaults(
-	defineProps<{
-		title?: string
-		titleMuted?: string
-		caption?: string
-		dropdown?: boolean
-		dropdownLabel?: string
-		dropdownClosed?: boolean
-		fullHeight?: boolean
-		success?: boolean
-		noBorder?: boolean
-		noPadding?: boolean
-		closeCaption?: string
-		gray?: boolean
-		last?: boolean
-		dropdownMobile?: string
-		loading?: boolean
-		transparent?: boolean
-		plain?: boolean
-	}>(),
-	{
-		dropdownClosed: false
-	}
-)
+const props = withDefaults(defineProps<Props>(), {
+	dropdownClosed: false
+})
 
 const isDropdown = ref(props.dropdown)
 const cardTitle = ref(props.title)
@@ -92,13 +97,16 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 					</span>
 				</div>
 				<div class="ui-card-header-content-button">
+					<Link v-for="item in actions" :key="item.label" @click="item.onAction">
+						{{ item.label }}
+					</Link>
 					<slot name="header-button" v-if="haveSlot('header-button')" />
 					<button type="button" class="btn-collapse" v-if="isDropdown">
 						<div v-if="showBody">
 							<Icon name="expand_less" />
 						</div>
 						<div v-if="!showBody">
-							<span v-if="dropdownLabel">{{ dropdownLabel }}</span>
+							<Link v-if="dropdownLabel">{{ dropdownLabel }}</Link>
 							<Icon v-else name="expand_more" />
 						</div>
 					</button>

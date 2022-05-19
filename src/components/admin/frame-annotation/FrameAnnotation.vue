@@ -5,6 +5,7 @@ import CardAnnotation from '../card-annotation/CardAnnotation.vue'
 
 defineProps<{
 	title?: string
+	annotation?: string
 }>()
 </script>
 
@@ -12,7 +13,9 @@ defineProps<{
 	<Row>
 		<Col cols="3" sm="12" class="d-sm-none">
 			<CardAnnotation :title="title">
-				<slot name="annotation" />
+				<slot name="annotation">
+					{{ annotation }}
+				</slot>
 			</CardAnnotation>
 		</Col>
 		<Col cols="8" sm="12" offset-sm="1">

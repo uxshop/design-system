@@ -24,7 +24,11 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
-	title: 'Card normal'
+	title: 'Card normal',
+  actions:[{
+    label: 'Adicionar',
+    onAction: () => {}
+  }]
 }
 
 export const Dropdown = Template.bind({})

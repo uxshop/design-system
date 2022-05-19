@@ -10,13 +10,14 @@ const onScroll = (e: UIEvent) => {
 </script>
 
 <template>
-	<div class="ui-layout" @scroll="onScroll" id="wrapper" :class="{ '-scrolled': scrolled }">
+	<div class="ui-layout" _scroll="onScroll" id="wrapper" :class="{ '-scrolled': scrolled }">
 		<div class="ui-layout-sidebar">
 			<slot name="sidebar" />
 		</div>
 		<div class="ui-layout-navbar">
 			<slot name="navbar" />
 		</div>
+
 		<!-- <not-found v-if="notFound" /> -->
 
 		<div class="ui-layout-content">

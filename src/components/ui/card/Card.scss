@@ -307,14 +307,10 @@ label {
 		justify-content: flex-end;
 		align-items: center;
 		gap: 10px;
+		min-height: 24px;
 
 		.ui-button .ui-icon {
 			font-size: 22px;
-		}
-
-		.ui-button.-link,
-		.btn-collapse {
-			min-height: 24px;
 		}
 
 		.ui-button.-link {
@@ -391,6 +387,7 @@ label {
 
 	.btn-collapse {
 		@include resetButton;
+		cursor: pointer;
 		height: auto;
 		z-index: 9;
 		text-align: right;

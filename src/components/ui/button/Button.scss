@@ -181,19 +181,15 @@
 	}
 
 	&.-flush-left {
-		margin-left: calc(var(--input-padding-x) * -1.1);
+		margin-left: calc(var(--input-padding-x) * -1);
 
 		&.-sm {
 			margin-left: calc(var(--input-padding-x-sm) * -1);
 		}
 	}
 
-	&.-flush-left {
-		margin-left: calc(var(--input-padding-x) * -1.1);
-	}
-
 	&.-flush-right {
-		margin-right: calc(var(--input-padding-x) * -1.1);
+		margin-right: calc(var(--input-padding-x) * -1);
 	}
 
 	&.-plain {
