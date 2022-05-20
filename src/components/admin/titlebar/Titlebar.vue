@@ -27,7 +27,6 @@ defineProps<{
 		<div class="titlebar-content">
 			<div class="titlebar-title -mobile">
 				<router-link :to="{ name: backlink.to }" v-if="backlink" class="titlebar-backlink">
-					<!-- <Icon name="arrow_back" /> -->
 					<IconButton icon="arrow_back" />
 					<h2 class="titlebar-text">{{ title }}</h2>
 				</router-link>
@@ -41,13 +40,14 @@ defineProps<{
 		<div class="titlebar-actions">
 			<div class="titlebar-actions-secondary">
 				<!-- <slot name="secondary-action" /> -->
-				<Button v-for="item in secondaryActions" variant="link" :label="item.label" @click="item.onAction" />
-				<!-- <Dropdown v-if="secondaryActions" right>
+				<!-- <Button v-for="item in secondaryActions" variant="plain" :label="item.label" @click="item.onAction" /> -->
+				<Dropdown v-if="secondaryActions" right>
 					<template #button-content>
-						<IconButton icon="more_horiz" />
+						<!-- <IconButton icon="more_horiz" /> -->
+						<Button variant="plain" label="Mais ações" trailingIcon="expand_more" />
 					</template>
 					<DropdownItemButton v-for="item in secondaryActions" :label="item.label" @click="item.onAction" />
-				</Dropdown> -->
+				</Dropdown>
 			</div>
 			<div v-if="primaryAction" class="titlebar-actions-primary">
 				<Button variant="primary" :label="primaryAction.label" @click="primaryAction.onAction" />

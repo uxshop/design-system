@@ -1,7 +1,8 @@
 @import '../../../scss/mixins.scss';
 
 .ui-sidebar {
-	--sidebar-padding-left: 44px;
+	--sidebar-padding-left: 33px;
+	--sidebar-line-width: 8px;
 	position: sticky;
 	top: 0;
 	z-index: 888;
@@ -28,7 +29,7 @@
 			&::after {
 				content: '';
 				left: 0;
-				width: 8px;
+				width: var(--sidebar-line-width);
 				background: var(--primary);
 				position: absolute;
 				top: 0;
@@ -59,29 +60,29 @@
 		}
 	}
 
-	.btn-darkmode {
-		margin-left: auto;
-		margin-right: 20px;
-		opacity: 0.6;
-		cursor: pointer;
-		user-select: none;
+	// .btn-darkmode {
+	// 	margin-left: auto;
+	// 	margin-right: 20px;
+	// 	opacity: 0.6;
+	// 	cursor: pointer;
+	// 	user-select: none;
 
-		i {
-			font-size: 22px;
-			transition-duration: 0.2s;
-			transition-property: transform, opacity;
-			transform-origin: center;
-		}
+	// 	i {
+	// 		font-size: 22px;
+	// 		transition-duration: 0.2s;
+	// 		transition-property: transform, opacity;
+	// 		transform-origin: center;
+	// 	}
 
-		&:first-of-type {
-			display: none;
-		}
+	// 	&:first-of-type {
+	// 		display: none;
+	// 	}
 
-		&:hover {
-			color: var(--primary);
-			opacity: 1;
-		}
-	}
+	// 	&:hover {
+	// 		color: var(--primary);
+	// 		opacity: 1;
+	// 	}
+	// }
 
 	&.-disabled {
 		opacity: 0.4;
@@ -140,97 +141,73 @@
 			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
+		}
+	}
 
-			li {
-				list-style: none;
-				display: flex;
+	.ui-sidebar-item {
+		list-style: none;
+		user-select: none;
+		align-items: center;
+		padding-left: var(--sidebar-line-width);
+
+		&.-spacer-last {
+			margin-top: auto;
+		}
+
+		&.-spacer {
+			margin-top: 30px;
+		}
+
+		&.-spacer-flex {
+			flex-grow: 1;
+		}
+
+		> .ui-sidebar-link {
+			font-family: var(--headings-font-family);
+			line-height: 1;
+			color: var(--body-color);
+			font-weight: 700;
+			font-size: 14px;
+			display: flex;
+			cursor: pointer;
+			position: relative;
+			height: 32px;
+			align-items: center;
+			margin: 0 10px;
+			border-radius: 4px;
+			padding: 0 15px;
+			text-decoration: none;
+
+			> .ui-sidebar-link-text {
+				display: inline-flex;
+				border-radius: 4px;
+				padding: 10px 0;
+				padding-right: 10px;
 				align-items: center;
-
-				.ui-sidebar-list-action {
-					margin-left: auto;
-					display: flex;
-					padding: 0 10px;
-					.ui-icon {
-						font-size: 20px;
-					}
-
-					&:hover {
-						text-decoration: none;
-					}
-				}
+				transition: all 0.18s;
+				position: relative;
+				z-index: 2;
 			}
 
-			.item {
-				list-style: none;
-				user-select: none;
+			.ui-icon {
+				margin-right: 8px;
+				font-size: 16px;
+			}
 
-				&.-spacer-last {
-					margin-top: auto;
+			&:hover {
+				background-color: var(--gray-100);
+			}
+
+			&.-active {
+				color: var(--primary);
+				background-color: var(--gray-200);
+
+				i {
+					display: none;
 				}
 
-				&.-spacer {
-					margin-top: 30px;
-				}
-
-				&.-spacer-flex {
-					flex-grow: 1;
-				}
-
-				> .ui-icon {
-					font-size: 28px;
-					margin-right: 10px;
-				}
-
-				> .link {
-					font-family: var(--headings-font-family);
-					line-height: 1;
-					color: var(--body-color);
-					font-weight: 700;
-					font-size: 15px;
-					display: flex;
-					cursor: pointer;
-					position: relative;
-					height: 34px;
-					align-items: center;
-					padding-left: var(--sidebar-padding-left);
-
-					> .link-text {
-						display: inline-flex;
-						border-radius: 4px;
-						padding: 10px 0;
-						padding-right: 10px;
-						align-items: center;
-						transition: all 0.18s;
-						position: relative;
-
-						&::after {
-							content: '';
-							position: absolute;
-							height: 2px;
-							background: var(--secondary);
-							width: 0;
-							bottom: 1px;
-							transition: all 0.2s;
-						}
-					}
-
-					&:hover:not(.-disabled) {
-						.link-text::after {
-							width: 60%;
-						}
-					}
-
-					&.-active {
-						color: var(--primary);
-
-						i {
-							display: none;
-						}
-
-						i:last-of-type {
-							display: inline-flex;
-						}
-					}
+				i:last-of-type {
+					display: inline-flex;
 				}
 			}
 		}
@@ -263,18 +240,6 @@
 	@include darkmode {
 		.ui-sidebar-wrapper {
 			border-color: transparent;
-		}
-
-		.btn-darkmode {
-			&:first-of-type {
-				display: flex;
-			}
-			&:last-of-type {
-				display: none;
-			}
-			&:hover {
-				color: var(--secondary);
-			}
 		}
 	}
 }

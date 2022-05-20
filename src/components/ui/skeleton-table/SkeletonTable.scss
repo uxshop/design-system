@@ -16,8 +16,9 @@
 
 	tr,
 	th {
-		background-color: white;
+		background-color: var(--dark-200, white);
 	}
+
 	tbody tr:nth-of-type(odd) {
 		background-color: var(--gray-100);
 	}

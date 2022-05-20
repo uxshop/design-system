@@ -8,5 +8,6 @@ export namespace SidebarInterface {
 		spacer?: boolean
 		last?: boolean
 		disabled?: boolean
+		icon?: string
 	}
 }

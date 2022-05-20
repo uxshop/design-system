@@ -34,6 +34,9 @@
 		&:checked ~ .ui-form-checkbox-checkmark {
 			background-color: var(--primary);
 			border-color: transparent;
+			&::after {
+				display: block;
+			}
 		}
 
 		&:indeterminate ~ .ui-form-checkbox-checkmark {
@@ -41,6 +44,7 @@
 			border-color: var(--primary);
 
 			&:after {
+				display: block;
 				left: 50%;
 				top: 50%;
 				width: 50%;
@@ -71,7 +75,7 @@
 		border: solid var(--form-check-border-width) var(--input-border-color);
 
 		&:after {
-			display: block;
+			display: none;
 			content: '';
 			position: absolute;
 			left: calc(50% - 4px);
@@ -128,6 +132,12 @@
 
 		.ui-form-checkbox-text {
 			margin-top: 0;
+		}
+	}
+
+	@include darkmode {
+		.ui-form-checkbox-checkmark {
+			background: var(--dark-200);
 		}
 	}
 }

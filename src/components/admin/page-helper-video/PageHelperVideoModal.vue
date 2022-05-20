@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import Aside from '../../ui/aside/Aside.vue'
 import { YoutubeVue3 } from 'youtube-vue3'
 import Link from '../../ui/link/Link.vue'
+import Divider from '../../ui/divider/Divider.vue'
+import AsideSection from '../../ui/aside/AsideSection.vue'
 
 const video = ref<any>({})
 const aside = ref(false)
@@ -22,30 +24,33 @@ defineExpose({
 </script>
 
 <template>
-	<Aside v-model="aside" :title="video.title || 'Ajuda'">
+	<Aside v-model="aside" :title="video.title || 'Ajuda'" size="sm">
 		<div class="page-helper-video-modal">
-			<div class="videoWrapper">
-				<YoutubeVue3
-					ref="youtube"
-					:videoid="video.video_id"
-					:width="480"
-					:height="320"
-					:controls="1"
-					:modestbranding="0"
-					@ended="onEnded"
-					style="width: 100%" />
-			</div>
-
-			<a class="page-helper-video-link">
-				<img src="./knowledge.svg" />
-			</a>
-			<ul class="page-helper-video-modal-list">
-				<li v-for="item in video.articles">
-					<Link>
-						{{ item.name }}
-					</Link>
-				</li>
-			</ul>
+			<AsideSection>
+				<div class="videoWrapper">
+					<YoutubeVue3
+						ref="youtube"
+						:videoid="video.video_id"
+						:width="480"
+						:height="320"
+						:controls="1"
+						:modestbranding="0"
+						@ended="onEnded"
+						style="width: 100%" />
+				</div>
+			</AsideSection>
+			<AsideSection>
+				<a class="page-helper-video-link">
+					<img src="./knowledge.svg" class="svg-inverter" />
+				</a>
+				<ul class="page-helper-video-modal-list">
+					<li v-for="item in video.articles">
+						<Link>
+							{{ item.name }}
+						</Link>
+					</li>
+				</ul>
+			</AsideSection>
 		</div>
 	</Aside>
 </template>
@@ -69,7 +74,7 @@ defineExpose({
 	}
 
 	.page-helper-video-link {
-		margin: 20px 0;
+		margin: 0 0 20px;
 		display: inline-block;
 
 		img {
@@ -78,10 +83,12 @@ defineExpose({
 	}
 
 	.page-helper-video-modal-list {
-		padding-left: 15px;
+		padding-left: 0;
+		list-style: none;
 
 		li {
-			margin-bottom: 10px;
+			padding: 10px 0;
+			border-top: solid 1px var(--border-color);
 		}
 	}
 }

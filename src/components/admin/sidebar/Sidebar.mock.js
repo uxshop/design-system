@@ -2,6 +2,7 @@ export default {
 	products: {
 		section: 'products',
 		name: 'Catálogo',
+		icon: 'sell',
 		permissions: 'products',
 		nodes: [
 			{
@@ -49,6 +50,7 @@ export default {
 	customers: {
 		section: 'customers',
 		name: 'Clientes',
+		icon: 'account_circle_full',
 		nodes: [
 			{
 				name: 'Clientes',
@@ -65,6 +67,7 @@ export default {
 	orders: {
 		section: 'orders',
 		name: 'Pedidos',
+		icon: 'inbox',
 		nodes: [
 			{
 				name: 'Pedidos',
@@ -86,6 +89,7 @@ export default {
 	marketings: {
 		section: 'marketing',
 		name: 'Marketing',
+		icon: 'ads_click',
 		nodes: [
 			{
 				name: 'Cupom de desconto',
@@ -118,12 +122,14 @@ export default {
 		section: 'reports',
 		name: 'Relatórios',
 		permissions: 'reports',
-		to: 'reports'
+		to: 'reports',
+		icon: 'insights',
 	},
 	'online-store': {
 		spacer: true,
 		section: 'online-store',
 		name: 'Loja virtual',
+		icon: 'storefront',
 		nodes: [
 			{
 				name: 'Preferências',
@@ -176,11 +182,13 @@ export default {
 		section: 'marketplace',
 		name: 'Marketplace',
 		to: 'marketplace',
-		permissions: 'marketplace'
+		permissions: 'marketplace',
+		icon: 'hub'
 	},
 	extension: {
 		section: 'extension',
 		name: 'Aplicativos',
+		icon: 'extension',
 		nodes: [
 			{
 				name: 'Meus apps',
@@ -203,6 +211,7 @@ export default {
 		last: true,
 		section: 'configuration',
 		name: 'Configurações',
+		icon: 'settings',
 		nodes: [
 			{
 				name: 'Geral',
@@ -256,14 +265,14 @@ export default {
 			}
 		]
 	},
-	idea: {
-		name: 'Mural de ideias',
-		to: 'ideas',
-		permissions: ''
-	},
-	support: {
-		name: 'Ajuda',
-		to: 'support',
-		permissions: ''
-	}
+	// idea: {
+	// 	name: 'Mural de ideias',
+	// 	to: 'ideas',
+	// 	permissions: ''
+	// },
+	// support: {
+	// 	name: 'Ajuda',
+	// 	to: 'support',
+	// 	permissions: ''
+	// }
 }

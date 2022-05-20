@@ -13,8 +13,12 @@ code {
 	font-size: 105%;
 }
 
-a {
-	cursor: pointer;
+small {
+	line-height: 1.2;
+}
+
+.nowrap {
+	white-space: nowrap;
 }
 
 .d-sm-none {

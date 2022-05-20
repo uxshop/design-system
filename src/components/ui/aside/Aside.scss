@@ -111,6 +111,21 @@
 		transform: translateZ(0);
 	}
 
+	.ui-aside-section {
+		margin-left: calc(var(--modal-padding-x) * -1);
+		margin-right: calc(var(--modal-padding-x) * -1);
+		padding: var(--modal-padding-x);
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		+ .ui-aside-section {
+			border-top: solid 2px var(--border-color);
+			padding-top: 20px;
+		}
+	}
+
 	.ui-aside-header {
 		background: rgba(255, 255, 255, 0.95);
 		padding: 15px var(--modal-padding-x);

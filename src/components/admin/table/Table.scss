@@ -59,8 +59,14 @@
 		padding: 10px;
 		border-top: solid 1px var(--border-color);
 
+		strong {
+			font-weight: var(--font-weight-semibold);
+		}
+
 		&.-handle {
 			cursor: grab;
+			padding-right: 0;
+
 			> i {
 				font-size: 18px;
 				color: var(--gray-300);

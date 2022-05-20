@@ -4,6 +4,7 @@ import { inject, ref, shallowRef, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import MobileDetector from '../../../services/MobileDetectorService'
 import type { SidebarInterface } from './SidebarInterface'
+import Icon from '../../ui/icon/Icon.vue'
 
 interface PermissionInterface {
 	has(rule: string): boolean
@@ -60,16 +61,6 @@ const clickOverlay = () => {
 	}
 }
 
-const toggleDarkmode = () => {
-	if (localStorage.getItem('darkmode') == '1') {
-		localStorage.setItem('darkmode', '0')
-		document.documentElement.removeAttribute('data-theme')
-	} else {
-		localStorage.setItem('darkmode', '1')
-		document.documentElement.setAttribute('data-theme', 'dark')
-	}
-}
-
 const onClickLink = (sec: string, item: SidebarInterface.Item) => {
 	if (props.menus) {
 		currentMenu.value = props.menus[sec]
@@ -113,7 +104,7 @@ watchEffect(() => {
 						<ul class="ui-sidebar-list -primary">
 							<li
 								v-for="(item, key) in menus"
-								class="item"
+								class="ui-sidebar-item"
 								:key="key"
 								:class="{
 									'-disabled': !hasPermission(item),
@@ -121,13 +112,14 @@ watchEffect(() => {
 									'-spacer-last': item.last
 								}">
 								<div
+									class="ui-sidebar-link"
 									@click="onClickLink(key, item)"
 									:class="{
-										'-active': key == route.name,
+										'-active': key == route.meta.section,
 										'-disabled': item.disabled
-									}"
-									class="link">
-									<div class="link-text">
+									}">
+									<!-- <Icon :name="item.icon" type="rounded" /> -->
+									<div class="ui-sidebar-link-text">
 										<span>{{ item.name }}</span>
 									</div>
 								</div>
@@ -137,9 +129,9 @@ watchEffect(() => {
 				</div>
 				<SidebarSubmenu
 					:menus="menus"
-					:has-permission="hasPermission"
-					:click-link="onClickLink"
-					:active-section="activeSection"
+					:hasPermission="hasPermission"
+					:clickLink="onClickLink"
+					:activeSection="activeSection"
 					@back="onBack" />
 			</div>
 		</div>

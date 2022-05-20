@@ -27,27 +27,27 @@ const subIsActive = (input: string) => {
 			:key="key"
 			class="ui-sidebar-sub">
 			<div class="ui-sidebar-sub-content">
-				<span class="close" @click="onBack">
+				<span class="ui-sidebar-sub-close" @click="onBack">
 					<Icon name="arrow_back" />
 					<span>menu</span>
 				</span>
-				<div class="title">{{ s.name }}</div>
-				<ul class="sub-list">
-					<li v-for="node in s.nodes" :key="node.to" class="item">
+				<div class="ui-sidebar-sub-title">{{ s.name }}</div>
+				<ul class="ui-sidebar-list">
+					<li v-for="node in s.nodes" :key="node.to" class="ui-sidebar-item">
 						<router-link custom v-slot="{ href }" :to="{ name: node.to }">
 							<a
 								:href="href"
 								event=""
 								tabindex="-1"
-								class="link"
-								:class="{ 'router-link-active': subIsActive(href) }"
+								class="ui-sidebar-link"
+								:class="{ '-active': subIsActive(href) }"
 								@click.prevent="clickLink(key, node)">
 								{{ node.name }}
 							</a>
 						</router-link>
 					</li>
 				</ul>
-				<div class="spacer" @click="onBack"></div>
+				<div class="ui-sidebar-item -spacer" @click="onBack"></div>
 			</div>
 		</div>
 	</div>

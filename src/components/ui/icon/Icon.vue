@@ -5,34 +5,17 @@ interface Props {
 	name?: string
 	size?: number | string
 	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'
+	filled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-	type: 'outlined'
-})
-
+const props = defineProps<Props>()
 const classList = ref('material-icons')
+const fill = props.filled ? 1 : 0
 
 const style = ref<{
 	fontSize?: string
 	height?: string
 }>({})
-
-if (props.type == 'filled') {
-	classList.value = 'material-icons'
-}
-
-if (props.type == 'rounded') {
-	classList.value = 'material-icons-round'
-}
-
-if (props.type == 'outlined') {
-	classList.value = 'material-icons-outlined'
-}
-
-if (props.type == 'twotone') {
-	classList.value = 'material-icons-two-tone'
-}
 
 if (props.size) {
 	style.value.fontSize = `${props.size}px`
@@ -41,13 +24,15 @@ if (props.size) {
 </script>
 
 <template>
-	<i class="ui-icon icon" :class="classList" :style="style">
+	<i class="ui-icon icon material-symbols-rounded" :class="classList" :style="style">
 		{{ name }}
 	</i>
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Two+Tone');
+.material-symbols-rounded {
+	font-variation-settings: 'FILL' v-bind(fill), 'wght' 400, 'GRAD' 200, 'opsz' 32;
+}
 
 .ui-icon {
 	width: auto;

@@ -1,8 +1,8 @@
+@import '../../../scss/mixins.scss';
+
 .ui-stack {
-	@import '../../../scss/mixins.scss';
 	display: flex;
 	gap: var(--grid-gutter-width);
-	align-items: center;
 
 	&.-custom-grid {
 		display: grid;
@@ -14,6 +14,10 @@
 		@include mobile {
 			flex-direction: column;
 		}
+	}
+
+	&.-align-center {
+		align-items: center;
 	}
 
 	&.-align-start {
@@ -112,7 +116,7 @@
 
 	&.-vertical {
 		flex-direction: column;
-		row-gap: calc(var(--grid-gutter-width) * 2);
+		row-gap: calc(var(--grid-gutter-width));
 	}
 
 	&:not(.-vertical) {

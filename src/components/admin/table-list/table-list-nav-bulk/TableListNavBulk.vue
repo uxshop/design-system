@@ -134,7 +134,7 @@ onMounted(() => {
 		right: 0;
 		left: 0;
 		z-index: 88;
-		background: #fff;
+		background: inherit;
 	}
 
 	.table-list-nav-select {

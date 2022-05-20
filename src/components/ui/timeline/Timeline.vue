@@ -5,7 +5,7 @@ import Avatar from '../avatar/Avatar.vue'
 import Col from '../grid/col/Col.vue'
 import Row from '../grid/row/Row.vue'
 import Icon from '../icon/Icon.vue'
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 
 const props = defineProps<{
 	modelValue?: any[]

@@ -1,7 +1,6 @@
 @import '../../../scss/mixins.scss';
 
 .ui-layout {
-	// overflow-y: auto;
 	height: 100vh;
 	overflow-x: hidden;
 	flex-grow: 1;
@@ -43,6 +42,8 @@
 		flex: 1;
 		flex-grow: 1;
 		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
 	}
 
 	@include mobile {

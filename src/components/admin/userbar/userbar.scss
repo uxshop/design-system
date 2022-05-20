@@ -5,11 +5,13 @@
 	background-color: var(--dark-300, var(--body-bg));
 	padding: 0 var(--layout-content-padding-x);
 	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-grow: 1;
+
+	border-bottom: solid 1px var(--border-color);
 
 	.-scrolled & {
-		&::after {
-			display: block;
-		}
 	}
 
 	.-empty & {
@@ -17,23 +19,24 @@
 	}
 
 	.ui-userbar-wrapper {
-		> div {
-			margin-top: 0;
-			> div {
-				margin-top: 0;
-			}
-		}
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
+		gap: 10px;
 	}
 
-	&:after {
-		content: '';
-		display: block;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		border-bottom: solid 1px var(--border-color);
-		height: 10px;
+	.ui-userbar-content {
+		flex-grow: 1;
+	}
+
+	.ui-userbar-actions {
+		display: flex;
+		gap: inherit;
+
+		button {
+			border: none;
+			box-shadow: none;
+		}
 	}
 
 	.ui-userbar-link {
@@ -102,8 +105,6 @@
 	.ui-userbar-btn {
 		display: flex;
 		align-items: center;
-		margin-top: 5px;
-		margin-bottom: 5px;
 
 		.ui-userbar-btn-wrapper {
 			display: flex;
@@ -111,7 +112,7 @@
 			position: relative;
 			cursor: pointer;
 			padding: 8px 10px;
-			border-radius: 10px;
+			border-radius: 6px;
 
 			&:hover {
 				background: var(--gray-200);
@@ -119,8 +120,8 @@
 		}
 
 		.ui-userbar-btn-avatar {
-			width: 48px;
-			height: 48px;
+			width: var(--input-height);
+			height: var(--input-height);
 			align-items: center;
 			justify-content: center;
 			border-radius: 100%;
@@ -216,11 +217,6 @@
 
 			.ui-userbar-btn-info {
 				display: none;
-			}
-
-			.ui-userbar-btn-avatar {
-				width: 44px;
-				height: 44px;
 			}
 		}
 

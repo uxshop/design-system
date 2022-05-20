@@ -2,7 +2,7 @@
 import { each, find, isFunction } from 'lodash-es'
 import type { ITableListState } from '../types/ITableListState'
 import Tag from '../../../ui/tag/Tag.vue'
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 import { omit } from 'lodash-es'
 
 const props = defineProps<{

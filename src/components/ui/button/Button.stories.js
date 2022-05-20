@@ -28,16 +28,6 @@ const Template = (args) => ({
 	},
 	template: `
 		<Button v-bind="args" />
-		-
-		<Button v-bind="args" variant=primary />
-		-
-		<Button v-bind="args" variant=success />
-		-
-		<Button v-bind="args" size=sm />
-		-
-		<Button v-bind="args" size=lg />
-		-
-		<Button v-bind="args" href="http://" />
 	`
 })
 

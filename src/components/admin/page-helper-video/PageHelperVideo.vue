@@ -26,7 +26,7 @@ const onClick = () => {
 <template>
 	<div class="ui-page-helper-video" v-if="video.video_id" @click="onClick">
 		<div class="ui-page-helper-video-message">
-			<Icon class="ui-page-helper-video-icon" name="play_circle_filled"></Icon>
+			<Icon class="ui-page-helper-video-icon" name="play_circle" filled></Icon>
 			<span>
 				<b>Precisa de ajuda?</b> Assista o vídeo sobre
 				<b class="text-lowercase">{{ video.name }}</b>

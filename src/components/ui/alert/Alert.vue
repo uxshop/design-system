@@ -7,6 +7,7 @@ const props = defineProps<{
 	icon?: string
 	dismissible?: boolean
 	show: boolean
+	center?: boolean
 	text?: string
 }>()
 const emit = defineEmits(['dismissed'])
@@ -15,6 +16,10 @@ const open = ref(props.show)
 
 if (props.variant) {
 	classList.value.push(`-${props.variant}`)
+}
+
+if (props.center) {
+	classList.value.push(`-center`)
 }
 
 if (props.dismissible) {
