@@ -17,7 +17,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	cols: 5,
 	rows: 3,
-	padding: '10px'
+	padding: '12px'
 })
 
 const style = ref<{
@@ -45,7 +45,6 @@ if (props.width) {
 				<td width="1" v-if="withAvatar">
 					<Skeleton width="40px" height="40px" style="border-radius: 100%" />
 				</td>
-
 				<td v-for="c in Number(cols)" :key="c">
 					<Skeleton width="85%" />
 					<Skeleton width="40%" height="10px" v-if="Number(lines) > 1" />

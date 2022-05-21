@@ -5,6 +5,10 @@
 
 	.ui-table-header {
 		display: table-header-group;
+
+		+ .ui-table-row > .ui-table-cell {
+			border-top: none;
+		}
 	}
 
 	.ui-table-link {

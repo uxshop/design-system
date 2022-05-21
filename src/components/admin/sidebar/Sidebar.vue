@@ -118,7 +118,7 @@ watchEffect(() => {
 										'-active': key == route.meta.section,
 										'-disabled': item.disabled
 									}">
-									<Icon :name="item.icon" filled />
+									<!-- <Icon :name="item.icon" filled /> -->
 									<div class="ui-sidebar-link-text">
 										<span>{{ item.name }}</span>
 									</div>
