@@ -8,7 +8,7 @@ const props = defineProps<{
 	dismissible?: boolean
 	show: boolean
 	center?: boolean
-	text?: string
+	label?: string
 }>()
 const emit = defineEmits(['dismissed'])
 const classList = ref<string[]>([])
@@ -45,7 +45,7 @@ watchEffect(() => {
 				{{ title }}
 			</h6>
 			<div class="ui-alert-text">
-				<slot>{{ text }}</slot>
+				<slot>{{ label }}</slot>
 			</div>
 		</div>
 		<button class="ui-alert-close" v-if="dismissible" @click="close">

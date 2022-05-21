@@ -233,6 +233,7 @@
 	&:focus {
 		// outline: -webkit-focus-ring-color auto 1px;
 		outline: var(--primary) solid 2px;
+		outline-offset: -2px;
 	}
 
 	.ui-button-content {

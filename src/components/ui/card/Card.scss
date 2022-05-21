@@ -250,10 +250,6 @@ label {
 		background: none;
 		padding: var(--card-padding);
 
-		> a {
-			font-weight: 500;
-		}
-
 		h4 {
 			margin: 0;
 		}
@@ -350,12 +346,6 @@ label {
 					font-size: 18px;
 					margin-left: 5px;
 				}
-			}
-
-			> span:last-child:not(:first-child) {
-				display: flex;
-				align-items: center;
-				margin-left: auto;
 			}
 		}
 	}

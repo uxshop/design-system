@@ -95,8 +95,9 @@
 	&.-switch {
 		input {
 			~ .ui-form-checkbox-checkmark {
-				&:after {
-					background: var(--input-border-color);
+				&::after {
+					display: block;
+					background: var(--dark-100, --input-border-color);
 				}
 			}
 		}

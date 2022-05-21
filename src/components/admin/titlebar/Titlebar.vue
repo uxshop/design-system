@@ -25,16 +25,14 @@ defineProps<{
 <template>
 	<div class="titlebar">
 		<div class="titlebar-content">
-			<div class="titlebar-title -mobile">
-				<router-link :to="{ name: backlink.to }" v-if="backlink" class="titlebar-backlink">
-					<IconButton icon="arrow_back" />
-					<h2 class="titlebar-text">{{ title }}</h2>
-				</router-link>
-				<h2 v-else class="titlebar-text">{{ title }}</h2>
-			</div>
-			<div class="titlebar-title -dekstop">
+			<div class="titlebar-title --mobile">
+				<IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" />
 				<h2 class="titlebar-text">{{ title }}</h2>
+				<!-- <h2 v-else class="titlebar-text">{{ title }}</h2> -->
 			</div>
+			<!-- <div class="titlebar-title --dekstop">
+				<h2 class="titlebar-text">{{ title }}</h2>
+			</div> -->
 			<slot name="subtitle" class="titlebar-subtitle" />
 		</div>
 		<div class="titlebar-actions">

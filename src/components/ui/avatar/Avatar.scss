@@ -28,7 +28,7 @@
 		align-items: center;
 		text-transform: uppercase;
 		white-space: nowrap;
-		border: solid 1px white;
+		border: solid 1px var(--dark-300, white);
 		box-shadow: 0 0 0 2px var(--border-color);
 		background: var(--gray-100);
 	}

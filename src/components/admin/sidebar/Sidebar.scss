@@ -2,7 +2,7 @@
 
 .ui-sidebar {
 	--sidebar-padding-left: 33px;
-	--sidebar-line-width: 8px;
+	--sidebar-line-width: 6px;
 	position: sticky;
 	top: 0;
 	z-index: 888;
@@ -173,7 +173,7 @@
 			position: relative;
 			height: 32px;
 			align-items: center;
-			margin: 0 10px;
+			margin: 0 12px;
 			border-radius: 4px;
 			padding: 0 15px;
 			text-decoration: none;
@@ -200,7 +200,7 @@
 
 			&.-active {
 				color: var(--primary);
-				background-color: var(--gray-200);
+				background-color: var(--dark-100, --gray-200);
 
 				i {
 					display: none;

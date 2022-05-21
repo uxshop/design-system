@@ -30,7 +30,7 @@
 		min-height: 100px;
 
 		&.-scroll {
-			.td-fixed {
+			.fixed-cell {
 				background: #fff;
 				box-shadow: inset -1px 0 0 var(--gray-100);
 			}
@@ -85,7 +85,7 @@
 			background: inherit;
 		}
 
-		.table-list-wrapper.-scroll .td-fixed {
+		.table-list-wrapper.-scroll .fixed-cell {
 			background: var(--dark-200);
 		}
 	}

@@ -39,7 +39,7 @@ const changeActive = () => {
 </script>
 
 <template>
-	<Card class="ui-card-active" transparent>
+	<Card class="ui-card-active">
 		<Row alignV="center">
 			<Col>
 				<FormCheckbox v-model="modelValue.active" switch @change="changeActive" @click.stop="onClickActive">

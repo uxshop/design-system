@@ -29,7 +29,7 @@ const subIsActive = (input: string) => {
 			<div class="ui-sidebar-sub-content">
 				<span class="ui-sidebar-sub-close" @click="onBack">
 					<Icon name="arrow_back" />
-					<span>menu</span>
+					<span>Menu</span>
 				</span>
 				<div class="ui-sidebar-sub-title">{{ s.name }}</div>
 				<ul class="ui-sidebar-list">

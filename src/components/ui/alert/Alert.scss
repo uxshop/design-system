@@ -1,7 +1,7 @@
 .ui-alert {
 	text-align: left;
 	position: relative;
-	font-size: 12px;
+	font-size: calc(var(--font-size-base) - 1px);
 	padding: 15px;
 	border-radius: var(--alert-border-radius);
 	background-color: var(--gray-200);
@@ -49,9 +49,9 @@
 	}
 
 	&.-warning {
-		background-color: #f7efd9;
+		background-color: #fff5ea;
 		border-color: #f6d26d;
-		color: #000;
+		color: #5e4708;
 	}
 
 	> .ui-icon {

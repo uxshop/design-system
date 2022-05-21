@@ -51,7 +51,7 @@ if (props.width) {
 					<Skeleton width="40%" height="10px" v-if="Number(lines) > 1" />
 				</td>
 				<td width="1" v-for="c in Number(withAction)" :key="c">
-					<Skeleton width="32px" height="32px" />
+					<Skeleton width="32px" />
 				</td>
 			</tr>
 		</tbody>

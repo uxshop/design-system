@@ -23,6 +23,7 @@
 		text-transform: uppercase;
 		opacity: 0.9;
 		font-weight: var(--font-weight-semibold);
+		border-bottom: solid 1px var(--border-color);
 	}
 
 	&.-no-padding {
@@ -37,13 +38,13 @@
 	}
 
 	&.-hover {
-		&:not(.ui-table-header) .ui-table-row {
+		> .ui-table-row,
+		tbody > .ui-table-row {
 			cursor: pointer;
-		}
 
-		&:not(.ui-table-header) .ui-table-row:hover {
-			background-color: var(--gray-100);
-			color: var(--body-color);
+			&:hover {
+				background-color: var(--gray-100);
+			}
 		}
 	}
 
@@ -69,7 +70,8 @@
 
 			> i {
 				font-size: 18px;
-				color: var(--gray-300);
+				color: var(--body-color);
+				opacity: 0.5;
 			}
 
 			&:hover i {
