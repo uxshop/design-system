@@ -84,13 +84,14 @@ const getComponent = (item: IDropdownItem) => {
 			</div>
 
 			<div class="ui-userbar-actions">
-				<div class="ui-userbar-notification" @click="onNotification">
-					<!-- <div class="ui-userbar-notification-button" :class="{ '-new': notifications }">
-							<Icon name="notifications" />
-						</div> -->
-				</div>
 				<div class="ui-userbar-actions">
-					<IconButton icon="notifications" variant="plain" />
+					<IconButton
+						icon="notifications"
+						variant="plain"
+						@click="onNotification"
+						class="ui-userbar-notification-button"
+						:class="{ '-new': notifications }" />
+
 					<ButtonDarkmode />
 				</div>
 			</div>

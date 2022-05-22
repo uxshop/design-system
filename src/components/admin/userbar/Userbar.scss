@@ -46,27 +46,7 @@
 	}
 
 	.ui-userbar-notification-button {
-		display: flex;
-		align-items: center;
 		position: relative;
-		height: 40px;
-		cursor: pointer;
-		transition: all 0.2s;
-		transform-origin: top;
-		border-radius: 8px;
-		padding: 0 10px;
-
-		&:hover {
-			> .ui-icon {
-				color: var(--secondary);
-			}
-		}
-
-		> .ui-icon {
-			position: relative;
-			z-index: 9;
-		}
-
 		&.-new:after,
 		&.-new:before {
 			content: '';
@@ -79,16 +59,17 @@
 			left: 50%;
 			top: 50%;
 			margin-top: -10px;
-			margin-left: 8px;
+			margin-left: 6px;
+			z-index: 8;
 		}
 
-		&.-new:before {
-			animation: radar 2s infinite ease-in-out;
-		}
+		// &.-new:before {
+		// 	animation: radar 1.4s infinite ease-in-out;
+		// }
 
-		&.-new:hover {
-			background: var(--gray-200);
-		}
+		// &.-new:hover {
+		// 	background: var(--gray-200);
+		// }
 	}
 
 	.btn-back {

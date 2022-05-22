@@ -97,7 +97,7 @@
 			~ .ui-form-checkbox-checkmark {
 				&::after {
 					display: block;
-					background: var(--dark-100, --input-border-color);
+					background: var(--dark-100, var(--input-border-color));
 				}
 			}
 		}
