@@ -36,7 +36,7 @@
 	}
 
 	.ui-layout-content-page {
-		max-width: 1200px;
+		max-width: var(--container-max-width);
 		margin: 0 auto;
 		padding: 0 var(--layout-content-padding-x);
 		flex: 1;

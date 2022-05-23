@@ -111,8 +111,8 @@ label {
 			cursor: pointer;
 
 			&:hover {
-				.ui-icon {
-					color: var(--secondary);
+				.btn-collapse-icon {
+					color: var(--primary);
 				}
 			}
 		}
@@ -187,43 +187,6 @@ label {
 
 		+ .ui-card-body {
 			filter: blur(1px);
-		}
-	}
-
-	.ui-card-accordion {
-		padding: 20px 0;
-		margin-left: -var(--card-padding);
-		margin-right: -var(--card-padding);
-
-		.ui-card-accordion-item {
-			list-style: none;
-			border-bottom: solid 1px var(--border-color);
-
-			&.active {
-				.ui-icon {
-					transform: rotate(180deg);
-				}
-			}
-		}
-		.ui-card-accordion-content {
-			padding: var(--card-padding);
-			border-top: solid 1px var(--border-color);
-			ul {
-				padding-left: 15px;
-			}
-		}
-		.ui-card-accordion-title {
-			padding: 0 var(--card-padding);
-			border-top: solid 1px var(--border-color);
-			height: 50px;
-			align-items: center;
-			display: flex;
-			font-weight: var(--font-weight-semibold);
-
-			.ui-icon {
-				margin-left: auto;
-				transition: transform 0.2s;
-			}
 		}
 	}
 
