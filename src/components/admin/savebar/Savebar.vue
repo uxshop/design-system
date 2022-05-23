@@ -49,5 +49,5 @@ const handleDiscardChanges = () => {
 </template>
 
 <style lang="scss">
-@import './_savebar.scss';
+@import './Savebar.scss';
 </style>
