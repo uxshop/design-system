@@ -47,10 +47,10 @@ const props = defineProps<Props>()
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string | null): void
 	(e: 'update', val: string | null): void
-	(e: 'focus'): void
-	(e: 'blur'): void
-	(e: 'keydown'): void
-	(e: 'enter'): void
+	(e: 'focus', event: Event): void
+	(e: 'blur', event: Event): void
+	(e: 'keydown', event: Event): void
+	(e: 'keydownEnter', event: Event): void
 	(e: 'clear'): void
 }>()
 
@@ -75,10 +75,18 @@ if (props.size) {
 	classList.value.push(`-${props.size}`)
 }
 
-const onFocus = emit('focus')
-const onBlur = emit('blur')
-const onKeydown = emit('keydown')
-const onEnter = emit('enter')
+const onFocus = (event: Event) => {
+	emit('focus', event)
+}
+const onBlur = (event: Event) => {
+	emit('blur', event)
+}
+const onKeydown = (event: Event) => {
+	emit('keydown', event)
+}
+const onEnter = (event: Event) => {
+	emit('keydownEnter', event)
+}
 
 const onClear = () => {
 	emit('clear')
@@ -113,7 +121,7 @@ const onClear = () => {
 			@focus="onFocus"
 			@blur="onBlur"
 			@keydown="onKeydown"
-			@keyup.enter="onEnter"
+			@keydown.enter="onEnter"
 			:type="type"
 			:step="step"
 			:value="modelValue"

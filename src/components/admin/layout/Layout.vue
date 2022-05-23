@@ -20,7 +20,7 @@ const onScroll = (e: UIEvent) => {
 
 		<!-- <not-found v-if="notFound" /> -->
 
-		<div class="ui-layout-content">
+		<div class="ui-layout-content" id="ui-layout-content">
 			<div class="ui-layout-content-page">
 				<router-view v-slot="{ Component }">
 					<component :is="Component" />

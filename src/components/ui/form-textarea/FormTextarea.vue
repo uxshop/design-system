@@ -38,10 +38,6 @@ interface Props {
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string): void
 	(e: 'update', val: string): void
-	(e: 'focus'): void
-	(e: 'blur'): void
-	(e: 'keydown'): void
-	(e: 'enter'): void
 }>()
 
 const props = withDefaults(defineProps<Props>(), {
