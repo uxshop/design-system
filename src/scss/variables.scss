@@ -95,15 +95,19 @@ $dark: #4e6380 !default;
 
 [data-theme='dark'] {
 	--body-color: #b1b9c9;
+
 	--dark-100: #3a4656;
 	--dark-200: #333c49;
 	--dark-300: #2f3845;
 	--bg-white: #333c49;
-	// --dark-100: #3a4c63;
-	// --dark-200: #262c3a;
-	// --dark-300: #1c1e2a;
-	// --bg-white: #262c3a;
 	--border-color: #3a4656;
+
+	--dark-100: #3a4c63;
+	--dark-200: #262c3a;
+	--dark-300: #1c1e2a;
+	--bg-white: #262c3a;
+	--border-color: #3a4c63;
+
 	--text-muted: #{transparentize(#b1b9c9, 0.2)};
 	--gray-100: #3a4656;
 	--gray-200: #{darken(#3a4656, 4)};

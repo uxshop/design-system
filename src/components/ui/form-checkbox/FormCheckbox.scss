@@ -14,6 +14,10 @@
 		pointer-events: none;
 	}
 
+	+ .ui-form-checkbox {
+		margin-top: 8px;
+	}
+
 	&:hover {
 		.ui-form-checkbox-checkmark {
 			border-color: var(--primary);

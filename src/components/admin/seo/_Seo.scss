@@ -1,4 +1,10 @@
 .ui-seo {
+	--ui-seo-title-color: #1a0dab;
+
+	[data-theme='dark'] & {
+		--ui-seo-title-color: #8ab4f8;
+	}
+
 	&.-gray {
 		.ui-seo-card {
 			border-radius: var(--border-radius);
@@ -15,7 +21,7 @@
 	}
 
 	.ui-seo-title {
-		color: var(--link-color);
+		color: var(--ui-seo-title-color);
 		font-size: 16px;
 		font-weight: var(--font-weight-bold);
 	}

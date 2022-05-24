@@ -73,7 +73,7 @@ const startTimer = () => {
 				<div v-html="message"></div>
 			</div>
 			<span @click="close" class="ui-toast-close" v-if="closeable">
-				<Icon name="close" />
+				<Icon class="ui-toast-close-icon" name="close" />
 			</span>
 		</div>
 	</div>
