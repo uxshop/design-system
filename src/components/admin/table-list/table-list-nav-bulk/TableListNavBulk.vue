@@ -39,14 +39,14 @@ const onRemoveDialog = () => {
 		title: 'Excluir registros',
 		destructIcon: 'delete',
 		destructLabel: `Deletar registros`,
-		message: `Você confirma a exclusão dos registros selecionados? <br><small><b>${count}</b> selecionados.</small>`,
+		message: `Você confirma a exclusão dos registros selecionados? <br><b>${count}</b> selecionados.`,
 		onCallback: remove
 	})
 }
 
-const remove = () => props.state.remove
+const remove = () => props.state.removeSelecteds()
 const active = () => props.state.toggleActiveSelecteds(true)
-const inactive = () => props.state.toggleActiveSelecteds(true)
+const inactive = () => props.state.toggleActiveSelecteds(false)
 
 watchEffect(() => {
 	if (props.rows.length && props.selected.length == props.rows.length) {
