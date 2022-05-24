@@ -106,9 +106,9 @@ watchEffect(() => {
 						<h4 class="title">
 							{{ currentTitle }}
 						</h4>
-						<button @click="close()" class="btn-close" id="btn-close">
-							<span>fechar</span>
-							<icon name="close" />
+						<button @click="close()" class="ui-modal-close" id="btn-close">
+							<span>Fechar</span>
+							<Icon class="ui-modal-close-icon" name="close" />
 						</button>
 					</div>
 

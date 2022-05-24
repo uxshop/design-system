@@ -95,7 +95,7 @@
 			animation: 0.2s modalFadeIn forwards;
 
 			> .ui-modal-header {
-				background: rgba(255, 255, 255, 0.95);
+				background: inherit;
 				padding: var(--modal-padding-x);
 				display: flex;
 				border: none;
@@ -109,7 +109,7 @@
 					margin: 0;
 				}
 
-				> .btn-close {
+				> .ui-modal-close {
 					border: none;
 					appearance: none;
 					margin-left: auto;
@@ -121,31 +121,32 @@
 					cursor: pointer;
 					box-shadow: none;
 					margin-right: -6px;
+					line-height: 1;
 
 					> span {
 						margin-right: 10px;
 					}
 
-					> .ui-icon {
-						background: #edf5f7;
-						border-radius: 5px;
-						font-size: 18px;
-						color: var(--body-color);
-						transition: transform 0.3s ease-in-out;
-						min-width: 24px;
-						min-height: 24px;
-						display: inline-flex;
-						align-items: center;
-						justify-content: center;
-					}
-
 					&:hover {
 						color: var(--primary);
-						> .ui-icon {
+						> .ui-modal-close-icon {
 							background-color: var(--primary);
 							color: white;
 						}
 					}
+				}
+
+				.ui-modal-close-icon {
+					background: #edf5f7;
+					border-radius: var(--input-border-radius);
+					font-size: 18px;
+					color: var(--body-color);
+					transition: transform 0.3s ease-in-out;
+					min-width: 24px;
+					min-height: 24px;
+					display: inline-flex;
+					align-items: center;
+					justify-content: center;
 				}
 			}
 		}
@@ -212,10 +213,11 @@
 				line-height: 1;
 			}
 
-			> .btn-close > span {
+			> .ui-modal-close > span {
 				display: none;
 			}
-			> .btn-close > i {
+
+			> .ui-modal-close > i {
 				height: 20px;
 			}
 		}
@@ -228,8 +230,8 @@
 			background: var(--dark-200);
 		}
 
-		.ui-modal-header > .btn-close {
-			> .ui-icon {
+		.ui-modal-header .ui-modal-close {
+			> .ui-modal-close-icon {
 				background: var(--dark-100);
 			}
 		}
