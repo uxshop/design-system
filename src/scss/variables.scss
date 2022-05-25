@@ -42,7 +42,7 @@ $dark: #4e6380 !default;
 	--card-sparcer-x: 30px;
 
 	--input-height: 38px;
-	--input-height-sm: 32px;
+	--input-height-sm: 30px;
 	--input-height-lg: 50px;
 	--input-border-color: rgb(176, 179, 183);
 	--input-border-focus-color: var(--primary);
@@ -96,11 +96,11 @@ $dark: #4e6380 !default;
 [data-theme='dark'] {
 	--body-color: #b1b9c9;
 
-	--dark-100: #3a4656;
-	--dark-200: #333c49;
-	--dark-300: #2f3845;
-	--bg-white: #333c49;
-	--border-color: #3a4656;
+	// --dark-100: #3a4656;
+	// --dark-200: #333c49;
+	// --dark-300: #2f3845;
+	// --bg-white: #333c49;
+	// --border-color: #3a4656;
 
 	--dark-100: #3a4c63;
 	--dark-200: #262c3a;

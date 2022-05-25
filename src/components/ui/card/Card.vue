@@ -36,7 +36,6 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const isDropdown = ref(props.dropdown)
-const cardTitle = ref(props.title)
 const showBody = ref(!props.dropdownClosed)
 const uid = `ui-card-${getCurrentInstance()?.uid}`
 const slots = useSlots()
@@ -126,10 +125,8 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			<slot />
 		</div>
 
-		<div class="ui-card-footer" v-if="haveSlot('footer')">
-			<div v-show="showBody">
-				<slot name="footer" />
-			</div>
+		<div class="ui-card-footer" v-if="haveSlot('footer')" v-show="showBody">
+			<slot name="footer" />
 		</div>
 	</div>
 </template>

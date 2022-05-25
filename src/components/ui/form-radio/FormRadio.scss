@@ -25,13 +25,22 @@
 		}
 	}
 
+	.ui-form-radio-text:empty {
+		display: none;
+	}
+
+	.ui-form-radio-text {
+		margin-left: 8px;
+	}
+
 	.ui-form-radio-checkmark {
 		position: relative;
-		margin-right: 8px;
 		top: 0;
 		left: 0;
 		height: var(--form-check-height);
 		width: var(--form-check-height);
+		min-height: var(--form-check-height);
+		min-width: var(--form-check-height);
 		background-color: white;
 		border-radius: 100%;
 		border: solid var(--form-check-border-width) var(--input-border-color);
@@ -48,10 +57,6 @@
 			background-color: transparent;
 			border-radius: 100%;
 		}
-	}
-
-	.ui-form-radio-text {
-		margin-top: 1px;
 	}
 
 	&:disabled {

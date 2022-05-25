@@ -41,7 +41,7 @@ const update = (val: string | boolean) => {
 			v-model="model"
 			@update:modelValue="update" />
 		<span class="ui-form-radio-checkmark" />
-		<div class="ui-form-radio-text">
+		<div class="ui-form-radio-text" v-if="label || $slots.default">
 			<slot>{{ label }}</slot>
 		</div>
 	</label>

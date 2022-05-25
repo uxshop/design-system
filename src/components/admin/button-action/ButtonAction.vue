@@ -3,6 +3,7 @@ import { watchEffect, ref, useAttrs, onMounted } from 'vue'
 import dialog from '../../ui/dialog'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import TextStyle from '../../ui/text-style/TextStyle.vue'
+import Button from '../../ui/button/Button.vue'
 
 const props = defineProps<{
 	type: string
@@ -12,7 +13,7 @@ const props = defineProps<{
 	noEvents?: boolean
 }>()
 
-const emit = defineEmits(['delete', 'inactive', 'active', 'close', 'click', 'update:active', 'toggleActive'])
+const emit = defineEmits(['delete', 'inactive', 'active', 'close', 'update:active', 'toggleActive'])
 const attrs = useAttrs()
 const currentIcon = ref<string | undefined>()
 const hasClick = attrs.click
@@ -52,7 +53,7 @@ const onClick = (evt: MouseEvent) => {
 		return
 	}
 
-	emit('click')
+	// emit('click')
 
 	if (!props.noEvents) {
 		evt.stopPropagation()
@@ -89,16 +90,18 @@ const onClick = (evt: MouseEvent) => {
 </script>
 
 <template>
-	<!-- 
-		<IconButton
-		class="ui-button-action"
-		@click="onClick"
-		:icon="currentIcon"
-		:class="[classType, { '-inactive': !active }]" /> 
-	-->
-	<div v-if="type == 'active'" class="text-right" @click="onClick">
-		<TextStyle v-if="active" variant="success" label="Ativo" />
-		<TextStyle v-else variant="danger" label="Inativo" />
+	<div>
+		<IconButton v-if="type == 'remove'" class="ui-button-action" icon="close" size="sm" />
+		<!-- <Button v-if="type == 'remove'" variant="plain" size="sm" label="Remover" /> -->
+		<Button v-if="type == 'active'" variant="plain" size="sm" @click="onClick">
+			<TextStyle v-if="active" variant="success" label="Ativo" />
+			<TextStyle v-else variant="danger" label="Inativo" />
+		</Button>
+		<!-- <div v-if="type == 'active'" class="text-right" @click="onClick">
+		
+			<TextStyle v-if="active" variant="success" label="Ativo" />
+			<TextStyle v-else variant="danger" label="Inativo" />
+		</div> -->
 	</div>
 </template>
 

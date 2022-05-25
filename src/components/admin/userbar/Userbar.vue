@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
-import Row from '../../ui/grid/row/Row.vue'
-import Col from '../../ui/grid/col/Col.vue'
 import Breadcrumb from '../../ui/breadcrumb/UiBreadcrumb.vue'
 import BreadcrumbItem from '../../ui/breadcrumb/BreadcrumbItem.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
@@ -55,6 +53,10 @@ const getComponent = (item: IDropdownItem) => {
 		return DropdownDividerVue
 	}
 
+	if (item.to) {
+		return DropdownItemVue
+	}
+
 	return DropdownItemButtonVue
 }
 </script>
@@ -98,7 +100,7 @@ const getComponent = (item: IDropdownItem) => {
 
 			<div class="ui-userbar-user">
 				<div class="ui-userbar-btn">
-					<Dropdown right>
+					<Dropdown right closeOn>
 						<template #button-content>
 							<div class="ui-userbar-btn-wrapper">
 								<div class="ui-userbar-btn-avatar">
@@ -114,7 +116,12 @@ const getComponent = (item: IDropdownItem) => {
 							</div>
 						</template>
 						<slot name="user-links" />
-						<component :is="getComponent(item)" v-for="item in dropdown" :key="item" @click="item.onAction">
+						<component
+							:is="getComponent(item)"
+							v-for="item in dropdown"
+							:key="item"
+							@click="item.onAction"
+							v-bind="item">
 							<Icon :name="item.icon" v-if="item.icon" />
 							<span>{{ item.text }}</span>
 						</component>

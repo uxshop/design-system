@@ -3,6 +3,7 @@
 	background: none;
 	border: none;
 	box-sizing: border-box;
+	box-shadow: none;
 	cursor: pointer;
 	margin: 0;
 	outline: none;
@@ -12,6 +13,7 @@
 	height: 100%;
 	font-weight: 500;
 	padding: 5px;
+	color: var(--body-color);
 
 	.ui-tab-item-content {
 		justify-content: center;

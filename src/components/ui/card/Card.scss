@@ -64,8 +64,6 @@ label {
 	&.-gray {
 		background: var(--gray-200);
 		border-color: transparent;
-		filter: none;
-		box-shadow: none;
 
 		hr {
 			background-color: white;
@@ -79,6 +77,11 @@ label {
 	&.-plain {
 		box-shadow: none;
 		border: solid var(--border-width) var(--border-color);
+
+		.ui-card-footer {
+			border-bottom-left-radius: calc(var(--card-border-radius, 8px) - 2px);
+			border-bottom-right-radius: calc(var(--card-border-radius, 8px) - 2px);
+		}
 	}
 
 	&.-image {
@@ -122,12 +125,6 @@ label {
 		overflow: hidden;
 	}
 
-	&.-active {
-		background: var(--gray-200);
-		border: none;
-		filter: none;
-	}
-
 	img {
 		max-width: 100%;
 	}
@@ -152,15 +149,32 @@ label {
 		}
 
 		h6 {
-			margin-bottom: 20px;
+			margin-bottom: 8px;
 		}
 	}
 
 	.ui-card-item {
-		margin-top: 20px;
+		border-top: solid 1px var(--border-color);
+		margin-left: calc(var(--card-padding) * -1);
+		margin-right: calc(var(--card-padding) * -1);
+		padding: var(--card-padding);
 
 		&:first-child {
 			margin-top: 0;
+		}
+		&:last-child {
+			padding-bottom: 0;
+		}
+
+		.ui-card-item-title {
+			margin: 0;
+			margin-right: auto;
+		}
+
+		.ui-card-item-header {
+			display: flex;
+			align-items: center;
+			margin-bottom: 8px;
 		}
 	}
 
@@ -234,7 +248,7 @@ label {
 
 		.ui-card-caption {
 			display: block;
-
+			margin-top: 4px;
 			&:empty {
 				display: none;
 			}
@@ -328,8 +342,10 @@ label {
 		line-height: 1.2em;
 		background: var(--gray-100);
 		padding: var(--card-padding);
-		border-bottom-left-radius: var(--card-border-radius, 8px);
-		border-bottom-right-radius: var(--card-border-radius, 8px);
+		border-bottom-left-radius: calc(var(--card-border-radius, 8px));
+		border-bottom-right-radius: calc(var(--card-border-radius, 8px));
+		display: flex;
+		gap: 8px;
 
 		&:empty {
 			display: none;

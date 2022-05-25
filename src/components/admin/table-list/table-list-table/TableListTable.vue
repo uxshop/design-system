@@ -78,12 +78,14 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 			<slot v-bind:item="item" />
 
 			<TableListItem v-if="state.config.actions?.length" auto>
-				<div
+				<Button
 					v-if="state.config.actions && state.config.actions.includes('active')"
-					@click.stop.prevent="onActiveOne(item)">
+					@click.stop.prevent="onActiveOne(item)"
+					variant="plain"
+					size="sm">
 					<TextStyle v-if="item.active" variant="success" label="Ativo" />
 					<TextStyle v-else variant="danger" label="Inativo" />
-				</div>
+				</Button>
 			</TableListItem>
 
 			<!-- <td class="td-action" width="1"> -->

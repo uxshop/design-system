@@ -1,12 +1,8 @@
-.actions {
-	display: flex;
-	align-items: center;
-}
-
 .ui-button-action {
 	color: var(--body-color);
 	opacity: 0.8;
-	border-radius: var(--input-border-radius);
+	border: none !important;
+	box-shadow: none !important;
 
 	&:last-child {
 		margin: 0;
@@ -19,30 +15,8 @@
 	}
 
 	&.-delete {
-		&:hover {
-			> .ui-icon {
-				color: #fff;
-			}
-
-			&::before {
-				background: var(--danger);
-			}
-		}
-	}
-
-	&.-lg {
-		width: 50px;
-
-		> .ui-icon {
-			font-size: 30px;
-		}
-	}
-
-	&.-preview {
-		color: var(--link-color);
-		> .ui-icon {
-			font-size: 21px;
-		}
+		background-color: none;
+		border: none;
 	}
 
 	&.-btn-active {
@@ -56,11 +30,6 @@
 			opacity: 1;
 		}
 	}
-
-	// &:focus,
-	// &:active {
-	// 	outline: none;
-	// }
 
 	+ .ui-button-action {
 		margin-left: 5px;

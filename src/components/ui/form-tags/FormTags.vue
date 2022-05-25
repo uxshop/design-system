@@ -5,7 +5,7 @@ import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
 
 export interface Props {
-	modelValue?: string | null
+	modelValue?: any
 	placeholder?: string
 	label?: string
 	config?: any
@@ -42,6 +42,7 @@ const getSettings = () => {
 			removeItems: true,
 			removeItemButton: true,
 			addItems: true,
+			create: false,
 			placeholder: true,
 			placeholderValue: props.placeholder || 'Selecione',
 			noResultsText: 'Nenhum resultado encontrado',
@@ -79,7 +80,7 @@ const init = () => {
 				'change',
 				function (event) {
 					update(element.value.getValue(true))
-					element.value.hideDropdown()
+					// element.value.hideDropdown()
 				},
 				false
 			)
@@ -132,7 +133,13 @@ watch(
 <template>
 	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length }">
 		<FormLabel v-if="label" :label="label" />
-		<input v-if="config.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
+		<input
+			v-if="getSettings().create"
+			ref="selectRef"
+			:id="uid"
+			type="text"
+			autocomplete="off"
+			:placeholder="placeholder" />
 		<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
 	</div>
 </template>

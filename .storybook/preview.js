@@ -1,10 +1,32 @@
 import '../src/scss/theme.scss'
 import { app } from '@storybook/vue3'
-import ui from '../src/ui'
+import Darkmode from '../src/components/Darkmode.vue'
 
-app.use(ui)
+app.component('Darkmode', Darkmode)
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
-  // layout: 'fullscreen',
+	actions: { argTypesRegex: '^on[A-Z].*' }
+	// layout: 'fullscreen',
 }
+
+export const globalTypes = {
+	theme: {
+		name: 'Theme',
+		defaultValue: 'light',
+		toolbar: {
+			icon: 'circlehollow',
+			items: ['light', 'dark'],
+			showName: false
+		}
+	}
+}
+
+export const decorators = [
+	(story, context) => ({
+		components: { story },
+		template: `
+    <Darkmode theme="${context.globals.theme}"  />
+    <story />
+  `
+	})
+]

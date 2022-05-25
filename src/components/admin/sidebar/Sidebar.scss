@@ -149,6 +149,7 @@
 		user-select: none;
 		align-items: center;
 		padding-left: var(--sidebar-line-width);
+		margin: 0;
 
 		&.-spacer-last {
 			margin-top: auto;
@@ -190,7 +191,7 @@
 			}
 
 			.ui-icon {
-				margin-right: 8px;
+				margin-right: 10px;
 				font-size: 16px;
 			}
 

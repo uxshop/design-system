@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { ref, useSlots } from 'vue'
+import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 import Icon from '../icon/Icon.vue'
-const vMaska = maska
 
-interface Props {
+export interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
@@ -43,6 +42,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const vMaska = maska
 
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string | null): void
