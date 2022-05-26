@@ -45,7 +45,7 @@ defineExpose({
 				</a>
 				<ul class="page-helper-video-modal-list">
 					<li v-for="item in video.articles">
-						<Link>
+						<Link :href="item.url" target="_blank">
 							{{ item.name }}
 						</Link>
 					</li>
