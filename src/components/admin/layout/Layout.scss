@@ -8,7 +8,7 @@
 	align-items: start;
 	grid-auto-columns: 1fr;
 	grid-template-columns: var(--layout-sidebar-width) 1fr;
-	grid-template-rows: var(--layout-navbar-height) 1.8fr;
+	grid-template-rows: auto 1fr;
 	gap: 0px 0px;
 	grid-template-areas:
 		'ui-layout-sidebar ui-layout-navbar'
@@ -36,12 +36,9 @@
 	}
 
 	.ui-layout-content-page {
-		max-width: var(--container-max-width);
-		margin: 0 auto;
-		padding: 0 var(--layout-content-padding-x);
+		width: 100%;
 		flex: 1;
 		flex-grow: 1;
-		padding-bottom: 20px;
 		display: flex;
 		flex-direction: column;
 	}

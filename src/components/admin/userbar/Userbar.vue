@@ -11,6 +11,7 @@ import DropdownItemButtonVue from '../../ui/dropdown/DropdownItemButton.vue'
 import DropdownItemVue from '../../ui/dropdown/DropdownItem.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import ButtonDarkmode from '../../admin/button-darkmode/ButtonDarkmode.vue'
+import Link from '../../ui/link/Link.vue'
 
 export interface Props {
 	user: { name: string; image: any }
@@ -69,7 +70,7 @@ const getComponent = (item: IDropdownItem) => {
 					<button class="ui-userbar-menu" @click="onToggleMenu">
 						<Icon name="menu" />
 					</button>
-					<!-- <Logo class="logo logo-small" /> -->
+					<slot name="logo-mobile" />
 				</div>
 				<Breadcrumb>
 					<BreadcrumbItem :to="{ name: backlink.to }" class="btn-back" v-if="backlink">
@@ -129,12 +130,6 @@ const getComponent = (item: IDropdownItem) => {
 				</div>
 			</div>
 		</div>
-		<!-- <Modal ref="modal" title="Notificações" size="sm">
-			<MessageShow />
-		</Modal>
-		<Modal ref="modalAffiliate" :title="'Indique & Ganhe!'">
-			<AffiliateModal />
-		</Modal> -->
 	</div>
 </template>
 

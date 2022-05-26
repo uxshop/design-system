@@ -36,12 +36,16 @@ defineProps<{
 			<slot name="subtitle" class="titlebar-subtitle" />
 		</div>
 		<div class="titlebar-actions">
-			<div class="titlebar-actions-secondary">
+			<div v-if="secondaryActions" class="titlebar-actions-secondary">
 				<!-- <slot name="secondary-action" /> -->
-				<!-- <Button v-for="item in secondaryActions" variant="plain" :label="item.label" @click="item.onAction" /> -->
-				<Dropdown v-if="secondaryActions" right>
+				<Button
+					v-if="secondaryActions?.length == 1"
+					v-for="item in secondaryActions"
+					variant="plain"
+					:label="item.label"
+					@click="item.onAction" />
+				<Dropdown v-else right>
 					<template #button-content>
-						<!-- <IconButton icon="more_horiz" /> -->
 						<Button variant="plain" label="Mais ações" trailingIcon="expand_more" />
 					</template>
 					<DropdownItemButton v-for="item in secondaryActions" :label="item.label" @click="item.onAction" />
