@@ -34,9 +34,9 @@ if (props.wrap == null && props.wrap == false) {
 
 const styleList = ref<string[]>([])
 
-if (props.columns && props.columns != 1) {
+if (props.columns && props.columns > 1) {
 	classList.value.push('-custom-grid')
-	styleList.value.push(`grid-template-columns: repeat(${props.columns}, auto)`)
+	styleList.value.push(`grid-template-columns: repeat(${props.columns}, 1fr)`)
 }
 </script>
 <template>
