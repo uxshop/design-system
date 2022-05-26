@@ -1,3 +1,4 @@
+@import '../../../scss/mixins.scss';
 .ui-alert {
 	text-align: left;
 	position: relative;
@@ -119,6 +120,14 @@
 	ul.circle {
 		li {
 			list-style: inside;
+		}
+	}
+
+	@include darkmode {
+		&.-info {
+			background-color: #0095ff1c;
+			border-color: #31486c;
+			color: #a6c1eb;
 		}
 	}
 }

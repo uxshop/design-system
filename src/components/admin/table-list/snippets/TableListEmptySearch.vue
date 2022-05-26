@@ -25,6 +25,7 @@ const emit = defineEmits<{
 	text-align: center;
 	background-color: var(--gray-100);
 	margin: 0 20px;
+	margin-top: 20px;
 
 	.table-list-empty-search-icon {
 		opacity: 0.4;

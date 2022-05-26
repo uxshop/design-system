@@ -52,7 +52,7 @@
 
 		&.-scrollable {
 			.ui-aside-header {
-				background: white;
+				background: var(--bg-white);
 				position: sticky;
 				top: 0;
 				z-index: 99;

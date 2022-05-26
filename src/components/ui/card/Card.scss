@@ -153,15 +153,21 @@ label {
 		}
 	}
 
+	.ui-card-body .ui-card-item:first-child {
+		padding-top: 0;
+		border-top: none;
+	}
+
 	.ui-card-item {
 		border-top: solid 1px var(--border-color);
 		margin-left: calc(var(--card-padding) * -1);
 		margin-right: calc(var(--card-padding) * -1);
 		padding: var(--card-padding);
 
-		&:first-child {
-			margin-top: 0;
-		}
+		// &:first-child {
+		// 	border-top: none;
+		// }
+
 		&:last-child {
 			padding-bottom: 0;
 		}
@@ -388,7 +394,7 @@ label {
 
 	@include darkmode {
 		hr {
-			border-top-color: var(--dark1);
+			background-color: var(--dark-100);
 		}
 
 		.ui-card-header-content > .muted {
