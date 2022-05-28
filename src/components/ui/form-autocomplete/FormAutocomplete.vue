@@ -1,108 +1,116 @@
 <script setup lang="ts">
-import { getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
-import * as TomSelect from 'tom-select/dist/js/tom-select.complete.min.js'
-import 'tom-select/dist/css/tom-select.default.css'
+import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
 import { cloneDeep } from 'lodash-es'
-import FormLabel from '../form-label/FormLabel.vue'
 
-export interface IConfigSelect {
-	persist?: boolean
-	createOnBlur?: boolean
-	create?: boolean
-	closeAfterSelect?: boolean
-	plugins?: string[]
-	valueField?: string
-	labelField?: string
-	searchField?: string
-	options?: any[]
-	render?: {
-		option?: (item: any) => string
-		item?: () => string
-		option_create?: () => string
-		no_results?: () => string
-		not_loading?: () => string
-		optgroup?: () => HTMLElement
-		optgroup_header?: () => string
-		loading?: () => string
-		dropdown?: () => string
-	}
-	onChange?: (val: string) => void
-}
+import choices, { templates } from 'choices.js'
+import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
 	modelValue?: any
 	options?: any[]
 	placeholder?: string
-	config?: IConfigSelect
+	choices?: any
 	label?: string
 	size?: string
 	last?: boolean
+	templates?: any
+	position?: 'top' | 'bottom' | 'auto'
 }
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
-	config: () => ({})
+	config: () => ({}),
+	position: 'bottom'
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
-const model = ref<string | null | undefined>(null)
 const element = shallowRef()
 const focus = ref(false)
+
+const getTemplateChoice = (data: any) => {
+	return props.templates.choice(data)
+}
+
+const settings = computed(() => {
+	const _choices = props.choices
+	const config: any = {
+		searchEnabled: true,
+		searchChoices: true,
+		removeItems: true,
+		position: props.position,
+		removeItemButton: true,
+		addItems: true,
+		placeholder: true,
+		noResultsText: 'Nenhum resultado encontrado',
+		noChoicesText: 'Sem opções para escolher',
+		items: [],
+		choices: _choices,
+		allowHTML: false
+	}
+
+	if (props.templates) {
+		config.callbackOnCreateTemplates = function (template: any) {
+			return {
+				choice: ({ classNames }: any, data) => {
+					return template(`
+							<div
+							class="${classNames.item} ${classNames.itemChoice} ${
+						data.disabled ? classNames.itemDisabled : classNames.itemSelectable
+					}"
+						data-select-text="${this.config.itemSelectText}"
+						data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'}
+						data-id="${data.id}"
+						data-value="${data.value}" ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}
+						>
+							${getTemplateChoice(data)}
+						</div>
+					`)
+				}
+			}
+		}
+	}
+	return config
+})
+
+const init = () => {
+	console.log('init')
+
+	nextTick(() => {
+		if (element.value) {
+			element.value.destroy()
+		}
+
+		const el = document.querySelector(`#${uid}`)
+
+		if (el) {
+			element.value = new choices(el, settings.value)
+			checkModelValue()
+
+			el.addEventListener(
+				'change',
+				function (event) {
+					update(element.value.getValue(true))
+					// element.value.hideDropdown()
+				},
+				false
+			)
+		}
+	})
+}
 
 const update = (val: string) => {
 	emit('update:modelValue', val)
 	emit('update', val)
 }
 
-const getSettings = () => {
-	const newConfig: IConfigSelect = cloneDeep(props.config)
-
-	if (newConfig.labelField && !newConfig.searchField) {
-		newConfig.searchField = newConfig.labelField
-	}
-
-	const config: IConfigSelect = {
-		...{
-			plugins: ['clear_button'],
-			persist: false,
-			createOnBlur: false,
-			create: false,
-			items: ['2'],
-			closeAfterSelect: true,
-			valueField: 'id',
-			labelField: 'text',
-			searchField: 'text',
-			options: cloneDeep(props.options),
-			onChange: update,
-			onFocus: () => (focus.value = true),
-			onBlur: () => (focus.value = false)
-		},
-		...newConfig
-	}
-
-	return config
-}
-
-const init = () => {
-	nextTick(() => {
-		if (element.value) {
-			element.value.destroy()
-		}
-		//@ts-expect-error: sem interface do plugins 3rd
-		element.value = new TomSelect(`#${uid}`, getSettings())
-	})
-}
-
 const checkModelValue = () => {
 	nextTick(() => {
 		if (element.value) {
-			element.value.setValue(props.modelValue)
+			element.value.setChoiceByValue(props.modelValue)
 		}
 	})
 }
-
-onMounted(init)
 
 watch(
 	() => props.modelValue,
@@ -112,19 +120,22 @@ watch(
 )
 
 watch(
-	() => [props.config],
+	() => [props.choices],
 	() => init(),
-	{ deep: true }
+	{ deep: true, immediate: true }
 )
 </script>
 
 <template>
 	<div class="ui-form-autocomplete" :class="[{ '-focus': focus, 'mb-0': last }, `-${size}`]">
 		<FormLabel v-if="label" :label="label" />
-		<select :value="model" class="ui-form-select" :id="uid" :placeholder="placeholder"></select>
+		<select class="ui-form-select" :id="uid">
+			<option value="" disabled selected>{{ placeholder }}</option>
+		</select>
 	</div>
 </template>
 
 <style lang="scss">
+@import 'choices.js/src/styles/choices.scss';
 @import './FormAutocomplete.scss';
 </style>

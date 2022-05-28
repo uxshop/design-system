@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 import Icon from '../icon/Icon.vue'
+import Button from '../button/Button.vue'
 
 export interface Props {
 	leadingIcon?: string
@@ -39,6 +40,7 @@ export interface Props {
 	type?: string
 	mask?: string | string[] | object | null
 	raw?: boolean
+	actions: any[]
 }
 
 const props = defineProps<Props>()
@@ -145,7 +147,10 @@ const onClear = () => {
 		<div class="close" v-if="clearable && modelValue?.length" @click="onClear">
 			<Icon name="cancel" type="filled" />
 		</div>
-		<template #append v-if="$slots.append">
+		<template #append v-if="$slots.append || actions">
+			<div class="actions" v-if="actions">
+				<Button v-for="item in actions" :type="item.type" :label="item.label" />
+			</div>
 			<slot name="append" />
 		</template>
 	</FormWrapper>

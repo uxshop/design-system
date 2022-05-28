@@ -1,65 +1,47 @@
 @import '../../../../src/scss/mixins.scss';
 
 .ui-form-autocomplete {
-	z-index: 300;
 	position: relative;
 	margin-bottom: var(--form-group-margin-bottom);
 
-	&.-focus {
-		z-index: 310;
-	}
+	.choices {
+		&.is-focused {
+			z-index: 99;
+		}
 
-	&.-sm {
-		.ts-wrapper.single .ts-control {
-			height: var(--input-height-sm);
-			padding: 0 var(--input-padding-x-sm);
-			border-radius: var(--input-border-radius-sm);
-			display: flex;
-			align-items: center;
-
-			.item {
-				margin-right: 10px;
+		&.is-open.is-flipped {
+			.choices__inner {
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
 			}
 		}
-	}
 
-	.has-items .ts-control {
-		line-height: 1.6;
-		> input {
-			font-size: 12px;
-		}
-
-		.clear-button {
-			opacity: 1;
-			font-size: 26px;
-			top: 0;
-			height: 100%;
-			display: flex;
-			align-items: center;
-
-			&:hover {
-				color: var(--danger);
+		&.is-open:not(.is-flipped) {
+			.choices__inner {
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
 			}
 		}
-	}
 
-	.ts-wrapper.single .ts-control {
-		border-width: var(--input-border-width) !important;
-		border-color: var(--input-border-color) !important;
-		border-radius: var(--input-border-radius);
-		padding-left: var(--input-padding-x);
-		height: var(--input-height);
-		box-shadow: none;
-	}
+		.choices__button {
+			background-size: 12px !important;
+		}
 
-	.ts-wrapper.single .ts-control:after {
-		margin-top: -2px;
-	}
+		.choices__inner {
+			border-radius: var(--input-border-radius);
+			background-color: var(--input-bg-color);
+			border-color: var(--input-border-color);
+			min-height: var(--input-height);
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+			display: flex;
+			align-items: center;
+		}
 
-	.ts-dropdown.single {
-		border-width: var(--input-border-width);
-		border-top: solid 2px var(--input-border-color);
-		border-radius: var(--input-border-radius);
-		overflow: hidden;
+		.choices__list--dropdown,
+		.choices__list[aria-expanded] {
+			background-color: var(--bg-white);
+			border-color: var(--input-border-color);
+		}
 	}
 }

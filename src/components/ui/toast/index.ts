@@ -11,36 +11,35 @@ const globalConfig = {
 }
 
 let seed = 1
+const open = (text: string, config = {}) => {
+	let toastWrapper = null
+	let toastVM = null
+	const id = 'ui-toast-' + seed++
+	toastWrapper = document.createElement('div')
+	toastWrapper.id = id
+	toastVM = createVNode(
+		ToastComponent,
+		{
+			...globalConfig,
+			...config,
+			message: text,
+			id
+		},
+		null
+	)
+	render(toastVM, toastWrapper)
+	document.body.appendChild(toastWrapper)
+}
 
-class Toast {
-	// constructor(options = {}) {
-	// 	globalConfig = Object.assign({}, globalConfig, options)
-	// }
-	open(text: string, config = {}) {
-		let toastWrapper = null
-		let toastVM = null
-		const id = 'ui-toast-' + seed++
-		toastWrapper = document.createElement('div')
-		toastWrapper.id = id
-		toastVM = createVNode(
-			ToastComponent,
-			{
-				...globalConfig,
-				...config,
-				message: text,
-				id
-			},
-			null
-		)
-		render(toastVM, toastWrapper)
-		document.body.appendChild(toastWrapper)
-	}
+const Toast = {
+	open: open,
 	success(text: string) {
-		this.open(text, { type: 'success' })
-	}
+		open(text, { type: 'success' })
+	},
 	danger(text: string) {
-		this.open(text, { type: 'danger' })
+		open(text, { type: 'danger' })
 	}
 }
 
-export default new Toast()
+export default Toast
+export { Toast }

@@ -1,7 +1,8 @@
 import '../src/scss/theme.scss'
-import { app } from '@storybook/vue3'
+import { app, addDecorator } from '@storybook/vue3'
+import { jsxDecorator } from 'storybook-addon-jsx'
 import Darkmode from '../src/components/Darkmode.vue'
-
+addDecorator(jsxDecorator)
 app.component('Darkmode', Darkmode)
 
 export const parameters = {

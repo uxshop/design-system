@@ -2,6 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["./integration/**/*", "./support/**/*"],
   "compilerOptions": {
+    "jsx": "preserve",
     "isolatedModules": false,
     "target": "es6",
     "lib": ["es6", "dom"],

@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const props = defineProps<{
+export interface Props {
 	distribuition?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
 	spacing?: string
 	alignment?: 'start' | 'center' | 'end' | 'fill'
 	vertical?: boolean
 	wrap?: boolean
 	columns?: string | number
-}>()
+}
 
+const props = defineProps<Props>()
 const classList = ref<string[]>([])
 
 if (props.distribuition != 'default' && props.distribuition != undefined) {

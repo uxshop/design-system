@@ -12,7 +12,7 @@ export default {
 const Template = (args) => ({
 	components: { FormAutocomplete },
 	setup() {
-		const model = ref(null)
+		const model = ref(1)
 		return { args, model }
 	},
 	template: `
@@ -23,32 +23,29 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
-	config: {
-		options: [
-			{ id: 1, text: 'Hello' },
-			{ id: 2, text: 'World' }
-		]
-	}
+	choices: [
+		{ value: 1, label: 'Hello' },
+		{ value: 2, label: 'World' }
+	]
 }
 
 const Template2 = (args) => ({
 	components: { FormAutocomplete },
 	setup() {
 		const model = ref(2)
-		const options = ref([])
-		const config = ref(args.config)
+		const choices = ref([])
 		setTimeout(() => {
-			config.value.options = [
-				{ id: 1, title: 'DIY', url: 'https://diy.org' },
-				{ id: 2, title: 'Google', url: 'http://google.com' },
-				{ id: 3, title: 'Yahoo', url: 'http://yahoo.com' }
+			choices.value = [
+				{ value: 1, label: 'DIY', customProperties: { url: 'https://diy.org' } },
+				{ value: 2, label: 'Google', customProperties: { url: 'http://google.com' } },
+				{ value: 3, label: 'Yahoo', customProperties: { url: 'http://yahoo.com' } }
 			]
 		}, 1000)
 
-		return { options, model, args, config }
+		return { model, args, choices }
 	},
 	template: `
-    <FormAutocomplete  :config=config  v-model="model" />
+    <FormAutocomplete v-bind=args  :choices=choices  v-model=model />
     <pre>{{ model }}</pre>
   `
 })
@@ -56,25 +53,26 @@ const Template2 = (args) => ({
 export const RenderTemplate = Template2.bind({})
 RenderTemplate.args = {
 	placeholder: 'Selecione Custom',
-	config: {
-		searchField: 'title',
-		render: {
-			option: function (data, escape) {
-				return `
-					<div>
-						<span class="title">
-							${data.title}
-						</span>
-						<small class="d-block">
-							${escape(data.url)}
-						</small>
-					</div>
-				`
-			},
-			item: function (data, escape) {
-				return `<div>${escape(data.title)}</div>`
-			}
+	templates: {
+		choice: function (data) {
+			return `
+				<div>
+					<span>&bigstar;</span>
+					<span class="title">
+						${data.label}
+					</span>
+					<small class="d-block">
+						${data.customProperties.url}
+					</small>
+				</div>
+			`
+		},
+		item: function (data) {
+			return `<div>${data.title}</div>`
 		}
+	},
+	config: {
+		searchField: 'title'
 	}
 }
 

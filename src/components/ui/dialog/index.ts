@@ -18,32 +18,30 @@ const globalConfig = {
 
 let seed = 1
 
-class Dialog {
-	// constructor(options = {}) {
-	// 	globalConfig = Object.assign({}, globalConfig, options)
-	// }
-	open(config: ConfigInterface = {}) {
-		let dialogWrapper = null
-		let dialogVM = null
-		const id = 'ui-dialog-' + seed++
-		dialogWrapper = document.createElement('div')
-		dialogWrapper.id = id
-		dialogVM = createVNode(DialogComponent, {
-			...globalConfig,
-			...config,
-			id
-		})
+const open = (config: ConfigInterface = {}) => {
+	let dialogWrapper = null
+	let dialogVM = null
+	const id = 'ui-dialog-' + seed++
+	dialogWrapper = document.createElement('div')
+	dialogWrapper.id = id
+	dialogVM = createVNode(DialogComponent, {
+		...globalConfig,
+		...config,
+		id
+	})
 
-		render(dialogVM, dialogWrapper)
-		document.body.appendChild(dialogWrapper)
-	}
+	render(dialogVM, dialogWrapper)
+	document.body.appendChild(dialogWrapper)
+}
+const Dialog = {
+	open: open,
 	delete(config: ConfigInterface = {}) {
 		config.type = 'danger'
 		config.destructLabel = 'Deletar'
 		config.destructIcon = 'delete'
 		config.destructVariant = 'danger'
-		this.open(config)
-	}
+		open(config)
+	},
 	prompt(config = {}) {
 		config = {
 			...{
@@ -53,16 +51,17 @@ class Dialog {
 			},
 			...config
 		}
-		this.open(config)
-	}
+		open(config)
+	},
 	confirm(config: ConfigInterface = {}) {
 		config.type = 'confirm'
 		config.destructLabel = config.destructLabel || 'Confirmar'
 		config.destructIcon = 'check'
 		config.destructVariant = 'success'
 		config.hideCancel = true
-		this.open(config)
+		open(config)
 	}
 }
 
-export default new Dialog()
+export default Dialog
+export { Dialog }
