@@ -40,7 +40,7 @@ export interface Props {
 	type?: string
 	mask?: string | string[] | object | null
 	raw?: boolean
-	actions: any[]
+	actions?: any[]
 }
 
 const props = defineProps<Props>()

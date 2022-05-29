@@ -1,6 +1,15 @@
 <script setup lang="ts">
 import { watchEffect, ref, useSlots } from 'vue'
 import Icon from '../icon/Icon.vue'
+import Button from '../button/Button.vue'
+
+export interface IAction {
+	label: string
+	formId?: string
+	icon?: string
+	onAction?(): void
+}
+
 const emit = defineEmits(['update:modelValue', 'open', 'close'])
 const props = defineProps<{
 	modelValue?: boolean
@@ -9,7 +18,9 @@ const props = defineProps<{
 	scrollable?: boolean
 	noCloseOnBackdrop?: boolean
 	size?: string
+	tag?: string
 	inner?: boolean
+	primaryAction?: IAction
 }>()
 
 const slots = useSlots()
@@ -61,7 +72,7 @@ watchEffect(() => {
 
 <template>
 	<Teleport to="body">
-		<div class="ui-aside">
+		<component :is="tag ? tag : 'div'" class="ui-aside">
 			<div
 				v-if="isOpen"
 				class="ui-aside-wrapper"
@@ -93,12 +104,22 @@ watchEffect(() => {
 						<slot name="default" />
 					</div>
 
+					<div class="ui-aside-footer" v-if="primaryAction">
+						<div class="ui-aside-footer-primary">
+							<Button
+								type="submit"
+								variant="primary"
+								@click="primaryAction.onAction"
+								:label="primaryAction.label"
+								:form="primaryAction.formId" />
+						</div>
+					</div>
 					<div class="ui-aside-footer" v-if="haveSlot('footer')">
 						<slot name="footer" />
 					</div>
 				</div>
 			</div>
-		</div>
+		</component>
 	</Teleport>
 </template>
 

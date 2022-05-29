@@ -201,8 +201,6 @@
 		border: none;
 		bottom: 0;
 		padding: calc(var(--modal-padding-x) / 2) var(--modal-padding-x);
-
-		background: #fff;
 		right: 0;
 		left: 0;
 		flex-grow: 0;
@@ -210,6 +208,7 @@
 		align-items: flex-end;
 		margin-top: 20px;
 		justify-content: flex-start;
+		gap: 8px;
 
 		> div {
 			flex: 1;

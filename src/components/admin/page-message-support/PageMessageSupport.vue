@@ -4,7 +4,7 @@ import Link from '../../ui/link/Link.vue'
 
 defineProps<{
 	name: string
-	href: string
+	link: string
 }>()
 </script>
 
@@ -20,7 +20,7 @@ defineProps<{
 				{{ this.$route.meta.title || title }}
 			</base-external-link> -->
 			<span class="page-message-support-link">
-				<Link :href="href" target="_blank">
+				<Link :href="link" target="_blank">
 					<span>{{ name }}</span>
 					<Icon name="open_in_new" />
 				</Link>
@@ -31,35 +31,5 @@ defineProps<{
 </template>
 
 <style lang="scss">
-.page-message-support {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: auto;
-	padding-top: 40px;
-	gap: 10px;
-
-	.icon {
-		font-size: 18px;
-	}
-
-	.page-message-support-link {
-		a {
-			text-decoration: none;
-			display: inline-flex;
-			gap: 2px;
-			text-transform: lowercase;
-
-			&:hover > span {
-				text-decoration: underline;
-			}
-		}
-
-		.ui-icon {
-			font-size: 12px;
-			position: relative;
-			top: 4px;
-		}
-	}
-}
+@import './PageMessageSupport.scss';
 </style>

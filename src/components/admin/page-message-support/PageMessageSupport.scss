@@ -1,0 +1,31 @@
+.page-message-support {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: auto;
+	padding-top: 40px;
+	gap: 10px;
+
+	.icon {
+		font-size: 18px;
+	}
+
+	.page-message-support-link {
+		a {
+			text-decoration: none;
+			display: inline-flex;
+			gap: 2px;
+			text-transform: lowercase;
+
+			&:hover > span {
+				text-decoration: underline;
+			}
+		}
+
+		.ui-icon {
+			font-size: 12px;
+			position: relative;
+			top: 4px;
+		}
+	}
+}

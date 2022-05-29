@@ -2,7 +2,7 @@
 import { computed, getCurrentInstance } from 'vue'
 
 export interface Props {
-	modelValue?: string | number | boolean
+	modelValue?: any
 	value?: string | number | boolean
 	label?: string
 	name?: string
