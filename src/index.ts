@@ -87,3 +87,5 @@ export { default as DropdownSection } from './components/ui/dropdown/DropdownSec
 export { default as DropdownDivider } from './components/ui/dropdown/DropdownDivider.vue'
 export { default as BrowserSelect } from './components/admin/browser-select/BrowserSelect.vue'
 export { default as Gmaps } from './components/admin/gmaps/Gmaps.vue'
+export { default as Tab } from './components/ui/tab/Tab.vue'
+export { default as TabItem } from './components/ui/tab/TabItem.vue'
