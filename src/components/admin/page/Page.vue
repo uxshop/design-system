@@ -12,11 +12,12 @@ export interface IAction {
 export interface Props {
 	hideTitle?: boolean
 	primaryAction?: IAction
+	backlink?: object
 	secondaryActions?: IAction[]
 	size?: 'sm' | 'md' | 'lg' | 'full'
 	videoHelp?: any
 	footerHelp?: any
-	title?: string
+	title?: string | null
 	groupActions?: {
 		name: string
 		actions: IAction[]
@@ -24,7 +25,6 @@ export interface Props {
 }
 
 const props = defineProps<Props>()
-const backlink = ref()
 const classList = ref<string[]>([])
 
 if (props.size) {
