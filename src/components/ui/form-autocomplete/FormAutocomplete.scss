@@ -27,6 +27,10 @@
 			background-size: 12px !important;
 		}
 
+		.choices__item {
+			line-height: 1;
+		}
+
 		.choices__inner {
 			border-radius: var(--input-border-radius);
 			background-color: var(--input-bg-color);
@@ -42,6 +46,13 @@
 		.choices__list[aria-expanded] {
 			background-color: var(--bg-white);
 			border-color: var(--input-border-color);
+		}
+
+		.choices__item > .choices__button {
+			margin-right: 30px;
+			margin-top: 0;
+			height: 100%;
+			top: 0;
 		}
 	}
 }

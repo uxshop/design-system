@@ -4,6 +4,7 @@ interface IAction {
 	label: string
 	onAction(): void
 	variant?: string
+	icon?: string
 }
 defineProps<{
 	primaryAction?: IAction
@@ -19,7 +20,7 @@ defineProps<{
 			</Button>
 		</div>
 		<div class="ui-page-actions-primary" v-if="primaryAction">
-			<Button variant="success" type="submit" v-if="primaryAction" @click="primaryAction.onAction">
+			<Button variant="success" type="submit" v-if="primaryAction" @click="primaryAction.onAction" :leadingIcon="primaryAction.icon">
 				{{ primaryAction.label }}
 			</Button>
 		</div>

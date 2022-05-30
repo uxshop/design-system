@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 export interface Props {
-	distribuition?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
+	distribution?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
 	spacing?: string
 	alignment?: 'start' | 'center' | 'end' | 'fill'
 	vertical?: boolean
@@ -13,8 +13,8 @@ export interface Props {
 const props = defineProps<Props>()
 const classList = ref<string[]>([])
 
-if (props.distribuition != 'default' && props.distribuition != undefined) {
-	classList.value.push(`-distribute-${props.distribuition}`)
+if (props.distribution != 'default' && props.distribution != undefined) {
+	classList.value.push(`-distribute-${props.distribution}`)
 }
 
 if (props.spacing != 'default' && props.spacing != undefined) {

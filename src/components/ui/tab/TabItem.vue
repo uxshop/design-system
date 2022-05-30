@@ -32,7 +32,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<button class="ui-tab-item" :class="{ '-active': active }" @click="onClick">
+	<button type="button" class="ui-tab-item" :class="{ '-active': active }" @click="onClick">
 		<span class="ui-tab-item-content">
 			<slot>{{ label }}</slot>
 		</span>

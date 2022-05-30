@@ -5,7 +5,7 @@ export default {
 	title: 'Ui/Stack',
 	component: Stack,
 	argTypes: {
-		distribuition: {
+		distribution: {
 			control: { type: 'select' },
 			options: ['default', 'left', 'center', 'right', 'around', 'evenly', 'between']
 		},

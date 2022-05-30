@@ -157,7 +157,7 @@ const onShowDropdown = () => {
 				</form>
 			</DropdownSection>
 			<DropdownSection>
-				<Stack distribuition="between">
+				<Stack distribution="between">
 					<div>
 						<Button
 							v-if="reg.id"

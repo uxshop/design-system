@@ -62,11 +62,11 @@ label {
 	}
 
 	&.-gray {
-		background: var(--gray-200);
+		background: var(--gray-100);
 		border-color: transparent;
 
 		hr {
-			background-color: white;
+			background-color: var(--gray-200);
 		}
 	}
 

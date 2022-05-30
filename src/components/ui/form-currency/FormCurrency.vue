@@ -116,6 +116,7 @@ onMounted(init)
 		:loading="loading"
 		:last="last"
 		:disabled="disabled"
+		:labelInfo="labelInfo"
 		:float="float"
 		:state="state"
 		:size="size"
