@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue'
+import { computed, inject, onMounted } from 'vue'
 import Breadcrumb from '../../ui/breadcrumb/UiBreadcrumb.vue'
 import BreadcrumbItem from '../../ui/breadcrumb/BreadcrumbItem.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
@@ -63,7 +63,7 @@ const getComponent = (item: IDropdownItem) => {
 </script>
 
 <template>
-	<div class="ui-userbar">
+	<div class="ui-userbar" id="ui-userbar">
 		<div class="ui-userbar-wrapper">
 			<div class="ui-userbar-content">
 				<div class="ui-userbar-mobile">

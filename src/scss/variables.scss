@@ -44,7 +44,7 @@ $dark: #4e6380 !default;
 	--input-height: 38px;
 	--input-height-sm: 30px;
 	--input-height-lg: 50px;
-	--input-border-color: rgb(176, 179, 183);
+	--input-border-color: #c9cccf;
 	--input-border-focus-color: var(--primary);
 	--input-border-focus-width: 2px;
 	--input-placeholder-color: #828282;
@@ -95,7 +95,7 @@ $dark: #4e6380 !default;
 
 [data-theme='dark'] {
 	--body-color: #b1b9c9;
-
+	--body-bg: var(--dark-300);
 	// --dark-100: #3a4656;
 	// --dark-200: #333c49;
 	// --dark-300: #2f3845;

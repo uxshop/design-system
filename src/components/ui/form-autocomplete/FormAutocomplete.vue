@@ -2,7 +2,7 @@
 import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
 import { cloneDeep } from 'lodash-es'
 
-import choices, { templates } from 'choices.js'
+import choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
@@ -13,7 +13,7 @@ export interface Props {
 	label?: string
 	size?: string
 	last?: boolean
-	templates?: any
+	template?: any
 	position?: 'top' | 'bottom' | 'auto'
 }
 
@@ -29,7 +29,7 @@ const element = shallowRef()
 const focus = ref(false)
 
 const getTemplateChoice = (data: any) => {
-	return props.templates.choice(data)
+	return props.template.choice(data)
 }
 
 const settings = computed(() => {
@@ -49,13 +49,12 @@ const settings = computed(() => {
 		allowHTML: false
 	}
 
-	if (props.templates) {
+	if (props.template) {
 		config.callbackOnCreateTemplates = function (template: any) {
 			return {
 				choice: ({ classNames }: any, data) => {
 					return template(`
-							<div
-							class="${classNames.item} ${classNames.itemChoice} ${
+						<div class="${classNames.item} ${classNames.itemChoice} ${
 						data.disabled ? classNames.itemDisabled : classNames.itemSelectable
 					}"
 						data-select-text="${this.config.itemSelectText}"

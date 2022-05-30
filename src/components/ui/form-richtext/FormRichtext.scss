@@ -42,11 +42,11 @@ body.redactor-body-fullscreen {
 
 .redactor-toolbar {
 	box-shadow: none;
-	border-bottom: solid 1px var(--border-color);
+	// border-bottom: solid 1px var(--border-color);
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 	padding: 5px 5px 0 5px !important;
-	background-color: var(--input-bg-color);
+	background-color: var(--gray-200);
 
 	a.re-button-icon {
 		background: inherit;
@@ -58,7 +58,7 @@ body.redactor-body-fullscreen {
 		border-radius: var(--input-border-radius);
 
 		&:hover {
-			background: var(--border-color);
+			background: var(--bg-white);
 			text-decoration: none;
 		}
 	}
@@ -128,10 +128,9 @@ body.redactor-body-fullscreen {
 	}
 
 	&.redactor-styles-on {
-		background: var(--input-bg-color);
+		background: var(--input-bg-color) !important;
 		border-radius: var(--input-border-radius) !important;
-		border-width: var(--input-border-width) !important;
-		border-color: var(--input-border-color) !important;
+		border: solid var(--input-border-width) var(--input-border-color) !important;
 
 		&.redactor-focus {
 			border-color: var(--input-border-focus-color) !important;
