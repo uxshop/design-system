@@ -14,11 +14,15 @@ const Template = (args) => ({
 	setup() {
 		const model = ref()
 
+		setTimeout(() => {
+			model.value = '200.00'
+		}, 2000)
+
 		return { args, model }
 	},
 	template: `
     <div>
-      <FormCurrency v-bind="args" />
+      <FormCurrency v-bind="args" v-model=model />
       <pre>{{ model }}</pre>
     </div>
   `
