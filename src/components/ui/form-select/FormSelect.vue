@@ -3,13 +3,13 @@ import { isObject } from 'lodash-es'
 import { ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
-type ModelValue = string | object | undefined | null | number
-interface IOptions {
-		value: any
-		text?: string | null
-		disabled?: boolean
+export interface IOptions {
+	value: any
+	text?: string | null
+	disabled?: boolean
 }
-interface Props {
+
+export interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
@@ -38,6 +38,7 @@ interface Props {
 	options?: Array<IOptions>
 	disabled?: boolean
 }
+
 const props = withDefaults(defineProps<Props>(), {
 	options: () => {
 		return []
@@ -54,7 +55,7 @@ const parseValue = (val: string) => {
 	return val
 }
 
-const stringifyValue = (val: ModelValue) => {
+const stringifyValue = (val: any) => {
 	if (isObject(val)) {
 		return JSON.stringify(val)
 	}
@@ -138,3 +139,7 @@ if (props.size) {
 		</select>
 	</FormWrapper>
 </template>
+
+<style lang="scss">
+@import './FormSelect.scss';
+</style>

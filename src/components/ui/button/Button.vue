@@ -10,7 +10,7 @@ export interface Props {
 	trailingIcon?: string
 	size?: string | number
 	href?: string
-	flush?: string
+	flush?: 'left' | 'right'
 	block?: boolean
 	to?: object
 	spinnerBorder?: number | string

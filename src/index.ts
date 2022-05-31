@@ -4,6 +4,7 @@ export { default as DescriptionList } from './components/ui/description-list/Des
 export { DescriptionListItem } from './components/ui/description-list/components/description-list-item'
 export { default as Stack } from './components/ui/stack/Stack.vue'
 export { default as Button } from './components/ui/button/Button.vue'
+export { default as ButtonGroup } from './components/ui/button-group/ButtonGroup.vue'
 export { default as Alert } from './components/ui/alert/Alert.vue'
 export { default as Aside } from './components/ui/aside/Aside.vue'
 export { default as AsideSection } from './components/ui/aside/AsideSection.vue'

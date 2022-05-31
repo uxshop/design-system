@@ -88,6 +88,7 @@ defineExpose({
 
 		li {
 			padding: 10px 0;
+			margin: 0;
 			border-top: solid 1px var(--border-color);
 		}
 	}

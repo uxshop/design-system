@@ -1,26 +1,33 @@
 .selectable-list {
 	.selectable-list-content {
-		padding: 20px 0;
+		padding: 0;
 	}
+
 	.selectable-list-item {
 		display: flex;
-		padding: 15px;
+		padding: 8px;
 		border: solid 1px transparent;
 		border-radius: var(--input-border-radius);
 		cursor: pointer;
-		background: var(--gray-100);
-		transition: all 0.14s;
 		align-items: center;
-		gap: 10px;
+		gap: 8px;
+		margin: 0;
+		border-radius: var(--input-border-radius);
+
+		&:hover {
+			background-color: var(--gray-100);
+		}
+
+		&.-selected {
+			background-color: #f2f7fe;
+		}
+
+		&:last-child {
+			border: none;
+		}
 
 		+ .selectable-list-item {
 			margin-top: 2px;
-		}
-
-		&:hover {
-			background: var(--gray-100);
-			background: var(--bg-white);
-			border-color: var(--border-color);
 		}
 
 		label {

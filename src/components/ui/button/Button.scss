@@ -19,7 +19,7 @@
 	min-height: var(--input-height);
 	justify-content: center;
 	position: relative;
-	box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: var(--shadow-button);
 	background-color: white;
 	font-weight: 500;
 	color: var(--body-color);
@@ -41,6 +41,7 @@
 		&:hover {
 			color: var(--body-color);
 			background-color: var(--gray-100);
+			filter: none;
 		}
 	}
 

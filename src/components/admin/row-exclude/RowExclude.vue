@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
-import { ref, watch, watchEffect } from 'vue'
+import { ref, watch } from 'vue'
 import { indexOf } from 'lodash-es'
 
-interface Rows {
+export interface Rows {
 	id: number
 	name: string
 }
 
-interface Props {
+export interface Props {
 	rows: any
 	modelValue: number[]
 }
@@ -61,9 +61,14 @@ watch([() => props.modelValue, () => props.rows], () => updateIncludes(), { imme
 
 <template>
 	<div class="selectable-list">
-		<div class="selectable-list-item" v-for="item in rows" :key="item.id" @click.stop="onClickRowExclude(item)">
+		<div
+			class="selectable-list-item"
+			:class="{ '-selected': includes.includes(item.id) }"
+			v-for="item in rows"
+			:key="item.id"
+			@click.stop="onClickRowExclude(item)">
+			<FormCheckbox v-model="includes" :value="item.id" />
 			<span class="selectable-list-item-text">{{ item.name }}</span>
-			<FormCheckbox v-model="includes" :value="item.id" switch />
 		</div>
 	</div>
 </template>

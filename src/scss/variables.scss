@@ -84,6 +84,7 @@ $dark: #4e6380 !default;
 	--layout-sidebar-width: 244px;
 	--layout-navbar-height: 65px;
 	--shadow-card: 0 1px 10px rgba(23, 24, 24, 0.03), 0 0 2px rgba(0, 0, 0, 0.15);
+	--shadow-button: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 
 	@include mobile {
 		--layout-content-padding-x: 10px;
@@ -107,6 +108,7 @@ $dark: #4e6380 !default;
 	--dark-300: #1c1e2a;
 	--bg-white: #262c3a;
 	--border-color: #3a4c63;
+	--border-shadow: #aeb4b9;
 
 	--text-muted: #{transparentize(#b1b9c9, 0.2)};
 	--gray-100: #3a4656;
