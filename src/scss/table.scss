@@ -190,6 +190,8 @@
 				border-radius: 0;
 				height: 40px;
 				padding: 6px;
+				color: var(--body-color);
+				background: var(--bg-white);
 
 				&:focus {
 					border: solid 1px var(--primary);
