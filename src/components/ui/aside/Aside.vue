@@ -5,7 +5,7 @@ import Button from '../button/Button.vue'
 
 export interface IAction {
 	label: string
-	formId?: string
+	form?: string
 	icon?: string
 	onAction?(): void
 }
@@ -111,7 +111,7 @@ watchEffect(() => {
 								variant="primary"
 								@click="primaryAction.onAction"
 								:label="primaryAction.label"
-								:form="primaryAction.formId" />
+								:form="primaryAction.form" />
 						</div>
 					</div>
 					<div class="ui-aside-footer" v-if="haveSlot('footer')">

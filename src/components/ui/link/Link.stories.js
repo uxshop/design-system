@@ -16,7 +16,7 @@ const Template = (args) => ({
 	},
 	template: `
     <Link v-bind="args">
-      meu link ui-router
+      My Link
     </Link>
   `
 })
@@ -32,4 +32,11 @@ export const Href = Template.bind({})
 Href.args = {
 	label: 'Link',
 	href: '/home'
+}
+
+export const External = Template.bind({})
+External.args = {
+	label: 'Link',
+	href: '/home',
+	external: true
 }

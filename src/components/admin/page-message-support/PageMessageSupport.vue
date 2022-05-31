@@ -20,10 +20,7 @@ defineProps<{
 				{{ this.$route.meta.title || title }}
 			</base-external-link> -->
 			<span class="page-message-support-link">
-				<Link :href="link" target="_blank">
-					<span>{{ name }}</span>
-					<Icon name="open_in_new" />
-				</Link>
+				<Link :href="link" external :label="name" />
 			</span>
 			na base de conhecimento.
 		</span>

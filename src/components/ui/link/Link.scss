@@ -1,0 +1,17 @@
+.ui-link {
+	&.-external {
+		text-decoration: none;
+		display: inline-flex;
+		gap: 2px;
+
+		&:hover > span {
+			text-decoration: underline;
+		}
+	}
+
+	.ui-link-icon {
+		font-size: 12px;
+		position: relative;
+		top: 4px;
+	}
+}
