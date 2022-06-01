@@ -3,9 +3,9 @@ import { isObject } from 'lodash-es'
 import { ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 
-export interface IOptions {
+export interface IFormSelectOptions {
 	value: any
-	text?: string | null
+	label?: string | null
 	disabled?: boolean
 }
 
@@ -35,7 +35,7 @@ export interface Props {
 	name?: string
 	title?: string
 	required?: boolean
-	options?: Array<IOptions>
+	options?: Array<IFormSelectOptions>
 	disabled?: boolean
 }
 
@@ -134,7 +134,7 @@ if (props.size) {
 				:value="stringifyValue(item.value)"
 				:key="item.value"
 				:disabled="item.disabled">
-				{{ item.text }}
+				{{ item.label }}
 			</option>
 		</select>
 	</FormWrapper>

@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch, watchEffect } from 'vue'
+import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
 
-import choices from 'choices.js'
+import Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
 	modelValue?: any
-	options?: any[]
 	placeholder?: string
-	choices?: any
+	options?: any[]
 	label?: string
 	size?: string
 	last?: boolean
@@ -33,7 +32,7 @@ const getTemplateChoice = (data: any) => {
 }
 
 const settings = computed(() => {
-	const _choices = props.choices
+	const _choices = cloneDeep(props.options)
 	const config: any = {
 		searchEnabled: true,
 		searchChoices: true,
@@ -72,56 +71,58 @@ const settings = computed(() => {
 	return config
 })
 
-const init = () => {
-	// console.log('init')
+let el: HTMLElement | null
+onMounted(() => {
+	if ((el = document.getElementById(`${uid}`))) {
+		el.addEventListener(
+			'change',
+			function (event) {
+				update(element.value.getValue(true), element.value.getValue())
+				// element.value.hideDropdown()
+			},
+			false
+		)
+	}
+})
 
+const update = (val: string, raw: any) => {
+	emit('update:modelValue', val)
+	emit('update', val, raw)
+}
+
+const init = () => {
 	nextTick(() => {
 		if (element.value) {
 			element.value.destroy()
 		}
 
-		const el = document.querySelector(`#${uid}`)
-
 		if (el) {
-			element.value = new choices(el, settings.value)
+			element.value = new Choices(el, settings.value)
 			checkModelValue()
-
-			el.addEventListener(
-				'change',
-				function (event) {
-					update(element.value.getValue(true))
-					// element.value.hideDropdown()
-				},
-				false
-			)
 		}
 	})
-}
-
-const update = (val: string) => {
-	emit('update:modelValue', val)
-	emit('update', val)
 }
 
 const checkModelValue = () => {
 	nextTick(() => {
 		if (element.value) {
-			element.value.setChoiceByValue(props.modelValue)
+			if (props.modelValue == null) {
+				element.value.setChoiceByValue('')
+			} else {
+				element.value.setChoiceByValue(props.modelValue)
+			}
 		}
 	})
 }
 
 watch(
 	() => props.modelValue,
-	() => {
-		checkModelValue()
-	}
+	() => checkModelValue()
 )
 
 watch(
-	() => [props.choices],
-	() => init(),
-	{ deep: true, immediate: true }
+	() => [props.options],
+	() => init()
 )
 </script>
 

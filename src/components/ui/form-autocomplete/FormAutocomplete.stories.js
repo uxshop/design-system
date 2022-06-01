@@ -45,7 +45,7 @@ const Template2 = (args) => ({
 		return { model, args, choices }
 	},
 	template: `
-    <FormAutocomplete v-bind=args  :choices=choices  v-model=model />
+    <FormAutocomplete v-bind=args  :options=choices  v-model=model />
     <pre>{{ model }}</pre>
   `
 })

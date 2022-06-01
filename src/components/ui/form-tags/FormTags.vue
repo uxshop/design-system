@@ -65,7 +65,7 @@ const getSettings = () => {
 }
 
 const init = () => {
-	console.log('init')
+	// console.log('init')
 
 	nextTick(() => {
 		if (element.value) {

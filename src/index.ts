@@ -41,7 +41,7 @@ export { default as FormColorpicker } from './components/ui/form-colorpicker/For
 export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue'
 export { default as FormDatepicker } from './components/ui/form-datepicker/FormDatepicker.vue'
 export { default as FormAutocomplete } from './components/ui/form-autocomplete/FormAutocomplete.vue'
-export { default as FormSelect } from './components/ui/form-select/FormSelect.vue'
+export { default as FormSelect, type IFormSelectOptions } from './components/ui/form-select/FormSelect.vue'
 export { default as FormSelectOption } from './components/ui/form-select/FormSelectOption.vue'
 export { default as Layout } from './components/admin/layout/Layout.vue'
 export { default as FrameAnnotation } from './components/admin/frame-annotation/FrameAnnotation.vue'
