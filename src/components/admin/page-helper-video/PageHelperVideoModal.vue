@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Aside from '../../ui/aside/Aside.vue'
-import * as YoutubeVue3 from 'youtube-vue3/dist/youtube-vue3.umd.js'
+import { YoutubeVue3 } from 'youtube-vue3'
 import Link from '../../ui/link/Link.vue'
 import AsideSection from '../../ui/aside/AsideSection.vue'
 

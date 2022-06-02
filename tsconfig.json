@@ -1,6 +1,7 @@
 {
   "files": [],
   "compilerOptions": {
+    "jsx": "preserve",
     "allowJs": true
   },
   "references": [
