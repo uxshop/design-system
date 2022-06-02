@@ -166,7 +166,6 @@ defineExpose({
 							</FormTextfield>
 						</div>
 					</Col>
-					<Col auto v-if="false"></Col>
 				</Row>
 			</div>
 

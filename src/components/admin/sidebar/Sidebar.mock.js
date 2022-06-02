@@ -50,7 +50,7 @@ export default {
 	customers: {
 		section: 'customers',
 		name: 'Clientes',
-		icon: 'account_circle_full',
+		icon: 'account_circle',
 		nodes: [
 			{
 				name: 'Clientes',
@@ -123,7 +123,7 @@ export default {
 		name: 'Relatórios',
 		permissions: 'reports',
 		to: 'reports',
-		icon: 'insights',
+		icon: 'insights'
 	},
 	'online-store': {
 		spacer: true,
@@ -264,7 +264,7 @@ export default {
 				permissions: 'files'
 			}
 		]
-	},
+	}
 	// idea: {
 	// 	name: 'Mural de ideias',
 	// 	to: 'ideas',
