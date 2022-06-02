@@ -1,8 +1,8 @@
-<script setup lang="js">
-import { default as YouTubePlayer } from 'youtube-player'
+<script setup lang="ts">
+import YouTubePlayer from 'youtube-player'
 import { getCurrentInstance } from 'vue'
 
-console.log(YouTubePlayer);
+console.log(YouTubePlayer)
 
 // export default {
 // 	name: 'YoutubeVue3',
