@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import Aside from '../../ui/aside/Aside.vue'
-// import { YoutubeVue3 } from 'youtube-vue3'
 import Link from '../../ui/link/Link.vue'
 import AsideSection from '../../ui/aside/AsideSection.vue'
-import YoutuvePlayer from '../../ui/youtube-player/YoutuvePlayer.vue'
+import YoutubePlayer from '../../ui/youtube-player/YoutubePlayer.vue'
 
 const video = ref<any>({})
 const aside = ref(false)
@@ -24,7 +23,7 @@ defineExpose({
 		<div class="page-helper-video-modal">
 			<AsideSection>
 				<div class="videoWrapper">
-					<YoutuvePlayer :videoid="video.video_id" :width="480" :height="320" :controls="1" style="width: 100%" />
+					<YoutubePlayer :videoid="video.video_id" :width="480" :height="320" :controls="1" style="width: 100%" />
 				</div>
 			</AsideSection>
 			<AsideSection>
