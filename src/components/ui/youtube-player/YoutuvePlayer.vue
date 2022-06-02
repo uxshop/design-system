@@ -1,5 +1,5 @@
 <script lang="js">
-import YouTubePlayer from 'youtube-player'
+import * as YouTubePlayer from 'youtube-player'
 import { getCurrentInstance } from 'vue'
 
 export default {
