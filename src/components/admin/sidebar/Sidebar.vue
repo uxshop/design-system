@@ -2,19 +2,19 @@
 import SidebarSubmenu from './SidebarSubmenu.vue'
 import { inject, ref, shallowRef, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import MobileDetector from '../../../services/MobileDetectorService'
+import MobileDetector from '../../../services/MobileDetector'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
 
-interface PermissionInterface {
+export interface PermissionInterface {
 	has(rule: string): boolean
 }
 
-interface MenuProviderInterface {
+export interface MenuProviderInterface {
 	toggle(): void
 }
 
-interface Props {
+export interface Props {
 	permissionService: PermissionInterface
 	menuOpen?: boolean
 	menus: Record<string, SidebarInterface.Item>

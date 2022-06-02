@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { clone, cloneDeep, each } from 'lodash-es'
+import { clone, cloneDeep } from 'lodash-es'
 import { ref, watch } from 'vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Icon from '../../ui/icon/Icon.vue'
@@ -7,13 +7,12 @@ import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
 import Button from '../../ui/button/Button.vue'
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
-import { VueEternalLoading, type LoadAction } from '@ts-pro/vue-eternal-loading'
 import type { IApiResource } from '../../../types/IApiResource'
 import Spinner from '../../ui/spinner/Spinner.vue'
 import { zerofill } from '../../../filters'
 import BrowserSelectDefaultVue from './snippets/BrowserSelectDefault.vue'
 import Aside from '../../ui/aside/Aside.vue'
-import TextStyle from '../../ui/text-style/TextStyle.vue'
+import InfiniteScroll, { type IContext } from '../../ui/infinite-scroll/InfiniteScroll'
 
 export interface Props {
 	selectOne?: boolean
@@ -44,16 +43,16 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const TIMER_INSTANT_SEARCH = 500
-
 const term = ref<string>()
 const params = ref({ q: null, page: 1 })
-const isInitial = ref(false)
+const InfiniteScrollRef = ref()
 const rows = ref<TypeItem[]>([])
 const ids = ref()
 const fetching = ref(true)
 const typing = ref(false)
 const aside = ref(false)
 const memoryList = ref([])
+let timer: ReturnType<typeof setTimeout>
 
 const onEmptyTerm = () => {
 	term.value = ''
@@ -63,22 +62,6 @@ const onEmptyTerm = () => {
 const apply = () => {
 	emit('update', { ids: ids.value, memoryList: memoryList.value })
 	aside.value = false
-}
-
-const onRegisterBrandQuickly = () => {
-	// this.$refs.newBrandModal.open().then((res) => {
-	// 	if (res) {
-	// 		pushOne(res)
-	// 	}
-	// })
-}
-
-const onRegisterCustomerQuickly = () => {
-	// this.$refs.newCustomerModal.open().then((res) => {
-	// 	if (res) {
-	// 		pushOne(res)
-	// 	}
-	// })
 }
 
 const onCheckOne = (item: TypeItem, e: MouseEvent | KeyboardEvent) => {
@@ -102,7 +85,7 @@ const pushOne = (item: TypeItem) => {
 	}
 }
 
-const load = async (context: LoadAction) => {
+const load = async (context: IContext) => {
 	const newParams: any = cloneDeep(params.value) as never
 	newParams.q = term.value
 	const res = await props.service.get(newParams)
@@ -117,8 +100,6 @@ const load = async (context: LoadAction) => {
 		context.loaded()
 	}
 }
-
-let timer: ReturnType<typeof setTimeout>
 
 watch(
 	() => term.value,
@@ -142,9 +123,7 @@ watch(
 				page: 1
 			})
 			rows.value = []
-			console.log('okkkk')
-
-			isInitial.value = true
+			InfiniteScrollRef.value.reset()
 		}, TIMER_INSTANT_SEARCH)
 	}
 )
@@ -207,16 +186,7 @@ defineExpose({
 					</div>
 					<component :is="getTemplate()" :item="item" modal />
 				</div>
-				<VueEternalLoading class="ui-browser-search-loading" :load="load" v-model:is-initial="isInitial">
-					<template #loading>
-						<Spinner border="2" size="25" variant="dark" />
-					</template>
-					<template #no-more>
-						<div class="loading-info">
-							<TextStyle variant="muted">Sem mais resultados</TextStyle>
-						</div>
-					</template>
-				</VueEternalLoading>
+				<InfiniteScroll :load="load" ref="InfiniteScrollRef" />
 			</div>
 		</div>
 

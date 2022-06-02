@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Aside from '../../ui/aside/Aside.vue'
-import { YoutubeVue3 } from 'youtube-vue3'
+import * as YoutubeVue3 from 'youtube-vue3/dist/youtube-vue3.umd.js'
 import Link from '../../ui/link/Link.vue'
-import Divider from '../../ui/divider/Divider.vue'
 import AsideSection from '../../ui/aside/AsideSection.vue'
+
+console.log(YoutubeVue3)
 
 const video = ref<any>({})
 const aside = ref(false)

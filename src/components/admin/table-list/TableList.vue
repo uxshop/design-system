@@ -6,7 +6,7 @@ import { useRoute } from 'vue-router'
 import { onMounted, watch, ref, reactive } from 'vue'
 import { union, clone, omit } from 'lodash-es'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
-import LocalStorageService from '../../../services/LocalStorageService'
+import LocalStorage from '../../../services/LocalStorage'
 import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
 import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue'
 import TableListNavBulk from './table-list-nav-bulk/TableListNavBulk.vue'
@@ -84,7 +84,7 @@ const init = async () => {
 	omitFilters.value = omit(params, omitFiltersValues)
 	setUrlParams(params)
 
-	LocalStorageService.setObj(storageNameFilters, params)
+	LocalStorage.setObj(storageNameFilters, params)
 
 	const res = await props.config.service.get(params)
 	meta.value = res.meta
@@ -166,8 +166,8 @@ const removeSelecteds = async () => {
 onMounted(() => {
 	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
 
-	if (LocalStorageService.getObj(storageNameFilters)) {
-		queryParams.value = LocalStorageService.getObj(storageNameFilters) as TQueryParams
+	if (LocalStorage.getObj(storageNameFilters)) {
+		queryParams.value = LocalStorage.getObj(storageNameFilters) as TQueryParams
 	} else {
 		queryParams.value = Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
 	}

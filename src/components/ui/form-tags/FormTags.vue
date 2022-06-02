@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCurrentInstance, nextTick, onMounted, shallowRef, watch } from 'vue'
-import choices from 'choices.js'
+import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
 
@@ -74,7 +74,7 @@ const init = () => {
 
 		const el = document.querySelector(`#${uid}`)
 		if (el) {
-			element.value = new choices(el, getSettings())
+			element.value = new Choices(el, getSettings())
 
 			el.addEventListener(
 				'change',
