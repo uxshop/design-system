@@ -35,7 +35,7 @@
 		"perfect-scrollbar": "^1.5.5",
 		"postcss": "^8.4.13",
 		"vue-currency-input": "^2.4.0",
-		"youtube-vue3": "^0.1.15"
+		"youtube-player": "^5.5.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",
