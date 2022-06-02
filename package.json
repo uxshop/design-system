@@ -1,6 +1,6 @@
 {
 	"name": "design-system",
-	"version": "0.0.9",
+	"version": "0.0.1",
 	"main": "src/main.ts",
 	"scripts": {
 		"dev": "vite",
