@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Aside from '../../ui/aside/Aside.vue'
-import * as YoutubeVue3 from 'youtube-vue3/dist/youtube-vue3.umd.js'
 import Link from '../../ui/link/Link.vue'
 import AsideSection from '../../ui/aside/AsideSection.vue'
-
-console.log(YoutubeVue3)
+import YoutubePlayer from '../../ui/youtube-player/YoutubePlayer.vue'
 
 const video = ref<any>({})
 const aside = ref(false)
@@ -13,10 +11,6 @@ const aside = ref(false)
 const open = (item: any) => {
 	video.value = item
 	aside.value = true
-}
-
-const onEnded = () => {
-	console.log('ended')
 }
 
 defineExpose({
@@ -29,15 +23,7 @@ defineExpose({
 		<div class="page-helper-video-modal">
 			<AsideSection>
 				<div class="videoWrapper">
-					<YoutubeVue3
-						ref="youtube"
-						:videoid="video.video_id"
-						:width="480"
-						:height="320"
-						:controls="1"
-						:modestbranding="0"
-						@ended="onEnded"
-						style="width: 100%" />
+					<YoutubePlayer :videoid="video.video_id" :width="480" :height="320" :controls="1" style="width: 100%" />
 				</div>
 			</AsideSection>
 			<AsideSection>
