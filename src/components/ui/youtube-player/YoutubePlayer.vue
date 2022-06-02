@@ -1,71 +1,48 @@
 <script setup lang="ts">
-import YouTubePlayer from 'youtube-player'
-import { getCurrentInstance } from 'vue'
+import { onMounted, ref } from 'vue'
 
-console.log(YouTubePlayer)
+const props = defineProps<{
+	videoid: string
+	width?: string | number
+	height?: string | number
+	controls: boolean
+}>()
 
-// export default {
-// 	name: 'YoutubeVue3',
-// 	props: {
-// 		width: { type: Number, default: 480 },
-// 		height: { type: Number, default: 320 },
-// 		autoplay: { type: Number, default: 1, validator: (v) => Number(v) === 0 || Number(v) === 1 },
-// 		videoid: { type: String, required: true },
-// 		loop: { type: Number, default: 1, validator: (v) => Number(v) === 0 || Number(v) === 1 },
-// 		controls: { type: Number, default: 0, validator: (v) => Number(v) === 0 || Number(v) === 1 },
-// 		modestbranding: { type: Number, default: 0, validator: (v) => Number(v) === 0 || Number(v) === 1 }
-// 	},
-// 	data() {
-// 		return {
-// 			ready: 0,
-// 			playerid: ''
-// 		}
-// 	},
-// 	created() {
-// 		this.playerid = `youtube-vue-player-${getCurrentInstance()?.uid}`
-// 	},
-// 	mounted() {
-// 		let playerVars = {
-// 			autoplay: this.autoplay,
-// 			loop: this.loop,
-// 			controls: this.controls,
-// 			modestbranding: this.modestbranding,
-// 			playlist: this.video_id
-// 		}
-// 		this.player = YouTubePlayer(this.playerid, {
-// 			host: 'https://www.youtube.com',
-// 			width: this.width,
-// 			height: this.height,
-// 			videoId: this.videoid,
-// 			playerVars: playerVars
-// 		})
-// 		this.player.on('stateChange', (e) => {
-// 			if (e.data === window.YT.PlayerState.ENDED) {
-// 				this.$emit('ended')
-// 			} else if (e.data === window.YT.PlayerState.PAUSED) {
-// 				this.$emit('paused')
-// 			} else if (e.data === window.YT.PlayerState.PLAYING) {
-// 				this.$emit('played')
-// 			}
-// 		})
-// 	},
-// 	unmounted() {
-// 		this.player.destroy()
-// 		delete this.player
-// 	},
-// 	watch: {
-// 		videoid() {
-// 			this.player.loadVideoById(this.videoid)
-// 			this.player.playVideo()
-// 		},
-// 		list() {
-// 			this.player.getPlaylist(this.list)
-// 			this.player.playVideo()
-// 		}
-// 	}
-// }
+const player = ref()
+
+window['onYouTubeIframeAPIReady'] = onYouTubeIframeAPIReady
+
+function onYouTubeIframeAPIReady() {
+	player.value = new YT.Player('player', {
+		height: props.height || '360',
+		width: props.width || '640',
+		videoId: props.videoid,
+		events: {
+			onReady: onPlayerReady
+		}
+	})
+}
+
+function onPlayerReady(event) {
+	event.target.playVideo()
+}
+
+function stopVideo() {
+	player.value.stopVideo()
+}
+
+onMounted(() => {
+	if (!window.onYTReady) {
+		const tag = document.createElement('script')
+		tag.src = 'https://www.youtube.com/iframe_api'
+		const firstScriptTag = document.getElementsByTagName('script')[0]
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+	} else {
+		onYouTubeIframeAPIReady()
+	}
+})
 </script>
 
 <template>
-	<!-- <div ref="player" :id="playerid"></div> -->
+	<div id="player"></div>
 </template>
