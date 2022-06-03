@@ -74,7 +74,7 @@ const init = () => {
 
 		const el = document.querySelector(`#${uid}`)
 		if (el) {
-			element.value = window.Choices(el, getSettings())
+			element.value = new window.Choices(el, getSettings())
 
 			el.addEventListener(
 				'change',
