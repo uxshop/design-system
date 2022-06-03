@@ -144,11 +144,11 @@ const onClear = () => {
 			:required="required"
 			@maska="rawValue = $event.target.dataset.maskRawValue" />
 		<slot name="after" />
-		<div class="close" v-if="clearable && modelValue?.length" @click="onClear">
-			<Icon name="cancel" type="filled" />
+		<div v-if="clearable && modelValue?.length" class="close" @click="onClear">
+			<Icon name="cancel" filled />
 		</div>
 		<template #append v-if="$slots.append || actions">
-			<div class="actions" v-if="actions">
+			<div v-if="actions" class="actions">
 				<Button v-for="item in actions" :type="item.type" :label="item.label" />
 			</div>
 			<slot name="append" />

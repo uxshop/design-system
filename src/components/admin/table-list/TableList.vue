@@ -246,7 +246,7 @@ defineExpose({
 
 		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
-			<TableListTable v-model:selected="selected" :rows="rows" :loading="loading" :state="state" :to="to">
+			<TableListTable v-model:selected="selected" :rows="rows" :state="state" :to="to">
 				<template #head v-if="$slots.head">
 					<slot name="head" />
 				</template>
