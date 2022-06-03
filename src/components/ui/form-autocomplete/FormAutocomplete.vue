@@ -91,13 +91,17 @@ const update = (val: string, raw: any) => {
 
 const init = () => {
 	nextTick(() => {
+		// @ts-ignore
+		window.Choices = window.Choices ?? Choices
+
 		if (element.value) {
 			element.value.destroy()
 		}
 
 		if (el) {
-			element.value = new Choices(el, settings.value)
-			checkModelValue()
+			// @ts-ignore
+			element.value = new window.Choices(el, settings.value)
+			// checkModelValue()
 		}
 	})
 }
@@ -121,7 +125,8 @@ watch(
 
 watch(
 	() => [props.options],
-	() => init()
+	() => init(),
+	{ immediate: true }
 )
 </script>
 

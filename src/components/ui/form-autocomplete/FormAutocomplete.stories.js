@@ -23,7 +23,7 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
-	choices: [
+	options: [
 		{ value: 1, label: 'Hello' },
 		{ value: 2, label: 'World' }
 	]
