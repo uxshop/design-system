@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
-import Choices from 'choices.js/src/index'
+import Choices from 'choices.js/public/assets/scripts/choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
@@ -14,6 +14,8 @@ export interface Props {
 	template?: any
 	position?: 'top' | 'bottom' | 'auto'
 }
+
+console.log(Choices)
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
 const props = withDefaults(defineProps<Props>(), {
