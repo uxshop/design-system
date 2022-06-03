@@ -18,21 +18,14 @@ export interface Props {
 	permissionService: PermissionInterface
 	menuOpen?: boolean
 	menus: Record<string, SidebarInterface.Item>
-	clickLink?(): void
 	currentSection?: string | null
 }
 
-const props = withDefaults(defineProps<Props>(), {
-	clickLink: () => {
-		return {}
-	}
-})
-
+const props = withDefaults(defineProps<Props>(), {})
 const currentMenu = shallowRef()
 const section = shallowRef<string>()
 const activeSection = ref<string | null | undefined>()
 const router = useRouter()
-const route = useRoute()
 const menu = inject('menu') as MenuProviderInterface
 
 const hasPermission = (item: SidebarInterface.Item) => {
@@ -115,7 +108,7 @@ watchEffect(() => {
 									class="ui-sidebar-link"
 									@click="onClickLink(key, item)"
 									:class="{
-										'-active': key == route.meta.section,
+										'-active': key == $route.meta.section,
 										'-disabled': item.disabled
 									}">
 									<Icon :name="item.icon" filled />
