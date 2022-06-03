@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
-import * as Choices from 'choices.js/public/assets/scripts/choices.js'
+import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
@@ -72,8 +72,6 @@ const settings = computed(() => {
 
 let el: HTMLElement | null
 onMounted(() => {
-	window.Choices = window.Choices ?? Choices
-
 	if ((el = document.getElementById(`${uid}`))) {
 		el.addEventListener(
 			'change',
@@ -93,11 +91,15 @@ const update = (val: string, raw: any) => {
 
 const init = () => {
 	nextTick(() => {
+		// @ts-ignore
+		window.Choices = window.Choices ?? Choices
+
 		if (element.value) {
 			element.value.destroy()
 		}
 
 		if (el) {
+			// @ts-ignore
 			element.value = new window.Choices(el, settings.value)
 			// checkModelValue()
 		}

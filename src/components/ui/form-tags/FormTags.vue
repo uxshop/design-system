@@ -65,6 +65,7 @@ const getSettings = () => {
 }
 
 const init = () => {
+	// @ts-ignore
 	window.Choices = window.Choices ?? Choices
 
 	nextTick(() => {
@@ -74,6 +75,7 @@ const init = () => {
 
 		const el = document.querySelector(`#${uid}`)
 		if (el) {
+			// @ts-ignore
 			element.value = new window.Choices(el, getSettings())
 
 			el.addEventListener(
@@ -86,7 +88,7 @@ const init = () => {
 			)
 			el.addEventListener(
 				'addItem',
-				function (event) {
+				function (event: any) {
 					emit('add', event.detail)
 				},
 				false
