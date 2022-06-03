@@ -65,7 +65,7 @@ const getSettings = () => {
 }
 
 const init = () => {
-	// console.log('init')
+	window.Choices = window.Choices ?? Choices
 
 	nextTick(() => {
 		if (element.value) {
