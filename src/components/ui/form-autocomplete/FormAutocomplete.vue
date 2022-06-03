@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
-import Choices from 'choices.js'
+import Choices from 'choices.js/src/index'
 import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
