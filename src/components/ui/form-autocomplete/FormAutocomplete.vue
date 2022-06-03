@@ -50,7 +50,7 @@ const settings = computed(() => {
 	if (props.template) {
 		config.callbackOnCreateTemplates = function (template: any) {
 			return {
-				choice: ({ classNames }: any, data) => {
+				choice: ({ classNames }: any, data: any) => {
 					return template(`
 						<div class="${classNames.item} ${classNames.itemChoice} ${
 						data.disabled ? classNames.itemDisabled : classNames.itemSelectable
