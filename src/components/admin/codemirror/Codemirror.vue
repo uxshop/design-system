@@ -9,7 +9,7 @@ import { language } from '@codemirror/language'
 import { css } from '@codemirror/lang-css'
 import { history, historyKeymap } from '@codemirror/history'
 import { defaultKeymap, indentWithTab } from '@codemirror/commands'
-import { onMounted, ref, shallowRef, watchEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
 // const isMac = /Mac/.test(navigator.platform)
 const languageConf = new Compartment()
@@ -32,9 +32,10 @@ const emit = defineEmits(['update'])
 const editorRef = ref()
 const cm = shallowRef()
 const noUpdate = shallowRef()
+const uid = `ui-codemirror-${getCurrentInstance()?.uid}`
 
 onMounted(() => {
-	const el = document.querySelector('#editor') as Element
+	const el = document.querySelector(`#${uid}`) as Element
 	const updateListenerExtension = EditorView.updateListener.of((update: ViewUpdate) => {
 		if (update.docChanged && !noUpdate.value) {
 			stopWatch()
@@ -77,7 +78,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<div id="editor" ref="editorRef" class="ui-codemirror"></div>
+	<div :id="uid" ref="editorRef" class="ui-codemirror"></div>
 </template>
 
 <style>
