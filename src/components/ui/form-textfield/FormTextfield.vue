@@ -41,6 +41,8 @@ export interface Props {
 	mask?: string | string[] | object | null
 	raw?: boolean
 	actions?: any[]
+	max?: string | number
+	min?: string | number
 }
 
 const props = defineProps<Props>()
@@ -141,6 +143,8 @@ const onClear = () => {
 			:name="name"
 			:title="title"
 			:id="id"
+			:max="max"
+			:min="min"
 			:required="required"
 			@maska="rawValue = $event.target.dataset.maskRawValue" />
 		<slot name="after" />
@@ -149,7 +153,7 @@ const onClear = () => {
 		</div>
 		<template #append v-if="$slots.append || actions">
 			<div v-if="actions" class="actions">
-				<Button v-for="item in actions" :type="item.type" :label="item.label" />
+				<Button v-for="item in actions" :type="item.type" :label="item.label" @click="item.onAction" />
 			</div>
 			<slot name="append" />
 		</template>

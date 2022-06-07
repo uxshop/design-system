@@ -7,7 +7,7 @@
 
 	th,
 	td {
-		padding: 10px;
+		padding: 14px;
 	}
 
 	td {
@@ -17,10 +17,6 @@
 	tr,
 	th {
 		background-color: var(--dark-200, white);
-	}
-
-	tbody tr:nth-of-type(odd) {
-		background-color: var(--gray-100);
 	}
 
 	&.-no-border {

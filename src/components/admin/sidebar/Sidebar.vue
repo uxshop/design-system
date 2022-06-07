@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import SidebarSubmenu from './SidebarSubmenu.vue'
-import { inject, ref, shallowRef, watchEffect } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { inject, ref, shallowRef, watchPostEffect } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import MobileDetector from '../../../services/MobileDetector'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
+import { map } from 'lodash-es'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -26,7 +26,17 @@ const currentMenu = shallowRef()
 const section = shallowRef<string>()
 const activeSection = ref<string | null | undefined>()
 const router = useRouter()
+const route = useRoute()
 const menu = inject('menu') as MenuProviderInterface
+const menusAll = {}
+
+map(props.menus, (item) => {
+	if (item.nodes) {
+		map(item.nodes, (i) => {
+			menusAll[i.to] = item.to
+		})
+	}
+})
 
 const hasPermission = (item: SidebarInterface.Item) => {
 	if (props.permissionService.has(item.permissions)) {
@@ -75,18 +85,25 @@ const onClickLink = (sec: string, item: SidebarInterface.Item) => {
 
 const onBack = () => (activeSection.value = null)
 
-watchEffect(() => {
-	// if (props.currentSection !== undefined && activeSection.value !== props.currentSection) {
-	activeSection.value = props.currentSection
-	// }
+const getLinkName = (item: SidebarInterface.Item) => {
+	const name = item.nodes ? item.nodes[0].to : item.to
+	return name
+}
+
+const isOpen = (item) => {
+	console.log(item)
+}
+
+watchPostEffect(() => {
+	activeSection.value = route.meta.section || route.name
 })
 </script>
 
 <template>
-	<div class="ui-sidebar" :class="{ '-open': menuOpen }">
+	<div class="ui-sidebar">
 		<div class="ui-sidebar-wrapper">
-			<div class="ui-sidebar-container" :class="{ '-submenu-open': activeSection }">
-				<div class="ui-sidebar-content" :class="{ '-hide': activeSection }">
+			<div class="ui-sidebar-container">
+				<div class="ui-sidebar-content">
 					<div class="ui-sidebar-nav">
 						<router-link class="ui-sidebar-logo" :to="{ name: 'home' }">
 							<slot name="logo" />
@@ -104,36 +121,35 @@ watchEffect(() => {
 									'-spacer': item.spacer,
 									'-spacer-last': item.last
 								}">
-								<div
+								<router-link
+									:to="{ name: item.to }"
+									:class="{ '-nodes': item.nodes, '-open': item.section == activeSection }"
 									class="ui-sidebar-link"
-									@click="onClickLink(key, item)"
-									:class="{
-										'-active': key == $route.meta.section,
-										'-disabled': item.disabled
-									}">
-									<Icon :name="item.icon" filled />
+									activeClass="-active">
+									<div class="ui-sidebar-link-icon">
+										<Icon :name="item.icon" filled />
+									</div>
 									<div class="ui-sidebar-link-text">
 										<span>{{ item.name }}</span>
 									</div>
-								</div>
+								</router-link>
+								<ul v-if="item.nodes" class="ui-sidebar-sublist">
+									<li v-for="node in item.nodes" class="ui-sidebar-item">
+										<router-link :to="{ name: node.to }" class="ui-sidebar-link -sub" activeClass="-active">
+											<div class="ui-sidebar-link-icon"></div>
+											<div class="ui-sidebar-link-text">
+												{{ node.name }}
+											</div>
+										</router-link>
+									</li>
+								</ul>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<SidebarSubmenu
-					:menus="menus"
-					:hasPermission="hasPermission"
-					:clickLink="onClickLink"
-					:activeSection="activeSection"
-					@back="onBack" />
 			</div>
 		</div>
 		<div class="ui-sidebar-overlay" @click="clickOverlay"></div>
-		<!-- <base-modal ref="modal" title="Selecione uma loja">
-			<template v-slot="params">
-				<TheStoreList :params="params" />
-			</template>
-		</base-modal> -->
 	</div>
 </template>
 

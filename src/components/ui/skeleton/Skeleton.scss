@@ -1,5 +1,5 @@
 .animated-background {
-	animation-duration: 1.25s;
+	animation-duration: 1s;
 	animation-fill-mode: forwards;
 	animation-iteration-count: infinite;
 	animation-name: placeHolderShimmer;
@@ -7,12 +7,12 @@
 	background: #f6f6f6;
 	background: linear-gradient(
 		to right,
-		var(--dark-200, #d1d1d1) 12%,
-		var(--dark-100, #e2e2e2) 18%,
-		var(--dark-300, #d6d6d6) 33%
+		var(--dark-200, #f1f0f0) 12%,
+		var(--dark-100, #e2e1e1) 25%,
+		var(--dark-300, #f1f0f0) 33%
 	);
 	background-size: 800px 104px;
-	height: 10px;
+	height: 12px;
 	width: 100%;
 	position: relative;
 	border-radius: 10px;

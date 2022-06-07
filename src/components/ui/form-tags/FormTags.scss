@@ -5,11 +5,24 @@
 	margin-bottom: var(--form-group-margin-bottom);
 
 	&.-has-value {
-		.choices__inner {
+	}
+
+	.ui-form-tags-content {
+		display: flex;
+		gap: 8px;
+		.choices {
+			flex-grow: 1;
+		}
+
+		.ui-form-tags-actions {
+			margin-left: auto;
+			flex-grow: 0;
 		}
 	}
 
 	.choices {
+		margin: 0;
+
 		&.is-open {
 			z-index: 555;
 			.choices__inner {
@@ -47,6 +60,7 @@
 			.choices__button {
 				font-weight: 400;
 				border-left: none;
+				margin-left: 0 !important;
 			}
 		}
 	}

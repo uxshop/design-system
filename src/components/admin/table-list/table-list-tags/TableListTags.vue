@@ -26,7 +26,7 @@ const translateValue = (item: any, key: string) => {
 	const val: string[] = []
 	let values: number[] = []
 
-	if (!props.state.config.filters[key]) {
+	if (!props.state.config.filters || !props.state.config.filters[key]) {
 		return item
 	}
 

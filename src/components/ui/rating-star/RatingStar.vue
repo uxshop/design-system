@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Icon from '../icon/Icon.vue'
 
-interface Props {
+export interface Props {
 	modelValue: number
 }
 

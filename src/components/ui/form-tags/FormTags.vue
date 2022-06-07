@@ -3,12 +3,16 @@ import { getCurrentInstance, nextTick, onMounted, shallowRef, watch } from 'vue'
 import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
+import Button from '../button/Button.vue'
 
 export interface Props {
 	modelValue?: any
 	placeholder?: string
 	label?: string
 	config?: any
+	closeOnSelect: boolean
+	last?: boolean
+	actions?: any[]
 }
 
 export interface SettingsInterface {
@@ -82,7 +86,9 @@ const init = () => {
 				'change',
 				function (event) {
 					update(element.value.getValue(true))
-					// element.value.hideDropdown()
+					if (props.closeOnSelect) {
+						element.value.hideDropdown()
+					}
 				},
 				false
 			)
@@ -133,16 +139,26 @@ watch(
 </script>
 
 <template>
-	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length }">
-		<FormLabel v-if="label" :label="label" />
-		<input
-			v-if="getSettings().create"
-			ref="selectRef"
-			:id="uid"
-			type="text"
-			autocomplete="off"
-			:placeholder="placeholder" />
-		<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
+	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length, 'mb-0': last }">
+		<FormLabel
+			v-if="label"
+			:label="label"
+			:action="{
+				label: 'Remover'
+			}" />
+		<div class="ui-form-tags-content">
+			<input
+				v-if="getSettings().create"
+				ref="selectRef"
+				:id="uid"
+				type="text"
+				autocomplete="off"
+				:placeholder="placeholder" />
+			<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
+			<div v-if="actions" class="ui-form-tags-actions">
+				<Button v-for="item in actions" :label="item.label" @click="item.onAction" />
+			</div>
+		</div>
 	</div>
 </template>
 

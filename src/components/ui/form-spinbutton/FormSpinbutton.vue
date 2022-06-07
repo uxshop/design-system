@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const emit = defineEmits(['update:modelValue', 'change'])
-
-interface Props {
+export interface Props {
 	min?: string | number
 	max?: string | number
 	placeholder?: string
@@ -12,6 +10,7 @@ interface Props {
 	modelValue: number
 }
 
+const emit = defineEmits(['update:modelValue', 'change'])
 const props = withDefaults(defineProps<Props>(), {
 	step: 1,
 	modelValue: 1

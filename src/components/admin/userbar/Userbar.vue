@@ -18,7 +18,7 @@ export interface Props {
 	slug?: string
 	backlink?: { to: string }
 	breadcrumb?: { to: string; name: string }[]
-	notifications?: object
+	notifications?: any
 	dropdown?: any[]
 }
 

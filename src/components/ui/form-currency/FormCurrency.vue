@@ -26,8 +26,10 @@ export interface Props {
 	title?: string
 	name?: string
 	autocomplete?: string
-	minlength?: [string, number]
-	maxlength?: [string, number]
+	min?: string | number
+	step?: string | number
+	minlength?: string | number
+	maxlength?: string | number
 	autofocus?: boolean
 	disabled?: boolean
 	required?: boolean
@@ -122,6 +124,8 @@ onMounted(init)
 		:size="size"
 		:invalidFeedback="invalidFeedback">
 		<input
+			:min="min"
+			:step="step"
 			ref="inputRef"
 			class="form-control"
 			:placeholder="placeholder"

@@ -4,6 +4,7 @@ export default {
 		name: 'Catálogo',
 		icon: 'sell',
 		permissions: 'products',
+		to: 'products',
 		nodes: [
 			{
 				name: 'Categorias',

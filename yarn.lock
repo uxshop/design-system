@@ -1801,9 +1801,9 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@simonwep/pickr@https://github.com/uxshop/pickr.git":
+"@simonwep/pickr@github:uxshop/pickr.git":
   version "1.8.2"
-  resolved "https://github.com/uxshop/pickr.git#9ef18a44cbab68c80af5f51855ade2fb9c1c5b19"
+  resolved "https://codeload.github.com/uxshop/pickr/tar.gz/9ef18a44cbab68c80af5f51855ade2fb9c1c5b19"
   dependencies:
     core-js "^3.15.1"
     nanopop "^2.1.0"
