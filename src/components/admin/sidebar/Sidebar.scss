@@ -20,7 +20,7 @@
 		top: 0;
 		height: 100%;
 		overflow: hidden;
-		// background: var(--dark-200, #fff);
+		background: var(--dark-200);
 
 		> .ui-sidebar-container {
 			display: flex;
@@ -159,6 +159,24 @@
 				height: 30px;
 			}
 
+			&:hover {
+				background-color: var(--gray-100);
+			}
+
+			&.-active:not(.-child-active) {
+				background-color: var(--dark-100, var(--gray-200));
+			}
+
+			&.-active,
+			&.-open {
+				.ui-icon {
+					color: var(--primary);
+				}
+				~ .ui-sidebar-sublist {
+					display: block;
+				}
+			}
+
 			.ui-sidebar-link-text {
 				display: inline-flex;
 				border-radius: 4px;
@@ -177,24 +195,6 @@
 
 			.ui-icon {
 				font-size: 16px;
-			}
-
-			&:hover {
-				background-color: var(--gray-100);
-			}
-
-			&.-active {
-				background-color: var(--dark-100, var(--gray-200));
-			}
-
-			&.-active,
-			&.-open {
-				.ui-icon {
-					color: var(--primary);
-				}
-				~ .ui-sidebar-sublist {
-					display: block;
-				}
 			}
 		}
 	}

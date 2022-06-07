@@ -10,9 +10,10 @@ export interface Props {
 	placeholder?: string
 	label?: string
 	config?: any
-	closeOnSelect: boolean
+	closeOnSelect?: boolean
 	last?: boolean
 	actions?: any[]
+	create?: boolean
 }
 
 export interface SettingsInterface {
@@ -46,20 +47,13 @@ const getSettings = () => {
 			removeItems: true,
 			removeItemButton: true,
 			addItems: true,
-			create: false,
+			create: props.create,
 			placeholder: true,
 			placeholderValue: props.placeholder || 'Selecione',
 			noResultsText: 'Nenhum resultado encontrado',
 			noChoicesText: 'Sem opções para escolher',
 			items: [],
-			choices: [
-				// {
-				// 	value: 'opt_1',
-				// 	label: 'Option 1',
-				// 	selected: true,
-				// 	disabled: false
-				// }
-			],
+			choices: [],
 			allowHTML: true
 		},
 		...newConfig

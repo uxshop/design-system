@@ -127,7 +127,7 @@ watch(
 watch(
 	() => [props.options],
 	() => init(),
-	{ immediate: true }
+	{ immediate: true, deep: true }
 )
 </script>
 

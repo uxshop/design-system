@@ -83,7 +83,7 @@ $dark: #4e6380 !default;
 	--alert-border-radius: 4px;
 	--layout-sidebar-width: 244px;
 	--layout-navbar-height: 65px;
-	--shadow-card: 0 1px 10px rgba(23, 24, 24, 0.03), 0 0 2px rgba(0, 0, 0, 0.15);
+	--shadow-card: 0 1px 10px rgba(23, 24, 24, 0.03), 0 0 2px rgba(0, 0, 0, 0.25);
 	--shadow-button: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 
 	@include mobile {

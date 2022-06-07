@@ -123,23 +123,27 @@ watchPostEffect(() => {
 								}">
 								<router-link
 									:to="{ name: item.to }"
-									:class="{ '-nodes': item.nodes, '-open': item.section == activeSection }"
+									:class="{
+										'-nodes': item.nodes,
+										'-open': item.section == activeSection,
+										'-child-active': item.nodes && item.to == item.nodes[0].to
+									}"
 									class="ui-sidebar-link"
 									activeClass="-active">
-									<div class="ui-sidebar-link-icon">
+									<span class="ui-sidebar-link-icon">
 										<Icon :name="item.icon" filled />
-									</div>
-									<div class="ui-sidebar-link-text">
-										<span>{{ item.name }}</span>
-									</div>
+									</span>
+									<span class="ui-sidebar-link-text">
+										{{ item.name }}
+									</span>
 								</router-link>
 								<ul v-if="item.nodes" class="ui-sidebar-sublist">
 									<li v-for="node in item.nodes" class="ui-sidebar-item">
 										<router-link :to="{ name: node.to }" class="ui-sidebar-link -sub" activeClass="-active">
-											<div class="ui-sidebar-link-icon"></div>
-											<div class="ui-sidebar-link-text">
+											<span class="ui-sidebar-link-icon"></span>
+											<span class="ui-sidebar-link-text">
 												{{ node.name }}
-											</div>
+											</span>
 										</router-link>
 									</li>
 								</ul>
