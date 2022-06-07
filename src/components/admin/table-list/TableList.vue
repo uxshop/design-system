@@ -180,8 +180,6 @@ watch(
 	(newVal: any) => {
 		clearTimeout(timerQ)
 		timerQ = setTimeout(() => {
-			console.log('queryParams', JSON.stringify(newVal))
-
 			if (newVal.q) {
 				state.term = newVal.q
 			}

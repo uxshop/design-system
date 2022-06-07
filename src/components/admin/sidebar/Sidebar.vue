@@ -91,7 +91,7 @@ const getLinkName = (item: SidebarInterface.Item) => {
 }
 
 const isOpen = (item) => {
-	console.log(item)
+	console.log('isOpen', item)
 }
 
 watchPostEffect(() => {

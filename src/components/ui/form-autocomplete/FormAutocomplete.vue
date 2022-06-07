@@ -67,6 +67,7 @@ const settings = computed(() => {
 			}
 		}
 	}
+
 	return config
 })
 
@@ -101,7 +102,7 @@ const init = () => {
 		if (el) {
 			// @ts-ignore
 			element.value = new window.Choices(el, settings.value)
-			// checkModelValue()
+			checkModelValue()
 		}
 	})
 }

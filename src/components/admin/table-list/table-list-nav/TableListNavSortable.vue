@@ -28,8 +28,6 @@ const sortableFinal = ref<
 >([])
 
 const onSortBy = (item: any) => {
-	console.log('sort')
-
 	dropdownRef.value.hide()
 	props.setQueryParams({
 		sort: item.sort,
