@@ -87,7 +87,7 @@ export default {
 			}
 		]
 	},
-	marketings: {
+	marketing: {
 		section: 'marketing',
 		name: 'Marketing',
 		icon: 'ads_click',

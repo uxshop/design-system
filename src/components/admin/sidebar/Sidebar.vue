@@ -28,12 +28,15 @@ const activeSection = ref<string | null | undefined>()
 const router = useRouter()
 const route = useRoute()
 const menu = inject('menu') as MenuProviderInterface
-const menusAll = {}
+const menusFormated = {}
 
-map(props.menus, (item) => {
+map(props.menus, (item, key) => {
 	if (item.nodes) {
 		map(item.nodes, (i) => {
-			menusAll[i.to] = item.to
+			menusFormated[i.to] = {
+				to: i.to,
+				parent: key
+			}
 		})
 	}
 })
@@ -64,38 +67,8 @@ const clickOverlay = () => {
 	}
 }
 
-const onClickLink = (sec: string, item: SidebarInterface.Item) => {
-	if (props.menus) {
-		currentMenu.value = props.menus[sec]
-		section.value = sec
-	}
-
-	if (MobileDetector() && !item.nodes) {
-		clickOverlay()
-	}
-
-	if (item.nodes) {
-		activeSection.value = item.section
-	} else {
-		router.push({ name: item.to }).catch(() => {
-			//
-		})
-	}
-}
-
-const onBack = () => (activeSection.value = null)
-
-const getLinkName = (item: SidebarInterface.Item) => {
-	const name = item.nodes ? item.nodes[0].to : item.to
-	return name
-}
-
-const isOpen = (item) => {
-	console.log('isOpen', item)
-}
-
 watchPostEffect(() => {
-	activeSection.value = route.meta.section || route.name
+	activeSection.value = menusFormated[route.name]?.parent
 })
 </script>
 
@@ -125,7 +98,7 @@ watchPostEffect(() => {
 									:to="{ name: item.to }"
 									:class="{
 										'-nodes': item.nodes,
-										'-open': item.section == activeSection,
+										'-open': key == activeSection,
 										'-child-active': item.nodes && item.to == item.nodes[0].to
 									}"
 									class="ui-sidebar-link"
