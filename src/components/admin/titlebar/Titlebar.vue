@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Icon from '../../ui/icon/Icon.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
@@ -36,8 +35,7 @@ defineProps<{
 			<slot name="subtitle" class="titlebar-subtitle" />
 		</div>
 		<div class="titlebar-actions">
-			<div v-if="secondaryActions" class="titlebar-actions-secondary">
-				<!-- <slot name="secondary-action" /> -->
+			<div v-if="secondaryActions?.length" class="titlebar-actions-secondary">
 				<Button
 					v-if="secondaryActions?.length == 1"
 					v-for="item in secondaryActions"
