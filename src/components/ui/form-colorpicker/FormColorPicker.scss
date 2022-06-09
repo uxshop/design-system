@@ -6,20 +6,26 @@
 	width: var(--input-height);
 }
 
-.pcr-interaction {
-	flex-wrap: nowrap !important;
+.pcr-app {
+	background-color: var(--bg-white);
 
-	input {
-		font-size: 11px !important;
-		letter-spacing: 0 !important;
-	}
+	.pcr-interaction {
+		flex-wrap: nowrap !important;
 
-	.pcr-result {
-		min-width: 40px !important;
-	}
+		input {
+			font-size: 11px !important;
+			letter-spacing: 0 !important;
+		}
 
-	.pcr-save {
-		order: 2;
+		.pcr-result {
+			min-width: 40px !important;
+			background-color: var(--input-bg-color);
+			color: var(--body-color);
+		}
+
+		.pcr-save {
+			order: 2;
+		}
 	}
 }
 
