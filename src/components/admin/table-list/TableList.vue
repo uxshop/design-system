@@ -4,7 +4,7 @@ import TableListNav from './table-list-nav/TableListNav.vue'
 import TableListTable from './table-list-table/TableListTable.vue'
 import { useRoute } from 'vue-router'
 import { onMounted, watch, ref, reactive } from 'vue'
-import { union, clone, omit } from 'lodash-es'
+import { union, clone, omit, concat } from 'lodash-es'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorage from '../../../services/LocalStorage'
 import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
@@ -56,7 +56,10 @@ const queryDefault = Object.assign(
 	props.config.queryParams
 )
 
-let omitFiltersValues = ['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId']
+let omitFiltersValues = concat(
+	['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId'],
+	props.config.omitFiltersValues
+)
 
 const removeFilter = (key: string) => {
 	delete queryParams.value[key]

@@ -91,8 +91,8 @@
 		}
 
 		.ui-userbar-btn-avatar {
-			width: var(--input-height);
-			height: var(--input-height);
+			min-width: var(--input-height);
+			min-height: var(--input-height);
 			align-items: center;
 			justify-content: center;
 			border-radius: 100%;

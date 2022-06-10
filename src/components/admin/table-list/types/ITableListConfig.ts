@@ -15,6 +15,7 @@ export interface ITableListConfig {
 	onGet?(i: TApiData[] | null): void
 	remove?(i: TApiData): Promise<void>
 	omitFilters?: string[]
+	omitFiltersValues?: string[]
 	hideCheckbox?: boolean
 	empty?: string
 	filters?: any
