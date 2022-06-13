@@ -47,7 +47,7 @@ const settings = computed(() => {
 		allowHTML: false
 	}
 
-	if (props.template) {
+	if (props.template?.choice) {
 		config.callbackOnCreateTemplates = function (template: any) {
 			return {
 				choice: ({ classNames }: any, data: any) => {

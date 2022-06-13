@@ -9,12 +9,12 @@ defineProps<{
 	iconType?: 'outlined' | 'filled' | 'rounded' | 'twotone' | undefined
 	link?: boolean
 	actions?: any[]
-	border?: boolean
+	noBorder?: boolean
 }>()
 </script>
 
 <template>
-	<div class="ui-empty-data" :class="{ 'ui-empty-data-link': link, '-border': border }">
+	<div class="ui-empty-data" :class="{ 'ui-empty-data-link': link, '-border': !noBorder }">
 		<div class="ui-empty-data-content">
 			<Icon v-if="icon" :name="icon" :type="iconType" v-show="icon" class="ui-empty-data-icon" />
 			<span class="ui-empty-data-text">

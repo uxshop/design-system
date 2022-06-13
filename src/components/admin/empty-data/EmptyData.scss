@@ -3,11 +3,11 @@
 .ui-empty-data {
 	padding: 1.5rem;
 	border-radius: var(--card-border-radius);
-	border: dashed 0.1rem transparent;
+	border: dashed 1px transparent;
 	text-align: center;
 
 	&.-border {
-		border: dotted 2px var(--border-color);
+		border: dashed 1px var(--border-color);
 	}
 
 	&.ui-empty-data-link {

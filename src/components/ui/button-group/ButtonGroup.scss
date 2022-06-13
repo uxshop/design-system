@@ -5,7 +5,7 @@
 		border-radius: 0;
 	}
 
-	.ui-button:first-child {
+	.ui-button:first-child:not(:last-child) {
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
 	}
