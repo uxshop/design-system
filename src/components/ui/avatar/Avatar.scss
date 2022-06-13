@@ -34,14 +34,16 @@
 	}
 
 	&.-primary {
-		background: var(--primary);
-		color: white;
+		.ui-avatar-content {
+			color: var(--primary);
+			box-shadow: 0 0 0 2px var(--primary);
+		}
 	}
-	&.-white {
-		background: white;
-	}
+
 	&.-success {
-		background: var(--success);
-		color: white;
+		.ui-avatar-content {
+			color: var(--success);
+			box-shadow: 0 0 0 2px var(--success);
+		}
 	}
 }
