@@ -50,7 +50,7 @@ const vMaska = maska
 
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string | null): void
-	(e: 'update', val: string | null): void
+	(e: 'update', val: any): void
 	(e: 'focus', event: Event): void
 	(e: 'blur', event: Event): void
 	(e: 'keydown', event: Event): void
