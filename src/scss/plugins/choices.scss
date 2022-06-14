@@ -1,0 +1,11 @@
+.choices .choices__list {
+	input.choices__input {
+		background-color: var(--bg-white);
+		color: var(--body-color);
+		border-bottom-color: var(--body-color);
+	}
+
+	div.choices__item.is-highlighted {
+		background-color: var(--input-bg-color);
+	}
+}
