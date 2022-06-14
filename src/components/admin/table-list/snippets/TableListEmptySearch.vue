@@ -22,10 +22,10 @@ const emit = defineEmits<{
 
 <style lang="scss">
 .table-list-empty-search {
-	padding: 20px;
-	padding-bottom: 5px;
 	text-align: center;
 	height: 100%;
+	padding: 20px;
+	padding-bottom: 5px;
 
 	.table-list-empty-search-content {
 		border-radius: var(--border-radius);

@@ -1,8 +1,11 @@
 @import '../../../../scss/mixins.scss';
 
 .table-list-tabs {
-	.table-list-tab {
+	color: var(--text-muted);
+
+	.table-list-tabs-content {
 		height: 50px;
+		border: none;
 	}
 
 	@include mobile {

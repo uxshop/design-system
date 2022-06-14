@@ -4,19 +4,10 @@ import CustomScroll from '../../../ui/custom-scroll/CustomScroll.vue'
 import Tab from '../../../ui/tab/Tab.vue'
 import TabItem from '../../../ui/tab/TabItem.vue'
 
-interface FilterInterface {
-	id: number | string
-	name: string
-	view: string | number
-	filter: Record<string, any>
-}
-
 const props = defineProps<{
 	queryParams?: Record<string, any>
 	state: any
 }>()
-
-const tabs = ref<FilterInterface[]>([])
 
 const setPresetFilter = (item: Record<string, any>, e: MouseEvent) => {
 	e.preventDefault()
@@ -54,7 +45,7 @@ watch(
 			useBothWheelAxes: true,
 			suppressScrollY: true
 		}">
-		<Tab v-model="state.currentTab" class="table-list-tab">
+		<Tab v-model="state.currentTab" class="table-list-tabs-content">
 			<TabItem label="Todos" @click="resetFilters" index="all" />
 			<TabItem
 				v-for="(item, index) in state.tabs"
