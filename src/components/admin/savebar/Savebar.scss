@@ -4,7 +4,6 @@
 	position: fixed;
 	top: 0;
 	right: 0;
-	left: var(--layout-sidebar-width);
 	z-index: 888;
 	height: var(--layout-navbar-height);
 	background: var(--gray-100);
@@ -14,6 +13,14 @@
 	pointer-events: none;
 	transition: opacity 0.2s;
 	background-color: var(--gray-200);
+
+	@include mobile {
+		left: 0;
+	}
+
+	@include desktop {
+		left: var(--layout-sidebar-width);
+	}
 
 	.main-trial & {
 		top: 30px;
@@ -80,7 +87,7 @@
 	}
 
 	@include mobile {
-		height: 61px;
+		height: 69px;
 		.btn-success {
 			min-width: 140px;
 		}
