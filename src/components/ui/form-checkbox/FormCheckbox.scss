@@ -50,8 +50,8 @@
 			&:after {
 				display: block;
 				left: 50%;
-				top: 50%;
-				width: 50%;
+				top: calc(var(--form-check-height) / 2 - 2px);
+				width: 65%;
 				height: 2px;
 				transform: translateX(-50%) translateY(-50%);
 			}
@@ -82,13 +82,13 @@
 			display: none;
 			content: '';
 			position: absolute;
-			left: calc(50% - 4px);
-			top: 50%;
+			left: calc(50% - 3px);
+			top: 2px;
 			width: 6px;
 			height: 9px;
 			border: solid white;
 			border-width: 0 2px 2px 0;
-			transform: rotate(45deg) translate(-50%, -50%);
+			transform: rotate(45deg);
 		}
 	}
 
@@ -144,7 +144,7 @@
 
 	@include darkmode {
 		.ui-form-checkbox-checkmark {
-			background: var(--dark-200);
+			background: var(--input-bg-color);
 		}
 	}
 }

@@ -24,41 +24,34 @@
 	}
 
 	&.-success {
-		background-color: #e2f3eb;
-		border-color: #79c8a2;
-		color: #000;
-
-		.ui-icon {
-			color: var(--success-dark);
-		}
+		background-color: #019b7f25;
+		border-color: none;
+		color: #019b7f;
 	}
 
 	&.-danger {
-		background-color: #fbe8e7;
-		border-color: #eb968f;
-		color: #000;
-
-		.ui-icon {
-			color: var(--danger);
-		}
+		background-color: #f25d5d20;
+		border-color: none;
+		color: #f25d5d;
 	}
 
 	&.-info {
-		background-color: #e8f0fe;
-		border-color: #95bbf9;
-		color: darken(#95bbf9, 30);
+		background-color: #5f9fff20;
+		border-color: none;
+		color: #5f9fff;
 	}
 
 	&.-warning {
-		color: #a07224;
-		background-color: #fefce7;
-		border-color: #d5b888;
+		background-color: #de8f2d20;
+		border-color: none;
+		color: #de8f2d;
 	}
 
 	> .ui-icon {
 		margin-right: 8px;
 		font-size: 20px;
 		align-self: baseline;
+		color: inherit;
 	}
 
 	> .ui-alert-content {
@@ -124,10 +117,5 @@
 	}
 
 	@include darkmode {
-		&.-info {
-			background-color: #0095ff1c;
-			border-color: #31486c;
-			color: #a6c1eb;
-		}
 	}
 }

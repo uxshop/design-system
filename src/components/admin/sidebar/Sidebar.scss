@@ -35,7 +35,6 @@
 				position: absolute;
 				top: 0;
 				bottom: 0;
-				transition: transform 0.2s;
 			}
 
 			&.-submenu-open {
@@ -182,7 +181,6 @@
 				border-radius: 4px;
 				padding: 10px 0;
 				align-items: center;
-				transition: all 0.18s;
 				position: relative;
 				z-index: 2;
 			}
@@ -235,7 +233,7 @@
 
 	@include darkmode {
 		.ui-sidebar-wrapper {
-			border-color: transparent;
+			background: none;
 		}
 	}
 }
