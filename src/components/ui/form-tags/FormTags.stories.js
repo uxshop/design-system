@@ -12,7 +12,10 @@ export default {
 const Template = (args) => ({
 	components: { FormTags },
 	setup() {
-		const model = ref('2')
+		const model = ref()
+		setTimeout(() => {
+			model.value = 'teste, teste2, teste3'
+		}, 2000)
 		return { args, model }
 	},
 	template: `
@@ -22,16 +25,7 @@ const Template = (args) => ({
 })
 
 export const Default = Template.bind({})
-Default.args = {
-	// config: {
-	// 	create: true,
-	// 	choices: [
-	// 		{ value: 1,label: 'Teste 01',  customProperties: {fixed: true}, selected: true },
-	// 		{ value: 2,label: 'Teste 02' }
-	// 	]
-	// }
-}
+Default.args = {}
 
 export const Selectable = Template.bind({})
-Selectable.args = {
-}
+Selectable.args = {}

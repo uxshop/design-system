@@ -27,7 +27,8 @@ export interface SettingsInterface {
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add'])
 
 const props = withDefaults(defineProps<Props>(), {
-	placeholder: 'Criar tags'
+	placeholder: 'Criar tags',
+	create: true
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
@@ -66,20 +67,27 @@ const init = () => {
 	// @ts-ignore
 	window.Choices = window.Choices ?? Choices
 
+	console.log('init')
+
 	nextTick(() => {
 		if (element.value) {
 			element.value.destroy()
 		}
 
 		const el = document.querySelector(`#${uid}`)
+
 		if (el) {
 			// @ts-ignore
 			element.value = new window.Choices(el, getSettings())
+			checkModelValue()
 
 			el.addEventListener(
 				'change',
 				function (event) {
-					update(element.value.getValue(true))
+					const val = element.value.getValue(true)
+
+					update(val.join(','))
+
 					if (props.closeOnSelect) {
 						element.value.hideDropdown()
 					}
@@ -107,28 +115,33 @@ const init = () => {
 const checkModelValue = () => {
 	nextTick(() => {
 		if (element.value) {
-			if (props.modelValue && !isArray(props.modelValue)) {
-				const val = props.modelValue.split(',')
-				console.log(props.modelValue, val)
-				element.value.setValue(val)
+			element.value.clearStore()
+			const data = getValueArray()
+			if (isArray(data)) {
+				element.value.setValue(data)
 			}
 		}
 	})
 }
 
-onMounted(init)
+const getValueArray = () => {
+	if (props.modelValue && !isArray(props.modelValue)) {
+		return props.modelValue.split(',')
+	}
+
+	return props.modelValue
+}
 
 watch(
 	() => props.modelValue,
-	() => {
-		checkModelValue()
-	}
+	() => checkModelValue(),
+	{ immediate: true }
 )
 
 watch(
 	() => [props.config],
 	() => init(),
-	{ deep: true }
+	{ deep: true, immediate: true }
 )
 </script>
 
