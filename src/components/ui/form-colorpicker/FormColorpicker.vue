@@ -165,7 +165,6 @@ defineExpose({
 				@blur="focused = false" />
 		</div>
 	</label>
-	{{ focused }}
 </template>
 
 <style lang="scss">
