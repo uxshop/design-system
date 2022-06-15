@@ -19,7 +19,7 @@ const Template = (args) => ({
 		return { args, model }
 	},
 	template: `
-    <FormTags v-bind="args"  v-model="model"  />
+    <FormTags v-bind="args" v-model="model" />
     <pre>{{ model }}</pre>
   `
 })
@@ -28,4 +28,12 @@ export const Default = Template.bind({})
 Default.args = {}
 
 export const Selectable = Template.bind({})
-Selectable.args = {}
+Selectable.args = {
+	create: false,
+	options: [
+		{
+			label: 'Hello!',
+			value: 'hello'
+		}
+	]
+}

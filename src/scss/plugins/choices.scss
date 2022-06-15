@@ -2,10 +2,10 @@
 	input.choices__input {
 		background-color: var(--bg-white);
 		color: var(--body-color);
-		border-bottom-color: var(--body-color);
+		border-bottom-color: var(--border-color);
 	}
 
 	div.choices__item.is-highlighted {
-		background-color: var(--input-bg-color);
+		background-color: var(--gray-100);
 	}
 }
