@@ -7,6 +7,7 @@ const props = defineProps<{
 	auto?: boolean
 	handle?: boolean
 	width?: string | number
+	noWrap?: boolean
 }>()
 
 const classList = ref<string[]>([])
@@ -26,6 +27,9 @@ onMounted(() => {
 	}
 	if (props.auto) {
 		classList.value.push('-auto')
+	}
+	if (props.noWrap) {
+		classList.value.push('-nowrap')
 	}
 	if (props.width) {
 		styleCustom.value.width = `${props.width}px`

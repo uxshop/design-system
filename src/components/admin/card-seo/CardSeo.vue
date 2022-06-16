@@ -2,10 +2,11 @@
 import Card from '../../ui/card/Card.vue'
 import Seo from '../seo/Seo.vue'
 defineProps<{
-	modelValue?: any
+	modelValue: any
 	keyTitle?: string
 	keySubTitle?: string
 	keyDescription?: string
+	domain: string
 }>()
 </script>
 
@@ -17,6 +18,7 @@ defineProps<{
 				:keyTitle="keyTitle"
 				:keySubTitle="keySubTitle"
 				:keyDescription="keyDescription"
+				:domain="domain"
 				viewOnly />
 		</template>
 		<Seo v-model="modelValue" write-only />

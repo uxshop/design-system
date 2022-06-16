@@ -2,7 +2,6 @@
 .ui-alert {
 	text-align: left;
 	position: relative;
-	font-size: calc(var(--font-size-base) - 1px);
 	padding: 15px;
 	border-radius: var(--alert-border-radius);
 	background-color: var(--gray-200);
@@ -25,25 +24,21 @@
 
 	&.-success {
 		background-color: #019b7f25;
-		border-color: none;
 		color: #019b7f;
 	}
 
 	&.-danger {
 		background-color: #f25d5d20;
-		border-color: none;
 		color: #f25d5d;
 	}
 
 	&.-info {
-		background-color: #5f9fff20;
-		border-color: none;
-		color: #5f9fff;
+		background-color: #30a3f440;
+		color: #1c84ce;
 	}
 
 	&.-warning {
 		background-color: #de8f2d20;
-		border-color: none;
 		color: #de8f2d;
 	}
 
@@ -90,6 +85,7 @@
 		position: absolute;
 		right: 10px;
 		align-self: center;
+		color: inherit;
 
 		&:hover {
 			background-color: rgba(0, 0, 0, 0.05);
@@ -105,8 +101,8 @@
 		margin: 0;
 		list-style: none;
 
-		li + li {
-			margin-top: 4px;
+		li:not(:last-child) {
+			margin-bottom: 4px;
 		}
 	}
 
