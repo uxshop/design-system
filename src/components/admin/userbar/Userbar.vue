@@ -58,6 +58,10 @@ const getComponent = (item: IDropdownItem) => {
 		return DropdownItemVue
 	}
 
+	if (item.href) {
+		return DropdownItemVue
+	}
+
 	return DropdownItemButtonVue
 }
 </script>
