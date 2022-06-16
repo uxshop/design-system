@@ -24,11 +24,11 @@ const autoLanguage = EditorState.transactionExtender.of((tr) => {
 })
 
 const props = defineProps<{
-	value?: string
+	modelValue?: string
 	config?: object
 }>()
 
-const emit = defineEmits(['update'])
+const emit = defineEmits(['update:modelValue'])
 const editorRef = ref()
 const cm = shallowRef()
 const noUpdate = shallowRef()
@@ -42,7 +42,7 @@ onMounted(() => {
 			const doc = update.state.doc as Text
 			const docFinal = Array(doc)
 			const value = docFinal.join('\n')
-			emit('update', value)
+			emit('update:modelValue', value)
 		}
 
 		noUpdate.value = false
@@ -52,7 +52,7 @@ onMounted(() => {
 		cm.value = new EditorView({
 			parent: el,
 			state: EditorState.create({
-				doc: props.value,
+				doc: props.modelValue,
 				extensions: [
 					// myTheme,
 					updateListenerExtension,
@@ -69,7 +69,7 @@ onMounted(() => {
 
 	const stopWatch = watchEffect(() => {
 		const update = cm.value.state.update({
-			changes: { from: 0, to: cm.value.state.doc.length, insert: props.value }
+			changes: { from: 0, to: cm.value.state.doc.length, insert: props.modelValue }
 		})
 		noUpdate.value = true
 		cm.value.update([update])
