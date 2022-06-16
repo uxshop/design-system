@@ -41,7 +41,7 @@ const onClear = () => {
 
 <template>
 	<span class="table-list-nav-item table-search">
-		<form autocomplete="off">
+		<form autocomplete="off" @submit.prevent>
 			<div class="table-search-input">
 				<FormTextfield
 					size="sm"
