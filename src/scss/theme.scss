@@ -25,10 +25,6 @@ body {
 	overflow-y: auto;
 	line-height: 1.4;
 
-	@include darkmode {
-		background: var(--dark-300);
-	}
-
 	&.dialog-open,
 	&.modal-open {
 		overflow: hidden;

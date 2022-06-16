@@ -11,10 +11,10 @@ const emit = defineEmits<{
 			<div class="table-list-empty-search-icon">
 				<Icon name="search" size="40" />
 			</div>
-			<div class="table-list-empty-search-title">Sua pesquisa não retornou nenhum resultado.</div>
+			<div class="table-list-empty-search-title">Sua pesquisa não retornou nenhum resultado</div>
 			<div class="table-list-empty-search-text">
-				Essa opção não existe na sua nave, tente
-				<a @click="emit('resetQueryParams')">outra opção de filtro</a>.
+				Essa opção não existe na sua loja, tente
+				<a @click="emit('resetQueryParams')">outra opção de filtro</a>
 			</div>
 		</div>
 	</div>
@@ -22,10 +22,10 @@ const emit = defineEmits<{
 
 <style lang="scss">
 .table-list-empty-search {
-	padding: 20px;
-	padding-bottom: 5px;
 	text-align: center;
 	height: 100%;
+	padding: 20px;
+	padding-bottom: 5px;
 
 	.table-list-empty-search-content {
 		border-radius: var(--border-radius);

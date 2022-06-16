@@ -14,7 +14,7 @@ const Template = (args) => ({
 	setup() {
 		const model = ref('#cccccc')
 		setTimeout(() => {
-			model.value = '#000000'
+			model.value = '#c1c1c1'
 		}, 1000)
 		return { args, model }
 	},
@@ -25,4 +25,12 @@ const Template = (args) => ({
 })
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+	label: 'Selecione uma cor'
+}
+
+export const WithInput = Template.bind({})
+WithInput.args = {
+	label: 'Selecione uma cor',
+	withInput: true
+}

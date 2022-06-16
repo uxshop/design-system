@@ -35,7 +35,6 @@
 				position: absolute;
 				top: 0;
 				bottom: 0;
-				transition: transform 0.2s;
 			}
 
 			&.-submenu-open {
@@ -138,64 +137,63 @@
 		&.-spacer-flex {
 			flex-grow: 1;
 		}
+	}
 
-		.ui-sidebar-link {
-			line-height: 1;
-			color: var(--body-color);
-			font-weight: 700;
-			font-size: 14px;
-			display: flex;
-			cursor: pointer;
-			position: relative;
-			height: 32px;
-			align-items: center;
-			margin: 0 10px;
-			border-radius: 4px;
-			padding: 0 15px;
-			text-decoration: none;
+	.ui-sidebar-link {
+		line-height: 1;
+		color: var(--body-color);
+		font-weight: 700;
+		font-size: 14px;
+		display: flex;
+		cursor: pointer;
+		position: relative;
+		height: 32px;
+		align-items: center;
+		margin: 0 10px;
+		border-radius: 4px;
+		padding: 0 15px;
+		text-decoration: none;
 
-			&.-sub {
-				font-weight: 500;
-				height: 30px;
-			}
+		&.-sub {
+			font-weight: 500;
+			height: 30px;
+		}
 
-			&:hover {
-				background-color: #e5eaef60;
-			}
+		&:hover {
+			background-color: #e5eaef60;
+		}
 
-			&.-active:not(.-child-active) {
-				background-color: var(--dark-100, var(--gray-200));
-			}
+		&.-active:not(.-child-active) {
+			background-color: var(--dark-100, var(--gray-200));
+		}
 
-			&.-active,
-			&.-open {
-				.ui-icon {
-					color: var(--primary);
-				}
-				~ .ui-sidebar-sublist {
-					display: block;
-				}
-			}
-
-			.ui-sidebar-link-text {
-				display: inline-flex;
-				border-radius: 4px;
-				padding: 10px 0;
-				align-items: center;
-				transition: all 0.18s;
-				position: relative;
-				z-index: 2;
-			}
-
-			.ui-sidebar-link-icon {
-				width: 25px;
-				display: flex;
-				align-items: center;
-			}
-
+		&.-active,
+		&.-open {
 			.ui-icon {
-				font-size: 16px;
+				color: var(--primary);
 			}
+			~ .ui-sidebar-sublist {
+				display: block;
+			}
+		}
+
+		.ui-sidebar-link-text {
+			display: inline-flex;
+			border-radius: 4px;
+			padding: 10px 0;
+			align-items: center;
+			position: relative;
+			z-index: 2;
+		}
+
+		.ui-sidebar-link-icon {
+			width: 25px;
+			display: flex;
+			align-items: center;
+		}
+
+		.ui-icon {
+			font-size: 16px;
 		}
 	}
 
@@ -235,7 +233,13 @@
 
 	@include darkmode {
 		.ui-sidebar-wrapper {
-			border-color: transparent;
+			background: none;
+		}
+
+		.ui-sidebar-link {
+			&:hover:not(.-active) {
+				background-color: var(--dark-300);
+			}
 		}
 	}
 }

@@ -275,6 +275,14 @@ $increment: 4;
 	margin-bottom: var(--form-group-margin-bottom) !important;
 }
 
+.mb-gutter {
+	margin-bottom: var(--grid-gutter-width) !important;
+}
+
+.mt-gutter {
+	margin-top: var(--grid-gutter-width) !important;
+}
+
 .mt-auto {
 	margin-top: auto;
 }
@@ -331,7 +339,7 @@ dl {
 
 ul {
 	padding-left: 18px;
-	li {
+	li:not(:last-child) {
 		margin-bottom: 8px;
 	}
 }

@@ -22,7 +22,6 @@
 
 	.ui-table-cell.-head {
 		border-top: solid 1px var(--gray-100);
-		background-color: var(--gray-100);
 		border: none;
 		font-weight: var(--font-weight-semibold);
 		font-size: 12px;
@@ -107,6 +106,10 @@
 				display: flex;
 				font-size: 18px;
 			}
+		}
+
+		&.-nowrap {
+			white-space: nowrap;
 		}
 	}
 

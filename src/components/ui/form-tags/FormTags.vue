@@ -12,7 +12,8 @@ export interface Props {
 	config?: any
 	closeOnSelect?: boolean
 	last?: boolean
-	actions?: any[]
+	actions?: any
+	options?: any
 	create?: boolean
 }
 
@@ -27,39 +28,31 @@ export interface SettingsInterface {
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add'])
 
 const props = withDefaults(defineProps<Props>(), {
-	placeholder: 'Criar tags'
+	placeholder: 'Criar tags',
+	create: true,
+	options: []
 })
 
+let settings = {
+	searchEnabled: true,
+	searchChoices: true,
+	removeItems: true,
+	removeItemButton: true,
+	addItems: true,
+	create: false,
+	placeholder: true,
+	placeholderValue: props.placeholder || 'Selecione',
+	noResultsText: 'Nenhum resultado encontrado',
+	noChoicesText: 'Sem opções para escolher',
+	items: [],
+	choices: [],
+	allowHTML: true
+}
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const element = shallowRef()
-
 const update = (val: string) => {
 	emit('update:modelValue', val)
 	emit('update', val)
-}
-
-const getSettings = () => {
-	const newConfig: any = cloneDeep(props.config)
-	const settings = {
-		...{
-			searchEnabled: true,
-			searchChoices: true,
-			removeItems: true,
-			removeItemButton: true,
-			addItems: true,
-			create: props.create,
-			placeholder: true,
-			placeholderValue: props.placeholder || 'Selecione',
-			noResultsText: 'Nenhum resultado encontrado',
-			noChoicesText: 'Sem opções para escolher',
-			items: [],
-			choices: [],
-			allowHTML: true
-		},
-		...newConfig
-	}
-
-	return settings
 }
 
 const init = () => {
@@ -67,19 +60,43 @@ const init = () => {
 	window.Choices = window.Choices ?? Choices
 
 	nextTick(() => {
+		const el = document.querySelector(`#${uid}`)
+
 		if (element.value) {
 			element.value.destroy()
 		}
 
-		const el = document.querySelector(`#${uid}`)
 		if (el) {
+			console.log('init')
+			const settings = {
+				searchEnabled: true,
+				searchChoices: true,
+				removeItems: true,
+				removeItemButton: true,
+				addItems: true,
+				create: false,
+				placeholder: true,
+				placeholderValue: props.placeholder || 'Selecione',
+				noResultsText: 'Nenhum resultado encontrado',
+				noChoicesText: 'Sem opções para escolher',
+				items: [],
+				choices: cloneDeep(props.options),
+				allowHTML: true
+			}
+			// settings.choices = cloneDeep(props.options)
+
 			// @ts-ignore
-			element.value = new window.Choices(el, getSettings())
+			element.value = new window.Choices(el, settings)
+
+			checkModelValue()
 
 			el.addEventListener(
 				'change',
 				function (event) {
-					update(element.value.getValue(true))
+					const val = element.value.getValue(true)
+
+					update(val.join(','))
+
 					if (props.closeOnSelect) {
 						element.value.hideDropdown()
 					}
@@ -93,6 +110,7 @@ const init = () => {
 				},
 				false
 			)
+
 			// el.addEventListener(
 			// 	'removeItem',
 			// 	function (event) {
@@ -107,28 +125,36 @@ const init = () => {
 const checkModelValue = () => {
 	nextTick(() => {
 		if (element.value) {
-			if (props.modelValue && !isArray(props.modelValue)) {
-				const val = props.modelValue.split(',')
-				console.log(props.modelValue, val)
-				element.value.setValue(val)
+			const data = getValueArray()
+
+			if (props.create) {
+				if (isArray(data)) {
+					element.value.clearStore()
+					element.value.setValue(data)
+				}
 			}
 		}
 	})
 }
 
-onMounted(init)
+const getValueArray = () => {
+	if (props.modelValue && !isArray(props.modelValue)) {
+		return props.modelValue.split(',')
+	}
+
+	return props.modelValue
+}
 
 watch(
 	() => props.modelValue,
-	() => {
-		checkModelValue()
-	}
+	() => checkModelValue(),
+	{ immediate: true }
 )
 
 watch(
-	() => [props.config],
+	() => [props.options],
 	() => init(),
-	{ deep: true }
+	{ immediate: true, deep: true }
 )
 </script>
 
@@ -141,13 +167,7 @@ watch(
 				label: 'Remover'
 			}" />
 		<div class="ui-form-tags-content">
-			<input
-				v-if="getSettings().create"
-				ref="selectRef"
-				:id="uid"
-				type="text"
-				autocomplete="off"
-				:placeholder="placeholder" />
+			<input v-if="props.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
 			<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
 			<div v-if="actions" class="ui-form-tags-actions">
 				<Button v-for="item in actions" :label="item.label" @click="item.onAction" />

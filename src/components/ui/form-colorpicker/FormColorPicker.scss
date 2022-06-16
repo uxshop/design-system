@@ -1,66 +1,79 @@
 @import '../../../scss/mixins.scss';
 
 .ui-colorpicker {
-	display: inline-flex;
-	height: var(--input-height);
-	width: var(--input-height);
-}
+	display: inline-block;
 
-.pcr-interaction {
-	flex-wrap: nowrap !important;
-
-	input {
-		font-size: 11px !important;
-		letter-spacing: 0 !important;
-	}
-
-	.pcr-result {
-		min-width: 40px !important;
-	}
-
-	.pcr-save {
-		order: 2;
-	}
-}
-
-.pickr {
-	position: relative;
-	border-radius: var(--input-border-radius);
-	height: 100%;
-	width: 100%;
-
-	&:after {
-		position: absolute;
-		left: 0;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		content: '';
+	.ui-colorpicker-label {
 		display: block;
-		border: solid var(--border-width);
-		z-index: 22;
-		border-radius: inherit;
-		opacity: 0.2;
-		cursor: pointer;
 	}
 
-	.pcr-button {
-		border-radius: inherit;
-		transition: none;
-		height: 100%;
-		width: 100%;
-		&::after,
-		&::before {
-			border-radius: inherit !important;
-			transition: none;
+	.ui-colorpicker-content {
+		display: flex;
+		gap: 8px;
+	}
+
+	.pickr {
+		min-height: var(--input-height);
+		min-width: var(--input-height);
+		position: relative;
+		border-radius: var(--input-border-radius);
+
+		&:after {
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			content: '';
+			display: block;
+			border: solid var(--border-width);
+			z-index: 22;
+			border-radius: inherit;
+			opacity: 0.2;
+			cursor: pointer;
 		}
 
-		&.clear {
-			background-size: 25%;
-
-			@include desktop {
-				background-size: 10%;
+		.pcr-button {
+			border-radius: inherit;
+			transition: none;
+			height: 100%;
+			width: 100%;
+			&::after,
+			&::before {
+				border-radius: inherit !important;
+				transition: none;
 			}
+
+			&.clear {
+				background-size: 25%;
+
+				@include desktop {
+					background-size: 10%;
+				}
+			}
+		}
+	}
+}
+
+.pcr-app {
+	background-color: var(--bg-white);
+
+	.pcr-interaction {
+		flex-wrap: nowrap !important;
+
+		input {
+			font-size: 11px !important;
+			letter-spacing: 0 !important;
+		}
+
+		.pcr-result {
+			min-width: 40px !important;
+			background-color: var(--input-bg-color);
+			color: var(--body-color);
+		}
+
+		.pcr-save {
+			order: 2;
 		}
 	}
 }

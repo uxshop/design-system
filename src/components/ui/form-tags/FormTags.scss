@@ -30,6 +30,11 @@
 				border-bottom-right-radius: 0;
 			}
 		}
+
+		.choices__list {
+			background-color: var(--bg-white);
+			border-color: var(--input-border-color);
+		}
 	}
 
 	.choices__inner {

@@ -6,7 +6,7 @@
 
 	.stats-group-wrapper {
 		display: flex;
-		margin: -5px;
+		margin: -8px;
 		flex-wrap: wrap;
 		justify-content: space-around;
 	}
@@ -24,13 +24,13 @@
 	}
 
 	.stats-item {
-		padding: 5px;
+		padding: 8px;
 		height: 100%;
 	}
 
 	@include darkmode {
 		.stats-content {
-			background: var(--dark-100);
+			background: var(--dark-300);
 		}
 	}
 }

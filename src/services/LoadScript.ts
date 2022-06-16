@@ -25,4 +25,5 @@ const loadScript = (src: string) => {
 		}
 	})
 }
+
 export default loadScript

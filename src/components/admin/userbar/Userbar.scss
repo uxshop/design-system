@@ -1,8 +1,7 @@
 @import '../../../scss/mixins.scss';
 
 .ui-userbar {
-	background: inherit;
-	background-color: var(--dark-300, var(--body-bg));
+	background-color: var(--body-bg);
 	height: 100%;
 	border-bottom: solid 1px var(--border-color);
 
@@ -169,7 +168,6 @@
 		margin-bottom: 0;
 		position: static;
 		border-bottom: solid 1px var(--border-color);
-		background: #fff;
 
 		&:after {
 			visibility: hidden;
@@ -189,10 +187,6 @@
 			.ui-userbar-btn-info {
 				display: none;
 			}
-		}
-
-		@include darkmode {
-			background: var(--dark-200);
 		}
 	}
 
