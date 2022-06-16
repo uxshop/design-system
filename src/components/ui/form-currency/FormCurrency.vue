@@ -27,6 +27,7 @@ export interface Props {
 	name?: string
 	autocomplete?: string
 	min?: string | number
+	max?: string | number
 	step?: string | number
 	minlength?: string | number
 	maxlength?: string | number
@@ -57,7 +58,11 @@ const settings: CurrencyInputOptions = {
 		autoDecimalDigits: true,
 		autoSign: true,
 		useGrouping: true,
-		accountingSign: false
+		accountingSign: false,
+		valueRange: {
+			min: props.min ?? null,
+			max: props.max ?? 999999.99
+		}
 		// precision: 2
 	},
 	...props.options
