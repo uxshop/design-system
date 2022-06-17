@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { inject, ref, shallowRef, watchPostEffect } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import MobileDetector from '../../../services/MobileDetector'
+import { inject, ref, watchPostEffect } from 'vue'
+import { useRoute, type RouteLocationNormalizedLoaded } from 'vue-router'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
 import { map } from 'lodash-es'
@@ -21,25 +20,31 @@ export interface Props {
 	currentSection?: string | null
 }
 
-const props = withDefaults(defineProps<Props>(), {})
-const currentMenu = shallowRef()
-const section = shallowRef<string>()
-const activeSection = ref<string | null | undefined>()
-const router = useRouter()
-const route = useRoute()
 const menu = inject('menu') as MenuProviderInterface
-const menusFormated = {}
+const props = defineProps<Props>()
+const route = useRoute()
+// const activeSection = ref<string | null | undefined>()
+// const menusFormated: any = {}
+// map(props.menus, (item, key) => {
+// 	if (item.nodes) {
+// 		const alias = item.to?.replace(/_.*/g, '') as string
 
-map(props.menus, (item, key) => {
-	if (item.nodes) {
-		map(item.nodes, (i) => {
-			menusFormated[i.to] = {
-				to: i.to,
-				parent: key
-			}
-		})
-	}
-})
+// 		menusFormated[alias] = {
+// 			to: item.to,
+// 			parent: key
+// 		}
+
+// 		map(item.nodes, (i) => {
+// 			const alias = i.to?.replace(/_.*/g, '') as string
+
+// 			menusFormated[alias] = {
+// 				alias: alias,
+// 				to: i.to,
+// 				parent: key
+// 			}
+// 		})
+// 	}
+// })
 
 const hasPermission = (item: SidebarInterface.Item) => {
 	if (props.permissionService.has(item.permissions)) {
@@ -67,13 +72,27 @@ const clickOverlay = () => {
 	}
 }
 
-watchPostEffect(() => {
-	activeSection.value = menusFormated[route.name]?.parent
-})
+const checkActive = (name: any) => {
+	const el = document.getElementById('ui-sidebar')?.getElementsByClassName('-active') as HTMLCollectionOf<HTMLElement>
+	const link = el[0]?.parentElement?.parentElement?.previousElementSibling
+	const linkOpened = document.getElementById('ui-sidebar')?.getElementsByClassName('-open')
+	linkOpened && linkOpened[0]?.classList.remove('-open')
+	link?.classList.add('-open')
+}
+
+watchPostEffect(() => checkActive(route.name))
+
+// watchPostEffect(() => {
+// const alias = route.name.replace(/_.*/g, '')
+// console.log(route)
+// console.log(alias, menusFormated)
+// activeSection.value = menusFormated[alias]?.parent
+// activeSection.value = menusFormated[route.name]?.parent
+// })
 </script>
 
 <template>
-	<div class="ui-sidebar">
+	<div class="ui-sidebar" id="ui-sidebar">
 		<div class="ui-sidebar-wrapper">
 			<div class="ui-sidebar-container">
 				<div class="ui-sidebar-content">
@@ -98,7 +117,7 @@ watchPostEffect(() => {
 									:to="{ name: item.to }"
 									:class="{
 										'-nodes': item.nodes,
-										'-open': key == activeSection,
+										// '-open': key == activeSection,
 										'-child-active': item.nodes && item.to == item.nodes[0].to
 									}"
 									class="ui-sidebar-link"

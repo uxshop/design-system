@@ -2,15 +2,20 @@
 import { ref } from 'vue'
 import Icon from '../icon/Icon.vue'
 
-interface Props {
+export interface Props {
 	src?: string | null
 	size?: number | string
+}
+
+interface crop {
+	size: string
 }
 
 interface StyleInterface {
 	width?: string
 	height?: string
 }
+
 interface StyleIconInterface {
 	fontSize?: string
 	width?: string

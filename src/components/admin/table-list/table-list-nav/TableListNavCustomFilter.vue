@@ -46,7 +46,7 @@ const addTab = (tab: any) => {
 }
 
 onMounted(async () => {
-	const res = await props.service.get({ resource: 'products' })
+	const res = await props.service.get({ resource: props.state.config.customFilterResource })
 
 	each(props.state.config.customFilterPresets, (item) => {
 		if (isObject(item)) {
@@ -80,10 +80,8 @@ const disableDropdown = computed(() => {
 
 const onRemoveTab = async () => {
 	if (props.state.currentTab) {
-		// await props.service.delete(props.state.currentTab)
-
+		await props.service.delete(props.state.currentTab)
 		dropdownRef.value.hide()
-
 		props.state.tabs = props.state.tabs.filter((item) => {
 			return item.id != props.state.currentTab
 		})
@@ -105,7 +103,7 @@ const onSave = async () => {
 		res = await props.service.create({
 			name: reg.value.name,
 			filter: omit(props.state.queryParams, props.state.omitFiltersValues),
-			resource: 'products'
+			resource: props.state.config.customFilterResource
 		})
 		props.state.tabs.push(res)
 		props.state.setQueryParams({

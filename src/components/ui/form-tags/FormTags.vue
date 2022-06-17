@@ -74,6 +74,7 @@ const init = () => {
 				removeItems: true,
 				removeItemButton: true,
 				addItems: true,
+				position: 'bottom',
 				create: false,
 				placeholder: true,
 				placeholderValue: props.placeholder || 'Selecione',
