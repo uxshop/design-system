@@ -33,23 +33,10 @@ const props = withDefaults(defineProps<Props>(), {
 	options: []
 })
 
-let settings = {
-	searchEnabled: true,
-	searchChoices: true,
-	removeItems: true,
-	removeItemButton: true,
-	addItems: true,
-	create: false,
-	placeholder: true,
-	placeholderValue: props.placeholder || 'Selecione',
-	noResultsText: 'Nenhum resultado encontrado',
-	noChoicesText: 'Sem opções para escolher',
-	items: [],
-	choices: [],
-	allowHTML: true
-}
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const element = shallowRef()
+let el: HTMLElement
+
 const update = (val: string) => {
 	emit('update:modelValue', val)
 	emit('update', val)
@@ -57,17 +44,12 @@ const update = (val: string) => {
 
 const init = () => {
 	nextTick(() => {
-		// @ts-ignore
-		window.Choices = Choices ?? window.Choices.default
-
 		if (element.value) {
 			element.value.destroy()
 		}
 
-		const el = document.querySelector(`#${uid}`)
-
 		if (el) {
-			const settings = {
+			const settings: any = {
 				searchEnabled: true,
 				searchChoices: true,
 				removeItems: true,
@@ -84,39 +66,10 @@ const init = () => {
 				allowHTML: true
 			}
 
-			// @ts-ignore
-			element.value = new window.Choices(el, settings)
+			const Plugin = Choices.default ?? Choices
+			element.value = new Plugin(el, settings)
 
 			checkModelValue()
-
-			el.addEventListener(
-				'change',
-				function (event) {
-					const val = element.value.getValue(true)
-
-					update(val.join(','))
-
-					if (props.closeOnSelect) {
-						element.value.hideDropdown()
-					}
-				},
-				false
-			)
-			el.addEventListener(
-				'addItem',
-				function (event: any) {
-					emit('add', event.detail)
-				},
-				false
-			)
-
-			// el.addEventListener(
-			// 	'removeItem',
-			// 	function (event) {
-			// 		console.log(event.detail)
-			// 	},
-			// 	false
-			// )
 		}
 	})
 }
@@ -145,6 +98,38 @@ const getValueArray = () => {
 }
 
 onMounted(() => {
+	el = document.querySelector(`#${uid}`)
+
+	if (el) {
+		el.addEventListener(
+			'change',
+			function (event) {
+				const val = element.value.getValue(true)
+
+				update(val.join(','))
+
+				if (props.closeOnSelect) {
+					element.value.hideDropdown()
+				}
+			},
+			false
+		)
+		el.addEventListener(
+			'addItem',
+			function (event: any) {
+				emit('add', event.detail)
+			},
+			false
+		)
+		// el.addEventListener(
+		// 	'removeItem',
+		// 	function (event) {
+		// 		console.log(event.detail)
+		// 	},
+		// 	false
+		// )
+	}
+
 	watch(
 		() => props.modelValue,
 		() => checkModelValue(),

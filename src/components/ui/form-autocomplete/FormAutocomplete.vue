@@ -74,18 +74,32 @@ const settings = computed(() => {
 
 const init = () => {
 	nextTick(() => {
-		console.log(Choices, window.Choices)
-		// @ts-ignore
-		window.Choices = Choices ?? window.Choices.default
+		const Plugin = Choices.default ?? Choices
 
 		if (element.value) {
 			element.value.destroy()
 		}
 
 		if (el) {
-			// @ts-ignore
-			element.value = new window.Choices(el, settings.value)
+			element.value = new Plugin(el, settings.value)
 			checkModelValue()
+		}
+	})
+}
+
+const update = (val: string, raw: any) => {
+	emit('update:modelValue', val)
+	emit('update', val, raw)
+}
+
+const checkModelValue = () => {
+	nextTick(() => {
+		if (element.value) {
+			if (props.modelValue == null) {
+				element.value.setChoiceByValue('')
+			} else {
+				element.value.setChoiceByValue(props.modelValue)
+			}
 		}
 	})
 }
@@ -115,23 +129,6 @@ onMounted(() => {
 		{ immediate: true, deep: true }
 	)
 })
-
-const update = (val: string, raw: any) => {
-	emit('update:modelValue', val)
-	emit('update', val, raw)
-}
-
-const checkModelValue = () => {
-	nextTick(() => {
-		if (element.value) {
-			if (props.modelValue == null) {
-				element.value.setChoiceByValue('')
-			} else {
-				element.value.setChoiceByValue(props.modelValue)
-			}
-		}
-	})
-}
 </script>
 
 <template>
