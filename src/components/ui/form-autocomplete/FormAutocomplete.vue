@@ -25,6 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const element = shallowRef()
 const focus = ref(false)
+let el: HTMLElement | null
 
 const getTemplateChoice = (data: any) => {
 	return props.template.choice(data)
@@ -71,25 +72,6 @@ const settings = computed(() => {
 	return config
 })
 
-let el: HTMLElement | null
-onMounted(() => {
-	if ((el = document.getElementById(`${uid}`))) {
-		el.addEventListener(
-			'change',
-			function (event) {
-				update(element.value.getValue(true), element.value.getValue())
-				// element.value.hideDropdown()
-			},
-			false
-		)
-	}
-})
-
-const update = (val: string, raw: any) => {
-	emit('update:modelValue', val)
-	emit('update', val, raw)
-}
-
 const init = () => {
 	nextTick(() => {
 		// @ts-ignore
@@ -107,6 +89,35 @@ const init = () => {
 	})
 }
 
+onMounted(() => {
+	if ((el = document.getElementById(`${uid}`))) {
+		el.addEventListener(
+			'change',
+			function (event) {
+				update(element.value.getValue(true), element.value.getValue())
+				// element.value.hideDropdown()
+			},
+			false
+		)
+	}
+
+	watch(
+		() => props.modelValue,
+		() => checkModelValue()
+	)
+
+	watch(
+		() => [props.options],
+		() => init(),
+		{ immediate: true, deep: true }
+	)
+})
+
+const update = (val: string, raw: any) => {
+	emit('update:modelValue', val)
+	emit('update', val, raw)
+}
+
 const checkModelValue = () => {
 	nextTick(() => {
 		if (element.value) {
@@ -118,17 +129,6 @@ const checkModelValue = () => {
 		}
 	})
 }
-
-watch(
-	() => props.modelValue,
-	() => checkModelValue()
-)
-
-watch(
-	() => [props.options],
-	() => init(),
-	{ immediate: true, deep: true }
-)
 </script>
 
 <template>

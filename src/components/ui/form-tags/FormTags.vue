@@ -146,17 +146,19 @@ const getValueArray = () => {
 	return props.modelValue
 }
 
-watch(
-	() => props.modelValue,
-	() => checkModelValue(),
-	{ immediate: true }
-)
+onMounted(() => {
+	watch(
+		() => props.modelValue,
+		() => checkModelValue(),
+		{ immediate: true }
+	)
 
-watch(
-	() => [props.options],
-	() => init(),
-	{ immediate: true, deep: true }
-)
+	watch(
+		() => [props.options],
+		() => init(),
+		{ immediate: true, deep: true }
+	)
+})
 </script>
 
 <template>
