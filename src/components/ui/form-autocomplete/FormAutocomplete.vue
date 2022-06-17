@@ -75,7 +75,7 @@ const settings = computed(() => {
 const init = () => {
 	nextTick(() => {
 		// @ts-ignore
-		window.Choices = window.Choices ?? Choices
+		window.Choices = Choices ?? window.Choices.default
 
 		if (element.value) {
 			element.value.destroy()
@@ -90,7 +90,9 @@ const init = () => {
 }
 
 onMounted(() => {
-	if ((el = document.getElementById(`${uid}`))) {
+	el = document.getElementById(`${uid}`)
+
+	if (el) {
 		el.addEventListener(
 			'change',
 			function (event) {

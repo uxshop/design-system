@@ -56,18 +56,17 @@ const update = (val: string) => {
 }
 
 const init = () => {
-	// @ts-ignore
-	window.Choices = window.Choices ?? Choices
-
 	nextTick(() => {
-		const el = document.querySelector(`#${uid}`)
+		// @ts-ignore
+		window.Choices = Choices ?? window.Choices.default
 
 		if (element.value) {
 			element.value.destroy()
 		}
 
+		const el = document.querySelector(`#${uid}`)
+
 		if (el) {
-			console.log('init')
 			const settings = {
 				searchEnabled: true,
 				searchChoices: true,
@@ -84,7 +83,6 @@ const init = () => {
 				choices: cloneDeep(props.options),
 				allowHTML: true
 			}
-			// settings.choices = cloneDeep(props.options)
 
 			// @ts-ignore
 			element.value = new window.Choices(el, settings)
