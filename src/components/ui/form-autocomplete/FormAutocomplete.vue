@@ -74,6 +74,7 @@ const settings = computed(() => {
 
 const init = () => {
 	nextTick(() => {
+		console.log(Choices, window.Choices)
 		// @ts-ignore
 		window.Choices = Choices ?? window.Choices.default
 
