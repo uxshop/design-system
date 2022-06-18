@@ -11,7 +11,7 @@ defineProps<{
 </script>
 
 <template>
-	<Card dropdown white class="card-seo" dropdownLabel="Editar" title="Pré-visualização no Google" dropdownClosed>
+	<Card dropdown class="card-seo" dropdownLabel="Editar" title="Pré-visualização no Google" dropdownClosed>
 		<template #header-caption>
 			<Seo
 				v-model="modelValue"
@@ -24,3 +24,11 @@ defineProps<{
 		<Seo v-model="modelValue" write-only />
 	</Card>
 </template>
+
+<style lang="scss" scoped>
+.card-seo {
+	border: dashed 1px var(--gray-300);
+	background: none;
+	box-shadow: none;
+}
+</style>

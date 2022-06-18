@@ -51,7 +51,8 @@ const queryDefault = Object.assign(
 	{
 		sort: '-id',
 		page: 1,
-		limit: 25
+		limit: 25,
+		selectedView: 'all'
 	},
 	props.config.queryParams
 )
@@ -79,8 +80,9 @@ const resetQueryParams = (params = {}) => {
 	queryParams.value = Object.assign(clone(queryDefault), params)
 }
 
-const init = async () => {
-	// store.dispatch('noLoader', firstGet.value)
+const fechData = async () => {
+	console.log('fechData tableList')
+
 	const params = clone(queryParams.value)
 	selected.value = []
 	loading.value = true
@@ -97,10 +99,6 @@ const init = async () => {
 	loading.value = false
 
 	onGet(res.data)
-
-	setTimeout(() => {
-		// store.dispatch('noLoader', false)
-	}, 250)
 }
 
 const checkAll = (val: boolean) => {
@@ -122,7 +120,7 @@ const deleteOne = async (item: Record<string, number>) => {
 		await props.config.service.delete(Number(item.id))
 	}
 
-	init()
+	fechData()
 }
 
 const activeOne = (item: Record<string, number>, active: boolean) => {
@@ -155,7 +153,7 @@ const activeInactiveSelecteds = async (val: boolean) => {
 		await activeOne({ id: itemId }, val)
 	}
 
-	init()
+	fechData()
 }
 
 const removeSelecteds = async () => {
@@ -163,7 +161,7 @@ const removeSelecteds = async () => {
 		await deleteOne({ id: itemId })
 	}
 
-	init()
+	fechData()
 }
 
 onMounted(() => {
@@ -180,19 +178,21 @@ let timerQ: ReturnType<typeof setTimeout>
 
 watch(
 	() => queryParams.value,
-	(newVal: any) => {
+	(newVal: any, oldVal) => {
 		clearTimeout(timerQ)
-		timerQ = setTimeout(() => {
-			if (newVal.q) {
-				state.term = newVal.q
-			}
+		if (newVal != oldVal) {
+			timerQ = setTimeout(() => {
+				if (newVal.q) {
+					state.term = newVal.q
+				}
 
-			if (!newVal.selectedView && !newVal.customFilterId) {
-				newVal.selectedView = 'all'
-			}
+				if (!newVal.selectedView && !newVal.customFilterId) {
+					newVal.selectedView = 'all'
+				}
 
-			init()
-		})
+				fechData()
+			}, 100)
+		}
 	},
 	{ deep: true }
 )
@@ -205,7 +205,7 @@ const state = reactive({
 	currentTab: {},
 	term: null,
 	omitFiltersValues: omitFiltersValues,
-	init: init,
+	fechData: fechData,
 	checkAll: checkAll,
 	setQueryParams: setQueryParams,
 	resetQueryParams: resetQueryParams,
@@ -219,7 +219,7 @@ const state = reactive({
 
 defineExpose({
 	unshiftItem: unshiftItem,
-	refresh: init
+	refresh: fechData
 })
 </script>
 
@@ -233,7 +233,7 @@ defineExpose({
 		<TableListNav :loading="loading">
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
 			<TableListNavRefresh :state="state" />
-			<TableListNavSearch @refresh="init" :placeholder="cfg.placeholder" :state="state" />
+			<TableListNavSearch @refresh="fechData" :placeholder="cfg.placeholder" :state="state" />
 			<TableListNavCustomFilter
 				v-if="config.customFilterService"
 				:service="config.customFilterService"

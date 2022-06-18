@@ -8,7 +8,7 @@ export interface ITableListState {
 	currentTab: any
 	term: string | null
 	omitFiltersValues: any
-	init(): void
+	fechData(): void
 	setQueryParams(params: any): void
 	resetQueryParams(params: any): void
 	removeFilter(params: any): void

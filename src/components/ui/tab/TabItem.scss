@@ -47,6 +47,14 @@
 
 	&.-active {
 		color: var(--primary);
+		font-weight: var(--font-weight-semibold);
+
+		// .ui-tab-item-content {
+		// 	background: var(--primary);
+		// 	color: white;
+		// 	border-radius: 5px;
+		// }
+
 		.ui-tab-item-content:after {
 			background-color: var(--primary);
 		}
