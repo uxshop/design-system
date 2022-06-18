@@ -12,9 +12,9 @@ import IconButton from '../../ui/icon-button/IconButton.vue'
 import ButtonDarkmode from '../../admin/button-darkmode/ButtonDarkmode.vue'
 
 export interface Props {
-	user: { name: string; image: any }
+	user: IUser
 	slug?: string
-	backlink?: { to: string }
+	backlink?: IMetaLink | null
 	breadcrumb?: { to: string; name: string }[]
 	notifications?: any
 	dropdown?: any[]

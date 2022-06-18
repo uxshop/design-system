@@ -16,13 +16,14 @@ export interface MenuProviderInterface {
 export interface Props {
 	permissionService: PermissionInterface
 	menuOpen?: boolean
-	menus: Record<string, SidebarInterface.Item>
+	menus: any
 	currentSection?: string | null
 }
 
 const menu = inject('menu') as MenuProviderInterface
 const props = defineProps<Props>()
 const route = useRoute()
+
 // const activeSection = ref<string | null | undefined>()
 // const menusFormated: any = {}
 // map(props.menus, (item, key) => {
@@ -117,7 +118,6 @@ watchPostEffect(() => checkActive(route.name))
 									:to="{ name: item.to }"
 									:class="{
 										'-nodes': item.nodes,
-										// '-open': key == activeSection,
 										'-child-active': item.nodes && item.to == item.nodes[0].to
 									}"
 									class="ui-sidebar-link"
