@@ -1,39 +1,37 @@
 <script setup lang="ts">
 import { nextTick, onMounted, reactive, ref } from 'vue'
-import Row from '../grid/row/Row.vue'
-import Col from '../grid/col/Col.vue'
 import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
 
-const props = withDefaults(
-	defineProps<{
-		id?: string
-		title?: string
-		hideFooter?: boolean
-		message?: string
-		onCallback?(val: string | boolean): void
-		closeOnBackdrop?: boolean
-		variant?: string
-		size?: string
-		promptLabel?: string
-		promptType?: string
-		promptPlaceholder?: string
-		cancelLabel?: string
-		destructLabel?: string
-		destructVariant?: 'success' | 'danger' | 'primary'
-		destructIcon?: string
-		type?: string
-		opened?: boolean
-	}>(),
-	{
-		variant: '',
-		size: 'md',
-		promptType: 'text',
-		cancelLabel: 'Cancelar',
-		destructLabel: 'Deletar',
-		destructVariant: 'danger'
-	}
-)
+export interface Props {
+	id?: string
+	title?: string
+	hideFooter?: boolean
+	message?: string
+	onCallback?(val: string | boolean): void
+	onClose?(val: string | boolean): void
+	closeOnBackdrop?: boolean
+	variant?: string
+	size?: string
+	promptLabel?: string
+	promptType?: string
+	promptPlaceholder?: string
+	cancelLabel?: string
+	destructLabel?: string
+	destructVariant?: 'success' | 'danger' | 'primary'
+	destructIcon?: string
+	type?: string
+	opened?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	variant: '',
+	size: 'md',
+	promptType: 'text',
+	cancelLabel: 'Cancelar',
+	destructLabel: 'Deletar',
+	destructVariant: 'danger'
+})
 
 const emit = defineEmits(['close', 'callback'])
 const closed = ref(false)
@@ -64,6 +62,8 @@ const close = (val?: boolean) => {
 	closed.value = true
 	state.timer = null
 	state.showing = false
+
+	emit('close', val)
 
 	if (val) {
 		emit('callback', val)
@@ -124,9 +124,7 @@ const open = () => {
 }
 
 onMounted(() => {
-	if (props.opened) {
-		open()
-	}
+	props.opened && open()
 })
 
 defineExpose({

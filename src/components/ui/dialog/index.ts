@@ -10,6 +10,7 @@ interface ConfigInterface {
 	title?: string
 	message?: string
 	onCallback?(val: boolean): void
+	onClose?(val: boolean): void
 }
 
 const globalConfig = {
