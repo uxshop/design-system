@@ -232,6 +232,12 @@
 		}
 	}
 
+	@include mobile {
+		.ui-sidebar-wrapper {
+			background-color: white;
+		}
+	}
+
 	@include darkmode {
 		.ui-sidebar-wrapper {
 			background: none;

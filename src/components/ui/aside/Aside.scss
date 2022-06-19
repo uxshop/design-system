@@ -124,6 +124,17 @@
 			border-top: solid 2px var(--border-color);
 			padding-top: 20px;
 		}
+
+		.ui-aside-section-title {
+			margin: 0;
+			margin-right: auto;
+		}
+
+		.ui-aside-section-header {
+			display: flex;
+			align-items: center;
+			margin-bottom: 8px;
+		}
 	}
 
 	.ui-aside-header {
