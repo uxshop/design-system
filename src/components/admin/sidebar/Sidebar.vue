@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { inject, ref, watchPostEffect } from 'vue'
-import { useRoute, type RouteLocationNormalizedLoaded } from 'vue-router'
+import { inject } from 'vue'
+import { useRoute } from 'vue-router'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
-import { map } from 'lodash-es'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -88,16 +87,6 @@ const checkSubActive = (item) => {
 	const itemName = item.to.replace(/_[^_]+?$/, '')
 	return itemName == routeName
 }
-
-// watchPostEffect(() => checkActive(route.name))
-
-// watchPostEffect(() => {
-// const alias = route.name.replace(/_.*/g, '')
-// console.log(route)
-// console.log(alias, menusFormated)
-// activeSection.value = menusFormated[alias]?.parent
-// activeSection.value = menusFormated[route.name]?.parent
-// })
 </script>
 
 <template>
@@ -126,11 +115,11 @@ const checkSubActive = (item) => {
 									:to="{ name: item.to }"
 									:class="{
 										'-nodes': item.nodes,
-										'-child-active': item.nodes && item.to == item.nodes[0].to
+										'-child-active': item.nodes && item.to == item.nodes[0].to,
+										'-active': checkSubActive(item)
 									}"
 									class="ui-sidebar-link"
-									activeClass="-open"
-									exactActiveClass="-active">
+									activeClass="-open">
 									<span class="ui-sidebar-link-icon">
 										<Icon :name="item.icon" filled />
 									</span>
