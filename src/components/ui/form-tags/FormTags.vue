@@ -3,12 +3,18 @@ import { getCurrentInstance, nextTick, onMounted, shallowRef, watch } from 'vue'
 import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
+import Button from '../button/Button.vue'
 
 export interface Props {
 	modelValue?: any
 	placeholder?: string
 	label?: string
 	config?: any
+	closeOnSelect?: boolean
+	last?: boolean
+	actions?: any
+	options?: any
+	create?: boolean
 }
 
 export interface SettingsInterface {
@@ -22,84 +28,48 @@ export interface SettingsInterface {
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add'])
 
 const props = withDefaults(defineProps<Props>(), {
-	placeholder: 'Criar tags'
+	placeholder: 'Criar tags',
+	create: true,
+	options: []
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const element = shallowRef()
+let el: HTMLElement
 
 const update = (val: string) => {
 	emit('update:modelValue', val)
 	emit('update', val)
 }
 
-const getSettings = () => {
-	const newConfig: any = cloneDeep(props.config)
-	const settings = {
-		...{
-			searchEnabled: true,
-			searchChoices: true,
-			removeItems: true,
-			removeItemButton: true,
-			addItems: true,
-			create: false,
-			placeholder: true,
-			placeholderValue: props.placeholder || 'Selecione',
-			noResultsText: 'Nenhum resultado encontrado',
-			noChoicesText: 'Sem opções para escolher',
-			items: [],
-			choices: [
-				// {
-				// 	value: 'opt_1',
-				// 	label: 'Option 1',
-				// 	selected: true,
-				// 	disabled: false
-				// }
-			],
-			allowHTML: true
-		},
-		...newConfig
-	}
-
-	return settings
-}
-
 const init = () => {
-	// @ts-ignore
-	window.Choices = window.Choices ?? Choices
-
 	nextTick(() => {
 		if (element.value) {
 			element.value.destroy()
 		}
 
-		const el = document.querySelector(`#${uid}`)
 		if (el) {
-			// @ts-ignore
-			element.value = new window.Choices(el, getSettings())
+			const settings: any = {
+				searchEnabled: true,
+				searchChoices: true,
+				removeItems: true,
+				removeItemButton: true,
+				addItems: true,
+				position: 'bottom',
+				create: false,
+				placeholder: true,
+				placeholderValue: props.placeholder || 'Selecione',
+				noResultsText: 'Nenhum resultado encontrado',
+				noChoicesText: 'Sem opções para escolher',
+				items: [],
+				choices: cloneDeep(props.options),
+				allowHTML: true
+			}
 
-			el.addEventListener(
-				'change',
-				function (event) {
-					update(element.value.getValue(true))
-					// element.value.hideDropdown()
-				},
-				false
-			)
-			el.addEventListener(
-				'addItem',
-				function (event: any) {
-					emit('add', event.detail)
-				},
-				false
-			)
-			// el.addEventListener(
-			// 	'removeItem',
-			// 	function (event) {
-			// 		console.log(event.detail)
-			// 	},
-			// 	false
-			// )
+			const Plugin = Choices.default ?? Choices
+			element.value = new Plugin(el, settings)
+
+			checkModelValue()
 		}
 	})
 }
@@ -107,42 +77,88 @@ const init = () => {
 const checkModelValue = () => {
 	nextTick(() => {
 		if (element.value) {
-			if (props.modelValue && !isArray(props.modelValue)) {
-				const val = props.modelValue.split(',')
-				console.log(props.modelValue, val)
-				element.value.setValue(val)
+			const data = getValueArray()
+
+			if (props.create) {
+				if (isArray(data)) {
+					element.value.clearStore()
+					element.value.setValue(data)
+				}
 			}
 		}
 	})
 }
 
-onMounted(init)
-
-watch(
-	() => props.modelValue,
-	() => {
-		checkModelValue()
+const getValueArray = () => {
+	if (props.modelValue && !isArray(props.modelValue)) {
+		return props.modelValue.split(',')
 	}
-)
 
-watch(
-	() => [props.config],
-	() => init(),
-	{ deep: true }
-)
+	return props.modelValue
+}
+
+onMounted(() => {
+	el = document.querySelector(`#${uid}`)
+
+	if (el) {
+		el.addEventListener(
+			'change',
+			function (event) {
+				const val = element.value.getValue(true)
+
+				update(val.join(','))
+
+				if (props.closeOnSelect) {
+					element.value.hideDropdown()
+				}
+			},
+			false
+		)
+		el.addEventListener(
+			'addItem',
+			function (event: any) {
+				emit('add', event.detail)
+			},
+			false
+		)
+		// el.addEventListener(
+		// 	'removeItem',
+		// 	function (event) {
+		// 		console.log(event.detail)
+		// 	},
+		// 	false
+		// )
+	}
+
+	watch(
+		() => props.modelValue,
+		() => checkModelValue(),
+		{ immediate: true }
+	)
+
+	watch(
+		() => [props.options],
+		() => init(),
+		{ immediate: true, deep: true }
+	)
+})
 </script>
 
 <template>
-	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length }">
-		<FormLabel v-if="label" :label="label" />
-		<input
-			v-if="getSettings().create"
-			ref="selectRef"
-			:id="uid"
-			type="text"
-			autocomplete="off"
-			:placeholder="placeholder" />
-		<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
+	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length, 'mb-0': last }">
+		<FormLabel
+			v-if="label"
+			:label="label"
+			:action="{
+				label: 'Remover'
+			}" />
+		<div class="ui-form-tags-content">
+			<input v-if="props.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
+			<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
+			<div v-if="actions" class="ui-form-tags-actions">
+				<Button v-for="item in actions" :label="item.label" @click="item.onAction" />
+			</div>
+		</div>
 	</div>
 </template>
 

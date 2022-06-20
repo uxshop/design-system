@@ -3,27 +3,32 @@ import Row from '../../ui/grid/row/Row.vue'
 import Col from '../../ui/grid/col/Col.vue'
 import Card from '../../ui/card/Card.vue'
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue'
-import ButtonAction from '../button-action/ButtonAction.vue'
+import IconButton from '../../ui/icon-button/IconButton.vue'
+import $dialog from '../../ui/dialog'
 
+export interface Props {
+	modelValue: any
+	hideDelete?: boolean
+	preventActive?(): void
+	delete?(id: number): Promise<void>
+}
 const emit = defineEmits(['delete', 'toggleActive', 'update:modelValue'])
-const props = withDefaults(
-	defineProps<{
-		modelValue: any
-		hideDelete?: boolean
-		preventActive?(): void
-		delete?(id: number): Promise<void>
-	}>(),
-	{
-		modelValue: () => ({ active: true })
-	}
-)
+const props = withDefaults(defineProps<Props>(), {
+	modelValue: () => ({ active: true })
+})
 
 const onDelete = async () => {
-	if (props.delete && props.modelValue.id) {
-		await props.delete(props.modelValue.id)
-	}
+	$dialog.delete({
+		title: 'Remover o registro',
+		message: `A ação removerá o registro ${props.modelValue.name}.`,
+		onCallback: async () => {
+			if (props.delete && props.modelValue.id) {
+				await props.delete(props.modelValue.id)
+			}
 
-	emit('delete', { id: props.modelValue.id })
+			emit('delete', { id: props.modelValue.id })
+		}
+	})
 }
 
 const onClickActive = (e) => {
@@ -48,11 +53,7 @@ const changeActive = () => {
 				</FormCheckbox>
 			</Col>
 			<Col auto>
-				<ButtonAction
-					v-if="!hideDelete && modelValue.id"
-					type="delete"
-					:deleteName="modelValue.name"
-					@delete="onDelete" />
+				<IconButton v-if="!hideDelete && modelValue.id" icon="delete" @click="onDelete" />
 			</Col>
 		</Row>
 	</Card>

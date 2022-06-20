@@ -4,7 +4,7 @@ import TableListNav from './table-list-nav/TableListNav.vue'
 import TableListTable from './table-list-table/TableListTable.vue'
 import { useRoute } from 'vue-router'
 import { onMounted, watch, ref, reactive } from 'vue'
-import { union, clone, omit } from 'lodash-es'
+import { union, clone, omit, concat } from 'lodash-es'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorage from '../../../services/LocalStorage'
 import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
@@ -51,12 +51,16 @@ const queryDefault = Object.assign(
 	{
 		sort: '-id',
 		page: 1,
-		limit: 25
+		limit: 25,
+		selectedView: 'all'
 	},
 	props.config.queryParams
 )
 
-let omitFiltersValues = ['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId']
+let omitFiltersValues = concat(
+	['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId'],
+	props.config.omitFiltersValues
+)
 
 const removeFilter = (key: string) => {
 	delete queryParams.value[key]
@@ -76,8 +80,9 @@ const resetQueryParams = (params = {}) => {
 	queryParams.value = Object.assign(clone(queryDefault), params)
 }
 
-const init = async () => {
-	// store.dispatch('noLoader', firstGet.value)
+const fechData = async () => {
+	console.log('fechData tableList')
+
 	const params = clone(queryParams.value)
 	selected.value = []
 	loading.value = true
@@ -94,10 +99,6 @@ const init = async () => {
 	loading.value = false
 
 	onGet(res.data)
-
-	setTimeout(() => {
-		// store.dispatch('noLoader', false)
-	}, 250)
 }
 
 const checkAll = (val: boolean) => {
@@ -119,7 +120,7 @@ const deleteOne = async (item: Record<string, number>) => {
 		await props.config.service.delete(Number(item.id))
 	}
 
-	init()
+	fechData()
 }
 
 const activeOne = (item: Record<string, number>, active: boolean) => {
@@ -152,7 +153,7 @@ const activeInactiveSelecteds = async (val: boolean) => {
 		await activeOne({ id: itemId }, val)
 	}
 
-	init()
+	fechData()
 }
 
 const removeSelecteds = async () => {
@@ -160,7 +161,7 @@ const removeSelecteds = async () => {
 		await deleteOne({ id: itemId })
 	}
 
-	init()
+	fechData()
 }
 
 onMounted(() => {
@@ -177,21 +178,21 @@ let timerQ: ReturnType<typeof setTimeout>
 
 watch(
 	() => queryParams.value,
-	(newVal: any) => {
+	(newVal: any, oldVal) => {
 		clearTimeout(timerQ)
-		timerQ = setTimeout(() => {
-			console.log('queryParams', JSON.stringify(newVal))
+		if (newVal != oldVal) {
+			timerQ = setTimeout(() => {
+				if (newVal.q) {
+					state.term = newVal.q
+				}
 
-			if (newVal.q) {
-				state.term = newVal.q
-			}
+				if (!newVal.selectedView && !newVal.customFilterId) {
+					newVal.selectedView = 'all'
+				}
 
-			if (!newVal.selectedView && !newVal.customFilterId) {
-				newVal.selectedView = 'all'
-			}
-
-			init()
-		})
+				fechData()
+			}, 100)
+		}
 	},
 	{ deep: true }
 )
@@ -204,7 +205,7 @@ const state = reactive({
 	currentTab: {},
 	term: null,
 	omitFiltersValues: omitFiltersValues,
-	init: init,
+	fechData: fechData,
 	checkAll: checkAll,
 	setQueryParams: setQueryParams,
 	resetQueryParams: resetQueryParams,
@@ -218,7 +219,7 @@ const state = reactive({
 
 defineExpose({
 	unshiftItem: unshiftItem,
-	refresh: init
+	refresh: fechData
 })
 </script>
 
@@ -232,7 +233,7 @@ defineExpose({
 		<TableListNav :loading="loading">
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
 			<TableListNavRefresh :state="state" />
-			<TableListNavSearch @refresh="init" :placeholder="cfg.placeholder" :state="state" />
+			<TableListNavSearch @refresh="fechData" :placeholder="cfg.placeholder" :state="state" />
 			<TableListNavCustomFilter
 				v-if="config.customFilterService"
 				:service="config.customFilterService"
@@ -246,7 +247,7 @@ defineExpose({
 
 		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
-			<TableListTable v-model:selected="selected" :rows="rows" :loading="loading" :state="state" :to="to">
+			<TableListTable v-model:selected="selected" :rows="rows" :state="state" :to="to">
 				<template #head v-if="$slots.head">
 					<slot name="head" />
 				</template>

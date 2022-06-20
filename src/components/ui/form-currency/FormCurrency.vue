@@ -26,8 +26,11 @@ export interface Props {
 	title?: string
 	name?: string
 	autocomplete?: string
-	minlength?: [string, number]
-	maxlength?: [string, number]
+	min?: string | number
+	max?: string | number
+	step?: string | number
+	minlength?: string | number
+	maxlength?: string | number
 	autofocus?: boolean
 	disabled?: boolean
 	required?: boolean
@@ -55,7 +58,11 @@ const settings: CurrencyInputOptions = {
 		autoDecimalDigits: true,
 		autoSign: true,
 		useGrouping: true,
-		accountingSign: false
+		accountingSign: false,
+		valueRange: {
+			min: props.min ?? null,
+			max: props.max ?? 999999.99
+		}
 		// precision: 2
 	},
 	...props.options
@@ -122,6 +129,8 @@ onMounted(init)
 		:size="size"
 		:invalidFeedback="invalidFeedback">
 		<input
+			:min="min"
+			:step="step"
 			ref="inputRef"
 			class="form-control"
 			:placeholder="placeholder"

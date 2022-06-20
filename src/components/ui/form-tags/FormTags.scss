@@ -5,17 +5,35 @@
 	margin-bottom: var(--form-group-margin-bottom);
 
 	&.-has-value {
-		.choices__inner {
+	}
+
+	.ui-form-tags-content {
+		display: flex;
+		gap: 8px;
+		.choices {
+			flex-grow: 1;
+		}
+
+		.ui-form-tags-actions {
+			margin-left: auto;
+			flex-grow: 0;
 		}
 	}
 
 	.choices {
+		margin: 0;
+
 		&.is-open {
 			z-index: 555;
 			.choices__inner {
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: 0;
 			}
+		}
+
+		.choices__list {
+			background-color: var(--bg-white);
+			border-color: var(--input-border-color);
 		}
 	}
 
@@ -43,10 +61,12 @@
 			font-size: 12px;
 			border: none;
 			height: 22px;
+			line-height: 1;
 
 			.choices__button {
 				font-weight: 400;
 				border-left: none;
+				margin-left: 0 !important;
 			}
 		}
 	}

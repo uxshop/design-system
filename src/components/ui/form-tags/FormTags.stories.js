@@ -12,26 +12,28 @@ export default {
 const Template = (args) => ({
 	components: { FormTags },
 	setup() {
-		const model = ref('2')
+		const model = ref()
+		setTimeout(() => {
+			model.value = 'teste, teste2, teste3'
+		}, 2000)
 		return { args, model }
 	},
 	template: `
-    <FormTags v-bind="args"  v-model="model"  />
+    <FormTags v-bind="args" v-model="model" />
     <pre>{{ model }}</pre>
   `
 })
 
 export const Default = Template.bind({})
-Default.args = {
-	// config: {
-	// 	create: true,
-	// 	choices: [
-	// 		{ value: 1,label: 'Teste 01',  customProperties: {fixed: true}, selected: true },
-	// 		{ value: 2,label: 'Teste 02' }
-	// 	]
-	// }
-}
+Default.args = {}
 
 export const Selectable = Template.bind({})
 Selectable.args = {
+	create: false,
+	options: [
+		{
+			label: 'Hello!',
+			value: 'hello'
+		}
+	]
 }

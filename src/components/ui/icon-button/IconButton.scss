@@ -6,7 +6,6 @@
 	width: var(--input-height);
 	min-height: var(--input-height);
 	min-width: var(--input-height);
-	// border-radius: 100%;
 	cursor: pointer;
 	justify-content: center;
 	padding: 0;
@@ -26,6 +25,9 @@
 		width: var(--input-height-sm);
 		min-height: var(--input-height-sm);
 		min-width: var(--input-height-sm);
+		i {
+			font-size: 18px;
+		}
 	}
 
 	&.-fab {

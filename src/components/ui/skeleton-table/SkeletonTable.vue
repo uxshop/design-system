@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import Skeleton from '../skeleton/Skeleton.vue'
 
-interface Props {
+export interface Props {
 	cols?: string | number
 	rows?: string | number
 	hideHeader?: boolean
@@ -17,7 +17,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	cols: 5,
 	rows: 3,
-	padding: '12px'
+	padding: '14px'
 })
 
 const style = ref<{
@@ -47,7 +47,7 @@ if (props.width) {
 				</td>
 				<td v-for="c in Number(cols)" :key="c">
 					<Skeleton width="85%" />
-					<Skeleton width="40%" height="10px" v-if="Number(lines) > 1" />
+					<Skeleton width="40%" height="14px" v-if="Number(lines) > 1" />
 				</td>
 				<td width="1" v-for="c in Number(withAction)" :key="c">
 					<Skeleton width="32px" />

@@ -5,20 +5,18 @@ import BreadcrumbItem from '../../ui/breadcrumb/BreadcrumbItem.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
 import Icon from '../../ui/icon/Icon.vue'
 import { initials as filterInitials } from '../../../filters'
-
 import DropdownDividerVue from '../../ui/dropdown/DropdownDivider.vue'
 import DropdownItemButtonVue from '../../ui/dropdown/DropdownItemButton.vue'
 import DropdownItemVue from '../../ui/dropdown/DropdownItem.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import ButtonDarkmode from '../../admin/button-darkmode/ButtonDarkmode.vue'
-import Link from '../../ui/link/Link.vue'
 
 export interface Props {
-	user: { name: string; image: any }
+	user: IUser
 	slug?: string
-	backlink?: { to: string }
+	backlink?: IMetaLink | null
 	breadcrumb?: { to: string; name: string }[]
-	notifications?: object
+	notifications?: any
 	dropdown?: any[]
 }
 
@@ -26,6 +24,9 @@ interface IDropdownItem {
 	text?: string
 	action?: () => void
 	icon?: string
+	to?: string
+	href?: string
+	target?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -55,6 +56,10 @@ const getComponent = (item: IDropdownItem) => {
 	}
 
 	if (item.to) {
+		return DropdownItemVue
+	}
+
+	if (item.href) {
 		return DropdownItemVue
 	}
 
@@ -121,6 +126,7 @@ const getComponent = (item: IDropdownItem) => {
 							:is="getComponent(item)"
 							v-for="item in dropdown"
 							:key="item"
+							:target="item.target"
 							@click="item.onAction"
 							v-bind="item">
 							<Icon :name="item.icon" v-if="item.icon" />

@@ -23,11 +23,7 @@ body {
 	text-align: left;
 	overflow-x: hidden;
 	overflow-y: auto;
-	line-height: 1.3;
-
-	@include darkmode {
-		background: var(--dark-300);
-	}
+	line-height: 1.4;
 
 	&.dialog-open,
 	&.modal-open {

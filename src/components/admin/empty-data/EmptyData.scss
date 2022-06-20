@@ -1,15 +1,14 @@
 @import '../../../scss/mixins.scss';
 
 .ui-empty-data {
-	background: var(--gray-200);
 	padding: 1.5rem;
 	border-radius: var(--card-border-radius);
-	border: dashed 0.1rem transparent;
+	border: dashed 1px transparent;
 	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-grow: 1;
+
+	&.-border {
+		border: dashed 1px var(--border-color);
+	}
 
 	&.ui-empty-data-link {
 		cursor: pointer;
@@ -21,6 +20,20 @@
 		}
 	}
 
+	.ui-empty-data-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-grow: 1;
+	}
+
+	.ui-empty-data-actions {
+		display: flex;
+		gap: 8px;
+		justify-content: center;
+		margin-top: 8px;
+	}
+
 	.ui-empty-data-icon {
 		font-size: 28px;
 		opacity: 0.2;
@@ -29,14 +42,20 @@
 
 	.ui-empty-data-text {
 		text-align: center;
-		font-weight: 500;
 		display: block;
-		margin-top: 5px;
+		font-size: 18px;
+	}
+
+	.ui-empty-data-caption {
+		margin-top: 8px;
+		color: var(--text-muted);
+	}
+
+	.ui-empty-data-icon-text {
+		display: block;
 	}
 
 	@include darkmode {
-		background: var(--dark-300);
-
 		.ui-empty-data-text,
 		.ui-empty-data-icon {
 			opacity: 0.3;

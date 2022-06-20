@@ -25,6 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const element = shallowRef()
 const focus = ref(false)
+let el: HTMLElement | null
 
 const getTemplateChoice = (data: any) => {
 	return props.template.choice(data)
@@ -47,7 +48,7 @@ const settings = computed(() => {
 		allowHTML: false
 	}
 
-	if (props.template) {
+	if (props.template?.choice) {
 		config.callbackOnCreateTemplates = function (template: any) {
 			return {
 				choice: ({ classNames }: any, data: any) => {
@@ -67,43 +68,28 @@ const settings = computed(() => {
 			}
 		}
 	}
+
 	return config
 })
 
-let el: HTMLElement | null
-onMounted(() => {
-	if ((el = document.getElementById(`${uid}`))) {
-		el.addEventListener(
-			'change',
-			function (event) {
-				update(element.value.getValue(true), element.value.getValue())
-				// element.value.hideDropdown()
-			},
-			false
-		)
-	}
-})
-
-const update = (val: string, raw: any) => {
-	emit('update:modelValue', val)
-	emit('update', val, raw)
-}
-
 const init = () => {
 	nextTick(() => {
-		// @ts-ignore
-		window.Choices = window.Choices ?? Choices
+		const Plugin = Choices.default ?? Choices
 
 		if (element.value) {
 			element.value.destroy()
 		}
 
 		if (el) {
-			// @ts-ignore
-			element.value = new window.Choices(el, settings.value)
-			// checkModelValue()
+			element.value = new Plugin(el, settings.value)
+			checkModelValue()
 		}
 	})
+}
+
+const update = (val: string, raw: any) => {
+	emit('update:modelValue', val)
+	emit('update', val, raw)
 }
 
 const checkModelValue = () => {
@@ -118,16 +104,31 @@ const checkModelValue = () => {
 	})
 }
 
-watch(
-	() => props.modelValue,
-	() => checkModelValue()
-)
+onMounted(() => {
+	el = document.getElementById(`${uid}`)
 
-watch(
-	() => [props.options],
-	() => init(),
-	{ immediate: true }
-)
+	if (el) {
+		el.addEventListener(
+			'change',
+			function (event) {
+				update(element.value.getValue(true), element.value.getValue())
+				// element.value.hideDropdown()
+			},
+			false
+		)
+	}
+
+	watch(
+		() => props.modelValue,
+		() => checkModelValue()
+	)
+
+	watch(
+		() => [props.options],
+		() => init(),
+		{ immediate: true, deep: true }
+	)
+})
 </script>
 
 <template>

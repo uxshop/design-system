@@ -1,14 +1,17 @@
 <script setup lang="ts">
-defineProps<{
+withDefaults(defineProps<{
 	href?: string
 	to?: object
 	label?: string
-}>()
+	target?: string
+}>(), {
+	target: '_self'
+})
 </script>
 
 <template>
 	<div class="ui-dropdown-item-wrapper">
-		<a :href="href" v-if="href" class="ui-dropdown-item">
+		<a :href="href" :target="target" v-if="href" class="ui-dropdown-item">
 			<slot>{{ label }}</slot>
 		</a>
 		<router-link :to="to" v-else-if="to" class="ui-dropdown-item">

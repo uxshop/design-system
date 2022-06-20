@@ -4,19 +4,22 @@
 	position: fixed;
 	top: 0;
 	right: 0;
-	left: var(--layout-sidebar-width);
 	z-index: 888;
 	height: var(--layout-navbar-height);
-	background: var(--gray-100);
 	align-items: center;
 	display: flex;
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 0.2s;
-	background-color: var(--gray-200);
+	background-color: var(--body-bg);
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.02), 2px 2px 4px rgba(0, 0, 0, 0.05);
 
-	.main-trial & {
-		top: 30px;
+	@include mobile {
+		left: 0;
+	}
+
+	@include desktop {
+		left: var(--layout-sidebar-width);
 	}
 
 	* {
@@ -48,12 +51,6 @@
 		a {
 			color: var(--primary);
 		}
-
-		.icon {
-			font-size: 50px;
-			margin-right: 15px;
-			color: var(--success);
-		}
 	}
 
 	.ui-savebar-container {
@@ -69,19 +66,9 @@
 		gap: inherit;
 	}
 
-	.btn-restore {
-		&:hover {
-			opacity: 1;
-		}
-	}
-
-	> .row {
-		flex: 1;
-	}
-
 	@include mobile {
-		height: 61px;
-		.btn-success {
+		height: 69px;
+		.ui-button.-success {
 			min-width: 140px;
 		}
 	}

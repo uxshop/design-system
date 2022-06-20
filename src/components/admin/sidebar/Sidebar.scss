@@ -1,8 +1,9 @@
 @import '../../../scss/mixins.scss';
 
 .ui-sidebar {
-	--sidebar-padding-left: 33px;
-	--sidebar-line-width: 6px;
+	--sidebar-padding-left: 30px;
+	--sidebar-line-width: 5px;
+
 	position: sticky;
 	top: 0;
 	z-index: 888;
@@ -19,7 +20,7 @@
 		top: 0;
 		height: 100%;
 		overflow: hidden;
-		background: var(--dark-200, #fff);
+		background: var(--dark-200);
 
 		> .ui-sidebar-container {
 			display: flex;
@@ -34,7 +35,6 @@
 				position: absolute;
 				top: 0;
 				bottom: 0;
-				transition: transform 0.2s;
 			}
 
 			&.-submenu-open {
@@ -50,8 +50,8 @@
 				overflow-y: auto;
 				overflow-x: hidden;
 				flex-grow: 1;
-				transition: transform 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-				will-change: transform;
+				// transition: transform 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+				// will-change: transform;
 
 				&.-hide {
 					transform: translateX(-100%);
@@ -59,30 +59,6 @@
 			}
 		}
 	}
-
-	// .btn-darkmode {
-	// 	margin-left: auto;
-	// 	margin-right: 20px;
-	// 	opacity: 0.6;
-	// 	cursor: pointer;
-	// 	user-select: none;
-
-	// 	i {
-	// 		font-size: 22px;
-	// 		transition-duration: 0.2s;
-	// 		transition-property: transform, opacity;
-	// 		transform-origin: center;
-	// 	}
-
-	// 	&:first-of-type {
-	// 		display: none;
-	// 	}
-
-	// 	&:hover {
-	// 		color: var(--primary);
-	// 		opacity: 1;
-	// 	}
-	// }
 
 	&.-disabled {
 		opacity: 0.4;
@@ -128,8 +104,8 @@
 		margin-bottom: 10px;
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
 		padding-left: var(--sidebar-padding-left);
+		gap: 8px;
 	}
 
 	.ui-sidebar-items {
@@ -141,14 +117,13 @@
 			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
+			padding-left: var(--sidebar-line-width);
 		}
 	}
 
 	.ui-sidebar-item {
 		list-style: none;
 		user-select: none;
-		align-items: center;
-		padding-left: var(--sidebar-line-width);
 		margin: 0;
 
 		&.-spacer-last {
@@ -162,61 +137,80 @@
 		&.-spacer-flex {
 			flex-grow: 1;
 		}
+	}
 
-		> .ui-sidebar-link {
-			font-family: var(--headings-font-family);
-			line-height: 1;
-			color: var(--body-color);
-			font-weight: 700;
-			font-size: 14px;
-			display: flex;
-			cursor: pointer;
-			position: relative;
-			height: 32px;
-			align-items: center;
-			margin: 0 12px;
-			border-radius: 4px;
-			padding: 0 15px;
-			text-decoration: none;
+	.ui-sidebar-link {
+		line-height: 1;
+		color: var(--body-color);
+		font-weight: 700;
+		font-size: 14px;
+		display: flex;
+		cursor: pointer;
+		position: relative;
+		height: 32px;
+		align-items: center;
+		margin: 0 10px;
+		border-radius: 4px;
+		padding: 0 15px;
+		text-decoration: none;
 
-			> .ui-sidebar-link-text {
-				display: inline-flex;
-				border-radius: 4px;
-				padding: 10px 0;
-				padding-right: 10px;
-				align-items: center;
-				transition: all 0.18s;
-				position: relative;
-				z-index: 2;
-			}
+		&.-sub {
+			font-weight: 500;
+			height: 30px;
+		}
 
+		&:hover {
+			background-color: #e5eaef60;
+		}
+
+		&.-active:not(.-child-active) {
+			background-color: var(--dark-100, var(--gray-200));
+		}
+
+		&.-active,
+		&.-open {
 			.ui-icon {
-				margin-right: 10px;
-				font-size: 16px;
-			}
-
-			&:hover {
-				background-color: var(--gray-100);
-			}
-
-			&.-active {
 				color: var(--primary);
-				background-color: var(--dark-100, var(--gray-200));
-
-				i {
-					display: none;
-				}
-
-				i:last-of-type {
-					display: inline-flex;
-				}
 			}
+			~ .ui-sidebar-sublist {
+				display: block;
+			}
+		}
+
+		.ui-sidebar-link-text {
+			display: inline-flex;
+			border-radius: 4px;
+			padding: 10px 0;
+			align-items: center;
+			position: relative;
+			z-index: 2;
+		}
+
+		.ui-sidebar-link-icon {
+			width: 25px;
+			display: flex;
+			align-items: center;
+		}
+
+		.ui-icon {
+			font-size: 16px;
 		}
 	}
 
-	.-disabled {
-		opacity: 0.4 !important;
-		cursor: not-allowed !important;
+	.ui-sidebar-sublist {
+		padding: 0;
+		margin-bottom: 8px;
+		display: none;
+
+		.ui-sidebar-item {
+			list-style: none;
+		}
+
+		.ui-sidebar-link {
+			font-weight: 500;
+
+			color: var(--text-muted);
+		}
 	}
 
 	@include mobile() {
@@ -238,9 +232,21 @@
 		}
 	}
 
+	@include mobile {
+		.ui-sidebar-wrapper {
+			background-color: white;
+		}
+	}
+
 	@include darkmode {
 		.ui-sidebar-wrapper {
-			border-color: transparent;
+			background: none;
+		}
+
+		.ui-sidebar-link {
+			&:hover:not(.-active) {
+				background-color: var(--dark-300);
+			}
 		}
 	}
 }

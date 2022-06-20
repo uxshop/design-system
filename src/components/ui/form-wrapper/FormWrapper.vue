@@ -3,7 +3,7 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 
-interface Props {
+export interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string

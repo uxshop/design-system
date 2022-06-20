@@ -11,12 +11,11 @@ label {
 
 .ui-card {
 	border-radius: var(--card-border-radius, 8px);
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	border: none;
 	margin-bottom: var(--grid-gutter-width);
-	background: var(--bg-white);
+	background: var(--card-bg);
 	box-shadow: var(--shadow-card);
 
 	&.-primary {
@@ -185,6 +184,7 @@ label {
 			display: flex;
 			align-items: center;
 			margin-bottom: 8px;
+			gap: 8px;
 		}
 	}
 

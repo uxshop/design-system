@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref } from 'vue'
+import { getCurrentInstance, nextTick, onMounted, ref } from 'vue'
 
 const props = defineProps<{
 	variant?: 'white' | 'dark'
@@ -12,6 +12,9 @@ const props = defineProps<{
 const emit = defineEmits(['show', 'hide'])
 const show = ref(false)
 const uid = `ui-dropdown-${getCurrentInstance()?.uid}`
+const uidMenu = `ui-dropdown-${getCurrentInstance()?.uid}-menu`
+const style = ref({})
+let initialHeight: number = 0
 
 const listener = (e: MouseEvent | KeyboardEvent) => {
 	let noClose = e.target.tagName == 'INPUT'
@@ -34,9 +37,25 @@ const toggle = (val: boolean) => {
 	show.value = val
 	if (val) {
 		emit('show')
+		nextTick(checkPositions)
 	} else {
 		emit('hide')
 	}
+}
+
+const checkPositions = () => {
+	const dropdownMenuEl = document.getElementById(uidMenu)
+	// const dropdownEl = document.getElementById(uid)
+	// const rect = dropdownEl?.getBoundingClientRect()
+	const rectMenu = dropdownMenuEl?.getBoundingClientRect()
+	const documentHeight = document.documentElement.clientHeight
+
+	if (!initialHeight) initialHeight = rectMenu?.height
+
+	const calcHeight = documentHeight - rectMenu?.top - 10
+	const height = initialHeight < calcHeight ? initialHeight : calcHeight
+
+	style.value.height = `${height}px`
 }
 
 const toggleDropdown = (e) => {
@@ -49,6 +68,7 @@ const toggleDropdown = (e) => {
 	if (!show.value) {
 		window.addEventListener('mouseup', listener, false)
 		window.addEventListener('keydown', listener, false)
+		window.addEventListener('wheel', checkPositions, false)
 	}
 
 	toggle(!show.value)
@@ -56,6 +76,7 @@ const toggleDropdown = (e) => {
 
 const hide = () => {
 	setTimeout(() => {
+		window.removeEventListener('wheel', checkPositions, false)
 		window.removeEventListener('keydown', listener, false)
 		window.removeEventListener('mouseup', listener, false)
 		toggle(false)
@@ -72,7 +93,7 @@ defineExpose({
 		<div class="ui-dropdown-button" @click="toggleDropdown">
 			<slot name="button-content" />
 		</div>
-		<div class="ui-dropdown-menu">
+		<div class="ui-dropdown-menu" :id="uidMenu" :style="style">
 			<slot />
 		</div>
 	</div>

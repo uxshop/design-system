@@ -8,9 +8,10 @@
 	flex-grow: 1;
 	position: relative;
 	border-collapse: collapse;
-	background: white;
+	background: var(--card-bg);
 	border-radius: 6px;
 	box-shadow: var(--shadow-card);
+	width: 100%;
 
 	.table-search {
 		flex-grow: 1;
@@ -66,23 +67,9 @@
 	}
 
 	@include darkmode {
-		background-color: var(--dark-200);
-		.table-search-input {
-			background: none;
-		}
-
-		table,
 		.table-list-wrapper,
 		.table-list-nav-content {
-			background: var(--dark-200);
-		}
-
-		.table tr td {
-			border-color: var(--dark-300);
-		}
-
-		.table-list-wrapper.-scroll .fixed-cell {
-			background: var(--dark-200);
+			background: var(--card-bg);
 		}
 	}
 }

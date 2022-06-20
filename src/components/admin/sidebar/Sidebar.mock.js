@@ -4,6 +4,7 @@ export default {
 		name: 'Catálogo',
 		icon: 'sell',
 		permissions: 'products',
+		to: 'products',
 		nodes: [
 			{
 				name: 'Categorias',
@@ -86,7 +87,7 @@ export default {
 			}
 		]
 	},
-	marketings: {
+	marketing: {
 		section: 'marketing',
 		name: 'Marketing',
 		icon: 'ads_click',

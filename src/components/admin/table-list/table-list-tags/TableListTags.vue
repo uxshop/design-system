@@ -4,6 +4,7 @@ import type { ITableListState } from '../types/ITableListState'
 import Tag from '../../../ui/tag/Tag.vue'
 import { computed } from 'vue'
 import { omit } from 'lodash-es'
+import TagList from '../../../ui/tag/TagList'
 
 const props = defineProps<{
 	state: ITableListState
@@ -25,14 +26,12 @@ const translateValue = (item: any, key: string) => {
 	const val: string[] = []
 	let values: number[] = []
 
-	if (key == 'q') {
+	if (!props.state.config.filters || !props.state.config.filters[key]) {
 		return item
 	}
 
-	if (props.state.config.filters[key].type == 'browser') {
-		let count = props.state.omitFilters[key].split(',').length
-		let text = count == 1 ? 'filtro' : 'filtros'
-		return `${count} ${text}`
+	if (key == 'q') {
+		return item
 	}
 
 	if (['text', 'number'].indexOf(props.state.config.filters[key].type) >= 0) {
@@ -69,27 +68,26 @@ const translateValue = (item: any, key: string) => {
 
 const showTags = computed(() => {
 	const filters = omit(props.state.omitFilters, ['q'])
-	return filters.length > 0
+
+	return Object.keys(filters).length > 0
 })
 </script>
 
 <template>
-	<div class="table-list-tags" v-if="showTags">
-		<span v-for="(item, key) in state.omitFilters" v-show="String(key) != 'q'" :key="item" class="table-list-tags-item">
-			<Tag variant="dark" @remove="removeFilter(String(key))" class="mr-1">
-				{{ translateKey(String(key)) }}: {{ translateValue(item, String(key)) }}
-			</Tag>
-		</span>
-	</div>
+	<TagList class="table-list-tags" v-if="showTags">
+		<Tag
+			variant="dark"
+			@remove="removeFilter(String(key))"
+			v-for="(item, key) in state.omitFilters"
+			v-show="String(key) != 'q'"
+			:key="item">
+			{{ translateKey(String(key)) }}: {{ translateValue(item, String(key)) }}
+		</Tag>
+	</TagList>
 </template>
 
 <style lang="scss">
 .table-list-tags {
 	padding: 10px 15px;
-
-	.table-list-tags-item {
-		display: inline-flex;
-		margin-bottom: 5px;
-	}
 }
 </style>

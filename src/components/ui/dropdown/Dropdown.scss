@@ -11,6 +11,7 @@
 		user-select: none;
 		display: flex;
 		align-items: center;
+		white-space: nowrap;
 
 		&:focus {
 			outline: none;
@@ -62,6 +63,7 @@
 		min-width: 220px;
 		left: 0;
 		overflow: hidden;
+		overflow-y: auto;
 
 		input {
 			border: none;

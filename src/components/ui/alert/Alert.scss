@@ -2,8 +2,7 @@
 .ui-alert {
 	text-align: left;
 	position: relative;
-	font-size: calc(var(--font-size-base) - 1px);
-	padding: 15px;
+	padding: 14px;
 	border-radius: var(--alert-border-radius);
 	background-color: var(--gray-200);
 	border: solid 1px transparent;
@@ -24,41 +23,30 @@
 	}
 
 	&.-success {
-		background-color: #e2f3eb;
-		border-color: #79c8a2;
-		color: #000;
-
-		.ui-icon {
-			color: var(--success-dark);
-		}
+		background-color: #019b7f25;
+		color: #019b7f;
 	}
 
 	&.-danger {
-		background-color: #fbe8e7;
-		border-color: #eb968f;
-		color: #000;
-
-		.ui-icon {
-			color: var(--danger);
-		}
+		background-color: #f25d5d20;
+		color: #f25d5d;
 	}
 
 	&.-info {
-		background-color: #e8f0fe;
-		border-color: #95bbf9;
-		color: darken(#95bbf9, 30);
+		background-color: #30a3f440;
+		color: #1c84ce;
 	}
 
 	&.-warning {
-		background-color: #fff5ea;
-		border-color: #f6d26d;
-		color: #5e4708;
+		background-color: #de8f2d20;
+		color: #de8f2d;
 	}
 
 	> .ui-icon {
 		margin-right: 8px;
 		font-size: 20px;
 		align-self: baseline;
+		color: inherit;
 	}
 
 	> .ui-alert-content {
@@ -97,6 +85,7 @@
 		position: absolute;
 		right: 10px;
 		align-self: center;
+		color: inherit;
 
 		&:hover {
 			background-color: rgba(0, 0, 0, 0.05);
@@ -112,8 +101,8 @@
 		margin: 0;
 		list-style: none;
 
-		li + li {
-			margin-top: 4px;
+		li:not(:last-child) {
+			margin-bottom: 4px;
 		}
 	}
 
@@ -124,10 +113,5 @@
 	}
 
 	@include darkmode {
-		&.-info {
-			background-color: #0095ff1c;
-			border-color: #31486c;
-			color: #a6c1eb;
-		}
 	}
 }

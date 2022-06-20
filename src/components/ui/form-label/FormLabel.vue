@@ -5,7 +5,6 @@ defineProps<{
 </script>
 <template>
 	<label class="form-control-label" style="display: block">
-		{{ label }}
-		<slot />
+		<slot>{{ label }}</slot>
 	</label>
 </template>

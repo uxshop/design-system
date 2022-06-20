@@ -3,7 +3,7 @@ $danger: #f25d5d !default;
 $primary: #3b9be0 !default;
 $secondary: #ffc200 !default;
 $success: #019b7f !default;
-$warning: #fff5d4 !default;
+$warning: #e7a34f !default;
 $dark: #4e6380 !default;
 
 :root {
@@ -32,7 +32,7 @@ $dark: #4e6380 !default;
 
 	--border-radius: 6px;
 
-	--card-padding: 22px;
+	--card-padding: 25px;
 	--font-size-base: 14px;
 
 	--gray-100: #f6f9fb;
@@ -40,6 +40,7 @@ $dark: #4e6380 !default;
 	--gray-300: #{darken(#e5eaef, 15)};
 	--border-color: #e5eaef;
 	--card-sparcer-x: 30px;
+	--card-bg: white;
 
 	--input-height: 38px;
 	--input-height-sm: 30px;
@@ -56,7 +57,7 @@ $dark: #4e6380 !default;
 	--input-border-radius-sm: 4px;
 	--input-border-width: 1px;
 	--input-bg-color: white;
-	--form-check-height: 18px;
+	--form-check-height: 20px;
 	--form-check-border-width: 2px;
 	--form-check-border-radius: 4px;
 	--form-group-margin-bottom: 15px;
@@ -69,8 +70,8 @@ $dark: #4e6380 !default;
 	--font-headings-weight: 700;
 	--font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 
-	--card-border-radius: 8px;
-	--grid-gutter-width: 20px;
+	--card-border-radius: 6px;
+	--grid-gutter-width: 25px;
 	--font-weight-nomal: 400;
 	--font-weight-medium: 500;
 	--font-weight-semibold: 600;
@@ -83,7 +84,8 @@ $dark: #4e6380 !default;
 	--alert-border-radius: 4px;
 	--layout-sidebar-width: 244px;
 	--layout-navbar-height: 65px;
-	--shadow-card: 0 1px 10px rgba(23, 24, 24, 0.03), 0 0 2px rgba(0, 0, 0, 0.15);
+	// --shadow-card: 0 1px 6px rgba(23, 24, 24, 0.06), 0 0 1px rgba(0, 0, 0, 0.2);
+	--shadow-card: 0px 0px 5px 0px rgba(23, 24, 24, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
 	--shadow-button: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 
 	@include mobile {
@@ -96,7 +98,7 @@ $dark: #4e6380 !default;
 
 [data-theme='dark'] {
 	--body-color: #b1b9c9;
-	--body-bg: var(--dark-300);
+	--body-bg: var(--dark-200);
 	// --dark-100: #3a4656;
 	// --dark-200: #333c49;
 	// --dark-300: #2f3845;
@@ -106,16 +108,17 @@ $dark: #4e6380 !default;
 	--dark-100: #3a4c63;
 	--dark-200: #262c3a;
 	--dark-300: #1c1e2a;
-	--bg-white: #262c3a;
-	--border-color: #3a4c63;
-	--border-shadow: #aeb4b9;
+	--bg-white: #1c1e2a;
+	--border-color: #3a4c6380;
+	--border-shadow: #3a4c63;
+	--card-bg: var(--dark-300);
 
 	--text-muted: #{transparentize(#b1b9c9, 0.2)};
 	--gray-100: #3a4656;
-	--gray-200: #{darken(#3a4656, 4)};
-	--gray-300: #{darken(#3a4656, 6)};
+	--gray-200: var(--dark-200);
+	--gray-300: var(--dark-300);
 	--text-muted: #{transparentize(#b1b9c9, 0.2)};
 	--modal-backdrop-bg: #15191f;
-	--input-border-color: var(--dark-100);
+	--input-border-color: var(--dark-200);
 	--input-bg-color: var(--dark-300);
 }

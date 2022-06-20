@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect } from 'vue'
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import Pickr from '@simonwep/pickr/src/js/pickr'
 import type PickerInterface from '@simonwep/pickr'
+import FormLabel from '../form-label/FormLabel.vue'
 
 const props = defineProps<{
 	modelValue?: string | null
@@ -11,10 +12,12 @@ const props = defineProps<{
 	required?: boolean
 	name?: string
 	width?: string
+	withInput?: boolean
 }>()
 const emit = defineEmits(['update', 'update:modelValue'])
 const uid = `colopicker-${getCurrentInstance()?.uid}`
 const pickr = shallowRef()
+const focused = ref(false)
 const customStyle = ref<{
 	width?: string
 }>({})
@@ -24,15 +27,11 @@ if (props.width) {
 }
 
 const update = (value: string | null) => {
+	console.log(value)
+
 	emit('update:modelValue', value)
 	emit('update', value)
 }
-
-watchEffect(() => {
-	if (pickr.value && props.modelValue) {
-		pickr.value.setColor(props.modelValue)
-	}
-})
 
 interface PickrCustom extends PickerInterface {
 	init?: boolean
@@ -117,10 +116,12 @@ onMounted(() => {
 			}
 
 			instance.hide()
-			update(hexa)
+
+			if (!focused.value) update(hexa)
 		}
 	})
-	watchEffect(() => {
+
+	watchPostEffect(() => {
 		if (
 			pickr.value &&
 			props.modelValue != undefined &&
@@ -129,6 +130,14 @@ onMounted(() => {
 			pickr.value.setColor(props.modelValue)
 		}
 	})
+})
+
+watchPostEffect(() => {
+	if (pickr.value && props.modelValue && !focused) {
+		if (!focused) {
+			pickr.value.setColor(props.modelValue)
+		}
+	}
 })
 
 defineExpose({
@@ -143,7 +152,18 @@ defineExpose({
 
 <template>
 	<label class="ui-colorpicker" :style="customStyle">
-		<div class="pickr" :id="uid"></div>
+		<FormLabel class="ui-colorpicker" :label="label" @click="pickr.show()" />
+		<div class="ui-colorpicker-content">
+			<div class="pickr" :id="uid"></div>
+			<input
+				v-if="withInput"
+				class="form-control"
+				v-model="modelValue"
+				@update:modelValue="update"
+				maxlength="9"
+				@focus="focused = true"
+				@blur="focused = false" />
+		</div>
 	</label>
 </template>
 

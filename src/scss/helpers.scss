@@ -199,65 +199,67 @@ hr {
 	background-color: var(--border-color);
 }
 
+$increment: 4;
+
 @for $i from 0 through 5 {
 	.m-#{$i} {
-		margin: #{$i * 5}px #{$i * 5}px !important;
+		margin: #{$i * $increment}px #{$i * $increment}px !important;
 	}
 
 	.mx-#{$i} {
-		margin-left: #{$i * 5}px !important;
-		margin-right: #{$i * 5}px !important;
+		margin-left: #{$i * $increment}px !important;
+		margin-right: #{$i * $increment}px !important;
 	}
 
 	.my-#{$i} {
-		margin-top: #{$i * 5}px !important;
-		margin-bottom: #{$i * 5}px !important;
+		margin-top: #{$i * $increment}px !important;
+		margin-bottom: #{$i * $increment}px !important;
 	}
 
 	.mt-#{$i} {
-		margin-top: #{$i * 5}px !important;
+		margin-top: #{$i * $increment}px !important;
 	}
 
 	.ml-#{$i} {
-		margin-left: #{$i * 5}px !important;
+		margin-left: #{$i * $increment}px !important;
 	}
 
 	.mb-#{$i} {
-		margin-bottom: #{$i * 5}px !important;
+		margin-bottom: #{$i * $increment}px !important;
 	}
 
 	.mr-#{$i} {
-		margin-right: #{$i * 5}px !important;
+		margin-right: #{$i * $increment}px !important;
 	}
 
 	.p-#{$i} {
-		padding: #{$i * 5}px !important;
+		padding: #{$i * $increment}px !important;
 	}
 
 	.py-#{$i} {
-		padding-top: #{$i * 5}px !important;
-		padding-bottom: #{$i * 5}px !important;
+		padding-top: #{$i * $increment}px !important;
+		padding-bottom: #{$i * $increment}px !important;
 	}
 
 	.px-#{$i} {
-		padding-left: #{$i * 5}px !important;
-		padding-right: #{$i * 5}px !important;
+		padding-left: #{$i * $increment}px !important;
+		padding-right: #{$i * $increment}px !important;
 	}
 
 	.pl-#{$i} {
-		padding-left: #{$i * 5}px !important;
+		padding-left: #{$i * $increment}px !important;
 	}
 
 	.pr-#{$i} {
-		padding-right: #{$i * 5}px !important;
+		padding-right: #{$i * $increment}px !important;
 	}
 
 	.pt-#{$i} {
-		padding-top: #{$i * 5}px !important;
+		padding-top: #{$i * $increment}px !important;
 	}
 
 	.pb-#{$i} {
-		padding-top: #{$i * 5}px !important;
+		padding-top: #{$i * $increment}px !important;
 	}
 }
 
@@ -271,6 +273,14 @@ hr {
 
 .mb-form {
 	margin-bottom: var(--form-group-margin-bottom) !important;
+}
+
+.mb-gutter {
+	margin-bottom: var(--grid-gutter-width) !important;
+}
+
+.mt-gutter {
+	margin-top: var(--grid-gutter-width) !important;
 }
 
 .mt-auto {
@@ -329,7 +339,7 @@ dl {
 
 ul {
 	padding-left: 18px;
-	li {
+	li:not(:last-child) {
 		margin-bottom: 8px;
 	}
 }

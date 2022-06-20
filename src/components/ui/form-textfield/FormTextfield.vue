@@ -41,6 +41,8 @@ export interface Props {
 	mask?: string | string[] | object | null
 	raw?: boolean
 	actions?: any[]
+	max?: string | number
+	min?: string | number
 }
 
 const props = defineProps<Props>()
@@ -48,7 +50,7 @@ const vMaska = maska
 
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string | null): void
-	(e: 'update', val: string | null): void
+	(e: 'update', val: any): void
 	(e: 'focus', event: Event): void
 	(e: 'blur', event: Event): void
 	(e: 'keydown', event: Event): void
@@ -141,15 +143,17 @@ const onClear = () => {
 			:name="name"
 			:title="title"
 			:id="id"
+			:max="max"
+			:min="min"
 			:required="required"
 			@maska="rawValue = $event.target.dataset.maskRawValue" />
 		<slot name="after" />
-		<div class="close" v-if="clearable && modelValue?.length" @click="onClear">
-			<Icon name="cancel" type="filled" />
+		<div v-if="clearable && modelValue?.length" class="close" @click="onClear">
+			<Icon name="cancel" filled />
 		</div>
 		<template #append v-if="$slots.append || actions">
-			<div class="actions" v-if="actions">
-				<Button v-for="item in actions" :type="item.type" :label="item.label" />
+			<div v-if="actions" class="actions">
+				<Button v-for="item in actions" :type="item.type" :label="item.label" @click="item.onAction" />
 			</div>
 			<slot name="append" />
 		</template>
