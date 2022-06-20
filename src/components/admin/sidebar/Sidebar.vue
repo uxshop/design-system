@@ -73,15 +73,23 @@ const clickOverlay = () => {
 	}
 }
 
-const checkActive = (name: any) => {
-	const el = document.getElementById('ui-sidebar')?.getElementsByClassName('-active') as HTMLCollectionOf<HTMLElement>
-	const link = el[0]?.parentElement?.parentElement?.previousElementSibling
-	const linkOpened = document.getElementById('ui-sidebar')?.getElementsByClassName('-open')
-	linkOpened && linkOpened[0]?.classList.remove('-open')
-	link?.classList.add('-open')
+// const checkActive = (name: any) => {
+// 	const el = document.getElementById('ui-sidebar')?.getElementsByClassName('-active') as HTMLCollectionOf<HTMLElement>
+// 	if (el && el.length) {
+// 		const link = el[0].parentElement?.parentElement?.previousElementSibling
+// 		const linkOpened = document.getElementById('ui-sidebar')?.getElementsByClassName('-open')
+// 		linkOpened && linkOpened[0]?.classList.remove('-open')
+// 		link?.classList.add('-open')
+// 	}
+// }
+
+const checkSubActive = (item) => {
+	const routeName = route.name.replace(/_[^_]+?$/, '')
+	const itemName = item.to.replace(/_[^_]+?$/, '')
+	return itemName == routeName
 }
 
-watchPostEffect(() => checkActive(route.name))
+// watchPostEffect(() => checkActive(route.name))
 
 // watchPostEffect(() => {
 // const alias = route.name.replace(/_.*/g, '')
@@ -121,7 +129,8 @@ watchPostEffect(() => checkActive(route.name))
 										'-child-active': item.nodes && item.to == item.nodes[0].to
 									}"
 									class="ui-sidebar-link"
-									activeClass="-active">
+									activeClass="-open"
+									exactActiveClass="-active">
 									<span class="ui-sidebar-link-icon">
 										<Icon :name="item.icon" filled />
 									</span>
@@ -131,7 +140,10 @@ watchPostEffect(() => checkActive(route.name))
 								</router-link>
 								<ul v-if="item.nodes" class="ui-sidebar-sublist">
 									<li v-for="node in item.nodes" class="ui-sidebar-item">
-										<router-link :to="{ name: node.to }" class="ui-sidebar-link -sub" activeClass="-active">
+										<router-link
+											:to="{ name: node.to }"
+											class="ui-sidebar-link -sub"
+											:class="{ '-active': checkSubActive(node) }">
 											<span class="ui-sidebar-link-icon"></span>
 											<span class="ui-sidebar-link-text">
 												{{ node.name }}

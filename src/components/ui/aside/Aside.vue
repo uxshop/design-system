@@ -94,7 +94,7 @@ watchEffect(() => {
 							</h4>
 							<small class="d-block text-muted" v-if="subtitle">{{ subtitle }}</small>
 						</div>
-						<button @click="onClose" class="close" id="btn-close">
+						<button @click="onClose" class="close" id="btn-close" type="button">
 							<span>fechar</span>
 							<Icon name="close" />
 						</button>
