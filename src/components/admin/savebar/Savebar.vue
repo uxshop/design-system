@@ -35,10 +35,7 @@ const handleDiscardChanges = () => {
 			<div class="ui-savebar-text">Alterações feitas</div>
 			<div class="ui-savebar-actions">
 				<Button @click="handleDiscardChanges" class="ui-savebar-restore">
-					<div>
-						<span>Descartar</span>
-						<span class="d-sm-none">alterações</span>
-					</div>
+					<div>Descartar alterações</div>
 				</Button>
 				<Button variant="success" type="submit" leadingIcon="check" label="Salvar" />
 			</div>
