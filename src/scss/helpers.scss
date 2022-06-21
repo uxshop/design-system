@@ -7,8 +7,8 @@ $colors: ('primary', 'secondary', 'danger', 'dark');
 }
 
 code {
-	color: crimson;
-	background-color: #f1f1f1;
+	color: var(--body-color);
+	background-color: var(--dark-200);
 	padding: 2px;
 	font-size: 105%;
 }
