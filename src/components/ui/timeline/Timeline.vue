@@ -69,4 +69,8 @@ const myComponent = (item: any) => {
 
 <style lang="scss">
 @import './Timeline.scss';
+
+.ui-timeline-list .ui-timeline-item {
+	margin-bottom: 0;
+}
 </style>
