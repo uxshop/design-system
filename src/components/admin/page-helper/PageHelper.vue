@@ -12,7 +12,7 @@ defineProps({
 		<icon name="info" />
 		<span class="ui-page-helper-text">
 			<b>Precisa de ajuda?</b> Acesse o material sobre
-			<b><a :href="helperLink" class="ui-page-helper-name" v-text="helperName" /></b>
+			<b><a :href="helperLink" class="ui-page-helper-name" v-text="helperName" target="_blank" /></b>
 		</span>
 	</div>
 </template>
