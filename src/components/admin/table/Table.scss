@@ -70,18 +70,18 @@
 		}
 	}
 
-	.ui-table-row:first-child {
-		.ui-table-cell {
-			// border-top: none;
-		}
-	}
-
 	.ui-table-row {
 		display: table-row;
 		color: inherit;
 
 		&:hover {
 			text-decoration: none;
+		}
+
+		&:first-child {
+			.ui-table-cell {
+				border-top: none;
+			}
 		}
 	}
 
