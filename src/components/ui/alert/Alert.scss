@@ -25,7 +25,6 @@
 	}
 
 	&.-dismissible {
-		padding-right: 50px;
 	}
 
 	&.-center {
@@ -97,7 +96,6 @@
 		box-shadow: none;
 		border: none;
 		font-size: 18px;
-		align-self: center;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -105,9 +103,7 @@
 		width: var(--input-height-sm);
 		height: var(--input-height-sm);
 		cursor: pointer;
-		position: absolute;
-		right: 10px;
-		align-self: center;
+		align-self: flex-start;
 		color: inherit;
 
 		&:hover {
