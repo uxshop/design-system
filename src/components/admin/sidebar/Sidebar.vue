@@ -115,7 +115,7 @@ const checkSubActive = (item) => {
 									:to="{ name: item.to }"
 									:class="{
 										'-nodes': item.nodes,
-										'-child-active': item.nodes && item.to == item.nodes[0].to,
+										'-child-active': item.nodes?.length && item.to == item.nodes[0].to,
 										'-active': checkSubActive(item)
 									}"
 									class="ui-sidebar-link"
