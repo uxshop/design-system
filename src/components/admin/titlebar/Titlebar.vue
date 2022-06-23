@@ -11,6 +11,7 @@ export interface IAction {
 
 defineProps<{
 	title?: string | null
+	to?: object
 	backlink?: { to: string }
 	primaryAction?: IAction
 	secondaryActions?: IAction[]
@@ -50,7 +51,7 @@ defineProps<{
 				</Dropdown>
 			</div>
 			<div v-if="primaryAction" class="titlebar-actions-primary">
-				<Button variant="primary" :label="primaryAction.label" @click="primaryAction.onAction" />
+				<Button variant="primary" :to="to" :label="primaryAction.label" @click="primaryAction.onAction" />
 			</div>
 		</div>
 	</div>
