@@ -28,6 +28,14 @@ body.redactor-body-fullscreen {
 	transform: translateX(-50%);
 }
 
+.redactor-source-view {
+	.redactor-toolbar {
+		a.re-button-icon {
+			color: white;
+		}
+	}
+}
+
 #redactor-modal-box,
 #redactor-modal-overlay {
 	z-index: 99999;
@@ -35,7 +43,7 @@ body.redactor-body-fullscreen {
 
 .redactor-layer,
 .redactor-toolbar {
-	border-radius: 4px;
+	border-radius: calc(var(--input-border-radius) - 1px);
 	font-family: var(--font-family);
 	font-size: var(--font-size-base);
 }
