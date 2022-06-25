@@ -79,11 +79,13 @@ const checkModelValue = () => {
 		if (element.value) {
 			const data = getValueArray()
 
-			if (props.create) {
-				if (isArray(data)) {
-					element.value.clearStore()
-					element.value.setValue(data)
-				}
+			if (data == null) {
+				element.value.clearStore()
+			}
+
+			if (props.create && isArray(data)) {
+				element.value.clearStore()
+				element.value.setValue(data)
 			}
 		}
 	})

@@ -41,7 +41,6 @@
 		min-height: var(--input-height);
 		background-color: var(--input-bg-color);
 		border: solid var(--input-border-width) var(--input-border-color);
-		border-radius: var(--input-border-radius);
 		padding: 7px;
 		padding-bottom: 0;
 
@@ -52,7 +51,7 @@
 		}
 
 		.choices__item {
-			border-radius: 5px;
+			border-radius: calc(var(--input-border-radius) - 1px);
 			background: var(--primary) !important;
 			text-shadow: none;
 			box-shadow: none !important;
