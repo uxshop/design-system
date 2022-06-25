@@ -10,6 +10,10 @@ interface ProvideRegisterInterface {
 
 const register = inject('register') as ProvideRegisterInterface
 
+defineProps<{
+	loading: boolean
+}>()
+
 const show = computed(() => {
 	const isEditing = register.editing
 
@@ -34,10 +38,10 @@ const handleDiscardChanges = () => {
 		<Container class="ui-savebar-container">
 			<div class="ui-savebar-text">Alterações feitas</div>
 			<div class="ui-savebar-actions">
-				<Button @click="handleDiscardChanges" class="ui-savebar-restore">
+				<Button @click="handleDiscardChanges" class="ui-savebar-restore" :disabled="loading">
 					<div>Descartar alterações</div>
 				</Button>
-				<Button variant="success" type="submit" leadingIcon="check" label="Salvar" />
+				<Button variant="success" type="submit" leadingIcon="check" label="Salvar" :loading="loading" />
 			</div>
 		</Container>
 	</div>

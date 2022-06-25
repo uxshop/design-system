@@ -39,7 +39,7 @@ export interface Props {
 	readonly?: boolean
 	type?: string
 	mask?: string | string[] | object | null
-	raw?: boolean
+	raw?: any
 	actions?: any[]
 	max?: string | number
 	min?: string | number
@@ -56,19 +56,24 @@ const emit = defineEmits<{
 	(e: 'keydown', event: Event): void
 	(e: 'keydownEnter', event: Event): void
 	(e: 'clear'): void
+	(e: 'updateRaw', val: any): void
 }>()
 
 const classList = ref<string[]>([])
-const rawValue = ref()
 
-const update = (evt: Event): void => {
-	const target = evt.target as HTMLInputElement
-	let val = target.value
-	if (props.mask && props.raw) {
-		val = rawValue.value
+const update = (evt: Event) => {
+	if (!props.mask) {
+		const target = evt.target as HTMLInputElement
+		const val = target.value
+		emit('update:modelValue', val)
+		emit('update', val)
 	}
-	emit('update:modelValue', val)
-	emit('update', val)
+}
+
+const maskRawValue = (evt: Event) => {
+	const target = evt.target as HTMLInputElement
+	const val = target.dataset.maskRawValue as string
+	emit('updateRaw', val)
 }
 
 if (props.pill) {
@@ -82,12 +87,15 @@ if (props.size) {
 const onFocus = (event: Event) => {
 	emit('focus', event)
 }
+
 const onBlur = (event: Event) => {
 	emit('blur', event)
 }
+
 const onKeydown = (event: Event) => {
 	emit('keydown', event)
 }
+
 const onEnter = (event: Event) => {
 	emit('keydownEnter', event)
 }
@@ -126,6 +134,7 @@ const onClear = () => {
 			@blur="onBlur"
 			@keydown="onKeydown"
 			@keydown.enter="onEnter"
+			@maska="maskRawValue"
 			:type="type"
 			:step="step"
 			:value="modelValue"
@@ -145,8 +154,7 @@ const onClear = () => {
 			:id="id"
 			:max="max"
 			:min="min"
-			:required="required"
-			@maska="rawValue = $event.target.dataset.maskRawValue" />
+			:required="required" />
 		<slot name="after" />
 		<div v-if="clearable && modelValue?.length" class="close" @click="onClear">
 			<Icon name="cancel" filled />

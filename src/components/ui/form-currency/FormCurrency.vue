@@ -79,7 +79,7 @@ watch(
 	() => props.modelValue,
 	(newVal: any) => {
 		if (!focused.value) {
-			setValue(newVal)
+			setValue(parseFloat(newVal))
 		}
 	},
 	{ immediate: true }
