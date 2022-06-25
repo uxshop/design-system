@@ -43,6 +43,7 @@
 		border: solid var(--input-border-width) var(--input-border-color);
 		padding: 7px;
 		padding-bottom: 0;
+		border-radius: var(--input-border-radius);
 
 		.choices__input {
 			color: var(--body-color);

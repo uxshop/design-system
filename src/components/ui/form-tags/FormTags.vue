@@ -35,7 +35,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const element = shallowRef()
-let el: HTMLElement
+let el: HTMLElement | null
 
 const update = (val: string) => {
 	emit('update:modelValue', val)
