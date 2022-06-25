@@ -11,7 +11,7 @@ import BrowserSelectModal from './BrowserSelectModal.vue'
 
 export interface Props {
 	modelValue: any
-	templateCustom: any
+	templateCustom?: any
 	id?: string
 	service: {
 		get(params: any): any

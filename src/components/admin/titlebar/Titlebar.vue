@@ -5,6 +5,7 @@ import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
 import Button from '../../ui/button/Button.vue'
 
 export interface IAction {
+	class?: string
 	label: string
 	onAction(): void
 }
@@ -40,6 +41,7 @@ defineProps<{
 				<Button
 					v-if="secondaryActions?.length == 1"
 					v-for="item in secondaryActions"
+					:class="item.class"
 					variant="plain"
 					:label="item.label"
 					@click="item.onAction" />
@@ -47,11 +49,20 @@ defineProps<{
 					<template #button-content>
 						<Button variant="plain" label="Mais ações" trailingIcon="expand_more" />
 					</template>
-					<DropdownItemButton v-for="item in secondaryActions" :label="item.label" @click="item.onAction" />
+					<DropdownItemButton
+						v-for="item in secondaryActions"
+						:label="item.label"
+						@click="item.onAction"
+						:class="item.class" />
 				</Dropdown>
 			</div>
 			<div v-if="primaryAction" class="titlebar-actions-primary">
-				<Button variant="primary" :to="to" :label="primaryAction.label" @click="primaryAction.onAction" />
+				<Button
+					variant="primary"
+					:to="to"
+					:label="primaryAction.label"
+					@click="primaryAction.onAction"
+					:class="primaryAction.class" />
 			</div>
 		</div>
 	</div>
