@@ -15,7 +15,7 @@ defineProps<{
 <template>
 	<div class="ui-page-actions">
 		<div v-if="secondaryActions" class="ui-page-actions-secondary">
-			<Button v-for="item in secondaryActions" :variant="item.variant" @click="item.onAction">
+			<Button v-for="item in secondaryActions" :variant="item.variant" @click="item.onAction" outline>
 				{{ item.label }}
 			</Button>
 		</div>
