@@ -22,6 +22,10 @@ label {
 		margin-top: var(--grid-gutter-width);
 	}
 
+	.ui-stack & {
+		margin: 0;
+	}
+
 	&.-primary {
 		border-color: var(--primary);
 	}
