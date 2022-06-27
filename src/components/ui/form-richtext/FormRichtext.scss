@@ -134,6 +134,12 @@ body.redactor-body-fullscreen {
 
 	.redactor-styles {
 		color: var(--body-color);
+		font-family: var(--font-family);
+		padding: var(--input-padding-x);
+	}
+
+	.redactor-placeholder:before {
+		color: var(--input-placeholder-color);
 	}
 
 	&.redactor-styles-on {

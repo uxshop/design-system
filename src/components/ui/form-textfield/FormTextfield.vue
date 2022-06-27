@@ -161,7 +161,12 @@ const onClear = () => {
 		</div>
 		<template #append v-if="$slots.append || actions">
 			<div v-if="actions" class="actions">
-				<Button v-for="item in actions" :type="item.type" :label="item.label" @click="item.onAction" />
+				<Button
+					v-for="item in actions"
+					:variant="item.variant"
+					:type="item.type"
+					:label="item.label"
+					@click="item.onAction" />
 			</div>
 			<slot name="append" />
 		</template>
