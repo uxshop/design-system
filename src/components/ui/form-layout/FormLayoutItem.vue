@@ -15,9 +15,9 @@ defineProps<{
 		margin-top: var(--form-group-margin-bottom);
 	}
 
-	// > div {
-	// 	margin-top: var(--form-group-margin-bottom);
-	// }
+	+ .ui-button {
+		margin-top: var(--form-group-margin-bottom);
+	}
 
 	&.-group {
 		display: flex;
