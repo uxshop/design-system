@@ -4,6 +4,8 @@ import Button from '../button/Button.vue'
 import Icon from '../icon/Icon.vue'
 
 export interface IAction {
+	leadingIcon?: string
+
 	label?: string
 	onAction?: any
 }
@@ -11,7 +13,7 @@ export interface IAction {
 defineProps<{
 	title?: string
 	primaryAction?: IAction
-	icon?: string
+	icon: string
 }>()
 </script>
 
@@ -28,7 +30,10 @@ defineProps<{
 				<slot />
 			</div>
 			<div class="ui-callout-card-actions" v-if="primaryAction">
-				<Button :label="primaryAction?.label" @click="primaryAction?.onAction" />
+				<Button
+					:label="primaryAction?.label"
+					@click="primaryAction?.onAction"
+					:leadingIcon="primaryAction.leadingIcon" />
 			</div>
 		</div>
 	</Card>

@@ -39,7 +39,7 @@ label {
 	}
 
 	&.-full-height {
-		height: calc(100% - var(--grid-gutter-width));
+		height: 100%;
 
 		.empty-data {
 			height: 100%;
