@@ -5,7 +5,7 @@ const props = withDefaults(
 		height?: string
 	}>(),
 	{
-		height: '5px'
+		height: '2px'
 	}
 )
 

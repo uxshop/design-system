@@ -10,16 +10,22 @@ defineProps<{
 </script>
 
 <template>
-	<Row>
-		<Col cols="3" sm="12" class="d-sm-none">
-			<CardAnnotation :title="title">
-				<slot name="annotation">
-					{{ annotation }}
-				</slot>
-			</CardAnnotation>
-		</Col>
-		<Col cols="8" sm="12" offset-sm="1">
-			<slot />
-		</Col>
-	</Row>
+	<div class="ui-frame-annotation">
+		<Row>
+			<Col cols="3" sm="12" class="d-sm-none">
+				<CardAnnotation :title="title">
+					<slot name="annotation">
+						{{ annotation }}
+					</slot>
+				</CardAnnotation>
+			</Col>
+			<Col cols="8" sm="12" offset-sm="1">
+				<slot />
+			</Col>
+		</Row>
+	</div>
 </template>
+
+<style lang="scss">
+@import './FrameAnnotation.scss';
+</style>

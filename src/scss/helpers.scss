@@ -18,7 +18,11 @@ small {
 }
 
 p {
-	margin-bottom: 8px;
+	margin-bottom: 0;
+
+	+ p {
+		margin-bottom: 8px;
+	}
 }
 
 .nowrap {

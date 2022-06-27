@@ -91,3 +91,4 @@ export { default as BrowserSelect } from './components/admin/browser-select/Brow
 export { default as Gmaps } from './components/admin/gmaps/Gmaps.vue'
 export { default as Tab } from './components/ui/tab/Tab.vue'
 export { default as TabItem } from './components/ui/tab/TabItem.vue'
+export { default as CalloutCard } from './components/ui/callout-card/CalloutCard.vue'

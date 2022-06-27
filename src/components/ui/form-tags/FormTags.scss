@@ -4,7 +4,10 @@
 	--choice-item-height: var(--input-height);
 	margin-bottom: var(--form-group-margin-bottom);
 
-	&.-has-value {
+	&:not(.-has-value) {
+		.choices__inner {
+			padding-left: calc(var(--input-padding-x) - 2px);
+		}
 	}
 
 	.ui-form-tags-content {

@@ -11,7 +11,7 @@ interface ProvideRegisterInterface {
 const register = inject('register') as ProvideRegisterInterface
 
 defineProps<{
-	loading: boolean
+	loading?: boolean
 }>()
 
 const show = computed(() => {

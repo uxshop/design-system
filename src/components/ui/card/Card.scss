@@ -14,9 +14,13 @@ label {
 	display: flex;
 	flex-direction: column;
 	border: none;
-	margin-bottom: var(--grid-gutter-width);
+	// margin-bottom: var(--grid-gutter-width);
 	background: var(--card-bg);
 	box-shadow: var(--shadow-card);
+
+	+ .ui-card {
+		margin-top: var(--grid-gutter-width);
+	}
 
 	&.-primary {
 		border-color: var(--primary);
