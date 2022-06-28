@@ -1,7 +1,7 @@
 .ui-link {
 	&.-external {
 		text-decoration: none;
-		display: inline-flex;
+		display: inline-block;
 		gap: 2px;
 
 		&:hover > span {
@@ -12,6 +12,7 @@
 	.ui-link-icon {
 		font-size: 12px;
 		position: relative;
-		top: 4px;
+		top: 2px;
+		margin-left: 4px;
 	}
 }

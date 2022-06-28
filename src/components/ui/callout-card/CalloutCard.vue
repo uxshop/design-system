@@ -5,15 +5,14 @@ import Icon from '../icon/Icon.vue'
 
 export interface IAction {
 	leadingIcon?: string
-
 	label?: string
 	onAction?: any
+	variant?: string
 }
 
 defineProps<{
 	title?: string
 	primaryAction?: IAction
-	icon: string
 }>()
 </script>
 
@@ -31,6 +30,7 @@ defineProps<{
 			</div>
 			<div class="ui-callout-card-actions" v-if="primaryAction">
 				<Button
+				:variant="primaryAction?.variant"
 					:label="primaryAction?.label"
 					@click="primaryAction?.onAction"
 					:leadingIcon="primaryAction.leadingIcon" />
