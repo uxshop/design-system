@@ -12,14 +12,16 @@ defineProps<{
 <template>
 	<div class="ui-frame-annotation">
 		<Row>
-			<Col cols="3" sm="12" class="d-sm-none">
-				<CardAnnotation :title="title">
-					<slot name="annotation">
-						{{ annotation }}
-					</slot>
-				</CardAnnotation>
+			<Col cols="4" sm="12">
+				<div class="pr-4">
+					<CardAnnotation :title="title">
+						<slot name="annotation">
+							{{ annotation }}
+						</slot>
+					</CardAnnotation>
+				</div>
 			</Col>
-			<Col cols="8" sm="12" offset-sm="1">
+			<Col cols="8" sm="12">
 				<slot />
 			</Col>
 		</Row>

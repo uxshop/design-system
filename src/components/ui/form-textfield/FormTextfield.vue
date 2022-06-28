@@ -4,6 +4,7 @@ import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
+import type { IAction } from 'src/types/IAction'
 
 export interface Props {
 	leadingIcon?: string
@@ -40,7 +41,7 @@ export interface Props {
 	type?: string
 	mask?: string | string[] | object | null
 	raw?: any
-	actions?: any[]
+	actions?: IAction[]
 	max?: string | number
 	min?: string | number
 }

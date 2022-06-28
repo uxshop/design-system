@@ -2,13 +2,7 @@
 import { watchEffect, ref, useSlots } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
-
-export interface IAction {
-	label: string
-	form?: string
-	icon?: string
-	onAction?(): void
-}
+import type { IAction } from 'src/types/IAction'
 
 const emit = defineEmits(['update:modelValue', 'open', 'close'])
 const props = defineProps<{

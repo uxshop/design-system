@@ -1,11 +1,7 @@
 <script setup lang="ts">
+import type { IAction } from 'src/types/IAction'
 import Button from '../../ui/button/Button.vue'
-export interface IAction {
-	label: string
-	onAction(): void
-	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain'
-	icon?: string
-}
+
 defineProps<{
 	primaryAction?: IAction
 	secondaryActions?: IAction[]
@@ -25,7 +21,8 @@ defineProps<{
 				variant="success"
 				type="submit"
 				@click="primaryAction.onAction"
-				:leadingIcon="primaryAction.icon">
+				:to="primaryAction.to"
+				:leadingIcon="primaryAction.leadingIcon">
 				{{ primaryAction.label }}
 			</Button>
 		</div>

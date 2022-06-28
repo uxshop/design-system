@@ -4,6 +4,7 @@ import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
 import Button from '../button/Button.vue'
+import type { IAction } from 'src/types/IAction'
 
 export interface Props {
 	modelValue?: any
@@ -12,7 +13,7 @@ export interface Props {
 	config?: any
 	closeOnSelect?: boolean
 	last?: boolean
-	actions?: any
+	actions?: IAction[]
 	options?: any
 	create?: boolean
 }

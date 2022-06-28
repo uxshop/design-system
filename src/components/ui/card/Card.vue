@@ -4,6 +4,7 @@ import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import Button from '../button/Button.vue'
 import Link from '../link/Link.vue'
+import type { IAction } from 'src/types/IAction'
 
 export interface Props {
 	title?: string
@@ -23,10 +24,7 @@ export interface Props {
 	loading?: boolean
 	transparent?: boolean
 	plain?: boolean
-	actions?: Array<{
-		label: string
-		onAction(): void
-	}>
+	actions?: IAction[]
 }
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close'])

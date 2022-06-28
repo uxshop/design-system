@@ -2,16 +2,11 @@
 import Card from '../card/Card.vue'
 import Button from '../button/Button.vue'
 import Icon from '../icon/Icon.vue'
-
-export interface IAction {
-	leadingIcon?: string
-	label?: string
-	onAction?: any
-	variant?: string
-}
+import type { IAction } from 'src/types/IAction'
 
 defineProps<{
 	title?: string
+	icon?: string
 	primaryAction?: IAction
 }>()
 </script>
@@ -30,7 +25,8 @@ defineProps<{
 			</div>
 			<div class="ui-callout-card-actions" v-if="primaryAction">
 				<Button
-				:variant="primaryAction?.variant"
+					:to="primaryAction.to"
+					:variant="primaryAction?.variant"
 					:label="primaryAction?.label"
 					@click="primaryAction?.onAction"
 					:leadingIcon="primaryAction.leadingIcon" />

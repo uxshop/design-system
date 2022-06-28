@@ -3,11 +3,7 @@ import { ref } from 'vue'
 import Titlebar from '../titlebar/Titlebar.vue'
 import PageHelperVideo from '../page-helper-video/PageHelperVideo.vue'
 import PageMessageSupport from '../page-message-support/PageMessageSupport.vue'
-
-export interface IAction {
-	label: string
-	onAction(): void
-}
+import type { IAction } from 'src/types/IAction'
 
 export interface Props {
 	hideTitle?: boolean

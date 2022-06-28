@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue'
 import Button from '../../ui/button/Button.vue'
+import type { IAction } from 'src/types/IAction'
 
 defineProps<{
 	label?: string
@@ -8,7 +9,7 @@ defineProps<{
 	caption?: string
 	iconType?: 'outlined' | 'filled' | 'rounded' | 'twotone' | undefined
 	link?: boolean
-	actions?: any[]
+	actions?: IAction
 	noBorder?: boolean
 }>()
 </script>
