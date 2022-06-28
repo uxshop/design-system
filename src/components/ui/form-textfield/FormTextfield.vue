@@ -64,11 +64,11 @@ const classList = ref<string[]>([])
 
 const update = (evt: Event) => {
 	if (!props.mask) {
-		const target = evt.target as HTMLInputElement
-		const val = target.value
-		emit('update:modelValue', val)
-		emit('update', val)
 	}
+	const target = evt.target as HTMLInputElement
+	const val = target.value
+	emit('update:modelValue', val)
+	emit('update', val)
 }
 
 const maskRawValue = (evt: Event) => {
