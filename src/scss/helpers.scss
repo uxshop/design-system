@@ -60,6 +60,10 @@ p {
 	align-items: center;
 }
 
+.align-items-end {
+	align-items: flex-end;
+}
+
 .flex-direction-column {
 	flex-direction: column;
 }
@@ -121,6 +125,10 @@ h6 {
 
 .font-semibold {
 	font-weight: var(--font-weight-semibold);
+}
+
+.font-normal {
+	font-weight: normal;
 }
 
 .font-bold {

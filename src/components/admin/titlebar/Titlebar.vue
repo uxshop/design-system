@@ -3,7 +3,7 @@ import IconButton from '../../ui/icon-button/IconButton.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
 import Button from '../../ui/button/Button.vue'
-import type { IAction } from 'src/types/IAction'
+import type { IAction } from '../../../types/IAction'
 
 defineProps<{
 	title?: string | null
@@ -39,6 +39,7 @@ defineProps<{
 					:class="item.class"
 					variant="plain"
 					:label="item.label"
+					:to="item.to"
 					@click="item.onAction" />
 				<Dropdown v-else right>
 					<template #button-content>

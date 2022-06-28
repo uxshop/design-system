@@ -4,7 +4,7 @@ import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
 import Button from '../button/Button.vue'
-import type { IAction } from 'src/types/IAction'
+import type { IAction } from '../../../types/IAction'
 
 export interface Props {
 	modelValue?: any

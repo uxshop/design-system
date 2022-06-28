@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue'
 import Button from '../../ui/button/Button.vue'
-import type { IAction } from 'src/types/IAction'
+import type { IAction } from '../../../types/IAction'
 
 defineProps<{
 	label?: string

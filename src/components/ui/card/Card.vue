@@ -4,7 +4,7 @@ import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import Button from '../button/Button.vue'
 import Link from '../link/Link.vue'
-import type { IAction } from 'src/types/IAction'
+import type { IAction } from '../../../types/IAction'
 
 export interface Props {
 	title?: string

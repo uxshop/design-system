@@ -2,13 +2,14 @@
 import Card from '../card/Card.vue'
 import Button from '../button/Button.vue'
 import Icon from '../icon/Icon.vue'
-import type { IAction } from 'src/types/IAction'
+import type { IAction } from '../../../types/IAction'
 
-defineProps<{
+export interface Props {
 	title?: string
 	icon?: string
 	primaryAction?: IAction
-}>()
+}
+defineProps<Props>()
 </script>
 
 <template>

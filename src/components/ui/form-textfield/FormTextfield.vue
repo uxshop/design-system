@@ -4,7 +4,7 @@ import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import { maska } from 'maska'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
-import type { IAction } from 'src/types/IAction'
+import type { IAction } from '../../../types/IAction'
 
 export interface Props {
 	leadingIcon?: string

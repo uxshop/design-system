@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { IAction } from 'src/types/IAction'
+import type { IAction } from '../../../types/IAction'
 import Button from '../../ui/button/Button.vue'
 
 defineProps<{
