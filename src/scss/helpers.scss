@@ -18,11 +18,11 @@ small {
 }
 
 p {
-	margin-bottom: 0;
+	margin-bottom: 12px;
 
-	+ p {
-		margin-top: 8px;
-	}
+	// + p {
+	// 	margin-top: 8px;
+	// }
 }
 
 .nowrap {

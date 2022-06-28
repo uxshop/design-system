@@ -2,7 +2,6 @@
 
 .ui-form-tags {
 	--choice-item-height: var(--input-height);
-	margin-bottom: var(--form-group-margin-bottom);
 
 	&:not(.-has-value) {
 		.choices__inner {

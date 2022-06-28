@@ -1,15 +1,14 @@
 @import './redactor/redactor.css';
 @import '../../../scss/mixins.scss';
 
-.ui-form-richtext {
-	margin-bottom: var(--form-group-margin-bottom);
-}
+// .ui-form-richtext {
+// 	margin-bottom: var(--form-group-margin-bottom);
+// }
 
 body.redactor-body-fullscreen {
 	&::after {
 		content: '';
 		position: fixed;
-		// background: rgba($gray, 0.8);
 		left: 0;
 		right: 0;
 		top: 0;
