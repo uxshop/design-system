@@ -3,11 +3,10 @@ import { onMounted, ref } from 'vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 
 const iconMode = ref('dark_mode')
-const colorScheme = 'adm_color_scheme'
-const system = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+const colorSchemeStorageName = 'ds_color_scheme'
 
 const setDarkmode = (val: any) => {
-	localStorage.setItem(colorScheme, val)
+	localStorage.setItem(colorSchemeStorageName, val)
 	document.documentElement.setAttribute('data-theme', val)
 
 	if (val == 'dark') {
@@ -18,12 +17,12 @@ const setDarkmode = (val: any) => {
 }
 
 const toggleDarkmode = () => {
-	const color = localStorage.getItem(colorScheme) == 'dark' ? 'light' : 'dark'
+	const color = localStorage.getItem(colorSchemeStorageName) == 'dark' ? 'light' : 'dark'
 	setDarkmode(color)
 }
 
 onMounted(() => {
-	setDarkmode(localStorage.getItem(colorScheme) ?? system)
+	setDarkmode(localStorage.getItem(colorSchemeStorageName) ?? 'light')
 })
 </script>
 

@@ -6,6 +6,16 @@ $colors: ('primary', 'secondary', 'danger', 'dark');
 	}
 }
 
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 50px var(--input-bg-color) inset !important;
+	-webkit-text-fill-color: var(--body-color) !important;
+}
+
+input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 50px var(--input-bg-color) inset !important;
+	-webkit-text-fill-color: var(--body-color) !important;
+}
+
 code {
 	color: var(--body-color);
 	background-color: var(--dark-200);
