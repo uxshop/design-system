@@ -55,7 +55,7 @@ defineProps<{
 			<div v-if="primaryAction" class="titlebar-actions-primary">
 				<Button
 					variant="primary"
-					:to="to"
+					:to="primaryAction.to"
 					:label="primaryAction.label"
 					@click="primaryAction.onAction"
 					:class="primaryAction.class" />

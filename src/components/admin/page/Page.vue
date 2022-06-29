@@ -8,9 +8,9 @@ import type { IAction } from '../../../types/IAction'
 export interface Props {
 	hideTitle?: boolean
 	primaryAction?: IAction
+	secondaryActions?: IAction[]
 	to?: object
 	backlink?: object
-	secondaryActions?: IAction[]
 	size?: 'sm' | 'md' | 'lg' | 'full'
 	videoHelp?: any
 	footerHelp?: any
