@@ -54,7 +54,7 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 </script>
 
 <template>
-	<div class="table table-flex table-hover" v-if="rows.length">
+	<div class="table table-flex table-hover" v-if="rows.length" v-memo="[rows]">
 		<div class="table-list-header" v-if="$slots.head">
 			<TableListItem v-if="!state.config.hideCheckbox" auto class="-checkbox" />
 			<slot name="head" />
