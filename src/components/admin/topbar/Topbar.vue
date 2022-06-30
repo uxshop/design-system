@@ -140,5 +140,5 @@ const getComponent = (item: IDropdownItem) => {
 </template>
 
 <style lang="scss">
-@import './topbar.scss';
+@import './Topbar.scss';
 </style>
