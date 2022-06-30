@@ -11,17 +11,20 @@ defineProps<{
 
 <style lang="scss">
 .ui-form-layout-item {
+	display: flex;
+	gap: var(--grid-gutter-width);
+	align-items: flex-end;
+
+	> div {
+		flex-grow: 1;
+	}
+
 	+ .ui-form-layout-item {
 		margin-top: var(--form-group-margin-bottom);
 	}
 
 	+ .ui-button {
 		margin-top: var(--form-group-margin-bottom);
-	}
-
-	&.-group {
-		display: flex;
-		gap: var(--grid-gutter-width);
 	}
 }
 </style>
