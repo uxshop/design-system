@@ -1,11 +1,11 @@
 @import '../../../scss/mixins.scss';
 
-.ui-userbar {
+.ui-topbar {
 	background-color: var(--body-bg);
 	height: 100%;
 	border-bottom: solid 1px var(--border-color);
 
-	.ui-userbar-wrapper {
+	.ui-topbar-wrapper {
 		padding: 0 var(--layout-content-padding-x);
 		height: var(--layout-navbar-height);
 		flex-grow: 1;
@@ -14,11 +14,11 @@
 		gap: 10px;
 	}
 
-	.ui-userbar-content {
+	.ui-topbar-content {
 		flex-grow: 1;
 	}
 
-	.ui-userbar-actions {
+	.ui-topbar-actions {
 		display: flex;
 		gap: inherit;
 
@@ -28,13 +28,13 @@
 		}
 	}
 
-	.ui-userbar-link {
+	.ui-topbar-link {
 		display: inline-flex;
 		padding: 0 10px;
 		color: var(--text-muted);
 	}
 
-	.ui-userbar-notification-button {
+	.ui-topbar-notification-button {
 		position: relative;
 		&.-new:after,
 		&.-new:before {
@@ -72,11 +72,11 @@
 		}
 	}
 
-	.ui-userbar-btn {
+	.ui-topbar-btn {
 		display: flex;
 		align-items: center;
 
-		.ui-userbar-btn-wrapper {
+		.ui-topbar-btn-wrapper {
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -89,7 +89,7 @@
 			}
 		}
 
-		.ui-userbar-btn-avatar {
+		.ui-topbar-btn-avatar {
 			width: var(--input-height);
 			height: var(--input-height);
 			align-items: center;
@@ -122,7 +122,7 @@
 			}
 		}
 
-		.ui-userbar-btn-info {
+		.ui-topbar-btn-info {
 			line-height: 1.2;
 			margin-left: 10px;
 			text-align: left;
@@ -134,13 +134,13 @@
 		}
 	}
 
-	.ui-userbar-mobile {
+	.ui-topbar-mobile {
 		display: none;
 		img {
 			margin-left: 10px;
 		}
 
-		> .ui-userbar-menu {
+		> .ui-topbar-menu {
 			padding: 0;
 			background: none;
 			border: none;
@@ -173,7 +173,7 @@
 			visibility: hidden;
 		}
 
-		.ui-userbar-mobile {
+		.ui-topbar-mobile {
 			display: flex;
 		}
 
@@ -181,29 +181,29 @@
 			display: none;
 		}
 
-		.ui-userbar-btn {
+		.ui-topbar-btn {
 			margin-right: -10px;
 
-			.ui-userbar-btn-info {
+			.ui-topbar-btn-info {
 				display: none;
 			}
 		}
 	}
 
 	@include darkmode {
-		.ui-userbar-btn .ui-userbar-btn-wrapper:hover {
+		.ui-topbar-btn .ui-topbar-btn-wrapper:hover {
 			background: var(--dark-100);
 		}
 
-		.ui-userbar-btn-wrapper {
+		.ui-topbar-btn-wrapper {
 			color: var(--body-color);
 		}
 
-		.ui-userbar-btn-avatar {
+		.ui-topbar-btn-avatar {
 			background-color: var(--dark-100);
 		}
 
-		.ui-userbar-btn .ui-userbar-btn-avatar::after {
+		.ui-topbar-btn .ui-topbar-btn-avatar::after {
 			border-color: var(--dark-300);
 		}
 	}

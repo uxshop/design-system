@@ -1,21 +1,21 @@
-import Userbar from './Userbar.vue'
+import Topbar from './Topbar.vue'
 import vueRouter from 'storybook-vue3-router'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-	title: 'Components/Userbar',
-	component: Userbar,
+	title: 'Components/Topbar',
+	component: Topbar,
 	argTypes: {}
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-	components: { Userbar },
+	components: { Topbar },
 	setup() {
 		return { args }
 	},
 	template: `
-    <Userbar v-bind="args" />
+    <Topbar v-bind="args" />
   `
 })
 

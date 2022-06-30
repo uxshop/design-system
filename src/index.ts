@@ -64,7 +64,7 @@ export { default as CardActive } from './components/admin/card-active/CardActive
 export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue'
 export { default as Codemirror } from './components/admin/codemirror/Codemirror.vue'
 export { default as Savebar } from './components/admin/savebar/Savebar.vue'
-export { default as Userbar } from './components/admin/userbar/Userbar.vue'
+export { default as Topbar } from './components/admin/topbar/Topbar.vue'
 export { default as Seo } from './components/admin/seo/Seo.vue'
 export { default as CardSeo } from './components/admin/card-seo/CardSeo.vue'
 export { default as Card } from './components/ui/card/Card.vue'
