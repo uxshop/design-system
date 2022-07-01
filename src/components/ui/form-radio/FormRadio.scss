@@ -16,8 +16,9 @@
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
-		height: 0;
-		width: 0;
+		// height: 0;
+		// width: 0;
+		transform: translate(3.5px, 4px);
 
 		&:checked ~ .ui-form-radio-checkmark {
 			background-color: var(--primary);

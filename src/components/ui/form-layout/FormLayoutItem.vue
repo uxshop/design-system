@@ -12,7 +12,7 @@ defineProps<{
 <style lang="scss">
 .ui-form-layout-item {
 	display: flex;
-	gap: var(--grid-gutter-width);
+	gap: var(--form-group-margin-bottom);
 	align-items: flex-end;
 
 	> div {

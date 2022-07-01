@@ -281,7 +281,7 @@ $increment: 4;
 	}
 
 	.pb-#{$i} {
-		padding-top: #{$i * $increment}px !important;
+		padding-bottom: #{$i * $increment}px !important;
 	}
 }
 
