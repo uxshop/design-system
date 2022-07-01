@@ -25,7 +25,7 @@ export interface SettingsInterface {
 	onChange(val: string): void
 }
 
-const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add'])
+const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add', 'remove'])
 
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Criar tags',
@@ -70,7 +70,14 @@ const init = () => {
 			element.value = new Plugin(el, settings)
 
 			checkModelValue()
+			if (props.options.length && getValueArray().length) setSelectedValue()
 		}
+	})
+}
+
+const setSelectedValue = () => {
+	getValueArray().map((value: number) => {
+		element.value.setChoiceByValue(Number(value))
 	})
 }
 
@@ -123,13 +130,13 @@ onMounted(() => {
 			},
 			false
 		)
-		// el.addEventListener(
-		// 	'removeItem',
-		// 	function (event) {
-		// 		console.log(event.detail)
-		// 	},
-		// 	false
-		// )
+		el.addEventListener(
+			'removeItem',
+			function (event: any) {
+				emit('remove', event.detail)
+			},
+			false
+		)
 	}
 
 	watch(
