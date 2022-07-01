@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
 	value: true
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'update'])
 const uid = `ui-form-radio-${getCurrentInstance()?.uid}`
 const model = computed(() => {
 	return props.modelValue
@@ -25,6 +25,7 @@ const model = computed(() => {
 
 const update = (val: string | boolean) => {
 	emit('update:modelValue', val)
+	emit('update', val)
 }
 </script>
 
