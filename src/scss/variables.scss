@@ -111,8 +111,17 @@ $dark: #4e6380 !default;
 	--dark-300: #1c1e2a;
 	--bg-white: #1c1e2a;
 	--border-color: #3a4c6380;
-	--border-shadow: #3a4c63;
 	--card-bg: var(--dark-300);
+
+	// --dark-100: #24262a;
+	// --dark-200: #1c1e23;
+	// --dark-300: #131517;
+	// --bg-white: #1c1e2a;
+	// --border-color: #3a4c6380;
+	// --card-bg: var(--dark-200);
+	// --body-bg: var(--dark-300);
+
+	--border-shadow: #3a4c63;
 
 	--text-muted: #{transparentize(#b1b9c9, 0.2)};
 	--gray-100: #3a4656;

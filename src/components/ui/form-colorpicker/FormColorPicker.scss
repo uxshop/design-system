@@ -26,7 +26,7 @@
 			right: 0;
 			content: '';
 			display: block;
-			border: solid var(--border-width);
+			border: solid var(--input-border-width);
 			z-index: 22;
 			border-radius: inherit;
 			opacity: 0.2;
@@ -48,7 +48,7 @@
 				background-size: 25%;
 
 				@include desktop {
-					background-size: 10%;
+					background-size: 30%;
 				}
 			}
 		}
