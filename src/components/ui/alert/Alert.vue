@@ -48,7 +48,7 @@ watchEffect(() => {
 				<slot>{{ label }}</slot>
 			</div>
 		</div>
-		<button class="ui-alert-close" v-if="dismissible" @click="close">
+		<button type="button" class="ui-alert-close" v-if="dismissible" @click="close">
 			<Icon name="close" />
 		</button>
 	</div>
