@@ -167,6 +167,7 @@ const onClear = () => {
 					:variant="item.variant"
 					:type="item.type"
 					:label="item.label"
+					:leadingIcon="item.leadingIcon"
 					@click="item.onAction" />
 			</div>
 			<slot name="append" />

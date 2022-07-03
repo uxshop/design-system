@@ -4,7 +4,7 @@ import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { IAction } from '../../../types/IAction'
 
-const emit = defineEmits(['update:modelValue', 'open', 'close'])
+const emit = defineEmits(['update:modelValue', 'open', 'close', 'save'])
 const props = defineProps<{
 	modelValue?: boolean
 	title?: string
@@ -67,7 +67,7 @@ watchEffect(() => {
 
 <template>
 	<Teleport to="body">
-		<component :is="tag ? tag : 'div'" class="ui-aside">
+		<component :is="tag ? tag : 'div'" class="ui-aside" @submit.prevent="$emit('save')">
 			<div
 				v-if="isOpen"
 				class="ui-aside-wrapper"

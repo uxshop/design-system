@@ -8,7 +8,7 @@ export interface Props {
 	modelValue?: any
 	placeholder?: string
 	options?: any[]
-	label?: string
+	label?: string | null
 	size?: string
 	last?: boolean
 	template?: any

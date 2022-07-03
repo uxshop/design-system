@@ -17,9 +17,14 @@ defineProps<{
 
 	> div {
 		flex-grow: 1;
+		width: 100%;
 	}
 
 	+ .ui-form-layout-item {
+		margin-top: var(--form-group-margin-bottom);
+	}
+
+	+ .ui-alert {
 		margin-top: var(--form-group-margin-bottom);
 	}
 
