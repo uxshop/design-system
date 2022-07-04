@@ -63,10 +63,13 @@
 		}
 	}
 
+	.ui-alert-icon {
+		align-self: center;
+	}
+
 	> .ui-icon {
 		margin-right: 8px;
 		font-size: 20px;
-		align-self: baseline;
 		color: inherit;
 	}
 
@@ -98,6 +101,7 @@
 		font-size: 18px;
 		display: inline-flex;
 		align-items: center;
+		align-self: baseline;
 		justify-content: center;
 		border-radius: 100%;
 		width: var(--input-height-sm);
