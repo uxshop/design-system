@@ -19,6 +19,8 @@ defineProps<{
 				</Link>
 			</div>
 		</div>
-		<slot />
+		<div  class="ui-card-section-content">
+			<slot />
+		</div>
 	</div>
 </template>

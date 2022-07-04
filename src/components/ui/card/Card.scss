@@ -191,8 +191,11 @@ label {
 		.ui-card-section-header {
 			display: flex;
 			align-items: center;
-			margin-bottom: 8px;
 			gap: 8px;
+
+			+ .ui-card-section-content:not(:empty) {
+				margin-top: 8px;
+			}
 		}
 	}
 
