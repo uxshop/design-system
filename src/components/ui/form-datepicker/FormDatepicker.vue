@@ -110,7 +110,8 @@ onMounted(() => {
 })
 
 const clearDate = () => {
-	picker.value.clearSelection()
+	console.log("picker.value", picker.value)
+	picker.value.clear()
 	update(null)
 }
 
