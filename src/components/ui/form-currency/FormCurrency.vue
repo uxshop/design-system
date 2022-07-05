@@ -62,7 +62,6 @@ const settings: CurrencyInputOptions = {
 			min: props.min ?? null,
 			max: props.max ?? 999999.99
 		}
-		// precision: 2
 	},
 	...props.options
 }
@@ -78,7 +77,7 @@ const init = () => {}
 watch(
 	() => props.modelValue,
 	(newVal: any) => {
-		if (!focused.value) {
+		if (!focused.value && newVal) {
 			setValue(parseFloat(newVal))
 		}
 	},
