@@ -12,7 +12,7 @@ import Spinner from '../../ui/spinner/Spinner.vue'
 import { zerofill } from '../../../filters'
 import BrowserSelectDefaultVue from './snippets/BrowserSelectDefault.vue'
 import Aside from '../../ui/aside/Aside.vue'
-import InfiniteScroll, { type IContext } from '../../ui/infinite-scroll/InfiniteScroll'
+import InfiniteScroll, { type IContext } from '../../ui/infinite-scroll/InfiniteScroll.vue'
 
 export interface Props {
 	selectOne?: boolean
@@ -169,7 +169,6 @@ defineExpose({
 				</Row>
 			</div>
 
-			<!-- <EmptyData _v-show="!fetching && !rows.length" icon="youtube_searched_for" label="Nenhum registro encontrado" /> -->
 			<div class="ui-browser-search-list">
 				<div
 					v-for="item in rows"
