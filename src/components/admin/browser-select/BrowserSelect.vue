@@ -155,8 +155,6 @@ const pushToMemoryList = (items: any[]) => {
 }
 
 const updateByModal = ({ memoryList, ids }: any) => {
-	console.log(memoryList, ids)
-
 	searchBy.value = null
 	pushToMemoryList(memoryList)
 	if (ids) {
@@ -203,18 +201,19 @@ watch(
 	},
 	{ deep: true, immediate: true }
 )
+defineExpose({ onClickSearch })
 </script>
 
 <template>
 	<div class="ui-browser-select">
-		<div class="ui-browser-select-button">
-			<slot name="button" v-if="selectType == 'btn' && !hideBtn">
+		<div class="ui-browser-select-button" v-if="selectType == 'btn' && !hideBtn">
+			<slot name="button">
 				<div class="area-select" @click="onClickSearch" :class="{ disabled: limit > 0 && rows.length == limit }">
 					<span>{{ placeholder }}</span>
 				</div>
 			</slot>
 		</div>
-		<div>
+		<div v-else>
 			<div class="ui-browser-select-input">
 				<Row>
 					<Col>
