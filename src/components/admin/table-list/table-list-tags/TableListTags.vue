@@ -4,7 +4,7 @@ import type { ITableListState } from '../types/ITableListState'
 import Tag from '../../../ui/tag/Tag.vue'
 import { computed } from 'vue'
 import { omit } from 'lodash-es'
-import TagList from '../../../ui/tag/TagList'
+import TagList from '../../../ui/tag/TagList.vue'
 
 const props = defineProps<{
 	state: ITableListState
