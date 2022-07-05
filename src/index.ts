@@ -1,7 +1,7 @@
 export { Toast as $toast } from './components/ui/toast'
 export { Dialog as $dialog } from './components/ui/dialog'
 export { default as DescriptionList } from './components/ui/description-list/DescriptionList.vue'
-export { DescriptionListItem } from './components/ui/description-list/components/description-list-item'
+export { default as DescriptionListItem } from './components/ui/description-list/components/description-list-item/DescriptionListItem.vue'
 export { default as Stack } from './components/ui/stack/Stack.vue'
 export { default as Button } from './components/ui/button/Button.vue'
 export { default as ButtonGroup } from './components/ui/button-group/ButtonGroup.vue'
