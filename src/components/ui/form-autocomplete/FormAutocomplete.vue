@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
-import * as Choices from 'choices.js'
+import Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
@@ -74,7 +74,8 @@ const settings = computed(() => {
 
 const init = () => {
 	nextTick(() => {
-		const Plugin = Choices.default ?? Choices
+		
+		const Plugin = Choices
 
 		if (element.value) {
 			element.value.destroy()
