@@ -164,7 +164,7 @@ onMounted(() => {
 			}" />
 		<div class="ui-form-tags-content">
 			<input v-if="props.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
-			<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
+			<select v-else multiple ref="selectRef" :id="uid" autocomplete="off" />
 			<div v-if="actions" class="ui-form-tags-actions">
 				<Button v-for="item in actions" :label="item.label" @click="item.onAction" />
 			</div>
