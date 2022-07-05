@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, watch } from 'vue'
 import { cloneDeep } from 'lodash-es'
-import Choices from 'choices.js'
+import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 
 export interface Props {
@@ -16,6 +16,7 @@ export interface Props {
 }
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
+const Plugin = Choices.default || Choices
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
 	config: () => ({}),
@@ -74,14 +75,13 @@ const settings = computed(() => {
 
 const init = () => {
 	nextTick(() => {
-		
-		const Plugin = Choices
-
 		if (element.value) {
 			element.value.destroy()
 		}
 
 		if (el) {
+			console.log(el, Plugin)
+
 			element.value = new Plugin(el, settings.value)
 			checkModelValue()
 		}

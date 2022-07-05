@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCurrentInstance, nextTick, onMounted, shallowRef, watch } from 'vue'
-import Choices from 'choices.js'
+import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
 import Button from '../button/Button.vue'
@@ -26,6 +26,7 @@ export interface SettingsInterface {
 	onChange(val: string): void
 }
 
+const Plugin = Choices?.default || Choices
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add', 'remove'])
 
 const props = withDefaults(defineProps<Props>(), {
@@ -66,8 +67,7 @@ const init = () => {
 				choices: cloneDeep(props.options),
 				allowHTML: true
 			}
-
-			const Plugin = Choices
+			console.log(el, Plugin)
 			element.value = new Plugin(el, settings)
 
 			checkModelValue()
@@ -156,9 +156,12 @@ onMounted(() => {
 
 <template>
 	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length, 'mb-0': last }">
-		<FormLabel v-if="label" :label="label" :action="{
-			label: 'Remover'
-		}" />
+		<FormLabel
+			v-if="label"
+			:label="label"
+			:action="{
+				label: 'Remover'
+			}" />
 		<div class="ui-form-tags-content">
 			<input v-if="props.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
 			<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
