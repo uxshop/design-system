@@ -12,7 +12,8 @@ export interface Props {
 	size?: string
 	last?: boolean
 	template?: any
-	position?: 'top' | 'bottom' | 'auto'
+	position?: 'top' | 'bottom' | 'auto',
+	config: object
 }
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
@@ -46,7 +47,8 @@ const settings = computed(() => {
 		noChoicesText: 'Sem opções para escolher',
 		items: [],
 		choices: _choices,
-		allowHTML: false
+		allowHTML: false,
+		...props.config
 	}
 
 	if (props.template?.choice) {
