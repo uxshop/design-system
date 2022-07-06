@@ -31,6 +31,10 @@
 
 		.choices__button {
 			background-size: 12px !important;
+
+			@include darkmode {
+				filter: invert(1);
+			}
 		}
 
 		.choices__item {
