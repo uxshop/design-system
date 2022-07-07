@@ -2,6 +2,8 @@
 import { onMounted, ref } from 'vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 
+const emit = defineEmits(['onChangedTheme'])
+
 const iconMode = ref('dark_mode')
 const colorSchemeStorageName = 'ds_color_scheme'
 
@@ -19,6 +21,7 @@ const setDarkmode = (val: any) => {
 const toggleDarkmode = () => {
 	const color = localStorage.getItem(colorSchemeStorageName) == 'dark' ? 'light' : 'dark'
 	setDarkmode(color)
+	emit('onChangedTheme')
 }
 
 onMounted(() => {
