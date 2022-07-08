@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import CustomScroll from '../../../ui/custom-scroll/CustomScroll.vue'
 import Tab from '../../../ui/tab/Tab.vue'
 import TabItem from '../../../ui/tab/TabItem.vue'

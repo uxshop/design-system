@@ -28,7 +28,6 @@ const props = defineProps<{
 	}
 }>()
 
-const max = 5
 const tabs: any = []
 const tab = ref()
 const dropdownRef = ref()
@@ -107,6 +106,7 @@ const onSave = async () => {
 			resource: props.state.config.customFilterResource
 		})
 		props.state.tabs.push(res)
+		addTab(res)
 		props.state.setQueryParams({
 			selectedView: res.id
 		})
@@ -171,8 +171,5 @@ const onShowDropdown = () => {
 				</Stack>
 			</DropdownSection>
 		</Dropdown>
-		<!-- <base-dialog ref="dialog" type="confirm" destruct-label="Entendi" destruct-variant="primary" title="Atenção">
-			Você só pode ter <b>{{ max }}</b> filtros por sessão.
-		</base-dialog> -->
 	</span>
 </template>
