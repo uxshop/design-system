@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue'
-import { zerofill } from '../../../../filters'
+import { each } from 'lodash-es'
+import { zerofill, pluralize } from '../../../../filters'
 import dialog from '../../../ui/dialog/index'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
-import { each } from 'lodash-es'
-import IconButton from '../../../ui/icon-button/IconButton.vue'
-import type { TBulkActions, ITableListConfig } from '../types/ITableListConfig'
 import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import Button from '../../../ui/button/Button.vue'
 import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue'
+import type { TBulkActions } from 'src/types/ITableListConfig'
+import type { ITableListConfig } from 'src/types'
 
-interface Props {
+type Props = {
 	rows: unknown[]
 	selected: number[]
 	config: ITableListConfig
@@ -39,14 +39,14 @@ const onRemoveDialog = () => {
 		title: 'Excluir registros',
 		destructIcon: 'delete',
 		destructLabel: `Deletar registros`,
-		message: `Você confirma a exclusão dos registros selecionados? <br><b>${count}</b> selecionados.`,
+		message: `Você confirma a exclusão dos registros selecionados? <br><b>${count}</b> ${pluralize(count, 'selecionado', 'selecionados', '', false)}.`,
 		onCallback: remove
 	})
 }
 
-const remove = () => props.state.removeSelecteds()
-const active = () => props.state.toggleActiveSelecteds(true)
-const inactive = () => props.state.toggleActiveSelecteds(false)
+const remove = () => props.state.removeSelected()
+const active = () => props.state.toggleActiveSelected(true)
+const inactive = () => props.state.toggleActiveSelected(false)
 
 watchEffect(() => {
 	if (props.rows.length && props.selected.length == props.rows.length) {
@@ -98,7 +98,6 @@ onMounted(() => {
 		</div>
 
 		<span v-show="selected.length && config.actions?.includes('remove')" class="table-list-nav-item">
-			<!-- <IconButton icon="delete" @click="onRemoveDialog" size="sm" /> -->
 			<Button leadingIcon="delete" @click="onRemoveDialog" size="sm" label="Deletar" />
 		</span>
 
@@ -107,12 +106,8 @@ onMounted(() => {
 				<Button size="sm" trailingIcon="unfold_more"> Ação em massa </Button>
 			</template>
 
-			<DropdownItemButton
-				v-for="action in bulkActions"
-				@click.stop="action.onAction(selected)"
-				:key="action.label"
-				:variant="action.variant"
-				:label="action.label" />
+			<DropdownItemButton v-for="action in bulkActions" @click.stop="action.onAction(selected)" :key="action.label"
+				:variant="action.variant" :label="action.label" />
 		</Dropdown>
 	</div>
 </template>

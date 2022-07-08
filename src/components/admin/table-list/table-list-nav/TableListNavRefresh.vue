@@ -10,7 +10,7 @@ let refreshTime: ReturnType<typeof setTimeout> | number
 const onRefreshTable = () => {
 	if (!refreshTime) {
 		refreshTime = setTimeout(() => (refreshTime = 0), 2000)
-		props.state.fechData()
+		props.state.fetchData()
 	}
 }
 </script>
