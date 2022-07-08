@@ -1,4 +1,4 @@
-import type { ITableListConfig } from '../types/ITableListConfig'
+import type { ITableListConfig } from 'src/types'
 
 export interface ITableListState {
 	queryParams: any
@@ -8,12 +8,12 @@ export interface ITableListState {
 	currentTab: any
 	term: string | null
 	omitFiltersValues: any
-	fechData(): void
+	fetchData(): void
 	setQueryParams(params: any): void
 	resetQueryParams(params: any): void
 	removeFilter(params: any): void
-	removeSelecteds(params: any): void
-	toggleActiveSelecteds(i: boolean): void
+	removeSelected(params: any): void
+	toggleActiveSelected(i: boolean): void
 	activeOne(item: any, i: boolean): void
 	deleteOne(item: any): void
 	clickRow(item: any): void
