@@ -4,10 +4,10 @@
 	--sidebar-padding-left: 30px;
 	--sidebar-line-width: 5px;
 
-	position: sticky;
+	position: fixed;
 	top: 0;
 	z-index: 888;
-	height: 100vh;
+	height: 100%;
 
 	> .ui-sidebar-wrapper {
 		border-right: solid 1px var(--border-color);
@@ -20,7 +20,7 @@
 		top: 0;
 		height: 100%;
 		overflow: hidden;
-		background: var(--dark-100);
+		background: var(--bg-white);
 
 		> .ui-sidebar-container {
 			display: flex;
@@ -232,17 +232,7 @@
 		}
 	}
 
-	@include mobile {
-		.ui-sidebar-wrapper {
-			background-color: white;
-		}
-	}
-
 	@include darkmode {
-		.ui-sidebar-wrapper {
-			background: none;
-		}
-
 		.ui-sidebar-link {
 			&:hover:not(.-active) {
 				background-color: var(--dark-300);
