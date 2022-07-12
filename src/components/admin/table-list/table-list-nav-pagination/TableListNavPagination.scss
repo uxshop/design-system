@@ -35,7 +35,7 @@
 		position: fixed;
 		bottom: 0;
 		border-top: solid 1px var(--border-color);
-		background: #fff;
+		background: var(--bg-white);
 		width: 100%;
 		left: 0;
 		height: 50px;
@@ -53,9 +53,5 @@
 		.table-list-pagination-item.prev {
 			order: 1;
 		}
-	}
-
-	@include mobile {
-		background: var(--bg-white);
 	}
 }
