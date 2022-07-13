@@ -7,6 +7,7 @@ const props = defineProps<{
 	value?: unknown
 	switch?: boolean
 	label?: string
+	id?:string
 	name?: string
 	size?: string
 	tabindex?: string | number
@@ -16,7 +17,7 @@ const props = defineProps<{
 	disabled?: boolean
 }>()
 
-const uid = `ui-form-checkbox-${getCurrentInstance()?.uid}`
+const uid = props.id ?? `ui-form-checkbox-${getCurrentInstance()?.uid}`
 const classList = ref<string[]>([])
 const model = ref()
 

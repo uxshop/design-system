@@ -46,7 +46,7 @@ watchEffect(() => {
 })
 </script>
 <template>
-	<div class="ui-alert" :class="classList" v-if="open">
+	<div v-if="open" class="ui-alert" :class="classList">
 		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" />
 		<div class="ui-alert-content">
 			<h6 class="ui-alert-title" v-if="title">
@@ -56,7 +56,7 @@ watchEffect(() => {
 				<slot>{{ label }}</slot>
 			</div>
 		</div>
-		<button type="button" class="ui-alert-close" v-if="dismissible" @click="close">
+		<button v-if="dismissible" type="button" class="ui-alert-close" @click="close">
 			<Icon name="close" />
 		</button>
 	</div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
 
@@ -25,16 +25,16 @@ const props = withDefaults(defineProps<Props>(), {
 	type: 'button'
 })
 
+let componentButton = 'BUTTON'
 const classList = ref<string[]>([])
 const trailingIcon = ref(props.trailingIcon)
-const componentButton = ref('BUTTON')
 
 if (props.to) {
-	componentButton.value = 'router-link'
+	componentButton = 'router-link'
 }
 
 if (props.href) {
-	componentButton.value = 'a'
+	componentButton = 'a'
 }
 
 if (props.size) {
