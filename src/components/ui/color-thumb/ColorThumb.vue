@@ -30,7 +30,6 @@ if (props.width) {
 <template>
 	<span class="ui-color-thumb" :class="classList" :style="customStyle">
 		<span class="ui-color-thumb-image" v-if="image" :style="{ backgroundImage: `url(${image.src})` }" />
-		<!-- <Image class="ui-color-thumb-image" v-if="image" :src="image.src" /> -->
 		<template v-else>
 			<span class="ui-color-thumb-color" :style="{ backgroundColor: hexadecimal }"></span>
 			<span class="ui-color-thumb-color -secondary" :style="{ backgroundColor: hexadecimalSecondary }"></span>
