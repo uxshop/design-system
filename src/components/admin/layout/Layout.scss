@@ -46,20 +46,17 @@
 	@include mobile {
 		grid-template-columns: 0 100%;
 		grid-template-rows: 70px auto;
+		height: 100%;
+
+		.ui-layout-navbar {
+			left: 0;
+			width:100%;
+			position: fixed;
+			height: initial;
+		}
 
 		.ui-layout-content-page {
 			max-width: 100%;
 		}
 	}
 }
-
-// .slide-fade-enter-active {
-// 	transition: all 0.2s ease;
-// }
-// .slide-fade-leave-active {
-// 	transition: all 0.2s;
-// }
-// .slide-fade-enter,
-// .slide-fade-leave-to {
-// 	opacity: 0;
-// }

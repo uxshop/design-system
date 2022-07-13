@@ -18,8 +18,6 @@ const onScroll = (e: UIEvent) => {
 			<slot name="navbar" />
 		</div>
 
-		<!-- <not-found v-if="notFound" /> -->
-
 		<div class="ui-layout-content" id="ui-layout-content">
 			<div class="ui-layout-content-page">
 				<router-view v-slot="{ Component }">
