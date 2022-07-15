@@ -67,7 +67,6 @@ const init = () => {
 				choices: cloneDeep(props.options),
 				allowHTML: true
 			}
-			console.log(el, Plugin)
 			element.value = new Plugin(el, settings)
 
 			checkModelValue()
