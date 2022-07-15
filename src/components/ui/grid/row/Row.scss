@@ -1,9 +1,14 @@
+@import '../../../../scss/mixins.scss';
+
 .ui-row {
 	display: flex;
 	flex-wrap: wrap;
 	margin-right: calc(var(--grid-gutter-width) * -0.5);
 	margin-left: calc(var(--grid-gutter-width) * -0.5);
-	// margin-top: calc(var(--grid-gutter-width) * -1);
+
+	@include mobile {
+		row-gap: var(--grid-gutter-width);
+	}
 
 	&.-align-items-center {
 		align-items: center;
