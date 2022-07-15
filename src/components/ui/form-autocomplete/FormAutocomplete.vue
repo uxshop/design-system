@@ -82,8 +82,6 @@ const init = () => {
 		}
 
 		if (el) {
-			console.log(el, Plugin)
-
 			element.value = new Plugin(el, settings.value)
 			checkModelValue()
 		}
