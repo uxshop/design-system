@@ -1,5 +1,5 @@
 <template>
-	<div class="table-list-body">
+	<div class="ui-table-body">
 		<slot />
 	</div>
 </template>
