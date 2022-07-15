@@ -5,7 +5,6 @@
 	flex-wrap: wrap;
 	margin-right: calc(var(--grid-gutter-width) * -0.5);
 	margin-left: calc(var(--grid-gutter-width) * -0.5);
-	// margin-top: calc(var(--grid-gutter-width) * -1);
 
 	@include mobile {
 		row-gap: var(--grid-gutter-width);
