@@ -9,7 +9,7 @@ export interface Props {
 }
 
 const props = defineProps<Props>()
-const classList = ref('material-icons')
+const classList = ref()
 const fill = props.filled ? 1 : 0
 
 const style = ref<{
