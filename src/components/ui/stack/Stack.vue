@@ -8,6 +8,7 @@ export interface Props {
 	vertical?: boolean
 	wrap?: boolean
 	columns?: string | number
+	horizontal?: boolean
 }
 
 const props = defineProps<Props>()
@@ -31,6 +32,10 @@ if (props.alignment) {
 
 if (props.wrap == null && props.wrap == false) {
 	classList.value.push('-no-wrap')
+}
+
+if (props.horizontal) {
+	classList.value.push('-sm-horizontal')
 }
 
 const styleList = ref<string[]>([])

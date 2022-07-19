@@ -11,8 +11,10 @@
 	&:not(.-custom-grid) {
 		display: flex;
 
-		@include mobile {
-			flex-direction: column;
+		&:not(.-sm-horizontal) {
+			@include mobile {
+				flex-direction: column;
+			}
 		}
 	}
 
