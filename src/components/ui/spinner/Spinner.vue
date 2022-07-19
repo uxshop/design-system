@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 
-interface Props {
+export interface Props {
 	border?: string | number
 	size?: string | number
 	color?: string
 	variant?: string
 }
 
-interface Style {
+export interface Style {
 	width?: string
 	height?: string
 	color?: string

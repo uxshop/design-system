@@ -8,7 +8,7 @@ import Stack from '../stack/Stack.vue'
 import type { IAction } from '../../../types/IAction'
 
 export interface Props {
-	title?: string
+	title?: string | null
 	titleMuted?: string
 	caption?: string
 	dropdown?: boolean
