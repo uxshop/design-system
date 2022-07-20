@@ -42,12 +42,9 @@
 			font-weight: var(--font-weight-semibold);
 		}
 
-		.ui-icon {
+		> .ui-icon {
 			display: flex;
 			justify-content: center;
-		}
-
-		&.-checkbox {
 		}
 
 		&.-nowrap {

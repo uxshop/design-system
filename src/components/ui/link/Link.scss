@@ -3,6 +3,7 @@
 		text-decoration: none;
 		display: inline-block;
 		gap: 2px;
+		white-space: nowrap;
 
 		&:hover > span {
 			text-decoration: underline;

@@ -15,7 +15,7 @@ defineProps<Props>()
 
 <template>
 	<Button class="ui-icon-button" :variant="variant" :class="{ '-fab': fab }" :size="size">
-		<Icon :name="icon" :type="type" class="icon" />
+		<Icon :name="icon" :type="type" />
 	</Button>
 </template>
 

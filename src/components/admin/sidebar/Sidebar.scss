@@ -140,6 +140,11 @@
 		}
 	}
 
+	.-disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
 	.ui-sidebar-link {
 		line-height: 1;
 		color: var(--body-color);
@@ -163,12 +168,12 @@
 			background-color: #e5eaef60;
 		}
 
-		&.-active:not(.-child-active) {
+		&.-active:not(.-node-active) {
 			background-color: var(--dark-100, var(--gray-200));
 		}
 
 		&.-active,
-		&.-open {
+		&.-node-active {
 			.ui-icon {
 				color: var(--primary);
 			}
