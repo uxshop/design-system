@@ -68,6 +68,7 @@ const removeFilter = (key: string) => {
 	delete queryParams.value[key]
 	delete queryParams.value['customFilterId']
 	queryParams.value.selectedView = 'all'
+	setQueryParams(queryParams.value)
 }
 
 const setUrlParams = (query: TQueryParams) => HistoryReplaceState(query, ['_', 'limit'])
