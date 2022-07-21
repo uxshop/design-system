@@ -1,0 +1,51 @@
+.ui-media-card {
+	@import '../../../scss/mixins.scss';
+
+	display: flex;
+
+	@include mobile {
+		flex-direction: column;
+	}
+
+	@include desktop {
+		&.-inverted > :first-child {
+			order: 2;
+		}
+	}
+
+	> * {
+		flex-basis: 100%;
+	}
+
+	> :first-child > *:first-child {
+		height: 100%;
+	}
+
+	.ui-media-card-video {
+		position: relative;
+	}
+
+	.ui-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 6em;
+		font-variation-settings: 'FILL' 1;
+		background-color: var(--body-bg);
+		border-radius: 100%;
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--gray-300, --dark-300);
+		}
+	}
+
+	iframe {
+		min-height: 250px;
+	}
+
+	img {
+		max-width: 100%;
+	}
+}

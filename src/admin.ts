@@ -20,6 +20,7 @@ import Savebar from './components/admin/savebar/Savebar.vue'
 import Topbar from './components/admin/topbar/Topbar.vue'
 import Seo from './components/admin/seo/Seo.vue'
 import CardSeo from './components/admin/card-seo/CardSeo.vue'
+import MediaCard from './components/admin/media-card/MediaCard.vue'
 
 import table from './components/admin/table/index'
 
@@ -49,5 +50,6 @@ export default {
 		app.component(`${prefix}Topbar`, Topbar)
 		app.component(`${prefix}Seo`, Seo)
 		app.component(`${prefix}CardSeo`, CardSeo)
+		app.component(`${prefix}MediaCard`, MediaCard)
 	}
 }
