@@ -94,7 +94,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 						<slot name="caption" />
 					</span>
 				</div>
-				<div class="ui-card-header-content-button">
+				<div v-if="actions" class="ui-card-header-content-button">
 					<Link v-for="item in actions" :key="item.label" @click="item.onAction">
 						{{ item.label }}
 					</Link>
