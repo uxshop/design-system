@@ -10,6 +10,7 @@ export interface Props {
 	label?: string
 	height?: string | number
 	config?: Record<string, string>
+	configCallbacks?: Record<string, () => {}>
 }
 
 type TRedactor = {
@@ -32,8 +33,6 @@ let focused = false
 const uid = `ui-form-richtext-${getCurrentInstance()?.uid}`
 const config = Object.assign(
 	{
-		// imageUpload: MediaService.getUploadUrl(),
-		// imageManagerJson: MediaService.getUrl(),
 		lang: 'pt_br',
 		toolbarFixed: false,
 		imagePosition: true,
@@ -44,7 +43,7 @@ const config = Object.assign(
 		maxHeight: '600px',
 		minHeight: `${props.height}px`,
 		multipleUpload: false,
-		callbacks: {
+		callbacks: Object.assign({
 			focus: function () {
 				focused = true
 			},
@@ -55,26 +54,7 @@ const config = Object.assign(
 				emit('update:modelValue', html)
 				return html
 			}
-			// 	upload: {
-			// 		beforeSend: xhr => {
-			// 			const token = StorageService.BEARER_TOKEN
-			// 			xhr.setRequestHeader('Authorization', `Bearer ${token}`)
-			// 			xhr.setRequestHeader('Richtext', 1)
-			// 		}
-			// 	},
-			// 	image: {
-			// 		uploaded: (image, response) => {
-			// 			// image.childNodes[1].src = response.file.url.replace('uploads://', `${process.env.VUE_APP_UPLOAD_URL}/`)
-			// 			image.childNodes[1].src = response.file.url.replace(
-			// 				'media://',
-			// 				process.env.VUE_APP_CDN_URL + '/' + this.$store.getters.shop.id + '/'
-			// 			)
-			// 			// $img.attr('src', $filter('img_url')(src))
-			// 			// var file = $filter('img_url')(response.file);
-			// 			// $(image).find('img').attr('src', file);
-			// 		}
-			// 	}
-		}
+		}, props.configCallbacks)
 	},
 	props.config
 )
