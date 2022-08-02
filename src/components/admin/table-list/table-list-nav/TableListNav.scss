@@ -1,7 +1,8 @@
 @import '../../../../scss/mixins.scss';
 
 .table-list-nav {
-	position: relative;
+	position: sticky;
+	top: var(--layout-navbar-height);
 	z-index: 88;
 
 	.table-list-nav-wrapper {
