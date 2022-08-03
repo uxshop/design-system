@@ -23,4 +23,5 @@ export interface ITableListConfig {
 	bulk?: TBulkActions
 	actions?: string[]
 	placeholder?: string
+	omitFiltersValues?: string[]
 }
