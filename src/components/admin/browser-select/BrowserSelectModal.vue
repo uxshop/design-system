@@ -94,7 +94,7 @@ const load = async (context: IContext) => {
 	rows.value = rows.value.concat(res.data)
 	fetching.value = false
 
-	if (res.meta.current_page == res.meta.last_page) {
+	if (res.meta.current_page >= res.meta.last_page) {
 		context.noMore()
 	} else {
 		context.loaded()
