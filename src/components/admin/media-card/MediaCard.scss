@@ -1,27 +1,61 @@
+@import '../../../scss/mixins.scss';
+
 .ui-media-card {
-	@import '../../../scss/mixins.scss';
+	--border-bottom: 0 0 var(--card-border-radius, 8px) var(--card-border-radius, 8px);
+	--border-top: var(--card-border-radius, 8px) var(--card-border-radius, 8px) 0 0;
+	--border-left: var(--card-border-radius, 8px) 0 0 var(--card-border-radius, 8px);
+	--border-right: 0 var(--card-border-radius, 8px) var(--card-border-radius, 8px) 0;
 
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 
-	@include mobile {
-		flex-direction: column;
+	.ui-card {
+		border-radius: var(--border-right);
 	}
 
-	@include desktop {
-		&.-inverted > :first-child {
-			order: 2;
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		object-position: center;
+		box-shadow: var(--shadow-card);
+		border-radius: var(--border-left);
+	}
+
+	@include mobile {
+		grid-template-columns: 1fr;
+
+		.ui-card {
+			border-radius: var(--border-bottom);
+		}
+
+		img {
+			border-radius: var(--border-top);
 		}
 	}
 
-	> * {
-		flex-basis: 100%;
+	@include desktop {
+		&.-inverted {
+			.ui-card {
+				border-radius: var(--border-left);
+			}
+			img {
+				border-radius: var(--border-right);
+			}
+
+			.ui-media-card-image,
+			.ui-media-card-video {
+				order: 2;
+			}
+		}
 	}
 
-	> :first-child > *:first-child {
-		height: 100%;
+	iframe {
+		display: block;
+		aspect-ratio: 16 / 9;
 	}
 
-	.ui-media-card-video {
+	&-video {
 		position: relative;
 	}
 
@@ -43,9 +77,5 @@
 
 	iframe {
 		min-height: 250px;
-	}
-
-	img {
-		max-width: 100%;
 	}
 }

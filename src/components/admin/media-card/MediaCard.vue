@@ -1,52 +1,35 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import Card from '../../ui/card/Card.vue'
 import Button from '../../ui/button/Button.vue'
-import { ref } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
 import Modal from '../../ui/modal/Modal.vue'
 
-const props = defineProps({
-	title: String,
-	text: String,
-	href: String,
-	label: String,
-	video: String,
-	image: String,
-	inverse: Boolean
-})
+const props = defineProps<{
+	title: string
+	text: string
+	href: string
+	label: string
+	video?: string
+	image?: string
+	inverse?: boolean
+}>()
 
-const openModal = ref(false)
+const openModal = ref<boolean>(false)
+const mediaCardClasses = ref<string[]>([])
 
-const mediaCardClass = ref<string[]>([])
-
-if (props.inverse) {
-	mediaCardClass.value.push('-inverted')
-}
-
-if (props.video) {
-	mediaCardClass.value.push('-video')
-}
+if (props.inverse) mediaCardClasses.value.push('-inverted')
+if (props.video) mediaCardClasses.value.push('-video')
 </script>
 
 <template>
-	<div class="ui-media-card" :class="mediaCardClass">
+	<div class="ui-media-card" :class="mediaCardClasses">
 		<div v-if="video" class="ui-media-card-video">
-			<!-- <IconButton v-if="video" icon="play" type="filled" /> -->
-			<iframe
-				width="100%"
-				min-height="300"
-				:src="'https://www.youtube.com/embed/' + video"
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen
-				@click="openModal = !openModal" />
+			<img :src="`https://img.youtube.com/vi/${video}/mqdefault.jpg`" @click="openModal = !openModal" />
 			<Modal v-model="openModal">
-				<iframe
-					:src="'https://www.youtube.com/embed/' + video + '?autoplay=1'"
-					frameborder="0"
+				<iframe :src="'https://www.youtube.com/embed/' + video + '?autoplay=1'" frameborder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-					allowfullscreen
-					style="height: 70vh" />
+					allowfullscreen style="height: 70vh" />
 			</Modal>
 			<Icon name="play_arrow" @click="openModal = !openModal" />
 		</div>
