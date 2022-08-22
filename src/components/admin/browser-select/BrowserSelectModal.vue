@@ -94,7 +94,7 @@ const load = async (context: IContext) => {
 	rows.value = rows.value.concat(res.data)
 	fetching.value = false
 
-	if (res.meta.current_page == res.meta.last_page) {
+	if (res.meta.current_page >= res.meta.last_page) {
 		context.noMore()
 	} else {
 		context.loaded()
@@ -147,44 +147,39 @@ defineExpose({
 </script>
 
 <template>
-	<Aside v-model="aside" :title="title" scrollable noCloseOnBackdrop>
+	<Aside v-model="aside" :title="title" scrollable noCloseOnBackdrop scrollable-content-id="browser-select-scrollable">
 		<div class="ui-browser">
 			<div class="ui-browser-search">
 				<Row alignV="center">
 					<Col>
-						<div class="ui-browser-serach-input">
-							<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="sm" autocomplete="off">
-								<template #before>
-									<div class="box-icon">
-										<Spinner class="icon" size="15" border="2" v-show="typing" variant="primary" />
-										<Icon class="icon" name="search" v-show="!typing" />
-									</div>
-								</template>
-								<template #after>
-									<Icon name="close" @click="onEmptyTerm" v-show="term" />
-								</template>
-							</FormTextfield>
-						</div>
+					<div class="ui-browser-search-input">
+						<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="sm" autocomplete="off">
+							<template #before>
+								<div class="box-icon">
+									<Spinner class="icon" size="15" border="2" v-show="typing" variant="primary" />
+									<Icon class="icon" name="search" v-show="!typing" />
+								</div>
+							</template>
+							<template #after>
+								<Icon name="close" @click="onEmptyTerm" v-show="term" />
+							</template>
+						</FormTextfield>
+					</div>
 					</Col>
 				</Row>
 			</div>
 
 			<div class="ui-browser-search-list">
-				<div
-					v-for="item in rows"
-					:key="String(item[identifier])"
-					:class="{ disabled: limit >= 1 && limit == ids.length && !ids.includes(item[identifier]) }"
-					:tabindex="0"
-					@click.stop="onCheckOne(item, $event)"
-					@keyup.enter="onCheckOne(item, $event)"
-					@keypress.space="onCheckOne(item, $event)"
-					class="ui-browser-list-row">
+				<div v-for="item in rows" :key="String(item[identifier])"
+					:class="{ disabled: limit >= 1 && limit == ids.length && !ids.includes(item[identifier]) }" :tabindex="0"
+					@click.stop="onCheckOne(item, $event)" @keyup.enter="onCheckOne(item, $event)"
+					@keypress.space="onCheckOne(item, $event)" class="ui-browser-list-row">
 					<div class="ui-browser-list-cell">
 						<FormCheckbox :value="item.id" v-model="ids" no-events />
 					</div>
 					<component :is="getTemplate()" :item="item" modal />
 				</div>
-				<InfiniteScroll :load="load" ref="InfiniteScrollRef" />
+				<InfiniteScroll :load="load" ref="InfiniteScrollRef" scrollable-element-id="browser-select-scrollable" />
 			</div>
 		</div>
 

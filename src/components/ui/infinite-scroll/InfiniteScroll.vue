@@ -10,7 +10,8 @@ export interface IContext {
 
 const props = defineProps<{
   load: any,
-  spinnerSize?: any
+  spinnerSize?: any,
+  scrollableElementId?: string
 }>()
 
 const uid = `ui-infinite-loading-${getCurrentInstance()?.uid}`
@@ -29,8 +30,9 @@ const context: IContext = {
 
 onMounted(() => {
   const el = document.getElementById(uid)
+  const scrollableElement: HTMLElement | null = document.getElementById(props.scrollableElementId!) as HTMLElement
   if (!el) return
-  parentEl.value = el.parentElement as HTMLElement
+  parentEl.value = scrollableElement ?? el.parentElement as HTMLElement
   addListener()
 })
 
@@ -38,7 +40,7 @@ function handleScroll(): void {
   if (!parentEl.value) return
   const rect = parentEl.value.getBoundingClientRect()
   const heightScroll = parentEl.value.scrollTop + rect.height
-  if (parentEl.value?.scrollHeight == heightScroll && listen.value) {
+  if (heightScroll > parentEl.value?.scrollHeight - 1 && listen.value) {
     listen.value = false
     props.load(context)
   }
