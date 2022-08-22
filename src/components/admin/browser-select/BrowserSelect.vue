@@ -248,7 +248,8 @@ defineExpose({ onClickSearch })
 		:searchBy="searchBy"
 		:selectOne="selectOne"
 		:identifier="identifier"
-		:limit="limit" />
+		:limit="limit"
+		:title="title" />
 </template>
 
 <style lang="scss">
