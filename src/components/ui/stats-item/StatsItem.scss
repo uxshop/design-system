@@ -1,0 +1,87 @@
+@import '../../../scss/mixins.scss';
+
+.stats-item {
+	margin: 8px;
+	flex-grow: 1;
+
+	@include mobile {
+		flex: 0 0 50%;
+	}
+
+	background: var(--gray-200);
+	text-align: center;
+	padding: 25px 10px;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+	row-gap: 7px;
+
+	@include darkmode {
+		background: var(--dark-300);
+	}
+
+	.stats-value {
+		font-size: 16px;
+		display: block;
+	}
+
+	.ui-button {
+		margin-top: 5px;
+	}
+
+	.stats-export {
+		position: absolute;
+		bottom: 5px;
+		right: 5px;
+	}
+
+	.stats-text {
+		text-transform: uppercase;
+		font-size: 12px;
+
+		.icon {
+			font-size: 19px;
+			opacity: 0.5;
+			position: absolute;
+			transform: translate(5px, -2px);
+		}
+	}
+
+	.stats-perc {
+		display: flex;
+		align-items: center;
+		line-height: 1;
+		padding-top: 5px;
+
+		.icon {
+			font-size: 16px;
+			font-weight: 600;
+			display: none;
+			margin-right: 2px;
+			color: var(--danger);
+		}
+
+		.icon:first-of-type {
+			display: inline-flex;
+		}
+
+		&.positive {
+			.icon:last-of-type {
+				display: inline-flex;
+				color: var(--success);
+			}
+
+			.icon:first-of-type {
+				display: none;
+			}
+		}
+	}
+
+	.stats-extra {
+		font-size: 14px;
+		margin-top: 10px;
+	}
+}
