@@ -4,7 +4,7 @@ import Col from '../../ui/grid/col/Col.vue'
 import Alert from '../../ui/alert/Alert.vue'
 import AlertTitle from '../../ui/alert/AlertTitle.vue'
 import { computed, ref, watchEffect } from 'vue'
-import { slugify, truncate } from '../../../filters'
+import { slugify as _slugify, truncate } from '../../../filters'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 
 interface Props {
@@ -59,7 +59,7 @@ watchEffect(() => {
 	if (props.modelValue) {
 		metaTitle.value = formatMetaTitle(props.modelValue[props.keyTitle] || props.modelValue.name || metaTitle.value)
 		metaSubtitle.value = props.modelValue[props.keySubTitle] || null
-		urlRewrite.value = slugify(props.modelValue.slug) || slugify(metaTitle.value)
+		urlRewrite.value = _slugify(props.modelValue.slug) || _slugify(metaTitle.value)
 	}
 })
 </script>
@@ -91,7 +91,7 @@ watchEffect(() => {
 						<span v-if="metaSubtitle">- {{ metaSubtitle }}</span>
 					</b>
 					<span class="ui-seo-domain">
-						https://{{ domain }}<span v-show="urlRewrite && slugify">/{{ urlRewrite }}</span>
+						https://{{ domain }}<span v-show="urlRewrite && slugify === true">/{{ urlRewrite }}</span>
 					</span>
 					<div class="ui-seo-description" v-if="metaDescription">
 						{{ metaDescription }}
