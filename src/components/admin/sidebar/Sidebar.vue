@@ -27,8 +27,6 @@ const route = useRoute()
 
 const menusFilter = computed(() => {
 	const routeName = route.name.replace(/_[^_]+?$/, '')
-	console.log(routeName)
-
 	return map(props.menus, (item: SidebarInterface.Item) => {
 		let disabled = !props.permissionService.has(item.permissions)
 
@@ -49,8 +47,6 @@ const menusFilter = computed(() => {
 			if (itemName == routeName) {
 				item.active = true
 				item.withNodeActive = true
-				console.log(item)
-
 				i.active = true
 			}
 
