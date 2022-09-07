@@ -3,7 +3,7 @@ import { inject } from 'vue'
 import { useRoute } from 'vue-router'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
-import { map, find } from 'lodash-es'
+import { map } from 'lodash-es'
 import { computed } from '@vue/reactivity'
 
 export interface PermissionInterface {
@@ -82,17 +82,20 @@ const checkSubActive = (item: any) => {
 						</router-link>
 						<slot name="select-button" />
 					</div>
-					<div class="ui-sidebar-items">
+					<div class="ui-sidebar-list">
 						<ul class="ui-sidebar-list -primary">
 							<li
 								v-for="(item, key) in menusFilter"
 								class="ui-sidebar-item"
 								:key="key"
-								:class="{
-									'-disabled': item.disabled,
-									'-spacer': item.spacer,
-									'-spacer-last': item.last
-								}">
+								:class="[
+									{
+										'-disabled': item.disabled,
+										'-spacer': item.spacer,
+										'-spacer-last': item.last
+									},
+									item.to
+								]">
 								<router-link
 									:to="{ name: item.to }"
 									:class="{
