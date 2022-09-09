@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { inject } from 'vue'
+import { inject, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
 import { map } from 'lodash-es'
-import { computed } from '@vue/reactivity'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -24,10 +23,12 @@ export interface Props {
 const menu = inject('menu') as MenuProviderInterface
 const props = defineProps<Props>()
 const route = useRoute()
+const menusFilter = ref<any>([])
 
-const menusFilter = computed(() => {
-	const routeName = route.name.replace(/_[^_]+?$/, '')
-	return map(props.menus, (item: SidebarInterface.Item) => {
+watchEffect(() => {
+	const routeName = String(route.name).replace(/_[^_]+?$/, '')
+
+	menusFilter.value = map(props.menus, (item: SidebarInterface.Item) => {
 		let disabled = !props.permissionService.has(item.permissions)
 
 		item.withNodeActive = false
