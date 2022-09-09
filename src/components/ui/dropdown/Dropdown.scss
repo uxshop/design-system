@@ -134,7 +134,7 @@
 
 	@include darkmode {
 		.ui-dropdown-menu {
-			background-color: #232b36;
+			background-color: var(--dark-300);
 		}
 	}
 }
