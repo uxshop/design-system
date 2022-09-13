@@ -62,6 +62,7 @@ export { default as ButtonAction } from './components/admin/button-action/Button
 export { default as RowExclude } from './components/admin/row-exclude/RowExclude.vue'
 export { default as CardActive } from './components/admin/card-active/CardActive.vue'
 export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue'
+export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue'
 export { default as Codemirror } from './components/admin/codemirror/Codemirror.vue'
 export { default as Savebar } from './components/admin/savebar/Savebar.vue'
 export { default as Topbar } from './components/admin/topbar/Topbar.vue'
