@@ -21,7 +21,7 @@ if (props.variant) {
 </script>
 
 <template>
-	<span class="ui-tag mt-2 mx-1" :class="classList">
+	<span class="ui-tag" :class="classList">
 		<slot>{{ label }}</slot>
 		<Icon name="close" class="ui-tag-close" @click="onRemove" />
 	</span>

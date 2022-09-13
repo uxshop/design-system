@@ -20,7 +20,7 @@ defineProps<{
 				v-if="primaryAction"
 				variant="success"
 				type="submit"
-				@click="primaryAction.onAction"
+				@click="primaryAction?.onAction"
 				:to="primaryAction.to"
 				:leadingIcon="primaryAction.leadingIcon">
 				{{ primaryAction.label }}

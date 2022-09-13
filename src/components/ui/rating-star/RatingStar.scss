@@ -6,7 +6,7 @@
 
 	.ui-icon {
 		display: none;
-		color: var(--secondary);
+		color: var(--gray-200);
 		transition: color 0.15s;
 	}
 
@@ -20,6 +20,7 @@
 
 	.star > .ui-icon:first-child {
 		display: block;
+		color: var(--secondary);
 	}
 
 	.star-border > .ui-icon:last-child {

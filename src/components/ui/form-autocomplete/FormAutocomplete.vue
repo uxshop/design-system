@@ -12,7 +12,7 @@ export interface Props {
 	size?: string
 	last?: boolean
 	template?: any
-	position?: 'top' | 'bottom' | 'auto',
+	position?: 'top' | 'bottom' | 'auto'
 	config: object
 }
 
@@ -105,10 +105,15 @@ const checkModelValue = () => {
 	})
 }
 
+function onFocus() {
+	if (element.value) element.value.showDropdown()
+}
+
 onMounted(() => {
 	el = document.getElementById(`${uid}`)
 
 	if (el) {
+		el.addEventListener('showDropdown', () => emit('open'), false)
 		el.addEventListener(
 			'change',
 			function (event) {
@@ -130,11 +135,19 @@ onMounted(() => {
 		{ immediate: true, deep: true }
 	)
 })
+
+defineExpose({
+	setChoices(choices: any[]) {
+		if (element.value) {
+			element.value.setChoices(choices)
+		}
+	}
+})
 </script>
 
 <template>
 	<div class="ui-form-autocomplete" :class="[{ '-focus': focus, 'mb-0': last }, `-${size}`]">
-		<FormLabel v-if="label" :label="label" />
+		<FormLabel v-if="label" :label="label" @click="onFocus" />
 		<select class="ui-form-select" :id="uid">
 			<option value="" disabled selected>{{ placeholder }}</option>
 		</select>

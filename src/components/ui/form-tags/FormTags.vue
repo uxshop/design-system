@@ -16,6 +16,7 @@ export interface Props {
 	actions?: IAction[]
 	options?: any
 	create?: boolean
+	variant?: string
 }
 
 export interface SettingsInterface {
@@ -103,7 +104,7 @@ const getValueArray = () => {
 		return props.modelValue.split(',')
 	}
 
-	return props.modelValue
+	return props.modelValue ?? []
 }
 
 onMounted(() => {
@@ -154,7 +155,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length, 'mb-0': last }">
+	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length, 'mb-0': last, variant: `-${variant}` }">
 		<FormLabel
 			v-if="label"
 			:label="label"

@@ -6,8 +6,9 @@ import AlertTitle from '../../ui/alert/AlertTitle.vue'
 import { computed, ref, watchEffect } from 'vue'
 import { slugify as _slugify, truncate } from '../../../filters'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
+import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue'
 
-interface Props {
+export interface Props {
 	title?: string
 	domain?: string
 	modelValue?: any
@@ -68,20 +69,26 @@ watchEffect(() => {
 	<div class="ui-seo" :class="{ '-gray': gray }">
 		<Row>
 			<Col v-if="!viewOnly">
-				<FormTextfield v-model="modelValue.meta_title" placeholder="Meta title" label="Meta title" countable />
-				<FormTextfield
-					v-model="modelValue.meta_description"
-					placeholder="Meta description"
-					label="Meta description"
-					maxlength="250"
-					type="textarea"
-					countable />
-				<FormTextfield
-					v-model="modelValue.meta_keywords"
-					placeholder="Ex: palavra1, palavra2"
-					label="Meta keywords"
-					maxlength="200"
-					countable />
+				<FormLayoutItem>
+					<FormTextfield v-model="modelValue.meta_title" placeholder="Meta title" label="Meta title" countable />
+				</FormLayoutItem>
+				<FormLayoutItem>
+					<FormTextfield
+						v-model="modelValue.meta_description"
+						placeholder="Meta description"
+						label="Meta description"
+						maxlength="250"
+						type="textarea"
+						countable />
+				</FormLayoutItem>
+				<FormLayoutItem>
+					<FormTextfield
+						v-model="modelValue.meta_keywords"
+						placeholder="Ex: palavra1, palavra2"
+						label="Meta keywords"
+						maxlength="200"
+						countable />
+				</FormLayoutItem>
 				<FormTextfield v-model="modelValue.slug" placeholder="Ex: minha-url-amigavel" label="Url amigável" />
 			</Col>
 			<Col v-if="!writeOnly">
