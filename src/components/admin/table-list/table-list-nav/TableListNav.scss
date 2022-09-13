@@ -30,6 +30,7 @@
 
 		.table-list-nav-content {
 			height: 60px;
+			overflow-x: auto;
 		}
 	}
 }
@@ -38,6 +39,7 @@
 	.table-search-input {
 		position: relative;
 		margin: 0;
+		min-width: 180px;
 
 		> .box-icon {
 			position: absolute;
