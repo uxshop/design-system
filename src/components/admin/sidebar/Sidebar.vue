@@ -27,7 +27,6 @@ const route = useRoute()
 
 const menusFilter = computed(() => {
 	const routeName = route.name.replace(/_[^_]+?$/, '')
-  
 	return map(props.menus, (item: SidebarInterface.Item) => {
 		let disabled = !props.permissionService.has(item.permissions)
 
