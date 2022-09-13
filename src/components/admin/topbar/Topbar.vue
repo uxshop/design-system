@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
 	dropdown: () => []
 })
 
-const emit = defineEmits(['toggleMenu', 'toggleNotification', 'onChangedTheme'])
+const emit = defineEmits(['toggleMenu', 'toggleNotification', 'changeSchemeColor'])
 const menu = inject<{ toggle(): void }>('menu')
 
 const initials = computed(() => {
@@ -50,7 +50,7 @@ const onNotification = () => {
 	emit('toggleNotification')
 }
 
-const onChangedTheme = () => emit('onChangedTheme')
+const changeSchemeColor = () => emit('changeSchemeColor')
 
 const getComponent = (item: IDropdownItem) => {
 	if (!item.text) {
@@ -102,7 +102,7 @@ const getComponent = (item: IDropdownItem) => {
 						class="ui-topbar-notification-button"
 						:class="{ '-new': notifications }" />
 
-					<ButtonDarkmode @on-changed-theme="onChangedTheme" />
+					<ButtonDarkmode @on-changed-theme="changeSchemeColor" />
 				</div>
 			</div>
 

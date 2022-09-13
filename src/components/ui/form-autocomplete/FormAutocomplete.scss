@@ -22,6 +22,20 @@
 
 		&.is-focused {
 			z-index: 99;
+
+			.choices__inner,
+			.choices__list {
+				border-left-color: var(--primary) !important;
+				border-right-color: var(--primary) !important;
+			}
+
+			.choices__inner {
+				border-top-color: var(--primary) !important;
+			}
+
+			.choices__list {
+				border-bottom-color: var(--primary) !important;
+			}
 		}
 
 		&.is-open.is-flipped {

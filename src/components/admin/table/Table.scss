@@ -55,6 +55,10 @@
 				padding-right: 0;
 			}
 		}
+
+		.ui-button:last-child {
+			margin-right: 3px;
+		}
 	}
 
 	&.-hover {

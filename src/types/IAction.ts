@@ -3,7 +3,7 @@ import type { IVariant } from '../types/ITypes'
 export interface IAction {
 	leadingIcon?: string
 	label?: string
-	onAction?: any
+	onAction?(): void
 	form?: string
 	disabled?: boolean
 	type?: string

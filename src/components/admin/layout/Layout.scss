@@ -25,6 +25,7 @@
 		grid-area: ui-layout-content;
 		display: flex;
 		min-height: 100%;
+		width: calc(100vw - var(--layout-sidebar-width));
 	}
 
 	.ui-layout-sidebar {
@@ -47,9 +48,13 @@
 		grid-template-rows: 70px auto;
 		height: 100%;
 
+		.ui-layout-content {
+			width: 100vw;
+		}
+
 		.ui-layout-navbar {
 			left: 0;
-			width:100%;
+			width: 100%;
 			position: fixed;
 			height: initial;
 		}
