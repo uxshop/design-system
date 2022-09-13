@@ -12,8 +12,9 @@ export interface Props {
 	size?: string
 	last?: boolean
 	template?: any
-	position?: 'top' | 'bottom' | 'auto'
-	config: object
+	position?: 'top' | 'bottom' | 'auto',
+	config?: object,
+	required?: boolean
 }
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
@@ -148,7 +149,7 @@ defineExpose({
 <template>
 	<div class="ui-form-autocomplete" :class="[{ '-focus': focus, 'mb-0': last }, `-${size}`]">
 		<FormLabel v-if="label" :label="label" @click="onFocus" />
-		<select class="ui-form-select" :id="uid">
+		<select class="ui-form-select" :id="uid" :required="required">]
 			<option value="" disabled selected>{{ placeholder }}</option>
 		</select>
 	</div>
