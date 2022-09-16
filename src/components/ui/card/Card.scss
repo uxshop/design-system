@@ -309,6 +309,10 @@ label {
 		gap: 10px;
 		min-height: 24px;
 
+		&:empty {
+			display: none;
+		}
+
 		.ui-button .ui-icon {
 			font-size: 22px;
 		}
