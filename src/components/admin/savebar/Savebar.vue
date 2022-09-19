@@ -3,19 +3,16 @@ import { isFunction } from 'lodash-es'
 import { computed, inject } from 'vue'
 import Button from '../../ui/button/Button.vue'
 import Container from '../../ui/grid/container/Container.vue'
-interface ProvideRegisterInterface {
-	editing: boolean
-	discard: () => void
-}
 
-const register = inject('register') as ProvideRegisterInterface
-
-defineProps<{
+const register = inject<any>('register') || {}
+const emit = defineEmits(['discard', 'save'])
+const props = defineProps<{
 	loading?: boolean
+	editing?: boolean
 }>()
 
 const show = computed(() => {
-	const isEditing = register.editing
+	const isEditing = register.editing || props.editing || false
 
 	if (isEditing) {
 		document.body.classList.add('is-editing')
@@ -27,10 +24,13 @@ const show = computed(() => {
 })
 
 const handleDiscardChanges = () => {
+	emit('discard')
 	if (isFunction(register.discard)) {
 		register.discard()
 	}
 }
+
+const onSave = () => emit('save')
 </script>
 
 <template>
@@ -41,7 +41,7 @@ const handleDiscardChanges = () => {
 				<Button @click="handleDiscardChanges" class="ui-savebar-restore" :disabled="loading">
 					<div>Descartar alterações</div>
 				</Button>
-				<Button variant="success" type="submit" leadingIcon="check" label="Salvar" :loading="loading" />
+				<Button variant="success" type="submit" leadingIcon="check" label="Salvar" :loading="loading" @click="onSave" />
 			</div>
 		</Container>
 	</div>
