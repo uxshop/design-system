@@ -9,7 +9,7 @@ import type { IAction } from '../../../types/IAction'
 
 export interface Props {
 	title?: string | null
-	titleMuted?: string
+	titleMuted?: string | null
 	caption?: string
 	dropdown?: boolean
 	dropdownLabel?: string
