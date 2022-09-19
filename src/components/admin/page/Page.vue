@@ -3,17 +3,14 @@ import { ref } from 'vue'
 import Titlebar from '../titlebar/Titlebar.vue'
 import PageHelperVideo from '../page-helper-video/PageHelperVideo.vue'
 import PageMessageSupport from '../page-message-support/PageMessageSupport.vue'
-
-export interface IAction {
-	label: string
-	onAction(): void
-}
+import type { IAction } from '../../../types/IAction'
 
 export interface Props {
 	hideTitle?: boolean
-	primaryAction?: IAction
-	backlink?: object
+	primaryAction?: IAction | null
 	secondaryActions?: IAction[]
+	to?: object
+	backlink?: object
 	size?: 'sm' | 'md' | 'lg' | 'full'
 	videoHelp?: any
 	footerHelp?: any
@@ -34,7 +31,7 @@ if (props.size) {
 
 <template>
 	<div class="ui-page" :class="classList">
-		<Titlebar v-if="!props.hideTitle" :title="title" :backlink="backlink" v-bind="props">
+		<Titlebar v-if="!props.hideTitle" :title="title" :to="to" :backlink="backlink" v-bind="props">
 			<template #subtitle>
 				<slot name="titlebar-subtitle" />
 			</template>

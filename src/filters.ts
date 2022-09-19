@@ -77,13 +77,33 @@ function truncate(val: string, length: number, ending = '') {
 	}
 }
 
+function pluralize(value: any, textSingular: string, textPlural: string, textDefault = '', withVal = true) {
+	let text = ''
+	const val = parseFloat(String(value))
+
+	if (val > 1) {
+		text = textPlural
+	} else if (val == 1) {
+		text = textSingular
+	} else {
+		text = textDefault || textPlural
+	}
+	if (withVal) {
+		text = `${val} ${text}`
+	}
+
+	return text
+}
+
+
 export default {
 	initials,
 	datetime,
 	number,
 	zerofill,
 	slugify,
-	truncate
+	truncate,
+	pluralize
 }
 
-export { initials, datetime, number, zerofill, slugify, truncate }
+export { initials, datetime, number, zerofill, slugify, truncate, pluralize }

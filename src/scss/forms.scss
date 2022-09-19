@@ -58,6 +58,7 @@ textarea {
 
 	@include darkmode {
 		color: var(--body-color);
+		caret-color: var(--body-color);
 
 		&:focus {
 			border-color: var(--body-color);

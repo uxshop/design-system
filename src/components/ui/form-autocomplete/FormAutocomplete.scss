@@ -3,10 +3,18 @@
 
 .ui-form-autocomplete {
 	position: relative;
-	margin-bottom: var(--form-group-margin-bottom);
 
 	.choices {
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+
+		&[data-type*='select-one'] select.choices__input {
+			display: block !important;
+			opacity: 0;
+			pointer-events: none;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
 
 		&::after {
 			right: var(--input-padding-x) !important;
@@ -14,6 +22,20 @@
 
 		&.is-focused {
 			z-index: 99;
+
+			.choices__inner,
+			.choices__list {
+				border-left-color: var(--primary) !important;
+				border-right-color: var(--primary) !important;
+			}
+
+			.choices__inner {
+				border-top-color: var(--primary) !important;
+			}
+
+			.choices__list {
+				border-bottom-color: var(--primary) !important;
+			}
 		}
 
 		&.is-open.is-flipped {
@@ -32,6 +54,10 @@
 
 		.choices__button {
 			background-size: 12px !important;
+
+			@include darkmode {
+				filter: invert(1);
+			}
 		}
 
 		.choices__item {

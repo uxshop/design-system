@@ -45,8 +45,6 @@ const toggle = (val: boolean) => {
 
 const checkPositions = () => {
 	const dropdownMenuEl = document.getElementById(uidMenu)
-	// const dropdownEl = document.getElementById(uid)
-	// const rect = dropdownEl?.getBoundingClientRect()
 	const rectMenu = dropdownMenuEl?.getBoundingClientRect()
 	const documentHeight = document.documentElement.clientHeight
 

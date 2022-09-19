@@ -1,18 +1,18 @@
 .table-list-loader {
-	background: var(--success-light);
+	background: #acf6e8;
 	position: absolute;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	padding: 15px;
 	overflow: hidden;
-	transform: translateY(0);
 	transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86), opacity 0.3s;
-	color: var(--success-dark);
+	color: var(--success);
 	font-weight: 500;
 	z-index: -1;
 	display: flex;
 	align-items: center;
+	transform: translateY(0);
 	opacity: 0;
 
 	&.-show {

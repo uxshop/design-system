@@ -1,7 +1,6 @@
 @import '../../../scss/mixins.scss';
 
 .ui-modal {
-	position: fixed;
 	display: block;
 	position: fixed;
 	top: 0;
@@ -43,6 +42,14 @@
 	}
 
 	&.-scrollable {
+		.ui-modal-body {
+			overflow-y: scroll;
+			padding-bottom: 20px;
+		}
+		.ui-modal-content {
+			height: calc(100vh - 40px);
+			overflow-y: scroll;
+		}
 		.ui-modal-header {
 			position: sticky;
 			top: 0;
@@ -183,8 +190,8 @@
 		display: flex;
 		align-items: flex-end;
 		width: 100%;
-		z-index: 888;
-		position: sticky;
+		// z-index: 88;
+		// position: sticky;
 		bottom: 0;
 		justify-content: flex-end;
 		gap: var(--grid-gutter-width);

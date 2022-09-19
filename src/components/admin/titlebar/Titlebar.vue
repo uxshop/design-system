@@ -3,14 +3,11 @@ import IconButton from '../../ui/icon-button/IconButton.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
 import Button from '../../ui/button/Button.vue'
-
-export interface IAction {
-	label: string
-	onAction(): void
-}
+import type { IAction } from '../../../types/IAction'
 
 defineProps<{
 	title?: string | null
+	to?: object
 	backlink?: { to: string }
 	primaryAction?: IAction
 	secondaryActions?: IAction[]
@@ -39,18 +36,29 @@ defineProps<{
 				<Button
 					v-if="secondaryActions?.length == 1"
 					v-for="item in secondaryActions"
+					:class="item.class"
 					variant="plain"
 					:label="item.label"
+					:to="item.to"
 					@click="item.onAction" />
 				<Dropdown v-else right>
 					<template #button-content>
 						<Button variant="plain" label="Mais ações" trailingIcon="expand_more" />
 					</template>
-					<DropdownItemButton v-for="item in secondaryActions" :label="item.label" @click="item.onAction" />
+					<DropdownItemButton
+						v-for="item in secondaryActions"
+						:label="item.label"
+						@click="item.onAction"
+						:class="item.class" />
 				</Dropdown>
 			</div>
 			<div v-if="primaryAction" class="titlebar-actions-primary">
-				<Button variant="primary" :label="primaryAction.label" @click="primaryAction.onAction" />
+				<Button
+					variant="primary"
+					:to="primaryAction.to"
+					:label="primaryAction.label"
+					@click="primaryAction.onAction"
+					:class="primaryAction.class" />
 			</div>
 		</div>
 	</div>

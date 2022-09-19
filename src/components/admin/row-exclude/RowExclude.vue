@@ -41,6 +41,7 @@ const updateExcludes = () => {
 				excludes.push(item.id)
 			}
 		})
+		emit('update', excludes)
 		emit('update:modelValue', excludes)
 	}
 }

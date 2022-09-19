@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import InfiniteLoading, { type IContext } from './components/ui/infinite-scroll/InfiniteScroll'
+import InfiniteLoading, { type IContext } from './components/ui/infinite-scroll/InfiniteScroll.vue'
 import { easepick } from '@easepick/bundle'
 
 console.log(easepick)

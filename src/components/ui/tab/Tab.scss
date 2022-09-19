@@ -4,6 +4,7 @@
 	justify-content: flex-start;
 	border-bottom: solid 1px var(--border-color);
 	height: var(--tab-height);
+	overflow: auto;
 }
 
 .ui-tab::-webkit-scrollbar {

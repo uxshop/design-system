@@ -3,11 +3,13 @@ import Icon from '../icon/Icon.vue'
 
 export interface Props {
 	modelValue: number
+	size: string | number
 }
 
-const emit = defineEmits(['update:modelValue', 'change'])
+const emit = defineEmits(['update:modelValue', 'update'])
 const props = withDefaults(defineProps<Props>(), {
-	modelValue: 1
+	modelValue: 1,
+	size: 20
 })
 
 const getClass = (star: number) => {
@@ -18,15 +20,15 @@ const getClass = (star: number) => {
 }
 const onClick = (n: number) => {
 	emit('update:modelValue', n)
-	emit('change', n)
+	emit('update', n)
 }
 </script>
 
 <template>
 	<div class="ui-rating">
 		<span :class="getClass(n)" v-for="n in 5" :key="n" @click.stop="onClick(n)">
-			<Icon name="star" />
-			<Icon name="star_border" />
+			<Icon name="star_rate" filled type="rounded" :size="size" />
+			<Icon name="star_rate" type="rounded" :size="size" />
 		</span>
 	</div>
 </template>

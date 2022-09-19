@@ -12,9 +12,9 @@ import IconButton from '../../ui/icon-button/IconButton.vue'
 import ButtonDarkmode from '../../admin/button-darkmode/ButtonDarkmode.vue'
 
 export interface Props {
-	user: IUser
+	user: any
 	slug?: string
-	backlink?: IMetaLink | null
+	backlink?: any | null
 	breadcrumb?: { to: string; name: string }[]
 	notifications?: any
 	dropdown?: any[]
@@ -33,7 +33,7 @@ const props = withDefaults(defineProps<Props>(), {
 	dropdown: () => []
 })
 
-const emit = defineEmits(['toggleMenu', 'toggleNotification'])
+const emit = defineEmits(['toggleMenu', 'toggleNotification', 'changeSchemeColor'])
 const menu = inject<{ toggle(): void }>('menu')
 
 const initials = computed(() => {
@@ -49,6 +49,8 @@ const onToggleMenu = () => {
 const onNotification = () => {
 	emit('toggleNotification')
 }
+
+const changeSchemeColor = () => emit('changeSchemeColor')
 
 const getComponent = (item: IDropdownItem) => {
 	if (!item.text) {
@@ -68,11 +70,11 @@ const getComponent = (item: IDropdownItem) => {
 </script>
 
 <template>
-	<div class="ui-userbar" id="ui-userbar">
-		<div class="ui-userbar-wrapper">
-			<div class="ui-userbar-content">
-				<div class="ui-userbar-mobile">
-					<button class="ui-userbar-menu" @click="onToggleMenu">
+	<div class="ui-topbar" id="ui-topbar">
+		<div class="ui-topbar-wrapper">
+			<div class="ui-topbar-content">
+				<div class="ui-topbar-mobile">
+					<button class="ui-topbar-menu" @click="onToggleMenu">
 						<Icon name="menu" />
 					</button>
 					<slot name="logo-mobile" />
@@ -91,31 +93,31 @@ const getComponent = (item: IDropdownItem) => {
 				</Breadcrumb>
 			</div>
 
-			<div class="ui-userbar-actions">
-				<div class="ui-userbar-actions">
+			<div class="ui-topbar-actions">
+				<div class="ui-topbar-actions">
 					<IconButton
 						icon="notifications"
 						variant="plain"
 						@click="onNotification"
-						class="ui-userbar-notification-button"
+						class="ui-topbar-notification-button"
 						:class="{ '-new': notifications }" />
 
-					<ButtonDarkmode />
+					<ButtonDarkmode @on-changed-theme="changeSchemeColor" />
 				</div>
 			</div>
 
-			<div class="ui-userbar-user">
-				<div class="ui-userbar-btn">
+			<div class="ui-topbar-user">
+				<div class="ui-topbar-btn">
 					<Dropdown right closeOn>
 						<template #button-content>
-							<div class="ui-userbar-btn-wrapper">
-								<div class="ui-userbar-btn-avatar">
+							<div class="ui-topbar-btn-wrapper">
+								<div class="ui-topbar-btn-avatar">
 									<img :src="user.image.src" v-if="user.image" />
 									<span v-else>
 										{{ initials }}
 									</span>
 								</div>
-								<div class="ui-userbar-btn-info" v-if="user.name">
+								<div class="ui-topbar-btn-info" v-if="user.name">
 									<span class="name">{{ user.name }}</span>
 									<span v-if="slug" class="slug">{{ slug }}</span>
 								</div>
@@ -140,5 +142,5 @@ const getComponent = (item: IDropdownItem) => {
 </template>
 
 <style lang="scss">
-@import './Userbar.scss';
+@import './Topbar.scss';
 </style>

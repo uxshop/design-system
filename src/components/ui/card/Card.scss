@@ -14,9 +14,17 @@ label {
 	display: flex;
 	flex-direction: column;
 	border: none;
-	margin-bottom: var(--grid-gutter-width);
+	// margin-bottom: var(--grid-gutter-width);
 	background: var(--card-bg);
 	box-shadow: var(--shadow-card);
+
+	+ .ui-card {
+		margin-top: var(--grid-gutter-width);
+	}
+
+	.ui-stack & {
+		margin: 0;
+	}
 
 	&.-primary {
 		border-color: var(--primary);
@@ -35,7 +43,7 @@ label {
 	}
 
 	&.-full-height {
-		height: calc(100% - var(--grid-gutter-width));
+		height: 100%;
 
 		.empty-data {
 			height: 100%;
@@ -183,8 +191,27 @@ label {
 		.ui-card-section-header {
 			display: flex;
 			align-items: center;
-			margin-bottom: 8px;
 			gap: 8px;
+
+			+ .ui-card-section-content:not(:empty) {
+				margin-top: 8px;
+			}
+		}
+	}
+
+	&.-loading {
+		position: relative;
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			background-color: rgba(0, 0, 0, 0.2);
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 8;
 		}
 	}
 
@@ -215,7 +242,7 @@ label {
 	}
 
 	hr {
-		height: 2px;
+		height: 1px;
 		&:not(.hr-center) {
 			margin-top: var(--card-padding);
 			margin-bottom: var(--card-padding);
@@ -282,6 +309,10 @@ label {
 		gap: 10px;
 		min-height: 24px;
 
+		&:empty {
+			display: none;
+		}
+
 		.ui-button .ui-icon {
 			font-size: 22px;
 		}
@@ -305,6 +336,15 @@ label {
 		width: 100%;
 		align-items: flex-start;
 		gap: var(--grid-gutter-width);
+
+		@include mobile {
+			// flex-direction: column;
+			// align-items: center;
+
+			> .ui-card-header-content-button {
+				margin: 0;
+			}
+		}
 
 		> .ui-header-content-title {
 			align-self: center;
@@ -358,7 +398,6 @@ label {
 		@include resetButton;
 		cursor: pointer;
 		height: auto;
-		z-index: 9;
 		text-align: right;
 		div {
 			display: flex;

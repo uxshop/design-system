@@ -9,7 +9,6 @@ export interface Props {
 }
 
 const props = defineProps<Props>()
-const classList = ref('material-icons')
 const fill = props.filled ? 1 : 0
 
 const style = ref<{
@@ -24,7 +23,7 @@ if (props.size) {
 </script>
 
 <template>
-	<i class="ui-icon icon material-symbols-rounded" :class="classList" :style="style">
+	<i class="ui-icon material-symbols-rounded icon" :style="style">
 		{{ name }}
 	</i>
 </template>

@@ -11,8 +11,10 @@
 	&:not(.-custom-grid) {
 		display: flex;
 
-		@include mobile {
-			flex-direction: column;
+		&:not(.-sm-horizontal) {
+			@include mobile {
+				flex-direction: column;
+			}
 		}
 	}
 
@@ -25,7 +27,7 @@
 	}
 
 	&.-align-end {
-		justify-content: flex-end;
+		align-items: flex-end;
 	}
 
 	&.-distribute {
@@ -79,7 +81,7 @@
 			}
 
 			&.-vertical {
-				row-gap: var(--grid-gutter-width);
+				row-gap: calc(var(--grid-gutter-width) * 0.5);
 			}
 		}
 
@@ -89,7 +91,7 @@
 			}
 
 			&.-vertical {
-				row-gap: calc(var(--grid-gutter-width) * 1.5);
+				row-gap: calc(var(--grid-gutter-width) * 0.75);
 			}
 		}
 
@@ -99,7 +101,7 @@
 			}
 
 			&.-vertical {
-				row-gap: calc(var(--grid-gutter-width) * 2.5);
+				row-gap: calc(var(--grid-gutter-width) * 1.25);
 			}
 		}
 
@@ -109,7 +111,7 @@
 			}
 
 			&.-vertical {
-				row-gap: calc(var(--grid-gutter-width) * 3);
+				row-gap: calc(var(--grid-gutter-width) * 1.5);
 			}
 		}
 	}

@@ -1,11 +1,7 @@
 <script setup lang="ts">
+import type { IAction } from '../../../types/IAction'
 import Button from '../../ui/button/Button.vue'
-interface IAction {
-	label: string
-	onAction(): void
-	variant?: string
-	icon?: string
-}
+
 defineProps<{
 	primaryAction?: IAction
 	secondaryActions?: IAction[]
@@ -15,12 +11,18 @@ defineProps<{
 <template>
 	<div class="ui-page-actions">
 		<div v-if="secondaryActions" class="ui-page-actions-secondary">
-			<Button v-for="item in secondaryActions" :variant="item.variant">
+			<Button v-for="item in secondaryActions" :variant="item.variant" @click="item.onAction" outline>
 				{{ item.label }}
 			</Button>
 		</div>
 		<div class="ui-page-actions-primary" v-if="primaryAction">
-			<Button variant="success" type="submit" v-if="primaryAction" @click="primaryAction.onAction" :leadingIcon="primaryAction.icon">
+			<Button
+				v-if="primaryAction"
+				variant="success"
+				type="submit"
+				@click="primaryAction?.onAction"
+				:to="primaryAction.to"
+				:leadingIcon="primaryAction.leadingIcon">
 				{{ primaryAction.label }}
 			</Button>
 		</div>

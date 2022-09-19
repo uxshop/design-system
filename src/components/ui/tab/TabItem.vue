@@ -5,6 +5,7 @@ import type { TabProviderInterface } from './TabProviderInterface'
 const props = defineProps<{
 	label?: string
 	index?: any
+	badge?: string | number
 }>()
 
 const active = ref(false)
@@ -35,6 +36,9 @@ watchEffect(() => {
 	<button type="button" class="ui-tab-item" :class="{ '-active': active }" @click="onClick">
 		<span class="ui-tab-item-content">
 			<slot>{{ label }}</slot>
+			<span class="ui-tab-item-badge" v-if="badge">
+				{{ badge }}
+			</span>
 		</span>
 	</button>
 </template>

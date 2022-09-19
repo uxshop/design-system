@@ -1,10 +1,10 @@
 .ui-form-wrapper {
-	margin-bottom: var(--form-group-margin-bottom);
+	// margin-bottom: var(--form-group-margin-bottom);
 	width: 100%;
 
 	.ui-form-wrapper-main {
 		display: flex;
-		gap: var(--grid-gutter-width);
+		gap: 6px;
 	}
 
 	.close {
@@ -275,7 +275,7 @@
 				font-size: 14px;
 				opacity: 0.5;
 			}
-			margin-bottom: 5px;
+			margin-bottom: 4px;
 		}
 	}
 }

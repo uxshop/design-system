@@ -1,11 +1,9 @@
 <script setup lang="ts">
+import type { IAction } from '../../../types/IAction'
 import Link from '../link/Link.vue'
 defineProps<{
 	title?: string
-	actions?: Array<{
-		label: string
-		onAction(): void
-	}>
+	actions?: IAction[]
 }>()
 </script>
 
@@ -21,6 +19,8 @@ defineProps<{
 				</Link>
 			</div>
 		</div>
-		<slot />
+		<div  class="ui-card-section-content">
+			<slot />
+		</div>
 	</div>
 </template>

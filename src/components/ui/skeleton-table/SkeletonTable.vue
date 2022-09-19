@@ -43,7 +43,7 @@ if (props.width) {
 		<tbody>
 			<tr v-for="r in Number(rows)" :key="r">
 				<td width="1" v-if="withAvatar">
-					<Skeleton width="40px" height="40px" style="border-radius: 100%" />
+					<Skeleton width="30px" height="30px" style="border-radius: 100%" />
 				</td>
 				<td v-for="c in Number(cols)" :key="c">
 					<Skeleton width="85%" />

@@ -1,0 +1,23 @@
+.ui-callout-card {
+	.ui-card-body {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--grid-gutter-width);
+	}
+
+	.ui-callout-card-title {
+		margin: 0;
+		margin-bottom: 12px;
+	}
+
+	.ui-callout-card-actions {
+		margin-top: 12px;
+	}
+
+	.ui-callout-card-icon {
+		background-color: var(--success);
+		border-radius: 6px;
+		padding: 10px;
+		display: flex;
+	}
+}

@@ -14,6 +14,8 @@ const emit = defineEmits(['dismissed'])
 const classList = ref<string[]>([])
 const open = ref(props.show)
 
+let currentIcon = props.icon
+
 if (props.variant) {
 	classList.value.push(`-${props.variant}`)
 }
@@ -26,6 +28,14 @@ if (props.dismissible) {
 	classList.value.push(`-dismissible`)
 }
 
+if (!currentIcon && props.variant == 'success') {
+	currentIcon = 'check_circle'
+}
+
+if (!currentIcon && props.variant == 'danger') {
+	currentIcon = 'error'
+}
+
 const close = () => {
 	open.value = false
 	emit('dismissed')
@@ -36,10 +46,8 @@ watchEffect(() => {
 })
 </script>
 <template>
-	<div class="ui-alert" :class="classList" v-if="open">
-		<Icon name="error" type="outlined" v-if="variant == 'danger'" />
-		<Icon name="check_circle" type="rounded" v-if="variant == 'success'" />
-		<Icon :name="icon" type="rounded" v-if="icon" />
+	<div v-if="open" class="ui-alert" :class="classList">
+		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" />
 		<div class="ui-alert-content">
 			<h6 class="ui-alert-title" v-if="title">
 				{{ title }}
@@ -48,7 +56,7 @@ watchEffect(() => {
 				<slot>{{ label }}</slot>
 			</div>
 		</div>
-		<button class="ui-alert-close" v-if="dismissible" @click="close">
+		<button v-if="dismissible" type="button" class="ui-alert-close" @click="close">
 			<Icon name="close" />
 		</button>
 	</div>

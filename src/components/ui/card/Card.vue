@@ -4,10 +4,12 @@ import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import Button from '../button/Button.vue'
 import Link from '../link/Link.vue'
+import Stack from '../stack/Stack.vue'
+import type { IAction } from '../../../types/IAction'
 
 export interface Props {
-	title?: string
-	titleMuted?: string
+	title?: string | null
+	titleMuted?: string | null
 	caption?: string
 	dropdown?: boolean
 	dropdownLabel?: string
@@ -23,10 +25,7 @@ export interface Props {
 	loading?: boolean
 	transparent?: boolean
 	plain?: boolean
-	actions?: Array<{
-		label: string
-		onAction(): void
-	}>
+	actions?: IAction[]
 }
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close'])
@@ -96,7 +95,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 					</span>
 				</div>
 				<div class="ui-card-header-content-button">
-					<Link v-for="item in actions" :key="item.label" @click="item.onAction">
+					<Link v-if="actions" v-for="item in actions" :key="item.label" @click="item.onAction">
 						{{ item.label }}
 					</Link>
 					<slot name="header-button" v-if="haveSlot('header-button')" />

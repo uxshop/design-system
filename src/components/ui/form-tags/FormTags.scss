@@ -2,9 +2,11 @@
 
 .ui-form-tags {
 	--choice-item-height: var(--input-height);
-	margin-bottom: var(--form-group-margin-bottom);
 
-	&.-has-value {
+	&:not(.-has-value) {
+		.choices__inner {
+			padding-left: calc(var(--input-padding-x) - 2px);
+		}
 	}
 
 	.ui-form-tags-content {
@@ -41,9 +43,9 @@
 		min-height: var(--input-height);
 		background-color: var(--input-bg-color);
 		border: solid var(--input-border-width) var(--input-border-color);
-		border-radius: var(--input-border-radius);
 		padding: 7px;
 		padding-bottom: 0;
+		border-radius: var(--input-border-radius);
 
 		.choices__input {
 			color: var(--body-color);
@@ -52,7 +54,7 @@
 		}
 
 		.choices__item {
-			border-radius: 5px;
+			border-radius: calc(var(--input-border-radius) - 1px);
 			background: var(--primary) !important;
 			text-shadow: none;
 			box-shadow: none !important;

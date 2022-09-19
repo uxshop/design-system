@@ -2,15 +2,9 @@
 import { watchEffect, ref, useSlots } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
+import type { IAction } from '../../../types/IAction'
 
-export interface IAction {
-	label: string
-	form?: string
-	icon?: string
-	onAction?(): void
-}
-
-const emit = defineEmits(['update:modelValue', 'open', 'close'])
+const emit = defineEmits(['update:modelValue', 'open', 'close', 'save'])
 const props = defineProps<{
 	modelValue?: boolean
 	title?: string
@@ -21,6 +15,8 @@ const props = defineProps<{
 	tag?: string
 	inner?: boolean
 	primaryAction?: IAction
+	secondaryActions?: IAction[]
+	scrollableContentId?: string
 }>()
 
 const slots = useSlots()
@@ -72,21 +68,18 @@ watchEffect(() => {
 
 <template>
 	<Teleport to="body">
-		<component :is="tag ? tag : 'div'" class="ui-aside">
-			<div
-				v-if="isOpen"
-				class="ui-aside-wrapper"
-				:class="[
-					modalSize,
-					{
-						'-hide': !modelValue,
-						'-scrollable': scrollable,
-						'-inner': inner
-					}
-				]">
+		<component :is="tag ? tag : 'div'" class="ui-aside" @submit.prevent="$emit('save')">
+			<div v-if="isOpen" class="ui-aside-wrapper" :class="[
+				modalSize,
+				{
+					'-hide': !modelValue,
+					'-scrollable': scrollable,
+					'-inner': inner
+				}
+			]">
 				<div class="ui-aside-overlay" :class="{ '-close': !noCloseOnBackdrop }" @click="onClickBackdrop"></div>
 
-				<div class="ui-aside-content">
+				<div class="ui-aside-content" :id="scrollableContentId">
 					<div class="ui-aside-header">
 						<div>
 							<h4 class="title">
@@ -105,14 +98,11 @@ watchEffect(() => {
 					</div>
 
 					<div class="ui-aside-footer" v-if="primaryAction">
-						<div class="ui-aside-footer-primary">
-							<Button
-								type="submit"
-								variant="primary"
-								@click="primaryAction.onAction"
-								:label="primaryAction.label"
-								:form="primaryAction.form" />
-						</div>
+						<Button type="submit" @click="primaryAction.onAction" :label="primaryAction.label"
+							:disabled="primaryAction.disabled" :variant="primaryAction.variant ?? 'primary'"
+							:form="primaryAction.form" />
+
+						<Button v-for="item in secondaryActions" type="button" @click="item.onAction" :label="item.label" />
 					</div>
 					<div class="ui-aside-footer" v-if="haveSlot('footer')">
 						<slot name="footer" />

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { inject } from 'vue'
+import { inject, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
+import { map } from 'lodash-es'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -22,69 +23,51 @@ export interface Props {
 const menu = inject('menu') as MenuProviderInterface
 const props = defineProps<Props>()
 const route = useRoute()
+const menusFilter = ref<any>([])
 
-// const activeSection = ref<string | null | undefined>()
-// const menusFormated: any = {}
-// map(props.menus, (item, key) => {
-// 	if (item.nodes) {
-// 		const alias = item.to?.replace(/_.*/g, '') as string
+watchEffect(() => {
+	const routeName = String(route.name).replace(/_[^_]+?$/, '')
 
-// 		menusFormated[alias] = {
-// 			to: item.to,
-// 			parent: key
-// 		}
+	menusFilter.value = map(props.menus, (item: SidebarInterface.Item) => {
+		let disabled = !props.permissionService.has(item.permissions)
 
-// 		map(item.nodes, (i) => {
-// 			const alias = i.to?.replace(/_.*/g, '') as string
+		item.withNodeActive = false
 
-// 			menusFormated[alias] = {
-// 				alias: alias,
-// 				to: i.to,
-// 				parent: key
-// 			}
-// 		})
-// 	}
-// })
+		map(item.nodes, (i) => {
+			const itemName = i.to.replace(/_[^_]+?$/, '')
 
-const hasPermission = (item: SidebarInterface.Item) => {
-	if (props.permissionService.has(item.permissions)) {
-		return true
-	}
+			item.rawTo = item.to
+			i.disabled = true
+			item.active = false
 
-	let ability = false
-
-	if (item.nodes && item.nodes.length) {
-		item.nodes.forEach((i: SidebarInterface.Item) => {
 			if (props.permissionService.has(i.permissions)) {
-				ability = true
+				if (disabled === true) item.to = i.to
+				disabled = i.disabled = false
 			}
-		})
-	} else {
-		ability = props.permissionService.has(item.permissions)
-	}
 
-	return ability
-}
+			if (itemName == routeName) {
+				item.active = true
+				item.withNodeActive = true
+				i.active = true
+			}
+
+			return i
+		})
+
+		item.disabled = disabled
+
+		return item
+	})
+})
 
 const clickOverlay = () => {
-	if (menu) {
-		menu.toggle()
-	}
+	if (menu) menu.toggle()
 }
 
-// const checkActive = (name: any) => {
-// 	const el = document.getElementById('ui-sidebar')?.getElementsByClassName('-active') as HTMLCollectionOf<HTMLElement>
-// 	if (el && el.length) {
-// 		const link = el[0].parentElement?.parentElement?.previousElementSibling
-// 		const linkOpened = document.getElementById('ui-sidebar')?.getElementsByClassName('-open')
-// 		linkOpened && linkOpened[0]?.classList.remove('-open')
-// 		link?.classList.add('-open')
-// 	}
-// }
-
-const checkSubActive = (item) => {
+const checkSubActive = (item: any) => {
 	const routeName = route.name.replace(/_[^_]+?$/, '')
 	const itemName = item.to.replace(/_[^_]+?$/, '')
+
 	return itemName == routeName
 }
 </script>
@@ -100,26 +83,28 @@ const checkSubActive = (item) => {
 						</router-link>
 						<slot name="select-button" />
 					</div>
-					<div class="ui-sidebar-items">
+					<div class="ui-sidebar-list">
 						<ul class="ui-sidebar-list -primary">
 							<li
-								v-for="(item, key) in menus"
+								v-for="(item, key) in menusFilter"
 								class="ui-sidebar-item"
 								:key="key"
-								:class="{
-									'-disabled': !hasPermission(item),
-									'-spacer': item.spacer,
-									'-spacer-last': item.last
-								}">
+								:class="[
+									{
+										'-disabled': item.disabled,
+										'-spacer': item.spacer,
+										'-spacer-last': item.last
+									},
+									item.to
+								]">
 								<router-link
 									:to="{ name: item.to }"
 									:class="{
-										'-nodes': item.nodes,
-										'-child-active': item.nodes && item.to == item.nodes[0].to,
-										'-active': checkSubActive(item)
+										'-nodes': item.nodes?.length,
+										'-node-active': item.withNodeActive
 									}"
 									class="ui-sidebar-link"
-									activeClass="-open">
+									activeClass="-active">
 									<span class="ui-sidebar-link-icon">
 										<Icon :name="item.icon" filled />
 									</span>
@@ -127,12 +112,15 @@ const checkSubActive = (item) => {
 										{{ item.name }}
 									</span>
 								</router-link>
-								<ul v-if="item.nodes" class="ui-sidebar-sublist">
+								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
 									<li v-for="node in item.nodes" class="ui-sidebar-item">
 										<router-link
 											:to="{ name: node.to }"
 											class="ui-sidebar-link -sub"
-											:class="{ '-active': checkSubActive(node) }">
+											:class="{
+												'-active': checkSubActive(node),
+												'-disabled': node.disabled
+											}">
 											<span class="ui-sidebar-link-icon"></span>
 											<span class="ui-sidebar-link-text">
 												{{ node.name }}

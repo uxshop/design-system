@@ -8,14 +8,17 @@ export interface Props {
 	modelValue?: any
 	placeholder?: string
 	options?: any[]
-	label?: string
+	label?: string | null
 	size?: string
 	last?: boolean
 	template?: any
-	position?: 'top' | 'bottom' | 'auto'
+	position?: 'top' | 'bottom' | 'auto',
+	config?: object,
+	required?: boolean
 }
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update'])
+const Plugin = Choices.default || Choices
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
 	config: () => ({}),
@@ -45,7 +48,8 @@ const settings = computed(() => {
 		noChoicesText: 'Sem opções para escolher',
 		items: [],
 		choices: _choices,
-		allowHTML: false
+		allowHTML: false,
+		...props.config
 	}
 
 	if (props.template?.choice) {
@@ -74,8 +78,6 @@ const settings = computed(() => {
 
 const init = () => {
 	nextTick(() => {
-		const Plugin = Choices.default ?? Choices
-
 		if (element.value) {
 			element.value.destroy()
 		}
@@ -104,10 +106,15 @@ const checkModelValue = () => {
 	})
 }
 
+function onFocus() {
+	if (element.value) element.value.showDropdown()
+}
+
 onMounted(() => {
 	el = document.getElementById(`${uid}`)
 
 	if (el) {
+		el.addEventListener('showDropdown', () => emit('open'), false)
 		el.addEventListener(
 			'change',
 			function (event) {
@@ -129,12 +136,20 @@ onMounted(() => {
 		{ immediate: true, deep: true }
 	)
 })
+
+defineExpose({
+	setChoices(choices: any[]) {
+		if (element.value) {
+			element.value.setChoices(choices)
+		}
+	}
+})
 </script>
 
 <template>
 	<div class="ui-form-autocomplete" :class="[{ '-focus': focus, 'mb-0': last }, `-${size}`]">
-		<FormLabel v-if="label" :label="label" />
-		<select class="ui-form-select" :id="uid">
+		<FormLabel v-if="label" :label="label" @click="onFocus" />
+		<select class="ui-form-select" :id="uid" :required="required">]
 			<option value="" disabled selected>{{ placeholder }}</option>
 		</select>
 	</div>

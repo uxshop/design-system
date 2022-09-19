@@ -8,6 +8,7 @@ export interface Props {
 	vertical?: boolean
 	wrap?: boolean
 	columns?: string | number
+	horizontal?: boolean
 }
 
 const props = defineProps<Props>()
@@ -33,10 +34,17 @@ if (props.wrap == null && props.wrap == false) {
 	classList.value.push('-no-wrap')
 }
 
+if (props.horizontal) {
+	classList.value.push('-sm-horizontal')
+}
+
 const styleList = ref<string[]>([])
 
 if (props.columns && props.columns > 1) {
 	classList.value.push('-custom-grid')
+}
+
+if (props.columns && window.innerWidth > 800) {
 	styleList.value.push(`grid-template-columns: repeat(${props.columns}, 1fr)`)
 }
 </script>

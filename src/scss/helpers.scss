@@ -6,9 +6,19 @@ $colors: ('primary', 'secondary', 'danger', 'dark');
 	}
 }
 
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 50px var(--input-bg-color) inset !important;
+	-webkit-text-fill-color: var(--body-color) !important;
+}
+
+input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 50px var(--input-bg-color) inset !important;
+	-webkit-text-fill-color: var(--body-color) !important;
+}
+
 code {
-	color: crimson;
-	background-color: #f1f1f1;
+	color: var(--body-color);
+	background-color: var(--dark-200);
 	padding: 2px;
 	font-size: 105%;
 }
@@ -18,7 +28,11 @@ small {
 }
 
 p {
-	margin-bottom: 8px;
+	margin-bottom: 12px;
+
+	// + p {
+	// 	margin-top: 8px;
+	// }
 }
 
 .nowrap {
@@ -54,6 +68,10 @@ p {
 
 .align-items-center {
 	align-items: center;
+}
+
+.align-items-end {
+	align-items: flex-end;
 }
 
 .flex-direction-column {
@@ -117,6 +135,10 @@ h6 {
 
 .font-semibold {
 	font-weight: var(--font-weight-semibold);
+}
+
+.font-normal {
+	font-weight: normal;
 }
 
 .font-bold {
@@ -259,12 +281,16 @@ $increment: 4;
 	}
 
 	.pb-#{$i} {
-		padding-top: #{$i * $increment}px !important;
+		padding-bottom: #{$i * $increment}px !important;
 	}
 }
 
 .w-100 {
 	width: 100%;
+}
+
+.w-50 {
+	width: 50%;
 }
 
 .mt-form {
@@ -338,6 +364,7 @@ dl {
 }
 
 ul {
+	margin: 0;
 	padding-left: 18px;
 	li:not(:last-child) {
 		margin-bottom: 8px;

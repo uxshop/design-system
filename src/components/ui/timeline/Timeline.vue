@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 import Link from '../link/Link.vue'
 import Avatar from '../avatar/Avatar.vue'
 import Col from '../grid/col/Col.vue'
 import Row from '../grid/row/Row.vue'
-import Icon from '../icon/Icon.vue'
-import { computed } from 'vue'
+import FormTextfield from '../form-textfield/FormTextfield.vue'
+import Button from '../button/Button.vue'
+import Stack from '../stack/Stack.vue'
+import IconButton from '../icon-button/IconButton.vue'
 
-const props = defineProps<{
+defineProps<{
 	modelValue?: any[]
 	inputMessage?: boolean
 }>()
+const emit = defineEmits(['onAddMessage', 'onRemoveMessage'])
+const note = shallowRef()
 
-const classList = ref<string[]>([])
-
-const myComponent = (item: any) => {
-	return {
-		template: item.textRaw
-	}
+function myComponent(item: any): object {
+	return { template: item.textRaw }
+}
+function onSavePost(): void {
+	emit('onAddMessage', note.value)
+	note.value = null
 }
 </script>
 
@@ -25,16 +29,16 @@ const myComponent = (item: any) => {
 	<div class="ui-timeline ui-timeline-avatar">
 		<div class="ui-timeline-input" v-if="inputMessage">
 			<Row alignV="center">
-				<Col>
-					<Avatar size="40"></Avatar>
+				<Col auto>
+				<Avatar size="40" />
 				</Col>
 				<Col>
-					<!-- <form action="" @submit.prevent="onSavePost" autocomplete="off">
-						<div class="form-inner-button">
-							<b-form-input required v-model="note" placeholder="Escreva um comentário..."></b-form-input>
-							<b-button variant="dark" type="submit"> Postar </b-button>
-						</div>
-					</form> -->
+				<form action="" @submit.prevent="onSavePost" autocomplete="off">
+					<Stack spacing="sm">
+						<FormTextfield required v-model="note" placeholder="Escreva um comentário..." />
+						<Button variant="dark" type="submit" label="Postar" />
+					</Stack>
+				</form>
 				</Col>
 			</Row>
 		</div>
@@ -44,10 +48,7 @@ const myComponent = (item: any) => {
 					<div class="ui-timeline-item-content">
 						<div class="ui-timeline-info">
 							<div class="ui-timeline-item-title-wrapper">
-								<component
-									v-if="item.title"
-									:is="item.titleTo ? Link : 'div'"
-									:to="item.titleTo"
+								<component v-if="item.title" :is="item.titleTo ? Link : 'div'" :to="item.titleTo"
 									class="ui-timeline-item-title">
 									{{ item.title }}
 								</component>
@@ -60,6 +61,7 @@ const myComponent = (item: any) => {
 
 							<small class="ui-timeline-item-date">{{ item.date }}</small>
 						</div>
+						<IconButton @click="$emit('onRemoveMessage', item)" icon="close" size="sm" variant="plain" />
 					</div>
 				</div>
 			</li>
@@ -69,4 +71,8 @@ const myComponent = (item: any) => {
 
 <style lang="scss">
 @import './Timeline.scss';
+
+.ui-timeline-list .ui-timeline-item {
+	margin-bottom: 0;
+}
 </style>

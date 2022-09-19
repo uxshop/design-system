@@ -4,6 +4,7 @@ import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import { cloneDeep, isArray } from 'lodash-es'
 import Button from '../button/Button.vue'
+import type { IAction } from '../../../types/IAction'
 
 export interface Props {
 	modelValue?: any
@@ -12,9 +13,10 @@ export interface Props {
 	config?: any
 	closeOnSelect?: boolean
 	last?: boolean
-	actions?: any
+	actions?: IAction[]
 	options?: any
 	create?: boolean
+	variant?: string
 }
 
 export interface SettingsInterface {
@@ -25,7 +27,8 @@ export interface SettingsInterface {
 	onChange(val: string): void
 }
 
-const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add'])
+const Plugin = Choices?.default || Choices
+const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add', 'remove'])
 
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Criar tags',
@@ -35,7 +38,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
 const element = shallowRef()
-let el: HTMLElement
+let el: HTMLElement | null
 
 const update = (val: string) => {
 	emit('update:modelValue', val)
@@ -65,12 +68,17 @@ const init = () => {
 				choices: cloneDeep(props.options),
 				allowHTML: true
 			}
-
-			const Plugin = Choices.default ?? Choices
 			element.value = new Plugin(el, settings)
 
 			checkModelValue()
+			if (props.options.length && getValueArray().length) setSelectedValue()
 		}
+	})
+}
+
+const setSelectedValue = () => {
+	getValueArray().map((value: number) => {
+		element.value.setChoiceByValue(Number(value))
 	})
 }
 
@@ -79,11 +87,13 @@ const checkModelValue = () => {
 		if (element.value) {
 			const data = getValueArray()
 
-			if (props.create) {
-				if (isArray(data)) {
-					element.value.clearStore()
-					element.value.setValue(data)
-				}
+			if (data == null) {
+				element.value.clearStore()
+			}
+
+			if (props.create && isArray(data)) {
+				element.value.clearStore()
+				element.value.setValue(data)
 			}
 		}
 	})
@@ -94,7 +104,7 @@ const getValueArray = () => {
 		return props.modelValue.split(',')
 	}
 
-	return props.modelValue
+	return props.modelValue ?? []
 }
 
 onMounted(() => {
@@ -121,13 +131,13 @@ onMounted(() => {
 			},
 			false
 		)
-		// el.addEventListener(
-		// 	'removeItem',
-		// 	function (event) {
-		// 		console.log(event.detail)
-		// 	},
-		// 	false
-		// )
+		el.addEventListener(
+			'removeItem',
+			function (event: any) {
+				emit('remove', event.detail)
+			},
+			false
+		)
 	}
 
 	watch(
@@ -145,7 +155,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length, 'mb-0': last }">
+	<div class="ui-form-tags" :class="{ '-has-value': modelValue?.length, 'mb-0': last, variant: `-${variant}` }">
 		<FormLabel
 			v-if="label"
 			:label="label"
@@ -154,7 +164,7 @@ onMounted(() => {
 			}" />
 		<div class="ui-form-tags-content">
 			<input v-if="props.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
-			<select v-else multiple ref="selectRef" :id="uid" type="text" autocomplete="off" />
+			<select v-else multiple ref="selectRef" :id="uid" autocomplete="off" />
 			<div v-if="actions" class="ui-form-tags-actions">
 				<Button v-for="item in actions" :label="item.label" @click="item.onAction" />
 			</div>

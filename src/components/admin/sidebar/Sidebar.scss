@@ -4,10 +4,10 @@
 	--sidebar-padding-left: 30px;
 	--sidebar-line-width: 5px;
 
-	position: sticky;
+	position: fixed;
 	top: 0;
 	z-index: 888;
-	height: 100vh;
+	height: 100%;
 
 	> .ui-sidebar-wrapper {
 		border-right: solid 1px var(--border-color);
@@ -20,7 +20,7 @@
 		top: 0;
 		height: 100%;
 		overflow: hidden;
-		background: var(--dark-200);
+		background: var(--body-bg);
 
 		> .ui-sidebar-container {
 			display: flex;
@@ -108,9 +108,10 @@
 		gap: 8px;
 	}
 
-	.ui-sidebar-items {
+	.ui-sidebar-list {
 		display: flex;
 		flex-grow: 1;
+		padding-bottom: 12px;
 
 		> .ui-sidebar-list {
 			padding: 0;
@@ -139,6 +140,11 @@
 		}
 	}
 
+	.-disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
 	.ui-sidebar-link {
 		line-height: 1;
 		color: var(--body-color);
@@ -147,7 +153,6 @@
 		display: flex;
 		cursor: pointer;
 		position: relative;
-		height: 32px;
 		align-items: center;
 		margin: 0 10px;
 		border-radius: 4px;
@@ -163,12 +168,13 @@
 			background-color: #e5eaef60;
 		}
 
-		&.-active:not(.-child-active) {
+		&.-active:not(.-node-active) {
 			background-color: var(--dark-100, var(--gray-200));
+			color: var(--primary);
 		}
 
 		&.-active,
-		&.-open {
+		&.-node-active {
 			.ui-icon {
 				color: var(--primary);
 			}
@@ -232,17 +238,7 @@
 		}
 	}
 
-	@include mobile {
-		.ui-sidebar-wrapper {
-			background-color: white;
-		}
-	}
-
 	@include darkmode {
-		.ui-sidebar-wrapper {
-			background: none;
-		}
-
 		.ui-sidebar-link {
 			&:hover:not(.-active) {
 				background-color: var(--dark-300);

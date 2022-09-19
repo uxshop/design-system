@@ -156,9 +156,6 @@ defineExpose({
 					</div>
 				</div>
 				<div class="ui-dialog-footer" v-if="!hideFooter">
-					<Button v-if="type != 'confirm'" @click="close(false)" class="ui-dialog-btn-cancel">
-						{{ cancelLabel }}
-					</Button>
 					<Button
 						:leadingIcon="config.destructIcon"
 						:variant="destructVariant"
@@ -166,6 +163,9 @@ defineExpose({
 						class="btn-destruct"
 						tabindex="0">
 						{{ config.destructLabel }}
+					</Button>
+					<Button v-if="type != 'confirm'" @click="close(false)" class="ui-dialog-btn-cancel">
+						{{ cancelLabel }}
 					</Button>
 				</div>
 			</form>

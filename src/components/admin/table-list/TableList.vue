@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import TableListTabs from './table-list-tabs/TableListTabs.vue'
-import TableListNav from './table-list-nav/TableListNav.vue'
-import TableListTable from './table-list-table/TableListTable.vue'
-import { useRoute } from 'vue-router'
 import { onMounted, watch, ref, reactive } from 'vue'
 import { union, clone, omit, concat } from 'lodash-es'
+import { useRoute } from 'vue-router'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorage from '../../../services/LocalStorage'
-import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
-import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue'
+import SkeletonTable from '../../ui/skeleton-table/SkeletonTable.vue'
+import FormValidation from '../../ui/form-validation/FormValidation.vue'
+import Card from '../../ui/card/Card.vue'
+import TableListNav from './table-list-nav/TableListNav.vue'
+import TableListTags from './table-list-tags/TableListTags.vue'
+import TableListTabs from './table-list-tabs/TableListTabs.vue'
+import TableListTable from './table-list-table/TableListTable.vue'
+import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
 import TableListNavBulk from './table-list-nav-bulk/TableListNavBulk.vue'
 import TableListNavRefresh from './table-list-nav/TableListNavRefresh.vue'
-import TableListNavSearch from './table-list-nav/TableListNavSearch.vue'
-import TableListNavPagination from './table-list-nav-pagination/TableListNavPagination.vue'
-import TableListNavFilter from './table-list-nav-filter/TableListNavFilter.vue'
-import SkeletonTable from '../../ui/skeleton-table/SkeletonTable.vue'
-import type { ITableListConfig } from './types/ITableListConfig'
-import type { TApiData } from 'src/types/IApiResource'
-import Card from '../../ui/card/Card.vue'
 import TableListNavSortable from './table-list-nav/TableListNavSortable.vue'
-import TableListTags from './table-list-tags/TableListTags.vue'
+import TableListNavFilter from './table-list-nav-filter/TableListNavFilter.vue'
 import TableListNavCustomFilter from './table-list-nav/TableListNavCustomFilter.vue'
+import TableListNavPagination from './table-list-nav-pagination/TableListNavPagination.vue'
+import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
+import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue'
+import type { TApiData } from 'src/types/IApiResource'
+import type { ITableListConfig } from 'src/types'
 
 type TQueryParams = Record<string, string | number>
 
@@ -47,6 +48,7 @@ const loading = ref(false)
 const meta = ref({})
 const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false }, props.config)
 const storageNameFilters = `adm_table_filters_${String(route.name)}`
+const formError = ref<Record<string, string> | null>(null)
 const queryDefault = Object.assign(
 	{
 		sort: '-id',
@@ -66,6 +68,7 @@ const removeFilter = (key: string) => {
 	delete queryParams.value[key]
 	delete queryParams.value['customFilterId']
 	queryParams.value.selectedView = 'all'
+	setQueryParams(queryParams.value)
 }
 
 const setUrlParams = (query: TQueryParams) => HistoryReplaceState(query, ['_', 'limit'])
@@ -80,9 +83,7 @@ const resetQueryParams = (params = {}) => {
 	queryParams.value = Object.assign(clone(queryDefault), params)
 }
 
-const fechData = async () => {
-	console.log('fechData tableList')
-
+const fetchData = async () => {
 	const params = clone(queryParams.value)
 	selected.value = []
 	loading.value = true
@@ -120,7 +121,7 @@ const deleteOne = async (item: Record<string, number>) => {
 		await props.config.service.delete(Number(item.id))
 	}
 
-	fechData()
+	fetchData()
 }
 
 const activeOne = (item: Record<string, number>, active: boolean) => {
@@ -148,20 +149,26 @@ const unshiftItem = (item: Record<string, string>) => {
 	}
 }
 
-const activeInactiveSelecteds = async (val: boolean) => {
+const activeInactiveSelected = async (val: boolean) => {
 	for (const itemId of selected.value) {
 		await activeOne({ id: itemId }, val)
 	}
 
-	fechData()
+	fetchData()
 }
 
-const removeSelecteds = async () => {
-	for (const itemId of selected.value) {
-		await deleteOne({ id: itemId })
+const removeSelected = async () => {
+	try {
+		for (const itemId of selected.value) {
+			await deleteOne({ id: itemId })
+		}
+	} catch (error) {
+		formError.value = {
+			erro: [error.data.error]
+		}
 	}
 
-	fechData()
+	fetchData()
 }
 
 onMounted(() => {
@@ -190,7 +197,7 @@ watch(
 					newVal.selectedView = 'all'
 				}
 
-				fechData()
+				fetchData()
 			}, 100)
 		}
 	},
@@ -205,13 +212,13 @@ const state = reactive({
 	currentTab: {},
 	term: null,
 	omitFiltersValues: omitFiltersValues,
-	fechData: fechData,
+	fetchData: fetchData,
 	checkAll: checkAll,
 	setQueryParams: setQueryParams,
 	resetQueryParams: resetQueryParams,
 	removeFilter: removeFilter,
-	removeSelecteds: removeSelecteds,
-	toggleActiveSelecteds: activeInactiveSelecteds,
+	removeSelected: removeSelected,
+	toggleActiveSelected: activeInactiveSelected,
 	activeOne: activeOne,
 	deleteOne: deleteOne,
 	clickRow: clickRow
@@ -219,11 +226,12 @@ const state = reactive({
 
 defineExpose({
 	unshiftItem: unshiftItem,
-	refresh: fechData
+	refresh: fetchData
 })
 </script>
 
 <template>
+	<FormValidation v-model="formError" />
 	<Card v-if="loading && !firstGet" class="table-list-skeleton" noPadding>
 		<SkeletonTable cols="3" rows="6" withAction="1" />
 	</Card>
@@ -233,7 +241,7 @@ defineExpose({
 		<TableListNav :loading="loading">
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
 			<TableListNavRefresh :state="state" />
-			<TableListNavSearch @refresh="fechData" :placeholder="cfg.placeholder" :state="state" />
+			<TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
 			<TableListNavCustomFilter
 				v-if="config.customFilterService"
 				:service="config.customFilterService"

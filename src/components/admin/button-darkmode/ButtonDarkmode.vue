@@ -1,31 +1,31 @@
 <script setup lang="ts">
+import ColorSchemeService, { ColorScheme } from '../../../services/ColorSchemeService'
 import { onMounted, ref } from 'vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 
+const emit = defineEmits(['changeSchemeColor'])
 const iconMode = ref('dark_mode')
+const colorSchemeStorageName = 'ds_color_scheme'
 
-const setDarkmode = (val: boolean) => {
-	if (val) {
-		localStorage.setItem('darkmode', '1')
-		document.documentElement.setAttribute('data-theme', 'dark')
+const setColorScheme = (val: any) => {
+	document.documentElement.setAttribute('data-theme', val)
+
+	if (val == ColorScheme.dark) {
 		iconMode.value = 'light_mode'
 	} else {
-		document.documentElement.removeAttribute('data-theme')
-		localStorage.removeItem('darkmode')
 		iconMode.value = 'dark_mode'
 	}
 }
 
 const toggleDarkmode = () => {
-	if (localStorage.getItem('darkmode') == '1') {
-		setDarkmode(false)
-	} else {
-		setDarkmode(true)
-	}
+	const color = ColorSchemeService.get() === ColorScheme.dark ? ColorScheme.light : ColorScheme.dark
+	emit('changeSchemeColor', color)
+	localStorage.setItem(colorSchemeStorageName, color)
+	setColorScheme(color)
 }
 
 onMounted(() => {
-	setDarkmode(localStorage.getItem('darkmode') != undefined)
+	setColorScheme(ColorSchemeService.get())
 })
 </script>
 

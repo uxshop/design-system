@@ -5,10 +5,11 @@ import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
 import { computed, onMounted, ref } from 'vue'
 import Stack from '../../../ui/stack/Stack.vue'
 import DropdownSection from '../../../ui/dropdown/DropdownSection.vue'
-import { cloneDeep, keys, pick, find, omit, isNumber, concat, isObject, each } from 'lodash-es'
+import { cloneDeep, keys, pick, find, omit, isNumber, isObject, each } from 'lodash-es'
 import toast from '../../../ui/toast'
 import type { ITableListState } from '../types/ITableListState'
 import { slugify } from '../../../../filters'
+import FormLayoutItem from '../../../ui/form-layout/FormLayoutItem.vue'
 
 interface FilterInterface {
 	id: number | string
@@ -27,7 +28,6 @@ const props = defineProps<{
 	}
 }>()
 
-const max = 5
 const tabs: any = []
 const tab = ref()
 const dropdownRef = ref()
@@ -106,6 +106,7 @@ const onSave = async () => {
 			resource: props.state.config.customFilterResource
 		})
 		props.state.tabs.push(res)
+		addTab(res)
 		props.state.setQueryParams({
 			selectedView: res.id
 		})
@@ -142,16 +143,16 @@ const onShowDropdown = () => {
 			</template>
 			<DropdownSection>
 				<form @submit.prevent="onSave" id="form-custom-filter" autocomplete="off">
+					<h6>Salvar filtro</h6>
 					<FormTextfield
 						size="sm"
 						v-model="reg.name"
 						placeholder="Nome do filtro"
 						style="min-width: 210px"
 						data-close="none"
-						label="Salvar como"
 						required
 						tabindex="1" />
-					<div>Os filtros são salvos como uma nova aba no topo desta lista.</div>
+					<div class="mt-2">Os filtros são salvos como uma nova aba no topo desta lista.</div>
 				</form>
 			</DropdownSection>
 			<DropdownSection>
@@ -170,8 +171,5 @@ const onShowDropdown = () => {
 				</Stack>
 			</DropdownSection>
 		</Dropdown>
-		<!-- <base-dialog ref="dialog" type="confirm" destruct-label="Entendi" destruct-variant="primary" title="Atenção">
-			Você só pode ter <b>{{ max }}</b> filtros por sessão.
-		</base-dialog> -->
 	</span>
 </template>
