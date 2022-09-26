@@ -24,4 +24,5 @@ export interface ITableListConfig {
 	actions?: string[]
 	placeholder?: string
 	omitFiltersValues?: string[]
+	customFetchFunction?: (params: object) => Promise<any>
 }

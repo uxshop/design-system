@@ -92,7 +92,9 @@ const fetchData = async () => {
 
 	LocalStorage.setObj(storageNameFilters, params)
 
-	const res = await props.config.service.get(params)
+	const fetchFunction: Function = props.config.customFetchFunction ?? props.config.service.get
+
+	const res = await fetchFunction(params)
 	meta.value = res.meta
 	rows.value = res.data
 
@@ -242,9 +244,7 @@ defineExpose({
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
 			<TableListNavRefresh :state="state" />
 			<TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
-			<TableListNavCustomFilter
-				v-if="config.customFilterService"
-				:service="config.customFilterService"
+			<TableListNavCustomFilter v-if="config.customFilterService" :service="config.customFilterService"
 				:state="state" />
 			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />
 			<TableListNavFilter :state="state" />
