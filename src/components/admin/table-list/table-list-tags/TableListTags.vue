@@ -5,6 +5,7 @@ import Tag from '../../../ui/tag/Tag.vue'
 import { computed } from 'vue'
 import { omit } from 'lodash-es'
 import TagList from '../../../ui/tag/TagList.vue'
+import { DateTime } from 'luxon'
 
 const props = defineProps<{
 	state: ITableListState
@@ -28,6 +29,17 @@ const translateValue = (item: any, key: string) => {
 
 	if (!props.state.config.filters || !props.state.config.filters[key]) {
 		return item
+	}
+
+	if (key == 'created_at'){
+		const dates = item.split('--')
+		const date1 = DateTime.fromSQL(dates[0]).toFormat('dd/MM/yyyy')
+		if (dates.length > 1) {
+			const date2 = DateTime.fromSQL(dates[1]).toFormat('dd/MM/yyyy')
+			return `${date1} ~ ${date2}`
+		} else {
+			return date1
+		}
 	}
 
 	if (key == 'q') {

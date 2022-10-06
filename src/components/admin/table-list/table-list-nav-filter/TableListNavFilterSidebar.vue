@@ -9,6 +9,7 @@ import Aside from '../../../ui/aside/Aside.vue'
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
 import FormRadio from '../../../ui/form-radio/FormRadio.vue'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
+import FormDatepicker from '../../../ui/form-datepicker/FormDatepicker.vue'
 
 const props = defineProps<{
 	filters: any
@@ -19,10 +20,12 @@ const selected = ref<Record<string, any>>({})
 const aside = ref(false)
 const accordion = ref<Record<string, any>>({})
 let selectedDefault: Record<string, any> | null = null
+const datePickerRef = ref([])
 
 const reset = () => {
 	const newSelected: Record<string, any> = {}
 	each(props.filters, (filter, key) => {
+		clearPickerDate()
 		if (filter.type == 'checkbox') {
 			newSelected[key] = []
 		} else {
@@ -53,11 +56,20 @@ const hasSelected = () => {
 }
 
 const onClearFilter = (filter: { type: string }, key: string | number) => {
+
 	if (filter.type == 'checkbox') {
 		selected.value[key] = []
-	} else {
+	}else if (filter.type == 'date_range') {
+		clearPickerDate()
+	}else {
 		selected.value[key] = null
 	}
+}
+
+const clearPickerDate = () => {
+
+	datePickerRef.value[0] && datePickerRef.value[0].clearDate()
+	
 }
 
 const hasFilterSelected = (filter: { type: string }, key: string | number) => {
@@ -119,6 +131,10 @@ defineExpose({
 								title="Selecione"
 								select-type="input"
 							/> -->
+						</div>
+
+						<div v-if="filter.type == 'date_range'">
+							<FormDatepicker ref="datePickerRef" v-model="selected[key]" range />
 						</div>
 
 						<div v-else-if="['text', 'number'].indexOf(filter.type) >= 0">
