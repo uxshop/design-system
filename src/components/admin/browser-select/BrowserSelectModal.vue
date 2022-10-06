@@ -135,7 +135,14 @@ const getTemplate = () => {
 	return templates.default
 }
 
+const resetParams = () => {
+	params.value = { q: null, page: 1 }
+	rows.value = []
+}
+
 const open = ({ searchBy, selectedIds }: any) => {
+	resetParams()
+
 	aside.value = true
 	ids.value = clone(selectedIds)
 	term.value = searchBy
@@ -152,28 +159,33 @@ defineExpose({
 			<div class="ui-browser-search">
 				<Row alignV="center">
 					<Col>
-					<div class="ui-browser-search-input">
-						<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="sm" autocomplete="off">
-							<template #before>
-								<div class="box-icon">
-									<Spinner class="icon" size="15" border="2" v-show="typing" variant="primary" />
-									<Icon class="icon" name="search" v-show="!typing" />
-								</div>
-							</template>
-							<template #after>
-								<Icon name="close" @click="onEmptyTerm" v-show="term" />
-							</template>
-						</FormTextfield>
-					</div>
+						<div class="ui-browser-search-input">
+							<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="sm" autocomplete="off">
+								<template #before>
+									<div class="box-icon">
+										<Spinner class="icon" size="15" border="2" v-show="typing" variant="primary" />
+										<Icon class="icon" name="search" v-show="!typing" />
+									</div>
+								</template>
+								<template #after>
+									<Icon name="close" @click="onEmptyTerm" v-show="term" />
+								</template>
+							</FormTextfield>
+						</div>
 					</Col>
 				</Row>
 			</div>
 
 			<div class="ui-browser-search-list">
-				<div v-for="item in rows" :key="String(item[identifier])"
-					:class="{ disabled: limit >= 1 && limit == ids.length && !ids.includes(item[identifier]) }" :tabindex="0"
-					@click.stop="onCheckOne(item, $event)" @keyup.enter="onCheckOne(item, $event)"
-					@keypress.space="onCheckOne(item, $event)" class="ui-browser-list-row">
+				<div
+					v-for="item in rows"
+					:key="String(item[identifier])"
+					:class="{ disabled: limit >= 1 && limit == ids.length && !ids.includes(item[identifier]) }"
+					:tabindex="0"
+					@click.stop="onCheckOne(item, $event)"
+					@keyup.enter="onCheckOne(item, $event)"
+					@keypress.space="onCheckOne(item, $event)"
+					class="ui-browser-list-row">
 					<div class="ui-browser-list-cell">
 						<FormCheckbox :value="item.id" v-model="ids" no-events />
 					</div>
