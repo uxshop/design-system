@@ -56,20 +56,23 @@ const hasSelected = () => {
 }
 
 const onClearFilter = (filter: { type: string }, key: string | number) => {
+	switch (filter.type) {
+		case 'checkbox':
+			selected.value[key] = []
+			break
 
-	if (filter.type == 'checkbox') {
-		selected.value[key] = []
-	}else if (filter.type == 'date_range') {
-		clearPickerDate()
-	}else {
-		selected.value[key] = null
+		case 'date_range':
+			clearPickerDate()
+			break
+
+		default:
+			selected.value[key] = null
+			break
 	}
 }
 
 const clearPickerDate = () => {
-
 	datePickerRef.value[0] && datePickerRef.value[0].clearDate()
-	
 }
 
 const hasFilterSelected = (filter: { type: string }, key: string | number) => {

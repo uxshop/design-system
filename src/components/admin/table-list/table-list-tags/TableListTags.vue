@@ -23,6 +23,20 @@ const translateKey = (item: string) => {
 	return val
 }
 
+const dateFormat = (date: any) => {
+	let dates = date.split('--')
+	const startDate =  DateTime.fromSQL(dates[0]).toFormat('dd/MM/yyyy')
+	
+	if(dates.length > 1){
+		const endDate = DateTime.fromSQL(dates[1]).toFormat('dd/MM/yyyy')
+		dates = `${startDate} ~ ${endDate}`
+	}else{
+		dates = startDate
+	}
+
+	return dates
+}
+
 const translateValue = (item: any, key: string) => {
 	const val: string[] = []
 	let values: number[] = []
@@ -32,14 +46,7 @@ const translateValue = (item: any, key: string) => {
 	}
 
 	if (key == 'created_at'){
-		const dates = item.split('--')
-		const date1 = DateTime.fromSQL(dates[0]).toFormat('dd/MM/yyyy')
-		if (dates.length > 1) {
-			const date2 = DateTime.fromSQL(dates[1]).toFormat('dd/MM/yyyy')
-			return `${date1} ~ ${date2}`
-		} else {
-			return date1
-		}
+		dateFormat(item)
 	}
 
 	if (key == 'q') {
