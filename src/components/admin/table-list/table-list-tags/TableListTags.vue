@@ -33,7 +33,7 @@ const dateFormat = (date: any) => {
 	}else{
 		dates = startDate
 	}
-
+	
 	return dates
 }
 
@@ -46,7 +46,7 @@ const translateValue = (item: any, key: string) => {
 	}
 
 	if (key == 'created_at'){
-		dateFormat(item)
+		return dateFormat(item)
 	}
 
 	if (key == 'q') {
