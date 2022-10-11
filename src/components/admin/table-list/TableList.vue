@@ -173,11 +173,10 @@ const removeSelected = async () => {
 
 onMounted(() => {
 	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
-
-	if (LocalStorage.getObj(storageNameFilters)) {
-		queryParams.value = LocalStorage.getObj(storageNameFilters) as TQueryParams
-	} else {
+	if (route.query) {
 		queryParams.value = Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
+	} else {
+		queryParams.value = LocalStorage.getObj(storageNameFilters) as TQueryParams
 	}
 })
 
