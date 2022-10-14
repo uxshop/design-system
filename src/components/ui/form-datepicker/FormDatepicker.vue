@@ -35,7 +35,7 @@ const update = (value: null) => {
 
 const stopWatch = watchEffect(() => {
 	if (picker.value && props.modelValue) {
-		const dates = props.modelValue.split('TO')
+		const dates = props.modelValue.split('--')
 		const date1 = DateTime.fromSQL(dates[0]).toFormat('dd/MM/yyyy')
 		if (props.range && dates.length > 1) {
 			const date2 = DateTime.fromSQL(dates[1]).toFormat('dd/MM/yyyy')
@@ -76,7 +76,7 @@ onMounted(() => {
 
 					if (props.range) {
 						if (start instanceof Date && end instanceof Date) {
-							dateFormat = `${start.format(sqlFormat)}TO${end.format(sqlFormat)}`
+							dateFormat = `${start.format(sqlFormat)}--${end.format(sqlFormat)}`
 						}
 					} else if (date instanceof Date) {
 						dateFormat = date.format(sqlFormat)
@@ -99,13 +99,12 @@ onMounted(() => {
 })
 
 const clearDate = () => {
-	console.log("picker.value", picker.value)
 	picker.value.clear()
 	update(null)
 }
 
 defineExpose({
-	clearDate: clearDate
+	clearDate
 })
 </script>
 

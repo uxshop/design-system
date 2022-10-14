@@ -28,6 +28,11 @@
 		color: white;
 	}
 
+	&.-warning {
+		background-color: var(--warning);
+		color: white;
+	}
+
 	&.-danger {
 		background-color: var(--danger);
 		color: white;
