@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch, ref, reactive } from 'vue'
+import { onMounted, watch, ref, reactive, onBeforeMount } from 'vue'
 import { union, clone, omit, concat } from 'lodash-es'
 import { useRoute } from 'vue-router'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
@@ -49,6 +49,7 @@ const meta = ref({})
 const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false }, props.config)
 const storageNameFilters = `adm_table_filters_${String(route.name)}`
 const formError = ref<Record<string, string> | null>(null)
+const hasQueryParams = ref()
 const queryDefault = Object.assign(
 	{
 		sort: '-id',
@@ -171,12 +172,22 @@ const removeSelected = async () => {
 	fetchData()
 }
 
+const assignDefaultQueryParams = () => {
+	return Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
+}
+
+onBeforeMount(() => {
+	hasQueryParams.value = route.query.sort
+})
+
 onMounted(() => {
 	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
-	if (route.query) {
-		queryParams.value = Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
+	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
+
+	if (!hasQueryParams.value) {
+		queryParams.value = Object.assign(localStorageParams)
 	} else {
-		queryParams.value = LocalStorage.getObj(storageNameFilters) as TQueryParams
+		queryParams.value = assignDefaultQueryParams()
 	}
 })
 
