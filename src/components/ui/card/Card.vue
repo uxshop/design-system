@@ -95,7 +95,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 					</span>
 				</div>
 				<div class="ui-card-header-content-button">
-					<Link v-if="actions" v-for="item in actions" :key="item.label" @click="item.onAction">
+					<Link v-if="actions" v-for="item in actions" :key="item.label" @click="item.onAction" :to="item.to">
 						{{ item.label }}
 					</Link>
 					<slot name="header-button" v-if="haveSlot('header-button')" />
