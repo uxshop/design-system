@@ -126,15 +126,14 @@ defineExpose({
 					</div>
 					<div class="filter-list-accordion" v-if="accordion[key]" v-show="accordion[key]">
 						<div v-if="filter.type == 'browser'">
-							<browser-select
+							<BrowserSelect
 								v-model="selected[key]"
 								:name="`check_${key}`"
 								:type="filter.model"
 								:service="filter.service"
 								placeholder="selecione"
 								title="Selecione"
-								select-type="input"
-							/>
+								select-type="input" />
 						</div>
 
 						<div v-if="filter.type == 'date_range'">
