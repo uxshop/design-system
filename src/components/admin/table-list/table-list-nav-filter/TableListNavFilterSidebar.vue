@@ -10,6 +10,7 @@ import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
 import FormRadio from '../../../ui/form-radio/FormRadio.vue'
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue'
 import FormDatepicker from '../../../ui/form-datepicker/FormDatepicker.vue'
+import BrowserSelect from '../../../admin/browser-select/BrowserSelect.vue'
 
 const props = defineProps<{
 	filters: any
@@ -125,15 +126,15 @@ defineExpose({
 					</div>
 					<div class="filter-list-accordion" v-if="accordion[key]" v-show="accordion[key]">
 						<div v-if="filter.type == 'browser'">
-							<!-- <base-browser-select
+							<browser-select
 								v-model="selected[key]"
 								:name="`check_${key}`"
 								:type="filter.model"
-								:list="filter.filters"
+								:service="filter.service"
 								placeholder="selecione"
 								title="Selecione"
 								select-type="input"
-							/> -->
+							/>
 						</div>
 
 						<div v-if="filter.type == 'date_range'">
