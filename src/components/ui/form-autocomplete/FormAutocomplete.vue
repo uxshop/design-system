@@ -49,6 +49,7 @@ const settings = computed(() => {
 		items: [],
 		choices: _choices,
 		allowHTML: false,
+		searchResultLimit: 20,
 		...props.config
 	}
 

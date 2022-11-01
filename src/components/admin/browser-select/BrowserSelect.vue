@@ -228,6 +228,9 @@ defineExpose({ onClickSearch })
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
 				<div class="ui-browser-list-row" v-for="item in rows.slice(0, paginateLimit)" :key="item[identifier]">
 					<component :is="templateCustom" :item="item" />
+					<div v-if="!templateCustom" class="browser-list-cell">
+						{{ item.name }}
+					</div>
 					<div class="ui-browser-list-cell -auto">
 						<ButtonAction size="sm" type="remove" @click="onRemoveItem(item)" />
 					</div>
