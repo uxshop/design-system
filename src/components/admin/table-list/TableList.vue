@@ -184,7 +184,7 @@ onMounted(() => {
 	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
 	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
 
-	if (!hasQueryParams.value) {
+	if (!hasQueryParams.value && localStorageParams) {
 		queryParams.value = Object.assign(localStorageParams)
 	} else {
 		queryParams.value = assignDefaultQueryParams()
