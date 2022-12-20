@@ -17,9 +17,6 @@
 	--surface-hovered: #f6f9fb;
 	--surface-disable: #e5eaef;
 	--surface-neutral: #f6f9fb;
-	--surface-default: #1d1a2b;
-	--surface-hovered: #24283e;
-	--surface-disable: #394050;
 	--surface-primary: #f5faff;
 	--surface-warning: #fff4e1;
 	--surface-critical: #ffe0de;
@@ -95,8 +92,7 @@
 	--input-padding-x-sm: 12px;
 	--input-padding-y-sm: 10px;
 	--input-padding-x-lg: 20px;
-	--input-border-radius: 4px;
-	--input-border-radius-sm: 4px;
+	--input-border-radius: 8px;
 	--input-border-width: 1px;
 	--form-check-height: 20px;
 	--form-check-border-width: 2px;
@@ -139,6 +135,9 @@
 		--background-overlay: #15191fcc;
 
 		/* surface colors */
+		--surface-default: #1d1a2b;
+		--surface-hovered: #24283e;
+		--surface-disable: #394050;
 		--surface-neutral: #262c39;
 		--surface-primary: #172c38;
 		--surface-warning: #2a2323;
