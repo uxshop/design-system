@@ -1,0 +1,93 @@
+@import './mixins.scss';
+
+@mixin text-style-x-large {
+	font-weight: 700;
+	font-size: 42px;
+	line-height: 44px;
+}
+
+@mixin text-style-large {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 28px;
+
+	@include desktop {
+		font-size: 28px;
+		line-height: 32px;
+	}
+}
+
+@mixin text-style-medium {
+	font-weight: 700;
+	font-size: 21px;
+	line-height: 28px;
+
+	@include desktop {
+		line-height: 32px;
+		font-size: 26px;
+	}
+}
+
+@mixin text-style-small {
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
+
+	@include desktop {
+		font-size: 20px;
+		line-height: 28px;
+	}
+}
+
+@mixin text-style-heading {
+	font-weight: 600;
+	font-size: 17px;
+	line-height: 24px;
+
+	@include desktop {
+		font-size: 16px;
+	}
+}
+
+@mixin text-style-subheading {
+	font-weight: 600;
+	font-size: 13px;
+	line-height: 16px;
+
+	@include desktop {
+		font-size: 12px;
+	}
+}
+
+@mixin text-style-button {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+@mixin text-style-body {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+@mixin text-style-highlight {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+@mixin text-style-caption {
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 20px;
+
+	@include desktop {
+		font-size: 12px;
+		line-height: 16px;
+	}
+}
+
+:root {
+	--font-family: -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
