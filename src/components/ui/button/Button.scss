@@ -1,6 +1,8 @@
-@import '../../../scss//mixins.scss';
+@import '../../../scss/spacing';
+@import '../../../scss/typography';
 
 .ui-button {
+	@include text-style-button;
 	display: inline-flex;
 	text-align: center;
 	vertical-align: middle;
@@ -11,47 +13,31 @@
 	-ms-user-select: none;
 	user-select: none;
 	background-color: transparent;
-	line-height: 1;
-	border-radius: var(--input-border-radius);
+	border-radius: var(--border-radius-md);
 	cursor: pointer;
-	padding: 7px var(--input-padding-x);
+	padding: var(--spacing-xxs) var(--spacing-xs);
 	align-items: center;
-	min-height: var(--input-height);
 	justify-content: center;
 	position: relative;
-	box-shadow: var(--shadow-button);
-	background-color: white;
-	font-weight: 500;
-	color: var(--body-color);
-
-	@include darkmode {
-		&.-default {
-			background: var(--dark-300);
-		}
-	}
-
-	&.-outline {
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-	}
+	background-color: var(--surface-default);
+	color: var(--text-default);
 
 	&.-default {
-		border: solid 1px var(--input-border-color);
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+		background: var(--surface-default);
+		border: solid 1px var(--border-default);
 
 		&:hover {
-			color: var(--body-color);
-			background-color: var(--gray-100);
+			color: var(--text-default);
+			background-color: var(--surface-hovered);
 			filter: none;
 		}
 	}
 
 	&:hover {
-		filter: brightness(1.08);
 		text-decoration: none;
 	}
 
 	&:active {
-		// transform: scale(0.98);
 		transform: translateY(1px);
 	}
 
@@ -61,155 +47,76 @@
 		}
 	}
 
-	&.-link {
-		background: none;
-		color: var(--link-color);
-		box-shadow: none;
-
-		&:focus {
-			outline: none;
-		}
-
-		&:hover .ui-button-content {
-			text-decoration: none;
-			div {
-				text-decoration: underline;
-			}
-		}
-
-		&:disabled {
-			background-color: transparent;
-		}
-
-		&::before {
-			display: none;
-		}
-	}
-
 	&.-sm {
-		padding: 0 var(--input-padding-x-sm);
-		min-height: var(--input-height-sm);
-		border-radius: var(--input-border-radius-sm);
+		padding: 6px 12px;
 	}
 
 	&.-lg {
-		padding: 8px calc(var(--input-height-lg) * 0.35);
-		min-height: var(--input-height-lg);
+		padding: 12px var(--spacing-md);
 	}
 
 	&.-primary {
-		background-color: var(--primary);
-		color: white;
+		background-color: var(--action-primary);
+		color: var(--text-on);
 
-		&.-outline {
-			background-color: transparent;
-			color: var(--body-color);
-
-			&:hover {
-				background-color: var(--primary);
-				color: white;
-			}
+		&:hover {
+			background-color: var(--action-primary-hovered);
 		}
-	}
-
-	&.-light {
-		background-color: var(--gray-100);
-		color: var(--body-color);
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), inset 0 0 0 2px rgba(0, 0, 0, 0.2);
 	}
 
 	&.-secondary {
 		background-color: var(--secondary);
-		color: white;
+		color: var(--text-on);
 
-		&.-outline {
-			border: 2px solid var(--secondary);
-			background-color: transparent;
-			color: var(--body-color);
-
-			&:hover {
-				background-color: var(--secondary);
-				color: white;
-			}
+		&:hover {
+			background-color: var(--action-secondary-hovered);
 		}
 	}
 
 	&.-success {
 		background-color: var(--success);
-		color: white;
+		color: var(--text-on);
 
-		&.-outline {
-			border: 2px solid var(--success);
-			background-color: transparent;
-			color: var(--body-color);
-
-			&:hover {
-				background-color: var(--success);
-				color: white;
-			}
+		&:hover {
+			background-color: var(--action-success-hovered);
 		}
 	}
 
 	&.-danger {
-		background-color: var(--danger);
-		color: white;
+		background-color: var(--critical);
+		color: var(--text-on);
 
-		&.-outline {
-			border: 2px solid var(--danger);
-			background-color: transparent;
-			box-shadow: none;
-			color: #d82c0d;
-
-			&:hover {
-				background-color: var(--danger);
-				color: white;
-			}
-		}
-	}
-
-	&.-dark {
-		background-color: var(--dark);
-		color: white;
-
-		&.-outline {
-			border: 2px solid var(--dark);
-			background-color: transparent;
-			color: var(--body-color);
-
-			&:hover {
-				background-color: var(--dark);
-				color: white;
-			}
+		&:hover {
+			background-color: var(--action-critical-hovered);
 		}
 	}
 
 	&.-plain {
 		background: transparent;
-		box-shadow: none;
 		filter: none;
 		border: none;
-		color: var(--body-color);
+		color: var(--text-primary);
 
 		&:hover {
 			filter: none;
-			background-color: var(--gray-200);
+			background-color: var(--surface-hovered);
 		}
 
 		&:active {
-			background-color: var(--gray-200);
+			background-color: var(--surface-hovered);
 		}
 	}
 
 	&.-flush-left {
-		margin-left: calc(var(--input-padding-x) * -1);
+		margin-left: calc(14px * -1);
 
 		&.-sm {
-			margin-left: calc(var(--input-padding-x-sm) * -1);
+			margin-left: calc(12px * -1);
 		}
 	}
 
 	&.-flush-right {
-		margin-right: calc(var(--input-padding-x) * -1);
+		margin-right: calc(14px * -1);
 	}
 
 	&.-block {
@@ -218,31 +125,22 @@
 
 	&:disabled {
 		pointer-events: none;
-		opacity: 0.6;
-		background-color: var(--gray-200);
-		color: var(--text-muted);
-		border: solid 1px var(--gray-300);
-		box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
-
-		&.-link {
-			border: none;
-			box-shadow: none;
-		}
+		background-color: var(--surface-disable);
+		color: var(--text-disable);
+		border: solid 1px var(--border-disable);
 	}
 
 	&:focus {
-		// outline: -webkit-focus-ring-color auto 1px;
-		outline: var(--primary) solid 2px;
+		outline: var(--action-primary) solid 2px;
 		outline-offset: -2px;
 		outline-offset: 1px;
 	}
 
 	.ui-button-content {
-		// position: relative;
 		z-index: 4;
 		display: flex;
 		line-height: 1;
-		gap: 8px;
+		gap: var(--spacing-xxs);
 		align-items: center;
 
 		.ui-icon:last-child:not(:first-child) {
@@ -251,7 +149,7 @@
 	}
 
 	.ui-spinner + div {
-		margin-left: 8px;
+		margin-left: var(--spacing-xxs);
 	}
 
 	.ui-icon {
