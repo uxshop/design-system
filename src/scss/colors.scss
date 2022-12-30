@@ -76,7 +76,7 @@
 	--decorative-five: #79bd9b;
 	--decorative-six: #979ca2;
 
-	[data-theme='dark'] {
+	&[data-theme='dark'] {
 		/* background colors */
 		--background-default: #27273b;
 		--background-hovered: #1d1a2b;
