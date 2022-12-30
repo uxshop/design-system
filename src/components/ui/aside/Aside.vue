@@ -69,14 +69,17 @@ watchEffect(() => {
 <template>
 	<Teleport to="body">
 		<component :is="tag ? tag : 'div'" class="ui-aside" @submit.prevent="$emit('save')">
-			<div v-if="isOpen" class="ui-aside-wrapper" :class="[
-				modalSize,
-				{
-					'-hide': !modelValue,
-					'-scrollable': scrollable,
-					'-inner': inner
-				}
-			]">
+			<div
+				v-if="isOpen"
+				class="ui-aside-wrapper"
+				:class="[
+					modalSize,
+					{
+						'-hide': !modelValue,
+						'-scrollable': scrollable,
+						'-inner': inner
+					}
+				]">
 				<div class="ui-aside-overlay" :class="{ '-close': !noCloseOnBackdrop }" @click="onClickBackdrop"></div>
 
 				<div class="ui-aside-content" :id="scrollableContentId">
@@ -85,7 +88,7 @@ watchEffect(() => {
 							<h4 class="title">
 								{{ title }}
 							</h4>
-							<small class="d-block text-muted" v-if="subtitle">{{ subtitle }}</small>
+							<small class="ui-aside-subtitle" v-if="subtitle">{{ subtitle }}</small>
 						</div>
 						<button @click="onClose" class="close" id="btn-close" type="button">
 							<span>fechar</span>
@@ -98,8 +101,12 @@ watchEffect(() => {
 					</div>
 
 					<div class="ui-aside-footer" v-if="primaryAction">
-						<Button type="submit" @click="primaryAction.onAction" :label="primaryAction.label"
-							:disabled="primaryAction.disabled" :variant="primaryAction.variant ?? 'primary'"
+						<Button
+							type="submit"
+							@click="primaryAction.onAction"
+							:label="primaryAction.label"
+							:disabled="primaryAction.disabled"
+							:variant="primaryAction.variant ?? 'primary'"
 							:form="primaryAction.form" />
 
 						<Button v-for="item in secondaryActions" type="button" @click="item.onAction" :label="item.label" />
