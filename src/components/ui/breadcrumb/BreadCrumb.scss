@@ -7,10 +7,10 @@
 	align-items: center;
 	text-transform: lowercase;
 	margin: 0;
-	font-weight: 600;
+	font-weight: 400;
 
-	@include mobile {
-		font-weight: 400;
+	@include desktop {
+		font-weight: 600;
 	}
 
 	> .-icon {

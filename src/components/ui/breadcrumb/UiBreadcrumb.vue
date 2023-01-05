@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue'
-withDefaults(
-	defineProps<{
-		to: object
-		icon?: boolean
-	}>(),
-	{ icon: false }
-)
+defineProps<{
+	to: object
+	icon?: boolean
+}>()
 </script>
 
 <template>

@@ -37,11 +37,11 @@
 			padding-right: var(--spacing-xxxs);
 			color: var(--secondary);
 			content: '/';
-			font-weight: 600;
+			font-weight: 400;
 			margin: 0 var(--spacing-xxxs);
 
-			@include mobile {
-				font-weight: 400;
+			@include desktop {
+				font-weight: 600;
 			}
 		}
 
