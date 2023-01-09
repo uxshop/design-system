@@ -1,3 +1,5 @@
+@import '../../../scss/typography.scss';
+
 .ui-avatar {
 	display: inline-flex;
 	align-items: center;
@@ -6,8 +8,6 @@
 	flex-shrink: 0;
 	width: 25px;
 	height: 25px;
-	font-size: inherit;
-	font-weight: 400;
 	line-height: 1;
 	max-width: 100%;
 	max-height: auto;
@@ -16,7 +16,10 @@
 	position: relative;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	border-radius: 100%;
-	background: var(--gray-200);
+	background: var(--surface-default);
+	@include text-style-subheading;
+	color: var(--text-default);
+	border: solid 2px var(--border-primary);
 
 	> .ui-avatar-content {
 		border-radius: inherit;
@@ -28,22 +31,7 @@
 		align-items: center;
 		text-transform: uppercase;
 		white-space: nowrap;
-		border: solid 1px var(--dark-300, white);
-		box-shadow: 0 0 0 2px var(--border-color);
-		background: var(--gray-100);
-	}
-
-	&.-primary {
-		.ui-avatar-content {
-			color: var(--primary);
-			box-shadow: 0 0 0 2px var(--primary);
-		}
-	}
-
-	&.-success {
-		.ui-avatar-content {
-			color: var(--success);
-			box-shadow: 0 0 0 2px var(--success);
-		}
+		border: solid 2px var(--surface-default);
+		background: var(--background-default);
 	}
 }
