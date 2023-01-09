@@ -6,7 +6,7 @@ export default {
 	component: Avatar,
 	argTypes: {},
 	args: {
-		text: 'MB'
+		label: 'MB'
 	}
 }
 
