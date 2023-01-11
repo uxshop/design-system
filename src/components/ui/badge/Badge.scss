@@ -1,79 +1,35 @@
+@import '../../../scss/typography.scss';
+
 .ui-badge {
 	display: inline-flex;
 	align-items: center;
-	font-weight: var(--font-weight-semibold);
-	color: var(--body-color);
-	background: var(--gray-200);
-	padding: 5px;
-	border-radius: 4px;
-	font-size: 12px;
-	line-height: 1;
+	color: var(--text-default);
+	background: var(--surface-neutral);
+	padding: var(--spacing-xxxs) var(--spacing-xxs);
+	border-radius: var(--border-radius-xl);
+	@include text-style-caption;
 
 	& + .ui-badge {
 		margin-left: 5px;
 	}
 
-	&.-default {
-		background-color: var(--gray-200);
-		color: var(--body-color);
-	}
-
 	&.-primary {
 		background-color: var(--primary);
-		color: white;
+		color: var(--text-on);
 	}
 
 	&.-secondary {
 		background-color: var(--secondary);
-		color: white;
-	}
-
-	&.-warning {
-		background-color: var(--warning);
-		color: white;
+		color: var(--text-neutral);
 	}
 
 	&.-danger {
-		background-color: var(--danger);
-		color: white;
-	}
-
-	&.-dark {
-		background-color: var(--dark);
-		color: white;
+		background-color: var(--critical);
+		color: var(--text-on);
 	}
 
 	&.-success {
 		background-color: var(--success);
 		color: white;
-	}
-
-	&.-sm {
-		font-size: 10px;
-	}
-
-	&.-lg {
-		padding: 6px 12px;
-		font-size: 13px;
-	}
-
-	&.-hover {
-		&:hover {
-			color: var(--link-color);
-			.icon {
-				color: var(--link-color);
-			}
-		}
-	}
-
-	&.-pill {
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 20px;
-	}
-
-	.icon {
-		font-size: 21px;
-		margin-right: 5px;
 	}
 }
