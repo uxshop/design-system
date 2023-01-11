@@ -6,6 +6,7 @@
 @import './table.scss';
 @import './tooltip.scss';
 @import './variables.scss';
+@import './typography.scss';
 
 body,
 html {
@@ -14,8 +15,8 @@ html {
 }
 
 body {
-	color: var(--body-color);
-	font-size: var(--font-size-base);
+	color: var(--text-default);
+	@include text-style-body;
 	font-family: var(--font-family);
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -23,7 +24,6 @@ body {
 	text-align: left;
 	overflow-x: hidden;
 	overflow-y: auto;
-	line-height: 1.4;
 
 	&.dialog-open,
 	&.modal-open {
