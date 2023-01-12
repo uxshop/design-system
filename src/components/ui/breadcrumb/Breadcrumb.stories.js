@@ -29,6 +29,8 @@ const Template = (args) => ({
 })
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+	icon: false
+}
 
 Default.decorators = [vueRouter()]

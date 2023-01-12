@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-breadcrumb {
 	> .ui-breadcrumb-item {
 		display: flex;
@@ -5,19 +7,19 @@
 
 		&:before {
 			position: relative;
-			z-index: 999;
+			z-index: var(--z-800);
 			float: none;
 		}
 
 		> a {
 			font-weight: inherit;
 			position: relative;
-			z-index: 11;
+			z-index: var(--z-100);
 			display: inline-flex;
 			align-items: center;
 			height: 38px;
 			text-decoration: none;
-			color: var(--body-color);
+			color: var(--text-default);
 
 			&:hover {
 				text-decoration: none;
@@ -32,14 +34,19 @@
 			padding-left: 5px;
 		}
 		+ .ui-breadcrumb-item::before {
-			padding-right: 5px;
+			padding-right: var(--spacing-xxxs);
 			color: var(--secondary);
 			content: '/';
-			margin: 0 5px;
+			font-weight: 400;
+			margin: 0 var(--spacing-xxxs);
+
+			@include desktop {
+				font-weight: 600;
+			}
 		}
 
 		> .ui-breadcrumb-item::before {
-			margin: 0 50px;
+			margin: 0 var(--spacing-xlg);
 		}
 	}
 }
