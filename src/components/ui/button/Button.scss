@@ -13,9 +13,9 @@
 	-ms-user-select: none;
 	user-select: none;
 	background-color: transparent;
-	border-radius: var(--border-radius-md);
+	border-radius: var(--border-radius-sm);
 	cursor: pointer;
-	padding: var(--spacing-xxs) var(--spacing-xs);
+	padding: var(--spacing-xxs) var(--spacing-sm);
 	align-items: center;
 	justify-content: center;
 	position: relative;
@@ -48,11 +48,11 @@
 	}
 
 	&.-sm {
-		padding: 6px 12px;
+		padding: var(--spacing-xxxs) var(--spacing-xs);
 	}
 
 	&.-lg {
-		padding: 12px var(--spacing-md);
+		padding: var(--spacing-xs) var(--spacing-lg);
 	}
 
 	&.-primary {
@@ -140,7 +140,7 @@
 		z-index: 4;
 		display: flex;
 		line-height: 1;
-		gap: var(--spacing-xxs);
+		gap: var(--spacing-xxxs);
 		align-items: center;
 
 		.ui-icon:last-child:not(:first-child) {
@@ -154,6 +154,6 @@
 
 	.ui-icon {
 		color: inherit;
-		font-size: 18px;
+		font-size: 20px;
 	}
 }
