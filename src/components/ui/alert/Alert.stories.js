@@ -18,7 +18,7 @@ const Template = (args) => ({
 		return { args }
 	},
 	template: `
-    <Alert v-bind="args">
+    <Alert v-bind="args" dismissible>
       #default slot
     </Alert>
   `

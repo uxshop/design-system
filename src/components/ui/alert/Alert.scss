@@ -3,7 +3,7 @@
 .ui-alert {
 	text-align: left;
 	position: relative;
-	padding: var(--spacing-xs);
+	padding: var(--spacing-sm);
 	background-color: var(--surface-neutral);
 	color: var(--text-default);
 	margin-bottom: var(--spacing-s);
@@ -111,6 +111,7 @@
 		cursor: pointer;
 		align-self: flex-start;
 		color: inherit;
+		padding: 0;
 
 		&:hover {
 			background-color: rgba(0, 0, 0, 0.05);
