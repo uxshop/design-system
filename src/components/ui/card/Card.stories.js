@@ -17,7 +17,9 @@ const Template = (args) => ({
 	},
 	template: `
   <Card v-bind="args">
+  <template #caption>caption</template>
     Conteudo do card
+    <template #footer>#footer</template>
   </Card>
   `
 })
@@ -25,10 +27,12 @@ const Template = (args) => ({
 export const Default = Template.bind({})
 Default.args = {
 	title: 'Card normal',
-  actions:[{
-    label: 'Adicionar',
-    onAction: () => {}
-  }]
+	actions: [
+		{
+			label: 'Adicionar',
+			onAction: () => {}
+		}
+	]
 }
 
 export const Dropdown = Template.bind({})
