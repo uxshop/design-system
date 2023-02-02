@@ -75,6 +75,15 @@
 		}
 	}
 
+	&-info-text {
+		margin-bottom: 16px;
+	}
+
+	&-info-buttons {
+		display: flex;
+		gap: 8px;
+	}
+
 	iframe {
 		min-height: 250px;
 	}

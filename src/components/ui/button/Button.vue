@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, shallowRef } from 'vue'
+import { ref } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
 
@@ -18,6 +18,7 @@ export interface Props {
 	loading?: boolean
 	outline?: boolean
 	disclosure?: boolean
+	target?: '_blank' | '_self'
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -77,7 +78,8 @@ if (props.disclosure) {
 		:class="[classList, { '-loading': loading }]"
 		:disabled="loading"
 		:to="to"
-		:href="href">
+		:href="href"
+		:target="target">
 		<div class="ui-button-content">
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
 			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
