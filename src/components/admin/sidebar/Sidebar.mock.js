@@ -1,4 +1,6 @@
-export default {
+import StatsGroup from '../stats/StatsGroup.vue'
+
+export const menus = {
 	products: {
 		section: 'products',
 		name: 'Catálogo',
@@ -52,6 +54,7 @@ export default {
 		section: 'customers',
 		name: 'Clientes',
 		icon: 'account_circle',
+		to: 'customers',
 		nodes: [
 			{
 				name: 'Clientes',
@@ -69,6 +72,7 @@ export default {
 		section: 'orders',
 		name: 'Pedidos',
 		icon: 'inbox',
+		to: 'orders',
 		nodes: [
 			{
 				name: 'Pedidos',
@@ -76,12 +80,12 @@ export default {
 				permissions: 'orders'
 			},
 			{
-				name: 'Rascunhos (beta)',
+				name: 'Rascunhos',
 				to: 'drafts',
 				permissions: 'drafts'
 			},
 			{
-				name: 'Carrinhos <br/>abandonados',
+				name: 'Carrinhos abandonados',
 				to: 'checkouts',
 				permissions: 'checkouts'
 			}
@@ -91,6 +95,7 @@ export default {
 		section: 'marketing',
 		name: 'Marketing',
 		icon: 'ads_click',
+		to: 'coupons',
 		nodes: [
 			{
 				name: 'Cupom de desconto',
@@ -131,6 +136,7 @@ export default {
 		section: 'online-store',
 		name: 'Loja virtual',
 		icon: 'storefront',
+		to: 'preferences',
 		nodes: [
 			{
 				name: 'Preferências',
@@ -184,12 +190,14 @@ export default {
 		name: 'Marketplace',
 		to: 'marketplace',
 		permissions: 'marketplace',
-		icon: 'hub'
+		icon: 'hub',
+		to: 'marketplace'
 	},
 	extension: {
 		section: 'extension',
 		name: 'Aplicativos',
 		icon: 'extension',
+		to: 'extensions',
 		nodes: [
 			{
 				name: 'Meus apps',
@@ -213,6 +221,7 @@ export default {
 		section: 'configuration',
 		name: 'Configurações',
 		icon: 'settings',
+		to: 'general',
 		nodes: [
 			{
 				name: 'Geral',
@@ -277,3 +286,50 @@ export default {
 	// 	permissions: ''
 	// }
 }
+
+export const routes = [
+	{ path: '/', name: 'home', component: StatsGroup },
+	{ path: '/categories', name: 'categories', component: StatsGroup },
+	{ path: '/products', name: 'products', component: StatsGroup },
+	{ path: '/kits', name: 'kits', component: StatsGroup },
+	{ path: '/colors', name: 'colors', component: StatsGroup },
+	{ path: '/options', name: 'options', component: StatsGroup },
+	{ path: '/features', name: 'features', component: StatsGroup },
+	{ path: '/brands', name: 'brands', component: StatsGroup },
+	{ path: '/stocks', name: 'stocks', component: StatsGroup },
+	{ path: '/customers', name: 'customers', component: StatsGroup },
+	{ path: '/grupos', name: 'customers.groups', component: StatsGroup },
+	{ path: '/orders', name: 'orders', component: StatsGroup },
+	{ path: '/drafts', name: 'drafts', component: StatsGroup },
+	{ path: '/checkouts', name: 'checkouts', component: StatsGroup },
+	{ path: '/coupons', name: 'coupons', component: StatsGroup },
+	{ path: '/freight', name: 'freight', component: StatsGroup },
+	{ path: '/buy_and_get', name: 'buy_and_get', component: StatsGroup },
+	{ path: '/mailing', name: 'mailing', component: StatsGroup },
+	{ path: '/variation_request', name: 'variation_request', component: StatsGroup },
+	{ path: '/preferences', name: 'preferences', component: StatsGroup },
+	{ path: '/themes', name: 'themes', component: StatsGroup },
+	{ path: '/menus', name: 'menus', component: StatsGroup },
+	{ path: '/marketplace', name: 'marketplace', component: StatsGroup },
+	{ path: '/checkout', name: 'checkout', component: StatsGroup },
+	{ path: '/pages', name: 'pages', component: StatsGroup },
+	{ path: '/hotsites', name: 'hotsites', component: StatsGroup },
+	{ path: '/posts', name: 'posts', component: StatsGroup },
+	{ path: '/scripts', name: 'scripts', component: StatsGroup },
+	{ path: '/myextensions', name: 'my-extensions', component: StatsGroup },
+	{ path: '/extensions', name: 'extensions', component: StatsGroup },
+	{ path: '/apis', name: 'apis', component: StatsGroup },
+	{ path: '/payments', name: 'payments', component: StatsGroup },
+	{ path: '/carriers', name: 'carriers', component: StatsGroup },
+	{ path: '/warehouse', name: 'warehouse', component: StatsGroup },
+	{ path: '/notifications', name: 'notifications', component: StatsGroup },
+	{ path: '/users', name: 'users', component: StatsGroup },
+	{ path: '/billing', name: 'billing', component: StatsGroup },
+	{ path: '/redirects', name: 'redirects', component: StatsGroup },
+	{ path: '/taxes', name: 'taxes', component: StatsGroup },
+	{ path: '/files', name: 'files', component: StatsGroup },
+	{ path: '/support', name: 'support', component: StatsGroup },
+	{ path: '/reports', name: 'reports', component: StatsGroup },
+	{ path: '/domains', name: 'domains', component: StatsGroup },
+	{ path: '/genera', name: 'general', component: StatsGroup }
+]

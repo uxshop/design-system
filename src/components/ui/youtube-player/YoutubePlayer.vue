@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue'
 
 const props = defineProps<{
-	videoid: string
+	videoId: string
 	width?: string | number
 	height?: string | number
 	controls: boolean

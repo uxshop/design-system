@@ -65,10 +65,14 @@ const clickOverlay = () => {
 }
 
 const checkSubActive = (item: any) => {
-	const routeName = route.name.replace(/_[^_]+?$/, '')
-	const itemName = item.to.replace(/_[^_]+?$/, '')
+	if (route.name) {
+		const routeName = String(route.name).replace(/_[^_]+?$/, '')
+		const itemName = item.to.replace(/_[^_]+?$/, '')
 
-	return itemName == routeName
+		return itemName == routeName
+	}
+
+	return false
 }
 </script>
 

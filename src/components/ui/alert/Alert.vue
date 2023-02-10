@@ -3,7 +3,7 @@ import { watchEffect, ref } from 'vue'
 import Icon from '../icon/Icon.vue'
 const props = defineProps<{
 	title?: string
-	variant?: string
+	variant?: 'success' | 'danger' | 'info' | 'warning'
 	icon?: string
 	dismissible?: boolean
 	show: boolean

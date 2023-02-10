@@ -14,9 +14,7 @@ const Template = (args) => ({
 		return { args }
 	},
 	template: `
-    <StatsGroup v-bind="args">
-      Loren ipsum
-    </StatsGroup>
+    <StatsGroup v-bind="args" />
   `
 })
 

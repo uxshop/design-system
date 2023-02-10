@@ -18,6 +18,7 @@ const props = withDefaults(
 )
 
 const pageHelperVideoModalRef = ref()
+
 const onClick = () => {
 	pageHelperVideoModalRef.value.open(props.video)
 }

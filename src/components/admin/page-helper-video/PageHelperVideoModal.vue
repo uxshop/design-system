@@ -23,7 +23,7 @@ defineExpose({
 		<div class="page-helper-video-modal">
 			<AsideSection>
 				<div class="videoWrapper">
-					<YoutubePlayer :videoid="video.video_id" :width="480" :height="320" :controls="1" style="width: 100%" />
+					<YoutubePlayer :videoId="video.video_id" :width="480" :height="320" :controls="true" style="width: 100%" />
 				</div>
 			</AsideSection>
 			<AsideSection>

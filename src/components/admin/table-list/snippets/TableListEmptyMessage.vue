@@ -7,7 +7,7 @@ defineProps({
 <template>
 	<div class="table-list-empty-message">
 		<h4 class="table-list-empty-message-title">Esta seção não possui registros</h4>
-		<div class="table-list-empty-message-text" v-html="msg"></div>
+		<div v-if="msg" v-html="msg" class="table-list-empty-message-text"></div>
 	</div>
 </template>
 

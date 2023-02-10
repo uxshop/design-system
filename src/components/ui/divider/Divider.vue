@@ -3,14 +3,20 @@ const props = withDefaults(
 	defineProps<{
 		transparent?: boolean
 		height?: string
+		margin?: string
 	}>(),
 	{
 		height: '2px'
 	}
 )
 
-const customStyle = {
+const customStyle: any = {
 	height: props.height
+}
+
+if (props.margin) {
+	customStyle.marginTop = props.margin
+	customStyle.marginBottom = props.margin
 }
 </script>
 

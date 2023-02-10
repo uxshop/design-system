@@ -30,7 +30,7 @@ Default.args = {
 		{
 			date: '02 abril, 2022 às 23:11h',
 			title: 'Hello work',
-			titleTo: { name: 'orders' },
+			// titleTo: { name: 'orders' },
 			text: 'Develop an online store of electronic devices for the provided layout, as well as develop a mobile version of it. The must be compatible with any CMS.Develop an online store of electronic devices for the provided layout, as well as develop a mobile version of it. The must be compatible with any CMS.'
 		}
 	]

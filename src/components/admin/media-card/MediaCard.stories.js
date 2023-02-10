@@ -24,7 +24,9 @@ const Template = (args) => ({
 })
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+	image: 'https://picsum.photos/id/237/400/200'
+}
 
 export const Video = Template.bind({})
 Video.args = {
