@@ -40,6 +40,7 @@ defineProps<{
 					variant="plain"
 					:label="item.label"
 					:to="item.to"
+					:leading-icon="item.leadingIcon"
 					@click="item.onAction" />
 				<Dropdown v-else right>
 					<template #button-content>
@@ -49,6 +50,7 @@ defineProps<{
 						v-for="item in secondaryActions"
 						:label="item.label"
 						@click="item.onAction"
+						:leading-icon="item.leadingIcon"
 						:class="item.class" />
 				</Dropdown>
 			</div>
