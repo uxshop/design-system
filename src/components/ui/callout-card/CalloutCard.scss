@@ -5,13 +5,25 @@
 		gap: var(--grid-gutter-width);
 	}
 
-	.ui-callout-card-title {
-		margin: 0;
+	&-content {
+		width: 100%;
+	}
+
+	&-header {
+		display: flex;
+		gap: var(--grid-gutter-width);
+		align-items: center;
 		margin-bottom: 12px;
+	}
+
+	&-title {
+		margin: 0;
 	}
 
 	.ui-callout-card-actions {
 		margin-top: 12px;
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	.ui-callout-card-icon {
