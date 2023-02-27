@@ -9,4 +9,5 @@ export interface IAction {
 	type?: string
 	variant?: IVariant
 	to?: any
+	target?: '_blank' | '_self'
 }

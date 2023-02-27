@@ -95,6 +95,8 @@ const getComponent = (item: IDropdownItem) => {
 
 			<div class="ui-topbar-actions">
 				<div class="ui-topbar-actions">
+					<slot name="topbar-actions" />
+
 					<IconButton
 						icon="notifications"
 						variant="plain"
