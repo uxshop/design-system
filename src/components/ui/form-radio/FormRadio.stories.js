@@ -1,3 +1,4 @@
+import { ref } from 'vue'
 import FormRadio from './FormRadio.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
@@ -11,10 +12,12 @@ export default {
 const Template = (args) => ({
 	components: { FormRadio },
 	setup() {
-		return { args }
+		const model = ref()
+		return { args, model }
 	},
 	template: `
-    <FormRadio v-bind="args" />
+    <FormRadio v-bind="args" v-model="model" />
+		<pre>{{ model }}</pre>
   `
 })
 

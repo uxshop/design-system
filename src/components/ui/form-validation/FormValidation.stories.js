@@ -18,7 +18,7 @@ const Template = (args) => ({
 		return { args, model }
 	},
 	template: `
-    <FormValidation v-bind="args" v-model="model" />
+    <FormValidation v-bind="args" :modelValue="model" />
   `
 })
 

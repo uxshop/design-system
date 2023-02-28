@@ -22,8 +22,8 @@ const Template = (args) => ({
     <FormSelect v-bind="args" v-model="model">
       <option :value=3>Teste</option>
     </FormSelect>
-
-    <button value="" @click="model=null">set null</button>
+		<br />
+    <button @click="model=null">set null</button>
     <pre>{{ model }}</pre>
   `
 })

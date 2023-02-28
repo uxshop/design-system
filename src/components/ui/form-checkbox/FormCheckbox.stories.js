@@ -13,10 +13,13 @@ const Template = (args) => ({
 	components: { FormCheckbox },
 	setup() {
 		const model = ref(['Mike'])
+		setTimeout(() => {
+			model.value = ['Maicol', 'Bruski']
+		}, 1000)
 		return { args, model }
 	},
 	template: `
-    <p><FormCheckbox v-bind="args"  v-model="model" value="Mike" /></p>
+    <p><FormCheckbox v-bind="args" v-model="model" value="Bruski" /></p>
     <pre>{{ model }}</pre>
   `
 })

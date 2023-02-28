@@ -62,17 +62,17 @@ const onCheckOne = (e: MouseEvent, item: any) => {
 		</div>
 		<component
 			v-for="(item, key) in rows"
+			@click="onClickRow($event, item)"
+			class="table-list-row"
 			:is="to ? 'router-link' : 'div'"
 			:to="{ name: to, params: { id: item.id } }"
-			@click="onClickRow($event, item)"
 			:key="item.id"
-			class="table-list-row"
 			:class="{
 				'-selected': selected.includes(item.id),
 				'-inactive': item.active == false
 			}">
 			<TableListItem v-if="!state.config.hideCheckbox" @click.stop.prevent="onCheckOne($event, item)" auto>
-				<FormCheckbox v-model="selected" :value="item.id" noEvents />
+				<FormCheckbox :modelValue="selected" :value="item.id" noEvents />
 			</TableListItem>
 
 			<slot v-bind:item="item" />

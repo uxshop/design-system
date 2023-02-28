@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref, watchEffect } from 'vue'
+import { computed, getCurrentInstance, ref } from 'vue'
 
 const emit = defineEmits(['update:modelValue', 'update'])
 const props = defineProps<{
-	modelValue?: unknown
-	value?: unknown
+	modelValue?: any
+	value?: any
 	switch?: boolean
 	label?: string
-	id?:string
+	id?: string
 	name?: string
 	size?: string
 	tabindex?: string | number
@@ -19,7 +19,14 @@ const props = defineProps<{
 
 const uid = props.id ?? `ui-form-checkbox-${getCurrentInstance()?.uid}`
 const classList = ref<string[]>([])
-const model = ref()
+const model = computed({
+	get() {
+		return props.modelValue
+	},
+	set(newValue) {
+		update(newValue)
+	}
+})
 
 if (props.size) {
 	classList.value.push(`-${props.size}`)
@@ -31,10 +38,6 @@ if (props.noEvents) {
 if (props.switch) {
 	classList.value.push(`-switch`)
 }
-
-watchEffect(() => {
-	model.value = props.modelValue
-})
 
 const update = (val: unknown) => {
 	emit('update', val)

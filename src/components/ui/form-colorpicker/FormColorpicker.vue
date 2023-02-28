@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect, computed } from 'vue'
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import Pickr from '@simonwep/pickr/src/js/pickr'
 import type PickerInterface from '@simonwep/pickr'
@@ -27,8 +27,6 @@ if (props.width) {
 }
 
 const update = (value: string | null) => {
-	console.log(value)
-
 	emit('update:modelValue', value)
 	emit('update', value)
 }
@@ -36,6 +34,15 @@ const update = (value: string | null) => {
 interface PickrCustom extends PickerInterface {
 	init?: boolean
 }
+
+const model = computed({
+	get() {
+		return props.modelValue
+	},
+	set(newValue) {
+		emit('update:modelValue', newValue)
+	}
+})
 
 const createPickrInstance = (options: PickerInterface.Options) => {
 	const noDefault = !options.default
@@ -95,7 +102,6 @@ onMounted(() => {
 			'btn:save': 'Aplicar',
 			'btn:cancel': 'Cancelar',
 			'btn:clear': 'Limpar',
-
 			// Strings used for aria-labels
 			'aria:btn:save': 'save and close',
 			'aria:btn:cancel': 'cancel and close',
@@ -158,8 +164,8 @@ defineExpose({
 			<input
 				v-if="withInput"
 				class="form-control"
-				v-model="modelValue"
-				@update:modelValue="update"
+				:value="model"
+				@input="update($event.target.value)"
 				maxlength="9"
 				@focus="focused = true"
 				@blur="focused = false" />

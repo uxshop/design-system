@@ -19,11 +19,19 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:modelValue', 'update'])
 const uid = `ui-form-radio-${getCurrentInstance()?.uid}`
-const model = computed(() => {
-	return props.modelValue
+
+const model = computed({
+	get() {
+		return props.modelValue
+	},
+	set(newValue) {
+		update(newValue)
+	}
 })
 
 const update = (val: string | boolean) => {
+	console.log(val)
+
 	emit('update:modelValue', val)
 	emit('update', val)
 }
@@ -39,8 +47,7 @@ const update = (val: string | boolean) => {
 			:required="required"
 			:name="name"
 			:disabled="disabled"
-			v-model="model"
-			@update:modelValue="update" />
+			@input="update($event.target.value)" />
 		<span class="ui-form-radio-checkmark" />
 		<div class="ui-form-radio-text" v-if="label || $slots.default">
 			<slot>{{ label }}</slot>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
-import { maska } from 'maska'
+import { vMaska, type MaskaDetail } from 'maska'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { IAction } from '../../../types/IAction'
@@ -47,7 +47,6 @@ export interface Props {
 }
 
 const props = defineProps<Props>()
-const vMaska = maska
 
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string | null): void
@@ -61,6 +60,10 @@ const emit = defineEmits<{
 }>()
 
 const classList = ref<string[]>([])
+const maskOptions = reactive({
+	mask: props.mask,
+	eager: true
+})
 
 const update = (evt: Event) => {
 	if (!props.mask) {
@@ -109,6 +112,8 @@ const onClear = () => {
 </script>
 
 <template>
+	{{ mask }}
+
 	<FormWrapper
 		:id="id"
 		:leadingIcon="leadingIcon"
@@ -128,7 +133,7 @@ const onClear = () => {
 		class="ui-form-textfield">
 		<slot name="before" />
 		<input
-			v-maska="mask"
+			v-maska:[maskOptions]
 			class="form-control"
 			@input="update"
 			@focus="onFocus"
