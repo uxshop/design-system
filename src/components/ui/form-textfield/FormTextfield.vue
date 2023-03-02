@@ -112,8 +112,6 @@ const onClear = () => {
 </script>
 
 <template>
-	{{ mask }}
-
 	<FormWrapper
 		:id="id"
 		:leadingIcon="leadingIcon"
