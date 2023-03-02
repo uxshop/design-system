@@ -14,14 +14,14 @@ defineProps<{
 	<Card dropdown class="card-seo" dropdownLabel="Editar" title="Pré-visualização no Google" dropdownClosed>
 		<template #header-caption>
 			<Seo
-				v-model="modelValue"
+				:modelValue="modelValue"
 				:keyTitle="keyTitle"
 				:keySubTitle="keySubTitle"
 				:keyDescription="keyDescription"
 				:domain="domain"
 				viewOnly />
 		</template>
-		<Seo v-model="modelValue" write-only />
+		<Seo :modelValue="modelValue" write-only />
 	</Card>
 </template>
 

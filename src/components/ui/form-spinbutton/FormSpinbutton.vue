@@ -110,5 +110,5 @@ if (props.size) {
 </template>
 
 <style lang="scss">
-@import './FormSpinButton.scss';
+@import './FormSpinbutton.scss';
 </style>

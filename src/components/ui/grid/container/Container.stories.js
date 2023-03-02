@@ -2,7 +2,7 @@ import Container from './Container.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-	title: 'Ui/Container',
+	title: 'Ui/Grid/Container',
 	component: Container,
 	argTypes: {}
 }
