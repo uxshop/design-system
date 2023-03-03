@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import Spinner from '../spinner/Spinner.vue'
 
 export interface Props {
+	modelValue: number
 	min?: string | number
 	max?: string | number
 	placeholder?: string
 	size?: string | number
 	step?: string | number
-	modelValue: number
+	loading?: boolean
+	disabled?: boolean
 }
 
 const emit = defineEmits(['update:modelValue', 'change'])
@@ -15,7 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
 	step: 1,
 	modelValue: 1
 })
-const classList = ref<string[]>([])
+// const classList = ref<string[]>([])
 const update = (val: number) => {
 	emit('update:modelValue', val)
 	emit('change', val)
@@ -33,16 +36,29 @@ const decrease = () => {
 	}
 }
 
-if (props.size) {
-	classList.value.push(`-${props.size}`)
-}
+const classList = computed(() => {
+	const data = []
+	if (props.size) {
+		data.push(`-${props.size}`)
+	}
+
+	if (props.disabled) {
+		data.push(`-disabled`)
+	}
+
+	return data
+})
 </script>
 
 <template>
 	<div role="group" tabindex="-1" class="ui-form-spinbutton" :class="classList">
+		<div class="ui-form-spinbutton-loader" v-if="loading">
+			<Spinner class="ui-form-spinbutton-loader-spin" size="18" />
+		</div>
 		<button
 			tabindex="-1"
 			type="button"
+			:disabled="disabled"
 			aria-controls="demo-sb"
 			aria-label="Decrement"
 			aria-keyshortcuts="ArrowDown"
@@ -65,6 +81,7 @@ if (props.size) {
 			</svg>
 		</button>
 		<div
+			:disabled="disabled"
 			class="output"
 			dir="ltr"
 			role="spinbutton"
@@ -83,6 +100,7 @@ if (props.size) {
 		</div>
 		<button
 			tabindex="-1"
+			:disabled="disabled"
 			type="button"
 			aria-controls="demo-sb"
 			aria-label="Increment"

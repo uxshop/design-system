@@ -7,11 +7,7 @@ export default {
 	component: FormSpinbutton,
 	argTypes: {
 		size: {
-			options: [
-				'md',
-				'sm',
-				'lg',
-			],
+			options: ['md', 'sm', 'lg'],
 			control: { type: 'select' }
 		},
 		type: {
@@ -26,10 +22,12 @@ const Template = (args) => ({
 	components: { FormSpinbutton },
 	setup() {
 		const model = ref(1)
-		return { args, model }
+		const disabled = ref(false)
+		return { args, model, disabled }
 	},
 	template: `
-    <FormSpinbutton v-bind="args" v-model="model" />
+    <FormSpinbutton v-bind="args" v-model="model" :disabled=disabled />
+		<button @click="disabled=!disabled">disabled</button>
     <pre>{{ model }}</pre>
   `
 })

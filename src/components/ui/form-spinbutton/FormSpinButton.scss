@@ -5,6 +5,15 @@
 	padding-left: 0;
 	padding-right: 0;
 
+	&.-disabled {
+		background-color: var(--gray-100);
+		border: solid 1px var(--gray-200);
+		button {
+			border: none;
+			background: none !important;
+		}
+	}
+
 	&.-lg {
 		padding-left: 0;
 		padding-right: 0;
@@ -27,7 +36,7 @@
 	.output {
 		flex-grow: 1;
 		text-align: center;
-		border: solid 1px var(--input-border-color);
+		// border: solid 1px var(--input-border-color);
 		border-top: 0;
 		border-bottom: 0;
 		min-width: 40px;
@@ -40,6 +49,7 @@
 		color: var(--body-color);
 		box-shadow: none;
 		filter: none;
+		border-radius: inherit;
 
 		&:last-child {
 			border-top-left-radius: 0;
@@ -61,5 +71,18 @@
 
 	.ui-icon {
 		width: 18px;
+	}
+
+	.ui-form-spinbutton-loader {
+		position: absolute;
+		z-index: 8;
+		background-color: var(--bg-white);
+		opacity: 0.8;
+		width: 100%;
+		height: 100%;
+		border-radius: inherit;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }
