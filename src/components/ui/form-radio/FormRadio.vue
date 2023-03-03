@@ -3,7 +3,7 @@ import { computed, getCurrentInstance } from 'vue'
 
 export interface Props {
 	modelValue?: any
-	value?: string | number | boolean
+	value?: any
 	label?: string
 	name?: string
 	required?: boolean
@@ -29,9 +29,11 @@ const model = computed({
 	}
 })
 
-const update = (val: string | boolean) => {
-	console.log(val)
+const isChecked = computed(() => {
+	return JSON.stringify(props.value) == JSON.stringify(props.modelValue)
+})
 
+const update = (val: string | boolean) => {
 	emit('update:modelValue', val)
 	emit('update', val)
 }
@@ -47,7 +49,8 @@ const update = (val: string | boolean) => {
 			:required="required"
 			:name="name"
 			:disabled="disabled"
-			@input="update($event.target.value)" />
+			:checked="isChecked"
+			@input="update(value)" />
 		<span class="ui-form-radio-checkmark" />
 		<div class="ui-form-radio-text" v-if="label || $slots.default">
 			<slot>{{ label }}</slot>

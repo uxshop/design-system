@@ -2,6 +2,7 @@
 import Icon from '../../ui/icon/Icon.vue'
 import Link from '../../ui/link/Link.vue'
 import Button from '../button/Button.vue'
+import vTooltip from '../../../directives/tooltip'
 
 defineProps<{
 	label?: string

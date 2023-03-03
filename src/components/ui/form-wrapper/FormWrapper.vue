@@ -2,6 +2,7 @@
 import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
+import vTooltip from '../../../directives/tooltip'
 
 export interface Props {
 	leadingIcon?: string

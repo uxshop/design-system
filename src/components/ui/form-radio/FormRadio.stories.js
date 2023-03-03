@@ -12,7 +12,10 @@ export default {
 const Template = (args) => ({
 	components: { FormRadio },
 	setup() {
-		const model = ref()
+		const model = ref({ teste: 2 })
+		setTimeout(() => {
+			model.value = { teste: 1 }
+		}, 1000)
 		return { args, model }
 	},
 	template: `
@@ -25,4 +28,10 @@ export const Default = Template.bind({})
 Default.args = {
 	label: 'Radio',
 	value: '2'
+}
+
+export const WithObject = Template.bind({})
+WithObject.args = {
+	label: 'Radio',
+	value: { teste: 1 }
 }
