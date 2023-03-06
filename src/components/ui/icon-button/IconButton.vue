@@ -4,7 +4,7 @@ import Button from '../button/Button.vue'
 
 export interface Props {
 	icon?: string
-	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain'
+	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain' | 'transparent'
 	size?: string | number
 	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'
 	fab?: boolean

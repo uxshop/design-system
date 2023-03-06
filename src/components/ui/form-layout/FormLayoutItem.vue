@@ -13,7 +13,6 @@ defineProps<{
 .ui-form-layout-item {
 	display: flex;
 	gap: var(--form-group-margin-bottom);
-	align-items: flex-end;
 
 	> div {
 		flex-grow: 1;

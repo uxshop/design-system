@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
-import { vMaska, type MaskaDetail } from 'maska'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { IAction } from '../../../types/IAction'
+import { vMaska } from 'maska'
 
 export interface Props {
 	leadingIcon?: string
@@ -60,9 +60,11 @@ const emit = defineEmits<{
 }>()
 
 const classList = ref<string[]>([])
-const maskOptions = reactive({
-	mask: props.mask,
-	eager: true
+const maskOptions = computed(() => {
+	return {
+		mask: props.mask,
+		eager: true
+	}
 })
 
 const update = (evt: Event) => {
