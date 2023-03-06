@@ -101,4 +101,6 @@ export { default as CalloutCard } from './components/ui/callout-card/CalloutCard
 export { default as FormLayout } from './components/ui/form-layout/FormLayout.vue'
 export { default as FormLayoutItem } from './components/ui/form-layout/FormLayoutItem.vue'
 export { default as CustomScroll } from './components/ui/custom-scroll/CustomScroll.vue'
+export { default as ListGroup } from './components/ui/list-group/ListGroup.vue'
+export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue'
 export { default as MediaCard } from './components/admin/media-card/MediaCard.vue'
