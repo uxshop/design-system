@@ -44,6 +44,8 @@ import Toast from './components/ui/toast/Toast.vue'
 import Dialog from './components/ui/dialog/Dialog.vue'
 import TextStyle from './components/ui/text-style/TextStyle.vue'
 import PageActions from './components/admin/page-actions/PageActions.vue'
+import ListGroup from './components/ui/list-group/ListGroup.vue'
+import ListGroupItem from './components/ui/list-group/ListGroupItem.vue'
 
 // plus / com externos
 import FormColorpicker from './components/ui/form-colorpicker/FormColorpicker.vue'
@@ -100,6 +102,8 @@ export default {
 		app.component(`${prefix}Dialog`, Dialog)
 		app.component(`${prefix}TextStyle`, TextStyle)
 		app.component(`${prefix}PageActions`, PageActions)
+		app.component(`${prefix}ListGroup`, ListGroup)
+		app.component(`${prefix}ListGroupItem`, ListGroupItem)
 
 		// plus
 		app.component(`${prefix}FormRichtext`, FormRichtext)
