@@ -57,6 +57,14 @@
 	&.-disabled {
 		pointer-events: none;
 
+		input:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0 50px var(--border-color) inset !important;
+		}
+
+		.ui-icon {
+			color: var(--gray-300) !important;
+		}
+
 		.form-wrapper-content-bx {
 			background-color: var(--border-color);
 		}
