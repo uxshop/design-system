@@ -102,7 +102,7 @@ watchEffect(() => {
 							:disabled="primaryAction.disabled" :variant="primaryAction.variant ?? 'primary'"
 							:form="primaryAction.form" />
 
-						<Button v-for="item in secondaryActions" type="button" @click="item.onAction" :label="item.label" />
+						<Button v-for="item in secondaryActions" :type="item.type ?? 'button'" @click="item.onAction" :label="item.label" />
 					</div>
 					<div class="ui-aside-footer" v-if="haveSlot('footer')">
 						<slot name="footer" />
