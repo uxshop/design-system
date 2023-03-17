@@ -60,7 +60,8 @@ defineProps<{
 					:to="primaryAction.to"
 					:label="primaryAction.label"
 					@click="primaryAction.onAction"
-					:class="primaryAction.class" />
+					:class="primaryAction.class"
+					:leading-icon="primaryAction.leadingIcon" />
 			</div>
 		</div>
 	</div>
