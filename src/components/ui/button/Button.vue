@@ -19,6 +19,7 @@ export interface Props {
 	outline?: boolean
 	disclosure?: boolean
 	target?: '_blank' | '_self'
+	disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -75,8 +76,8 @@ if (props.disclosure) {
 		class="ui-button"
 		:is="componentButton"
 		:type="type"
-		:class="[classList, { '-loading': loading }]"
-		:disabled="loading"
+		:class="[classList, { '-loading': loading, '-disabled': disabled }]"
+		:disabled="disabled"
 		:to="to"
 		:href="href"
 		:target="target">

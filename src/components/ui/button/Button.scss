@@ -77,7 +77,8 @@
 			}
 		}
 
-		&:disabled {
+		&:disabled,
+		&.-disabled {
 			background-color: transparent;
 		}
 
@@ -220,7 +221,8 @@
 		width: 100%;
 	}
 
-	&:disabled {
+	&:disabled,
+	&.-disabled {
 		pointer-events: none;
 		opacity: 0.6;
 		background-color: var(--gray-200);
