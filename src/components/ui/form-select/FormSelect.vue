@@ -126,7 +126,7 @@ if (props.size) {
 			:title="title"
 			:id="id"
 			:required="required">
-			<option value selected v-if="placeholder">{{ placeholder }}</option>
+			<option value selected disabled v-if="placeholder">{{ placeholder }}</option>
 			<slot />
 			<option
 				v-show="options.length"
