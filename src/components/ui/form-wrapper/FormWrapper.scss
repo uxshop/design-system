@@ -58,7 +58,11 @@
 		pointer-events: none;
 
 		.form-wrapper-content-bx {
-			background-color: var(--border-color);
+			background: var(--border-color);
+		}
+
+		.form-control.-select {
+			background: unset;
 		}
 	}
 
