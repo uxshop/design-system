@@ -4,6 +4,7 @@
 	@include form-control;
 	padding-left: 0;
 	padding-right: 0;
+	align-items: stretch;
 
 	&.-disabled {
 		background-color: var(--gray-100);
@@ -36,12 +37,15 @@
 	.output {
 		flex-grow: 1;
 		text-align: center;
-		// border: solid 1px var(--input-border-color);
 		border-top: 0;
 		border-bottom: 0;
 		min-width: 40px;
-		padding: 5px 0;
 		line-height: 1;
+		border-left: solid 1px var(--input-border-color);
+		border-right: solid 1px var(--input-border-color);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	button {
@@ -54,13 +58,13 @@
 		&:last-child {
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
-			margin-left: -1px;
+			// margin-left: -1px;
 		}
 
 		&:first-child {
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
-			margin-right: -1px;
+			// margin-right: -1px;
 		}
 
 		&:hover {
