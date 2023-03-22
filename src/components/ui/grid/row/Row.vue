@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const props = defineProps<{
-	alignV?: string
+	alignV?: 'center' | 'top' | 'bottom'
 }>()
 
 const classList = ref<string[]>([])
