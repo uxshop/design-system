@@ -251,7 +251,7 @@ defineExpose({
 		<TableListNav :loading="loading">
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
 			<TableListNavRefresh :state="state" />
-			<TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
+			<TableListNavSearch :placeholder="cfg.placeholder" :state="state" />
 			<TableListNavCustomFilter
 				v-if="config.customFilterService"
 				:service="config.customFilterService"

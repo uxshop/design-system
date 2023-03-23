@@ -41,13 +41,12 @@ const onClear = () => {
 
 <template>
 	<span class="table-list-nav-item table-search">
-		<form autocomplete="off" @submit.prevent>
+		<form autocomplete="off" @submit.prevent="onSubmit">
 			<div class="table-search-input">
 				<FormTextfield
 					size="sm"
 					leadingIcon="search"
 					clearable
-					@update:modelValue="update"
 					@clear="onClear"
 					v-model="state.term"
 					id="term"
