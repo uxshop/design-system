@@ -1,26 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-interface Props {
+export interface Props {
 	height?: string | number
 	value?: string | number
 	max?: string | number
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	height: 3
-})
-const style = ref<{
-	height: string
-}>({
-	height: `${props.height}px`
+	height: '3px'
 })
 </script>
 
 <template>
-	<progress class="ui-progress" :style="style" :value="value" :max="max" />
+	<progress class="ui-progress-bar" :value="value" :max="max" />
 </template>
 
 <style lang="scss">
-@import './Progress.scss';
+.ui-progress-bar {
+	height: v-bind(height);
+}
+@import './ProgressBar.scss';
 </style>

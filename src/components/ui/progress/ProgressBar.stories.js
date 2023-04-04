@@ -1,20 +1,20 @@
-import Progress from './Progress.vue'
+import ProgressBar from './ProgressBar.vue'
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-	title: 'Ui/Progress',
-	component: Progress,
+	title: 'Ui/ProgressBar',
+	component: ProgressBar,
 	argTypes: {}
 }
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-	components: { Progress },
+	components: { ProgressBar },
 	setup() {
 		return { args }
 	},
 	template: `
-    <Progress v-bind="args" />
+    <ProgressBar v-bind="args" />
   `
 })
 

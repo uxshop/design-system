@@ -1,14 +1,14 @@
-.ui-progress {
+.ui-progress-bar {
 	background-color: transparent;
 }
-progress::-webkit-progress-bar {
+.ui-progress-bar::-webkit-progress-bar {
 	background-color: var(--border-color);
 	border-radius: 10px;
 }
-progress::-webkit-progress-value {
+.ui-progress-bar::-webkit-progress-value {
 	background-color: var(--primary);
 	border-radius: 10px;
 }
-progress::-moz-progress-bar {
+.ui-progress-bar::-moz-progress-bar {
 	background-color: var(--border-color);
 }
