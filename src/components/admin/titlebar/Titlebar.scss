@@ -6,20 +6,7 @@
 	align-items: center;
 	min-height: 40px;
 
-	.titlebar-actions {
-		margin-left: auto;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-		gap: 10px;
-	}
-
-	.titlebar-actions-secondary {
-		display: flex;
-		gap: inherit;
-	}
-
-	.titlebar-title {
+	&-title {
 		color: var(--body-color);
 		display: flex;
 		gap: 15px;
@@ -29,7 +16,7 @@
 			display: none;
 		}
 
-		.titlebar-text {
+		&-text {
 			font-size: 22px;
 			margin: 0;
 		}
@@ -42,37 +29,39 @@
 		flex-grow: 1;
 	}
 
-	.titlebar-backlink {
+	&-backlink {
 		display: flex;
 		gap: 10px;
 		color: var(--body-color);
 		text-decoration: none;
 	}
 
-	@include mobile {
-		// border-left: none;
-		// border-right: none;
-		// margin: 0 calc(var(--layout-content-padding-x) * -1);
-		// padding: 0 var(--layout-content-padding-x);
-		// position: sticky;
-		// top: 0;
-		// background: var(--bg-white);
-		// z-index: 88;
-		// margin-bottom: 25px;
-		// filter: var(--drop-shadow-filter);
+	&-actions {
+		margin-left: auto;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
 
-		.titlebar-actions {
+	&-actions-secondary {
+		display: flex;
+		gap: inherit;
+	}
+
+	@include mobile {
+		&-actions {
 			> .btn-icon {
 				border: none;
 			}
 		}
 
-		.titlebar-content {
+		&-content {
 			flex: 1;
 			overflow: hidden;
 		}
 
-		.titlebar-title {
+		&-title {
 			align-items: center;
 
 			&.-dekstop {
@@ -92,14 +81,14 @@
 				}
 			}
 
-			.titlebar-text {
+			&-text {
 				font-size: 18px;
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
 			}
 
-			.titlebar-backlink > .ui-icon {
+			&-backlink > .ui-icon {
 				color: var(--secondary);
 				margin-right: 5px;
 				margin-left: -5px;
