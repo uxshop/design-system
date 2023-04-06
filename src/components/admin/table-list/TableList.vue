@@ -34,6 +34,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
 	(event: 'clickRow', i: any): void
+	(event: 'emptyData'): void
 }>()
 
 const rows = ref<TApiData[]>([])
@@ -94,6 +95,7 @@ const fetchData = async () => {
 	LocalStorage.setObj(storageNameFilters, params)
 
 	const res = await props.config.service.get(params)
+	!res.data.length && emit('emptyData')
 	meta.value = res.meta
 	rows.value = res.data
 
