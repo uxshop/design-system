@@ -32,7 +32,7 @@ if (props.size) {
 <template>
 	<div class="ui-page" :class="classList">
 		<Titlebar v-if="!props.hideTitle" :title="title" :to="to" :backlink="backlink" v-bind="props">
-			<template #subtitle>
+			<template #titlebar-subtitle>
 				<slot name="titlebar-subtitle" />
 			</template>
 		</Titlebar>
