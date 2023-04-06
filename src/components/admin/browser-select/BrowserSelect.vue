@@ -19,6 +19,8 @@ export interface Props {
 	selectOne?: boolean
 	title?: string
 	hideList?: boolean
+	hideExcludeButton?: boolean
+	searchDisabled?: boolean
 	noFetch?: boolean
 	hideBtn?: boolean
 	size?: string | number
@@ -217,21 +219,30 @@ defineExpose({ onClickSearch })
 			<div class="ui-browser-select-input">
 				<Row>
 					<Col>
-						<FormTextfield v-model="term" placeholder="Procurar..." @keyup="onChangeTerm" autocomplete="off" />
+						<FormTextfield
+							v-model="term"
+							placeholder="Procurar..."
+							@keyup="onChangeTerm"
+							autocomplete="off"
+							:disabled="searchDisabled" />
 					</Col>
 					<Col auto>
-						<Button variant="dark" @click="onClickSearch">Pesquisar</Button>
+						<Button variant="dark" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
 					</Col>
 				</Row>
 			</div>
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
-				<div class="ui-browser-list-row" v-for="item in rows.slice(0, paginateLimit)" :key="item[identifier]">
+				<div
+					class="ui-browser-list-row"
+					:class="{ '-no-button': hideExcludeButton }"
+					v-for="item in rows.slice(0, paginateLimit)"
+					:key="item[identifier]">
 					<component :is="templateCustom" :item="item" />
 					<div v-if="!templateCustom" class="browser-list-cell">
 						{{ item.name }}
 					</div>
-					<div class="ui-browser-list-cell -auto">
+					<div v-if="!hideExcludeButton" class="ui-browser-list-cell -auto">
 						<ButtonAction size="sm" type="remove" @click="onRemoveItem(item)" />
 					</div>
 				</div>
