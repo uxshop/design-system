@@ -3,11 +3,17 @@ import { each } from 'lodash-es'
 import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 
-const emit = defineEmits(['update:modelValue'])
-const props = defineProps<{
+export interface Props {
 	modelValue?: Record<string, string> | null
 	translate?: Record<string, string>
-}>()
+	scrollToTop?: boolean
+	title?: string
+}
+
+const emit = defineEmits(['update:modelValue'])
+const props = withDefaults(defineProps<Props>(), {
+	title: 'Erros encontrados'
+})
 
 const trans = (val: string) => {
 	if (!props.translate) {
@@ -42,12 +48,7 @@ watchEffect(() => {
 		item.classList.remove('-invalid')
 	})
 
-	// for (var item of items) {
-	// 	item.classList.remove('-invalid')
-	// 	// items[item].classList.remove('-invalid')
-	// }
-
-	if (newVal) {
+	if (newVal && props.scrollToTop) {
 		window.scrollTo(0, 0)
 		each(newVal, (item, key) => {
 			const ele = document.getElementsByClassName(`error.${key}`)
@@ -61,8 +62,8 @@ watchEffect(() => {
 
 <template>
 	<div v-if="modelValue != null" class="ui-form-validation mb-4">
-		<Alert variant="danger" show title="Erros encontrados" dismissible @dismissed="removeErrors">
-			<ul v-for="(item, key) in modelValue" :key="key" class="text-lowercase">
+		<Alert variant="danger" show :title="title" dismissible @dismissed="removeErrors">
+			<ul v-for="(item, key) in modelValue" :key="key">
 				<li v-for="val in item" :key="val">
 					<b>{{ trans(String(key)) }}:</b> {{ val }}
 				</li>
@@ -73,6 +74,6 @@ watchEffect(() => {
 
 <style>
 .ui-form-validation b {
-	text-transform:capitalize;
+	text-transform: capitalize;
 }
 </style>
