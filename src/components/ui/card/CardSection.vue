@@ -19,7 +19,7 @@ defineProps<{
 				</Link>
 			</div>
 		</div>
-		<div  class="ui-card-section-content">
+		<div class="ui-card-section-content">
 			<slot />
 		</div>
 	</div>

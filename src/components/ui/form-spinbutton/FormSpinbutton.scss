@@ -6,11 +6,12 @@
 	padding-right: 0;
 	align-items: stretch;
 
-	&.-disabled {
+	&.-disabled,
+	button:disabled {
 		background-color: var(--gray-100);
 		border: solid 1px var(--gray-200);
 		button {
-			border: none;
+			border: none !important;
 			background: none !important;
 		}
 	}

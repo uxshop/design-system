@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 
 export interface Props {
@@ -18,7 +18,9 @@ const props = withDefaults(defineProps<Props>(), {
 	step: 1,
 	modelValue: 1
 })
-// const classList = ref<string[]>([])
+const disabledDecrement = ref(false)
+const disabledIncrement = ref(false)
+
 const update = (val: number) => {
 	emit('update:modelValue', val)
 	emit('change', val)
@@ -48,6 +50,18 @@ const classList = computed(() => {
 
 	return data
 })
+
+watchEffect(() => {
+	disabledIncrement.value = false
+	disabledDecrement.value = false
+
+	if (props.max && props.modelValue >= props.max) {
+		disabledIncrement.value = true
+	}
+	if (props.max && props.modelValue <= props.min) {
+		disabledDecrement.value = true
+	}
+})
 </script>
 
 <template>
@@ -56,9 +70,9 @@ const classList = computed(() => {
 			<Spinner class="ui-form-spinbutton-loader-spin" size="18" />
 		</div>
 		<button
+			:disabled="disabled || disabledDecrement"
 			tabindex="-1"
 			type="button"
-			:disabled="disabled"
 			aria-controls="demo-sb"
 			aria-label="Decrement"
 			aria-keyshortcuts="ArrowDown"
@@ -100,7 +114,7 @@ const classList = computed(() => {
 		</div>
 		<button
 			tabindex="-1"
-			:disabled="disabled"
+			:disabled="disabled || disabledIncrement"
 			type="button"
 			aria-controls="demo-sb"
 			aria-label="Increment"
