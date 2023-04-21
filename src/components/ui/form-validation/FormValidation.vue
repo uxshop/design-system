@@ -61,7 +61,7 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div v-if="modelValue != null" class="ui-form-validation mb-4">
+	<div v-if="modelValue != null" class="ui-form-validation">
 		<Alert variant="danger" show :title="title" dismissible @dismissed="removeErrors">
 			<ul v-for="(item, key) in modelValue" :key="key">
 				<li v-for="val in item" :key="val">
@@ -73,6 +73,9 @@ watchEffect(() => {
 </template>
 
 <style>
+.ui-form-validation {
+	margin-bottom: var(--form-group-margin-bottom);
+}
 .ui-form-validation b {
 	text-transform: capitalize;
 }
