@@ -4,8 +4,7 @@ import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { IAction } from '../../../types/IAction'
-import { vMaska } from 'maska'
-import { clone } from 'lodash-es'
+import { MaskOptions, MaskaDetail, vMaska } from 'maska'
 
 export interface Props {
 	leadingIcon?: string
@@ -61,26 +60,25 @@ const emit = defineEmits<{
 }>()
 
 const classList = ref<string[]>([])
-const maskOptions = computed(() => {
+const model = ref()
+const maskOptions = computed<MaskOptions>(() => {
 	return {
 		mask: props.mask,
-		eager: true
+		eager: false
 	}
 })
 
-const update = (evt: Event) => {
+const update = (val: any) => {
 	if (!props.mask) {
 	}
-	const target = evt.target as HTMLInputElement
-	const val = target.value
 	emit('update:modelValue', val)
 	emit('update', val)
 }
 
 const maskRawValue = (evt: Event) => {
 	const target = evt.target as HTMLInputElement
-	const val = target.dataset.maskRawValue as string
-	emit('updateRaw', clone(val))
+	update(target.value)
+	emit('updateRaw', target.dataset.maskRawValue)
 }
 
 if (props.pill) {
@@ -136,7 +134,6 @@ const onClear = () => {
 		<input
 			v-maska:[maskOptions]
 			class="form-control"
-			@input="update"
 			@focus="onFocus"
 			@blur="onBlur"
 			@keydown="onKeydown"
