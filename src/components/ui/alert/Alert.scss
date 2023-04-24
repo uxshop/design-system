@@ -15,8 +15,10 @@
 		color: inherit;
 		border-bottom: dashed 1px;
 		text-decoration: none;
+
 		&:hover {
 			border-bottom-style: solid;
+			text-decoration: none;
 		}
 	}
 

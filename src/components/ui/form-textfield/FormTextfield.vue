@@ -5,6 +5,7 @@ import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { IAction } from '../../../types/IAction'
 import { vMaska } from 'maska'
+import { clone } from 'lodash-es'
 
 export interface Props {
 	leadingIcon?: string
@@ -79,7 +80,7 @@ const update = (evt: Event) => {
 const maskRawValue = (evt: Event) => {
 	const target = evt.target as HTMLInputElement
 	const val = target.dataset.maskRawValue as string
-	emit('updateRaw', val)
+	emit('updateRaw', clone(val))
 }
 
 if (props.pill) {

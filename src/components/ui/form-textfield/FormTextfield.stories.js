@@ -17,7 +17,7 @@ const Template = (args) => ({
 	},
 	template: `
     <div>
-      <FormTextField v-bind="args" v-model="model" disabled />
+      <FormTextField v-bind="args" v-model="model" />
       <pre>{{ model }}</pre>
     </div>
   `
