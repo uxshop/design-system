@@ -1,14 +1,22 @@
 .ui-browser-select {
-	.ui-browser-list-row {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+	.ui-browser-list {
+		padding-top: 16px;
+		
+		&-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 
-		+ .ui-browser-list-row {
-			border-top: solid 1px var(--border-color);
+			+ .ui-browser-list-row {
+				border-top: solid 1px var(--border-color);
+			}
+
+			&.-no-button {
+				padding: 16px;
+			}
 		}
 
-		.ui-browser-list-cell {
+		&-cell {
 			padding: 8px;
 			flex-grow: 1;
 			&.-auto {

@@ -18,9 +18,12 @@ defineProps<Props>()
 			<Icon :name="icon" size="30" />
 		</div>
 		<div class="ui-callout-card-content">
-			<h5 class="ui-callout-card-title" v-if="title">
-				{{ title }}
-			</h5>
+			<div class="ui-callout-card-header">
+				<h5 class="ui-callout-card-title" v-if="title">
+					{{ title }}
+				</h5>
+				<slot name="append-to-header" />
+			</div>
 			<div class="ui-callout-card-text">
 				<slot />
 			</div>

@@ -24,12 +24,10 @@ defineProps<{
 			<div class="titlebar-title --mobile">
 				<IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" />
 				<h2 class="titlebar-text">{{ title }}</h2>
-				<!-- <h2 v-else class="titlebar-text">{{ title }}</h2> -->
 			</div>
-			<!-- <div class="titlebar-title --dekstop">
-				<h2 class="titlebar-text">{{ title }}</h2>
-			</div> -->
-			<slot name="subtitle" class="titlebar-subtitle" />
+			<div v-if="$slots['titlebar-subtitle']" class="titlebar-subtitle">
+				<slot name="titlebar-subtitle" />
+			</div>
 		</div>
 		<div class="titlebar-actions">
 			<div v-if="secondaryActions?.length" class="titlebar-actions-secondary">
@@ -40,6 +38,7 @@ defineProps<{
 					variant="plain"
 					:label="item.label"
 					:to="item.to"
+					:leading-icon="item.leadingIcon"
 					@click="item.onAction" />
 				<Dropdown v-else right>
 					<template #button-content>
@@ -49,6 +48,7 @@ defineProps<{
 						v-for="item in secondaryActions"
 						:label="item.label"
 						@click="item.onAction"
+						:leading-icon="item.leadingIcon"
 						:class="item.class" />
 				</Dropdown>
 			</div>
@@ -58,7 +58,8 @@ defineProps<{
 					:to="primaryAction.to"
 					:label="primaryAction.label"
 					@click="primaryAction.onAction"
-					:class="primaryAction.class" />
+					:class="primaryAction.class"
+					:leading-icon="primaryAction.leadingIcon" />
 			</div>
 		</div>
 	</div>
