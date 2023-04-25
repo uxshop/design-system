@@ -184,6 +184,7 @@
 			flex: 0 0 auto;
 			width: auto;
 			max-width: calc(100% - calc(var(--input-padding-x) - 6px) * 2);
+			line-height: 1.1;
 		}
 
 		label {
