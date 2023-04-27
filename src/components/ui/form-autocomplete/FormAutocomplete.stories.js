@@ -78,6 +78,10 @@ RenderTemplate.args = {
 
 export const RemoteData = Template.bind({})
 RemoteData.args = {
+	// options: [
+	// 	{ value: 1, label: 'Hello' },
+	// 	{ value: 2, label: 'World' }
+	// ],
 	placeholder: 'Selecione Custom',
 	config: {
 		searchField: 'name',

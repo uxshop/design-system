@@ -12,8 +12,8 @@ export interface Props {
 	size?: string
 	last?: boolean
 	template?: any
-	position?: 'top' | 'bottom' | 'auto',
-	config?: object,
+	position?: 'top' | 'bottom' | 'auto'
+	config?: object
 	required?: boolean
 }
 
@@ -22,6 +22,7 @@ const Plugin = Choices.default || Choices
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
 	config: () => ({}),
+	options: () => [],
 	position: 'bottom'
 })
 
@@ -35,7 +36,9 @@ const getTemplateChoice = (data: any) => {
 }
 
 const settings = computed(() => {
-	const _choices = cloneDeep(props.options)
+	const _choices: any = cloneDeep(props.options)
+	_choices.options = _choices.options ?? []
+
 	const config: any = {
 		searchEnabled: true,
 		searchChoices: true,
@@ -50,6 +53,7 @@ const settings = computed(() => {
 		choices: _choices,
 		allowHTML: false,
 		searchResultLimit: 20,
+		options: [],
 		...props.config
 	}
 
@@ -150,7 +154,8 @@ defineExpose({
 <template>
 	<div class="ui-form-autocomplete" :class="[{ '-focus': focus, 'mb-0': last }, `-${size}`]">
 		<FormLabel v-if="label" :label="label" @click="onFocus" />
-		<select class="ui-form-select" :id="uid" :required="required">]
+		<select class="ui-form-select" :id="uid" :required="required">
+			]
 			<option value="" disabled selected>{{ placeholder }}</option>
 		</select>
 	</div>
