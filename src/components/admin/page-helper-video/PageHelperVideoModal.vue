@@ -5,6 +5,17 @@ import Link from '../../ui/link/Link.vue'
 import AsideSection from '../../ui/aside/AsideSection.vue'
 import YoutubePlayer from '../../ui/youtube-player/YoutubePlayer.vue'
 
+withDefaults(
+	defineProps<{
+		title?: string
+		supportTitle?: string
+	}>(),
+	{
+		title: 'Base de conhecimento',
+		supportTitle: 'Para encontrar ainda mais informações, explore nossos artigos disponíveis na base de conhecimento.'
+	}
+)
+
 const video = ref<any>({})
 const aside = ref(false)
 
@@ -23,15 +34,20 @@ defineExpose({
 		<div class="page-helper-video-modal">
 			<AsideSection>
 				<div class="videoWrapper">
-					<YoutubePlayer :videoid="video.video_id" :width="480" :height="320" :controls="1" style="width: 100%" />
+					<YoutubePlayer :video-id="video.video_id" :width="480" :height="320" style="width: 100%" />
 				</div>
 			</AsideSection>
 			<AsideSection>
-				<a class="page-helper-video-link">
-					<img src="./knowledge.svg" class="svg-inverter" />
-				</a>
+				<div class="page-helper-video-title">
+					<div class="page-helper-video-default">
+						<h3 class="page-helper-video-default-title">{{ title }}</h3>
+						<p class="page-helper-video-default-support">
+							{{ supportTitle }}
+						</p>
+					</div>
+				</div>
 				<ul class="page-helper-video-modal-list">
-					<li v-for="item in video.articles">
+					<li v-for="item in video.articles" :key="item.url">
 						<Link :href="item.url" target="_blank">
 							{{ item.name }}
 						</Link>
@@ -60,12 +76,12 @@ defineExpose({
 		height: 100%;
 	}
 
-	.page-helper-video-link {
+	.page-helper-video-default {
 		margin: 0 0 20px;
 		display: inline-block;
 
-		img {
-			display: block;
+		&-support {
+			margin: 0;
 		}
 	}
 
