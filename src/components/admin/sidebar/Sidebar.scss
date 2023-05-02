@@ -9,6 +9,17 @@
 	z-index: 888;
 	height: 100%;
 
+	> .ui-close-sidebar {
+		position: fixed;
+		text-align: end;
+
+		top: 30px;
+		left: 0;
+		right: 30px;
+		bottom: 0;
+		z-index: 888;
+	}
+
 	> .ui-sidebar-wrapper {
 		border-right: solid 1px var(--border-color);
 		min-width: var(--layout-sidebar-width);
