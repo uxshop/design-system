@@ -15,10 +15,17 @@ const Template = (args) => ({
 		const model = ref({
 			doc: ['Email inválido', 'Email inválido']
 		})
-		return { args, model }
+
+		function setError() {
+			model.value = {
+				doc: ['Email inválido', 'Email inválido']
+			}
+		}
+		return { args, model, setError }
 	},
 	template: `
-    <FormValidation v-bind="args" :modelValue="model" />
+    <FormValidation v-bind="args" v-model:errors="model" />
+		<button @click="setError">teste</button>	
   `
 })
 

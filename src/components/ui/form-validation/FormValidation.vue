@@ -8,6 +8,8 @@ export interface Props {
 	translate?: Record<string, string>
 	scrollToTop?: boolean
 	title?: string
+	hideKey?: boolean
+	dismissible?: boolean
 }
 
 const emit = defineEmits(['update:modelValue'])
@@ -24,7 +26,7 @@ const trans = (val: string) => {
 		const key = keys[0]
 		const line = Number(keys[1]) + 1
 		const field = keys[2]
-		const object = props.translate[key]
+		const object: any = props.translate[key]
 		if (object[field]) {
 			const name = object[key]
 			return `${name}: ${object[field]} #${line}`
@@ -35,13 +37,12 @@ const trans = (val: string) => {
 	return props.translate[val] || val
 }
 
-const removeErrors = () => {
+const removemodelValue = () => {
 	emit('update:modelValue', null)
 }
 
 watchEffect(() => {
 	const newVal = props.modelValue
-	// eslint-disable-next-line no-undef
 	const items: NodeListOf<HTMLElement> | undefined = document.querySelectorAll("[class*='form-error-']")
 
 	each(items, (item: HTMLElement) => {
@@ -62,10 +63,16 @@ watchEffect(() => {
 
 <template>
 	<div v-if="modelValue != null" class="ui-form-validation">
-		<Alert variant="danger" show :title="title" dismissible @dismissed="removeErrors">
+		<Alert
+			variant="danger"
+			:show="Boolean(modelValue)"
+			:title="title"
+			:dismissible="true"
+			@dismissed="removemodelValue">
 			<ul v-for="(item, key) in modelValue" :key="key">
 				<li v-for="val in item" :key="val">
-					<b>{{ trans(String(key)) }}:</b> {{ val }}
+					<b v-if="!hideKey">{{ trans(String(key)) }}:</b>
+					{{ val }}
 				</li>
 			</ul>
 		</Alert>
