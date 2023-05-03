@@ -62,7 +62,7 @@ watchEffect(() => {
 	})
 })
 
-const clickOverlay = () => {
+const toggleMenu = () => {
 	if (menu) {
 		menu.toggle()
 	}
@@ -108,7 +108,7 @@ const checkSubActive = (item: any) => {
 										'-nodes': item.nodes?.length,
 										'-node-active': item.withNodeActive
 									}"
-									@click="clickOverlay"
+									@click="toggleMenu"
 									class="ui-sidebar-link"
 									activeClass="-active">
 									<span class="ui-sidebar-link-icon">
@@ -123,7 +123,7 @@ const checkSubActive = (item: any) => {
 										<router-link
 											:to="{ name: node.to }"
 											class="ui-sidebar-link -sub"
-											@click="clickOverlay"
+											@click="toggleMenu"
 											:class="{
 												'-active': checkSubActive(node),
 												'-disabled': node.disabled
@@ -141,9 +141,10 @@ const checkSubActive = (item: any) => {
 				</div>
 			</div>
 		</div>
-		<div class="ui-sidebar-overlay" @click="clickOverlay"></div>
-
-		<div v-if="menu.open" class="ui-close-sidebar" @click="clickOverlay"><img src="./close-icon.svg" alt="" /></div>
+		<div class="ui-sidebar-overlay" @click="toggleMenu"></div>
+		<div v-if="menu.open === true" class="ui-close-sidebar" @click="toggleMenu">
+			<Icon name="close" />
+		</div>
 	</div>
 </template>
 
