@@ -68,7 +68,7 @@ const toggleMenu = () => {
 	}
 }
 
-const checkSubActive = (item: any) => {
+const isSubActive = (item: any) => {
 	const routeName = route.name.replace(/_[^_]+?$/, '')
 	const itemName = item.to.replace(/_[^_]+?$/, '')
 
@@ -108,7 +108,6 @@ const checkSubActive = (item: any) => {
 										'-nodes': item.nodes?.length,
 										'-node-active': item.withNodeActive
 									}"
-									@click="toggleMenu"
 									class="ui-sidebar-link"
 									activeClass="-active">
 									<span class="ui-sidebar-link-icon">
@@ -118,6 +117,7 @@ const checkSubActive = (item: any) => {
 										{{ item.name }}
 									</span>
 								</router-link>
+
 								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
 									<li v-for="node in item.nodes" class="ui-sidebar-item">
 										<router-link
@@ -125,7 +125,7 @@ const checkSubActive = (item: any) => {
 											class="ui-sidebar-link -sub"
 											@click="toggleMenu"
 											:class="{
-												'-active': checkSubActive(node),
+												'-active': isSubActive(node),
 												'-disabled': node.disabled
 											}">
 											<span class="ui-sidebar-link-icon"></span>
