@@ -159,9 +159,6 @@
 
 		&.-active,
 		&.-node-active {
-			.ui-icon {
-				color: var(--body-color);
-			}
 			~ .ui-sidebar-sublist {
 				display: block;
 			}
