@@ -15,6 +15,7 @@ export interface Props {
 	id?: string
 	service: {
 		get(params: any): any
+		first(id: number): any
 	}
 	selectOne?: boolean
 	title?: string
@@ -117,9 +118,11 @@ const fetch = async () => {
 
 		if (newRows.length != selectedIds.value.length) {
 			if (props.selectOne) {
-				// params.id = selectedIds.value[0]
-				// newRows = await props.service.first(params)
-				// newRows = [newRows]
+				const id = selectedIds.value[0]
+
+				newRows = await props.service.first(id)
+
+				newRows = [newRows]
 			} else {
 				const res = await props.service.get({
 					ids: selectedIds.value.join(',')
@@ -129,11 +132,11 @@ const fetch = async () => {
 		}
 
 		if (props.selectOne) {
-			// newRows = [newRows[0]]
+			newRows = [newRows]
 		}
 	}
 
-	// pushToMemoryList(newRows)
+	pushToMemoryList(newRows)
 	rows.value = newRows
 }
 
@@ -239,6 +242,7 @@ defineExpose({ onClickSearch })
 					v-for="item in rows.slice(0, paginateLimit)"
 					:key="item[identifier]">
 					<component :is="templateCustom" :item="item" />
+					<!-- {{ item.name }} -->
 					<div v-if="!templateCustom" class="browser-list-cell">
 						{{ item.name }}
 					</div>
