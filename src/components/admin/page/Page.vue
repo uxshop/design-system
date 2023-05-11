@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Titlebar from '../titlebar/Titlebar.vue'
-import PageHelperVideo from '../page-helper-video/PageHelperVideo.vue'
 import PageMessageSupport from '../page-message-support/PageMessageSupport.vue'
+import PageHelperVideo, { type IVideo } from '../page-helper-video/PageHelperVideo.vue'
 import type { IAction } from '../../../types/IAction'
 
 export interface Props {
@@ -12,7 +12,7 @@ export interface Props {
 	to?: object
 	backlink?: object
 	size?: 'sm' | 'md' | 'lg' | 'full'
-	videoHelp?: any
+	videoHelp?: IVideo
 	footerHelp?: any
 	title?: string | null
 	groupActions?: {

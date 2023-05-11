@@ -3,14 +3,14 @@ import { ref } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
 import PageHelperVideoModal from './PageHelperVideoModal.vue'
 
-export interface VideoInterface {
+export interface IVideo {
 	name?: string
 	video_id?: boolean
 }
 
 const props = withDefaults(
 	defineProps<{
-		video?: VideoInterface
+		video?: IVideo
 	}>(),
 	{
 		video: () => ({})

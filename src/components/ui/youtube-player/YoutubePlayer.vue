@@ -2,10 +2,9 @@
 import { onMounted, ref } from 'vue'
 
 const props = defineProps<{
-	videoid: string
+	videoId: string
 	width?: string | number
 	height?: string | number
-	controls: boolean
 }>()
 
 const player = ref()
@@ -16,7 +15,7 @@ function onYouTubeIframeAPIReady() {
 	player.value = new YT.Player('player', {
 		height: props.height || '360',
 		width: props.width || '640',
-		videoId: props.videoid,
+		videoId: props.videoId,
 		events: {
 			onReady: onPlayerReady
 		}
