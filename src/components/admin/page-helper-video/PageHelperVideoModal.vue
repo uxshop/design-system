@@ -32,7 +32,7 @@ defineExpose({
 <template>
 	<Aside v-model="aside" :title="video.title || 'Ajuda'" size="sm">
 		<div class="page-helper-video-modal">
-			<AsideSection v-if="video.video_id">
+			<AsideSection>
 				<div class="videoWrapper">
 					<YoutubePlayer :video-id="video.video_id" :width="480" :height="320" style="width: 100%" />
 				</div>
