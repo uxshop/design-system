@@ -242,7 +242,6 @@ defineExpose({ onClickSearch })
 					v-for="item in rows.slice(0, paginateLimit)"
 					:key="item[identifier]">
 					<component :is="templateCustom" :item="item" />
-					<!-- {{ item.name }} -->
 					<div v-if="!templateCustom" class="browser-list-cell">
 						{{ item.name }}
 					</div>
