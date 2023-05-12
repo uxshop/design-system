@@ -131,12 +131,8 @@ const fetch = async () => {
 			}
 		}
 
-		if (props.selectOne) {
-			newRows = [newRows]
-		}
 	}
 
-	pushToMemoryList(newRows)
 	rows.value = newRows
 }
 
