@@ -21,7 +21,7 @@ defineProps<{
 <template>
 	<div class="titlebar">
 		<div class="titlebar-content">
-			<div class="titlebar-title --mobile">
+			<div class="titlebar-title -mobile">
 				<IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" />
 				<h2 class="titlebar-text">{{ title }}</h2>
 			</div>

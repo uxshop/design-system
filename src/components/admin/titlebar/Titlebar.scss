@@ -6,7 +6,7 @@
 	align-items: center;
 	min-height: 40px;
 
-	&-title {
+	.titlebar-title {
 		color: var(--body-color);
 		display: flex;
 		gap: 15px;
@@ -15,11 +15,11 @@
 		&.-mobile {
 			display: none;
 		}
+	}
 
-		&-text {
-			font-size: 22px;
-			margin: 0;
-		}
+	.titlebar-text {
+		font-size: 22px;
+		margin: 0;
 	}
 
 	> .ui-icon {
@@ -29,14 +29,7 @@
 		flex-grow: 1;
 	}
 
-	&-backlink {
-		display: flex;
-		gap: 10px;
-		color: var(--body-color);
-		text-decoration: none;
-	}
-
-	&-actions {
+	.titlebar-actions {
 		margin-left: auto;
 		white-space: nowrap;
 		display: flex;
@@ -44,24 +37,24 @@
 		gap: 10px;
 	}
 
-	&-actions-secondary {
+	.titlebar-actions-secondary {
 		display: flex;
 		gap: inherit;
 	}
 
 	@include mobile {
-		&-actions {
+		.titlebar-actions {
 			> .btn-icon {
 				border: none;
 			}
 		}
 
-		&-content {
+		.titlebar-content {
 			flex: 1;
 			overflow: hidden;
 		}
 
-		&-title {
+		.titlebar-title {
 			align-items: center;
 
 			&.-dekstop {
@@ -81,17 +74,11 @@
 				}
 			}
 
-			&-text {
+			.titlebar-text {
 				font-size: 18px;
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
-			}
-
-			&-backlink > .ui-icon {
-				color: var(--secondary);
-				margin-right: 5px;
-				margin-left: -5px;
 			}
 		}
 	}
