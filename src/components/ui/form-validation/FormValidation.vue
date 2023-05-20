@@ -9,7 +9,7 @@ export interface Props {
 	scrollToTop?: boolean
 	title?: string
 	hideKey?: boolean
-	dismissible?: boolean
+	noDismissible?: boolean
 }
 
 const emit = defineEmits(['update:modelValue'])
@@ -67,7 +67,7 @@ watchEffect(() => {
 			variant="danger"
 			:show="Boolean(modelValue)"
 			:title="title"
-			:dismissible="true"
+			:dismissible="!noDismissible"
 			@dismissed="removemodelValue">
 			<ul v-for="(item, key) in modelValue" :key="key">
 				<li v-for="val in item" :key="val">
