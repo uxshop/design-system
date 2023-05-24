@@ -162,11 +162,19 @@ defineExpose({
 				:value="modelValue"
 				@focus="focused = true"
 				@blur="focused = false"
-				@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
+				@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+				placeholder="teste" />
 		</div>
 	</label>
 </template>
 
 <style lang="scss">
 @import './FormColorPicker.scss';
+@import '../../../scss/variables.scss';
+.pcr-button {
+	&.clear {
+		background-size: 40% !important;
+		background: $add-icon no-repeat center;
+	}
+}
 </style>
