@@ -33,7 +33,7 @@ const update = (value: string | null) => {
 	emit('update', value)
 }
 
-interface PickrCustom extends PickerInterface {
+interface PickrCustom extends Pickr {
 	init?: boolean
 }
 
@@ -133,8 +133,8 @@ onMounted(() => {
 })
 
 watchPostEffect(() => {
-	if (pickr.value && props.modelValue && !focused) {
-		if (!focused) {
+	if (pickr.value && props.modelValue && !focused.value) {
+		if (!focused.value) {
 			pickr.value.setColor(props.modelValue)
 		}
 	}
@@ -158,11 +158,12 @@ defineExpose({
 			<input
 				v-if="withInput"
 				class="form-control"
-				v-model="modelValue"
-				@update:modelValue="update"
+				placeholder="#FFFFFF"
 				maxlength="9"
 				@focus="focused = true"
-				@blur="focused = false" />
+				@blur="focused = false"
+				:value="modelValue"
+				@input="$emit('update:modelValue', $event.target!.value)" />
 		</div>
 	</label>
 </template>
