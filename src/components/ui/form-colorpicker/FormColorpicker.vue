@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, shallowRef, toRef, watchPostEffect } from 'vue'
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import Pickr from '@simonwep/pickr/src/js/pickr'
 import type PickerInterface from '@simonwep/pickr'
@@ -158,12 +158,11 @@ defineExpose({
 			<input
 				v-if="withInput"
 				class="form-control"
-				placeholder="#FFFFFF"
 				maxlength="9"
+				:value="modelValue"
 				@focus="focused = true"
 				@blur="focused = false"
-				:value="modelValue"
-				@input="$emit('update:modelValue', $event.target!.value)" />
+				@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
 		</div>
 	</label>
 </template>
