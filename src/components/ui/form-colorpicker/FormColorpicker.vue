@@ -134,9 +134,7 @@ onMounted(() => {
 
 watchPostEffect(() => {
 	if (pickr.value && props.modelValue && !focused.value) {
-		if (!focused.value) {
-			pickr.value.setColor(props.modelValue)
-		}
+		pickr.value.setColor(props.modelValue)
 	}
 })
 
@@ -162,8 +160,7 @@ defineExpose({
 				:value="modelValue"
 				@focus="focused = true"
 				@blur="focused = false"
-				@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
-				placeholder="teste" />
+				@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
 		</div>
 	</label>
 </template>
