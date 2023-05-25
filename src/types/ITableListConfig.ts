@@ -1,10 +1,20 @@
-import type { IResourceService, TApiData } from 'src/types/IApiResource'
+import type { TApiData } from 'src/types/IApiResource'
 
 export type TBulkActions = Array<{
 	label: string
 	variant?: string
 	onAction(a: number[]): void
 }>
+
+export interface DialogDelete {
+	title?: string
+	destructIcon?: string
+	destructLabel?: string
+	message?: {
+		text: string
+		concatMessage?: boolean
+	}
+}
 
 export interface ITableListConfig {
 	service: any
@@ -24,4 +34,5 @@ export interface ITableListConfig {
 	actions?: string[]
 	placeholder?: string
 	omitFiltersValues?: string[]
+	dialogDelete?: DialogDelete
 }
