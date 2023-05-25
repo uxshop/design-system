@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, shallowRef, toRef, watchPostEffect } from 'vue'
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import Pickr from '@simonwep/pickr/src/js/pickr'
 import type PickerInterface from '@simonwep/pickr'
@@ -33,7 +33,7 @@ const update = (value: string | null) => {
 	emit('update', value)
 }
 
-interface PickrCustom extends PickerInterface {
+interface PickrCustom extends Pickr {
 	init?: boolean
 }
 
@@ -133,10 +133,8 @@ onMounted(() => {
 })
 
 watchPostEffect(() => {
-	if (pickr.value && props.modelValue && !focused) {
-		if (!focused) {
-			pickr.value.setColor(props.modelValue)
-		}
+	if (pickr.value && props.modelValue && !focused.value) {
+		pickr.value.setColor(props.modelValue)
 	}
 })
 
@@ -158,15 +156,22 @@ defineExpose({
 			<input
 				v-if="withInput"
 				class="form-control"
-				v-model="modelValue"
-				@update:modelValue="update"
 				maxlength="9"
+				:value="modelValue"
 				@focus="focused = true"
-				@blur="focused = false" />
+				@blur="focused = false"
+				@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
 		</div>
 	</label>
 </template>
 
 <style lang="scss">
 @import './FormColorPicker.scss';
+@import '../../../scss/variables.scss';
+.pcr-button {
+	&.clear {
+		background-size: 40% !important;
+		background: $add-icon no-repeat center;
+	}
+}
 </style>
