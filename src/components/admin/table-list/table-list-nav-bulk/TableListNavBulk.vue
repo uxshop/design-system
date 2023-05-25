@@ -47,7 +47,8 @@ const onRemoveDialog = () => {
 			if (props.config.dialogDelete.message.concatMessage) {
 				return `${defaultMessage} ${props.config.dialogDelete.message.text}`
 			} else return props.config.dialogDelete.message.text
-		} else defaultMessage
+		}
+		return defaultMessage
 	}
 
 	dialog.open({
