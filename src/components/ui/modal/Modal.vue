@@ -88,7 +88,6 @@ watchEffect(() => {
 		<div
 			v-if="modelValue"
 			:id="uid"
-			@keydown.esc="close()"
 			class="ui-modal"
 			:class="[
 				classList,
