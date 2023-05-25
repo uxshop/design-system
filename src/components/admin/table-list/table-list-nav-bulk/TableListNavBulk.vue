@@ -34,12 +34,27 @@ const checkbox = ref<boolean>(false)
 const onCheckAll = () => props.state.checkAll(!checkbox.value)
 const onRemoveDialog = () => {
 	const count = zerofill(props.selected.length, 2)
+	const defaultMessage = `Você confirma a exclusão de <b>${count}</b> ${pluralize(
+		count,
+		'registro selecionado',
+		'registros selecionados',
+		'',
+		false
+	)}?`
+
+	function buildMessage() {
+		if (props.config.dialogDelete?.message) {
+			if (props.config.dialogDelete.message.concatMessage) {
+				return `${defaultMessage} ${props.config.dialogDelete.message.text}`
+			} else return props.config.dialogDelete.message.text
+		} else defaultMessage
+	}
 
 	dialog.open({
-		title: 'Excluir registros',
-		destructIcon: 'delete',
-		destructLabel: `Deletar registros`,
-		message: `Você confirma a exclusão dos registros selecionados? <br><b>${count}</b> ${pluralize(count, 'selecionado', 'selecionados', '', false)}.`,
+		title: props.config.dialogDelete?.title ?? 'Excluir registros',
+		destructIcon: props.config.dialogDelete?.destructIcon ?? 'delete',
+		destructLabel: props.config.dialogDelete?.destructLabel ?? 'Deletar registros',
+		message: buildMessage(),
 		onCallback: remove
 	})
 }
@@ -106,8 +121,12 @@ onMounted(() => {
 				<Button size="sm" trailingIcon="unfold_more"> Ação em massa </Button>
 			</template>
 
-			<DropdownItemButton v-for="action in bulkActions" @click.stop="action.onAction(selected)" :key="action.label"
-				:variant="action.variant" :label="action.label" />
+			<DropdownItemButton
+				v-for="action in bulkActions"
+				@click.stop="action.onAction(selected)"
+				:key="action.label"
+				:variant="action.variant"
+				:label="action.label" />
 		</Dropdown>
 	</div>
 </template>
