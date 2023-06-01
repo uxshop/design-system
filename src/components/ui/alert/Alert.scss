@@ -66,37 +66,37 @@
 		}
 	}
 
-	.ui-alert-icon {
-		align-self: center;
-	}
-
 	> .ui-icon {
 		margin-right: 8px;
 		font-size: 20px;
 		color: inherit;
 	}
 
-	> .ui-alert-content {
+	.ui-alert-icon {
+		align-self: center;
+	}
+
+	.ui-alert-content {
 		flex-grow: 1;
-
-		> .ui-alert-title {
-			margin: 0;
-			margin-bottom: 5px;
-			font-weight: 600;
-			font-size: 15px;
-			text-transform: none;
-		}
-
-		> .ui-alert-text {
-			word-break: break-word;
-		}
 
 		ul ~ ul {
 			margin-top: 5px;
 		}
 	}
 
-	> .ui-alert-close {
+	.ui-alert-title {
+		margin: 0;
+		margin-bottom: 5px;
+		font-weight: 600;
+		font-size: 15px;
+		text-transform: none;
+	}
+
+	.ui-alert-text {
+		word-break: break-word;
+	}
+
+	.ui-alert-close {
 		background: none;
 		appearance: none;
 		box-shadow: none;
