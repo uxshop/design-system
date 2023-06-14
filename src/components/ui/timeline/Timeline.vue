@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { shallowRef } from 'vue'
 import Link from '../link/Link.vue'
-import Avatar from '../avatar/Avatar.vue'
-import Col from '../grid/col/Col.vue'
-import Row from '../grid/row/Row.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
 import Button from '../button/Button.vue'
 import Stack from '../stack/Stack.vue'
@@ -28,19 +25,12 @@ function onSavePost(): void {
 <template>
 	<div class="ui-timeline ui-timeline-avatar">
 		<div class="ui-timeline-input" v-if="inputMessage">
-			<Row alignV="center">
-				<Col auto>
-				<Avatar size="40" />
-				</Col>
-				<Col>
-				<form action="" @submit.prevent="onSavePost" autocomplete="off">
-					<Stack spacing="sm">
-						<FormTextfield required v-model="note" placeholder="Escreva um comentário..." />
-						<Button variant="dark" type="submit" label="Postar" />
-					</Stack>
-				</form>
-				</Col>
-			</Row>
+			<form action="" @submit.prevent="onSavePost" autocomplete="off">
+				<Stack spacing="sm">
+					<FormTextfield required v-model="note" placeholder="Escreva um comentário..." />
+					<Button variant="dark" type="submit" label="Postar" />
+				</Stack>
+			</form>
 		</div>
 		<ul class="ui-timeline-list">
 			<li class="ui-timeline-item" v-for="(item, key) in modelValue" :key="key">
@@ -48,7 +38,10 @@ function onSavePost(): void {
 					<div class="ui-timeline-item-content">
 						<div class="ui-timeline-info">
 							<div class="ui-timeline-item-title-wrapper">
-								<component v-if="item.title" :is="item.titleTo ? Link : 'div'" :to="item.titleTo"
+								<component
+									v-if="item.title"
+									:is="item.titleTo ? Link : 'div'"
+									:to="item.titleTo"
 									class="ui-timeline-item-title">
 									{{ item.title }}
 								</component>
