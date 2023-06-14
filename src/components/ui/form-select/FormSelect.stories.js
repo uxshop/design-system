@@ -22,6 +22,9 @@ const Template = (args) => ({
     <FormSelect v-bind="args" v-model="model">
       <option :value=3>Teste</option>
     </FormSelect>
+    <FormSelect v-bind="args" v-model="model" size=sm>
+      <option :value=3>Teste</option>
+    </FormSelect>
 		<br />
     <button @click="model=null">set null</button>
     <pre>{{ model }}</pre>
@@ -46,11 +49,11 @@ Options.args = {
 	label: 'Label',
 	options: [
 		{
-			text: 'Valor 1',
+			label: 'Valor 1',
 			value: 1
 		},
 		{
-			text: 'Valor 2',
+			label: 'Valor 2',
 			value: 2,
 			disabled: true
 		}
@@ -62,11 +65,11 @@ ObjectOptions.args = {
 	label: 'Label',
 	options: [
 		{
-			text: 'Valor 1',
+			label: 'Valor 1',
 			value: { name: '01' }
 		},
 		{
-			text: 'Valor 2',
+			label: 'Valor 2',
 			value: { name: '02' }
 		}
 	]

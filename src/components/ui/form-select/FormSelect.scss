@@ -1,6 +1,18 @@
 .ui-form-select {
 	select {
 		box-shadow: 0 -13px 10px rgba(0, 0, 0, 0.05) inset;
+		min-height: auto;
+		height: var(--input-height);
+
+		&.-sm {
+			min-height: auto;
+			height: var(--input-height-sm);
+		}
+
+		&.-lg {
+			min-height: auto;
+			height: var(--input-height-lg);
+		}
 
 		&:hover {
 			background-color: var(--gray-100);
