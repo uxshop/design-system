@@ -22,6 +22,7 @@ export interface Props {
 	destructIcon?: string
 	type?: string
 	opened?: boolean
+	hideCancel?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -164,7 +165,7 @@ defineExpose({
 						tabindex="0">
 						{{ config.destructLabel }}
 					</Button>
-					<Button v-if="type != 'confirm'" @click="close(false)" class="ui-dialog-btn-cancel">
+					<Button v-if="type != 'confirm' && !hideCancel" @click="() => close(false)" class="ui-dialog-btn-cancel">
 						{{ cancelLabel }}
 					</Button>
 				</div>
