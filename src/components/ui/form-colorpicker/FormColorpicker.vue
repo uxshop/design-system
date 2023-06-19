@@ -157,6 +157,7 @@ defineExpose({
 				v-if="withInput"
 				class="form-control"
 				maxlength="9"
+				v-bind="$attrs"
 				:value="modelValue"
 				@focus="focused = true"
 				@blur="focused = false"
