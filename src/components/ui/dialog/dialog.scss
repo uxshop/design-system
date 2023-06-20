@@ -31,12 +31,12 @@
 	}
 
 	&.-primary {
-		> .ui-dialog-wrapper > .ui-dialog-overlay {
+		.ui-dialog-wrapper > .ui-dialog-overlay {
 			background-color: var(--primary);
 		}
 	}
 
-	> .ui-dialog-wrapper {
+	.ui-dialog-wrapper {
 		min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -44,8 +44,9 @@
 		margin: 0 auto;
 		transition: transform 0.1s;
 		will-change: transform;
+		padding: 20px;
 
-		> .ui-dialog-overlay {
+		.ui-dialog-overlay {
 			content: '';
 			position: fixed;
 			background: var(--modal-backdrop-bg);
@@ -57,7 +58,7 @@
 			animation: 0.4s dialogFade;
 		}
 
-		> .ui-dialog-content {
+		.ui-dialog-content {
 			box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
 			transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 			position: relative;
@@ -68,14 +69,14 @@
 			background-clip: padding-box;
 			border-radius: var(--border-radius);
 			outline: 0;
-			margin: 0 auto;
+			margin: 20px auto;
 			background-color: white;
 			animation: 0.2s dialogZoom;
 			animation-fill-mode: forwards;
 			padding: 30px;
 			max-width: 460px;
 
-			> .ui-dialog-header {
+			.ui-dialog-header {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
