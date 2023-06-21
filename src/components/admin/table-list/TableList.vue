@@ -85,9 +85,7 @@ const resetQueryParams = (params = {}) => {
 	queryParams.value = Object.assign(clone(queryDefault), params)
 }
 
-const emitNoFilteredData = () => {
-	emit('emptyData')
-}
+const emitNoFilteredData = () => emit('emptyData')
 
 const fetchData = async () => {
 	const params = clone(queryParams.value)
