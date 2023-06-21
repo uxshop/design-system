@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, ref, reactive, onBeforeMount } from 'vue'
-import { union, clone, omit, concat } from 'lodash-es'
+import { union, clone, omit, concat, isEqual } from 'lodash-es'
 import { useRoute } from 'vue-router'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
 import LocalStorage from '../../../services/LocalStorage'
@@ -54,7 +54,7 @@ const hasQueryParams = ref()
 const queryDefault = Object.assign(
 	{
 		sort: '-id',
-		page: 1,
+		page: '1',
 		limit: 25,
 		selectedView: 'all'
 	},
@@ -85,6 +85,10 @@ const resetQueryParams = (params = {}) => {
 	queryParams.value = Object.assign(clone(queryDefault), params)
 }
 
+const emitNoFilteredData = () => {
+	emit('emptyData')
+}
+
 const fetchData = async () => {
 	const params = clone(queryParams.value)
 	selected.value = []
@@ -95,7 +99,7 @@ const fetchData = async () => {
 	LocalStorage.setObj(storageNameFilters, params)
 
 	const res = await props.config.service.get(params)
-	!res.data.length && emit('emptyData')
+	if (!res.data.length && isEqual(queryDefault, omit(params, '_'))) emitNoFilteredData()
 	meta.value = res.meta
 	rows.value = res.data
 
