@@ -35,7 +35,7 @@ const props = defineProps<{
 const emit = defineEmits<{
 	(event: 'clickRow', i: any): void
 	(event: 'emptyData'): void
-	(event: 'deletedItens', deletedItensIds: number[]): number[] | void
+	(event: 'deletedItens', deletedItensIds: number[]): number[]
 }>()
 
 const rows = ref<TApiData[]>([])
