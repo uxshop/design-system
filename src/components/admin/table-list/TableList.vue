@@ -35,6 +35,7 @@ const props = defineProps<{
 const emit = defineEmits<{
 	(event: 'clickRow', i: any): void
 	(event: 'emptyData'): void
+	(event: 'deletedItens', deletedItensIds: number[]): number[] | void
 }>()
 
 const rows = ref<TApiData[]>([])
@@ -161,10 +162,17 @@ const activeInactiveSelected = async (val: boolean) => {
 }
 
 const removeSelected = async () => {
+	const promises: Promise<void>[] = []
+	const deletedItensIds: number[] = []
+
+	for (const itemId of selected.value) {
+		deletedItensIds.push(itemId)
+		promises.push(deleteOne({ id: itemId }))
+	}
+
 	try {
-		for (const itemId of selected.value) {
-			await deleteOne({ id: itemId })
-		}
+		await Promise.all(promises)
+		emit('deletedItens', deletedItensIds)
 	} catch (error) {
 		formError.value = {
 			erro: [error.data.error]
