@@ -72,19 +72,14 @@ if (props.pill) {
 	classList.value.push('-pill')
 }
 
-const init = () => {}
-
 watch(
 	() => props.modelValue,
 	(newVal: any) => {
-		if (!focused.value && newVal) {
-			setValue(parseFloat(newVal))
-		}
+		if (newVal) setValue(parseFloat(newVal))
+		else setValue(null)
 	},
 	{ immediate: true }
 )
-
-onMounted(init)
 </script>
 
 <template>

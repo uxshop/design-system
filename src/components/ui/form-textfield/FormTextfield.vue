@@ -63,8 +63,6 @@ const emit = defineEmits<{
 const classList = ref<string[]>([])
 
 const update = (evt: Event) => {
-	if (!props.mask) {
-	}
 	const target = evt.target as HTMLInputElement
 	const val = target.value
 	emit('update:modelValue', val)
@@ -164,6 +162,7 @@ const onClear = () => {
 			<div v-if="actions" class="actions">
 				<Button
 					v-for="item in actions"
+					:key="item.label"
 					:variant="item.variant"
 					:type="item.type"
 					:label="item.label"
