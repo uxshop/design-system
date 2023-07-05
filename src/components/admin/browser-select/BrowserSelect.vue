@@ -247,8 +247,8 @@ defineExpose({ onClickSearch })
 					</div>
 				</div>
 
-				<div class="ui-browser-list-more">
-					<Link @click="nextPage" v-if="rows.length > paginateLimit" label="Exibir mais" />
+				<div v-if="rows.length > paginateLimit" class="ui-browser-list-more">
+					<Link @click="nextPage" label="Exibir mais" />
 				</div>
 			</div>
 		</div>
