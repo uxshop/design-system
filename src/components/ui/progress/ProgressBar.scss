@@ -1,5 +1,6 @@
 .ui-progress-bar {
 	background-color: transparent;
+	vertical-align: super;
 }
 .ui-progress-bar::-webkit-progress-bar {
 	background-color: var(--border-color);
