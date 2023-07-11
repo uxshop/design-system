@@ -23,13 +23,16 @@
 	.ui-callout-card-actions {
 		margin-top: 12px;
 		display: flex;
-		justify-content: flex-start;
 	}
 
 	.ui-callout-card-icon {
-		background-color: var(--primary);
+		background-color: var(--success);
 		border-radius: 6px;
 		padding: 10px;
 		display: flex;
+	}
+
+	.-bg-primary {
+		background-color: var(--primary);
 	}
 }
