@@ -28,3 +28,10 @@ noImage.args = {
 	src: null,
 	size: 200
 }
+
+export const imageBg = Template.bind({})
+imageBg.args = {
+	src: `https://picsum.photos/id/14/500/300`,
+	isBg: true,
+	size: 100
+}

@@ -15,6 +15,12 @@
 		background: var(--gray-100);
 	}
 
+	&.-is-bg {
+		background-size: cover;
+		background-position-x: center;
+		background-position-y: -1px;
+	}
+
 	.image-content {
 		position: absolute;
 		max-width: 110%;
