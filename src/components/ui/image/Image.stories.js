@@ -33,5 +33,6 @@ export const imageBg = Template.bind({})
 imageBg.args = {
 	src: `https://picsum.photos/id/14/500/300`,
 	isBg: true,
+	rounded: true,
 	size: 100
 }

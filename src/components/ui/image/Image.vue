@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import Icon from '../icon/Icon.vue'
+import { round } from 'lodash-es'
 
 export interface Props {
 	src?: string | null
 	isBg?: boolean
 	size?: number | string
+	rounded?: boolean
 }
 
 interface crop {
@@ -49,7 +51,7 @@ const style = computed(() => {
 </script>
 
 <template>
-	<div class="ui-image -square" :style="style" :class="{ '-no-image': !src, '-is-bg': isBg }">
+	<div class="ui-image -square" :style="style" :class="{ '-no-image': !src, '-is-bg': isBg, '-is-rounded': rounded }">
 		<img class="image-content" v-if="src && !isBg" :src="src" />
 		<span class="image-content" v-if="!src">
 			<Icon name="wallpaper" :style="styleIcon" />
