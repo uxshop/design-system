@@ -45,7 +45,7 @@ defineProps<{
 					@click="item.onAction" />
 				<Dropdown v-else right>
 					<template #button-content>
-						<Button variant="plain" label="Mais ações" trailingIcon="expand_more" />
+						<Button label="Mais ações" trailingIcon="expand_more" />
 					</template>
 					<DropdownItemButton
 						v-for="(item, index) in secondaryActions"
