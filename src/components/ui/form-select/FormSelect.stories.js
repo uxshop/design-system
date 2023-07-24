@@ -22,6 +22,7 @@ const Template = (args) => ({
     <FormSelect v-bind="args" v-model="model">
       <option :value=3>Teste</option>
     </FormSelect>
+		<br />
     <FormSelect v-bind="args" v-model="model" size=sm>
       <option :value=3>Teste</option>
     </FormSelect>
