@@ -8,13 +8,15 @@ export interface Props {
 	title?: string
 	icon?: string
 	primaryAction?: IAction
+	justifyCardActions?: string
+	bgColorIconPrimary?: boolean
 }
 defineProps<Props>()
 </script>
 
 <template>
 	<Card class="ui-callout-card">
-		<div v-if="icon" class="ui-callout-card-icon">
+		<div v-if="icon" class="ui-callout-card-icon" :class="{ '-bg-primary': bgColorIconPrimary }">
 			<Icon :name="icon" size="30" />
 		</div>
 		<div class="ui-callout-card-content">
@@ -27,7 +29,10 @@ defineProps<Props>()
 			<div class="ui-callout-card-text">
 				<slot />
 			</div>
-			<div class="ui-callout-card-actions" v-if="primaryAction">
+			<div
+				class="ui-callout-card-actions"
+				:style="{ 'justify-content': justifyCardActions || 'flex-end' }"
+				v-if="primaryAction">
 				<Button
 					:to="primaryAction.to"
 					:variant="primaryAction?.variant"
