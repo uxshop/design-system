@@ -27,8 +27,9 @@ const Template = (args) => ({
 	},
 	template: `
     <FormSpinbutton v-bind="args" v-model="model" :disabled=disabled />
+    <br />
 		<button @click="disabled=!disabled">disabled</button>
-    <pre>{{ model }}</pre>
+		<pre>modelValue: {{ model }}</pre>
   `
 })
 
@@ -37,6 +38,14 @@ Default.args = {}
 
 export const MinMax = Template.bind({})
 MinMax.args = {
+	min: 0,
+	max: 5
+}
+
+export const MinMaxEditable = Template.bind({})
+MinMaxEditable.args = {
+	inputable: true,
+	placeholder: 0,
 	min: 0,
 	max: 5
 }

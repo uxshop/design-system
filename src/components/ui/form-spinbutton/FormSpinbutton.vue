@@ -6,11 +6,12 @@ export interface Props {
 	modelValue: number
 	min?: string | number
 	max?: string | number
-	placeholder?: string
+	placeholder?: string | number
 	size?: string | number
 	step?: string | number
 	loading?: boolean
 	disabled?: boolean
+	inputable?: boolean
 }
 
 const emit = defineEmits(['update:modelValue', 'change'])
@@ -28,13 +29,13 @@ const update = (val: number) => {
 
 const increase = () => {
 	if (props.max === undefined || props.modelValue < props.max) {
-		update(props.modelValue + Number(props.step))
+		update(Number(props.modelValue) + Number(props.step))
 	}
 }
 
 const decrease = () => {
 	if (props.min === undefined || props.modelValue > props.min) {
-		update(props.modelValue - Number(props.step))
+		update(Number(props.modelValue) - Number(props.step))
 	}
 }
 
@@ -51,6 +52,24 @@ const classList = computed(() => {
 	return data
 })
 
+const updateInput = (e: event) => {
+	let val = e.target.value
+
+	if (props.max && val > props.max) {
+		val = props.max
+	}
+
+	if (props.min && val < props.min) {
+		val = props.min
+	}
+
+	e.target.value = val
+
+	if (val != props.modelValue) {
+		update(Number(val))
+	}
+}
+
 watchEffect(() => {
 	disabledIncrement.value = false
 	disabledDecrement.value = false
@@ -58,6 +77,7 @@ watchEffect(() => {
 	if (props.max && props.modelValue >= props.max) {
 		disabledIncrement.value = true
 	}
+
 	if (props.max && props.modelValue <= props.min) {
 		disabledDecrement.value = true
 	}
@@ -105,11 +125,14 @@ watchEffect(() => {
 			aria-valuemax="100"
 			aria-valuenow="50"
 			aria-valuetext="50">
-			<bdi v-if="modelValue !== undefined">
-				{{ modelValue }}
-			</bdi>
-			<bdi v-else>
-				{{ placeholder }}
+			<bdi>
+				<input
+					type="tel"
+					:value="modelValue"
+					:readonly="!inputable"
+					@blur="updateInput"
+					@focus="$event.target.select()"
+					:placeholder="placeholder" />
 			</bdi>
 		</div>
 		<button
