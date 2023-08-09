@@ -125,15 +125,13 @@ watchEffect(() => {
 			aria-valuemax="100"
 			aria-valuenow="50"
 			aria-valuetext="50">
-			<bdi>
-				<input
-					type="tel"
-					:value="modelValue"
-					:readonly="!inputable"
-					@blur="updateInput"
-					@focus="$event.target.select()"
-					:placeholder="placeholder" />
-			</bdi>
+			<input
+				type="tel"
+				:value="modelValue"
+				:readonly="!inputable"
+				@blur="updateInput"
+				@focus="$event.target.select()"
+				:placeholder="placeholder" />
 		</div>
 		<button
 			tabindex="-1"
