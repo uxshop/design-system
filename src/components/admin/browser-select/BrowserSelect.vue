@@ -234,12 +234,12 @@ defineExpose({ onClickSearch })
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
 				<div
+					v-for="item in rows.slice(0, paginateLimit)"
 					class="ui-browser-list-row"
 					:class="{ '-no-button': hideExcludeButton }"
-					v-for="item in rows.slice(0, paginateLimit)"
 					:key="item[identifier]">
-					<component :is="templateCustom" :item="item" />
-					<div v-if="!templateCustom" class="browser-list-cell">
+					<component v-if="templateCustom" :is="templateCustom" :item="item" />
+					<div v-else class="browser-list-cell">
 						{{ item.name }}
 					</div>
 					<div v-if="!hideExcludeButton" class="ui-browser-list-cell -auto">

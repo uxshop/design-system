@@ -4,7 +4,6 @@ import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import Button from '../button/Button.vue'
 import Link from '../link/Link.vue'
-import Stack from '../stack/Stack.vue'
 import type { IAction } from '../../../types/IAction'
 
 export interface Props {
