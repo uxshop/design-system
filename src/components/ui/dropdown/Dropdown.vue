@@ -87,7 +87,11 @@ defineExpose({
 </script>
 
 <template>
-	<div class="ui-dropdown" :class="{ '-open': show, '-left': left, '-right': right, '-disbled': disabled }" :id="uid">
+	<div
+		@focusout="hide"
+		class="ui-dropdown"
+		:class="{ '-open': show, '-left': left, '-right': right, '-disbled': disabled }"
+		:id="uid">
 		<div class="ui-dropdown-button" @click="toggleDropdown">
 			<slot name="button-content" />
 		</div>
