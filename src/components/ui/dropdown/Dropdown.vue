@@ -21,7 +21,7 @@ const listener = (e: MouseEvent | KeyboardEvent) => {
 	if (props.closeOn) hide()
 
 	if (e.target.dataset?.close != true) {
-		e.path.map((item: Element) => {
+		e.path?.map((item: Element) => {
 			if (item.className == 'ui-dropdown-menu') {
 				noClose = true
 			}
@@ -87,11 +87,7 @@ defineExpose({
 </script>
 
 <template>
-	<div
-		@focusout="hide"
-		class="ui-dropdown"
-		:class="{ '-open': show, '-left': left, '-right': right, '-disbled': disabled }"
-		:id="uid">
+	<div class="ui-dropdown" :class="{ '-open': show, '-left': left, '-right': right, '-disbled': disabled }" :id="uid">
 		<div class="ui-dropdown-button" @click="toggleDropdown">
 			<slot name="button-content" />
 		</div>
