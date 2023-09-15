@@ -14,10 +14,17 @@ const emit = defineEmits(['dismissed'])
 const classList = ref<string[]>([])
 const open = ref(props.show)
 
-let currentIcon = props.icon
+const currentIcon = ref(props.icon)
 
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
+const iconsByVariant: Record<string, string> = {
+	success: 'check_circle',
+	danger: 'error',
+	warning: 'warning'
+}
+
+const close = () => {
+	open.value = false
+	emit('dismissed')
 }
 
 if (props.center) {
@@ -28,21 +35,19 @@ if (props.dismissible) {
 	classList.value.push(`-dismissible`)
 }
 
-if (!currentIcon && props.variant == 'success') {
-	currentIcon = 'check_circle'
-}
+function handleIconByVariant() {
+	if (props.variant) {
+		classList.value.push(`-${props.variant}`)
+	}
 
-if (!currentIcon && props.variant == 'danger') {
-	currentIcon = 'error'
-}
-
-const close = () => {
-	open.value = false
-	emit('dismissed')
+	if (!currentIcon.value && props.variant) {
+		currentIcon.value = iconsByVariant[props.variant]
+	}
 }
 
 watchEffect(() => {
 	open.value = props.show
+	handleIconByVariant()
 })
 </script>
 <template>
