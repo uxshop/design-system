@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
 
@@ -68,6 +68,14 @@ if (props.disclosure) {
 	trailingIcon.value = 'arrow_drop_down'
 	classList.value.push('-disclousure')
 }
+
+watch(
+	() => props.variant,
+	(newVal, oldVal) => {
+		const foundedIndex = classList.value.findIndex((classes) => classes.includes(oldVal!))
+		if (foundedIndex !== -1) classList.value.splice(foundedIndex, 1)
+	}
+)
 </script>
 
 <template>
