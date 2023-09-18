@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watchEffect, ref } from 'vue'
+import { watchEffect, ref, computed } from 'vue'
 import Icon from '../icon/Icon.vue'
 const props = defineProps<{
 	title?: string
@@ -11,10 +11,7 @@ const props = defineProps<{
 	label?: string
 }>()
 const emit = defineEmits(['dismissed'])
-const classList = ref<string[]>([])
 const open = ref(props.show)
-
-const currentIcon = ref(props.icon)
 
 const iconsByVariant: Record<string, string> = {
 	success: 'check_circle',
@@ -27,31 +24,37 @@ const close = () => {
 	emit('dismissed')
 }
 
-if (props.center) {
-	classList.value.push(`-center`)
-}
-
-if (props.dismissible) {
-	classList.value.push(`-dismissible`)
-}
-
-function handleIconByVariant() {
+const styleClassList = computed(() => {
+	let classList = []
 	if (props.variant) {
-		classList.value.push(`-${props.variant}`)
+		classList.push(`-${props.variant}`)
 	}
 
-	if (!currentIcon.value && props.variant) {
-		currentIcon.value = iconsByVariant[props.variant]
+	if (props.center) {
+		classList.push(`-center`)
 	}
-}
+
+	if (props.dismissible) {
+		classList.push(`-dismissible`)
+	}
+
+	return classList
+})
+
+const currentIcon = computed(() => {
+	let icon = ''
+	if (!props.icon && props.variant) {
+		icon = iconsByVariant[props.variant]
+	}
+	return icon
+})
 
 watchEffect(() => {
 	open.value = props.show
-	handleIconByVariant()
 })
 </script>
 <template>
-	<div v-if="open" class="ui-alert" :class="classList">
+	<div v-if="open" class="ui-alert" :class="styleClassList">
 		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" />
 		<div class="ui-alert-content">
 			<h6 class="ui-alert-title" v-if="title">
