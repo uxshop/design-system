@@ -71,9 +71,8 @@ if (props.disclosure) {
 
 watch(
 	() => props.variant,
-	(newVal, oldVal) => {
-		const foundedIndex = classList.value.findIndex((classes) => classes.includes(oldVal!))
-		if (foundedIndex !== -1) classList.value.splice(foundedIndex, 1)
+	(newVal) => {
+		classList.value.push(`-${newVal}`)
 	}
 )
 </script>
