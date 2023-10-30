@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getCurrentInstance, onMounted, onUnmounted, watchEffect } from 'vue'
 import './redactor/redactor'
+import './redactor/plugins/alignment/alignment.js'
 
 export interface Props {
 	modelValue?: any
@@ -43,18 +44,21 @@ const config = Object.assign(
 		maxHeight: '600px',
 		minHeight: `${props.height}px`,
 		multipleUpload: false,
-		callbacks: Object.assign({
-			focus: function () {
-				focused = true
+		callbacks: Object.assign(
+			{
+				focus: function () {
+					focused = true
+				},
+				blur: function () {
+					focused = false
+				},
+				changed: (html: string) => {
+					emit('update:modelValue', html)
+					return html
+				}
 			},
-			blur: function () {
-				focused = false
-			},
-			changed: (html: string) => {
-				emit('update:modelValue', html)
-				return html
-			}
-		}, props.configCallbacks)
+			props.configCallbacks
+		)
 	},
 	props.config
 )
