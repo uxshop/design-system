@@ -84,7 +84,8 @@ onMounted(() => {
 
 					update(dateFormat)
 				})
-			}
+			},
+			...props.config
 		}
 
 		if (props.range) {

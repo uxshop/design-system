@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
 
@@ -69,6 +69,13 @@ if (props.disclosure) {
 	trailingIcon.value = 'arrow_drop_down'
 	classList.value.push('-disclousure')
 }
+
+watch(
+	() => props.variant,
+	(newVal) => {
+		classList.value.push(`-${newVal}`)
+	}
+)
 </script>
 
 <template>

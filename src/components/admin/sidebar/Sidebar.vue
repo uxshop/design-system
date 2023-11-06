@@ -10,6 +10,8 @@ export interface PermissionInterface {
 }
 
 export interface MenuProviderInterface {
+	open: boolean
+	removeSidebar(): void
 	toggle(): void
 }
 
@@ -60,8 +62,10 @@ watchEffect(() => {
 	})
 })
 
-const clickOverlay = () => {
-	if (menu) menu.toggle()
+const toggleMenu = () => {
+	if (menu) {
+		menu.toggle()
+	}
 }
 
 const checkSubActive = (item: any) => {
@@ -92,6 +96,7 @@ const checkSubActive = (item: any) => {
 							<li
 								v-for="(item, key) in menusFilter"
 								class="ui-sidebar-item"
+								redirectLink
 								:key="key"
 								:class="[
 									{
@@ -116,11 +121,13 @@ const checkSubActive = (item: any) => {
 										{{ item.name }}
 									</span>
 								</router-link>
+
 								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
 									<li v-for="node in item.nodes" class="ui-sidebar-item">
 										<router-link
 											:to="{ name: node.to }"
 											class="ui-sidebar-link -sub"
+											@click="toggleMenu"
 											:class="{
 												'-active': checkSubActive(node),
 												'-disabled': node.disabled
@@ -138,7 +145,10 @@ const checkSubActive = (item: any) => {
 				</div>
 			</div>
 		</div>
-		<div class="ui-sidebar-overlay" @click="clickOverlay"></div>
+		<div class="ui-sidebar-overlay" @click="toggleMenu"></div>
+		<div v-if="menu.open === true" class="ui-close-sidebar" @click="toggleMenu">
+			<Icon name="close" />
+		</div>
 	</div>
 </template>
 

@@ -1126,7 +1126,7 @@
   .redactor-styles h5,
   .redactor-styles h6 {
     font-weight: bold;
-    color: #111;
+    color: var(--body-color);
     text-rendering: optimizeLegibility;
     margin: 0;
     padding: 0;
@@ -1148,7 +1148,7 @@
     letter-spacing: .035em; }
   .redactor-styles blockquote {
     font-style: italic;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(var(--body-color), 0.5);
     border: none; }
   .redactor-styles table {
     width: 100%; }

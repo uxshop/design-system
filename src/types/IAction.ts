@@ -10,4 +10,5 @@ export interface IAction {
 	variant?: IVariant
 	to?: any
 	target?: '_blank' | '_self'
+	class?: string
 }

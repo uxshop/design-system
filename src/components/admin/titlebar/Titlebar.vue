@@ -21,19 +21,22 @@ defineProps<{
 <template>
 	<div class="titlebar">
 		<div class="titlebar-content">
-			<div class="titlebar-title -mobile">
+			<div class="titlebar-title">
 				<IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" />
-				<h2 class="titlebar-text">{{ title }}</h2>
-			</div>
-			<div v-if="$slots['titlebar-subtitle']" class="titlebar-subtitle">
-				<slot name="titlebar-subtitle" />
+				<div class="titlebar-title-info">
+					<h2 class="titlebar-title-info-text">{{ title }}</h2>
+					<div v-if="$slots['titlebar-subtitle']" class="titlebar-subtitle">
+						<slot name="titlebar-subtitle" />
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="titlebar-actions">
 			<div v-if="secondaryActions?.length" class="titlebar-actions-secondary">
 				<Button
 					v-if="secondaryActions?.length == 1"
-					v-for="item in secondaryActions"
+					v-for="(item, index) in secondaryActions"
+					:key="index"
 					:class="item.class"
 					variant="plain"
 					:label="item.label"
@@ -42,10 +45,11 @@ defineProps<{
 					@click="item.onAction" />
 				<Dropdown v-else right>
 					<template #button-content>
-						<Button variant="plain" label="Mais ações" trailingIcon="expand_more" />
+						<Button label="Mais ações" trailingIcon="expand_more" />
 					</template>
 					<DropdownItemButton
-						v-for="item in secondaryActions"
+						v-for="(item, index) in secondaryActions"
+						:key="index"
 						:label="item.label"
 						@click="item.onAction"
 						:leading-icon="item.leadingIcon"

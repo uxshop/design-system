@@ -51,7 +51,6 @@
 	}
 
 	&:active {
-		// transform: scale(0.98);
 		transform: translateY(1px);
 	}
 
@@ -237,13 +236,11 @@
 	}
 
 	&:focus {
-		// outline: -webkit-focus-ring-color auto 1px;
 		outline: var(--primary) solid 2px;
 		outline-offset: 1px;
 	}
 
 	.ui-button-content {
-		z-index: 4;
 		display: flex;
 		line-height: 1;
 		gap: 8px;

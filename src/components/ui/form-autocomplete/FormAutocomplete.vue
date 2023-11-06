@@ -143,9 +143,9 @@ onMounted(() => {
 })
 
 defineExpose({
-	setChoices(choices: any[]) {
+	setChoices(choices: any[], replaceOptions?: boolean) {
 		if (element.value) {
-			element.value.setChoices(choices)
+			element.value.setChoices(choices, undefined, undefined, replaceOptions)
 		}
 	}
 })

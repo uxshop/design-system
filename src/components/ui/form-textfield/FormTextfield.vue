@@ -68,9 +68,9 @@ const maskOptions = computed<MaskOptions>(() => {
 	}
 })
 
-const update = (val: any) => {
-	if (!props.mask) {
-	}
+const update = (evt: Event) => {
+	const target = evt.target as HTMLInputElement
+	const val = target.value
 	emit('update:modelValue', val)
 	emit('update', val)
 }
@@ -167,6 +167,7 @@ const onClear = () => {
 			<div v-if="actions" class="actions">
 				<Button
 					v-for="item in actions"
+					:key="item.label"
 					:variant="item.variant"
 					:type="item.type"
 					:label="item.label"

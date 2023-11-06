@@ -21,7 +21,7 @@ const listener = (e: MouseEvent | KeyboardEvent) => {
 	if (props.closeOn) hide()
 
 	if (e.target.dataset?.close != true) {
-		e.path.map((item: Element) => {
+		e.path?.map((item: Element) => {
 			if (item.className == 'ui-dropdown-menu') {
 				noClose = true
 			}

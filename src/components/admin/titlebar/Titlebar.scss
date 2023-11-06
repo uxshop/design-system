@@ -17,9 +17,14 @@
 		}
 	}
 
-	.titlebar-text {
-		font-size: 22px;
-		margin: 0;
+		
+		&-info {
+			&-text {
+				font-size: 22px;
+				margin: 0;
+			}
+			
+		}
 	}
 
 	> .ui-icon {
