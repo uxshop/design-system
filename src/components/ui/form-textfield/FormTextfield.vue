@@ -60,7 +60,6 @@ const emit = defineEmits<{
 }>()
 
 const classList = ref<string[]>([])
-const model = ref()
 const maskOptions = computed<MaskOptions>(() => {
 	return {
 		mask: props.mask,
@@ -76,8 +75,8 @@ const update = (evt: Event) => {
 }
 
 const maskRawValue = (evt: Event) => {
-	const target = evt.target as HTMLInputElement
-	update(target.value)
+	const target = evt.target as HTMLInputElement	
+	update(evt)
 	emit('updateRaw', target.dataset.maskRawValue)
 }
 
