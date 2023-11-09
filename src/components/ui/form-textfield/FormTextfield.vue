@@ -75,7 +75,7 @@ const update = (evt: Event) => {
 }
 
 const maskRawValue = (evt: Event) => {
-	const target = evt.target as HTMLInputElement	
+	const target = evt.target as HTMLInputElement
 	update(evt)
 	emit('updateRaw', target.dataset.maskRawValue)
 }
@@ -159,7 +159,7 @@ const onClear = () => {
 			:min="min"
 			:required="required" />
 		<slot name="after" />
-		<div v-if="clearable && modelValue?.length" class="close" @click="onClear">
+		<div v-if="clearable && modelValue?.length"  class="close" @click="onClear">
 			<Icon name="cancel" filled />
 		</div>
 		<template #append v-if="$slots.append || actions">
