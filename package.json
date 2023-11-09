@@ -11,7 +11,8 @@
 		"typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
 		"storybook": "start-storybook -p 6006",
-		"build-storybook": "build-storybook"
+		"build-storybook": "build-storybook",
+    "prepare": "husky install"
 	},
 	"dependencies": {
 		"@codemirror/basic-setup": "^0.19.1",
@@ -73,6 +74,9 @@
 		"vitest": "^0.5.0",
 		"vue": "^3.2.47",
 		"vue-loader": "^16.8.3",
-		"vue-tsc": "^0.34.15"
+		"vue-tsc": "^0.34.15",
+    "branch-name-lint": "^2.1.1",
+    "husky": "^8.0.3",
+    "git-commit-msg-linter": "^5.0.4"
 	}
 }
