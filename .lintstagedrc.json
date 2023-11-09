@@ -1,8 +1,7 @@
 {
-  "*.{js,jsx,ts,tsx}": [
+  "*.{js,jsx,ts,tsx,vue}": [
     "eslint --fix",
     "prettier --write",
-    "stencil test --spec --e2e --findRelatedTests",
     "git add"
   ]
 }
