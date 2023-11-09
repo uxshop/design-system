@@ -75,7 +75,7 @@ const update = (evt: Event) => {
 }
 
 const maskRawValue = (evt: Event) => {
-	const target = evt.target as HTMLInputElement	
+	const target = evt.target as HTMLInputElement
 	update(evt)
 	emit('updateRaw', target.dataset.maskRawValue)
 }
