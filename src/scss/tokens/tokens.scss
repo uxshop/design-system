@@ -1,0 +1,7 @@
+@use '../mixins/tokens' as tokens;
+@use './semantic/colors' as *;
+
+
+:root{
+  @include tokens.generateVars($semantics-color, color);
+}
