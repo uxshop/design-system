@@ -1,8 +1,14 @@
+@use "sass:list";
+@use "sass:meta";
 @use "sass:map";
 @use '../tokens/primitives/colors.scss' as *;
 
 @function getPrimitiveColor($color, $variation: 500) {
   $colorVariations: map.get($primitives-color, $color);
+
+  @if meta.type-of($colorVariations) == color {
+    @return $colorVariations;
+  }
 
   @return map.get($colorVariations, $variation);
 }

@@ -6,7 +6,7 @@ $semantics-color: (
     highlight: tokens.getPrimitiveColor(pink,600)
   ),
   fill: (
-    // default: tokens.getPrimitiveColor(white),
+    default: tokens.getPrimitiveColor(white),
     default-hover: tokens.getPrimitiveColor(neutral,200),
     default-light: tokens.getPrimitiveColor(neutral,100),
     highlight: tokens.getPrimitiveColor(pink,600),
