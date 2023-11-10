@@ -8,6 +8,7 @@ import IconButton from '../icon-button/IconButton.vue'
 
 defineProps<{
 	modelValue?: any[]
+	hideRemove?: boolean
 	inputMessage?: boolean
 }>()
 const emit = defineEmits(['onAddMessage', 'onRemoveMessage'])
@@ -54,7 +55,7 @@ function onSavePost(): void {
 
 							<small class="ui-timeline-item-date">{{ item.date }}</small>
 						</div>
-						<IconButton @click="$emit('onRemoveMessage', item)" icon="close" size="sm" variant="plain" />
+						<IconButton v-if='!hideRemove' @click="$emit('onRemoveMessage', item)" icon="close" size="sm" variant="plain" />
 					</div>
 				</div>
 			</li>
