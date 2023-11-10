@@ -3,5 +3,5 @@
 
 
 :root{
-  @include tokens.generateColorsVars($semantics-color);
+  @include tokens.generateVars($semantics-color, color);
 }

@@ -22,6 +22,25 @@ $semantics-color: (
     critical-hover: tokens.getPrimitiveColor(red,500),
     critical-light: tokens.getPrimitiveColor(red,100),
     disable: tokens.getPrimitiveColor(neutral,200),
+  ),
+  border: (
+    default: tokens.getPrimitiveColor(neutral,300),
+    Highlight: tokens.getPrimitiveColor(pink,600),
+    success: tokens.getPrimitiveColor(green,600),
+    warning: tokens.getPrimitiveColor(orange,600),
+    critical: tokens.getPrimitiveColor(red,600),
+    disable: tokens.getPrimitiveColor(neutral,400)
+  ),
+  content: (
+    primary: tokens.getPrimitiveColor(neutral,800),
+    secondary: tokens.getPrimitiveColor(neutral,600),
+    disable: tokens.getPrimitiveColor(neutral,400),
+    placeholder: tokens.getPrimitiveColor(neutral,300),
+    highlight: tokens.getPrimitiveColor(pink,600),
+    success: tokens.getPrimitiveColor(green,600),
+    warning: tokens.getPrimitiveColor(orange,600),
+    critical: tokens.getPrimitiveColor(red,600),
+    on-color: tokens.getPrimitiveColor(white)
   )
 );
 

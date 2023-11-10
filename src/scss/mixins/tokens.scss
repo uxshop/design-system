@@ -13,10 +13,16 @@
   @return map.get($colorVariations, $variation);
 }
 
-@mixin generateColorsVars ($colors) {
-  @each $group, $groupColors in $colors {
-    @each $name, $value in $groupColors {
-      --semantic-color-#{$group}-#{$name}: #{$value};
+@mixin generateVars ($list, $type) {
+  @each $groupName, $groupValues in $list {
+    @if meta.type-of($groupValues) == map {
+
+      @each $name, $value in $groupValues {
+        --s-#{$type}-#{$groupName}-#{$name}: #{$value};
+      }
+
+    } @else {
+      --s-#{$type}-#{$groupName}: #{$groupValues};
     }
   }
 }
