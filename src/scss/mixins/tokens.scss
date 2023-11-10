@@ -1,0 +1,17 @@
+@use "sass:map";
+@use '../tokens/primitives/colors.scss' as *;
+
+@function getPrimitiveColor($color, $variation: 500) {
+  $colorVariations: map.get($primitives-color, $color);
+
+  @return map.get($colorVariations, $variation);
+}
+
+@mixin generateColorsVars ($colors) {
+  @each $group, $groupColors in $colors {
+    @each $name, $value in $groupColors {
+      --semantic-color-#{$group}-#{$name}: #{$value};
+    }
+  }
+}
+
