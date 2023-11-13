@@ -1,7 +1,9 @@
 @use '../mixins/tokens' as tokens;
 @use './semantic/colors' as *;
+@use './semantic/spacing' as *;
 
 
 :root{
   @include tokens.generateVars($semantics-color, color);
+  @include tokens.generateVars($semantics-spacing, spacing);
 }
