@@ -1,0 +1,14 @@
+@import '../primitives/spacing';
+
+$semantics-spacing: (
+  quarck: $primitives-spacing-4px,
+  nano: $primitives-spacing-8px,
+  xx-small: $primitives-spacing-12px,
+  x-small: $primitives-spacing-16px,
+  small: $primitives-spacing-24px,
+  medium: $primitives-spacing-32px,
+  large: $primitives-spacing-40px,
+  x-large: $primitives-spacing-48px,
+  xx-large: $primitives-spacing-56px,
+  huge: $primitives-spacing-64px
+);
