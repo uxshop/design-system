@@ -1,0 +1,20 @@
+@use '../../mixins/tokens' as tokens;
+
+$semantic-motions: (
+	transition: (
+		linear: tokens.getPrimitiveMotion(transition, linear),
+		ease-in-out: tokens.getPrimitiveMotion(transition, ease-in-out),
+		ease-out: tokens.getPrimitiveMotion(transition, ease-out),
+		ease-in: tokens.getPrimitiveMotion(transition, ease-in),
+		ease: tokens.getPrimitiveMotion(transition, ease)
+	),
+	duration: (
+		linear: tokens.getPrimitiveMotion(duration, linear),
+		fast: tokens.getPrimitiveMotion(duration, fast),
+		default: tokens.getPrimitiveMotion(duration, default),
+		moderate: tokens.getPrimitiveMotion(duration, moderate),
+		slow: tokens.getPrimitiveMotion(duration, slow),
+		very-slow: tokens.getPrimitiveMotion(duration, very-slow),
+		extremely-slow: tokens.getPrimitiveMotion(duration, extremely-slow),
+	)
+);

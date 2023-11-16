@@ -1,0 +1,18 @@
+@use '../../mixins/tokens' as tokens;
+
+$semantic-borders: (
+	radius: (
+		none: tokens.getPrimitiveBorder(radius, 0px),
+		small: tokens.getPrimitiveBorder(radius, 4px),
+		medium: tokens.getPrimitiveBorder(radius, 8px),
+		large: tokens.getPrimitiveBorder(radius, 16px),
+		pill: tokens.getPrimitiveBorder(radius, 50%)
+	),
+	width: (
+		none: tokens.getPrimitiveBorder(width, 0),
+		light: tokens.getPrimitiveBorder(width, 1px),
+		thin: tokens.getPrimitiveBorder(width, 2px),
+		strong: tokens.getPrimitiveBorder(width, 4px),
+		heavy: tokens.getPrimitiveBorder(width, 8px)
+	)
+);

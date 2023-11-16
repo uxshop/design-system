@@ -1,29 +1,81 @@
-@use "sass:list";
-@use "sass:meta";
-@use "sass:map";
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:map';
 @use '../tokens/primitives/colors.scss' as *;
+@use '../tokens/primitives/borders.scss' as *;
+@use '../tokens/primitives/spacing.scss' as *;
+@use '../tokens/primitives/motions.scss' as *;
+@use '../tokens/primitives/z-indexes.scss' as *;
+@use '../tokens/primitives/shadows.scss' as *;
+
+@function getPrimitiveBorder($border, $width: 0) {
+	$borderVariations: map.get($primitive-borders, $border);
+
+	@if meta.type-of($borderVariations) == width {
+		@return $borderVariations;
+	}
+
+	@return map.get($borderVariations, $width);
+}
 
 @function getPrimitiveColor($color, $variation: 500) {
-  $colorVariations: map.get($primitives-color, $color);
+	$colorVariations: map.get($primitives-color, $color);
 
-  @if meta.type-of($colorVariations) == color {
-    @return $colorVariations;
-  }
+	@if meta.type-of($colorVariations) == color {
+		@return $colorVariations;
+	}
 
-  @return map.get($colorVariations, $variation);
+	@return map.get($colorVariations, $variation);
 }
 
-@mixin generateVars ($list, $type) {
-  @each $groupName, $groupValues in $list {
-    @if meta.type-of($groupValues) == map {
+@function getPrimitiveMotion($motion, $value: linear) {
+	$motionVariations: map.get($primitive-motions, $motion);
 
-      @each $name, $value in $groupValues {
-        --s-#{$type}-#{$groupName}-#{$name}: #{$value};
-      }
+	@if meta.type-of($motionVariations) == value {
+		@return $motionVariations;
+	}
 
-    } @else {
-      --s-#{$type}-#{$groupName}: #{$groupValues};
-    }
-  }
+	@return map.get($motionVariations, $value);
 }
 
+@function getPrimitiveShadow($shadow, $level: 1) {
+	$shadow: map.get($primitive-shadows, $shadow);
+
+	@if meta.type-of($shadow) == level {
+		@return $shadow;
+	}
+
+	@return map.get($shadow, $level);
+}
+
+@function getPrimitiveSpacing($spacing, $width: medium) {
+	$spacingVariations: map.get($primitive-spacing, $spacing);
+
+	@if meta.type-of($spacingVariations) == width {
+		@return $spacingVariations;
+	}
+
+	@return map.get($spacingVariations, $width);
+}
+
+@function getPrimitiveZIndex($index, $height: 1) {
+	$indexVariations: map.get($primitive-z-indexes, $index);
+
+	@if meta.type-of($indexVariations) == height {
+		@return $indexVariations;
+	}
+
+	@return map.get($indexVariations, $height);
+}
+
+@mixin generateVars($list, $type: null) {
+	@each $groupName, $groupValues in $list {
+		@if meta.type-of($groupValues) == map {
+			@each $name, $value in $groupValues {
+				--s#{if($type, '-'+$type, null)}-#{$groupName}-#{$name}: #{$value};
+			}
+		} @else {
+			--s#{if($type, '-'+$type, null)}-#{$groupName}: #{$groupValues};
+		}
+	}
+}

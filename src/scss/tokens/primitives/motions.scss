@@ -1,0 +1,18 @@
+$primitive-motions: (
+	transition: (
+		linear: cubic-bezier(0, 0, 1, 1),
+		ease-in-out: cubic-bezier(0.42, 0, 0.58, 1),
+		ease-out: cubic-bezier(0.19, 0.91, 0.38, 1),
+		ease-in: cubic-bezier(0.42, 0, 1, 1),
+		ease: cubic-bezier(0.25, 0.1, 0.25, 1)
+	),
+	duration: (
+		linear: 0,
+		fast: 300ms,
+		default: 500ms,
+		moderate: 750ms,
+		slow: 1000ms,
+		very-slow: 3000ms,
+		extremely-slow: 5000ms
+	)
+);
