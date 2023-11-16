@@ -11,6 +11,6 @@
 	@include tokens.generateVars($semantics-color, color);
 	@include tokens.generateVars($semantic-motions);
 	@include tokens.generateVars($semantic-shadows, level);
-	@include tokens.generateVars($semantic-spacing, spacing);
+	@include tokens.generateVars($semantic-spacings, spacing);
 	@include tokens.generateVars($semantic-z-indexes, index);
 }
