@@ -1,18 +1,19 @@
 @use '../../mixins/tokens' as tokens;
+@use '../primitives/borders.scss' as *;
 
 $semantic-borders: (
 	radius: (
-		none: tokens.getPrimitiveBorder(radius, 0px),
-		small: tokens.getPrimitiveBorder(radius, 4px),
-		medium: tokens.getPrimitiveBorder(radius, 8px),
-		large: tokens.getPrimitiveBorder(radius, 16px),
-		pill: tokens.getPrimitiveBorder(radius, 50%)
+		none: tokens.getPrimitiveVar($primitive-borders, radius, 0),
+		small: tokens.getPrimitiveVar($primitive-borders, radius, 4px),
+		medium: tokens.getPrimitiveVar($primitive-borders, radius, 8px),
+		large: tokens.getPrimitiveVar($primitive-borders, radius, 16px),
+		pill: tokens.getPrimitiveVar($primitive-borders, radius, 50%)
 	),
 	width: (
-		none: tokens.getPrimitiveBorder(width, 0),
-		light: tokens.getPrimitiveBorder(width, 1px),
-		thin: tokens.getPrimitiveBorder(width, 2px),
-		strong: tokens.getPrimitiveBorder(width, 4px),
-		heavy: tokens.getPrimitiveBorder(width, 8px)
+		none: tokens.getPrimitiveVar($primitive-borders, width, 0),
+		light: tokens.getPrimitiveVar($primitive-borders, width, 1px),
+		thin: tokens.getPrimitiveVar($primitive-borders, width, 2px),
+		strong: tokens.getPrimitiveVar($primitive-borders, width, 4px),
+		heavy: tokens.getPrimitiveVar($primitive-borders, width, 8px)
 	)
 );

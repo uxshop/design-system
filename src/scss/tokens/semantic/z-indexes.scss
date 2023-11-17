@@ -1,12 +1,12 @@
-@use '../../mixins/tokens' as tokens;
+@import '../primitives/z-indexes';
 
 $semantic-z-indexes: (
-	default: tokens.getPrimitiveZIndex(index, 1),
-	low: tokens.getPrimitiveZIndex(index, 2),
-	medium-low: tokens.getPrimitiveZIndex(index, 3),
-	medium: tokens.getPrimitiveZIndex(index, 4),
-	medium-high: tokens.getPrimitiveZIndex(index, 5),
-	high: tokens.getPrimitiveZIndex(index, 6),
-	very-high: tokens.getPrimitiveZIndex(index, 7),
-	max: tokens.getPrimitiveZIndex(index, 8)
+	default: $primitive-index-1,
+	low: $primitive-index-2,
+	medium-low: $primitive-index-3,
+	medium: $primitive-index-4,
+	medium-high: $primitive-index-5,
+	high: $primitive-index-6,
+	very-high: $primitive-index-7,
+	max: $primitive-index-8
 );

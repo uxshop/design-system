@@ -10,7 +10,7 @@
 	@include tokens.generateVars($semantic-borders, border);
 	@include tokens.generateVars($semantics-color, color);
 	@include tokens.generateVars($semantic-motions);
-	@include tokens.generateVars($semantic-shadows, level);
+	@include tokens.generateVars($semantic-shadows, shadow);
 	@include tokens.generateVars($semantic-spacings, spacing);
 	@include tokens.generateVars($semantic-z-indexes, index);
 }
