@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
+import theme from './ds-theme'
 
 const config: StorybookConfig = {
   stories: [
@@ -6,10 +7,10 @@ const config: StorybookConfig = {
     '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
   ],
   addons: [
-    { name: 'storybook-design-token', options: { preserveCSSVars: true } },
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    { name: 'storybook-design-token'}
   ],
   framework: {
     name: '@storybook/vue3-vite',
