@@ -3,7 +3,11 @@
 @use './semantic/spacing' as *;
 
 
-:root{
+:root {
+  /**
+  * @tokens Colors
+  * @presenter Color
+  */
   @include tokens.generateVars($semantics-color, color);
   @include tokens.generateVars($semantics-spacing, spacing);
 }

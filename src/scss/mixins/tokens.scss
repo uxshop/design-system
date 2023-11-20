@@ -23,6 +23,7 @@
 
     } @else {
       --s-#{$type}-#{$groupName}: #{$groupValues};
+
     }
   }
 }

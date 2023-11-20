@@ -11,7 +11,7 @@
     "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "prepare": "husky install",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "node ./.storybook/helpers/parse-tokens.js && storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
@@ -77,6 +77,7 @@
     "sass-loader": "10",
     "start-server-and-test": "^1.14.0",
     "storybook": "^7.5.3",
+    "storybook-design-token": "3.0.0-beta.7",
     "typescript": "~5.1.6",
     "vite": "^4.4.9",
     "vitest": "^0.34.2",
