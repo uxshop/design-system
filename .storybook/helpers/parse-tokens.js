@@ -4,7 +4,7 @@ const stylePath = "./src/scss/tokens"
 
 const tokens = sass.compile(`${stylePath}/tokens.scss`);
 
-fs.writeFile(`${stylePath}/tokens.css`, tokens.css, err => {
+fs.writeFile(`${stylePath}/stories/tokens.css`, tokens.css, err => {
   if (err) {
     console.error(err);
   }
