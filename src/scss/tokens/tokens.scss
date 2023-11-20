@@ -1,6 +1,10 @@
 @use '../mixins/tokens' as tokens;
+@use './semantic/borders' as *;
 @use './semantic/colors' as *;
+@use './semantic/motions' as *;
+@use './semantic/shadows' as *;
 @use './semantic/spacing' as *;
+@use './semantic/z-indexes' as *;
 
 
 :root {
@@ -8,10 +12,15 @@
   * @tokens Colors
   * @presenter Color
   */
-  @include tokens.generateVars($semantics-color, color);
+  @include tokens.generateVars($semantic-color, color);
   /**
   * @tokens Spacings
   * @presenter Spacing
   */
-  @include tokens.generateVars($semantics-spacing, spacing);
+  @include tokens.generateVars($semantic-spacing, spacing);
+
+	@include tokens.generateVars($semantic-borders, border);
+	@include tokens.generateVars($semantic-motions, motions);
+	@include tokens.generateVars($semantic-shadows, shadow);
+	@include tokens.generateVars($semantic-z-indexes, index);
 }
