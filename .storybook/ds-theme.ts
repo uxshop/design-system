@@ -15,7 +15,7 @@ export default create({
 
   //
   // colorPrimary: '#3A10E5',
-  // colorSecondary: '#333333'
+  colorSecondary: '#DC189B',
 
   // UI
   // appBg: '#ffffff',
