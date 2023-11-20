@@ -9,5 +9,9 @@
   * @presenter Color
   */
   @include tokens.generateVars($semantics-color, color);
+  /**
+  * @tokens Spacings
+  * @presenter Spacing
+  */
   @include tokens.generateVars($semantics-spacing, spacing);
 }
