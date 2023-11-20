@@ -1,29 +1,25 @@
-@use "sass:list";
-@use "sass:meta";
-@use "sass:map";
-@use '../tokens/primitives/colors.scss' as *;
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:map';
 
-@function getPrimitiveColor($color, $variation: 500) {
-  $colorVariations: map.get($primitives-color, $color);
+@function getPrimitiveVar($primitiveVar, $type, $value: null) {
+	$variableVariations: map.get($primitiveVar, $type);
 
-  @if meta.type-of($colorVariations) == color {
-    @return $colorVariations;
-  }
+	@if meta.type-of($variableVariations) == color {
+		@return $variableVariations;
+	}
 
-  @return map.get($colorVariations, $variation);
+	@return map.get($variableVariations, $value);
 }
 
-@mixin generateVars ($list, $type) {
-  @each $groupName, $groupValues in $list {
-    @if meta.type-of($groupValues) == map {
-
-      @each $name, $value in $groupValues {
-        --s-#{$type}-#{$groupName}-#{$name}: #{$value};
-      }
-
-    } @else {
-      --s-#{$type}-#{$groupName}: #{$groupValues};
-    }
-  }
+@mixin generateVars($list, $type: null) {
+	@each $groupName, $groupValues in $list {
+		@if meta.type-of($groupValues) == map {
+			@each $name, $value in $groupValues {
+				--s#{if($type, '-'+$type, null)}-#{$groupName}-#{$name}: #{$value};
+			}
+		} @else {
+			--s#{if($type, '-'+$type, null)}-#{$groupName}: #{$groupValues};
+		}
+	}
 }
-

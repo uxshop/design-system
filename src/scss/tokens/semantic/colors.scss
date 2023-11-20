@@ -1,48 +1,46 @@
 @use '../../mixins/tokens' as tokens;
+@use '../primitives/colors.scss' as *;
 
 $semantics-color: (
-  background: (
-    default: tokens.getPrimitiveColor(neutral,100),
-    highlight: tokens.getPrimitiveColor(pink,600)
-  ),
-  fill: (
-    default: tokens.getPrimitiveColor(white),
-    default-hover: tokens.getPrimitiveColor(neutral,200),
-    default-light: tokens.getPrimitiveColor(neutral,100),
-    highlight: tokens.getPrimitiveColor(pink,600),
-    highlight-hover: tokens.getPrimitiveColor(pink,500),
-    highlight-light: tokens.getPrimitiveColor(pink,100),
-    success: tokens.getPrimitiveColor(green,600),
-    success-hover: tokens.getPrimitiveColor(green,500),
-    success-light: tokens.getPrimitiveColor(green,100),
-    warning: tokens.getPrimitiveColor(orange,600),
-    warning-hover: tokens.getPrimitiveColor(orange,500),
-    warning-light: tokens.getPrimitiveColor(orange,100),
-    critical: tokens.getPrimitiveColor(red,600),
-    critical-hover: tokens.getPrimitiveColor(red,500),
-    critical-light: tokens.getPrimitiveColor(red,100),
-    disable: tokens.getPrimitiveColor(neutral,200),
-  ),
-  border: (
-    default: tokens.getPrimitiveColor(neutral,300),
-    Highlight: tokens.getPrimitiveColor(pink,600),
-    success: tokens.getPrimitiveColor(green,600),
-    warning: tokens.getPrimitiveColor(orange,600),
-    critical: tokens.getPrimitiveColor(red,600),
-    disable: tokens.getPrimitiveColor(neutral,400)
-  ),
-  content: (
-    primary: tokens.getPrimitiveColor(neutral,800),
-    secondary: tokens.getPrimitiveColor(neutral,600),
-    disable: tokens.getPrimitiveColor(neutral,400),
-    placeholder: tokens.getPrimitiveColor(neutral,300),
-    highlight: tokens.getPrimitiveColor(pink,600),
-    success: tokens.getPrimitiveColor(green,600),
-    warning: tokens.getPrimitiveColor(orange,600),
-    critical: tokens.getPrimitiveColor(red,600),
-    on-color: tokens.getPrimitiveColor(white)
-  )
+	background: (
+		default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
+		highlight: tokens.getPrimitiveVar($primitives-color, pink, 600)
+	),
+	fill: (
+		default: tokens.getPrimitiveVar($primitives-color, white),
+		default-hover: tokens.getPrimitiveVar($primitives-color, neutral, 200),
+		default-light: tokens.getPrimitiveVar($primitives-color, neutral, 100),
+		highlight: tokens.getPrimitiveVar($primitives-color, pink, 600),
+		highlight-hover: tokens.getPrimitiveVar($primitives-color, pink, 500),
+		highlight-light: tokens.getPrimitiveVar($primitives-color, pink, 100),
+		success: tokens.getPrimitiveVar($primitives-color, green, 600),
+		success-hover: tokens.getPrimitiveVar($primitives-color, green, 500),
+		success-light: tokens.getPrimitiveVar($primitives-color, green, 100),
+		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
+		warning-hover: tokens.getPrimitiveVar($primitives-color, orange, 500),
+		warning-light: tokens.getPrimitiveVar($primitives-color, orange, 100),
+		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
+		critical-hover: tokens.getPrimitiveVar($primitives-color, red, 500),
+		critical-light: tokens.getPrimitiveVar($primitives-color, red, 100),
+		disable: tokens.getPrimitiveVar($primitives-color, neutral, 200)
+	),
+	border: (
+		default: tokens.getPrimitiveVar($primitives-color, neutral, 300),
+		Highlight: tokens.getPrimitiveVar($primitives-color, pink, 600),
+		success: tokens.getPrimitiveVar($primitives-color, green, 600),
+		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
+		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
+		disable: tokens.getPrimitiveVar($primitives-color, neutral, 400)
+	),
+	content: (
+		primary: tokens.getPrimitiveVar($primitives-color, neutral, 800),
+		secondary: tokens.getPrimitiveVar($primitives-color, neutral, 600),
+		disable: tokens.getPrimitiveVar($primitives-color, neutral, 400),
+		placeholder: tokens.getPrimitiveVar($primitives-color, neutral, 300),
+		highlight: tokens.getPrimitiveVar($primitives-color, pink, 600),
+		success: tokens.getPrimitiveVar($primitives-color, green, 600),
+		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
+		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
+		on-color: tokens.getPrimitiveVar($primitives-color, white)
+	)
 );
-
-
-
