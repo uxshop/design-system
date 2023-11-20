@@ -8,8 +8,27 @@ const meta = {
   component: Alert,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
-  argTypes: {},
-  args: { show: true, title: 'My title' } // default value
+  args: {
+    show: true,
+    variant: 'default',
+    title: 'Alert title',
+    label: 'My content',
+    icon: '',
+    center: false,
+    dismissible: false,
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: [
+        'default',
+        'info',
+        'success',
+        'warning',
+        'danger',
+      ],
+    },
+  }
 } satisfies Meta<typeof Alert>
 
 export default meta
@@ -20,12 +39,26 @@ type Story = StoryObj<typeof meta>
  * to learn how to use render functions.
  */
 export const Default: Story = {
-  args: {
+  args: {}
+}
 
+export const Info: Story = {
+  args: {
+    variant: 'info'
   }
 }
 export const Success: Story = {
   args: {
     variant: 'success'
+  }
+}
+export const Warning: Story = {
+  args: {
+    variant: 'warning'
+  }
+}
+export const Danger: Story = {
+  args: {
+    variant: 'danger'
   }
 }
