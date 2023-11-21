@@ -3,8 +3,8 @@ require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
   root: true,
-  ignorePatterns: ['redactor.js', 'redactor', 'redactor/**.js'],
-  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/eslint-config-typescript/recommended', '@vue/eslint-config-prettier', 'plugin:storybook/recommended'],
+  ignorePatterns: ['redactor.js', 'redactor', 'redactor/**.js', '*.old_doc.js'],
+  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/eslint-config-typescript/recommended', '@vue/eslint-config-prettier', 'plugin:storybook/recommended', 'plugin:storybook/recommended'],
   env: {
     'vue/setup-compiler-macros': true
   },

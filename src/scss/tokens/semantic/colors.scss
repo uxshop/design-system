@@ -1,7 +1,7 @@
 @use '../../mixins/tokens' as tokens;
 @use '../primitives/colors.scss' as *;
 
-$semantics-color: (
+$semantic-color: (
 	background: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
 		highlight: tokens.getPrimitiveVar($primitives-color, pink, 600)
