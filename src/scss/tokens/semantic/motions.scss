@@ -1,20 +1,19 @@
 @import '../primitives/motions';
 
-$semantic-motions: (
-	transition: (
-		linear: $primitive-transition-linear,
-		ease-in-out: $primitive-transition-ease-in-out,
-		ease-out: $primitive-transition-ease-out,
-		ease-in: $primitive-transition-ease-in,
-		ease: $primitive-transition-ease
-	),
-	duration: (
-		linear: $primitive-duration-linear,
-		fast: $primitive-duration-fast,
-		default: $primitive-duration-default,
-		moderate: $primitive-duration-moderate,
-		slow: $primitive-duration-slow,
-		very-slow: $primitive-duration-very-slow,
-		extremely-slow: $primitive-duration-extremely-slow
-	)
+$semantic-motion-ease: (
+  linear: $primitive-transition-linear,
+  in-out: $primitive-transition-ease-in-out,
+  out: $primitive-transition-ease-out,
+  in: $primitive-transition-ease-in,
+  default: $primitive-transition-ease
+);
+
+$semantic-motion-duration: (
+  linear: $primitive-duration-linear,
+  fast: $primitive-duration-fast,
+  default: $primitive-duration-default,
+  moderate: $primitive-duration-moderate,
+  slow: $primitive-duration-slow,
+  very-slow: $primitive-duration-very-slow,
+  extremely-slow: $primitive-duration-extremely-slow
 );
