@@ -1,4 +1,4 @@
-import type { IVariant } from '../types/ITypes'
+import type { ITarget, IVariant } from '../types/ITypes'
 
 export interface IAction {
 	leadingIcon?: string
@@ -9,6 +9,6 @@ export interface IAction {
 	type?: string
 	variant?: IVariant
 	to?: any
-	target?: '_blank' | '_self'
+	target?: ITarget
 	class?: string
 }

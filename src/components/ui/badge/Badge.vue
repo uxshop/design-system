@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { ISize, IVariant } from 'src/types/ITypes'
 
-const props = defineProps<{
-	size?: string
-	pill?: boolean
-	variant?: string
+type BadgeSizes = ISize
+type BadgeVariants = IVariant
+
+export interface Props {
 	label?: string | number
-}>()
+	pill?: boolean
+	size?: BadgeSizes
+	variant?: BadgeVariants
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	variant: 'default',
+	size: 'md'
+})
 
 const classList = ref<string[]>([])
 const style = ref<string[]>([])
