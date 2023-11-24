@@ -97,7 +97,7 @@ watch(
 		<div class="ui-button-content">
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
 			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
-			<div v-if="label">
+			<div v-if="label || $slots.default">
 				<slot>{{ label }}</slot>
 			</div>
 			<Icon :name="trailingIcon" v-if="trailingIcon" />
