@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted, shallowRef, computed } from 'vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import Dropdown from '../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
@@ -16,6 +17,24 @@ defineProps<{
 		actions: IAction[]
 	}
 }>()
+
+const moreBtnMobileIcon = 'more_vert'
+const checkIsDesktop = () => window.innerWidth > 768
+const isDesktop = shallowRef(checkIsDesktop())
+
+const getButtonLabel = computed(
+	() => (label?: string, leadingIcon?: string) => isDesktop.value || !leadingIcon ? label : undefined
+)
+
+onMounted(() => {
+	window.onresize = () => {
+		isDesktop.value = checkIsDesktop()
+	}
+})
+
+onUnmounted(() => {
+	window.onresize = null
+})
 </script>
 
 <template>
@@ -39,13 +58,15 @@ defineProps<{
 					:key="index"
 					:class="item.class"
 					variant="plain"
-					:label="item.label"
+					:label="getButtonLabel(item.label, item.leadingIcon)"
 					:to="item.to"
 					:leading-icon="item.leadingIcon"
 					@click="item.onAction" />
 				<Dropdown v-else right>
 					<template #button-content>
-						<Button label="Mais ações" trailingIcon="expand_more" />
+						<Button
+							:label="getButtonLabel('Mais ações', moreBtnMobileIcon)"
+							:trailingIcon="isDesktop ? 'expand_more' : moreBtnMobileIcon" />
 					</template>
 					<DropdownItemButton
 						v-for="(item, index) in secondaryActions"
@@ -60,7 +81,7 @@ defineProps<{
 				<Button
 					variant="primary"
 					:to="primaryAction.to"
-					:label="primaryAction.label"
+					:label="getButtonLabel(primaryAction.label, primaryAction.leadingIcon)"
 					@click="primaryAction.onAction"
 					:class="primaryAction.class"
 					:leading-icon="primaryAction.leadingIcon" />
