@@ -1,11 +1,11 @@
 .ui-color-thumb {
 	width: var(--input-height);
-	height: var(--input-height);
 	display: inline-block;
 	position: relative;
 	border-radius: 100%;
 	overflow: hidden;
 	vertical-align: middle;
+	aspect-ratio: 1;
 
 	&.-sm {
 		width: var(--input-height-sm);

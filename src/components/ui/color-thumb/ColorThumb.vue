@@ -1,38 +1,37 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Image from '../image/Image.vue'
+import { computed } from 'vue'
 
 const props = defineProps<{
 	hexadecimal?: string
 	hexadecimalSecondary?: string
 	image?: string
-	size?: string
-	width?: string
+	sm?: boolean
+	size?: number
 }>()
 
-const customStyle = ref<{
-	width?: string
-	height?: string
-}>({})
+const colorThumbClassList = computed(() => {
+	let classes = []
 
-const classList: any[] = []
+	if (props.sm) {
+		classes.push('-sm')
+	}
 
-if (props.size) {
-	classList.push(`-${props.size}`)
-}
+	return classes
+})
 
-if (props.width) {
-	customStyle.value.width = `${props.width}px`
-	customStyle.value.height = `${props.width}px`
-}
+const colorThumbStyleList = computed(() => {
+	if (props.size) {
+		return `width: ${props.size}px`
+	}
+})
 </script>
 
 <template>
-	<span class="ui-color-thumb" :class="classList" :style="customStyle">
-		<span class="ui-color-thumb-image" v-if="image" :style="{ backgroundImage: `url(${image.src})` }" />
+	<span class="ui-color-thumb" :class="colorThumbClassList" :style="colorThumbStyleList">
+		<span class="ui-color-thumb-image" v-if="image" :style="{ backgroundImage: `url(${image})` }" />
 		<template v-else>
-			<span class="ui-color-thumb-color" :style="{ backgroundColor: hexadecimal }"></span>
-			<span class="ui-color-thumb-color -secondary" :style="{ backgroundColor: hexadecimalSecondary }"></span>
+			<span class="ui-color-thumb-color" :style="{ backgroundColor: hexadecimal }" />
+			<span class="ui-color-thumb-color -secondary" :style="{ backgroundColor: hexadecimalSecondary }" />
 		</template>
 	</span>
 </template>
