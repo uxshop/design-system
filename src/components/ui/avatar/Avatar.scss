@@ -16,7 +16,7 @@
 	position: relative;
 	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	border-radius: 100%;
-	background: var(--gray-200);
+	background: var(--s-color-fill-default-light);
 
 	> .ui-avatar-content {
 		border-radius: inherit;
@@ -28,22 +28,22 @@
 		align-items: center;
 		text-transform: uppercase;
 		white-space: nowrap;
-		border: solid 1px var(--dark-300, white);
-		box-shadow: 0 0 0 2px var(--border-color);
-		background: var(--gray-100);
+		border: solid 1px var(--s-color-fill-default);
+		box-shadow: 0 0 0 2px var(--s-color-border-default);
+		background: var(--s-color-fill-default);
 	}
 
-	&.-primary {
+	&.-highlight {
 		.ui-avatar-content {
-			color: var(--primary);
-			box-shadow: 0 0 0 2px var(--primary);
+			color: var(--s-color-border-highlight);
+			box-shadow: 0 0 0 2px var(--s-color-border-highlight);
 		}
 	}
 
 	&.-success {
 		.ui-avatar-content {
-			color: var(--success);
-			box-shadow: 0 0 0 2px var(--success);
+			color: var(--s-color-fill-success);
+			box-shadow: 0 0 0 2px var(--s-color-border-success);
 		}
 	}
 }

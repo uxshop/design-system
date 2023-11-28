@@ -6,45 +6,46 @@
 @use './semantic/spacing' as *;
 @use './semantic/z-indexes' as *;
 
-
-:root {
-  /**
+@layer default {
+  :root {
+    /**
   * @tokens Colors
   * @presenter Color
   */
-  @include tokens.generateVars($semantic-color, color);
-  /**
+    @include tokens.generateVars($semantic-color, color);
+    /**
   * @tokens Spacings
   * @presenter Spacing
   */
-  @include tokens.generateVars($semantic-spacing, spacing);
-/**
+    @include tokens.generateVars($semantic-spacing, spacing);
+    /**
   * @tokens Borders
   * @presenter Border
   */
-	@include tokens.generateVars($semantic-borders-width, border);
-/**
+    @include tokens.generateVars($semantic-borders-width, border);
+    /**
   * @tokens Borders Radius
   * @presenter BorderRadius
   */
-	@include tokens.generateVars($semantic-borders-radius, border);
-  /**
+    @include tokens.generateVars($semantic-borders-radius, border);
+    /**
   * @tokens Motions
   * @presenter Easing
   */
-	@include tokens.generateVars($semantic-motion-ease, motion-ease);
-  /**
+    @include tokens.generateVars($semantic-motion-ease, motion-ease);
+    /**
   * @tokens Motions Duration
   * @presenter Easing
   */
-	@include tokens.generateVars($semantic-motion-duration, motion-duration);
-  /**
+    @include tokens.generateVars($semantic-motion-duration, motion-duration);
+    /**
   * @tokens Shadows
   * @presenter Shadow
   */
-	@include tokens.generateVars($semantic-shadows, shadow);
-  /**
+    @include tokens.generateVars($semantic-shadows, shadow);
+    /**
   * @tokens Z-index
   */
-	@include tokens.generateVars($semantic-z-indexes, index);
+    @include tokens.generateVars($semantic-z-indexes, index);
+  }
 }

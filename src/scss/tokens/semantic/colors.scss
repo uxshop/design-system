@@ -1,6 +1,12 @@
 @use '../../mixins/tokens' as tokens;
 @use '../primitives/colors.scss' as *;
 
+@layer brand {
+  :root{
+    --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
+  }
+}
+
 $semantic-color: (
 	background: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
@@ -10,7 +16,7 @@ $semantic-color: (
 		default: tokens.getPrimitiveVar($primitives-color, white),
 		default-hover: tokens.getPrimitiveVar($primitives-color, neutral, 200),
 		default-light: tokens.getPrimitiveVar($primitives-color, neutral, 100),
-		highlight: tokens.getPrimitiveVar($primitives-color, pink, 600),
+		highlight: var(--brand-color-primary),
 		highlight-hover: tokens.getPrimitiveVar($primitives-color, pink, 500),
 		highlight-light: tokens.getPrimitiveVar($primitives-color, pink, 100),
 		success: tokens.getPrimitiveVar($primitives-color, green, 600),
@@ -26,7 +32,7 @@ $semantic-color: (
 	),
 	border: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 300),
-		Highlight: tokens.getPrimitiveVar($primitives-color, pink, 600),
+		highlight: tokens.getPrimitiveVar($primitives-color, pink, 600),
 		success: tokens.getPrimitiveVar($primitives-color, green, 600),
 		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
 		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
