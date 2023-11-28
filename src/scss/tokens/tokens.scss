@@ -51,5 +51,6 @@
 	/**
   * @tokens Z-index
   */
-	@include tokens.generateVars($semantic-z-indexes, index);
+    @include tokens.generateVars($semantic-z-indexes, index);
+  }
 }

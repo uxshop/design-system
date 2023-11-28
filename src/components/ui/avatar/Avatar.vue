@@ -32,8 +32,9 @@ if (props.variant) {
 	<div class="ui-avatar" :class="classList" :style="style">
 		<div class="ui-avatar-content">
 			<img :src="src" v-if="src" />
-			<slot v-else-if="!label" />
-			<span v-else>{{ label }}</span>
+			<slot v-else>
+        {{ label }}
+      </slot>
 		</div>
 	</div>
 </template>
