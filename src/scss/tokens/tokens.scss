@@ -9,8 +9,23 @@
 
 :root {
 	/**
-  * @tokens Typographies
-  * @presenter Typography
+  * @tokens Font Size
+  * @presenter FontSize
+  */
+	@include tokens.generateVars($semantic-font-size, font-size);
+	/**
+  * @tokens Font Weight
+  * @presenter FontWeight
+  */
+	@include tokens.generateVars($semantic-font-weight, font-weight);
+	/**
+  * @tokens Line Height
+  * @presenter LineHeight
+  */
+	@include tokens.generateVars($semantic-line-height, line-height);
+	/**
+  * @tokens Typograph
+  * @presenter LineHeight
   */
 	@include tokens.generateVars($semantic-typographies, typography);
 	/**
@@ -52,5 +67,5 @@
   * @tokens Z-index
   */
     @include tokens.generateVars($semantic-z-indexes, index);
-  }
+
 }

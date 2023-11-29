@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/vue3'
+import './theme.scss'
 import '../src/scss/theme.scss'
 
 const preview: Preview = {
@@ -11,7 +12,8 @@ const preview: Preview = {
       }
     },
     designToken: {
-      disable: true
+      disable: true,
+      showSearch: false
     }
   }
 }
