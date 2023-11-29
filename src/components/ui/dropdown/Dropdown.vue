@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { getCurrentInstance, nextTick, onMounted, ref } from 'vue'
+import { computed, getCurrentInstance, nextTick, onMounted, ref } from 'vue'
 
 const props = defineProps<{
 	variant?: 'white' | 'dark'
 	right?: boolean
 	left?: boolean
+	dropUp?: boolean
 	disabled?: boolean
 	closeOn?: boolean
 }>()
@@ -15,6 +16,8 @@ const uid = `ui-dropdown-${getCurrentInstance()?.uid}`
 const uidMenu = `ui-dropdown-${getCurrentInstance()?.uid}-menu`
 const style = ref({})
 let initialHeight: number = 0
+
+const showOnTop = computed(() => (props.dropUp ? '-400px' : 'unset'))
 
 const listener = (e: MouseEvent | KeyboardEvent) => {
 	let noClose = e.target.tagName == 'INPUT'
@@ -99,4 +102,11 @@ defineExpose({
 
 <style lang="scss">
 @import './Dropdown.scss';
+.ui-dropdown {
+	&.-right {
+		.ui-dropdown-menu {
+			top: v-bind(showOnTop);
+		}
+	}
+}
 </style>
