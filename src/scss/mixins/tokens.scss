@@ -5,7 +5,7 @@
 @function getPrimitiveVar($primitiveVar, $type, $value: null) {
 	$variableVariations: map.get($primitiveVar, $type);
 
-	@if meta.type-of($variableVariations) == color {
+	@if not $value {
 		@return $variableVariations;
 	}
 

@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    { name: 'storybook-design-token'}
+    'storybook-design-token'
   ],
   framework: {
     name: '@storybook/vue3-vite',
