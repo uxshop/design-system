@@ -35,24 +35,30 @@ export const Default: Story = {
 
 export const Primary: Story = {
 	args: {
-		variant: 'primary'
+		variant: 'primary',
+		size: 'sm'
 	}
 }
 
 export const Warning: Story = {
 	args: {
-		variant: 'warning'
+		variant: 'warning',
+		size: 'sm',
+		pill: true
 	}
 }
 
 export const Success: Story = {
 	args: {
-		variant: 'success'
+		variant: 'success',
+		size: 'lg'
 	}
 }
 
 export const Danger: Story = {
 	args: {
-		variant: 'danger'
+		variant: 'danger',
+		size: 'lg',
+		pill: true
 	}
 }
