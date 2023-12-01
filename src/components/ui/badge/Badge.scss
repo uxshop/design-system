@@ -36,6 +36,10 @@
 	&.-size {
 		&-sm {
 			padding: 0 var(--s-spacing-quark);
+
+			&.-pill {
+				padding: 0 var(--s-spacing-nano);
+			}
 		}
 
 		&-md {
