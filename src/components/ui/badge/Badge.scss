@@ -1,79 +1,53 @@
 .ui-badge {
 	display: inline-flex;
 	align-items: center;
-	font-weight: var(--font-weight-semibold);
-	color: var(--body-color);
-	background: var(--gray-200);
-	padding: 5px;
-	border-radius: 4px;
-	font-size: 12px;
-	line-height: 1;
+	border-radius: var(--badge-border-radius, var(--s-border-small));
+	color: var(--badge-color, var(--s-color-content-on-color));
+	font: var(--s-typography-label-small);
+	font-weight: var(--s-font-weight-semibold);
 
 	& + .ui-badge {
-		margin-left: 5px;
+		margin-left: var(--s-spacing-quark);
 	}
 
-	&.-default {
-		background-color: var(--gray-200);
-		color: var(--body-color);
+	&.-variant {
+		&-default {
+			--badge-color: var(--s-color-content-primary);
+			background-color: var(--s-color-fill-default-light);
+		}
+
+		&-primary {
+			background-color: var(--s-color-fill-highlight);
+		}
+
+		&-warning {
+			background-color: var(--s-color-fill-warning);
+		}
+
+		&-danger {
+			background-color: var(--s-color-fill-critical);
+		}
+
+		&-success {
+			background-color: var(--s-color-fill-success);
+		}
 	}
 
-	&.-primary {
-		background-color: var(--primary);
-		color: white;
-	}
+	&.-size {
+		&-sm {
+			padding: 0 var(--s-spacing-quark);
+		}
 
-	&.-secondary {
-		background-color: var(--secondary);
-		color: white;
-	}
+		&-md {
+			padding: 0 var(--s-spacing-nano);
+		}
 
-	&.-warning {
-		background-color: var(--warning);
-		color: white;
-	}
-
-	&.-danger {
-		background-color: var(--danger);
-		color: white;
-	}
-
-	&.-dark {
-		background-color: var(--dark);
-		color: white;
-	}
-
-	&.-success {
-		background-color: var(--success);
-		color: white;
-	}
-
-	&.-sm {
-		font-size: 10px;
-	}
-
-	&.-lg {
-		padding: 6px 12px;
-		font-size: 13px;
-	}
-
-	&.-hover {
-		&:hover {
-			color: var(--link-color);
-			.icon {
-				color: var(--link-color);
-			}
+		&-lg {
+			padding: var(--s-spacing-quark) var(--s-spacing-x-small);
 		}
 	}
 
 	&.-pill {
-		padding-left: 10px;
-		padding-right: 10px;
-		border-radius: 20px;
-	}
-
-	.icon {
-		font-size: 21px;
-		margin-right: 5px;
+		border-radius: var(--s-border-large);
 	}
 }

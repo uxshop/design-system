@@ -25,13 +25,11 @@ if (props.pill) {
 }
 
 if (props.size) {
-	classList.value.push(`-${props.size}`)
+	classList.value.push(`-size-${props.size}`)
 }
 
 if (props.variant) {
-	classList.value.push(`-${props.variant}`)
-} else {
-	classList.value.push(`-default`)
+	classList.value.push(`-variant-${props.variant}`)
 }
 </script>
 

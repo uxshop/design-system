@@ -8,7 +8,6 @@ const meta = {
 	tags: ['autodocs'],
 	args: {
 		label: 'Badge label',
-		variant: 'primary',
 		size: 'lg',
 		pill: false
 	},
@@ -18,7 +17,7 @@ const meta = {
 		},
 		variant: {
 			control: 'select',
-			options: ['default', 'primary', 'secondary', 'warning', 'danger', 'dark', 'success']
+			options: ['default', 'primary', 'warning', 'danger', 'success']
 		},
 		size: {
 			control: 'select',
@@ -40,32 +39,20 @@ export const Primary: Story = {
 	}
 }
 
-export const Secondary: Story = {
-	args: {
-		variant: 'secondary'
-	}
-}
-
 export const Warning: Story = {
 	args: {
 		variant: 'warning'
 	}
 }
 
-export const Danger: Story = {
-	args: {
-		variant: 'danger'
-	}
-}
-
-export const Dark: Story = {
-	args: {
-		variant: 'dark'
-	}
-}
-
 export const Success: Story = {
 	args: {
 		variant: 'success'
+	}
+}
+
+export const Danger: Story = {
+	args: {
+		variant: 'danger'
 	}
 }
