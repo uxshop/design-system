@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { ISize, IVariant } from 'src/types/ITypes'
+import type { ISize, IVariant } from '../../../types/ITypes'
 
 type BadgeSizes = ISize
 type BadgeVariants = IVariant
