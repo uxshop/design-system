@@ -1,4 +1,4 @@
-export type IVariant = 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain'
+export type IVariant = 'default' | 'primary' | 'warning' | 'danger' | 'success'
 
 export type IDestructVariant = 'success' | 'danger' | 'primary'
 
