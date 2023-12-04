@@ -1,4 +1,4 @@
-import type { ITarget, IVariant } from '../types/ITypes'
+import type { Target, Variant } from './Types'
 
 export interface IAction {
 	leadingIcon?: string
@@ -7,8 +7,8 @@ export interface IAction {
 	form?: string
 	disabled?: boolean
 	type?: string
-	variant?: IVariant
+	variant?: Variant
 	to?: any
-	target?: ITarget
+	target?: Target
 	class?: string
 }
