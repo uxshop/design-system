@@ -1,27 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { Size } from '../../../types/Types'
 
 const props = defineProps<{
 	hexadecimal?: string
 	hexadecimalSecondary?: string
 	image?: string
-	sm?: boolean
-	size?: number
+	size?: Size
+	width?: string | number
 }>()
 
 const colorThumbClassList = computed(() => {
 	let classes = []
 
-	if (props.sm) {
-		classes.push('-sm')
+	if (props.size) {
+		classes.push(`-size-${props.size}`)
 	}
 
 	return classes
 })
 
 const colorThumbStyleList = computed(() => {
-	if (props.size) {
-		return `width: ${props.size}px`
+	if (props.width) {
+		return `width: ${props.width}px`
 	}
 })
 </script>
