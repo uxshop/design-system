@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import Icon from '../icon/Icon.vue'
 import { ref } from 'vue'
+import Icon from '../icon/Icon.vue'
+import type { IVariant } from 'src/types/ITypes'
 
-const props = defineProps<{
-	variant?: string
-	size?: string
+export interface Props {
 	label?: string
-}>()
+	variant?: IVariant
+}
+
+const props = withDefaults(defineProps<Props>(), {
+	variant: 'default'
+})
 
 const emit = defineEmits(['remove'])
 const classList = ref<string[]>([])
@@ -16,7 +20,7 @@ const onRemove = () => {
 }
 
 if (props.variant) {
-	classList.value.push(`-${props.variant}`)
+	classList.value.push(`-variant-${props.variant}`)
 }
 </script>
 
