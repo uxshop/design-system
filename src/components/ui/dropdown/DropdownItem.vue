@@ -1,15 +1,12 @@
 <script setup lang="ts">
-withDefaults(
-	defineProps<{
-		href?: string
-		to?: object
-		label?: string
-		target?: string
-	}>(),
-	{
-		target: '_self'
-	}
-)
+withDefaults(defineProps<{
+	href?: string
+	to?: object
+	label?: string
+	target?: string
+}>(), {
+	target: '_self'
+})
 </script>
 
 <template>

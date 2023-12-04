@@ -4,13 +4,12 @@ import Alert from './Alert.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
-  title: 'Example/Alert',
+  title: 'Ui/Alert',
   component: Alert,
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   args: {
     show: true,
-    variant: 'default',
     title: 'Alert title',
     label: 'My content',
     icon: '',

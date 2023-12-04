@@ -104,4 +104,3 @@ export { default as CustomScroll } from './components/ui/custom-scroll/CustomScr
 export { default as ListGroup } from './components/ui/list-group/ListGroup.vue'
 export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue'
 export { default as MediaCard } from './components/admin/media-card/MediaCard.vue'
-export { default as UserProfileCard } from './components/admin/user-profile-card/UserProfileCard.vue'
