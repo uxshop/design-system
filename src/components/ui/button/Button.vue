@@ -75,6 +75,13 @@ watch(
 		classList.value.push(`-${newVal}`)
 	}
 )
+
+watch(
+	() => props.trailingIcon,
+	(newVal) => {
+		trailingIcon.value = newVal
+	}
+)
 </script>
 
 <template>
@@ -90,7 +97,7 @@ watch(
 		<div class="ui-button-content">
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
 			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
-			<div>
+			<div v-if="label || $slots.default">
 				<slot>{{ label }}</slot>
 			</div>
 			<Icon :name="trailingIcon" v-if="trailingIcon" />
