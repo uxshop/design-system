@@ -1,6 +1,12 @@
-import type { Preview } from '@storybook/vue3'
+import { setup, Preview } from '@storybook/vue3'
+import { scheme, SchemeMode } from './decorators/scheme-mode'
+import { brand, BrandMode } from './decorators/brand-mode';
 import './theme.scss'
 import '../src/scss/theme.scss'
+
+setup((app) => {
+});
+
 
 const preview: Preview = {
   parameters: {
@@ -12,10 +18,16 @@ const preview: Preview = {
       }
     },
     designToken: {
-      disable: true,
-      showSearch: false
     }
-  }
+  },
+  decorators: [
+    SchemeMode,
+    BrandMode
+  ],
+  globalTypes: {
+    scheme,
+    brand
+  },
 }
 
 export default preview
