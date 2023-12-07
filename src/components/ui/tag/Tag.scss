@@ -1,53 +1,38 @@
 .ui-tag {
 	display: inline-flex;
 	align-items: center;
-	padding: 4px 0 4px 10px;
-	background-color: var(--gray-100);
-	border-radius: 3px;
-	position: relative;
-	padding-right: 25px;
 	overflow: hidden;
-	font-size: 12px;
-	min-height: 24px;
+	font: var(--s-typography-caption-medium);
+	gap: var(--s-spacing-quark);
+	padding: 0 var(--s-spacing-quark) 0 var(--s-spacing-nano);
+	border-radius: var(--s-border-small);
+	color: var(--tag-color, var(--s-color-content-on-color));
 
-	&.-dark {
-		background-color: var(--dark);
-		color: white;
-	}
+	&.-variant {
+		&-default {
+			--tag-color: var(--s-color-content-primary);
+			background-color: var(--s-color-fill-default-light);
+		}
 
-	&.-primary {
-		background-color: var(--primary);
-		color: white;
-	}
+		&-primary {
+			background-color: var(--s-color-fill-highlight);
+		}
 
-	&.-light {
-		background-color: var(--border-color);
-	}
+		&-warning {
+			background-color: var(--s-color-fill-warning);
+		}
 
-	&.-success {
-		background-color: var(--success);
-		color: white;
-	}
+		&-success {
+			background-color: var(--s-color-fill-success);
+		}
 
-	&.-danger {
-		background-color: var(--danger);
-		color: white;
+		&-critical {
+			background-color: var(--s-color-fill-critical);
+		}
 	}
 
 	.ui-tag-close {
 		cursor: pointer;
-		font-size: 16px;
-		padding: 0 4px;
-		position: absolute;
-		display: flex;
-		align-items: center;
-		right: 2px;
-		width: 20px;
-		height: 20px;
-		border-radius: 100%;
-		justify-content: center;
-		&:hover {
-			background-color: rgba(0, 0, 0, 0.1);
-		}
+		font-size: 1rem;
 	}
 }
