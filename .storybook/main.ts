@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/vue3-vite'
-import theme from './ds-theme'
+
 
 const config: StorybookConfig = {
   stories: [
