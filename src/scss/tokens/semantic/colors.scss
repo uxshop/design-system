@@ -3,7 +3,7 @@
 
 
 :root {
-  --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, neutral, 400)};
+  --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, neutral, 600)};
 
   &[data-company='bagy'] {
     --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};

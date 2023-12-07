@@ -1,9 +1,18 @@
-import { addons } from '@storybook/manager-api';
-import { themes } from '@storybook/theming';
-import myTheme from '../ds-theme';
-
 export function SchemeMode(story, context) {
+  const targetBg = document.querySelector('.sb-show-main')
+  const listTargetInDocs = document.querySelectorAll('.docs-story')
+  const backgrounds = {
+    dark: '#262C3A',
+    light: '#F5F7FA'
+  }
+
+
   document.documentElement.setAttribute('data-theme', context.globals.scheme)
+  targetBg.style.backgroundColor = backgrounds[context.globals.scheme]
+
+  listTargetInDocs.forEach(item => {
+    item.style.backgroundColor = backgrounds[context.globals.scheme]
+  })
 
   return ({
     components: { story },
