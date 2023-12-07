@@ -1,16 +1,17 @@
 @use '../../mixins/tokens' as tokens;
 @use '../primitives/colors.scss' as *;
 
+@layer brand {
+  :root {
+    --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, neutral, 600)};
 
-:root {
-  --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, neutral, 600)};
+    &[data-company='bagy'] {
+      --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
+    }
 
-  &[data-company='bagy'] {
-    --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
-  }
-
-  &[data-company='tray'] {
-    --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, blue, 800)};
+    &[data-company='tray'] {
+      --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, blue, 800)};
+    }
   }
 }
 
