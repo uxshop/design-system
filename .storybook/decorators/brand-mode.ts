@@ -13,11 +13,15 @@ export function BrandMode(story, context) {
 
 export const brand = {
   description: 'Brand',
-  defaultValue: 'bagy',
+  defaultValue: 'suite',
   toolbar: {
     title: 'Brand',
-    icon: 'bookmarkhollow',
-    items: ['bagy', 'tray'],
+    icon: 'admin',
+    items: [
+      { title: 'Suite Commerce', value: 'suite', left: '⚙️' },
+      { title: 'Bagy', value: 'bagy', left: '🛍️' },
+      { title: 'Tray', value: 'tray', left: '🛒' }
+    ],
     dynamicTitle: true,
   },
 }

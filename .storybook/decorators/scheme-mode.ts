@@ -16,8 +16,7 @@ export const scheme = {
   defaultValue: 'light',
   toolbar: {
     title: 'Theme',
-    icon: 'mirror',
-    items: ['light', 'dark'],
+    items: [{ title: 'Light', value: 'light', icon: 'sun' }, { title: 'Dark', value: 'dark', icon: 'moon' }],
     dynamicTitle: true,
   },
 }

@@ -2,23 +2,26 @@
 @use '../primitives/colors.scss' as *;
 
 
-  :root {
-    --b-color-primary: pink;
+:root {
+  --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, neutral, 400)};
 
-    &[data-company='bagy']{
-      --b-color-primary: cyan;
-    }
-
-    &[data-company='tray'] {
-      --b-color-primary: blue;
-    }
+  &[data-company='bagy'] {
+    --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
   }
+
+  &[data-company='tray'] {
+    --b-color-primary: #{tokens.getPrimitiveVar($primitives-color, blue, 800)};
+  }
+}
 
 
 $semantic-color: (
-  background: (default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
-    highlight: tokens.getPrimitiveVar($primitives-color, pink, 600)),
-  fill: (default: tokens.getPrimitiveVar($primitives-color, white),
+  background: (
+    default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
+    highlight: tokens.getPrimitiveVar($primitives-color, pink, 600)
+  ),
+  fill: (
+    default: tokens.getPrimitiveVar($primitives-color, white),
     default-hover: tokens.getPrimitiveVar($primitives-color, neutral, 200),
     default-light: tokens.getPrimitiveVar($primitives-color, neutral, 100),
     highlight: var(--b-color-primary),
@@ -33,14 +36,18 @@ $semantic-color: (
     critical: tokens.getPrimitiveVar($primitives-color, red, 600),
     critical-hover: tokens.getPrimitiveVar($primitives-color, red, 500),
     critical-light: tokens.getPrimitiveVar($primitives-color, red, 100),
-    disable: tokens.getPrimitiveVar($primitives-color, neutral, 200)),
-  border: (default: tokens.getPrimitiveVar($primitives-color, neutral, 300),
+    disable: tokens.getPrimitiveVar($primitives-color, neutral, 200)
+  ),
+  border: (
+    default: tokens.getPrimitiveVar($primitives-color, neutral, 300),
     highlight: var(--b-color-primary),
     success: tokens.getPrimitiveVar($primitives-color, green, 600),
     warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
     critical: tokens.getPrimitiveVar($primitives-color, red, 600),
-    disable: tokens.getPrimitiveVar($primitives-color, neutral, 400)),
-  content: (primary: tokens.getPrimitiveVar($primitives-color, neutral, 800),
+    disable: tokens.getPrimitiveVar($primitives-color, neutral, 400)
+  ),
+  content: (
+    primary: tokens.getPrimitiveVar($primitives-color, neutral, 800),
     secondary: tokens.getPrimitiveVar($primitives-color, neutral, 600),
     disable: tokens.getPrimitiveVar($primitives-color, neutral, 400),
     placeholder: tokens.getPrimitiveVar($primitives-color, neutral, 300),
@@ -48,5 +55,6 @@ $semantic-color: (
     success: tokens.getPrimitiveVar($primitives-color, green, 600),
     warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
     critical: tokens.getPrimitiveVar($primitives-color, red, 600),
-    on-color: tokens.getPrimitiveVar($primitives-color, white))
+    on-color: tokens.getPrimitiveVar($primitives-color, white)
+  )
 );
