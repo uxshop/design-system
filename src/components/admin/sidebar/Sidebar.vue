@@ -69,10 +69,9 @@ watchEffect(() => {
 })
 
 const toggleMenu = (item: any) => {
-  console.log('fwfawfae')
 	if (menu) {
-		// menu.toggle()
-		// emit('onClickNode', item, true)
+		menu.toggle()
+		emit('onClickNode', item, true)
 	}
 }
 
