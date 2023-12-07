@@ -1,4 +1,4 @@
-export type Variant = 'default' | 'highlight' | 'warning' | 'danger' | 'success'
+export type Variant = 'default' | 'highlight' | 'warning' | 'success' | 'critical'
 
 export type DestructVariant = 'success' | 'danger' | 'highlight'
 
