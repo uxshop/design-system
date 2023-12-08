@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, watchEffect, type StyleValue } from 'vue'
 import type { Size } from '../../../types/Types'
 
 export interface ColorThumbProps {
@@ -24,17 +24,23 @@ const colorThumbClassList = computed(() => {
 	return classes
 })
 
-const customStyle = ref<{
-	width?: string
-}>({})
+const colorThumbStyleList = computed(() => {
+	const styles: StyleValue = {}
 
-if (props.width) {
-	customStyle.value.width = `${props.width}px`
-}
+	if (props.width) {
+		styles.width = `${props.width}px`
+	}
+
+	return styles
+})
+
+watchEffect(() => {
+	console.log(colorThumbClassList.value)
+})
 </script>
 
 <template>
-	<span class="ui-color-thumb" :class="colorThumbClassList" :style="customStyle">
+	<span class="ui-color-thumb" :class="colorThumbClassList" :style="colorThumbStyleList">
 		<span v-if="image" class="ui-color-thumb-image" :style="{ backgroundImage: `url(${image})` }" />
 		<template v-else>
 			<span class="ui-color-thumb-color" :style="{ backgroundColor: hexadecimal }" />
