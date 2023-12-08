@@ -7,10 +7,10 @@ const meta = {
 	component: TextStyle,
 	tags: ['autodocs'],
 	args: {
+		block: false,
 		label: 'Text style label',
-		variant: 'default',
-		block: undefined,
-		tag: undefined
+		tag: 'span',
+		variant: 'default'
 	},
 	argTypes: {
 		variant: {
