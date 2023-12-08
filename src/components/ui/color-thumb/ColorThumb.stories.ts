@@ -41,13 +41,6 @@ export const Default: Story = {
 	}
 }
 
-export const Color: Story = {
-	args: {
-		hexadecimal: '#000000',
-		hexadecimalSecondary: '#ffffff'
-	}
-}
-
 export const Image: Story = {
 	args: {
 		hexadecimal: undefined,
