@@ -4,7 +4,7 @@ import { create } from '@storybook/theming/create';
 
 export default create({
   base: 'light',
-  brandTitle: 'Bagy Design System',
+  brandTitle: 'Suite Commerce Design System',
   brandImage: './logo.svg',
-  colorSecondary: '#DC189B'
+  colorSecondary: '#446285'
 });
