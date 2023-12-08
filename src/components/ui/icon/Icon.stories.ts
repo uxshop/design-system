@@ -7,10 +7,10 @@ const meta = {
 	component: Icon,
 	tags: ['autodocs'],
 	args: {
-		filled: false,
 		name: 'house',
 		size: 30,
-		type: 'rounded'
+		type: 'rounded',
+		filled: undefined
 	},
 	argTypes: {
 		size: {
