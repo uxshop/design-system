@@ -33,10 +33,6 @@ const colorThumbStyleList = computed(() => {
 
 	return styles
 })
-
-watchEffect(() => {
-	console.log(colorThumbClassList.value)
-})
 </script>
 
 <template>
