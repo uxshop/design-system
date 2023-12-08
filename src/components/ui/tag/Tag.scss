@@ -6,11 +6,11 @@
 	gap: var(--s-spacing-quark);
 	padding: 0 var(--s-spacing-quark) 0 var(--s-spacing-nano);
 	border-radius: var(--s-border-small);
-	color: var(--tag-color, var(--s-color-content-on-color));
+	color: var(--s-color-content-on-color);
 
 	&.-variant {
 		&-default {
-			--tag-color: var(--s-color-content-primary);
+			color: var(--s-color-content-primary);
 			background-color: var(--s-color-fill-default-light);
 		}
 
