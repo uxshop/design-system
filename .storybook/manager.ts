@@ -4,3 +4,4 @@ import myTheme from './ds-theme';
 addons.setConfig({
   theme: myTheme,
 });
+
