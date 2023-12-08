@@ -1,7 +1,7 @@
 @use 'sass:list';
 @use 'sass:meta';
 @use 'sass:map';
-@use '../opacity.scss' as *;
+@use '../constants/opacity' as *;
 
 @function getOpacity($valor) {
 	@return map-get($opacity, $valor);
