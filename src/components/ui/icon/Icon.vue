@@ -18,7 +18,6 @@ const iconClassList = computed(() => {
 	let classes = []
 
 	if (props.type) {
-		/* classes.push(`material-symbols-${props.type} icon`) */
 		classes.push('material-symbols-outlined')
 	}
 
