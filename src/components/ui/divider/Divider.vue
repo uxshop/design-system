@@ -1,27 +1,44 @@
 <script setup lang="ts">
-const props = withDefaults(
-	defineProps<{
-		transparent?: boolean
-		height?: string
-		margin?: string
-	}>(),
-	{
-		height: '2px'
+import { computed, type StyleValue } from 'vue'
+
+interface DividerProps {
+	height?: string
+	margin?: string
+	transparent?: boolean
+}
+
+const props = withDefaults(defineProps<DividerProps>(), {
+	height: '2px'
+})
+
+const dividerClassList = computed(() => {
+	let classes = []
+
+	if (props.transparent) {
+		classes.push('-transparent')
 	}
-)
 
-const customStyle: any = {
-	height: props.height
-}
+	return classes
+})
 
-if (props.margin) {
-	customStyle.marginTop = props.margin
-	customStyle.marginBottom = props.margin
-}
+const dividerStyleList = computed(() => {
+	let styles: StyleValue = {}
+
+	if (props.margin) {
+		styles.marginBottom = props.margin
+		styles.marginTop = props.margin
+	}
+
+	if (props.height) {
+		styles.height = props.height
+	}
+
+	return styles
+})
 </script>
 
 <template>
-	<hr class="ui-divider" :class="{ '-transparent': transparent }" :style="customStyle" />
+	<hr class="ui-divider" :class="dividerClassList" :style="dividerStyleList" />
 </template>
 
 <style lang="scss">
