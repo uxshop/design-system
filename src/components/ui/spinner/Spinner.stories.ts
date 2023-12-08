@@ -54,10 +54,3 @@ export const Critical: Story = {
 		variant: 'critical'
 	}
 }
-
-export const Color: Story = {
-	args: {
-		variant: undefined,
-		color: '#000000'
-	}
-}
