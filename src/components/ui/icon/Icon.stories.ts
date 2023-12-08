@@ -10,7 +10,7 @@ const meta = {
 		name: 'house',
 		size: 30,
 		type: 'rounded',
-		filled: undefined
+		filled: false
 	},
 	argTypes: {
 		size: {

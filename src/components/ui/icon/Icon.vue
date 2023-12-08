@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, type StyleValue } from 'vue'
+import { computed, type StyleValue } from 'vue'
 import type { IconType } from '../../../types/Types'
 
 export interface IconProps {
