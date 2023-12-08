@@ -10,14 +10,15 @@ export interface IconProps {
 }
 
 const props = withDefaults(defineProps<IconProps>(), {
-	type: 'rounded'
+	type: 'outlined'
 })
 
 const iconClassList = computed(() => {
 	let classes = []
 
 	if (props.type) {
-		classes.push(`material-symbols-${props.type} icon`)
+		/* classes.push(`material-symbols-${props.type} icon`) */
+		classes.push('material-symbols-outlined')
 	}
 
 	return classes
@@ -46,15 +47,12 @@ const iconStyleList = computed(() => {
 </template>
 
 <style lang="scss">
-.material-symbols-rounded {
+.ui-icon {
 	font-variation-settings:
 		'FILL' 0,
 		'wght' 400,
 		'GRAD' 200,
 		'opsz' 32;
-}
-
-.ui-icon {
 	width: auto;
 	align-items: center;
 	color: inherit;

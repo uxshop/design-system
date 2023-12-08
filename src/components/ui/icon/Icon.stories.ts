@@ -34,16 +34,6 @@ export const Outlined: Story = {
 	}
 }
 
-export const Rounded: Story = {
-	args: {}
-}
-
-export const Sharp: Story = {
-	args: {
-		type: 'sharp'
-	}
-}
-
 export const Filled: Story = {
 	args: {
 		filled: true
