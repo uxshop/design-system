@@ -2,7 +2,7 @@
 	display: inline-flex;
 	align-items: center;
 	border-radius: var(--badge-border-radius, var(--s-border-small));
-	color: var(--badge-color, var(--s-color-content-on-color));
+	color: var(--s-color-content-on-color);
 	font: var(--s-typography-label-small);
 	font-weight: var(--s-font-weight-semibold);
 
@@ -12,7 +12,7 @@
 
 	&.-variant {
 		&-default {
-			--badge-color: var(--s-color-content-primary);
+			color: var(--s-color-content-primary);
 			background-color: var(--s-color-fill-default-light);
 		}
 
