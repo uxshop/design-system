@@ -52,16 +52,18 @@ onUnmounted(() => {
 		</div>
 		<div class="titlebar-actions">
 			<div v-if="secondaryActions?.length" class="titlebar-actions-secondary">
-				<Button
-					v-if="secondaryActions?.length == 1"
-					v-for="(item, index) in secondaryActions"
-					:key="index"
-					:class="item.class"
-					variant="plain"
-					:label="getButtonLabel(item.label, item.leadingIcon)"
-					:to="item.to"
-					:leading-icon="item.leadingIcon"
-					@click="item.onAction" />
+				<template v-if="secondaryActions?.length == 1">
+					<Button
+						v-for="(item, index) in secondaryActions"
+						:key="index"
+						:class="item.class"
+						variant="plain"
+						:label="getButtonLabel(item.label, item.leadingIcon)"
+						:to="item.to"
+						:leading-icon="item.leadingIcon"
+						@click="item.onAction" />
+				</template>
+
 				<Dropdown v-else right>
 					<template #button-content>
 						<Button
