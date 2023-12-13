@@ -14,7 +14,7 @@ const emit = defineEmits<{
 
 <template>
 	<div class="ui-page-helper">
-		<icon name="info" />
+		<icon name="info" filled />
 		<span>
 			<b>Precisa de ajuda?</b> Acesse o material sobre
 			<b v-if="!!helperLink">
