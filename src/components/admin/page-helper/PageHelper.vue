@@ -8,7 +8,7 @@ export interface IPageHelper {
 
 defineProps<IPageHelper>()
 const emit = defineEmits<{
-	(event: 'clicked'): void
+	(event: 'onClickLink'): void
 }>()
 </script>
 
@@ -20,7 +20,7 @@ const emit = defineEmits<{
 			<b v-if="!!helperLink">
 				<a :href="helperLink" class="ui-page-helper-name" v-text="helperName" target="_blank" />
 			</b>
-			<b v-else class="ui-page-helper-name" @click="emit('clicked')"> {{ helperName }}</b>
+			<b v-else class="ui-page-helper-name" @click="emit('onClickLink')"> {{ helperName }}</b>
 		</span>
 	</div>
 </template>

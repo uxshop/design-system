@@ -22,6 +22,6 @@ const openArticleModal = () => {
 </script>
 
 <template>
-	<PageHelper :helper-name="title || 'esse item'" @clicked="openArticleModal" />
+	<PageHelper :helper-name="title || 'esse item'" @onClickLink="openArticleModal" />
 	<PageHelperArticleModal ref="pageHelperArticleModalRef" />
 </template>
