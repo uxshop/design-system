@@ -31,7 +31,7 @@ defineExpose({
 </script>
 
 <template>
-	<Aside v-model="aside" :title="video.name || 'Ajuda'" size="sm">
+	<Aside v-model="aside" title="Ajuda" size="sm">
 		<div class="page-helper-video-modal">
 			<AsideSection>
 				<div class="videoWrapper">
