@@ -153,7 +153,7 @@ const checkSubActive = (item: any) => {
 				</div>
 			</div>
 		</div>
-		<!-- <div class="ui-sidebar-overlay" @click="toggleMenu"></div> -->
+		<div class="ui-sidebar-overlay" @click="toggleMenu"></div>
 		<div v-if="menu.open === true" class="ui-close-sidebar" @click="toggleMenu">
 			<Icon name="close" />
 		</div>
