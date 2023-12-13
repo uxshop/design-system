@@ -13,14 +13,14 @@ const emit = defineEmits<{
 </script>
 
 <template>
-	<div class="ui-page-helper" @click="emit('clicked')">
+	<div class="ui-page-helper">
 		<icon name="info" />
-		<span class="ui-page-helper-text">
+		<span>
 			<b>Precisa de ajuda?</b> Acesse o material sobre
 			<b v-if="!!helperLink">
 				<a :href="helperLink" class="ui-page-helper-name" v-text="helperName" target="_blank" />
 			</b>
-			<b v-else class="text-lowercase">{{ helperName }}</b>
+			<b v-else class="ui-page-helper-name" @click="emit('clicked')"> {{ helperName }}</b>
 		</span>
 	</div>
 </template>
