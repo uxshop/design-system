@@ -5,7 +5,8 @@
 	padding: 10px 15px;
 	margin-bottom: var(--grid-gutter-width);
 	border: solid 1px var(--border-color);
-	border-radius: 6px;
+	border-radius: var(--border-radius);
+	background-color: var(--bg-white);
 
 	> .ui-icon {
 		margin-right: 10px;
