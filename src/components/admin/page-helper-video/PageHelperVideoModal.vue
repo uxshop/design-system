@@ -4,6 +4,7 @@ import Aside from '../../ui/aside/Aside.vue'
 import Link from '../../ui/link/Link.vue'
 import AsideSection from '../../ui/aside/AsideSection.vue'
 import YoutubePlayer from '../../ui/youtube-player/YoutubePlayer.vue'
+import type { IVideo } from './PageHelperVideo.vue'
 
 withDefaults(
 	defineProps<{
@@ -16,10 +17,10 @@ withDefaults(
 	}
 )
 
-const video = ref<any>({})
+const video = ref<IVideo>({})
 const aside = ref(false)
 
-const open = (item: any) => {
+const open = (item: IVideo) => {
 	video.value = item
 	aside.value = true
 }
@@ -30,7 +31,7 @@ defineExpose({
 </script>
 
 <template>
-	<Aside v-model="aside" :title="video.title || 'Ajuda'" size="sm">
+	<Aside v-model="aside" :title="video.name || 'Ajuda'" size="sm">
 		<div class="page-helper-video-modal">
 			<AsideSection>
 				<div class="videoWrapper">
