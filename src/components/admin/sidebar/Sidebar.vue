@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { inject, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
+import { map } from 'lodash-es'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
-import { map } from 'lodash-es'
+import type { SideBarItem } from './types'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -18,7 +19,7 @@ export interface MenuProviderInterface {
 export interface Props {
 	permissionService: PermissionInterface
 	menuOpen?: boolean
-	menus: any
+	menus: Record<string, SideBarItem>
 	currentSection?: string | null
 }
 
@@ -26,6 +27,10 @@ const menu = inject('menu') as MenuProviderInterface
 const props = defineProps<Props>()
 const route = useRoute()
 const menusFilter = ref<any>([])
+
+const emit = defineEmits<{
+	(evt: 'onClickItem', type: 'logo' | 'node' | 'footer', menuItem?: SideBarItem): void
+}>()
 
 watchEffect(() => {
 	const routeName = String(route.name).replace(/_[^_]+?$/, '')
@@ -36,7 +41,7 @@ watchEffect(() => {
 		item.withNodeActive = false
 
 		map(item.nodes, (i) => {
-			const itemName = i.to.replace(/_[^_]+?$/, '')
+			const itemName = i.to?.replace(/_[^_]+?$/, '')
 
 			item.rawTo = item.to
 			i.disabled = true
@@ -62,9 +67,10 @@ watchEffect(() => {
 	})
 })
 
-const toggleMenu = () => {
+const toggleMenu = (item: any) => {
 	if (menu) {
 		menu.toggle()
+		emit('onClickItem', 'node', item)
 	}
 }
 
@@ -86,9 +92,9 @@ const checkSubActive = (item: any) => {
 			<div class="ui-sidebar-container">
 				<div class="ui-sidebar-content">
 					<div class="ui-sidebar-nav">
-						<router-link class="ui-sidebar-logo" :to="{ name: 'home' }">
+						<div class="ui-sidebar-logo" @click="emit('onClickItem', 'logo')">
 							<slot name="logo" />
-						</router-link>
+						</div>
 						<slot name="select-button" />
 					</div>
 					<div class="ui-sidebar-list">
@@ -106,28 +112,28 @@ const checkSubActive = (item: any) => {
 									},
 									item.to
 								]">
-								<router-link
-									:to="{ name: item.to }"
+								<small v-if="item.caption" class="ui-sidebar-link-caption">{{ item.caption }}</small>
+								<div
 									:class="{
 										'-nodes': item.nodes?.length,
 										'-node-active': item.withNodeActive
 									}"
 									class="ui-sidebar-link"
-									activeClass="-active">
+									activeClass="-active"
+									@click="emit('onClickItem', 'node', item)">
 									<span class="ui-sidebar-link-icon">
 										<Icon :name="item.icon" filled />
 									</span>
 									<span class="ui-sidebar-link-text">
 										{{ item.name }}
 									</span>
-								</router-link>
+								</div>
 
 								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
-									<li v-for="node in item.nodes" class="ui-sidebar-item">
-										<router-link
-											:to="{ name: node.to }"
+									<li v-for="(node, index) in item.nodes" class="ui-sidebar-item" :key="index">
+										<div
 											class="ui-sidebar-link -sub"
-											@click="toggleMenu"
+											@click="toggleMenu(node)"
 											:class="{
 												'-active': checkSubActive(node),
 												'-disabled': node.disabled
@@ -136,12 +142,13 @@ const checkSubActive = (item: any) => {
 											<span class="ui-sidebar-link-text">
 												{{ node.name }}
 											</span>
-										</router-link>
+										</div>
 									</li>
 								</ul>
 							</li>
 						</ul>
 					</div>
+					<slot name="footer" @click="emit('onClickItem', 'footer')" />
 				</div>
 			</div>
 		</div>

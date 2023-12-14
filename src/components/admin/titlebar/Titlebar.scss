@@ -1,91 +1,88 @@
 @import '../../../scss/mixins.scss';
 
 .titlebar {
-  margin: 20px 0;
-  display: flex;
-  align-items: center;
-  min-height: 40px;
+	margin: 20px 0;
+	display: flex;
+	align-items: center;
+	min-height: 40px;
 
-  .titlebar-title {
-    color: var(--body-color);
-    display: flex;
-    gap: 15px;
-    align-items: center;
+	.titlebar-title {
+		color: var(--body-color);
+		display: flex;
+		gap: 15px;
+		align-items: center;
 
-    &.-mobile {
-      display: none;
-    }
-  }
+		&.-mobile {
+			display: none;
+		}
+	}
 
+	&-info {
+		&-text {
+			font-size: 22px;
+			margin: 0;
+		}
+	}
 
-  &-info {
-    &-text {
-      font-size: 22px;
-      margin: 0;
-    }
+	> .ui-icon {
+		height: 100%;
+		align-items: center;
+		display: flex;
+		flex-grow: 1;
+	}
 
-  }
+	.titlebar-actions {
+		margin-left: auto;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
 
+	.titlebar-actions-secondary {
+		display: flex;
+		gap: inherit;
+	}
 
-  >.ui-icon {
-    height: 100%;
-    align-items: center;
-    display: flex;
-    flex-grow: 1;
-  }
+	@include mobile {
+		.titlebar-actions {
+			> .btn-icon {
+				border: none;
+			}
+		}
 
-  .titlebar-actions {
-    margin-left: auto;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+		.titlebar-content {
+			flex: 1;
+			overflow: hidden;
+		}
 
-  .titlebar-actions-secondary {
-    display: flex;
-    gap: inherit;
-  }
+		.titlebar-title {
+			align-items: center;
 
-  @include mobile {
-    .titlebar-actions {
-      >.btn-icon {
-        border: none;
-      }
-    }
+			&.-dekstop {
+				display: none;
+			}
 
-    .titlebar-content {
-      flex: 1;
-      overflow: hidden;
-    }
+			&.-mobile {
+				display: flex;
+			}
 
-    .titlebar-title {
-      align-items: center;
+			a {
+				display: flex;
+				align-items: center;
+				line-height: 1.5;
 
-      &.-dekstop {
-        display: none;
-      }
+				.ui-icon {
+					font-size: 28px;
+				}
+			}
 
-      &.-mobile {
-        display: flex;
-      }
-
-      a {
-        display: flex;
-        align-items: center;
-        line-height: 1.5;
-
-        .ui-icon {
-          font-size: 28px;
-        }
-      }
-
-      .titlebar-text {
-        font-size: 18px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-    }
-  }
+			.titlebar-text {
+				font-size: 18px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+		}
+	}
 }

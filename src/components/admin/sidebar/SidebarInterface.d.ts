@@ -11,5 +11,6 @@ export namespace SidebarInterface {
 		active?: boolean
 		withNodeActive?: boolean
 		icon?: string
+		rawTo?: string
 	}
 }
