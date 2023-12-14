@@ -6,8 +6,8 @@
 
 	.ui-icon {
 		display: none;
-		color: var(--gray-200);
-		transition: color 0.15s;
+		color: var(--s-color-content-light);
+		transition: color var(--s-motion-duration-fast);
 	}
 
 	> span {

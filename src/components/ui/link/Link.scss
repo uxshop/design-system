@@ -1,19 +1,43 @@
 .ui-link {
-	&.-external {
-		text-decoration: none;
-		display: inline-block;
-		gap: 2px;
-		white-space: nowrap;
+	color: var(--s-color-content-highlight);
+	white-space: nowrap;
+	padding: 0 var(--s-spacing-quark);
+	border-radius: var(--s-border-small);
 
-		&:hover > span {
-			text-decoration: underline;
+	&:hover {
+		background-color: var(--s-color-fill-highlight-light);
+		color: var(--s-color-content-highlight);
+		text-decoration: none;
+
+		.ui-link-icon {
+			text-decoration: none;
 		}
 	}
 
-	.ui-link-icon {
-		font-size: 12px;
-		position: relative;
-		top: 2px;
-		margin-left: 4px;
+	&:focus {
+		border: calc(var(--s-border-small) / 2) solid var(--s-color-content-highlight);
+	}
+
+	&.-external {
+		display: inline-flex;
+		gap: var(--s-spacing-quark);
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&.-disabled {
+		pointer-events: none;
+		color: var(--s-color-content-disable);
+	}
+
+	&-content {
+		font: var(--s-typography-label-medium);
+		text-decoration: underline;
+		text-underline-offset: calc(var(--s-spacing-quark) / 2);
+	}
+
+	&-icon {
+		font-size: var(--s-font-size-base);
+		text-decoration: none;
 	}
 }

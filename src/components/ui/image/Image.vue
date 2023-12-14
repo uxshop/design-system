@@ -1,64 +1,74 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, type StyleValue } from 'vue'
 import Icon from '../icon/Icon.vue'
-import { round } from 'lodash-es'
 
-export interface Props {
-	src?: string | null
-	isBg?: boolean
+export interface ImageProps {
+	src?: string
 	size?: number | string
 	rounded?: boolean
 }
 
-interface crop {
-	size: string
-}
-
-interface StyleInterface {
-	width?: string
-	height?: string
-}
-
-interface StyleIconInterface {
-	fontSize?: string
-	width?: string
-	minHeight?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ImageProps>(), {
 	size: 50
 })
 
-const styleIcon = ref<StyleIconInterface>({})
-styleIcon.value.fontSize = `${Number(props.size) / 2.5}px`
-styleIcon.value.width = `${Number(props.size) / 2.5}px`
-styleIcon.value.minHeight = `${Number(props.size) / 2.5}px`
+const imageClassList = computed(() => {
+	let classes = []
 
-const style = computed(() => {
-	const data: any = {}
+	if (!props.src) {
+		classes.push('-no-image')
+	}
+
+	if (props.rounded) {
+		classes.push('-is-rounded')
+	}
+
+	return classes
+})
+
+const imageStyleList = computed(() => {
+	const styles: StyleValue = {}
 
 	if (props.size) {
-		data.width = `${props.size}px`
-		data.height = `${props.size}px`
+		styles.width = `${props.size}px`
 	}
 
-	if (props.isBg) {
-		data.backgroundImage = `url(${props.src})`
+	return styles
+})
+
+const iconStyleList = computed(() => {
+	const styles: StyleValue = {}
+
+	if (props.size) {
+		styles.fontSize = `${Number(props.size) / 2.5}px`
+		styles.width = `${Number(props.size) / 2.5}px`
+		styles.minHeight = `${Number(props.size) / 2.5}px`
 	}
 
-	return data
+	return styles
 })
 </script>
 
 <template>
-	<div class="ui-image -square" :style="style" :class="{ '-no-image': !src, '-is-bg': isBg, '-is-rounded': rounded }">
-		<img class="image-content" v-if="src && !isBg" :src="src" />
-		<span class="image-content" v-if="!src">
-			<Icon name="wallpaper" :style="styleIcon" />
-		</span>
+	<div class="ui-image" :class="imageClassList">
+		<img v-if="src" :src="src" class="ui-image-content" />
+		<Icon v-else name="wallpaper" class="ui-image-icon" />
 	</div>
 </template>
 
 <style lang="scss">
 @import './Image.scss';
+
+.ui-image,
+.ui-image-content {
+	width: v-bind('imageStyleList.width');
+}
+
+.ui-image {
+	&-icon {
+		font-size: v-bind('iconStyleList.fontSize');
+		width: v-bind('iconStyleList.width');
+		min-height: v-bind('iconStyleList.minHeight');
+	}
+}
 </style>
