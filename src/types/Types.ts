@@ -1,6 +1,6 @@
-export type Variant = 'default' | 'primary' | 'warning' | 'danger' | 'success'
+export type Variant = 'default' | 'highlight' | 'warning' | 'success' | 'critical'
 
-export type DestructVariant = 'success' | 'danger' | 'primary'
+export type DestructVariant = 'success' | 'danger' | 'highlight'
 
 export type IconType = 'outlined' | 'rounded' | 'sharp'
 

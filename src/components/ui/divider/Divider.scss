@@ -1,16 +1,12 @@
-hr {
+.ui-divider {
 	min-width: 100%;
-	border-width: 0;
-	background-color: var(--gray-200);
+	border-width: var(--s-border-none);
+	background-color: var(--s-color-background-default);
 	height: 1px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: var(--s-spacing-small);
+	margin-bottom: var(--s-spacing-small);
 
 	&.-transparent {
-		background-color: transparent !important;
-	}
-
-	&.-hr-2 {
-		height: 1px;
+		background-color: transparent;
 	}
 }

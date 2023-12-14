@@ -1,33 +1,61 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import Icon from '../icon/Icon.vue'
 
 export interface Props {
-	to?: string | object
-	href?: string | null
-	label?: string | null
+	disabled?: boolean
 	external?: boolean
-}
-const props = withDefaults(defineProps<Props>(), { href: null })
-const extras = ref<any>({})
-const myComponent = props.to ? 'router-link' : 'a'
-if (props.href) {
-	extras.value.href = props.href
+	href?: string
+	label?: string
+	to?: string | object
 }
 
-if (props.to) {
-	extras.value.to = props.to
-}
+const props = defineProps<Props>()
 
-if (props.external) {
-	extras.value.target = '_blank'
-}
+const linkComponent = computed(() => {
+	if (props.to) {
+		return 'router-link'
+	}
+	return 'a'
+})
+
+const linkClassList = computed(() => {
+	let classes = []
+
+	if (props.external) {
+		classes.push('-external')
+	}
+
+	if (props.disabled) {
+		classes.push('-disabled')
+	}
+
+	return classes
+})
+
+const linkAttributeList = computed(() => {
+	let attributes = {}
+
+	if (props.href) {
+		Object.assign(attributes, { href: props.href })
+	}
+
+	if (props.to) {
+		Object.assign(attributes, { to: props.to })
+	}
+
+	if (props.external) {
+		Object.assign(attributes, { target: '_blank' })
+	}
+
+	return attributes
+})
 </script>
 
 <template>
-	<component :is="myComponent" class="ui-link" :class="{ '-external': external }" v-bind="extras">
+	<component :is="linkComponent" class="ui-link" :class="linkClassList" v-bind="linkAttributeList" disabled>
 		<span class="ui-link-content">
-			<slot>{{ label }}</slot>
+			{{ label }}
 		</span>
 		<Icon v-if="external" name="open_in_new" class="ui-link-icon" />
 	</component>
