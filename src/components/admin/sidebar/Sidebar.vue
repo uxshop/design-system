@@ -29,8 +29,7 @@ const route = useRoute()
 const menusFilter = ref<any>([])
 
 const emit = defineEmits<{
-	(evt: 'onClickLogo'): void
-	(evt: 'onClickNode', menuItem: SideBarItem, isSubMenu: boolean): void
+	(evt: 'onClickItem', type: 'logo' | 'node' | 'footer', menuItem?: SideBarItem): void
 }>()
 
 watchEffect(() => {
@@ -71,7 +70,7 @@ watchEffect(() => {
 const toggleMenu = (item: any) => {
 	if (menu) {
 		menu.toggle()
-		emit('onClickNode', item, true)
+		emit('onClickItem', 'node', item)
 	}
 }
 
@@ -93,7 +92,7 @@ const checkSubActive = (item: any) => {
 			<div class="ui-sidebar-container">
 				<div class="ui-sidebar-content">
 					<div class="ui-sidebar-nav">
-						<div class="ui-sidebar-logo" @click="emit('onClickLogo')">
+						<div class="ui-sidebar-logo" @click="emit('onClickItem', 'logo')">
 							<slot name="logo" />
 						</div>
 						<slot name="select-button" />
@@ -121,7 +120,7 @@ const checkSubActive = (item: any) => {
 									}"
 									class="ui-sidebar-link"
 									activeClass="-active"
-									@click="emit('onClickNode', item.to, !!item.nodes?.length)">
+									@click="emit('onClickItem', 'node', item)">
 									<span class="ui-sidebar-link-icon">
 										<Icon :name="item.icon" filled />
 									</span>
@@ -149,7 +148,7 @@ const checkSubActive = (item: any) => {
 							</li>
 						</ul>
 					</div>
-					<slot name="footer" />
+					<slot name="footer" @click="emit('onClickItem', 'footer')" />
 				</div>
 			</div>
 		</div>
