@@ -11,7 +11,7 @@ const meta = {
   args: {
     show: true,
     title: 'Alert title',
-    label: '<a>My content</a>',
+    label: 'My content',
     icon: '',
     center: false,
     dismissible: false,

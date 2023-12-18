@@ -57,9 +57,9 @@ watchEffect(() => {
 	<div v-if="open" class="ui-alert" :class="styleClassList">
 		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24"/>
 		<div class="ui-alert-content">
-			<p class="ui-alert-title" v-if="title">
+			<h5 class="ui-alert-title" v-if="title">
 				{{ title }}
-			</p>
+			</h5>
 			<div class="ui-alert-text">
 				<slot>{{ label }}</slot>
 			</div>

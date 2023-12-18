@@ -134,7 +134,7 @@
 	}
 
 	@include darkmode {
-		&.ui-alert {
+		& {
 			background-color: var(--s-color-fill-dark);
 			color: var(--s-color-content-dark);
 			border: 1px solid var(--s-color-border-dark);
