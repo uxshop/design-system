@@ -59,5 +59,6 @@ export const Warning: Story = {
 export const Danger: Story = {
   args: {
     variant: 'danger'
+  
   }
 }

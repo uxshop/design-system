@@ -60,14 +60,14 @@ const spinnerStyleList = computed(() => {
 	border-style: solid;
 	border-color: currentColor;
 	border-right-color: transparent;
-	border-radius: var(--s-border-pill);
+	border-radius: var(--s-border-radius-pill);
 	-webkit-animation: spinnerBorderer var(--s-motion-duration-moderate) var(--s-motion-ease-linear) infinite;
 	animation: spinnerBorderer var(--s-motion-duration-moderate) var(--s-motion-ease-linear) infinite;
 	aspect-ratio: 1;
 
 	&.-variant {
 		&-default {
-			color: var(--s-color-fill-default-light);
+			color: var(--s-color-fill-content-default);
 		}
 
 		&-highlight {

@@ -4,15 +4,23 @@
 @layer brand {
 	:root {
 		--b-color-base: #{tokens.getPrimitiveVar($primitives-color, neutral, 600)};
+		--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, neutral, 500)};
+		--b-color-light: #{tokens.getPrimitiveVar($primitives-color, neutral, 100)};
+		--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, neutral, 1000)};
 
 		&[data-company='bagy'] {
 			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
 			--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, pink, 500)};
 			--b-color-light: #{tokens.getPrimitiveVar($primitives-color, pink, 100)};
+			--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, pink, 1000)};
 		}
 
 		&[data-company='tray'] {
 			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, blue, 800)};
+			--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, blue, 500)};
+			--b-color-light: #{tokens.getPrimitiveVar($primitives-color, blue, 100)};
+			--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, blue, 1000)};
+
 		}
 	}
 }
@@ -20,26 +28,37 @@
 $semantic-color: (
 	background: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
+		dark: tokens.getPrimitiveVar($primitives-color, neutral, 1000),
 		overlay: tokens.getPrimitiveVar($primitives-color, black, null, 64),
-		highlight: var(--b-color-base)
+		highlight: var(--b-color-base),
+
 	),
 	fill: (
 		default: tokens.getPrimitiveVar($primitives-color, white),
 		default-hover: tokens.getPrimitiveVar($primitives-color, neutral, 200),
 		default-light: tokens.getPrimitiveVar($primitives-color, neutral, 100),
 		disable: tokens.getPrimitiveVar($primitives-color, neutral, 200),
+		dark: tokens.getPrimitiveVar($primitives-color, neutral, 900),
+		dark-hover: tokens.getPrimitiveVar($primitives-color, neutral, 800),
+		dark-light: tokens.getPrimitiveVar($primitives-color, neutral, 1000),
+		dark-disable: tokens.getPrimitiveVar($primitives-color, neutral, 800),
 		highlight: var(--b-color-base),
 		highlight-hover: var(--b-color-medium),
 		highlight-light: var(--b-color-light),
+		highlight-dark: var(--b-color-dark),
 		success: tokens.getPrimitiveVar($primitives-color, green, 600),
 		success-hover: tokens.getPrimitiveVar($primitives-color, green, 500),
 		success-light: tokens.getPrimitiveVar($primitives-color, green, 100),
+		success-dark: tokens.getPrimitiveVar($primitives-color, green, 1000),
 		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
 		warning-hover: tokens.getPrimitiveVar($primitives-color, orange, 500),
 		warning-light: tokens.getPrimitiveVar($primitives-color, orange, 100),
+		warning-dark: tokens.getPrimitiveVar($primitives-color, orange, 1000),
 		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
 		critical-hover: tokens.getPrimitiveVar($primitives-color, red, 500),
-		critical-light: tokens.getPrimitiveVar($primitives-color, red, 100)
+		critical-light: tokens.getPrimitiveVar($primitives-color, red, 100),
+		critical-dark: tokens.getPrimitiveVar($primitives-color, red, 1000)
+
 	),
 	border: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 300),
@@ -47,7 +66,14 @@ $semantic-color: (
 		highlight: var(--b-color-base),
 		success: tokens.getPrimitiveVar($primitives-color, green, 600),
 		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
-		critical: tokens.getPrimitiveVar($primitives-color, red, 600)
+		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
+		dark: tokens.getPrimitiveVar($primitives-color, neutral, 700),
+		dark-disable: tokens.getPrimitiveVar($primitives-color, neutral, 800),
+		dark-highlight: var(--b-color-medium),
+		dark-success: tokens.getPrimitiveVar($primitives-color, green, 500),
+		dark-warning: tokens.getPrimitiveVar($primitives-color, orange, 500),
+		dark-critical: tokens.getPrimitiveVar($primitives-color, red, 500)
+
 	),
 	content: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 800),
@@ -58,6 +84,14 @@ $semantic-color: (
 		success: tokens.getPrimitiveVar($primitives-color, green, 600),
 		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
 		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
-		on-color: tokens.getPrimitiveVar($primitives-color, white)
+		on-color: tokens.getPrimitiveVar($primitives-color, white),
+		dark: tokens.getPrimitiveVar($primitives-color, neutral, 200),
+		dark-light: tokens.getPrimitiveVar($primitives-color, neutral, 400),
+		dark-placeholder: tokens.getPrimitiveVar($primitives-color, neutral, 700),
+		dark-highlight: var(--b-color-medium),
+		dark-disable: tokens.getPrimitiveVar($primitives-color, neutral, 600),
+		dark-success: tokens.getPrimitiveVar($primitives-color, green, 500),
+		dark-warning: tokens.getPrimitiveVar($primitives-color, orange, 500),
+		dark-critical: tokens.getPrimitiveVar($primitives-color, red, 500)
 	)
 );
