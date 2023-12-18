@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import Titlebar from '../titlebar/Titlebar.vue'
 import PageMessageSupport from '../page-message-support/PageMessageSupport.vue'
 import PageHelperVideo, { type IVideo } from '../page-helper-video/PageHelperVideo.vue'
+import PageHelperArticles, { type IArticle, type IArticlesHelper } from '../page-helper-articles/PageHelperArticles.vue'
 import type { IAction } from '../../../types/IAction'
 
 export interface Props {
@@ -13,6 +14,7 @@ export interface Props {
 	backlink?: object
 	size?: 'sm' | 'md' | 'lg' | 'full'
 	videoHelp?: IVideo
+	articlesHelp?: IArticle[]
 	footerHelp?: any
 	title?: string | null
 	groupActions?: {
@@ -23,6 +25,20 @@ export interface Props {
 
 const props = defineProps<Props>()
 const classList = ref<string[]>([])
+
+const articlesHelp = computed<IArticlesHelper>(() => {
+	const articlesHelp = {
+		title: props?.title,
+		articles: [] as IArticle[]
+	}
+
+	if (props?.articlesHelp?.length) {
+		articlesHelp.articles = props.articlesHelp
+	}
+
+	articlesHelp.articles = props.videoHelp?.articles || []
+	return articlesHelp as IArticlesHelper
+})
 
 if (props.size) {
 	classList.value.push(`-${props.size}`)
@@ -36,7 +52,11 @@ if (props.size) {
 				<slot name="titlebar-subtitle" />
 			</template>
 		</Titlebar>
-		<PageHelperVideo v-if="videoHelp" :video="videoHelp" />
+		<PageHelperVideo v-if="videoHelp?.video_id" :video="videoHelp" />
+		<PageHelperArticles
+			v-if="!videoHelp?.video_id && !!articlesHelp?.articles?.length"
+			:articles="articlesHelp.articles"
+			:title="articlesHelp.title" />
 		<slot name="default" />
 		<PageMessageSupport v-if="footerHelp" :name="footerHelp.name" :link="footerHelp.link" />
 	</div>

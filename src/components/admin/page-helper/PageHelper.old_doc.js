@@ -27,7 +27,8 @@ const Template = (args) => ({
 
 export const Default = Template.bind({})
 Default.args = {
-	title: 'Produtos'
+	helperName: 'Produtos',
+	helperLink: 'https://ajuda.bagy.com.br/base-de-conhecimento-bagy/produtos'
 }
 
 Default.decorators = [vueRouter()]

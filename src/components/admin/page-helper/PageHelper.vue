@@ -1,18 +1,26 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue'
 
-defineProps({
-	helperLink: String,
-	helperName: String
-})
+export interface IPageHelper {
+	helperName: string
+	helperLink?: string
+}
+
+defineProps<IPageHelper>()
+const emit = defineEmits<{
+	(event: 'onClickLink'): void
+}>()
 </script>
 
 <template>
-	<div class="ui-page-helper">
-		<icon name="info" />
-		<span class="ui-page-helper-text">
+	<div class="ui-page-helper" @click="emit('onClickLink')">
+		<icon name="info" filled />
+		<span>
 			<b>Precisa de ajuda?</b> Acesse o material sobre
-			<b><a :href="helperLink" class="ui-page-helper-name" v-text="helperName" target="_blank" /></b>
+			<b v-if="!!helperLink">
+				<a :href="helperLink" v-text="helperName" target="_blank" />
+			</b>
+			<b v-else> {{ helperName }}</b>
 		</span>
 	</div>
 </template>

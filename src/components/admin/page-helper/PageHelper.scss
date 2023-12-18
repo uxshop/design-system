@@ -5,14 +5,16 @@
 	padding: 10px 15px;
 	margin-bottom: var(--grid-gutter-width);
 	border: solid 1px var(--border-color);
-	border-radius: 6px;
+	border-radius: var(--border-radius);
+	background-color: var(--bg-white);
 
 	> .ui-icon {
 		margin-right: 10px;
 		color: var(--primary);
 	}
 
-	.ui-page-helper-name:hover {
+	&:hover {
 		cursor: pointer;
+		color: var(--primary);
 	}
 }
