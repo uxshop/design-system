@@ -33,7 +33,8 @@ export default meta
 
 export const Default: Story = {
 	args: {
-		size: 'sm'
+		pill: true,
+		size: 'md'
 	}
 }
 
@@ -41,21 +42,23 @@ export const Highlight: Story = {
 	args: {
 		variant: 'highlight',
 		pill: true,
-		size: 'sm'
+		size: 'md'
 	}
 }
 
 export const Warning: Story = {
 	args: {
 		variant: 'warning',
-		pill: true
+		pill: true,
+		size: 'md'
 	}
 }
 
 export const Success: Story = {
 	args: {
 		variant: 'success',
-		size: 'lg'
+		pill: true,
+		size: 'md'
 	}
 }
 
@@ -63,6 +66,6 @@ export const Critical: Story = {
 	args: {
 		variant: 'critical',
 		pill: true,
-		size: 'lg'
+		size: 'md'
 	}
 }

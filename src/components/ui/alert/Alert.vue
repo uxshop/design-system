@@ -55,17 +55,17 @@ watchEffect(() => {
 </script>
 <template>
 	<div v-if="open" class="ui-alert" :class="styleClassList">
-		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" />
+		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24"/>
 		<div class="ui-alert-content">
-			<h6 class="ui-alert-title" v-if="title">
+			<p class="ui-alert-title" v-if="title">
 				{{ title }}
-			</h6>
+			</p>
 			<div class="ui-alert-text">
 				<slot>{{ label }}</slot>
 			</div>
 		</div>
 		<button v-if="dismissible" type="button" class="ui-alert-close" @click="close">
-			<Icon name="close" />
+			<Icon name="close" size="16"/>
 		</button>
 	</div>
 </template>

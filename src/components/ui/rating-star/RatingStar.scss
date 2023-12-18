@@ -14,13 +14,13 @@
 		display: inline-flex;
 
 		.ui-icon:hover {
-			color: var(--body-color);
+			color: var(--s-color-fill-highlight);
 		}
 	}
 
 	.star > .ui-icon:first-child {
 		display: block;
-		color: var(--secondary);
+		color: var(--s-color-fill-highlight);
 	}
 
 	.star-border > .ui-icon:last-child {

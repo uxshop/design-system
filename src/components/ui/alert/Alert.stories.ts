@@ -11,7 +11,7 @@ const meta = {
   args: {
     show: true,
     title: 'Alert title',
-    label: 'My content',
+    label: '<a>My content</a>',
     icon: '',
     center: false,
     dismissible: false,
@@ -59,5 +59,6 @@ export const Warning: Story = {
 export const Danger: Story = {
   args: {
     variant: 'danger'
+  
   }
 }
