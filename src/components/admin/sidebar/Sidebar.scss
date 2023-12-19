@@ -1,4 +1,5 @@
 @import '../../../scss/mixins.scss';
+@import '../../../scss/animations/animation.scss';
 
 .ui-sidebar {
 	--sidebar-padding-left: 30px;
@@ -8,6 +9,13 @@
 	top: 0;
 	z-index: 888;
 	height: 100%;
+
+	@include menu-animation(
+		1000px,
+		0.3s,
+		'.ui-sidebar-sublist',
+		('.ui-sidebar-link.-active~.ui-sidebar-sublist', '.ui-sidebar-link.-node-active~.ui-sidebar-sublist')
+	);
 
 	> .ui-sidebar-wrapper {
 		border-right: solid 1px var(--border-color);
@@ -130,6 +138,10 @@
 	}
 
 	.ui-sidebar-link {
+		@include move-horizontal(15px, 0.5s, ':not(.-sub)  .ui-sidebar-link-text', ('&:hover', '&.-active'));
+		@include move-horizontal(-20px, 0.4s, '.news-indicator', ('&:hover', '&.-active'));
+		@include fade-in-out(0.5s, '.icon-arrow', ('&:hover', '&.-active'));
+
 		line-height: 1;
 		color: var(--body-color);
 		font-weight: 700;
@@ -138,6 +150,7 @@
 		cursor: pointer;
 		position: relative;
 		align-items: center;
+		justify-content: space-between;
 		margin: 0 10px;
 		border-radius: 4px;
 		padding: 0 15px;
@@ -156,21 +169,28 @@
 		&.-sub {
 			font-weight: 500;
 			height: 30px;
+			justify-content: flex-start;
 		}
 
+		transition: background-color 0.5s;
 		&:hover {
 			background-color: #e5eaef60;
 		}
 
-		&.-active:not(.-node-active) {
-			background-color: var(--dark-100, var(--gray-200));
-			color: var(--primary);
-		}
-
 		&.-active,
 		&.-node-active {
-			~ .ui-sidebar-sublist {
-				display: block;
+			.icon-arrow {
+				transform: rotate(180deg);
+			}
+		}
+
+		.ui-sidebar-link-right-icons {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			.news-indicator {
+				position: absolute;
+				top: 0;
 			}
 		}
 
@@ -187,6 +207,7 @@
 			width: 25px;
 			display: flex;
 			align-items: center;
+			margin-right: 5px;
 		}
 
 		.ui-icon {
@@ -197,7 +218,6 @@
 	.ui-sidebar-sublist {
 		padding: 0;
 		margin-bottom: 8px;
-		display: none;
 
 		.ui-sidebar-item {
 			list-style: none;
