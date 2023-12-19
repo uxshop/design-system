@@ -4,6 +4,7 @@ import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { IAction } from '../../../types/IAction'
 
+
 export interface AsideProps {
 	modelValue?: boolean
 	title?: string
@@ -93,7 +94,6 @@ watchEffect(() => {
 							<small class="d-block text-muted font-sm" v-if="subtitle">{{ subtitle }}</small>
 						</div>
 						<button @click="onClose" class="close" id="btn-close" type="button">
-							<span>fechar</span>
 							<Icon name="close" />
 						</button>
 					</div>
