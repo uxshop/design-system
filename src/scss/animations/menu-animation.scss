@@ -1,0 +1,20 @@
+@mixin menu-animation($value, $time, $selector, $when) {
+	#{$selector} {
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
+		transition:
+			max-height $time ease-out,
+			opacity $time ease-out;
+	}
+
+	@each $whenSelect in $when {
+		#{$whenSelect} {
+			max-height: $value;
+			opacity: 1;
+			transition:
+				max-height $time ease-in,
+				opacity $time ease-in;
+		}
+	}
+}
