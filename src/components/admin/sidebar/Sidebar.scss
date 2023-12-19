@@ -10,13 +10,6 @@
 	z-index: 888;
 	height: 100%;
 
-	@include menu-animation(
-		1000px,
-		0.3s,
-		'.ui-sidebar-sublist',
-		('.ui-sidebar-link.-active~.ui-sidebar-sublist', '.ui-sidebar-link.-node-active~.ui-sidebar-sublist')
-	);
-
 	> .ui-sidebar-wrapper {
 		border-right: solid 1px var(--border-color);
 		min-width: var(--layout-sidebar-width);
@@ -198,6 +191,10 @@
 			.icon-arrow {
 				transform: rotate(180deg);
 			}
+			~ .ui-sidebar-sublist {
+				max-height: 1000px;
+				opacity: 1;
+			}
 		}
 
 		.ui-sidebar-link-right-icons {
@@ -234,8 +231,12 @@
 	}
 
 	.ui-sidebar-sublist {
+		@include menu-animation(0.7s, 0.8s);
 		padding: 0;
 		margin-bottom: 8px;
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
 
 		.ui-sidebar-item {
 			list-style: none;
