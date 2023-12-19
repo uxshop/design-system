@@ -4,20 +4,22 @@ import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { IAction } from '../../../types/IAction'
 
-const emit = defineEmits(['update:modelValue', 'open', 'close', 'save'])
-const props = defineProps<{
+export interface AsideProps {
 	modelValue?: boolean
 	title?: string
 	subtitle?: string
 	scrollable?: boolean
 	noCloseOnBackdrop?: boolean
-	size?: string
+	size?: 'sm' | 'md' | 'lg'
 	tag?: string
 	inner?: boolean
 	primaryAction?: IAction
 	secondaryActions?: IAction[]
 	scrollableContentId?: string
-}>()
+}
+
+const emit = defineEmits(['update:modelValue', 'open', 'close', 'save'])
+const props = defineProps<AsideProps>()
 
 const slots = useSlots()
 const isOpen = ref(false)
