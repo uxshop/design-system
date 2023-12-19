@@ -12,9 +12,35 @@
 		padding-left: 15px;
 	}
 
+	.ui-dropdown {
+		.ui-dropdown-menu {
+			opacity: 0;
+			display: none;
+			padding: 0 8px;
+		}
+		&.-open {
+			.icon-arrow-up {
+				transform: rotate(180deg);
+			}
+			.ui-dropdown-menu {
+				transition: opacity 0.5s ease-in-out;
+				opacity: 1;
+				display: block;
+			}
+		}
+		.ui-dropdown-item {
+			width: 100%;
+			&:hover,
+			&:focus {
+				background-color: var(--primary);
+			}
+		}
+	}
+
 	&-btn {
+		transition: background-color 0.5s ease-in;
 		&:hover {
-			background: var(--gray-200);
+			background-color: var(--gray-200);
 		}
 
 		&-wrapper {
