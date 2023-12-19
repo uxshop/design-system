@@ -1,12 +1,3 @@
-@mixin move-horizontal($value, $time, $selector, $when) {
-	#{$selector} {
-		transition: transform $time ease-out;
-	}
-
-	@each $whenSelect in $when {
-		#{$whenSelect $selector} {
-			transition: transform $time ease-in;
-			transform: translateX($value);
-		}
-	}
+@mixin move-horizontal($time) {
+	transition: transform $time ease-in-out;
 }

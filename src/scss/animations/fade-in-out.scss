@@ -1,13 +1,3 @@
-@mixin fade-in-out($time, $selector, $when) {
-	#{$selector} {
-		transition: opacity $time ease-out;
-		opacity: 0;
-	}
-
-	@each $whenSelect in $when {
-		#{$whenSelect $selector} {
-			transition: opacity $time ease-in;
-			opacity: 1;
-		}
-	}
+@mixin fade-in-out($time) {
+	transition: opacity $time ease-in-out;
 }
