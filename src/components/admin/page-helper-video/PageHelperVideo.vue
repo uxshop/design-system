@@ -5,7 +5,11 @@ import PageHelperVideoModal from './PageHelperVideoModal.vue'
 
 export interface IVideo {
 	name?: string
-	video_id?: boolean
+	video_id?: string
+	articles?: {
+		name: string
+		url: string
+	}[]
 }
 
 const props = withDefaults(

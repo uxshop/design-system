@@ -37,7 +37,7 @@ export default meta
 
 export const Default: Story = {
 	args: {
-		size: 'sm'
+		size: 'md'
 	}
 }
 
@@ -46,6 +46,6 @@ export const Image: Story = {
 		hexadecimal: undefined,
 		hexadecimalSecondary: undefined,
 		image: 'https://picsum.photos/200',
-		size: 'lg'
+		size: 'md'
 	}
 }
