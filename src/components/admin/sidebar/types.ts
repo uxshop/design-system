@@ -1,23 +1,13 @@
-export interface Node {
-	name: string
-	to: string
-	permissions?: string
-	icon: string
-	novelty?: boolean
-	active?: boolean
-	disabled?: boolean
-	spacer?: boolean
-	last?: boolean
-}
-
 export interface SideBarItem {
 	name: string
-	to: string
+	to?: string
+	key?: string
+	isKeyActive?: boolean
 	permissions?: string
 	section?: string
 	icon?: string
 	caption?: string
-	nodes?: Node[]
+	nodes?: SideBarItem[]
 	novelty?: boolean
 	active?: boolean
 	disabled?: boolean

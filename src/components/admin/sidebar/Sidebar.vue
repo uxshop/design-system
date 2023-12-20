@@ -17,7 +17,7 @@ export interface MenuProviderInterface {
 }
 
 export interface Props {
-	permissionService: PermissionInterface
+	isActive: (item: SideBarItem, isOnlyChildren?: boolean) => boolean
 	menuOpen?: boolean
 	menus: SideBarItem[]
 	currentSection?: string | null
@@ -27,13 +27,13 @@ const menu = inject('menu') as MenuProviderInterface
 const props = defineProps<Props>()
 
 const emit = defineEmits<{
-	(evt: 'onClickItem', type: 'logo' | 'node' | 'footer' | string, menuName?: string, menuItem?: SideBarItem): void
+	(evt: 'onClickItem', type: 'logo' | 'node' | 'footer' | string, menuItem?: SideBarItem): void
 }>()
 
 const toggleMenu = (item: any) => {
 	if (menu) {
 		menu.toggle()
-		emit('onClickItem', 'node', item.name, item)
+		emit('onClickItem', 'node', item)
 	}
 }
 </script>
@@ -68,11 +68,12 @@ const toggleMenu = (item: any) => {
 								<div
 									:class="{
 										'-nodes': item.nodes?.length,
-										'-node-active': item?.active
+										'-node-active': isActive(item, true),
+										'-active': isActive(item)
 									}"
 									class="ui-sidebar-link"
 									activeClass="-active"
-									@click="emit('onClickItem', 'node', item.name, item)">
+									@click="emit('onClickItem', 'node', item)">
 									<span class="ui-sidebar-link-icon">
 										<Icon :name="item.icon" filled />
 									</span>
@@ -87,7 +88,7 @@ const toggleMenu = (item: any) => {
 											class="ui-sidebar-link -sub"
 											@click="toggleMenu(node)"
 											:class="{
-												'-active': node.active,
+												'-active': isActive(node),
 												'-disabled': node.disabled
 											}">
 											<span class="ui-sidebar-link-icon"></span>
