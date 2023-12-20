@@ -33,7 +33,7 @@
 		}
 		+ .ui-breadcrumb-item::before {
 			padding-right: var(--s-spacing-quark);
-			color: var(--secondary);
+			color: var(--s-color-content-highlight);
 			content: '/';
 			margin: 0 var(--s-spacing-quark);
 		}
