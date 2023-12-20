@@ -2,12 +2,10 @@
 	width: 12px;
 	height: 12px;
 	border-radius: var(--s-border-radius-pill);
-	--animation-time: calc(var(--s-motion-duration-very-slow) - 1000ms);
-
 	background-color: var(--s-color-fill-highlight);
 	box-shadow: 0 0 0 0 var(--s-color-fill-highlight);
 	transform: scale(1);
-	animation: pulse var(--animation-time) infinite;
+	animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
