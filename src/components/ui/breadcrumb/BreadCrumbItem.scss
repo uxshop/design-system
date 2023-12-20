@@ -5,23 +5,23 @@
 
 		&:before {
 			position: relative;
-			z-index: 999;
+			z-index: var(--s-index-max);
 			float: none;
 		}
 
 		> a {
 			font-weight: inherit;
 			position: relative;
-			z-index: 11;
+			z-index: var(--s-index-very-high);
 			display: inline-flex;
 			align-items: center;
 			height: 38px;
 			text-decoration: none;
-			color: var(--body-color);
+			color: var(--s-color-content-default);
 
 			&:hover {
 				text-decoration: none;
-				color: var(--primary);
+				color: var(--s-color-fill-highlight);
 				span {
 					text-decoration: underline;
 				}
@@ -29,17 +29,17 @@
 		}
 
 		+ .ui-breadcrumb-item {
-			padding-left: 5px;
+			padding-left: var(--s-spacing-quark);
 		}
 		+ .ui-breadcrumb-item::before {
-			padding-right: 5px;
+			padding-right: var(--s-spacing-quark);
 			color: var(--secondary);
 			content: '/';
-			margin: 0 5px;
+			margin: 0 var(--s-spacing-quark);
 		}
 
 		> .ui-breadcrumb-item::before {
-			margin: 0 50px;
+			margin: 0 var (--s-spacing-x-large);
 		}
 	}
 }
