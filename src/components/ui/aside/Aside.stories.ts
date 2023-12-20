@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import Aside from './Aside.vue'
+import Button from '../button/Button.vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 const meta: Meta<typeof Aside> = {
@@ -7,9 +8,10 @@ const meta: Meta<typeof Aside> = {
 	component: Aside,
 	tags: ['autodocs'],
 	args: {
-		modelValue: true,
+		modelValue: false,
 		title: 'Aside title',
-		subtitle: 'Aside subtitle'
+		subtitle: 'Aside subtitle',
+		size: 'md'
 	},
 	argTypes: {
 		modelValue: {
@@ -37,7 +39,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
 	render: (args) => ({
-		components: { Aside },
+		components: { Aside, Button },
 		setup() {
 			const modelValue = ref(args.modelValue)
 			const onUpdateModelValue = (value: boolean) => {
@@ -46,36 +48,23 @@ export const Default: Story = {
 
 			return { args, modelValue, onUpdateModelValue }
 		},
-		template: ` <Aside v-bind="args" v-model="modelValue" @update:modelValue="onUpdateModelValue"/>`
+		template: `
+    <div>
+      <Button variant="primary" v-on:click="modelValue = true" >Open aside</Button>
+      <Aside v-bind="args" v-model="modelValue" @update:modelValue="onUpdateModelValue"/>
+    </div>`
 	})
 }
 
 export const Scrollable: Story = {
 	args: {
-		modelValue: true,
-		title: 'Aside title',
-		subtitle: 'Aside subtitle scrollable',
 		scrollable: true
 	},
-	render: (args) => ({
-		components: { Aside },
-		setup() {
-			const modelValue = ref(args.modelValue)
-			const onUpdateModelValue = (value: boolean) => {
-				modelValue.value = value
-			}
-
-			return { args, modelValue, onUpdateModelValue }
-		},
-		template: ` <Aside v-bind="args" v-model="modelValue" @update:modelValue="onUpdateModelValue"/>`
-	})
+	render: Default.render
 }
 
 export const WithButtons: Story = {
 	args: {
-		modelValue: true,
-		title: 'Aside title',
-		subtitle: 'Aside subtitle scrollable',
 		primaryAction: {
 			label: 'Primary action',
 			onAction: () => {}
@@ -87,16 +76,22 @@ export const WithButtons: Story = {
 			}
 		]
 	},
-	render: (args) => ({
-		components: { Aside },
-		setup() {
-			const modelValue = ref(args.modelValue)
-			const onUpdateModelValue = (value: boolean) => {
-				modelValue.value = value
-			}
+	render: Default.render
+}
 
-			return { args, modelValue, onUpdateModelValue }
+export const ScrollableWithButtons: Story = {
+	args: {
+		scrollable: true,
+		primaryAction: {
+			label: 'Primary action',
+			onAction: () => {}
 		},
-		template: ` <Aside v-bind="args" v-model="modelValue" @update:modelValue="onUpdateModelValue"/>`
-	})
+		secondaryActions: [
+			{
+				label: 'Secondary actions',
+				onAction: () => {}
+			}
+		]
+	},
+	render: Default.render
 }
