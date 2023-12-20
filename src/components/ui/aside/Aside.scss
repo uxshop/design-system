@@ -50,7 +50,7 @@
 				position: sticky;
 				top: 0;
 				z-index: var(--s-index-max);
-				border-bottom: var(--s-border-thin);
+				border-bottom: var(--s-border-light);
 
 				@include darkmode {
 					background-color: var(--s-color-background-dark);
@@ -65,7 +65,7 @@
 				position: sticky;
 				bottom: 0;
 				z-index: var(--s-index-max);
-				border-top: var(--s-border-thin);
+				border-top: var(--s-border-light);
 			}
 		}
 	}
@@ -150,9 +150,9 @@
 			margin: 0;
 		}
 
-		> .close {
-			padding: 0 vat(--s-spacing-quark);
-			margin-right: -var(--s-spacing-nano);
+		> .ui-icon-button {
+			padding: 0 var(--s-spacing-quark);
+			margin-right: calc(var(--s-spacing-nano) * -1);
 			margin-left: auto;
 			background: none;
 			display: flex;
