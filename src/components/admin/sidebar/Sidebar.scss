@@ -173,7 +173,7 @@
 			}
 			.ui-sidebar-link-right-icons {
 				.news-indicator {
-					transform: translateX(-20px);
+					transform: translate(-20px, -50%);
 				}
 			}
 			.icon-arrow {
@@ -202,9 +202,10 @@
 			align-items: center;
 			justify-content: flex-end;
 			.news-indicator {
-				position: absolute;
-				top: 0;
 				@include move-horizontal(var(--s-motion-duration-default));
+				position: absolute;
+				top: 50%;
+				transform: translate(0, -50%);
 			}
 		}
 
