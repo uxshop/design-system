@@ -10,8 +10,7 @@ export interface IconProps {
 }
 
 const props = withDefaults(defineProps<IconProps>(), {
-	type: 'outlined',
-	size: 24
+	type: 'outlined'
 })
 
 const iconClassList = computed(() => {
