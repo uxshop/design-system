@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { watchEffect, ref, useSlots } from 'vue'
-import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
+import IconButton from '../icon-button/IconButton.vue'
 import type { IAction } from '../../../types/IAction'
-
+import type { Size } from '../../../types'
 
 export interface AsideProps {
 	modelValue?: boolean
@@ -11,7 +11,7 @@ export interface AsideProps {
 	subtitle?: string
 	scrollable?: boolean
 	noCloseOnBackdrop?: boolean
-	size?: 'sm' | 'md' | 'lg'
+	size?: Size
 	tag?: string
 	inner?: boolean
 	primaryAction?: IAction
@@ -93,9 +93,7 @@ watchEffect(() => {
 							</h4>
 							<small class="d-block text-muted font-sm" v-if="subtitle">{{ subtitle }}</small>
 						</div>
-						<button @click="onClose" class="close" id="btn-close" type="button">
-							<Icon name="close" />
-						</button>
+						<IconButton @click="onClose" id="btn-close" icon="close" variant="plain" type="rounded" />
 					</div>
 
 					<div class="ui-aside-body">
