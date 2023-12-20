@@ -105,6 +105,7 @@ const onSave = async () => {
 			filter: omit(props.state.queryParams, props.state.omitFiltersValues),
 			resource: props.state.config.customFilterResource
 		})
+		res.view = res.id || slugify(res.name)
 		props.state.tabs.push(res)
 		props.state.setQueryParams({
 			selectedView: res.id
