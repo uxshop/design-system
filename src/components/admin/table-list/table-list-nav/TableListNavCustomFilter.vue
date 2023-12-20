@@ -106,7 +106,6 @@ const onSave = async () => {
 			resource: props.state.config.customFilterResource
 		})
 		props.state.tabs.push(res)
-		addTab(res)
 		props.state.setQueryParams({
 			selectedView: res.id
 		})
