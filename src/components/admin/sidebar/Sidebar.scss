@@ -182,7 +182,7 @@
 		}
 
 		.icon-arrow {
-			@include fade-in-out(0.5s);
+			@include fade-in-out(var(--s-motion-duration-default));
 			opacity: 0;
 		}
 
@@ -204,7 +204,7 @@
 			.news-indicator {
 				position: absolute;
 				top: 0;
-				@include move-horizontal(0.4s);
+				@include move-horizontal(var(--s-motion-duration-default));
 			}
 		}
 
@@ -215,7 +215,7 @@
 			align-items: center;
 			position: relative;
 			z-index: 2;
-			@include move-horizontal(0.5s);
+			@include move-horizontal(var(--s-motion-duration-default));
 		}
 
 		.ui-sidebar-link-icon {
@@ -231,7 +231,7 @@
 	}
 
 	.ui-sidebar-sublist {
-		@include menu-animation(0.7s, 0.8s);
+		@include menu-animation(var(--s-motion-duration-default), var(--s-motion-duration-moderate));
 		padding: 0;
 		margin-bottom: 8px;
 		max-height: 0;
