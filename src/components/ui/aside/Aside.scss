@@ -181,9 +181,9 @@
 			}
 
 			&:hover {
-				color: var(--b-color-base);
+				color: var(--s-color-fill-highlight);
 				.ui-icon {
-					background-color: var(--b-color-base);
+					background-color: var(--s-color-fill-highlight);
 					color: var(--s-color-fill-default-hover);
 				}
 			}
