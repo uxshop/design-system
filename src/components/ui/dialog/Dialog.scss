@@ -54,7 +54,7 @@
 
 		.ui-dialog-content {
 			box-shadow: var(--s-shadow-level-3);
-			transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86); // aqui
+			transition: all var(--s-motion-duration-fast) var(--s-motion-ease-in-out);
 			position: relative;
 			display: flex;
 			flex-direction: column;
