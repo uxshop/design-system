@@ -2,7 +2,7 @@
 
 .ui-dialog {
 	position: fixed;
-	z-index: 9999;
+	z-index: var(--s-index-max);
 	top: 0;
 	left: 0;
 	right: 0;
@@ -15,24 +15,18 @@
 
 	&.-hide {
 		> .ui-dialog-wrapper > .ui-dialog-content {
-			animation: 0.2s dialogZoomOut;
+			animation: var(--s-motion-duration-fast) dialogZoomOut;
 			animation-fill-mode: forwards;
 		}
 
 		> .ui-dialog-wrapper > .ui-dialog-overlay {
-			animation: 0.4s dialogFade reverse;
+			animation: var(--s-motion-duration-default) dialogFade reverse;
 		}
 	}
 
 	&.-show {
 		> .ui-dialog-wrapper > .ui-dialog-overlay {
-			opacity: var(--modal-backdrop-opacity);
-		}
-	}
-
-	&.-primary {
-		.ui-dialog-wrapper > .ui-dialog-overlay {
-			background-color: var(--primary);
+			opacity: 0.8;
 		}
 	}
 
@@ -42,61 +36,54 @@
 		align-items: center;
 		width: auto;
 		margin: 0 auto;
-		transition: transform 0.1s;
+		transition: transform var(--s-motion-duration-fast);
 		will-change: transform;
-		padding: 20px;
+		padding: var(--s-spacing-small);
 
 		.ui-dialog-overlay {
 			content: '';
 			position: fixed;
-			background: var(--modal-backdrop-bg);
+			background-color: var(--s-color-background-overlay);
 			opacity: 0;
 			top: 0;
 			bottom: 0;
 			left: 0;
 			right: 0;
-			animation: 0.4s dialogFade;
+			animation: var(--s-motion-duration-default) dialogFade;
 		}
 
 		.ui-dialog-content {
-			box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
-			transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+			box-shadow: var(--s-shadow-level-3);
+			transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86); // aqui
 			position: relative;
 			display: flex;
 			flex-direction: column;
 			width: 100%;
 			pointer-events: auto;
 			background-clip: padding-box;
-			border-radius: var(--border-radius);
+			border-radius: var(--s-border-radius-small);
 			outline: 0;
-			margin: 20px auto;
-			background-color: white;
-			animation: 0.2s dialogZoom;
+			margin: auto;
+			background-color: var(--s-color-fill-default);
+			animation: var(--s-motion-duration-fast) dialogZoom;
 			animation-fill-mode: forwards;
-			padding: 30px;
 			max-width: 460px;
 
 			.ui-dialog-header {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
+				padding: var(--s-spacing-small);
 
 				> .title {
-					font-weight: 600;
-					font-size: 22px;
-					line-height: 1.1;
-					margin: 0;
-
-					> .ui-icon {
-						color: var(--secondary);
-						top: 3px;
-						position: relative;
-					}
+					font: var(--s-typography-heading-medium);
+					margin-bottom: 0;
 				}
 			}
 
 			> .ui-dialog-body {
-				padding: 20px 0;
+				padding: var(--s-spacing-small);
+				padding-top: 0;
 				flex-grow: 1;
 
 				&:first-child {
@@ -104,13 +91,14 @@
 				}
 
 				ul {
-					padding-left: 20px;
+					padding-left: var(--s-spacing-small);
 				}
 			}
 
 			> .ui-dialog-footer {
-				padding-top: 20px;
-				gap: 10px;
+				padding: var(--s-spacing-small);
+				padding-top: 0;
+				gap: var(--s-spacing-nano);
 				display: flex;
 				justify-content: flex-start;
 
@@ -123,7 +111,7 @@
 
 	@include darkmode {
 		.ui-dialog-content {
-			background: var(--bg-white);
+			background-color: var(--s-color-background-dark);
 		}
 	}
 }
@@ -158,6 +146,6 @@
 	}
 
 	to {
-		opacity: var(--modal-backdrop-opacity);
+		opacity: 0.8;
 	}
 }

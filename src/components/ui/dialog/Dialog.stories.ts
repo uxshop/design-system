@@ -19,7 +19,7 @@ const meta: MergedType = {
 		destructVariant: 'danger',
 		hideFooter: false,
 		hideCancel: false,
-		opened: false,
+		opened: true,
 		promptType: 'text'
 	},
 	argTypes: {
