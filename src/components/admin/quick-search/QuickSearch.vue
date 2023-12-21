@@ -23,7 +23,7 @@ const props = withDefaults(
 const emits = defineEmits(['onSubmit', 'update:isOpen'])
 const isOpenRef = shallowRef(props.isOpen)
 
-const formValues = ref<IFormValue>({
+const formValues = ref<IQuickSearchFormValue>({
 	searchKey: '',
 	searchType: props.searchOptions[0].value
 })
@@ -42,7 +42,7 @@ watch(
 watch(
 	() => isOpenRef.value,
 	(value) => {
-		emits('update:isOpen', isOpenRef.value)
+		emits('update:isOpen', value)
 	}
 )
 </script>
