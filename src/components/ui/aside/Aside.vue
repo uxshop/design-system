@@ -1,23 +1,26 @@
 <script setup lang="ts">
 import { watchEffect, ref, useSlots } from 'vue'
-import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
+import IconButton from '../icon-button/IconButton.vue'
 import type { IAction } from '../../../types/IAction'
+import type { Size } from '../../../types'
 
-const emit = defineEmits(['update:modelValue', 'open', 'close', 'save'])
-const props = defineProps<{
+export interface AsideProps {
 	modelValue?: boolean
 	title?: string
 	subtitle?: string
 	scrollable?: boolean
 	noCloseOnBackdrop?: boolean
-	size?: string
+	size?: Size
 	tag?: string
 	inner?: boolean
 	primaryAction?: IAction
 	secondaryActions?: IAction[]
 	scrollableContentId?: string
-}>()
+}
+
+const emit = defineEmits(['update:modelValue', 'open', 'close', 'save'])
+const props = defineProps<AsideProps>()
 
 const slots = useSlots()
 const isOpen = ref(false)
@@ -90,10 +93,7 @@ watchEffect(() => {
 							</h4>
 							<small class="d-block text-muted font-sm" v-if="subtitle">{{ subtitle }}</small>
 						</div>
-						<button @click="onClose" class="close" id="btn-close" type="button">
-							<span>fechar</span>
-							<Icon name="close" />
-						</button>
+						<IconButton @click="onClose" id="btn-close" icon="close" variant="plain" type="rounded" />
 					</div>
 
 					<div class="ui-aside-body">
