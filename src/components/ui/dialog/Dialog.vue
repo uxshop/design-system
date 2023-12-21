@@ -2,32 +2,9 @@
 import { nextTick, onMounted, reactive, ref } from 'vue'
 import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
+import type { OpenDialogConfig } from '.'
 
-export interface Props {
-	id?: string
-	title?: string
-	hideFooter?: boolean
-	message?: string
-	onCallback?(val: string | boolean): void
-	onClose?(val: string | boolean): void
-	closeOnBackdrop?: boolean
-	variant?: string
-	size?: string
-	promptLabel?: string
-	promptType?: string
-	promptPlaceholder?: string
-	cancelLabel?: string
-	destructLabel?: string
-	destructVariant?: 'success' | 'danger' | 'primary'
-	destructIcon?: string
-	type?: string
-	opened?: boolean
-	hideCancel?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-	variant: '',
-	size: 'md',
+const props = withDefaults(defineProps<OpenDialogConfig>(), {
 	promptType: 'text',
 	cancelLabel: 'Cancelar',
 	destructLabel: 'Deletar',
@@ -94,14 +71,6 @@ const onClickBackdrop = () => {
 			style.value.transform = 'scale(1)'
 		}, 100)
 	}
-}
-
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
-}
-
-if (props.size) {
-	classList.value.push(`-${props.size}`)
 }
 
 if (props.type == 'prompt') {
