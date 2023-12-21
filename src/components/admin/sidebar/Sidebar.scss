@@ -156,12 +156,12 @@
 		}
 
 		&.-sub {
-			font-weight: 500;
+			font-weight: var(--s-font-weight-medium);
 			height: 30px;
 			justify-content: flex-start;
 		}
 
-		transition: background-color 0.5s;
+		transition: background-color var(--s-motion-duration-default);
 		&:hover {
 			background-color: #e5eaef60;
 		}
@@ -215,7 +215,7 @@
 			padding: 10px 0;
 			align-items: center;
 			position: relative;
-			z-index: 2;
+			z-index: var(--s-index-low);
 			@include move-horizontal(var(--s-motion-duration-default));
 		}
 
@@ -234,7 +234,7 @@
 	.ui-sidebar-sublist {
 		@include menu-animation(var(--s-motion-duration-default), var(--s-motion-duration-moderate));
 		padding: 0;
-		margin-bottom: 8px;
+		margin-bottom: var(--s-spacing-nano);
 		max-height: 0;
 		opacity: 0;
 		overflow: hidden;
