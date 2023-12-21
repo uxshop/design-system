@@ -56,13 +56,6 @@ export const Default: Story = {
 	})
 }
 
-export const Scrollable: Story = {
-	args: {
-		scrollable: true
-	},
-	render: Default.render
-}
-
 export const WithButtons: Story = {
 	args: {
 		primaryAction: {
@@ -75,6 +68,13 @@ export const WithButtons: Story = {
 				onAction: () => {}
 			}
 		]
+	},
+	render: Default.render
+}
+
+export const Scrollable: Story = {
+	args: {
+		scrollable: true
 	},
 	render: Default.render
 }

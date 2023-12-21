@@ -53,12 +53,12 @@
 				border-bottom: var(--s-border-light);
 
 				@include darkmode {
-					background-color: var(--s-color-background-dark);
+					background-color: var(--s-color-fill-dark);
 				}
 			}
 
 			.ui-aside-body {
-				padding-top: calc(var(--s-spacing-medium) / 2);
+				padding: var(--s-spacing-small);
 			}
 
 			.ui-aside-footer {
@@ -78,7 +78,7 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		transition: opacity var(--s-motion-duration-fast);
+		transition: opacity var(--s-motion-duration-default);
 		cursor: not-allowed;
 
 		&.-close {
@@ -98,9 +98,9 @@
 		display: flex;
 		flex-direction: column;
 		overflow-y: auto;
-		transition: right var(--s-motion-duration-fast) var(--s-motion-ease-out);
+		transition: right var(--s-motion-duration-default) var(--s-motion-ease-out);
 		will-change: right, transform;
-		animation: var(--s-motion-duration-fast) slideContent;
+		animation: var(--s-motion-duration-default) slideContent;
 		animation-fill-mode: forwards;
 		max-width: 900px;
 		padding: 0;
@@ -111,7 +111,7 @@
 	.ui-aside-section {
 		margin-left: calc(var(--s-spacing-medium) * -1);
 		margin-right: calc(var(--s-spacing-medium) * -1);
-		padding: var(--s-spacing-medium);
+		padding: var(--s-spacing-small);
 
 		&:first-child {
 			padding-top: 0;
@@ -136,7 +136,7 @@
 
 	.ui-aside-header {
 		background-color: var(--s-color-fill-default);
-		padding: var(--s-spacing-x-small) var(--s-spacing-medium);
+		padding: var(--s-spacing-small);
 		display: flex;
 		border: none;
 		margin-bottom: 0;
@@ -198,19 +198,18 @@
 
 	.ui-aside-body {
 		flex-grow: 1;
-		padding: 0 var(--s-spacing-medium);
+		padding: var(--s-spacing-small);
 	}
 
 	.ui-aside-footer {
 		border: none;
 		bottom: 0;
-		padding: calc(var(--s-spacing-medium) / 2) var(--s-spacing-medium);
+		padding: var(--s-spacing-small);
 		right: 0;
 		left: 0;
 		flex-grow: 0;
 		display: flex;
 		align-items: flex-end;
-		margin-top: 20px;
 		justify-content: flex-start;
 		gap: var(--s-spacing-nano);
 		background-color: var(--s-color-fill-default);
@@ -232,8 +231,7 @@
 		}
 
 		.ui-aside-footer {
-			padding-top: var(--s-spacing-x-small);
-			padding-bottom: var(--s-spacing-x-small);
+			padding: var(--s-spacing-small);
 		}
 
 		.ui-aside-header {
@@ -251,7 +249,7 @@
 		.ui-aside-content,
 		.ui-aside-footer,
 		.ui-aside-header {
-			background-color: var(--s-color-background-dark);
+			background-color: var(--s-color-fill-dark);
 			.title {
 				color: var(--s-color-content-dark);
 			}
