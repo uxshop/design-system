@@ -6,7 +6,7 @@ import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Stack from '../../ui/stack/Stack.vue'
 import FormSelect, { type IFormSelectOptions } from '../../ui/form-select/FormSelect.vue'
 
-export interface IFormValue {
+export interface IQuickSearchFormValue {
 	searchType: string
 	searchKey: string
 }
