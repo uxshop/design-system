@@ -77,7 +77,7 @@ const toggleMenu = (item: any) => {
 									@click="emit('onClickItem', 'node', item)">
 									<div class="d-flex">
 										<span class="ui-sidebar-link-icon">
-											<Icon :name="item.icon" filled />
+											<Icon size="16" :name="item.icon" filled />
 										</span>
 										<span class="ui-sidebar-link-text">
 											{{ item.name }}
@@ -100,7 +100,9 @@ const toggleMenu = (item: any) => {
 												'-active': isActive(node),
 												'-disabled': node.disabled
 											}">
-											<span class="ui-sidebar-link-icon"></span>
+											<span class="ui-sidebar-link-icon">
+												<Icon size="16" name="subdirectory_arrow_right" />
+											</span>
 											<span class="ui-sidebar-link-text"> {{ node.name }} </span>
 										</div>
 									</li>

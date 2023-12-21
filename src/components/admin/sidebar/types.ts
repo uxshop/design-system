@@ -1,5 +1,6 @@
 export interface SideBarItem {
 	name: string
+	isNew?: boolean
 	to?: string
 	key?: string
 	isKeyActive?: boolean
@@ -8,7 +9,6 @@ export interface SideBarItem {
 	icon?: string
 	caption?: string
 	nodes?: SideBarItem[]
-	novelty?: boolean
 	active?: boolean
 	disabled?: boolean
 	spacer?: boolean
