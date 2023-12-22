@@ -1,4 +1,3 @@
-import { computed } from 'vue'
 import Button from './Button.vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
 

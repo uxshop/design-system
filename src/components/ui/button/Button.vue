@@ -5,7 +5,7 @@ import Icon from '../icon/Icon.vue'
 import type { Size } from 'src/types'
 
 export interface Props {
-	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain' | 'light'
+	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain' | 'light' | 'default'
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string
