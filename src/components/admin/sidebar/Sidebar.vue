@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { inject, ref, watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
-import { map } from 'lodash-es'
-import type { SidebarInterface } from './SidebarInterface'
+import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
 import type { SideBarItem, SideBarItemType } from './types'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
