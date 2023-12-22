@@ -15,7 +15,7 @@
 
 	&.-hide {
 		> .ui-dialog-wrapper > .ui-dialog-content {
-			animation: var(--s-motion-duration-fast) dialogZoomOut;
+			animation: var(--s-motion-duration-default) dialogZoomOut;
 			animation-fill-mode: forwards;
 		}
 
@@ -36,7 +36,7 @@
 		align-items: center;
 		width: auto;
 		margin: 0 auto;
-		transition: transform var(--s-motion-duration-fast);
+		transition: transform var(--s-motion-duration-default);
 		will-change: transform;
 		padding: var(--s-spacing-small);
 
@@ -54,7 +54,7 @@
 
 		.ui-dialog-content {
 			box-shadow: var(--s-shadow-level-3);
-			transition: all var(--s-motion-duration-fast) var(--s-motion-ease-in-out);
+			transition: all var(--s-motion-duration-default) var(--s-motion-ease-in-out);
 			position: relative;
 			display: flex;
 			flex-direction: column;
@@ -65,7 +65,7 @@
 			outline: 0;
 			margin: auto;
 			background-color: var(--s-color-fill-default);
-			animation: var(--s-motion-duration-fast) dialogZoom;
+			animation: var(--s-motion-duration-default) dialogZoom;
 			animation-fill-mode: forwards;
 			max-width: 460px;
 
