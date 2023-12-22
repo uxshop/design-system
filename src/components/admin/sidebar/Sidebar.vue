@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { inject, ref, watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
-import { map } from 'lodash-es'
-import type { SidebarInterface } from './SidebarInterface'
+import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
-import type { SideBarItem } from './types'
+import type { SideBarItem, SideBarItemType } from './types'
+import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -17,72 +15,24 @@ export interface MenuProviderInterface {
 }
 
 export interface Props {
-	permissionService: PermissionInterface
+	isActive: (item: SideBarItem, isOnlyChildren?: boolean) => boolean
 	menuOpen?: boolean
-	menus: Record<string, SideBarItem>
+	menus: SideBarItem[]
 	currentSection?: string | null
 }
 
 const menu = inject('menu') as MenuProviderInterface
 const props = defineProps<Props>()
-const route = useRoute()
-const menusFilter = ref<any>([])
 
 const emit = defineEmits<{
-	(evt: 'onClickItem', type: 'logo' | 'node' | 'footer', menuItem?: SideBarItem): void
+	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem): void
 }>()
-
-watchEffect(() => {
-	const routeName = String(route.name).replace(/_[^_]+?$/, '')
-
-	menusFilter.value = map(props.menus, (item: SidebarInterface.Item) => {
-		let disabled = !props.permissionService.has(item.permissions)
-
-		item.withNodeActive = false
-
-		map(item.nodes, (i) => {
-			const itemName = i.to?.replace(/_[^_]+?$/, '')
-
-			item.rawTo = item.to
-			i.disabled = true
-			item.active = false
-
-			if (props.permissionService.has(i.permissions)) {
-				if (disabled === true) item.to = i.to
-				disabled = i.disabled = false
-			}
-
-			if (itemName == routeName) {
-				item.active = true
-				item.withNodeActive = true
-				i.active = true
-			}
-
-			return i
-		})
-
-		item.disabled = disabled
-
-		return item
-	})
-})
 
 const toggleMenu = (item: any) => {
 	if (menu) {
 		menu.toggle()
 		emit('onClickItem', 'node', item)
 	}
-}
-
-const checkSubActive = (item: any) => {
-	if (route.name) {
-		const routeName = String(route.name).replace(/_[^_]+?$/, '')
-		const itemName = item.to.replace(/_[^_]+?$/, '')
-
-		return itemName == routeName
-	}
-
-	return false
 }
 </script>
 
@@ -100,7 +50,7 @@ const checkSubActive = (item: any) => {
 					<div class="ui-sidebar-list">
 						<ul class="ui-sidebar-list -primary">
 							<li
-								v-for="(item, key) in menusFilter"
+								v-for="(item, key) in menus"
 								class="ui-sidebar-item"
 								redirectLink
 								:key="key"
@@ -116,17 +66,26 @@ const checkSubActive = (item: any) => {
 								<div
 									:class="{
 										'-nodes': item.nodes?.length,
-										'-node-active': item.withNodeActive
+										'-node-active': isActive(item, true),
+										'-active': isActive(item)
 									}"
 									class="ui-sidebar-link"
 									activeClass="-active"
 									@click="emit('onClickItem', 'node', item)">
-									<span class="ui-sidebar-link-icon">
-										<Icon :name="item.icon" filled />
-									</span>
-									<span class="ui-sidebar-link-text">
-										{{ item.name }}
-									</span>
+									<div class="d-flex">
+										<span class="ui-sidebar-link-icon">
+											<Icon size="16" :name="item.icon" filled />
+										</span>
+										<span class="ui-sidebar-link-text">
+											{{ item.name }}
+										</span>
+									</div>
+									<div class="ui-sidebar-link-right-icons">
+										<div class="news-indicator" v-if="item.isNew">
+											<NewsIndicator />
+										</div>
+										<Icon class="icon-arrow" name="expand_more" />
+									</div>
 								</div>
 
 								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
@@ -135,13 +94,13 @@ const checkSubActive = (item: any) => {
 											class="ui-sidebar-link -sub"
 											@click="toggleMenu(node)"
 											:class="{
-												'-active': checkSubActive(node),
+												'-active': isActive(node),
 												'-disabled': node.disabled
 											}">
-											<span class="ui-sidebar-link-icon"></span>
-											<span class="ui-sidebar-link-text">
-												{{ node.name }}
+											<span class="ui-sidebar-link-icon">
+												<Icon size="16" name="subdirectory_arrow_right" />
 											</span>
+											<span class="ui-sidebar-link-text"> {{ node.name }} </span>
 										</div>
 									</li>
 								</ul>

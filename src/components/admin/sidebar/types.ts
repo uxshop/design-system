@@ -1,14 +1,19 @@
-export interface Node {
-	name: string
-	to: string
-	permissions: string
-}
-
 export interface SideBarItem {
 	name: string
-	to: string
-	permissions: string
+	isNew?: boolean
+	to?: string
+	key?: string
+	isKeyActive?: boolean
+	permissions?: string
 	section?: string
 	icon?: string
-	nodes?: Node[]
+	caption?: string
+	nodes?: SideBarItem[]
+	active?: boolean
+	disabled?: boolean
+	spacer?: boolean
+	last?: boolean
+	dropdown?: boolean
 }
+
+export type SideBarItemType = 'logo' | 'node' | 'footer' | string

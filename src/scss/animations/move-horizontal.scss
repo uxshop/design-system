@@ -1,0 +1,3 @@
+@mixin move-horizontal($time) {
+	transition: transform $time var(--s-motion-ease-in-out);
+}
