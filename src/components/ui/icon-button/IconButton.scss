@@ -1,17 +1,16 @@
 .ui-icon-button {
 	border: none;
 	appearance: none;
-	background: none;
-	height: var(--input-height);
-	width: var(--input-height);
-	min-height: var(--input-height);
-	min-width: var(--input-height);
+	background: var(--s-color-content-on-color);
+	height: 38px;
+	width: 38px;
+	min-height: 38px;
+	min-width: 38px;
 	cursor: pointer;
 	justify-content: center;
-	padding: 0;
+	padding: var(--s-spacing-quark);
 	align-items: center;
 	display: inline-flex;
-	color: var(--body-color);
 	box-shadow: none;
 
 	.ui-button-content {
@@ -21,12 +20,10 @@
 	}
 
 	&.-sm {
-		height: var(--input-height-sm);
-		width: var(--input-height-sm);
-		min-height: var(--input-height-sm);
-		min-width: var(--input-height-sm);
+    height: 30px;
+		width: 30px;
 		i {
-			font-size: 18px;
+			font-size: 16px;
 		}
 	}
 
@@ -35,6 +32,9 @@
 	}
 
 	.ui-icon {
-		font-size: 22px;
+		font-size: 24px;
+		font-weight: var(--s-font-weight-regular);
+	color: var(---s-color-content-default);
+
 	}
 }

@@ -6,13 +6,18 @@ const meta: Meta<typeof IconButton> = {
 	component: IconButton,
 	tags: ['autodocs'],
 	args: {
-		icon: 'home',
-		type: 'outlined'
+		icon: 'close',
+		type: 'outlined',
+		disabled: false
 	},
 	argTypes: {
 		variant: {
 			control: 'select',
 			options: ['primary', 'secondary', 'success', 'danger', 'link', 'dark', 'plain']
+		},
+		disabled: {
+			defaultValue: false,
+			control: 'boolean'
 		},
 		fab: {
 			defaultValue: false,

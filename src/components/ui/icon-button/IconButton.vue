@@ -10,6 +10,7 @@ export interface Props {
 	size?: Size
 	type: IconType
 	fab?: boolean
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -21,7 +22,8 @@ const computedButtonProps = computed(() => ({
 	variant: props.variant,
 	size: props.size,
 	type: props.type,
-	fab: props.fab
+	fab: props.fab,
+  disabled: props.disabled
 }))
 </script>
 
@@ -30,6 +32,7 @@ const computedButtonProps = computed(() => ({
 		class="ui-icon-button"
 		:variant="computedButtonProps.variant"
 		:class="{ '-fab': computedButtonProps.fab }"
+    :disabled="computedButtonProps.disabled"
 		:size="computedButtonProps.size">
 		<Icon :name="computedButtonProps.icon" :type="computedButtonProps.type" />
 	</Button>
