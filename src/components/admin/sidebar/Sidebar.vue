@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { map } from 'lodash-es'
 import type { SidebarInterface } from './SidebarInterface'
 import Icon from '../../ui/icon/Icon.vue'
-import type { SideBarItem } from './types'
+import type { SideBarItem, SideBarItemType } from './types'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -27,7 +27,7 @@ const menu = inject('menu') as MenuProviderInterface
 const props = defineProps<Props>()
 
 const emit = defineEmits<{
-	(evt: 'onClickItem', type: 'logo' | 'node' | 'footer' | string, menuItem?: SideBarItem): void
+	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem): void
 }>()
 
 const toggleMenu = (item: any) => {

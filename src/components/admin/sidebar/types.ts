@@ -15,3 +15,5 @@ export interface SideBarItem {
 	last?: boolean
 	dropdown?: boolean
 }
+
+export type SideBarItemType = 'logo' | 'node' | 'footer' | string
