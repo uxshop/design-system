@@ -2,13 +2,14 @@
 import { ref, watch } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
+import type { Size } from 'src/types'
 
 export interface Props {
-	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain'
+	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain' | 'light'
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string
-	size?: string | number
+	size?: Size
 	href?: string
 	flush?: 'left' | 'right'
 	block?: boolean
@@ -98,7 +99,7 @@ watch(
 		<div class="ui-button-content">
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
 			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
-			<div v-if="label || $slots.default">
+			<div v-if="label || $slots.default" class="ui-button-label">
 				<slot>{{ label }}</slot>
 			</div>
 			<Icon :name="trailingIcon" v-if="trailingIcon" />
