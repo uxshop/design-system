@@ -47,7 +47,9 @@ const getComponent = (item: IDropdownItem) => {
 								<span class="name">{{ user.name }}</span>
 								<span v-if="caption" class="slug">{{ caption }}</span>
 							</div>
-							<Icon name="keyboard_arrow_up" size="sm" />
+							<span class="icon-arrow-up">
+								<Icon name="keyboard_arrow_up" size="sm" />
+							</span>
 						</div>
 					</div>
 				</template>

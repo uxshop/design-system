@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { inject, ref, watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
-import { map } from 'lodash-es'
-import type { SidebarInterface } from './SidebarInterface'
+import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
 import type { SideBarItem, SideBarItemType } from './types'
+import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
 
 export interface PermissionInterface {
 	has(rule: string): boolean
@@ -74,12 +72,20 @@ const toggleMenu = (item: any) => {
 									class="ui-sidebar-link"
 									activeClass="-active"
 									@click="emit('onClickItem', 'node', item)">
-									<span class="ui-sidebar-link-icon">
-										<Icon :name="item.icon" filled />
-									</span>
-									<span class="ui-sidebar-link-text">
-										{{ item.name }}
-									</span>
+									<div class="d-flex">
+										<span class="ui-sidebar-link-icon">
+											<Icon size="16" :name="item.icon" filled />
+										</span>
+										<span class="ui-sidebar-link-text">
+											{{ item.name }}
+										</span>
+									</div>
+									<div class="ui-sidebar-link-right-icons">
+										<div class="news-indicator" v-if="item.isNew">
+											<NewsIndicator />
+										</div>
+										<Icon class="icon-arrow" name="expand_more" />
+									</div>
 								</div>
 
 								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
@@ -91,7 +97,9 @@ const toggleMenu = (item: any) => {
 												'-active': isActive(node),
 												'-disabled': node.disabled
 											}">
-											<span class="ui-sidebar-link-icon"></span>
+											<span class="ui-sidebar-link-icon">
+												<Icon size="16" name="subdirectory_arrow_right" />
+											</span>
 											<span class="ui-sidebar-link-text"> {{ node.name }} </span>
 										</div>
 									</li>
