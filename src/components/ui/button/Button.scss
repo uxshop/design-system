@@ -30,7 +30,7 @@
 
 	@include darkmode {
 		&.-default {
-			background-color: var(-color-fill-highlight-dark);
+			background-color: var(--s-color-fill-highlight-dark);
 		}
 	}
 
