@@ -7,7 +7,7 @@ const meta: Meta<typeof IconButton> = {
 	tags: ['autodocs'],
 	args: {
 		icon: 'close',
-		disabled: false
+    onColor: false,
 	},
 	argTypes: {
 		variant: {

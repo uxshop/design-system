@@ -12,14 +12,18 @@ export interface Props {
 	onColor?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-	type: 'outlined',
+withDefaults(defineProps<Props>(), {
 	size: 'md'
 })
 </script>
 
 <template>
-	<Button class="ui-icon-button" :class="{ '-fab': fab,  '-on-color': onColor }" :variant="variant" :size="size" :disabled="disabled">
+	<Button
+		class="ui-icon-button"
+		:class="{ '-fab': fab, '-on-color': onColor }"
+		:variant="variant"
+		:size="size"
+		:disabled="disabled">
 		<Icon :name="icon" :size="24" />
 	</Button>
 </template>
