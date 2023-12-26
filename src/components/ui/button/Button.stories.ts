@@ -21,7 +21,7 @@ const meta: Meta<typeof Button> = {
 		},
 		variant: {
 			control: 'select',
-			options: ['primary', 'success', 'danger', 'plain', 'link']
+			options: ['primary', 'success', 'danger', 'plain', 'link', 'default']
 		},
 		block: {
 			control: 'boolean',

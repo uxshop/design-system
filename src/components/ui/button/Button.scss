@@ -18,6 +18,27 @@
 	background-color: var(--s-color-fill-default);
 	color: var(--s-color-content-default);
 
+	@include darkmode {
+		background-color: var(--s-color-fill-dark);
+		color: var(--s-color-content-dark);
+
+		&:hover {
+			background-color: var(--s-color-fill-dark-hover);
+		}
+
+		&:disabled,
+		&.-disabled {
+			background-color: var(--s-color-fill-dark-disable);
+			color: var(--s-color-content-dark-disable);
+			border-color: var(--s-color-border-dark-disable);
+
+			&.-link {
+				border: none;
+				box-shadow: none;
+			}
+		}
+	}
+
 	&-label {
 		font: var(--s-typography-label-medium);
 	}
@@ -56,6 +77,7 @@
 	&.-primary {
 		background-color: var(--s-color-fill-highlight);
 		color: var(--s-color-content-on-color);
+		border-color: var(--s-color-border-highlight);
 
 		&.-outline {
 			background-color: transparent;
@@ -71,6 +93,7 @@
 	&.-success {
 		background-color: var(--s-color-fill-success);
 		color: var(--s-color-content-on-color);
+		border-color: var(--s-color-border-success);
 
 		&.-outline {
 			border: var(--s-border-thin);
@@ -89,6 +112,7 @@
 	&.-danger {
 		background-color: var(--s-color-fill-critical);
 		color: var(--s-color-content-on-color);
+		border-color: var(--s-color-border-critical);
 
 		&.-outline {
 			border: var(--s-border-thin);
@@ -108,7 +132,7 @@
 		background: transparent;
 		box-shadow: none;
 		filter: none;
-		border: none;
+		border-color: transparent;
 
 		&:hover {
 			background-color: var(--s-color-fill-default-hover);
@@ -126,7 +150,7 @@
 
 		&:hover .ui-button-content {
 			text-decoration: none;
-			div {
+			.ui-button-label {
 				text-decoration: underline;
 			}
 		}
@@ -187,64 +211,10 @@
 		line-height: 1;
 		gap: var(--s-spacing-nano);
 		align-items: center;
-
-		.ui-icon:last-child:not(:first-child) {
-			margin-right: -5px;
-		}
-	}
-
-	.ui-spinner + div {
-		margin-left: var(--s-spacing-nano);
 	}
 
 	.ui-icon {
 		color: inherit;
 		font-size: 18px;
-	}
-
-	@include darkmode {
-		background-color: var(--s-color-fill-dark);
-		border-color: var(--s-border-dark);
-		color: var(--s-color-content-dark);
-
-		&:hover {
-			background-color: var(--s-color-fill-dark-hover);
-		}
-
-		&.-primary {
-			background-color: var(--s-color-fill-highlight-dark);
-			color: var(--s-color-content-dark-highlight);
-			border-color: var(--s-color-border-dark-highlight);
-		}
-
-		&.-success {
-			background-color: var(--s-color-fill-success-dark);
-			color: var(--s-color-content-dark-success);
-			border-color: var(--s-color-border-dark-success);
-		}
-
-		&.-danger {
-			background-color: var(--s-color-fill-critical-dark);
-			color: var(--s-color-content-dark-critical);
-			border-color: var(--s-color-border-dark-critical);
-		}
-
-		&.-link {
-			background: none;
-			border-color: var(--s-color-border-dark-highlight);
-			color: var(--s-color-content-dark-highlight);
-		}
-
-		&:disabled,
-		&.-disabled {
-			background-color: var(--s-color-fill-dark-disable);
-			color: var(--s-color-content-dark-disable);
-			border-color: var(--s-color-border-dark-disable);
-
-			&.-link {
-				border: none;
-				box-shadow: none;
-			}
-		}
 	}
 }
