@@ -14,7 +14,6 @@ export interface Props {
 	flush?: 'left' | 'right'
 	block?: boolean
 	to?: object
-	/** Use with loading true. */
 	spinnerBorder?: number | string
 	type?: string
 	loading?: boolean
