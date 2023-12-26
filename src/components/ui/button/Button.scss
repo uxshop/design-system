@@ -211,6 +211,12 @@
 			background-color: var(--s-color-fill-dark-hover);
 		}
 
+		&.-primary {
+			background-color: var(--s-color-fill-highlight-dark);
+			color: var(--s-color-content-dark-highlight);
+			border-color: var(--s-color-border-dark-highlight);
+		}
+
 		&.-success {
 			background-color: var(--s-color-fill-success-dark);
 			color: var(--s-color-content-dark-success);
@@ -227,6 +233,18 @@
 			background: none;
 			border-color: var(--s-color-border-dark-highlight);
 			color: var(--s-color-content-dark-highlight);
+		}
+
+		&:disabled,
+		&.-disabled {
+			background-color: var(--s-color-fill-dark-disable);
+			color: var(--s-color-content-dark-disable);
+			border-color: var(--s-color-border-dark-disable);
+
+			&.-link {
+				border: none;
+				box-shadow: none;
+			}
 		}
 	}
 }

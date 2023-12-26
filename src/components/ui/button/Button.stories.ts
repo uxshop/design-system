@@ -96,14 +96,20 @@ export const Loading: Story = {
 	}
 }
 
-export const disabled: Story = {
+export const Disabled: Story = {
 	args: {
 		disabled: true
 	}
 }
 
-export const WithIcon: Story = {
+export const TrailingIcon: Story = {
 	args: {
 		trailingIcon: 'check'
+	}
+}
+
+export const LeadingIcon: Story = {
+	args: {
+		leadingIcon: 'check'
 	}
 }
