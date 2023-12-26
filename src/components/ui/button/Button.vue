@@ -5,7 +5,7 @@ import Icon from '../icon/Icon.vue'
 import type { Size } from 'src/types'
 
 export interface Props {
-	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain' | 'light' | 'default'
+	variant?: 'primary' | 'success' | 'danger' | 'link' | 'plain'
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string
@@ -37,7 +37,7 @@ const componentType = computed(() => {
 
 const classList = computed(() => [
 	props.size ? `-${props.size}` : '',
-	props.variant ? `-${props.variant}` : '-default',
+	props.variant ? `-${props.variant}` : '',
 	props.leadingIcon ? '-icon' : '',
 	props.flush ? `-flush-${props.flush}` : '',
 	props.block ? '-block' : '',

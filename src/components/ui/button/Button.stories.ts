@@ -21,7 +21,7 @@ const meta: Meta<typeof Button> = {
 		},
 		variant: {
 			control: 'select',
-			options: ['primary', 'secondary', 'success', 'danger', 'dark', 'light', 'plain', 'link']
+			options: ['primary', 'success', 'danger', 'plain', 'link']
 		},
 		block: {
 			control: 'boolean',
@@ -65,12 +65,6 @@ export const Primary: Story = {
 	}
 }
 
-export const Secondary: Story = {
-	args: {
-		variant: 'secondary'
-	}
-}
-
 export const Success: Story = {
 	args: {
 		variant: 'success'
@@ -80,18 +74,6 @@ export const Success: Story = {
 export const Danger: Story = {
 	args: {
 		variant: 'danger'
-	}
-}
-
-export const Dark: Story = {
-	args: {
-		variant: 'dark'
-	}
-}
-
-export const Light: Story = {
-	args: {
-		variant: 'light'
 	}
 }
 

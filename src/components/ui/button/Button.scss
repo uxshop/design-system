@@ -6,45 +6,24 @@
 	vertical-align: middle;
 	-webkit-user-select: none;
 	appearance: none;
-	border: none;
+	border: var(--s-border-light);
 	border-radius: var(--s-border-radius-small);
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	background-color: transparent;
 	cursor: pointer;
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	box-shadow:
-		0 0 2px rgba(0, 0, 0, 0.05),
-		inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-	background-color: var(--s-color-content-on-color);
+	background-color: var(--s-color-fill-default);
 	color: var(--s-color-content-default);
 
 	&-label {
 		font: var(--s-typography-label-medium);
 	}
 
-	@include darkmode {
-		&.-default {
-			background-color: var(--s-color-fill-highlight-dark);
-		}
-	}
-
 	&.-outline {
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-	}
-
-	&.-default {
-		border: var(--s-border-light);
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
-
-		&:hover {
-			color: var(--s-color-content-default);
-			background-color: var(--s-color-fill-default-hover);
-			filter: none;
-		}
 	}
 
 	&:hover {
@@ -58,32 +37,6 @@
 
 	&.-loading {
 		.ui-icon {
-			display: none;
-		}
-	}
-
-	&.-link {
-		background: none;
-		color: var(--s-color-fill-highlight);
-		box-shadow: none;
-
-		&:focus {
-			outline: none;
-		}
-
-		&:hover .ui-button-content {
-			text-decoration: none;
-			div {
-				text-decoration: underline;
-			}
-		}
-
-		&:disabled,
-		&.-disabled {
-			background-color: transparent;
-		}
-
-		&::before {
 			display: none;
 		}
 	}
@@ -105,29 +58,6 @@
 		color: var(--s-color-content-on-color);
 
 		&.-outline {
-			background-color: transparent;
-			color: var(--s-color-content-default);
-
-			&:hover {
-				background-color: var(--s-color-fill-highlight-hover);
-				color: var(--s-color-content-on-color);
-			}
-		}
-	}
-
-	&.-light {
-		background-color: var(--s-color-background-default);
-		border: var(--s-border-light);
-		color: var(--s-color-content-default);
-	}
-	&.-secondary {
-		background-color: var(--s-color-fill-warning);
-		color: var(--s-color-content-on-color);
-
-		&.-outline {
-			border: var(--s-border-thin);
-			border-color: var(--s-color-border-warning);
-
 			background-color: transparent;
 			color: var(--s-color-content-default);
 
@@ -174,36 +104,40 @@
 		}
 	}
 
-	&.-dark {
-		background-color: var(--s-color-fill-dark);
-		color: var(--s-color-content-on-color);
-
-		&:hover {
-			background-color: var(--s-color-fill-dark-hover);
-		}
-
-		&.-outline {
-			border: var(--s-border-thin);
-			border-color: var(--s-color-border-dark);
-			background-color: transparent;
-			color: var(--s-color-content-default);
-		}
-	}
-
 	&.-plain {
 		background: transparent;
 		box-shadow: none;
 		filter: none;
 		border: none;
-		color: var(--s-color-content-default);
 
 		&:hover {
-			filter: none;
 			background-color: var(--s-color-fill-default-hover);
 		}
 
 		&:active {
 			background-color: var(--s-color-fill-default-hover);
+		}
+	}
+
+	&.-link {
+		background: none;
+		border: none;
+		color: var(--s-color-fill-highlight);
+
+		&:hover .ui-button-content {
+			text-decoration: none;
+			div {
+				text-decoration: underline;
+			}
+		}
+
+		&:disabled,
+		&.-disabled {
+			background-color: transparent;
+		}
+
+		&::before {
+			display: none;
 		}
 	}
 
@@ -266,5 +200,33 @@
 	.ui-icon {
 		color: inherit;
 		font-size: 18px;
+	}
+
+	@include darkmode {
+		background-color: var(--s-color-fill-dark);
+		border-color: var(--s-border-dark);
+		color: var(--s-color-content-dark);
+
+		&:hover {
+			background-color: var(--s-color-fill-dark-hover);
+		}
+
+		&.-success {
+			background-color: var(--s-color-fill-success-dark);
+			color: var(--s-color-content-dark-success);
+			border-color: var(--s-color-border-dark-success);
+		}
+
+		&.-danger {
+			background-color: var(--s-color-fill-critical-dark);
+			color: var(--s-color-content-dark-critical);
+			border-color: var(--s-color-border-dark-critical);
+		}
+
+		&.-link {
+			background: none;
+			border-color: var(--s-color-border-dark-highlight);
+			color: var(--s-color-content-dark-highlight);
+		}
 	}
 }
