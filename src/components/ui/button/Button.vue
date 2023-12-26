@@ -25,7 +25,8 @@ export interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
 	spinnerBorder: 2,
-	type: 'button'
+	type: 'button',
+	size: 'md'
 })
 
 const componentType = computed(() => {
@@ -35,7 +36,7 @@ const componentType = computed(() => {
 })
 
 const classList = computed(() => {
-	return [
+	const filteredClassList = [
 		props.size && `-${props.size}`,
 		props.variant ? `-${props.variant}` : '-default',
 		props.leadingIcon && '-icon',
@@ -44,6 +45,8 @@ const classList = computed(() => {
 		props.outline && '-outline',
 		props.disclosure && '-disclosure'
 	].filter(Boolean)
+
+	return filteredClassList
 })
 
 const trailingIcon = computed(() => {

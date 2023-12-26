@@ -7,15 +7,13 @@
 	-webkit-user-select: none;
 	appearance: none;
 	border: none;
+	border-radius: var(--s-border-radius-small);
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
 	background-color: transparent;
-	border-radius: var(--s-border-radius-small);
 	cursor: pointer;
-	padding: var(--s-spacing-nano) var(--s-spacing-xx-small);
 	align-items: center;
-	min-height: 38px;
 	justify-content: center;
 	position: relative;
 	box-shadow:
@@ -24,9 +22,9 @@
 	background-color: var(--s-color-content-on-color);
 	color: var(--s-color-content-default);
 
-  &-label {
-    font: var(--s-typography-label-medium)
-  }
+	&-label {
+		font: var(--s-typography-label-medium);
+	}
 
 	@include darkmode {
 		&.-default {
@@ -91,14 +89,15 @@
 	}
 
 	&.-sm {
-		padding: 0 var(--s-spacing-xx-small);
-		min-height: 30px;
-		border-radius: var(--s-spacing-quark);
+		padding: var(--s-spacing-quark) var(--s-spacing-xx-small);
+	}
+
+	&.-md {
+		padding: var(--s-spacing-nano) var(--s-spacing-xx-small);
 	}
 
 	&.-lg {
 		padding: var(--s-spacing-xx-small);
-		min-height: 50px;
 	}
 
 	&.-primary {
@@ -179,15 +178,15 @@
 		background-color: var(--s-color-fill-dark);
 		color: var(--s-color-content-on-color);
 
-    &:hover {
-      background-color: var(--s-color-fill-dark-hover);
-    }
+		&:hover {
+			background-color: var(--s-color-fill-dark-hover);
+		}
+
 		&.-outline {
 			border: var(--s-border-thin);
 			border-color: var(--s-color-border-dark);
 			background-color: transparent;
 			color: var(--s-color-content-default);
-
 		}
 	}
 

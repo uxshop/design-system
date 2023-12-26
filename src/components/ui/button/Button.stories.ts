@@ -23,7 +23,6 @@ const meta: Meta<typeof Button> = {
 			control: 'select',
 			options: ['primary', 'secondary', 'success', 'danger', 'dark', 'light', 'plain', 'link']
 		},
-
 		block: {
 			control: 'boolean',
 			defaultValue: false
@@ -58,90 +57,71 @@ const meta: Meta<typeof Button> = {
 export default meta
 type Story = StoryObj<typeof Button>
 
-export const Default: Story = {
-	render: (args) => ({
-		components: { Button },
-		setup() {
-			return { args }
-		},
-		template: `<Button v-bind="args" />`
-	})
-}
+export const Default: Story = {}
 
 export const Primary: Story = {
 	args: {
 		variant: 'primary'
-	},
-	render: Default.render
+	}
 }
 
 export const Secondary: Story = {
 	args: {
 		variant: 'secondary'
-	},
-	render: Default.render
+	}
 }
 
 export const Success: Story = {
 	args: {
 		variant: 'success'
-	},
-	render: Default.render
+	}
 }
 
 export const Danger: Story = {
 	args: {
 		variant: 'danger'
-	},
-	render: Default.render
+	}
 }
 
 export const Dark: Story = {
 	args: {
 		variant: 'dark'
-	},
-	render: Default.render
+	}
 }
 
 export const Light: Story = {
 	args: {
 		variant: 'light'
-	},
-	render: Default.render
+	}
 }
 
 export const Plain: Story = {
 	args: {
 		variant: 'plain'
-	},
-	render: Default.render
+	}
 }
 
 export const Link: Story = {
 	args: {
 		variant: 'link',
 		target: '_blank'
-	},
-	render: Default.render
+	}
 }
 
 export const Loading: Story = {
 	args: {
 		loading: true
-	},
-	render: Default.render
+	}
 }
 
 export const disabled: Story = {
 	args: {
 		disabled: true
-	},
-	render: Default.render
+	}
 }
 
 export const WithIcon: Story = {
 	args: {
 		trailingIcon: 'check'
-	},
-	render: Default.render
+	}
 }

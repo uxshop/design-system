@@ -41,12 +41,4 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-	render: (args) => ({
-		components: { IconButton },
-		setup() {
-			return { args }
-		},
-		template: `<IconButton v-bind="args" />`
-	})
-}
+export const Default: Story = {}
