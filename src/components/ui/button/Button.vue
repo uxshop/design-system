@@ -35,24 +35,17 @@ const componentType = computed(() => {
 	return 'BUTTON'
 })
 
-const classList = computed(() => {
-	const filteredClassList = [
-		props.size && `-${props.size}`,
-		props.variant ? `-${props.variant}` : '-default',
-		props.leadingIcon && '-icon',
-		props.flush && `-flush-${props.flush}`,
-		props.block && '-block',
-		props.outline && '-outline',
-		props.disclosure && '-disclosure'
-	].filter(Boolean)
+const classList = computed(() => [
+	props.size ? `-${props.size}` : '',
+	props.variant ? `-${props.variant}` : '-default',
+	props.leadingIcon ? '-icon' : '',
+	props.flush ? `-flush-${props.flush}` : '',
+	props.block ? '-block' : '',
+	props.outline ? '-outline' : '',
+	props.disclosure ? '-disclosure' : ''
+])
 
-	return filteredClassList
-})
-
-const trailingIcon = computed(() => {
-	if (props.disclosure) return 'arrow_drop_down'
-	return props.trailingIcon
-})
+const trailingIcon = computed(() => (props.disclosure ? 'arrow_drop_down' : props.trailingIcon))
 </script>
 
 <template>
