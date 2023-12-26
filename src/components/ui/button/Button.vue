@@ -37,7 +37,7 @@ const componentType = computed(() => {
 
 const classList = computed(() => [
 	props.size ? `-${props.size}` : '',
-	props.variant ? `-${props.variant}` : '',
+	props.variant ? `-${props.variant}` : '-default',
 	props.leadingIcon ? '-icon' : '',
 	props.flush ? `-flush-${props.flush}` : '',
 	props.block ? '-block' : '',

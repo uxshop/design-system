@@ -15,29 +15,6 @@
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	background-color: var(--s-color-fill-default);
-	color: var(--s-color-content-default);
-
-	@include darkmode {
-		background-color: var(--s-color-fill-dark);
-		color: var(--s-color-content-dark);
-
-		&:hover {
-			background-color: var(--s-color-fill-dark-hover);
-		}
-
-		&:disabled,
-		&.-disabled {
-			background-color: var(--s-color-fill-dark-disable);
-			color: var(--s-color-content-dark-disable);
-			border-color: var(--s-color-border-dark-disable);
-
-			&.-link {
-				border: none;
-				box-shadow: none;
-			}
-		}
-	}
 
 	&-label {
 		font: var(--s-typography-label-medium);
@@ -48,7 +25,7 @@
 	}
 
 	&:hover {
-		filter: brightness(1.08);
+		background-color: var(--s-color-fill-default-hover);
 		text-decoration: none;
 	}
 
@@ -74,6 +51,35 @@
 		padding: var(--s-spacing-xx-small);
 	}
 
+	&.-default {
+		background-color: var(--s-color-fill-default);
+		color: var(--s-color-content-default);
+
+		&.-outline {
+			background-color: transparent;
+			color: var(--s-color-content-default);
+		}
+
+		&:hover {
+			background-color: var(--s-color-fill-default-hover);
+		}
+
+		@include darkmode {
+			background-color: var(--s-color-fill-dark);
+			color: var(--s-color-content-dark);
+
+			&.-plain {
+				&:hover {
+					background-color: var(--s-color-fill-dark-hover);
+				}
+
+				&:active {
+					background-color: var(--s-color-fill-default-hover);
+				}
+			}
+		}
+	}
+
 	&.-primary {
 		background-color: var(--s-color-fill-highlight);
 		color: var(--s-color-content-on-color);
@@ -82,11 +88,10 @@
 		&.-outline {
 			background-color: transparent;
 			color: var(--s-color-content-default);
-
-			&:hover {
-				background-color: var(--s-color-fill-highlight-hover);
-				color: var(--s-color-content-on-color);
-			}
+		}
+		&:hover {
+			background-color: var(--s-color-fill-highlight-hover);
+			color: var(--s-color-content-on-color);
 		}
 	}
 
@@ -98,14 +103,12 @@
 		&.-outline {
 			border: var(--s-border-thin);
 			border-color: var(--s-color-border-success);
-
 			background-color: transparent;
 			color: var(--s-color-content-default);
-
-			&:hover {
-				background-color: var(--s-color-fill-success-hover);
-				color: var(--s-color-content-on-color);
-			}
+		}
+		&:hover {
+			background-color: var(--s-color-fill-success-hover);
+			color: var(--s-color-content-on-color);
 		}
 	}
 
@@ -120,19 +123,19 @@
 			background-color: transparent;
 			box-shadow: none;
 			color: var(--s-color-content-critical);
+		}
 
-			&:hover {
-				background-color: var(--s-color-fill-critical-hover);
-				color: var(--s-color-content-on-color);
-			}
+		&:hover {
+			background-color: var(--s-color-fill-critical-hover);
+			color: var(--s-color-content-on-color);
 		}
 	}
 
 	&.-plain {
-		background: transparent;
-		box-shadow: none;
-		filter: none;
+		background-color: transparent;
+		color: var(--s-color-content-default);
 		border-color: transparent;
+		filter: none;
 
 		&:hover {
 			background-color: var(--s-color-fill-default-hover);
@@ -216,5 +219,36 @@
 	.ui-icon {
 		color: inherit;
 		font-size: 18px;
+	}
+
+	@include darkmode {
+		&.-default {
+			background-color: var(--s-color-fill-dark);
+			color: var(--s-color-content-dark);
+
+			&:hover {
+				background-color: var(--s-color-fill-dark-hover);
+			}
+		}
+
+		&.-plain {
+			color: var(--s-color-content-dark);
+
+			&:hover {
+				background-color: var(--s-color-fill-dark-hover);
+			}
+		}
+
+		&:disabled,
+		&.-disabled {
+			background-color: var(--s-color-fill-dark-disable);
+			color: var(--s-color-content-dark-disable);
+			border-color: var(--s-color-border-dark-disable);
+
+			&.-link {
+				border: none;
+				box-shadow: none;
+			}
+		}
 	}
 }
