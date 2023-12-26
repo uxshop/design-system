@@ -1,40 +1,28 @@
 .ui-icon-button {
-	border: none;
-	appearance: none;
-	background: var(--s-color-content-on-color);
-	height: 38px;
-	width: 38px;
-	min-height: 38px;
-	min-width: 38px;
-	cursor: pointer;
-	justify-content: center;
-	padding: var(--s-spacing-quark);
-	align-items: center;
-	display: inline-flex;
-	box-shadow: none;
-
 	.ui-button-content {
-		div {
+		.ui-button-label {
 			display: flex;
 		}
 	}
 
 	&.-sm {
-    height: 30px;
-		width: 30px;
-		i {
-			font-size: 16px;
-		}
+		padding: var(--s-spacing-quark) !important;
+	}
+
+	&.-md {
+		padding: var(--s-spacing-nano) !important;
+	}
+
+	&.-lg {
+		padding: var(--s-spacing-xx-small) !important;
 	}
 
 	&.-fab {
 		position: absolute;
 	}
 
-	.ui-icon {
-		font-size: 24px;
-		font-weight: var(--s-font-weight-regular);
-	color: var(---s-color-content-default);
-
+	&.-on-color {
+		color: var(--s-color-content-on-color);
+		border-color: transparent;
 	}
 }

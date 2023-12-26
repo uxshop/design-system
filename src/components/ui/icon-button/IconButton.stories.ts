@@ -7,13 +7,12 @@ const meta: Meta<typeof IconButton> = {
 	tags: ['autodocs'],
 	args: {
 		icon: 'close',
-		type: 'outlined',
 		disabled: false
 	},
 	argTypes: {
 		variant: {
 			control: 'select',
-			options: ['primary', 'secondary', 'success', 'danger', 'link', 'dark', 'plain']
+			options: ['primary', 'success', 'danger', 'link', 'plain', 'default']
 		},
 		disabled: {
 			defaultValue: false,
@@ -23,16 +22,15 @@ const meta: Meta<typeof IconButton> = {
 			defaultValue: false,
 			control: 'boolean'
 		},
+    onColor: {
+			defaultValue: false,
+			control: 'boolean'
+		},
 
 		size: {
 			defaultValue: 'md',
 			control: 'select',
 			options: ['sm', 'md', 'lg']
-		},
-		type: {
-			defaultValue: 'outlined',
-			control: 'select',
-			options: ['outlined', 'rounded', 'sharp']
 		}
 	}
 }
@@ -42,3 +40,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const OnColor: Story = {
+	args: {
+		onColor: true
+	}
+}
