@@ -21,7 +21,10 @@
 	}
 
 	&.-outline {
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+		background-color: transparent;
+		border-color: transparent;
+		color: var(--s-color-content-default);
+		box-shadow: none;
 	}
 
 	&:hover {
@@ -55,28 +58,8 @@
 		background-color: var(--s-color-fill-default);
 		color: var(--s-color-content-default);
 
-		&.-outline {
-			background-color: transparent;
-			color: var(--s-color-content-default);
-		}
-
 		&:hover {
 			background-color: var(--s-color-fill-default-hover);
-		}
-
-		@include darkmode {
-			background-color: var(--s-color-fill-dark);
-			color: var(--s-color-content-dark);
-
-			&.-plain {
-				&:hover {
-					background-color: var(--s-color-fill-dark-hover);
-				}
-
-				&:active {
-					background-color: var(--s-color-fill-default-hover);
-				}
-			}
 		}
 	}
 
@@ -85,10 +68,6 @@
 		color: var(--s-color-content-on-color);
 		border-color: var(--s-color-border-highlight);
 
-		&.-outline {
-			background-color: transparent;
-			color: var(--s-color-content-default);
-		}
 		&:hover {
 			background-color: var(--s-color-fill-highlight-hover);
 			color: var(--s-color-content-on-color);
@@ -100,12 +79,6 @@
 		color: var(--s-color-content-on-color);
 		border-color: var(--s-color-border-success);
 
-		&.-outline {
-			border: var(--s-border-thin);
-			border-color: var(--s-color-border-success);
-			background-color: transparent;
-			color: var(--s-color-content-default);
-		}
 		&:hover {
 			background-color: var(--s-color-fill-success-hover);
 			color: var(--s-color-content-on-color);
@@ -116,14 +89,6 @@
 		background-color: var(--s-color-fill-critical);
 		color: var(--s-color-content-on-color);
 		border-color: var(--s-color-border-critical);
-
-		&.-outline {
-			border: var(--s-border-thin);
-			border-color: var(--s-color-border-critical);
-			background-color: transparent;
-			box-shadow: none;
-			color: var(--s-color-content-critical);
-		}
 
 		&:hover {
 			background-color: var(--s-color-fill-critical-hover);
@@ -214,11 +179,6 @@
 		line-height: 1;
 		gap: var(--s-spacing-nano);
 		align-items: center;
-	}
-
-	.ui-icon {
-		color: inherit;
-		font-size: 18px;
 	}
 
 	@include darkmode {
