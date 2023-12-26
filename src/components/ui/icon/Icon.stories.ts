@@ -7,19 +7,15 @@ const meta = {
 	component: Icon,
 	tags: ['autodocs'],
 	args: {
-		name: 'house',
-		size: 30,
-		type: 'rounded',
-		filled: false
+		name: 'house'
 	},
 	argTypes: {
 		size: {
 			control: 'number',
 			description: 'number | string'
 		},
-		type: {
-			control: 'select',
-			options: ['outlined', 'rounded', 'sharp']
+		filled: {
+			control: 'boolean'
 		}
 	}
 } satisfies Meta<typeof Icon>
@@ -28,11 +24,7 @@ type Story = StoryObj<typeof meta>
 
 export default meta
 
-export const Outlined: Story = {
-	args: {
-		type: 'outlined'
-	}
-}
+export const Default: Story = {}
 
 export const Filled: Story = {
 	args: {
