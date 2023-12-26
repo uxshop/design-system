@@ -126,7 +126,7 @@
 		color: var(--s-color-content-on-color);
 
 		&.-outline {
-			border: var(---s-border-thin);
+			border: var(--s-border-thin);
 			border-color: var(--s-color-border-warning);
 
 			background-color: transparent;
@@ -162,7 +162,7 @@
 		color: var(--s-color-content-on-color);
 
 		&.-outline {
-			border: var(---s-border-thin);
+			border: var(--s-border-thin);
 			border-color: var(--s-color-border-critical);
 			background-color: transparent;
 			box-shadow: none;
@@ -183,7 +183,7 @@
       background-color: var(--s-color-fill-dark-hover);
     }
 		&.-outline {
-			border: var(---s-border-thin);
+			border: var(--s-border-thin);
 			border-color: var(--s-color-border-dark);
 			background-color: transparent;
 			color: var(--s-color-content-default);
