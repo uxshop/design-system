@@ -1,0 +1,79 @@
+import FormSelect from './FormSelect.vue'
+import type { Meta, StoryObj } from '@storybook/vue3'
+
+/** A select allows users to choose one option from a list of values. */
+const meta: Meta<typeof FormSelect> = {
+	title: 'Ui/FormSelect',
+	component: FormSelect,
+	tags: ['autodocs'],
+	args: {
+		label: 'Label',
+		placeholder: 'Placeholder',
+		float: false,
+		size: 'md',
+		state: false,
+		options: [
+			{
+				label: 'Option 1',
+				value: 1
+			},
+			{
+				label: 'Option 2',
+				value: 2
+			}
+		]
+	},
+	argTypes: {
+		size: {
+			control: 'select',
+			options: ['sm', 'md', 'lg']
+		}
+	}
+}
+
+export default meta
+
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {}
+export const Float: Story = {
+	args: {
+		float: true
+	}
+}
+
+export const Loading: Story = {
+	args: {
+		loading: true
+	}
+}
+
+export const Disabled: Story = {
+	args: {
+		disabled: true
+	}
+}
+
+export const leadingIcon: Story = {
+	args: {
+		leadingIcon: 'check'
+	}
+}
+
+export const trailingIcon: Story = {
+	args: {
+		trailingIcon: 'check'
+	}
+}
+
+export const InvalidFeedback: Story = {
+	args: {
+		invalidFeedback: 'invalid feedback'
+	}
+}
+
+export const LabelInfo: Story = {
+	args: {
+		labelInfo: 'Label Info'
+	}
+}
