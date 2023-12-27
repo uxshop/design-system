@@ -1,21 +1,20 @@
 .ui-form-select {
 	select {
-		box-shadow: 0 -13px 10px rgba(0, 0, 0, 0.05) inset;
 		min-height: auto;
-		height: var(--input-height);
+		height: var(--s-spacing-large);
 
 		&.-sm {
 			min-height: auto;
-			height: var(--input-height-sm);
+			height: var(--s-spacing-medium);
 		}
 
 		&.-lg {
 			min-height: auto;
-			height: var(--input-height-lg);
+			height: var(--s-spacing-xx-large);
 		}
 
 		&:hover {
-			background-color: var(--gray-100);
+			background-color: var(--s-color-fill-default-hover);
 		}
 	}
 }
