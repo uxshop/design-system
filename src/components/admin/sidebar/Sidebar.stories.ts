@@ -25,7 +25,6 @@ export const Default: Story = {
 		components: { Sidebar, Layout },
 		setup() {
 			function isActive(node: SideBarItem, isOnlyChildren?: boolean) {
-				console.log('isNode', isNodeActive(node))
 				if (isOnlyChildren) return !!node.nodes?.some(isNodeActive)
 				return node.nodes?.some(isNodeActive) || isNodeActive(node)
 			}
