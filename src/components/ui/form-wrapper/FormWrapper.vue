@@ -3,28 +3,29 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import vTooltip from '../../../directives/tooltip'
+import type { Size } from 'src/types'
 
-export interface Props {
+export interface FormWrapperProps {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
 	trailingText?: string
-	state?: undefined
-	coutable?: boolean
+	state?: boolean
 	loading?: boolean
 	last?: boolean
 	float?: boolean
 	disabled?: boolean
 	invalidFeedback?: string
 	autofocus?: boolean
-	size?: string | number
+	size?: Size
 	label?: string
 	id?: string
 }
 
-const props = defineProps<Props>()
+const props = defineProps<FormWrapperProps>()
 const elementRef = ref<Element>()
 const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`)
+
 const slots = useSlots()
 onMounted(() => {
 	nextTick(() => {
@@ -47,46 +48,28 @@ onMounted(() => {
 })
 
 const classList = computed(() => {
+	const propToClassMapping = {
+		leadingIcon: '-with-leading-icon',
+		trailingIcon: '-with-trailing-icon',
+		trailingText: '-with-trailing-icon',
+		loading: '-loading',
+		last: '-last',
+		disabled: '-disabled',
+		float: '-float',
+		size: `-${props.size}`,
+		state: props.state === true ? '-valid' : '-invalid'
+	}
+
 	const list = ['ui-form-wrapper']
 
-	if (props.leadingIcon) {
-		list.push('-with-leading-icon')
-	}
-
-	if (props.trailingIcon) {
-		list.push('-with-trailing-icon')
-	}
-
-	if (props.trailingText) {
-		list.push('-with-trailing-icon')
-	}
-
-	if (props.loading) {
-		list.push('-loading')
-	}
-
-	if (props.last) {
-		list.push('-last')
+	for (const prop in propToClassMapping) {
+		if (props[prop as keyof FormWrapperProps]) {
+			list.push(propToClassMapping[prop as keyof typeof propToClassMapping])
+		}
 	}
 
 	if (props.disabled || props.loading) {
 		list.push('-disabled')
-	}
-
-	if (props.float) {
-		list.push('-float')
-	}
-
-	if (props.size) {
-		list.push(`-${props.size}`)
-	}
-
-	if (props.state === true) {
-		list.push('-valid')
-	}
-
-	if (props.state === false) {
-		list.push('-invalid')
 	}
 
 	return list
@@ -98,7 +81,7 @@ const classList = computed(() => {
 		<div class="form-wrapper-label" v-if="!float && props.label">
 			<label class="form-control-label" :for="uid" v-html="props.label"></label>
 			<span v-if="labelInfo" v-tooltip:top="labelInfo" class="form-wrapper-label-icon">
-				<Icon name="help" class="icon" />
+				<Icon name="help" class="icon" :size="14"/>
 			</span>
 		</div>
 
@@ -107,12 +90,12 @@ const classList = computed(() => {
 				<Icon :name="leadingIcon" v-if="leadingIcon" />
 				<slot />
 
-				<div class="form-wrapper-noteched">
-					<div class="form-wrapper-noteched-prepend"></div>
-					<div class="form-wrapper-noteched-label" v-if="float">
+				<div class="form-wrapper-notched">
+					<div class="form-wrapper-notched-prepend"></div>
+					<div class="form-wrapper-notched-label" v-if="float">
 						<label class="form-wrapper-label" :for="uid" v-html="props.label"></label>
 					</div>
-					<div class="form-wrapper-noteched-append"></div>
+					<div class="form-wrapper-notched-append"></div>
 				</div>
 
 				<div class="trailing-icon">
