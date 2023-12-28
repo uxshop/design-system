@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 export interface Props {
 	height?: string | number
-	value?: string | number
 	max?: string | number
+	value?: string | number
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	height: '3px'
+	height: '3px',
+	max: 100
 })
+
+function formattedHeight() {
+	if (typeof props.height == 'number') {
+		return props.height + 'px'
+	}
+	return props.height
+}
 </script>
 
 <template>
@@ -18,7 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style lang="scss">
 .ui-progress-bar {
-	height: v-bind(height);
+	height: v-bind(formattedHeight());
 }
 @import './ProgressBar.scss';
 </style>
