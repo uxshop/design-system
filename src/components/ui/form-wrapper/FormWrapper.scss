@@ -52,6 +52,10 @@
 	&.-disabled {
 		pointer-events: none;
 
+		.form-select-option {
+			color: var(--s-color-content-disabled);
+		}
+
 		input:-webkit-autofill {
 			-webkit-box-shadow: 0 0 0 50px var(--s-color-border-default) inset !important;
 		}
@@ -66,6 +70,11 @@
 
 		.form-control.-select {
 			background: unset;
+		}
+
+		.form-control,
+		.form-wrapper-notched {
+			border-color: var(--s-color-border-disable);
 		}
 	}
 
@@ -89,46 +98,6 @@
 
 	&.-last {
 		margin-bottom: 0;
-	}
-
-	&.-float {
-		textarea {
-			margin-top: var(--s-spacing-x-small);
-			padding-top: 0;
-
-			~ .form-wrapper-notched .form-wrapper-notched-label {
-				> label {
-					top: var(--s-spacing-x-small);
-					transform: translateY(0);
-				}
-			}
-		}
-	}
-
-	&.-invalid {
-		.form-wrapper-notched {
-			> div {
-				border: var(--s-border-thin) !important;
-				border-color: var(-s-color-border-critical) !important;
-			}
-		}
-
-		label,
-		i {
-			color: var(--s-color-fill-critical) !important;
-		}
-	}
-
-	&.-valid {
-		.form-control,
-		.form-wrapper-notched {
-			border-color: var(s-color-border-success) !important;
-		}
-
-		label,
-		i {
-			color: var(--s-color-content-success) !important;
-		}
 	}
 
 	&.ui-form-select {
@@ -186,7 +155,7 @@
 		}
 
 		label {
-			color: var(--input-placeholder-color);
+			color: var(--s-color-content-light);
 			transition-property: top;
 			transition-duration: var(--s-motion-duration-fast);
 			transform-origin: top center;
@@ -233,11 +202,11 @@
 			border-color: var(--s-color-border-highlight);
 
 			> div {
-				border: var(--s-border-thin);
+				border-width: 2px;
 			}
 
 			label {
-				color: var(--s-color-content-highlight);
+				color: var(--s-color-content-default);
 			}
 		}
 	}
@@ -255,7 +224,7 @@
 				top: 0 !important;
 				left: 0;
 				transform: translateY(-50%) !important;
-				font: var(--s-typography-label-small);
+				font: var(--s-typography-caption-small);
 				opacity: 1;
 			}
 		}
@@ -276,6 +245,46 @@
 				margin: 0;
 				opacity: 0.5;
 			}
+		}
+	}
+
+	&.-float {
+		textarea {
+			margin-top: var(--s-spacing-x-small);
+			padding-top: 0;
+
+			~ .form-wrapper-notched .form-wrapper-notched-label {
+				> label {
+					top: var(--s-spacing-x-small);
+					transform: translateY(0);
+				}
+			}
+		}
+	}
+
+	&.-invalid {
+		.form-wrapper-notched {
+			> div {
+				border: var(--s-border-thin) !important;
+				border-color: var(-s-color-border-critical) !important;
+			}
+		}
+
+		label,
+		i {
+			color: var(--s-color-fill-critical) !important;
+		}
+	}
+
+	&.-valid {
+		.form-control,
+		.form-wrapper-notched {
+			border-color: var(--s-color-border-success);
+		}
+
+		label,
+		i {
+			color: var(--s-color-content-success);
 		}
 	}
 }

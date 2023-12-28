@@ -1,5 +1,6 @@
 .ui-form-select {
 	select {
+		color: var(--s-color-content-default);
 		min-height: auto;
 		height: var(--s-spacing-large);
 
@@ -14,7 +15,16 @@
 		}
 
 		&:hover {
-			background-color: var(--s-color-fill-default-hover);
+			background-color: var(--s-color-fill-default-light);
+		}
+
+		.form-select-option {
+			font: var(--s-typography-paragraph-regular);
+			color: var(--s-color-content-default);
+		}
+
+		&.-disabled {
+			color: var(--s-color-content-disable);
 		}
 	}
 }

@@ -76,6 +76,10 @@ const classList = computed(() => {
 		updatedList.push(`-${props.size}`)
 	}
 
+	if (props.disabled || props.loading) {
+		updatedList.push('-disabled')
+	}
+
 	return updatedList
 })
 
@@ -121,9 +125,10 @@ watchEffect(updateModelValue)
 			:id="id"
 			:required="required"
 			:disabled="disabled">
-			<option value selected disabled v-if="placeholder">{{ placeholder }}</option>
+			<option class="form-select-option" value selected disabled v-if="placeholder">{{ placeholder }}</option>
 			<slot />
 			<option
+				class="form-select-option"
 				v-show="options.length"
 				v-for="item in options"
 				:value="stringifyValue(item.value)"

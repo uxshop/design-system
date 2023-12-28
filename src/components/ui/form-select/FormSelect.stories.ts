@@ -8,11 +8,17 @@ const meta: Meta<typeof FormSelect> = {
 	tags: ['autodocs'],
 	args: {
 		label: 'Label',
-		placeholder: 'Placeholder',
 		float: false,
-		size: 'md',
+		disabled: false,
 		state: false,
+		size: 'md',
+		value: '',
 		options: [
+			{
+				label: 'placeholder',
+				value: '',
+				disabled: true
+			},
 			{
 				label: 'Option 1',
 				value: 1
