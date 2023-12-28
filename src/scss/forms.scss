@@ -33,7 +33,11 @@
 	margin-bottom: var(--s-spacing-quark);
 	display: inline-block;
 	font: var(--s-typography-label-medium);
-	color: var(--s-color-content-default);
+  color: var(--s-color-content-default);
+
+	@include darkmode {
+    color: var(--s-color-content-dark);
+	}
 }
 
 textarea {

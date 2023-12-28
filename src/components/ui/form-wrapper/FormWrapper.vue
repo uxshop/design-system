@@ -81,13 +81,13 @@ const classList = computed(() => {
 		<div class="form-wrapper-label" v-if="!float && props.label">
 			<label class="form-control-label" :for="uid" v-html="props.label"></label>
 			<span v-if="labelInfo" v-tooltip:top="labelInfo" class="form-wrapper-label-icon">
-				<Icon name="help" class="icon" :size="14"/>
+				<Icon name="help" class="icon" :size="14" />
 			</span>
 		</div>
 
 		<div class="ui-form-wrapper-main">
 			<div class="form-wrapper-content-item form-wrapper-content-bx">
-				<Icon :name="leadingIcon" v-if="leadingIcon" />
+				<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" />
 				<slot />
 
 				<div class="form-wrapper-notched">
@@ -98,12 +98,12 @@ const classList = computed(() => {
 					<div class="form-wrapper-notched-append"></div>
 				</div>
 
-				<div class="trailing-icon">
+				<div class="trailing-wrapper">
 					<Icon name="check" v-if="state === true" />
 				</div>
 
-				<div class="trailing-icon">
-					<Icon :name="trailingIcon" v-if="trailingIcon && !loading" />
+				<div class="trailing-wrapper">
+					<Icon class="trailing-icon" :name="trailingIcon" v-if="trailingIcon && !loading" />
 					<span class="trailing-icon-text" v-if="trailingText">{{ trailingText }}</span>
 					<slot name="trailingIcon" />
 				</div>

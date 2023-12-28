@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-form-wrapper {
 	width: 100%;
 
@@ -41,6 +43,9 @@
 		align-items: center;
 		border-radius: var(--s-border-radius-small);
 		background-color: var(--s-color-fill-default);
+		@include darkmode {
+			background-color: var(--s-color-fill-dark);
+		}
 	}
 
 	.form-wrapper-append {
@@ -65,7 +70,10 @@
 		}
 
 		.form-wrapper-content-bx {
-			background: var(--s-color-border-default);
+			background-color: var(--s-color-border-default);
+			@include darkmode {
+				background-color: var(--s-color-fill-dark-disable);
+			}
 		}
 
 		.form-control.-select {
@@ -104,20 +112,24 @@
 		min-width: 120px;
 	}
 
-	.trailing-icon {
-		display: inline-flex;
-	}
-
-	.trailing-icon-text {
-		padding: 0 var(--s-spacing-x-small);
-	}
-
 	.ui-icon {
-		margin-left: var(--s-spacing-xx-small);
-		margin-right: var(--s-spacing-xx-small);
 		position: relative;
 		z-index: var(--s-index-low);
 		overflow: visible;
+	}
+
+	.trailing-wrapper {
+		display: inline-flex;
+		.trailing-icon {
+			padding-right: var(--s-spacing-xx-small);
+		}
+		.trailing-icon-text {
+			padding: 0 var(--s-spacing-x-small);
+		}
+	}
+
+	.leading-icon {
+		padding-left: var(--s-spacing-xx-small);
 	}
 
 	.form-control {
@@ -146,6 +158,9 @@
 		pointer-events: none;
 		top: 0;
 		border-color: var(--s-color-border-default);
+		@include darkmode {
+			border-color: var(--s-color-border-dark);
+		}
 
 		.form-wrapper-notched-label {
 			flex: 0 0 auto;
@@ -167,6 +182,9 @@
 			display: block;
 			opacity: 0.8;
 			font-weight: normal;
+			@include darkmode {
+				color: var(--s-color-content-dark-light);
+			}
 		}
 
 		.form-wrapper-notched-prepend {
