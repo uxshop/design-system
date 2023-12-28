@@ -72,12 +72,6 @@ export const trailingIcon: Story = {
 	}
 }
 
-export const InvalidFeedback: Story = {
-	args: {
-		invalidFeedback: 'invalid feedback'
-	}
-}
-
 export const LabelInfo: Story = {
 	args: {
 		labelInfo: 'Label Info'
