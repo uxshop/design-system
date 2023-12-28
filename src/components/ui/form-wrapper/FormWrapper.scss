@@ -57,11 +57,11 @@
 		}
 
 		input:-webkit-autofill {
-			-webkit-box-shadow: 0 0 0 50px var(--s-color-border-default) inset !important;
+			-webkit-box-shadow: 0 0 0 50px var(--s-color-border-default) inset;
 		}
 
 		.ui-icon {
-			color: var(--s-color-content-placeholder) !important;
+			color: var(--s-color-content-placeholder);
 		}
 
 		.form-wrapper-content-bx {
@@ -221,9 +221,9 @@
 			}
 
 			label {
-				top: 0 !important;
+				top: 0;
 				left: 0;
-				transform: translateY(-50%) !important;
+				transform: translateY(-50%);
 				font: var(--s-typography-caption-small);
 				opacity: 1;
 			}
@@ -265,14 +265,14 @@
 	&.-invalid {
 		.form-wrapper-notched {
 			> div {
-				border: var(--s-border-thin) !important;
-				border-color: var(-s-color-border-critical) !important;
+				border: var(--s-border-thin);
+				border-color: var(-s-color-border-critical);
 			}
 		}
 
 		label,
 		i {
-			color: var(--s-color-fill-critical) !important;
+			color: var(--s-color-fill-critical);
 		}
 	}
 
