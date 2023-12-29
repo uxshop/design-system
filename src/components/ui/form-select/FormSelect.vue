@@ -15,7 +15,6 @@ export interface FormSelectProps {
 	trailingIcon?: string
 	labelInfo?: string
 	trailingText?: string
-	state?: boolean
 	loading?: boolean
 	last?: boolean
 	float?: boolean
@@ -106,7 +105,6 @@ watchEffect(updateModelValue)
 		:last="last"
 		:disabled="disabled"
 		:float="float"
-		:state="state"
 		:labelInfo="labelInfo"
 		:autofocus="autofocus"
 		:size="size"

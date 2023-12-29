@@ -281,11 +281,9 @@
 	}
 
 	&.-invalid {
+		.form-control,
 		.form-wrapper-notched {
-			> div {
-				border: var(--s-border-thin);
-				border-color: var(-s-color-border-critical);
-			}
+				border-color: var(--s-color-border-critical);
 		}
 
 		label,

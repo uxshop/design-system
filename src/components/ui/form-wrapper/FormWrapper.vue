@@ -56,10 +56,8 @@ const classList = computed(() => {
 		last: '-last',
 		disabled: '-disabled',
 		float: '-float',
-		size: `-${props.size}`,
-		state: props.state === true ? '-valid' : '-invalid'
+		size: `-${props.size}`
 	}
-
 	const list = ['ui-form-wrapper']
 
 	for (const prop in propToClassMapping) {
@@ -74,10 +72,11 @@ const classList = computed(() => {
 
 	return list
 })
+const inputValidation = computed(() => (props.state === true ? '-valid' : props.state === false ? '-invalid' : ''))
 </script>
 
 <template>
-	<div ref="elementRef" :class="classList">
+	<div ref="elementRef" :class="[...classList, inputValidation]">
 		<div class="form-wrapper-label" v-if="!float && props.label">
 			<label class="form-control-label" :for="uid" v-html="props.label"></label>
 			<span v-if="labelInfo" v-tooltip:top="labelInfo" class="form-wrapper-label-icon">
@@ -96,10 +95,6 @@ const classList = computed(() => {
 						<label class="form-wrapper-label" :for="uid" v-html="props.label"></label>
 					</div>
 					<div class="form-wrapper-notched-append"></div>
-				</div>
-
-				<div class="trailing-wrapper">
-					<Icon name="check" v-if="state === true" />
 				</div>
 
 				<div class="trailing-wrapper">

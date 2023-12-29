@@ -10,7 +10,6 @@ const meta: Meta<typeof FormSelect> = {
 		label: 'Label',
 		float: false,
 		disabled: false,
-		state: false,
 		size: 'md',
 		value: '',
 		options: [
