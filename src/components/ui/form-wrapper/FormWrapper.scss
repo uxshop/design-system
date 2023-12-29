@@ -25,14 +25,24 @@
 
 		.form-wrapper-notched .form-wrapper-notched-prepend {
 			width: calc(var(--s-spacing-xx-small) - var(--s-spacing-quark));
-			border-top-left-radius: var(--s-spacing-quark);
-			border-bottom-left-radius: var(--s-spacing-quark);
 		}
 
 		.form-wrapper-notched .form-wrapper-notched-append {
 			width: calc(var(--s-spacing-xx-small) - var(--s-spacing-quark));
-			border-top-right-radius: var(--s-spacing-quark);
-			border-bottom-right-radius: var(--s-spacing-quark);
+		}
+	}
+
+  &.-lg {
+		.form-wrapper-content-bx {
+			height: var(--s-spacing-x-large);
+		}
+
+		.form-wrapper-notched .form-wrapper-notched-prepend {
+			width: calc(var(--s-spacing-small) - var(--s-spacing-xx-small));
+		}
+
+		.form-wrapper-notched .form-wrapper-notched-append {
+			width: calc(var(--s-spacing-small) - var(--s-spacing-xx-small));
 		}
 	}
 
@@ -41,6 +51,7 @@
 		position: relative;
 		display: flex;
 		align-items: center;
+    height: var(--s-spacing-large);
 		border-radius: var(--s-border-radius-small);
 		background-color: var(--s-color-fill-default);
 		@include darkmode {
@@ -70,7 +81,7 @@
 		}
 
 		.form-wrapper-content-bx {
-			background-color: var(--s-color-border-default);
+			background-color: var(--s-color-fill-disable);
 			@include darkmode {
 				background-color: var(--s-color-fill-dark-disable);
 			}
