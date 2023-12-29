@@ -1,40 +1,25 @@
 .ui-icon-button {
-	border: none;
-	appearance: none;
-	background: none;
-	height: var(--input-height);
-	width: var(--input-height);
-	min-height: var(--input-height);
-	min-width: var(--input-height);
-	cursor: pointer;
-	justify-content: center;
-	padding: 0;
-	align-items: center;
-	display: inline-flex;
-	color: var(--body-color);
-	box-shadow: none;
-
 	.ui-button-content {
-		div {
+		.ui-button-label {
 			display: flex;
 		}
 	}
 
-	&.-sm {
-		height: var(--input-height-sm);
-		width: var(--input-height-sm);
-		min-height: var(--input-height-sm);
-		min-width: var(--input-height-sm);
-		i {
-			font-size: 18px;
-		}
+	&.-sm,
+	&.-md {
+		padding: var(--s-spacing-quark);
+	}
+
+	&.-lg {
+		padding: var(--s-spacing-nano);
 	}
 
 	&.-fab {
 		position: absolute;
 	}
 
-	.ui-icon {
-		font-size: 22px;
+	&.-on-color {
+		color: var(--s-color-content-on-color);
+		border-color: transparent;
 	}
 }

@@ -1,27 +1,14 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue'
-import type { IconType } from '../../../types/Types'
 
 export interface IconProps {
 	filled?: boolean
 	name?: string
 	size?: number | string
-	type?: IconType
 }
 
 const props = withDefaults(defineProps<IconProps>(), {
-	type: 'outlined',
-	size: 24
-})
-
-const iconClassList = computed(() => {
-	let classes = []
-
-	if (props.type) {
-		classes.push('material-symbols-outlined')
-	}
-
-	return classes
+	size: 16
 })
 
 const iconStyleList = computed(() => {
@@ -41,7 +28,7 @@ const iconStyleList = computed(() => {
 </script>
 
 <template>
-	<i class="ui-icon" :class="iconClassList" :style="iconStyleList">
+	<i class="ui-icon material-symbols-outlined" :style="iconStyleList">
 		{{ name }}
 	</i>
 </template>
