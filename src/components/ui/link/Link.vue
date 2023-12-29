@@ -57,7 +57,7 @@ const linkAttributeList = computed(() => {
 		<span class="ui-link-content">
 			{{ label }}
 		</span>
-		<Icon v-if="external" name="open_in_new" class="ui-link-icon" />
+		<Icon v-if="external" name="open_in_new" class="ui-link-icon" :size="14" />
 	</component>
 </template>
 
