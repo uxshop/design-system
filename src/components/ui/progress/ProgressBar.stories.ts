@@ -7,12 +7,12 @@ const meta = {
 	component: ProgressBar,
 	tags: ['autodocs'],
 	args: {
-		height: 5,
+		height: '5px',
 		max: 100,
 		value: 0
 	},
 	argTypes: {
-		height: { control: 'number', description: 'number | string' },
+		height: { control: 'text' },
 		max: { control: 'number', description: 'number | string' },
 		value: { control: 'number', description: 'number | string' }
 	}
