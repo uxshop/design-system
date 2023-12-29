@@ -225,6 +225,10 @@
 
 			label {
 				color: var(--s-color-content-default);
+
+        @include darkmode {
+          color: var(--s-color-content-dark);
+        }
 			}
 		}
 	}
