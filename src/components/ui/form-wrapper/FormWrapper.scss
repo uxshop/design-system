@@ -66,7 +66,7 @@
 		}
 
 		.ui-icon {
-			color: var(--s-color-content-placeholder);
+			color: var(--s-color-content-disabled);
 		}
 
 		.form-wrapper-content-bx {
@@ -226,9 +226,9 @@
 			label {
 				color: var(--s-color-content-default);
 
-        @include darkmode {
-          color: var(--s-color-content-dark);
-        }
+				@include darkmode {
+					color: var(--s-color-content-dark);
+				}
 			}
 		}
 	}
@@ -287,7 +287,7 @@
 	&.-invalid {
 		.form-control,
 		.form-wrapper-notched {
-				border-color: var(--s-color-border-critical);
+			border-color: var(--s-color-border-critical);
 		}
 
 		label,
