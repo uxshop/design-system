@@ -86,7 +86,7 @@ const inputValidation = computed(() => (props.state === true ? '-valid' : props.
 
 		<div class="ui-form-wrapper-main">
 			<div class="form-wrapper-content-item form-wrapper-content-bx">
-				<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" :size="24"/>
+				<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" :size="24" />
 				<slot />
 
 				<div class="form-wrapper-notched">
@@ -98,7 +98,7 @@ const inputValidation = computed(() => (props.state === true ? '-valid' : props.
 				</div>
 
 				<div class="trailing-wrapper">
-					<Icon class="trailing-icon" :name="trailingIcon" v-if="trailingIcon && !loading" :size="24"/>
+					<Icon class="trailing-icon" :name="trailingIcon" v-if="trailingIcon && !loading" :size="24" />
 					<span class="trailing-icon-text" v-if="trailingText">{{ trailingText }}</span>
 					<slot name="trailingIcon" />
 				</div>

@@ -1,35 +1,33 @@
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue'
+import { ref, computed } from 'vue'
+import { vMaska } from 'maska'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
-import type { IAction } from '../../../types/IAction'
-import type { MaskOptions } from 'maska'
+import type { MaskOptions, MaskType } from 'maska'
+import type { Size, IAction } from 'src/types'
 
 export interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
 	trailingText?: string
-	state?: undefined
-	coutable?: boolean
+	state?: boolean
+	invalidFeedback?: string
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	invalidFeedback?: string
-	//
-	modelValue?: any
+	modelValue?: string
 	label?: string
 	id?: string
 	placeholder?: string
 	step?: string | number
 	tabindex?: string
 	inputmode?: 'text' | 'search' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal'
-	size?: string
+	size?: Size
 	pattern?: string
 	title?: string
 	name?: string
-	pill?: boolean
 	clearable?: boolean
 	autocomplete?: string
 	minlength?: string | number
@@ -39,7 +37,7 @@ export interface Props {
 	required?: boolean
 	readonly?: boolean
 	type?: string
-	mask?: string | string[] | object | null
+	mask?: MaskType
 	raw?: any
 	actions?: IAction[]
 	max?: string | number
@@ -80,10 +78,6 @@ const maskRawValue = (evt: Event) => {
 	emit('updateRaw', target.dataset.maskRawValue)
 }
 
-if (props.pill) {
-	classList.value.push('-pill')
-}
-
 if (props.size) {
 	classList.value.push(`-${props.size}`)
 }
@@ -118,7 +112,6 @@ const onClear = () => {
 		:trailingIcon="trailingIcon"
 		:trailingText="trailingText"
 		:label="label"
-		:coutable="coutable"
 		:loading="loading"
 		:last="last"
 		:disabled="disabled"
