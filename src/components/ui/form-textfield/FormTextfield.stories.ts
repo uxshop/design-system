@@ -75,7 +75,6 @@ export const LabelInfo: Story = {
 
 export const InvalidFeedback: Story = {
 	args: {
-		float: true,
 		label: 'My Label',
 		state: false,
 		invalidFeedback: 'Campo inválido'
