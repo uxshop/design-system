@@ -1,26 +1,25 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
+import type { Size } from 'src/types';
 
 interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
 	trailingText?: string
-	state?: undefined
-	coutable?: boolean
+	state?: boolean
 	loading?: boolean
 	last?: boolean
 	float?: boolean
 	invalidFeedback?: string
-	//
 	modelValue?: any
 	rows?: string | number
 	label?: string
 	placeholder?: string
 	tabindex?: string
-	inputmode?: 'search' | 'text' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | undefined
-	size?: string
+	inputmode?: 'search' | 'text' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal'
+	size?: Size
 	id?: string
 	pattern?: string
 	title?: string
@@ -61,9 +60,8 @@ const update = (evt: Event) => {
 	<FormWrapper
 		:id="id"
 		:leadingIcon="leadingIcon"
-		:trailingcon="trailingIcon"
+		:trailingIcon="trailingIcon"
 		:label="label"
-		:coutable="coutable"
 		:loading="loading"
 		:last="last"
 		:disabled="disabled"
