@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 /** A text area input allows users to write and edit multiple lines of text, making it suitable for entering longer messages or detailed information. */
 const meta: Meta<typeof FormTextarea> = {
-	title: 'Ui/FormTextarea',
+	title: 'Ui/Form/FormTextarea',
 	component: FormTextarea,
 	tags: ['autodocs'],
 	args: {
@@ -55,13 +55,13 @@ export const Disabled: Story = {
 	}
 }
 
-export const leadingIcon: Story = {
+export const LeadingIcon: Story = {
 	args: {
 		leadingIcon: 'check'
 	}
 }
 
-export const trailingIcon: Story = {
+export const TrailingIcon: Story = {
 	args: {
 		trailingIcon: 'check'
 	}
