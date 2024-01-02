@@ -4,7 +4,7 @@
 
 @include theme-dark {
 	::placeholder {
-		color: var(--s-color-content-dark-placeholder) !important;
+		color: var(--s-color-content-dark-placeholder);
 	}
 }
 
@@ -15,11 +15,6 @@
 	display: flex;
 	align-items: center;
 	top: 0;
-
-	> .form-control-loader-spinner {
-		width: calc(var(--s-spacing-large) * 0.4) !important;
-		height: calc(var(--s-spacing-large) * 0.4) !important;
-	}
 }
 
 .invalid-feedback {
@@ -33,10 +28,10 @@
 	margin-bottom: var(--s-spacing-quark);
 	display: inline-block;
 	font: var(--s-typography-label-medium);
-  color: var(--s-color-content-default);
+	color: var(--s-color-content-default);
 
 	@include darkmode {
-    color: var(--s-color-content-dark);
+		color: var(--s-color-content-dark);
 	}
 }
 
