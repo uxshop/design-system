@@ -3,13 +3,14 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 /** A select allows users to choose one option from a list of values. */
 const meta: Meta<typeof FormSelect> = {
-	title: 'Ui/FormSelect',
+	title: 'Ui/Form/FormSelect',
 	component: FormSelect,
 	tags: ['autodocs'],
 	args: {
 		label: 'Label',
 		float: false,
 		disabled: false,
+		loading: false,
 		size: 'md',
 		value: '',
 		options: [
@@ -59,13 +60,13 @@ export const Disabled: Story = {
 	}
 }
 
-export const leadingIcon: Story = {
+export const LeadingIcon: Story = {
 	args: {
 		leadingIcon: 'check'
 	}
 }
 
-export const trailingIcon: Story = {
+export const TrailingIcon: Story = {
 	args: {
 		trailingIcon: 'check'
 	}
