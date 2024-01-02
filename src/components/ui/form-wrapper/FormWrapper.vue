@@ -3,28 +3,29 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import vTooltip from '../../../directives/tooltip'
+import type { Size } from 'src/types'
 
-export interface Props {
+export interface FormWrapperProps {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
 	trailingText?: string
-	state?: undefined
-	coutable?: boolean
+	state?: boolean
 	loading?: boolean
 	last?: boolean
 	float?: boolean
 	disabled?: boolean
 	invalidFeedback?: string
 	autofocus?: boolean
-	size?: string | number
+	size?: Size
 	label?: string
 	id?: string
 }
 
-const props = defineProps<Props>()
+const props = defineProps<FormWrapperProps>()
 const elementRef = ref<Element>()
 const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`)
+
 const slots = useSlots()
 onMounted(() => {
 	nextTick(() => {
@@ -46,81 +47,44 @@ onMounted(() => {
 	})
 })
 
-const classList = computed(() => {
-	const list = ['ui-form-wrapper']
+const classList = computed(() => [
+	'ui-form-wrapper',
+	props.leadingIcon && '-with-leading-icon',
+	props.trailingIcon && '-with-trailing-icon',
+	props.loading && '-loading',
+	props.last && '-last',
+	(props.disabled || props.loading) && '-disabled',
+	props.float && '-float',
+	props.size && `-${props.size}`
+])
 
-	if (props.leadingIcon) {
-		list.push('-with-leading-icon')
-	}
-
-	if (props.trailingIcon) {
-		list.push('-with-trailing-icon')
-	}
-
-	if (props.trailingText) {
-		list.push('-with-trailing-icon')
-	}
-
-	if (props.loading) {
-		list.push('-loading')
-	}
-
-	if (props.last) {
-		list.push('-last')
-	}
-
-	if (props.disabled || props.loading) {
-		list.push('-disabled')
-	}
-
-	if (props.float) {
-		list.push('-float')
-	}
-
-	if (props.size) {
-		list.push(`-${props.size}`)
-	}
-
-	if (props.state === true) {
-		list.push('-valid')
-	}
-
-	if (props.state === false) {
-		list.push('-invalid')
-	}
-
-	return list
-})
+const inputValidation = computed(() => (props.state === true ? '-valid' : props.state === false ? '-invalid' : ''))
 </script>
 
 <template>
-	<div ref="elementRef" :class="classList">
+	<div ref="elementRef" :class="[...classList, inputValidation]">
 		<div class="form-wrapper-label" v-if="!float && props.label">
 			<label class="form-control-label" :for="uid" v-html="props.label"></label>
 			<span v-if="labelInfo" v-tooltip:top="labelInfo" class="form-wrapper-label-icon">
-				<Icon name="help" class="icon" />
+				<Icon name="help" class="icon" :size="14" />
 			</span>
 		</div>
 
 		<div class="ui-form-wrapper-main">
 			<div class="form-wrapper-content-item form-wrapper-content-bx">
-				<Icon :name="leadingIcon" v-if="leadingIcon" />
+				<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" :size="24" />
 				<slot />
 
-				<div class="form-wrapper-noteched">
-					<div class="form-wrapper-noteched-prepend"></div>
-					<div class="form-wrapper-noteched-label" v-if="float">
+				<div class="form-wrapper-notched">
+					<div class="form-wrapper-notched-prepend"></div>
+					<div class="form-wrapper-notched-label" v-if="float">
 						<label class="form-wrapper-label" :for="uid" v-html="props.label"></label>
 					</div>
-					<div class="form-wrapper-noteched-append"></div>
+					<div class="form-wrapper-notched-append"></div>
 				</div>
 
-				<div class="trailing-icon">
-					<Icon name="check" v-if="state === true" />
-				</div>
-
-				<div class="trailing-icon">
-					<Icon :name="trailingIcon" v-if="trailingIcon && !loading" />
+				<div class="trailing-wrapper">
+					<Icon class="trailing-icon" :name="trailingIcon" v-if="trailingIcon && !loading" :size="24" />
 					<span class="trailing-icon-text" v-if="trailingText">{{ trailingText }}</span>
 					<slot name="trailingIcon" />
 				</div>

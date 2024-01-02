@@ -15,7 +15,7 @@ const stringifyValue = (val?: string | object | number) => {
 </script>
 
 <template>
-	<option :value="stringifyValue(value)">
+	<option class="form-select-option" :value="stringifyValue(value)">
 		<slot />
 	</option>
 </template>
