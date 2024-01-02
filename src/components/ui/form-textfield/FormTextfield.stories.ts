@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 /** A text input field is a space where users can type and enter short pieces of information, such as names, addresses, or other brief text. */
 const meta: Meta<typeof FormTextfield> = {
-	title: 'Ui/FormTextfield',
+	title: 'Ui/Form/FormTextfield',
 	component: FormTextfield,
 	tags: ['autodocs'],
 	args: {
@@ -55,13 +55,13 @@ export const Disabled: Story = {
 	}
 }
 
-export const leadingIcon: Story = {
+export const LeadingIcon: Story = {
 	args: {
 		leadingIcon: 'search'
 	}
 }
 
-export const trailingIcon: Story = {
+export const TrailingIcon: Story = {
 	args: {
 		trailingIcon: 'search'
 	}

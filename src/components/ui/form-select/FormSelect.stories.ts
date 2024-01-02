@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 /** A select allows users to choose one option from a list of values. */
 const meta: Meta<typeof FormSelect> = {
-	title: 'Ui/FormSelect',
+	title: 'Ui//Form/FormSelect',
 	component: FormSelect,
 	tags: ['autodocs'],
 	args: {
