@@ -10,6 +10,7 @@ const meta: Meta<typeof FormSelect> = {
 		label: 'Label',
 		float: false,
 		disabled: false,
+		loading: false,
 		size: 'md',
 		value: '',
 		options: [
@@ -59,13 +60,13 @@ export const Disabled: Story = {
 	}
 }
 
-export const leadingIcon: Story = {
+export const LeadingIcon: Story = {
 	args: {
 		leadingIcon: 'check'
 	}
 }
 
-export const trailingIcon: Story = {
+export const TrailingIcon: Story = {
 	args: {
 		trailingIcon: 'check'
 	}
