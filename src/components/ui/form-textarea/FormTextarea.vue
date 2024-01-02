@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
-import type { Size } from 'src/types';
+import type { InputMode } from 'src/types'
 
 interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
-	labelInfo?: string
-	trailingText?: string
 	state?: boolean
 	loading?: boolean
 	last?: boolean
@@ -18,8 +16,7 @@ interface Props {
 	label?: string
 	placeholder?: string
 	tabindex?: string
-	inputmode?: 'search' | 'text' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal'
-	size?: Size
+	inputmode?: InputMode
 	id?: string
 	pattern?: string
 	title?: string
@@ -31,7 +28,7 @@ interface Props {
 	disabled?: boolean
 	required?: boolean
 	readonly?: boolean
-	pill?: string
+	labelInfo?: string
 }
 
 const emit = defineEmits<{
@@ -44,10 +41,6 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const classList = ref<string[]>([])
-
-if (props.pill) {
-	classList.value.push('-pill')
-}
 
 const update = (evt: Event) => {
 	const target = evt.target as HTMLTextAreaElement
@@ -66,7 +59,9 @@ const update = (evt: Event) => {
 		:last="last"
 		:disabled="disabled"
 		:float="float"
-		:state="state">
+		:state="state"
+		:labelInfo="labelInfo"
+		:invalidFeedback="invalidFeedback">
 		<textarea
 			class="form-control"
 			@input="update"
