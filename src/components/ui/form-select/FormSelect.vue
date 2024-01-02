@@ -2,7 +2,7 @@
 import { isObject } from 'lodash-es'
 import { computed, ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
-import type { Size } from 'src/types'
+import type { Size } from './../../../types'
 
 export interface IFormSelectOptions {
 	value: any
@@ -18,7 +18,6 @@ export interface FormSelectProps {
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	invalidFeedback?: string
 	modelValue?: any
 	value?: any
 	placeholder?: string
@@ -68,19 +67,13 @@ const update = (evt: Event) => {
 }
 
 const model = ref(stringifyValue(props.modelValue))
-const classList = computed(() => {
-	const updatedList = []
-
-	if (props.size) {
-		updatedList.push(`-${props.size}`)
-	}
-
-	if (props.disabled || props.loading) {
-		updatedList.push('-disabled')
-	}
-
-	return updatedList
-})
+const classList = computed(() => [
+  props.size && `-${props.size}`,
+	props.float && '-float',
+	props.loading && '-loading',
+	props.last && '-last',
+	(props.disabled || props.loading) && '-disabled'
+])
 
 const updateModelValue = () => {
 	const valueToUse = props.value !== undefined ? props.value : props.modelValue
@@ -108,7 +101,7 @@ watchEffect(updateModelValue)
 		:labelInfo="labelInfo"
 		:autofocus="autofocus"
 		:size="size"
-		:invalidFeedback="invalidFeedback"
+    :state="undefined"
 		class="ui-form-select">
 		<select
 			v-model="model"

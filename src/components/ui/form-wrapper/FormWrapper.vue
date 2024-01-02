@@ -47,31 +47,17 @@ onMounted(() => {
 	})
 })
 
-const classList = computed(() => {
-	const propToClassMapping = {
-		leadingIcon: '-with-leading-icon',
-		trailingIcon: '-with-trailing-icon',
-		trailingText: '-with-trailing-icon',
-		loading: '-loading',
-		last: '-last',
-		disabled: '-disabled',
-		float: '-float',
-		size: `-${props.size}`
-	}
-	const list = ['ui-form-wrapper']
+const classList = computed(() => [
+	'ui-form-wrapper',
+	props.leadingIcon && '-with-leading-icon',
+	props.trailingIcon && '-with-trailing-icon',
+	props.loading && '-loading',
+	props.last && '-last',
+	(props.disabled || props.loading) && '-disabled',
+	props.float && '-float',
+	props.size && `-${props.size}`
+])
 
-	for (const prop in propToClassMapping) {
-		if (props[prop as keyof FormWrapperProps]) {
-			list.push(propToClassMapping[prop as keyof typeof propToClassMapping])
-		}
-	}
-
-	if (props.disabled || props.loading) {
-		list.push('-disabled')
-	}
-
-	return list
-})
 const inputValidation = computed(() => (props.state === true ? '-valid' : props.state === false ? '-invalid' : ''))
 </script>
 

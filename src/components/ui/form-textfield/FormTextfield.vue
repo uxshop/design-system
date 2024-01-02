@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { vMaska } from 'maska'
+import { vMaska, type MaskOptions, type MaskType } from 'maska'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
-import type { MaskOptions, MaskType } from 'maska'
-import type { Size, IAction } from 'src/types'
+import type { Size, IAction } from '../../../types'
 
 export interface Props {
 	leadingIcon?: string
