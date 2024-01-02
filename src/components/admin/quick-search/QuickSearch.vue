@@ -16,12 +16,11 @@ const props = withDefaults(
 		title?: string
 		caption?: string
 		searchOptions: IFormSelectOptions[]
-		isOpen: boolean
+		modelValue: boolean
 	}>(),
 	{ title: 'Busca rápida', caption: 'Encontre o que precisa na sua loja virtual.' }
 )
-const emits = defineEmits(['onSubmit', 'update:isOpen'])
-const isOpenRef = shallowRef(props.isOpen)
+const emit = defineEmits(['onSubmit', 'update:modelValue'])
 
 const formValues = ref<IQuickSearchFormValue>({
 	searchKey: '',
@@ -29,25 +28,15 @@ const formValues = ref<IQuickSearchFormValue>({
 })
 
 function onSubmit(ev: Event) {
-	emits('onSubmit', formValues.value)
+	emit('onSubmit', formValues.value)
 }
-
-watch(
-	() => props.isOpen,
-	(value) => {
-		isOpenRef.value = value
-	}
-)
-
-watch(
-	() => isOpenRef.value,
-	(value) => {
-		emits('update:isOpen', value)
-	}
-)
 </script>
 <template>
-	<Modal class="modal-container" v-model="isOpenRef" :title="title">
+	<Modal
+		class="modal-container"
+		:modelValue="modelValue"
+		@update:modelValue="emit('update:modelValue', $event)"
+		:title="title">
 		<template #caption>
 			<p class="caption-text">
 				{{ caption }}
