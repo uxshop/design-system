@@ -287,8 +287,7 @@
 
 			~ .form-wrapper-notched .form-wrapper-notched-label {
 				> label {
-					top: var(--s-spacing-x-small);
-					transform: translateY(0);
+					transform: translateY(-50%);
 				}
 			}
 		}
