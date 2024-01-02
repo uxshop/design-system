@@ -32,7 +32,7 @@
 		}
 	}
 
-  &.-lg {
+	&.-lg {
 		.form-wrapper-content-bx {
 			height: var(--s-spacing-x-large);
 		}
@@ -51,7 +51,6 @@
 		position: relative;
 		display: flex;
 		align-items: center;
-    height: var(--s-spacing-large);
 		border-radius: var(--s-border-radius-small);
 		background-color: var(--s-color-fill-default);
 		@include darkmode {
