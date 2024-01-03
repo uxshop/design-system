@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Skeleton from '../skeleton/Skeleton.vue'
 
-interface Props {
+interface SkeletonListProps {
 	cols?: string | number
 	rows?: string | number
 }
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<SkeletonListProps>(), {
 	cols: 5,
 	rows: 3
 })
