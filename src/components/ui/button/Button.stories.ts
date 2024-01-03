@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 /** Buttons are used to initialize an action. The words on a button tell you what will happen when you click it. */
 const meta: Meta<typeof Button> = {
-	title: 'Ui/Button',
+	title: 'Ui/Button/Button',
 	component: Button,
 	tags: ['autodocs'],
 	args: {
