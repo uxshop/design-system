@@ -130,8 +130,9 @@
 
 	.trailing-wrapper {
 		display: inline-flex;
+
 		.trailing-icon {
-			padding-right: var(--s-spacing-xx-small);
+			padding: 0 var(--s-spacing-xx-small);
 		}
 		.trailing-icon-text {
 			padding: 0 var(--s-spacing-x-small);
@@ -139,7 +140,7 @@
 	}
 
 	.leading-icon {
-		padding-left: var(--s-spacing-xx-small);
+		padding: 0 var(--s-spacing-xx-small);
 	}
 
 	.form-control {

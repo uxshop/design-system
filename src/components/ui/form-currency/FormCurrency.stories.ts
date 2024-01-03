@@ -1,32 +1,36 @@
-import FormTextfield from './FormTextfield.vue'
+import FormCurrency from './FormCurrency.vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-/** A text input field is a space where users can type and enter short pieces of information, such as names, addresses, or other brief text. */
-const meta: Meta<typeof FormTextfield> = {
-	title: 'Ui/Form/FormTextfield',
-	component: FormTextfield,
+/** A currency field is an enhanced input field that only allows users to enter an amount of money. */
+const meta: Meta<typeof FormCurrency> = {
+	title: 'Ui/Form/FormCurrency',
+	component: FormCurrency,
 	tags: ['autodocs'],
 	args: {
-		state: undefined,
+    state: undefined,
 		invalidFeedback: '',
-		label: 'Label',
-		float: false,
+    float: false,
+		loading: false,
 		disabled: false,
-		size: 'md'
+		size: 'md',
+    label: 'Label',
 	},
 	argTypes: {
+		size: {
+			control: 'select',
+			options: ['sm', 'md', 'lg']
+		},
+		invalidFeedback: {
+			control: 'text'
+		},
 		state: {
 			control: 'radio',
 			options: [true, false, 'undefined'],
 			description: 'Determines input state: `true` for valid, `false` for invalid, `undefined` for neutral'
 		},
-		invalidFeedback: {
-			control: 'text'
-		},
-		size: {
-			control: 'select',
-			options: ['sm', 'md', 'lg']
-		}
+    step: {
+      control: 'number',
+    },
 	}
 }
 
@@ -56,13 +60,13 @@ export const Disabled: Story = {
 
 export const LeadingIcon: Story = {
 	args: {
-		leadingIcon: 'search'
+		leadingIcon: 'paid'
 	}
 }
 
 export const TrailingIcon: Story = {
 	args: {
-		trailingIcon: 'search'
+		trailingIcon: 'paid'
 	}
 }
 
@@ -74,14 +78,7 @@ export const LabelInfo: Story = {
 
 export const InvalidFeedback: Story = {
 	args: {
-		label: 'My Label',
 		state: false,
 		invalidFeedback: 'Campo inválido'
-	}
-}
-
-export const Mask: Story = {
-	args: {
-		mask: ['(##) ####-####', '(##) #####-####']
 	}
 }
