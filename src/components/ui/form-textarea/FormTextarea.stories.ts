@@ -1,31 +1,32 @@
-import FormTextfield from './FormTextfield.vue'
+import FormTextarea from './FormTextarea.vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-/** A text input field is a space where users can type and enter short pieces of information, such as names, addresses, or other brief text. */
-const meta: Meta<typeof FormTextfield> = {
-	title: 'Ui/Form/FormTextfield',
-	component: FormTextfield,
+/** A text area input allows users to write and edit multiple lines of text, making it suitable for entering longer messages or detailed information. */
+const meta: Meta<typeof FormTextarea> = {
+	title: 'Ui/Form/FormTextarea',
+	component: FormTextarea,
 	tags: ['autodocs'],
 	args: {
-		label: 'Label',
-		float: false,
-		disabled: false,
-		size: 'md',
+    state: undefined,
 		invalidFeedback: '',
-		state: undefined
+		label: 'Label',
+		placeholder: ' placeholder',
+		float: false,
+		loading: false,
+		disabled: false
 	},
 	argTypes: {
-		size: {
-			control: 'select',
-			options: ['sm', 'md', 'lg']
+		invalidFeedback: {
+			control: 'text'
 		},
 		state: {
 			control: 'radio',
 			options: [true, false, 'undefined'],
 			description: 'Determines input state: `true` for valid, `false` for invalid, `undefined` for neutral'
 		},
-		invalidFeedback: {
-			control: 'text'
+		rows: {
+			control: 'number',
+			defaultValue: 4
 		}
 	}
 }
@@ -56,13 +57,13 @@ export const Disabled: Story = {
 
 export const LeadingIcon: Story = {
 	args: {
-		leadingIcon: 'search'
+		leadingIcon: 'check'
 	}
 }
 
 export const TrailingIcon: Story = {
 	args: {
-		trailingIcon: 'search'
+		trailingIcon: 'check'
 	}
 }
 
@@ -77,11 +78,5 @@ export const InvalidFeedback: Story = {
 		label: 'My Label',
 		state: false,
 		invalidFeedback: 'Campo inválido'
-	}
-}
-
-export const Mask: Story = {
-	args: {
-		mask: ['(##) ####-####', '(##) #####-####']
 	}
 }
