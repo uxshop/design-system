@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
-import type { InputMode } from 'src/types'
+import type { InputMode } from '../../../types'
 
 interface Props {
 	leadingIcon?: string
