@@ -1,36 +1,38 @@
 .animated-background {
-	animation-duration: 1s;
-	animation-fill-mode: forwards;
-	animation-iteration-count: infinite;
-	animation-name: placeHolderShimmer;
-	animation-timing-function: linear;
+	animation: {
+		timing-function: var(--s-motion-ease-linear);
+		duration: var(--s-motion-duration-slow);
+		iteration-count: infinite;
+		name: placeHolderShimmer;
+	}
 	background: #e4e4e8;
 	background: linear-gradient(
 		to right,
-		var(--dark-200, #eeecf3) 12%,
-		var(--dark-100, #dedee2) 25%,
-		var(--dark-300, #f0f0f1) 33%
+		var(--s-color-neutral-200, #e0e8f2) 25%,
+		var(--s-color-default-light, #f5f7fa) 50%,
+		var(--s-color-fill-disable, #f5f7fa) 75%,
+		var(--s-color-fill-disable, #f5f7fa) 100%
 	);
-	background-size: 800px 104px;
-	height: 12px;
+	background-size: 1000px 1000px;
+	height: var(--s-spacing-x-small);
 	width: 100%;
 	position: relative;
-	border-radius: 10px;
+	border-radius: var(--s-border-radius-large);
 }
 
 .ui-skeleton {
 	@extend .animated-background;
 
 	+ .ui-skeleton {
-		margin-top: 5px;
+		margin-top: var(--s-spacing-quark);
 	}
 }
 
 @keyframes placeHolderShimmer {
 	0% {
-		background-position: -468px 0;
+		background-position: -500px 0;
 	}
 	100% {
-		background-position: 468px 0;
+		background-position: 500px 0;
 	}
 }
