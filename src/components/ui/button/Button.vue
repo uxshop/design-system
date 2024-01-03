@@ -2,10 +2,10 @@
 import { computed } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
-import type { Size } from 'src/types'
+import type { Size, Variant } from '../../../types'
 
 export interface Props {
-	variant?: 'primary' | 'success' | 'danger' | 'link' | 'plain'
+	variant?: Variant
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string
@@ -60,7 +60,7 @@ const trailingIcon = computed(() => (props.disclosure ? 'arrow_drop_down' : prop
 		:target="target">
 		<div class="ui-button-content">
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
-			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
+			<Spinner v-if="loading" :size="16" :border="spinnerBorder" />
 			<div v-if="label || $slots.default" class="ui-button-label">
 				<slot>{{ label }}</slot>
 			</div>
