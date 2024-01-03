@@ -7,18 +7,14 @@ const meta: Meta<typeof FormTextfield> = {
 	component: FormTextfield,
 	tags: ['autodocs'],
 	args: {
+		state: undefined,
+		invalidFeedback: '',
 		label: 'Label',
 		float: false,
 		disabled: false,
-		size: 'md',
-		invalidFeedback: '',
-		state: undefined
+		size: 'md'
 	},
 	argTypes: {
-		size: {
-			control: 'select',
-			options: ['sm', 'md', 'lg']
-		},
 		state: {
 			control: 'radio',
 			options: [true, false, 'undefined'],
@@ -26,6 +22,10 @@ const meta: Meta<typeof FormTextfield> = {
 		},
 		invalidFeedback: {
 			control: 'text'
+		},
+		size: {
+			control: 'select',
+			options: ['sm', 'md', 'lg']
 		}
 	}
 }
