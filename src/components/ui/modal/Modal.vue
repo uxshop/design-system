@@ -102,9 +102,12 @@ watchEffect(() => {
 			<div class="ui-modal-dialog" :style="style">
 				<div class="ui-modal-content">
 					<div class="ui-modal-header" v-if="!hideHeader">
-						<h4 class="title">
-							{{ currentTitle }}
-						</h4>
+						<div>
+							<h4 class="title">
+								{{ currentTitle }}
+							</h4>
+							<slot name="caption" />
+						</div>
 						<button @click="close()" class="ui-modal-close" id="btn-close">
 							<span>Fechar</span>
 							<Icon class="ui-modal-close-icon" name="close" />
