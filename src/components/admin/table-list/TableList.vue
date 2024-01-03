@@ -38,6 +38,7 @@ const emit = defineEmits<{
 	(event: 'deletedItem', deletedItemIds: number[]): number[]
 }>()
 
+const tableListNavFilterRef = ref()
 const rows = ref<TApiData[]>([])
 const scrollLeft = ref(false)
 const selected = ref<number[]>([])
@@ -248,7 +249,8 @@ const state = reactive({
 
 defineExpose({
 	unshiftItem: unshiftItem,
-	refresh: fetchData
+	refresh: fetchData,
+	openFilterSidebar: () => tableListNavFilterRef.value.openFilterSidebar()
 })
 </script>
 
@@ -269,7 +271,7 @@ defineExpose({
 				:service="config.customFilterService"
 				:state="state" />
 			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />
-			<TableListNavFilter :state="state" />
+			<TableListNavFilter ref="tableListNavFilterRef" :state="state" />
 			<TableListNavPagination :meta="meta" :state="state" />
 		</TableListNav>
 
