@@ -2,7 +2,7 @@
 
 .ui-stack {
 	display: flex;
-	gap: var(--grid-gutter-width);
+	gap: var(--s-spacing-x-small);
 
 	&.-custom-grid {
 		display: grid;
@@ -77,52 +77,52 @@
 	&.-spacing {
 		&-xs {
 			&:not(.-vertical) {
-				column-gap: calc(var(--grid-gutter-width) * 0.5);
+				column-gap: var(--s-spacing-nano);
 			}
 
 			&.-vertical {
-				row-gap: calc(var(--grid-gutter-width) * 0.5);
+				row-gap: var(--s-spacing-nano);
 			}
 		}
 
 		&-sm {
 			&:not(.-vertical) {
-				column-gap: calc(var(--grid-gutter-width) * 0.75);
+				column-gap: var(--s-spacing-xx-small);
 			}
 
 			&.-vertical {
-				row-gap: calc(var(--grid-gutter-width) * 0.75);
+				row-gap: var(--s-spacing-xx-small);
 			}
 		}
 
 		&-lg {
 			&:not(.-vertical) {
-				column-gap: calc(var(--grid-gutter-width) * 1.25);
+				column-gap: var(--s-spacing-small);
 			}
 
 			&.-vertical {
-				row-gap: calc(var(--grid-gutter-width) * 1.25);
+				row-gap: var(--s-spacing-small);
 			}
 		}
 
 		&-xl {
 			&:not(.-vertical) {
-				column-gap: calc(var(--grid-gutter-width) * 1.5);
+				column-gap: var(--s-spacing-medium);
 			}
 
 			&.-vertical {
-				row-gap: calc(var(--grid-gutter-width) * 1.5);
+				row-gap: var(--s-spacing-medium);
 			}
 		}
 	}
 
 	&.-vertical {
 		flex-direction: column;
-		row-gap: calc(var(--grid-gutter-width));
+		row-gap: var(--s-spacing-x-small);
 	}
 
 	&:not(.-vertical) {
-		column-gap: var(--grid-gutter-width);
+		column-gap: var(--s-spacing-x-small);
 	}
 
 	&.-no-wrap {

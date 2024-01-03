@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, type StyleValue } from 'vue'
 
-export interface Props {
+export interface StackProps {
 	distribution?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
 	spacing?: string
 	alignment?: 'start' | 'center' | 'end' | 'fill'
@@ -11,45 +11,54 @@ export interface Props {
 	horizontal?: boolean
 }
 
-const props = defineProps<Props>()
-const classList = ref<string[]>([])
+const props = defineProps<StackProps>()
 
-if (props.distribution != 'default' && props.distribution != undefined) {
-	classList.value.push(`-distribute-${props.distribution}`)
-}
+const stackClassList = computed(() => {
+	let classes = []
 
-if (props.spacing != 'default' && props.spacing != undefined) {
-	classList.value.push(`-spacing-${props.spacing}`)
-}
+	if (props.distribution != 'default' && props.distribution != undefined) {
+		classes.push(`-distribute-${props.distribution}`)
+	}
 
-if (props.vertical == true) {
-	classList.value.push('-vertical')
-}
+	if (props.spacing != 'default' && props.spacing != undefined) {
+		classes.push(`-spacing-${props.spacing}`)
+	}
 
-if (props.alignment) {
-	classList.value.push(`-align-${props.alignment}`)
-}
+	if (props.vertical == true) {
+		classes.push('-vertical')
+	}
 
-if (props.wrap == null && props.wrap == false) {
-	classList.value.push('-no-wrap')
-}
+	if (props.alignment) {
+		classes.push(`-align-${props.alignment}`)
+	}
 
-if (props.horizontal) {
-	classList.value.push('-sm-horizontal')
-}
+	if (props.wrap == null && props.wrap == false) {
+		classes.push('-no-wrap')
+	}
 
-const styleList = ref<string[]>([])
+	if (props.horizontal) {
+		classes.push('-sm-horizontal')
+	}
 
-if (props.columns && props.columns > 1) {
-	classList.value.push('-custom-grid')
-}
+	if (props.columns && props.columns > 1) {
+		classes.push('-custom-grid')
+	}
 
-if (props.columns && window.innerWidth > 800) {
-	styleList.value.push(`grid-template-columns: repeat(${props.columns}, 1fr)`)
-}
+	return classes
+})
+
+const stackStyleList = computed(() => {
+	const styles: StyleValue = {}
+
+	if (props.columns && window.innerWidth > 800) {
+		styles.gridTemplateColumns = `repeat(${props.columns}, 1fr)`
+	}
+
+	return styles
+})
 </script>
 <template>
-	<div class="ui-stack" :class="classList" :style="styleList">
+	<div class="ui-stack" :class="stackClassList" :style="stackStyleList">
 		<slot />
 	</div>
 </template>
