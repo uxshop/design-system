@@ -131,8 +131,8 @@ defineExpose({
 		:last="last"
 		:autofocus="autofocus">
 		<input class="form-control" :id="uid" autocomplete="off" :placeholder="placeholder" readonly :class="classList" />
-		<template #trailingIcon v-if="!noClear">
-			<IconButton v-if="modelValue" icon="close" @click="clearDate" variant="plain" :size="size" class="btn-remove"/>
+		<template #trailingIcon v-if="!noClear && !loading">
+			<IconButton v-if="modelValue" icon="close" @click="clearDate" variant="plain" :size="size" class="btn-remove" />
 		</template>
 	</FormWrapper>
 </template>
