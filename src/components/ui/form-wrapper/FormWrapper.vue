@@ -3,7 +3,7 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from
 import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import vTooltip from '../../../directives/tooltip'
-import type { Size } from 'src/types'
+import type { Size } from '../../../types'
 
 export interface FormWrapperProps {
 	leadingIcon?: string
