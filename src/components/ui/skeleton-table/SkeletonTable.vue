@@ -1,43 +1,55 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, type StyleValue } from 'vue'
 import Skeleton from '../skeleton/Skeleton.vue'
 
-export interface Props {
+export interface SkeletonTableProps {
 	cols?: string | number
-	rows?: string | number
 	hideHeader?: boolean
+	lines?: string | number
 	noBorder?: boolean
+	padding?: string
+	rows?: string | number
+	width?: string
 	withAction?: boolean | string | number
 	withAvatar?: boolean
-	width?: string
-	lines?: string | number
-	padding?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SkeletonTableProps>(), {
 	cols: 5,
-	rows: 3,
-	padding: '14px'
+	padding: '14px',
+	rows: 3
 })
 
-const style = ref<{
-	width?: string
-}>({})
+const skeletonTableClassList = computed(() => {
+	let classes = []
 
-if (props.width) {
-	style.value.width = `${props.width}`
-}
+	if (props.noBorder) {
+		classes.push('-no-border')
+	}
+
+	return classes
+})
+
+const skeletonTableStyleList = computed(() => {
+	const styles: StyleValue = {}
+
+	if (props.width) {
+		styles.width = props.width
+	}
+
+	return styles
+})
 </script>
 
 <template>
-	<table class="ui-table ui-skeleton-table" :style="style" :class="{ '-no-border': noBorder }">
+	<table class="ui-table ui-skeleton-table" :style="skeletonTableStyleList" :class="skeletonTableClassList">
 		<thead v-if="!hideHeader">
 			<tr>
-				<th v-if="withAvatar"></th>
+				<th v-if="withAvatar" />
 				<th v-for="c in Number(cols)" :key="c">
 					<Skeleton />
 				</th>
-				<th width="1" v-for="c in Number(withAction)" :key="c"></th>
+				<th width="1" v-for="c in Number(withAction)" :key="c" />
 			</tr>
 		</thead>
 		<tbody>
