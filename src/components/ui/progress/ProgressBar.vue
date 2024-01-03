@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 export interface Props {
-	height?: string | number
-	value?: string | number
+	height?: string
 	max?: string | number
+	value?: string | number
 }
 
-const props = withDefaults(defineProps<Props>(), {
-	height: '3px'
+withDefaults(defineProps<Props>(), {
+	height: '3px',
+	max: 100
 })
 </script>
 
