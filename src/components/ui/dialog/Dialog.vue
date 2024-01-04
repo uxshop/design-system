@@ -4,7 +4,7 @@ import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
 import type { OpenDialogConfig } from '.'
 
-interface OpenDialogConfigProps extends OpenDialogConfig {} // INVESTIGAR
+interface OpenDialogConfigProps extends OpenDialogConfig {}
 
 const props = withDefaults(defineProps<OpenDialogConfigProps>(), {
 	promptType: 'text',
