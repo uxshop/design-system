@@ -73,8 +73,12 @@
 		}
 	}
 
+	&-logo {
+		width: 100%;
+	}
+
 	.ui-sidebar-nav {
-		padding: 20px 0;
+		padding: var(--s-spacing-x-small);
 		margin-bottom: 10px;
 		display: flex;
 		align-items: center;
