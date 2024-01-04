@@ -4,10 +4,6 @@ import Icon from '../../ui/icon/Icon.vue'
 import type { SideBarItem, SideBarItemType } from './types'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
 
-export interface PermissionInterface {
-	has(rule: string): boolean
-}
-
 export interface MenuProviderInterface {
 	open: boolean
 	removeSidebar(): void
