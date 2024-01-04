@@ -185,6 +185,7 @@
 		&.-default {
 			background-color: var(--s-color-fill-dark);
 			color: var(--s-color-content-dark);
+			border-color: var(--s-color-border-dark);
 
 			&:hover {
 				background-color: var(--s-color-fill-dark-hover);

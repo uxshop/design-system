@@ -36,8 +36,9 @@ const emit = defineEmits<{
 	(e: 'update', val: string): void
 }>()
 
-const props = withDefaults(defineProps<Props>(), {
-	rows: 4
+withDefaults(defineProps<Props>(), {
+	rows: 4,
+  state: undefined,
 })
 
 const classList = ref<string[]>([])

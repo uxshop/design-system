@@ -1,41 +1,29 @@
-import FormSelect from './FormSelect.vue'
+import FormDatepicker from './FormDatepicker.vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-/** A select allows users to choose one option from a list of values. */
-const meta: Meta<typeof FormSelect> = {
-	title: 'Ui/Form/FormSelect',
-	component: FormSelect,
+/** Data picker is used to select a single or a range of dates. */
+const meta: Meta<typeof FormDatepicker> = {
+	title: 'Ui/Form/FormDatepicker',
+	component: FormDatepicker,
 	tags: ['autodocs'],
 	args: {
 		state: undefined,
 		invalidFeedback: '',
-		label: 'Label',
-		float: false,
-		disabled: false,
-		loading: false,
 		size: 'md',
-		value: '',
-		options: [
-			{
-				label: 'placeholder',
-				value: '',
-				disabled: true
-			},
-			{
-				label: 'Option 1',
-				value: 1
-			},
-			{
-				label: 'Option 2',
-				value: 2
-			}
-		]
+		placeholder: 'Placeholder',
+		label: 'Label',
+		range: false,
+		noClear: false,
+		modelValue: '01/01/2024'
 	},
 	argTypes: {
 		state: {
 			control: 'radio',
 			options: [true, false, 'undefined'],
 			description: 'Determines input state: `true` for valid, `false` for invalid, `undefined` for neutral'
+		},
+		invalidFeedback: {
+			control: 'text'
 		},
 		size: {
 			control: 'select',
@@ -49,6 +37,13 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const DateRange: Story = {
+	args: {
+		range: true
+	}
+}
+
 export const Float: Story = {
 	args: {
 		float: true
@@ -64,18 +59,6 @@ export const Loading: Story = {
 export const Disabled: Story = {
 	args: {
 		disabled: true
-	}
-}
-
-export const LeadingIcon: Story = {
-	args: {
-		leadingIcon: 'check'
-	}
-}
-
-export const TrailingIcon: Story = {
-	args: {
-		trailingIcon: 'check'
 	}
 }
 

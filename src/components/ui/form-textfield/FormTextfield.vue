@@ -43,7 +43,9 @@ export interface Props {
 	min?: string | number
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+	state: undefined
+})
 
 const emit = defineEmits<{
 	(e: 'update:modelValue', val: string | null): void

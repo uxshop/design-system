@@ -4,7 +4,9 @@ import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
 import type { OpenDialogConfig } from '.'
 
-const props = withDefaults(defineProps<OpenDialogConfig>(), {
+interface OpenDialogConfigProps extends OpenDialogConfig {}
+
+const props = withDefaults(defineProps<OpenDialogConfigProps>(), {
 	promptType: 'text',
 	cancelLabel: 'Cancelar',
 	destructLabel: 'Deletar',
