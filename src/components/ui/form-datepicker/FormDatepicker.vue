@@ -4,7 +4,6 @@ import { DateTime } from 'luxon'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import IconButton from '../icon-button/IconButton.vue'
 import { easepick, RangePlugin } from '@easepick/bundle'
-import { IPickerConfig } from '@easepick/core/dist/types'
 import type { Size } from '../../../types'
 
 export interface Props {
@@ -66,7 +65,7 @@ const stopWatch = watchEffect(() => {
 onMounted(() => {
 	const el = document.getElementById(uid)
 	if (el) {
-		const config: IPickerConfig = {
+		const config: any = {
 			element: el,
 			format: FORMAT_DATE,
 			plugins: [],
