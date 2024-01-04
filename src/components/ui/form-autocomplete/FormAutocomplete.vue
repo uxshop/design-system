@@ -3,17 +3,18 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, wat
 import { cloneDeep } from 'lodash-es'
 import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
+import type { Size } from '../../../types'
 
 export interface Props {
 	modelValue?: any
 	placeholder?: string
 	options?: any[]
-	label?: string | null
-	size?: string
+	label?: string
+	size?: Size
 	last?: boolean
 	template?: any
 	position?: 'top' | 'bottom' | 'auto'
-	config?: object
+	config?: Record<string, any>
 	required?: boolean
 }
 
@@ -23,7 +24,8 @@ const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
 	config: () => ({}),
 	options: () => [],
-	position: 'bottom'
+	position: 'bottom',
+  size: 'md',
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
