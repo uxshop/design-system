@@ -30,7 +30,8 @@ export interface Props {
 }
 const emit = defineEmits(['update:modelValue'])
 const props = withDefaults(defineProps<Props>(), {
-	placeholder: '0.00'
+	placeholder: '0.00',
+  state: undefined,
 })
 const classList = ref<string[]>([])
 const focused = ref(props.autofocus ?? false)

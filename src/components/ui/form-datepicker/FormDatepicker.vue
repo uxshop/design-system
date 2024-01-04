@@ -27,7 +27,8 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
 	config: () => {
 		return {}
-	}
+	},
+  state: undefined
 })
 
 const emit = defineEmits(['update:modelValue', 'update'])
