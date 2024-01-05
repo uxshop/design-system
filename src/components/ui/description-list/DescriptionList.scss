@@ -1,18 +1,18 @@
 .ui-description-list {
 	width: 100%;
 
-	.ui-description-list-item {
+	&-item {
 		align-items: flex-start;
-		padding: 8px 8px 8px 0;
+		padding: var(--s-spacing-nano);
 		display: flex;
 
 		+ .ui-description-list-item {
-			border-top: solid 1px var(--border-color);
+			border-top: var(--s-border-light);
 		}
 
-		.ui-description-list-item-label {
+		&-label {
 			flex: 0 1 25%;
-			font-weight: var(--font-weight-semibold);
+			font: var(--s-typography-paragraph-strong);
 		}
 	}
 }
