@@ -3,11 +3,9 @@
 .ui-list-group-item {
 	position: relative;
 	display: block;
-	padding: 10px 10px;
-	color: var(--body-color);
+	padding: var(--s-spacing-nano);
 	text-decoration: none;
-	background-color: white;
-	border: 1px solid rgba(0, 0, 0, 0.125);
+	border: var(--s-border-light);
 
 	&:first-child {
 		border-top-left-radius: inherit;
@@ -26,12 +24,11 @@
 	&.-button {
 		cursor: pointer;
 		&:hover {
-			background-color: var(--gray-100);
+			background-color: var(--s-color-fill-default-hover);
 		}
 	}
 
 	@include darkmode {
 		background-color: transparent;
-		border-color: var(--dark-100) !important;
 	}
 }
