@@ -13,39 +13,21 @@ export interface StackProps {
 
 const props = defineProps<StackProps>()
 
-const stackClassList = computed(() => {
-	let classes = []
+const stackClassList = computed(() => [
+	props.distribution != 'default' && props.distribution != undefined && `-distribute-${props.distribution}`,
 
-	if (props.distribution != 'default' && props.distribution != undefined) {
-		classes.push(`-distribute-${props.distribution}`)
-	}
+	props.spacing != 'default' && props.spacing != undefined && `-spacing-${props.spacing}`,
 
-	if (props.spacing != 'default' && props.spacing != undefined) {
-		classes.push(`-spacing-${props.spacing}`)
-	}
+	props.vertical == true && '-vertical',
 
-	if (props.vertical == true) {
-		classes.push('-vertical')
-	}
+	props.alignment && `-align-${props.alignment}`,
 
-	if (props.alignment) {
-		classes.push(`-align-${props.alignment}`)
-	}
+	props.wrap == null && props.wrap == false && '-no-wrap',
 
-	if (props.wrap == null && props.wrap == false) {
-		classes.push('-no-wrap')
-	}
+	props.horizontal && '-sm-horizontal',
 
-	if (props.horizontal) {
-		classes.push('-sm-horizontal')
-	}
-
-	if (props.columns && props.columns > 1) {
-		classes.push('-custom-grid')
-	}
-
-	return classes
-})
+	props.columns && props.columns > 1 && '-custom-grid'
+])
 
 const stackStyleList = computed(() => {
 	const styles: StyleValue = {}
