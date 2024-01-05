@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import Stack from './Stack.vue'
-import { ref } from 'vue'
 
 const meta = {
 	title: 'Ui/Stack',
@@ -9,12 +8,12 @@ const meta = {
 	tags: ['autodocs'],
 	args: {
 		alignment: 'start',
+		columns: undefined,
 		distribution: 'center',
 		horizontal: false,
 		spacing: 'md',
 		vertical: true,
-		wrap: false,
-		columns: undefined
+		wrap: false
 	},
 	argTypes: {
 		alignment: {
@@ -42,7 +41,11 @@ export const Default: Story = {
 			return { args }
 		},
 		template: `
-      <Stack v-bind="args" ><span>item 1</span><span>item 2</span><span>item 3</span></Stack>
+      <Stack v-bind="args">
+        <span>item 1</span>
+        <span>item 2</span>
+        <span>item 3</span>
+      </Stack>
     `
 	})
 }
