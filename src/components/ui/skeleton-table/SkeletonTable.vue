@@ -20,16 +20,6 @@ const props = withDefaults(defineProps<SkeletonTableProps>(), {
 	rows: 3
 })
 
-const skeletonTableClassList = computed(() => {
-	let classes = []
-
-	if (props.noBorder) {
-		classes.push('-no-border')
-	}
-
-	return classes
-})
-
 const skeletonTableStyleList = computed(() => {
 	const styles: StyleValue = {}
 
@@ -42,7 +32,7 @@ const skeletonTableStyleList = computed(() => {
 </script>
 
 <template>
-	<table class="ui-table ui-skeleton-table" :style="skeletonTableStyleList" :class="skeletonTableClassList">
+	<table class="ui-table ui-skeleton-table" :style="skeletonTableStyleList" :class="{ '-no-border': noBorder }">
 		<thead v-if="!hideHeader">
 			<tr>
 				<th v-if="withAvatar" />
