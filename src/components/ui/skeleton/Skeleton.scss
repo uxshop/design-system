@@ -8,10 +8,10 @@
 	background: #e4e4e8;
 	background: linear-gradient(
 		to right,
-		var(--s-color-neutral-200, #e0e8f2) 25%,
-		var(--s-color-default-light, #f5f7fa) 50%,
-		var(--s-color-fill-disable, #f5f7fa) 75%,
-		var(--s-color-fill-disable, #f5f7fa) 100%
+		var(--s-color-fill-disable, #e0e8f2) 25%,
+		var(--s-color-fill-default-light, #f5f7fa) 50%,
+		var(--s-color-fill-default-light, #f5f7fa) 75%,
+		var(--s-color-fill-default-light, #f5f7fa) 100%
 	);
 	background-size: 1000px 1000px;
 	height: var(--s-spacing-x-small);
