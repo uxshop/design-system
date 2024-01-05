@@ -9,15 +9,10 @@ const meta: Meta<typeof FormAutocomplete> = {
 	args: {
 		placeholder: 'Placeholder',
 		label: 'Label',
-		config: {
-			load: async function (query: any, callback: any) {
-				console.log('🚀 ~ file: FormAutocomplete.stories.ts:14 ~ query:', query)
-				var url = 'https://api.github.com/search/repositories?q=' + encodeURIComponent(query)
-				const res = await fetch(url)
-				const json = await res.json()
-				callback(json.items)
-			}
-		}
+		options: [
+			{ value: 1, label: 'Hello' },
+			{ value: 2, label: 'World' }
+		]
 	},
 	argTypes: {}
 }

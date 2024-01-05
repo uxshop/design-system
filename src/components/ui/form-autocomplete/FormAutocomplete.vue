@@ -5,10 +5,15 @@ import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
 import type { Size } from '../../../types'
 
+interface AutocompleteOption {
+  label: string
+  value:  string | number
+}
+
 export interface Props {
 	modelValue?: any
 	placeholder?: string
-	options?: any[]
+	options?: AutocompleteOption[]
 	label?: string
 	size?: Size
 	last?: boolean
