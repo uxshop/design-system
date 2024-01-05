@@ -53,9 +53,11 @@ const linkAttributeList = computed(() => {
 </script>
 
 <template>
-	<component :is="linkComponent" class="ui-link" :class="linkClassList" v-bind="linkAttributeList" disabled>
+	<component :is="linkComponent" class="ui-link" :class="linkClassList" v-bind="linkAttributeList">
 		<span class="ui-link-content">
-			{{ label }}
+			<slot>
+				{{ label }}
+			</slot>
 		</span>
 		<Icon v-if="external" name="open_in_new" class="ui-link-icon" :size="14" />
 	</component>
