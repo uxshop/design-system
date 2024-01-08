@@ -58,7 +58,11 @@ const emit = defineEmits<{
 	(e: 'updateRaw', val: any): void
 }>()
 
-const classList = ref<string[]>([])
+const classList = computed(() => [
+	props.size ? `-${props.size}` : '',
+	props.state === true ? '-valid' : props.state === false ? '-invalid' : ''
+])
+
 const maskOptions = computed<MaskOptions>(() => {
 	return {
 		mask: props.mask,
@@ -77,10 +81,6 @@ const maskRawValue = (evt: Event) => {
 	const target = evt.target as HTMLInputElement
 	update(evt)
 	emit('updateRaw', target.dataset.maskRawValue)
-}
-
-if (props.size) {
-	classList.value.push(`-${props.size}`)
 }
 
 const onFocus = (event: Event) => {

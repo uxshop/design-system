@@ -10,6 +10,7 @@ const meta: Meta<typeof FormTextfield> = {
 		state: undefined,
 		invalidFeedback: '',
 		label: 'Label',
+		modelValue: 'Input value',
 		float: false,
 		disabled: false,
 		size: 'md'
@@ -82,6 +83,7 @@ export const InvalidFeedback: Story = {
 
 export const Mask: Story = {
 	args: {
+		modelValue: '19999999999',
 		mask: ['(##) ####-####', '(##) #####-####']
 	}
 }

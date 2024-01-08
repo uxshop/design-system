@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useCurrencyInput, type CurrencyInputOptions, CurrencyDisplay } from 'vue-currency-input'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import type { Size } from '../../../types'
@@ -31,10 +31,14 @@ export interface Props {
 const emit = defineEmits(['update:modelValue'])
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: '0.00',
-  state: undefined,
+	state: undefined
 })
-const classList = ref<string[]>([])
 const focused = ref(props.autofocus ?? false)
+
+const classList = computed(() => [
+	'form-control',
+	props.state === true ? '-valid' : props.state === false ? '-invalid' : ''
+])
 
 /* @see https://dm4t2.github.io/vue-currency-input/config.html */
 const settings: CurrencyInputOptions = {
@@ -87,7 +91,7 @@ watch(
 			:min="min"
 			:step="step"
 			ref="inputRef"
-			class="form-control"
+			:class="classList"
 			:placeholder="float ? '' : placeholder"
 			@focus="focused = true"
 			@blur="focused = false"
