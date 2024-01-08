@@ -85,3 +85,10 @@ export const Mask: Story = {
 		mask: ['(##) ####-####', '(##) #####-####']
 	}
 }
+
+export const Clearable: Story = {
+	args: {
+		clearable: true,
+		modelValue: 'Clearable'
+	}
+}

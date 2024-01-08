@@ -13,6 +13,7 @@
 		display: inline-flex;
 		align-items: center;
 		cursor: pointer;
+		margin: 0 var(--s-spacing-xx-small);
 		&:hover {
 			color: var(--s-color-fill-critical);
 		}

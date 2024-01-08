@@ -154,7 +154,7 @@ const onClear = () => {
 			:required="required" />
 		<slot name="after" />
 		<div v-if="clearable && modelValue?.length" class="close" @click="onClear">
-			<Icon name="cancel" filled />
+			<Icon name="cancel" filled size="20" />
 		</div>
 		<template #append v-if="$slots.append || actions">
 			<div v-if="actions" class="actions">
