@@ -2,28 +2,21 @@
 import { computed } from 'vue'
 import type { Variant } from '../../../types/Types'
 
+type TextStyleVariant = Omit<Variant, 'link' | 'plain'> | 'strong' | 'muted'
+
 export interface TextStyleProps {
 	block?: boolean
 	label?: string
 	tag?: string
-	variant?: Variant | 'strong' | 'muted'
+	variant?: TextStyleVariant
 }
 
 const props = withDefaults(defineProps<TextStyleProps>(), {
-	variant: 'default',
 	tag: 'span'
 })
 
 const textStyleClassList = computed(() => {
-	let classes = []
-
-	if (props.variant) {
-		classes.push(`-variant-${props.variant}`)
-	}
-
-	if (props.block) {
-		classes.push(`-block`)
-	}
+	let classes = [props.variant ? `-variant-${props.variant}` : '', props.block ? `-block` : '']
 
 	return classes
 })
