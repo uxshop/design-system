@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, withDefaults, watch, shallowRef } from 'vue'
+import { ref, withDefaults } from 'vue'
 import Modal from '../../ui/modal/Modal.vue'
 import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
@@ -27,16 +27,14 @@ const formValues = ref<IQuickSearchFormValue>({
 	searchType: props.searchOptions[0].value
 })
 
+const isVisible = ref(props.modelValue)
+
 function onSubmit(ev: Event) {
 	emit('onSubmit', formValues.value)
 }
 </script>
 <template>
-	<Modal
-		class="modal-container"
-		:modelValue="modelValue"
-		@update:modelValue="emit('update:modelValue', $event)"
-		:title="title">
+	<Modal class="modal-container" v-model="isVisible" :title="title">
 		<template #caption>
 			<p class="caption-text">
 				{{ caption }}
