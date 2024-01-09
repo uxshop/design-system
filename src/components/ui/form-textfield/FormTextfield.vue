@@ -16,7 +16,7 @@ export interface Props {
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	modelValue?: string
+	modelValue?: string | number
 	label?: string
 	id?: string
 	placeholder?: string
