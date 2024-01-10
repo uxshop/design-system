@@ -7,13 +7,13 @@ const meta: Meta<typeof FormCurrency> = {
 	component: FormCurrency,
 	tags: ['autodocs'],
 	args: {
-    state: undefined,
+		state: undefined,
 		invalidFeedback: '',
-    float: false,
+		float: false,
 		loading: false,
 		disabled: false,
 		size: 'md',
-    label: 'Label',
+		label: 'Label'
 	},
 	argTypes: {
 		size: {
@@ -28,9 +28,9 @@ const meta: Meta<typeof FormCurrency> = {
 			options: [true, false, 'undefined'],
 			description: 'Determines input state: `true` for valid, `false` for invalid, `undefined` for neutral'
 		},
-    step: {
-      control: 'number',
-    },
+		step: {
+			control: 'number'
+		}
 	}
 }
 

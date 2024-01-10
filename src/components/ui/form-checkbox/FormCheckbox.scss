@@ -53,7 +53,7 @@
 			&:after {
 				display: block;
 				left: 50%;
-				top: calc(var(--s-spacing-x-small) / 2 - 2px);
+				top: calc(var(--s-spacing-quark) + 2px);
 				width: 65%;
 				height: 2px;
 				transform: translateX(-50%) translateY(-50%);
@@ -86,7 +86,6 @@
 			content: '';
 			position: absolute;
 			left: calc(50% - 3px);
-			top: 2px;
 			width: 6px;
 			height: 9px;
 			border: solid var(--s-color-fill-default);

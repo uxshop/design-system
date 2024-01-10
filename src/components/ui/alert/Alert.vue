@@ -42,7 +42,7 @@ const styleClassList = computed(() => {
 })
 
 const currentIcon = computed(() => {
-	let icon = ''
+	let icon = props.icon
 	if (!props.icon && props.variant) {
 		icon = iconsByVariant[props.variant]
 	}
@@ -55,7 +55,7 @@ watchEffect(() => {
 </script>
 <template>
 	<div v-if="open" class="ui-alert" :class="styleClassList">
-		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24"/>
+		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24" />
 		<div class="ui-alert-content">
 			<h5 class="ui-alert-title" v-if="title">
 				{{ title }}
@@ -65,7 +65,7 @@ watchEffect(() => {
 			</div>
 		</div>
 		<button v-if="dismissible" type="button" class="ui-alert-close" @click="close">
-			<Icon name="close" size="16"/>
+			<Icon name="close" size="24" />
 		</button>
 	</div>
 </template>

@@ -6,8 +6,9 @@
 	border-radius: var(--s-border-radius-small);
 	background-color: var(--s-color-fill-default-light);
 	border: solid 1px var(--s-color-border-default);
+	margin-bottom: var(--s-spacing-x-small);
 	display: flex;
-	align-items: center;
+	align-items: start;
 
 	a {
 		color: inherit;

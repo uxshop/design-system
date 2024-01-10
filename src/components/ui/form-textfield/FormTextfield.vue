@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { vMaska, type MaskOptions, type MaskType } from 'maska'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
@@ -16,7 +16,7 @@ export interface Props {
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	modelValue?: string
+	modelValue?: string | number
 	label?: string
 	id?: string
 	placeholder?: string
@@ -58,7 +58,11 @@ const emit = defineEmits<{
 	(e: 'updateRaw', val: any): void
 }>()
 
-const classList = ref<string[]>([])
+const classList = computed(() => [
+	props.size ? `-${props.size}` : '',
+	props.state === true ? '-valid' : props.state === false ? '-invalid' : ''
+])
+
 const maskOptions = computed<MaskOptions>(() => {
 	return {
 		mask: props.mask,
@@ -77,10 +81,6 @@ const maskRawValue = (evt: Event) => {
 	const target = evt.target as HTMLInputElement
 	update(evt)
 	emit('updateRaw', target.dataset.maskRawValue)
-}
-
-if (props.size) {
-	classList.value.push(`-${props.size}`)
 }
 
 const onFocus = (event: Event) => {
@@ -154,7 +154,7 @@ const onClear = () => {
 			:required="required" />
 		<slot name="after" />
 		<div v-if="clearable && modelValue?.length" class="close" @click="onClear">
-			<Icon name="cancel" filled />
+			<Icon name="cancel" filled size="20" />
 		</div>
 		<template #append v-if="$slots.append || actions">
 			<div v-if="actions" class="actions">

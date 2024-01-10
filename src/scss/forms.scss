@@ -52,6 +52,10 @@ textarea {
 		padding-inline-end: var(--s-spacing-x-small);
 	}
 
+	&.-invalid {
+		color: var(--s-color-fill-critical);
+	}
+
 	@include darkmode {
 		color: var(--s-color-content-dark);
 		caret-color: var(--s-color-content-dark);
@@ -64,6 +68,6 @@ textarea {
 }
 
 .form-control.-select {
-	padding-right: var(--s-spacing-large);
+	padding-right: var(--s-spacing-x-large);
 	@include select-arrow;
 }
