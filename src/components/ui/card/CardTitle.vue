@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script setup lang="ts"/>
 
 <template>
 	<h4 class="ui-card-title">
