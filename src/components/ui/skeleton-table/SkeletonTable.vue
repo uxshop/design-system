@@ -16,7 +16,7 @@ export interface SkeletonTableProps {
 
 const props = withDefaults(defineProps<SkeletonTableProps>(), {
 	cols: 5,
-	padding: '14px',
+	padding: '16px',
 	rows: 3
 })
 
