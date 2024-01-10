@@ -94,7 +94,6 @@ export const WithFooter: Story = {
 export const Dropdown: Story = {
 	args: {
 		dropdown: true
-		// dropdownLabel: 'Dropdown'
 	}
 }
 
