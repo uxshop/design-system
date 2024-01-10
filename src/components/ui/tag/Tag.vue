@@ -4,8 +4,8 @@ import Icon from '../icon/Icon.vue'
 import type { Variant } from '../../../types/Types'
 
 export interface TagProps {
-	label?: string
-	variant?: Variant
+	label?: string | null
+	variant?: Variant | 'default'
 }
 
 const props = withDefaults(defineProps<TagProps>(), {

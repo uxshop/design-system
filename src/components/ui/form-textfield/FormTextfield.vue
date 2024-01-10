@@ -16,7 +16,7 @@ export interface Props {
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	modelValue?: string | number
+	modelValue?: string | number | null
 	label?: string
 	id?: string
 	placeholder?: string
@@ -153,8 +153,8 @@ const onClear = () => {
 			:min="min"
 			:required="required" />
 		<slot name="after" />
-		<div v-if="clearable && modelValue?.length" class="close" @click="onClear">
-			<Icon name="cancel" filled size="20" />
+		<div v-if="clearable && modelValue" class="close" @click="onClear">
+			<Icon name="cancel" filled size="24" />
 		</div>
 		<template #append v-if="$slots.append || actions">
 			<div v-if="actions" class="actions">
