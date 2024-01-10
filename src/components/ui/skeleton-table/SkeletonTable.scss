@@ -1,22 +1,22 @@
 .ui-skeleton-table {
 	width: 100%;
 	margin-bottom: 0;
-	color: var(--body-color);
+	color: var(--s-color-content-default);
 	border-spacing: 0;
 	border-collapse: separate;
 
 	th,
 	td {
-		padding: 14px;
+		padding: var(--s-spacing-x-small);
 	}
 
 	td {
-		border-top: 1px solid var(--border-color);
+		border-top: var(--s-border-light);
 	}
 
 	tr,
 	th {
-		background-color: var(--dark-200, white);
+		background-color: transparent;
 	}
 
 	&.-no-border {
