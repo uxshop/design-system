@@ -200,7 +200,7 @@
 			}
 		}
 
-		.ui-sidebar-link-right-icons {
+		&-right-icons {
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
@@ -212,7 +212,7 @@
 			}
 		}
 
-		.ui-sidebar-link-text {
+		&-text {
 			display: inline-flex;
 			border-radius: 4px;
 			padding: 10px 0;
@@ -222,7 +222,7 @@
 			@include move-horizontal(var(--s-motion-duration-default));
 		}
 
-		.ui-sidebar-link-icon {
+		&-icon {
 			width: 25px;
 			display: flex;
 			align-items: center;

@@ -60,12 +60,11 @@ const toggleMenu = (item: any) => {
 								]">
 								<small v-if="item.caption" class="ui-sidebar-link-caption">{{ item.caption }}</small>
 								<div
+									class="ui-sidebar-link"
 									:class="{
 										'-nodes': item.nodes?.length,
-										'-node-active': isActive(item, true),
-										'-active': isActive(item)
+										'-node-active': item.active
 									}"
-									class="ui-sidebar-link"
 									activeClass="-active"
 									@click="emit('onClickItem', 'node', item)">
 									<div class="d-flex">
@@ -80,7 +79,7 @@ const toggleMenu = (item: any) => {
 										<div class="news-indicator" v-if="item.isNew">
 											<NewsIndicator />
 										</div>
-										<Icon class="icon-arrow" name="expand_more" />
+										<Icon v-if="item.nodes?.length" class="icon-arrow" name="expand_more" />
 									</div>
 								</div>
 
