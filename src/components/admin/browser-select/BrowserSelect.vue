@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import { ref, watch } from 'vue'
+import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import ButtonAction from '../button-action/ButtonAction.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Row from '../../ui/grid/row/Row.vue'
@@ -206,7 +206,10 @@ defineExpose({ onClickSearch })
 	<div class="ui-browser-select">
 		<div class="ui-browser-select-button" v-if="selectType == 'btn' && !hideBtn">
 			<slot name="button">
-				<div class="area-select" @click="onClickSearch" :class="{ disabled: limit > 0 && rows.length == limit }">
+				<div
+					class="area-select"
+					@click="onClickSearch"
+					:class="{ disabled: Number(limit) > 0 && rows.length == limit }">
 					<span>{{ placeholder }}</span>
 				</div>
 			</slot>
@@ -223,7 +226,7 @@ defineExpose({ onClickSearch })
 							:disabled="searchDisabled" />
 					</Col>
 					<Col auto>
-						<Button variant="dark" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
+						<Button variant="primary" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
 					</Col>
 				</Row>
 			</div>

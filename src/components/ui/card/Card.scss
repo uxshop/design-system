@@ -1,44 +1,18 @@
 @import '../../../scss/mixins.scss';
 
-a,
-label {
-	&.card {
-		&:hover {
-			border-color: var(--primary);
-		}
-	}
-}
-
 .ui-card {
-	border-radius: var(--card-border-radius, 8px);
+	border-radius: var(--s-border-radius-medium);
 	display: flex;
 	flex-direction: column;
 	border: none;
-	background: var(--card-bg);
-	box-shadow: var(--shadow-card);
+	background-color: var(--s-color-fill-default);
 
 	+ .ui-card {
-		margin-top: var(--grid-gutter-width);
+		margin-top: var(--s-spacing-x-small);
 	}
 
 	.ui-stack & {
 		margin: 0;
-	}
-
-	&.-primary {
-		border-color: var(--primary);
-	}
-
-	&.-secondary {
-		border-color: var(--secondary);
-	}
-
-	&.-warning {
-		border-color: var(--warning);
-	}
-
-	&.-success {
-		border-color: var(--success);
 	}
 
 	&.-full-height {
@@ -68,11 +42,11 @@ label {
 	}
 
 	&.-gray {
-		background: var(--gray-100);
+		background-color: var(--s-color-fill-default-light);
 		border-color: transparent;
 
 		hr {
-			background-color: var(--gray-200);
+			background-color: var(--s-color-fill-default-hover);
 		}
 	}
 
@@ -81,13 +55,7 @@ label {
 	}
 
 	&.-plain {
-		box-shadow: none;
-		border: solid var(--border-width) var(--border-color);
-
-		.ui-card-footer {
-			border-bottom-left-radius: calc(var(--card-border-radius, 8px) - 2px);
-			border-bottom-right-radius: calc(var(--card-border-radius, 8px) - 2px);
-		}
+		border: var(--s-border-light);
 	}
 
 	&.-image {
@@ -112,7 +80,7 @@ label {
 			padding-bottom: 0;
 
 			.ui-card-header {
-				padding-bottom: var(--card-padding);
+				padding-bottom: var(--s-spacing-small);
 			}
 		}
 
@@ -121,7 +89,7 @@ label {
 
 			&:hover {
 				.btn-collapse-icon {
-					color: var(--primary);
+					color: var(--s-color-content-highlight);
 				}
 			}
 		}
@@ -136,11 +104,11 @@ label {
 	}
 
 	.ui-card-body {
-		margin-top: var(--card-padding);
+		margin-top: var(--s-spacing-small);
 		flex-grow: 1;
 		will-change: height;
 		height: auto;
-		padding: var(--card-padding);
+		padding: var(--s-spacing-small);
 
 		&:empty {
 			display: none;
@@ -155,12 +123,12 @@ label {
 		}
 
 		h6 {
-			margin-bottom: 8px;
+			margin-bottom: var(--s-spacing-nano);
 		}
 	}
 
 	.ui-card-item {
-		margin-top: 20px;
+		margin-top: var(--s-spacing-small);
 
 		&:first-child {
 			margin-top: 0;
@@ -173,10 +141,10 @@ label {
 	}
 
 	.ui-card-section {
-		border-top: solid 1px var(--border-color);
-		margin-left: calc(var(--card-padding) * -1);
-		margin-right: calc(var(--card-padding) * -1);
-		padding: var(--card-padding);
+		border-top: var(--s-border-light);
+		margin-left: calc(var(--s-spacing-small) * -1);
+		margin-right: calc(var(--s-spacing-small) * -1);
+		padding: var(--s-spacing-small);
 
 		&:last-child {
 			padding-bottom: 0;
@@ -190,10 +158,10 @@ label {
 		.ui-card-section-header {
 			display: flex;
 			align-items: center;
-			gap: 8px;
+			gap: var(--s-spacing-nano);
 
 			+ .ui-card-section-content:not(:empty) {
-				margin-top: 8px;
+				margin-top: var(--s-spacing-nano);
 			}
 		}
 	}
@@ -204,13 +172,12 @@ label {
 
 		&::before {
 			content: '';
-			background-color: rgba(0, 0, 0, 0.2);
 			position: absolute;
 			top: 0;
 			right: 0;
 			bottom: 0;
 			left: 0;
-			z-index: 8;
+			z-index: var(--s-index-high);
 		}
 	}
 
@@ -223,7 +190,7 @@ label {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		z-index: 88;
+		z-index: var(--s-index-max);
 
 		&:before {
 			position: absolute;
@@ -231,7 +198,8 @@ label {
 			right: 0;
 			left: 0;
 			bottom: 0;
-			background-color: rgba(255, 255, 255, 0.2);
+			background-color: rgba(var(--s-color-fill-default-hover), 0.8);
+
 			content: '';
 		}
 
@@ -243,17 +211,17 @@ label {
 	hr {
 		height: 1px;
 		&:not(.hr-center) {
-			margin-top: var(--card-padding);
-			margin-bottom: var(--card-padding);
-			margin-left: calc(var(--card-padding) * -1);
-			margin-right: calc(var(--card-padding) * -1);
+			margin-top: var(--s-spacing-small);
+			margin-bottom: var(--s-spacing-small);
+			margin-left: calc(var(--s-spacing-small) * -1);
+			margin-right: calc(var(--s-spacing-small) * -1);
 		}
 	}
 
 	.ui-card-header {
 		position: relative;
 		background: none;
-		padding: var(--card-padding);
+		padding: var(--s-spacing-small);
 
 		h4 {
 			margin: 0;
@@ -269,16 +237,21 @@ label {
 			margin-left: auto;
 		}
 
+		+ .ui-card-body {
+			padding-top: 0;
+			margin-top: 0;
+		}
+
 		.ui-card-caption {
 			display: block;
-			margin-top: 4px;
+			margin-top: var(--s-spacing-quark);
 			&:empty {
 				display: none;
 			}
 		}
 
 		.ui-button {
-			line-height: 1.2;
+			line-height: var(--s-line-height-20);
 		}
 
 		.btn-link {
@@ -300,19 +273,15 @@ label {
 		display: inline-flex;
 		justify-content: flex-end;
 		align-items: center;
-		gap: 10px;
-		min-height: 24px;
+		gap: var(--s-spacing-nano);
+		min-height: var(--s-spacing-small);
 
 		&:empty {
 			display: none;
 		}
 
-		.ui-button .ui-icon {
-			font-size: 22px;
-		}
-
 		.ui-button.-link {
-			margin-right: calc(var(--input-padding-x) * -1);
+			margin-right: calc(var(--s-spacing-xx-small) * -1);
 		}
 
 		> button,
@@ -329,12 +298,9 @@ label {
 		display: flex;
 		width: 100%;
 		align-items: flex-start;
-		gap: var(--grid-gutter-width);
+		gap: var(--s-spacing-x-small);
 
 		@include mobile {
-			// flex-direction: column;
-			// align-items: center;
-
 			> .ui-card-header-content-button {
 				margin: 0;
 			}
@@ -345,28 +311,27 @@ label {
 
 			> .ui-card-title,
 			> span:first-child {
-				font-size: 16px;
+				font: var(--s-typography-heading-x-small);
+				color: var(--s-color-content-default);
 				display: flex;
-				line-height: 1.3;
 				align-items: center;
 
 				> .muted {
-					font-weight: normal;
-					margin-left: 5px;
+					font: var(--s-typography-caption-medium);
+					margin-left: var(--s-spacing-quark);
 				}
 
 				i {
-					font-size: 18px;
-					margin-left: 5px;
+					margin-left: var(--s-spacing-quark);
 				}
 			}
 		}
 	}
 
 	.ui-card-caption {
-		font-size: var(--font-size-base);
+		font: var(--s-typography-caption-small);
 		min-width: 100%;
-		color: var(--text-muted);
+		color: var(--s-color-content-light);
 
 		+ .ui-card-body {
 			padding-top: 0;
@@ -374,14 +339,14 @@ label {
 	}
 
 	.ui-card-footer {
-		border-top: solid 1px var(--gray-200);
-		line-height: 1.2em;
-		background: var(--gray-100);
-		padding: var(--card-padding);
-		border-bottom-left-radius: calc(var(--card-border-radius, 8px));
-		border-bottom-right-radius: calc(var(--card-border-radius, 8px));
+		border-top: var(--s-border-light);
+		line-height: var(--s-line-height-20);
+
+		padding: var(--s-spacing-small);
+		border-bottom-left-radius: calc(var(--s-border-radius-medium));
+		border-bottom-right-radius: calc(var(--s-border-radius-medium));
 		display: flex;
-		gap: 8px;
+		gap: var(--s-spacing-nano);
 
 		&:empty {
 			display: none;
@@ -401,65 +366,75 @@ label {
 	.ui-card-loader {
 		position: absolute;
 		top: 0;
-		background: rgba(#fff, 0.8);
+		background: rgba(var(--s-color-fill-default), 0.8);
 		left: 0;
 		right: 0;
 		bottom: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		z-index: 88;
-		border-radius: var(--card-border-radius, 8px);
+		z-index: var(--s-index-max);
+		border-radius: var(--s-border-radius-medium);
 
 		span {
-			width: 40px;
-			height: 40px;
+			width: var(--s-spacing-large);
+			height: var(--s-spacing-large);
 			opacity: 0.5;
 		}
 	}
 
-	@include mobile {
-	}
-
 	@include darkmode {
+		background-color: var(--s-color-fill-dark);
+
+		.ui-header-content-title {
+			> .ui-card-title,
+			> span:first-child {
+				color: var(--s-color-content-dark);
+			}
+		}
+
+		.ui-card-section,
+		.ui-card-footer {
+			border-color: var(--s-color-border-dark);
+		}
+
 		hr {
-			background-color: var(--dark-100);
+			background-color: var(--s-color-background-dark);
 		}
 
 		.ui-card-header-content > .muted {
 			opacity: 0.8;
-			font-size: 14px;
 		}
 	}
 }
 
 .ui-card-image-drop {
 	position: relative;
-	z-index: 2;
+	z-index: var(--s-index-low);
 
 	.body-dragover & {
-		background: hsl(var(--success), 45%);
+		background: hsl(var(--s-color-fill-success), 45%);
 
 		&::after {
-			border: dashed 2px var(--success);
+			border: dashed 2px var(--s-color-fill-success);
 			content: 'Arraste e solte aqui';
-			font-size: 18px;
+			font: var(--s-typography-paragraph-regular);
 			position: absolute;
 			display: flex;
 			top: 0;
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background: #fff;
-			z-index: 88;
+			background: var(--s-color-fill-default);
+			z-index: var(--s-index-max);
 			align-items: center;
 			justify-content: center;
 			opacity: 0.9;
-			color: var(--success);
+			color: var(--s-color-content-success);
 		}
 	}
 
 	.loader-fill {
-		border: var(--card-border-radius, 8px);
+		border: var(--s-border-radius-medium);
 	}
 }
