@@ -8,10 +8,19 @@ import { slugify as _slugify, truncate } from '../../../filters'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue'
 
+export type SeoModelValue = {
+	meta_title?: string
+	meta_description?: string
+	meta_keywords?: string
+	slug?: string
+	name?: string
+	[key: string]: string | undefined
+}
+
 export interface Props {
 	title?: string
 	domain?: string
-	modelValue?: any
+	modelValue: SeoModelValue
 	viewOnly?: boolean
 	writeOnly?: boolean
 	isMetaTitle?: boolean
@@ -40,6 +49,17 @@ const metaDescription = computed(() => {
 	return truncate(desc, 250, '...')
 })
 
+const emit = defineEmits(['update:modelValue'])
+
+const seoModelValue = computed({
+	get() {
+		return props.modelValue
+	},
+	set(newValue) {
+		emit('update:modelValue', newValue)
+	}
+})
+
 const formatMetaTitle = (value: string) => {
 	if (value && props.metaTitle && !props.isMetaTitle) {
 		value = value + TITLE_SEPARATOR + props.metaTitle
@@ -60,7 +80,7 @@ watchEffect(() => {
 	if (props.modelValue) {
 		metaTitle.value = formatMetaTitle(props.modelValue[props.keyTitle] || props.modelValue.name || metaTitle.value)
 		metaSubtitle.value = props.modelValue[props.keySubTitle] || null
-		urlRewrite.value = _slugify(props.modelValue.slug) || _slugify(metaTitle.value)
+		urlRewrite.value = !!props.modelValue.slug ? _slugify(props.modelValue.slug) : _slugify(metaTitle.value)
 	}
 })
 </script>
@@ -70,26 +90,26 @@ watchEffect(() => {
 		<Row>
 			<Col v-if="!viewOnly">
 				<FormLayoutItem>
-					<FormTextfield v-model="modelValue.meta_title" placeholder="Meta title" label="Meta title" countable />
+					<FormTextfield v-model="seoModelValue.meta_title" placeholder="Meta title" label="Meta title" />
 				</FormLayoutItem>
 				<FormLayoutItem>
 					<FormTextfield
-						v-model="modelValue.meta_description"
+						v-model="seoModelValue.meta_description"
 						placeholder="Meta description"
 						label="Meta description"
 						maxlength="250"
-						type="textarea"
-						countable />
+						type="textarea" />
 				</FormLayoutItem>
 				<FormLayoutItem>
 					<FormTextfield
-						v-model="modelValue.meta_keywords"
+						v-model="seoModelValue.meta_keywords"
 						placeholder="Ex: palavra1, palavra2"
 						label="Meta keywords"
-						maxlength="200"
-						countable />
+						maxlength="200" />
 				</FormLayoutItem>
-				<FormTextfield v-model="modelValue.slug" placeholder="Ex: minha-url-amigavel" label="Url amigável" />
+				<FormLayoutItem>
+					<FormTextfield v-model="seoModelValue.slug" placeholder="Ex: minha-url-amigavel" label="Url amigável" />
+				</FormLayoutItem>
 			</Col>
 			<Col v-if="!writeOnly">
 				<div class="ui-seo-card">
@@ -106,7 +126,7 @@ watchEffect(() => {
 				</div>
 			</Col>
 		</Row>
-		<Alert variant="primary" :show="!viewOnly" :style="{ marginTop: '10px' }">
+		<Alert :show="!viewOnly" class="mt-4">
 			<AlertTitle>Dicas de cadastro</AlertTitle>
 			<ul>
 				<li><b>Meta title</b>: até 90 caracteres; Google exibe somente 63</li>
