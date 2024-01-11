@@ -6,12 +6,12 @@ const props = defineProps<{
 	variant?: 'success' | 'danger' | 'info' | 'warning'
 	icon?: string
 	dismissible?: boolean
-	show: boolean
+	show?: boolean
 	center?: boolean
 	label?: string
 }>()
 const emit = defineEmits(['dismissed'])
-const open = ref(props.show)
+const open = ref(Boolean(props.show))
 
 const iconsByVariant: Record<string, string> = {
 	success: 'check_circle',
@@ -50,7 +50,7 @@ const currentIcon = computed(() => {
 })
 
 watchEffect(() => {
-	open.value = props.show
+	open.value = Boolean(props.show)
 })
 </script>
 <template>

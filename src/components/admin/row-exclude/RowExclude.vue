@@ -17,7 +17,7 @@ interface IRow {
 	id: number
 }
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'update'])
 const props = defineProps<Props>()
 const includes = ref<number[]>([])
 
