@@ -1,10 +1,12 @@
 export interface IDropdownItem {
-	text?: string
+	text: string
+	caption: string
 	onAction?: () => void
 	icon?: string
 	to?: string | { name: string }
 	href?: string
 	target?: string
+	component?: any
 }
 export interface UserCard {
 	name: string

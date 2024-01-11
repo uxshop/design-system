@@ -45,5 +45,6 @@ $semantic-typographies: (
   paragraph-strong: baseFont(semibold),
 
   caption-small: baseFont(regular, 0.8, 16),
-  caption-medium: baseFont(regular, 0.9, 24)
+  caption-medium: baseFont(regular, 0.9, 24),
+  caption-large: baseFont(semibold, 1, 24)
 );
