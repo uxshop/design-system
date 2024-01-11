@@ -2,21 +2,20 @@
 
 .ui-colorpicker {
 	display: inline-block;
-
 	.ui-colorpicker-label {
 		display: block;
 	}
 
 	.ui-colorpicker-content {
 		display: flex;
-		gap: 8px;
+		gap: var(--s-spacing-nano);
 	}
 
 	.pickr {
-		min-height: var(--input-height);
-		min-width: var(--input-height);
+		min-height: var(--s-spacing-small);
+		min-width: var(--s-spacing-small);
 		position: relative;
-		border-radius: var(--input-border-radius);
+		border-radius: var(--s-border-radius-small);
 
 		&:after {
 			position: absolute;
@@ -26,8 +25,8 @@
 			right: 0;
 			content: '';
 			display: block;
-			border: solid var(--input-border-width);
-			z-index: 22;
+			border: var(--s-border-light);
+			z-index: var(--s-index-medium-high);
 			border-radius: inherit;
 			opacity: 0.2;
 			cursor: pointer;
@@ -40,7 +39,7 @@
 			width: 100%;
 			&::after,
 			&::before {
-				border-radius: inherit !important;
+				border-radius: inherit;
 				transition: none;
 			}
 
@@ -56,20 +55,20 @@
 }
 
 .pcr-app {
-	background-color: var(--bg-white);
+	background-color: var(--s-color-fill-default);
 
 	.pcr-interaction {
-		flex-wrap: nowrap !important;
+		flex-wrap: nowrap;
 
 		input {
-			font-size: 11px !important;
-			letter-spacing: 0 !important;
+			font: var(--s-typography-caption-small);
 		}
 
 		.pcr-result {
-			min-width: 40px !important;
-			background-color: var(--input-bg-color);
-			color: var(--body-color);
+			min-width: var(--s-spacing-large);
+			background-color: var(--s-color-fill-default);
+
+			color: var(--s-color-content-default);
 		}
 
 		.pcr-save {
