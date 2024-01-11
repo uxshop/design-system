@@ -17,7 +17,7 @@
 			@include fade-in-out(var(--s-motion-duration-default));
 			opacity: 0;
 			display: none;
-			padding: 0 var(--s-spacing-nano);
+			padding: var(--s-spacing-xx-small) var(--s-spacing-nano) var(--s-spacing-xx-small) var(--s-spacing-nano);
 		}
 		&.-open {
 			.icon-arrow-up {
@@ -32,7 +32,7 @@
 			width: 100%;
 			&:hover,
 			&:focus {
-				background-color: var(--s-color-fill-highlight);
+				background-color: var(--s-color-fill-default-hover);
 			}
 		}
 	}
@@ -42,85 +42,32 @@
 		&:hover {
 			background-color: var(--s-color-fill-default-hover);
 		}
-
-		&-wrapper {
-			display: flex;
-			gap: var(--s-spacing-nano);
-			align-items: center;
-			position: relative;
-			cursor: pointer;
-			padding: var(--s-spacing-nano) var(--s-spacing-x-small);
-			width: 100%;
-			border-radius: var(--s-border-radius-small);
-		}
-
-		&-avatar {
-			width: var(--input-height);
-			height: var(--input-height);
-			align-items: center;
-			justify-content: center;
-			border-radius: 100%;
-			overflow: hidden;
-			border: solid 2px var(--s-color-border-highlight);
-			display: inline-flex;
-			font-weight: 600;
-			text-align: center;
-			color: var(--s-color-content-light);
-			text-transform: uppercase;
-			position: relative;
-
-			&::after {
-				content: '';
-				border: solid 3px #fff;
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				z-index: var(--s-index-max);
-				border-radius: 100%;
-			}
-
-			img {
-				max-width: 100%;
-				padding: 2px;
-			}
-		}
-
-		&-text {
-			display: flex;
-			flex: 1;
-			align-items: center;
-			justify-content: space-between;
-			line-height: 1.2;
-			text-align: left;
-
-			.name {
-				display: block;
-				font-weight: bold;
-			}
-
-			&-info {
-				width: 100%;
-			}
-		}
 	}
 
 	@include darkmode {
-		.user-card-btn:hover {
-			background: var(--dark-100);
-		}
+		.dropdown-item {
+			&-caption {
+				color: var(--s-color-content-dark);
+			}
+			.ui-dropdown-item {
+				color: var(--s-color-content-dark);
 
-		.user-card-btn-wrapper {
-			color: var(--body-color);
+				&:hover {
+					background-color: var(--s-color-fill-dark-hover);
+					color: var(--s-color-content-dark);
+				}
+			}
 		}
-
-		.user-card-btn-avatar {
-			background-color: var(--dark-100);
-		}
-
-		.user-card-btn .user-card-btn-avatar::after {
-			border-color: var(--dark-300);
+		.user-card {
+			&-btn {
+				&:hover,
+				&:active {
+					background: var(--dark-100);
+				}
+			}
+			&-label {
+				color: var(--s-color-content-dark);
+			}
 		}
 	}
 }

@@ -63,7 +63,8 @@ const toggleMenu = (item: any) => {
 									class="ui-sidebar-link"
 									:class="{
 										'-nodes': item.nodes?.length,
-										'-node-active': item.active
+										'-node-active': item.active,
+										'-active': item.active
 									}"
 									activeClass="-active"
 									@click="emit('onClickItem', 'node', item)">
