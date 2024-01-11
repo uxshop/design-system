@@ -9,64 +9,53 @@
 	outline: none;
 	text-align: center;
 	white-space: nowrap;
-	z-index: 1;
-	height: 100%;
-	font-weight: 500;
-	padding: 5px;
+	z-index: var(--s-index-default);
+	padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
 	color: inherit;
+	position: relative;
+	font: var(--s-typography-paragraph-regular);
 
 	.ui-tab-item-badge {
-		background-color: var(--gray-200);
-		border-radius: 100%;
-		padding: 4px;
-		font-weight: var(--font-weight-semibold);
-		font-size: 11px;
-		margin-left: 6px;
-		min-width: 20px;
+		background-color: var(--s-color-fill-disable);
+		border-radius: var(--s-border-radius-large);
+		padding: 0 var(--s-spacing-quark);
+		font: var(--s-typography-label-small);
 	}
 
 	.ui-tab-item-content {
 		justify-content: center;
 		align-items: center;
 		display: flex;
-		padding: 0 24px;
-		position: relative;
+		column-gap: var(--s-spacing-quark);
 		height: 100%;
-		margin-bottom: -1px;
+	}
 
-		&::after {
-			content: '';
-			height: 3px;
-			background: transparent;
-			width: 100%;
-			position: absolute;
-			bottom: -5px;
-			display: block;
-			left: 0;
-			transition: height 0.2s;
-			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
-		}
+	&::after {
+		content: '';
+		height: 2px;
+		background: transparent;
+		width: 100%;
+		position: absolute;
+		bottom: 0px;
+		display: block;
+		left: 0;
+		transition: var(--s-motion-ease-linear) var(--s-motion-duration-fast);
+		border-top-left-radius: var(--s-border-radius-medium);
+		border-top-right-radius: var(--s-border-radius-medium);
 	}
 
 	&:hover:not(.-active) {
-		.ui-tab-item-content:after {
-			background: var(--gray-300);
+		&:after {
+			background: var(--s-color-fill-default-hover);
 		}
 	}
 
 	&.-active {
-		color: var(--primary);
-		font-weight: var(--font-weight-semibold);
+		color: var(--s-color-content-highlight);
+		font: var(--s-typography-paragraph-strong);
 
-		// .ui-tab-item-content {
-		// 	background: var(--primary);
-		// 	color: white;
-		// 	border-radius: 5px;
-		// }
-
-		.ui-tab-item-content:after {
-			background-color: var(--primary);
+		&:after {
+			background-color: var(--s-color-fill-highlight);
 		}
 	}
 }
