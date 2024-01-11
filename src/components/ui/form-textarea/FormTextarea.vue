@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import type { InputMode } from '../../../types'
 
@@ -36,12 +36,12 @@ const emit = defineEmits<{
 	(e: 'update', val: string): void
 }>()
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
 	rows: 4,
-  state: undefined,
+	state: undefined
 })
 
-const classList = ref<string[]>([])
+const classList = computed(() => [props.state === true ? '-valid' : props.state === false ? '-invalid' : ''])
 
 const update = (evt: Event) => {
 	const target = evt.target as HTMLTextAreaElement

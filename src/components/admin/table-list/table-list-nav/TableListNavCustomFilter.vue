@@ -1,22 +1,14 @@
 <script setup lang="ts">
+import { computed, onMounted, ref } from 'vue'
+import { cloneDeep, keys, pick, find, omit, isNumber, isObject, each } from 'lodash-es'
 import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import Button from '../../../ui/button/Button.vue'
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
-import { computed, onMounted, ref } from 'vue'
 import Stack from '../../../ui/stack/Stack.vue'
 import DropdownSection from '../../../ui/dropdown/DropdownSection.vue'
-import { cloneDeep, keys, pick, find, omit, isNumber, isObject, each } from 'lodash-es'
 import toast from '../../../ui/toast'
-import type { ITableListState } from '../types/ITableListState'
 import { slugify } from '../../../../filters'
-import FormLayoutItem from '../../../ui/form-layout/FormLayoutItem.vue'
-
-interface FilterInterface {
-	id: number | string
-	name: string
-	view: string | number
-	filter: Record<string, any>
-}
+import type { ITableListState } from '../types/ITableListState'
 
 const props = defineProps<{
 	state: ITableListState
@@ -137,7 +129,7 @@ const onShowDropdown = () => {
 					label="Editar filtro"
 					leadingIcon="star"
 					size="sm"
-					variant="dark"
+					variant="primary"
 					:disabled="disableDropdown" />
 				<Button v-else label="Salvar filtro" leadingIcon="star" size="sm" :disabled="disableDropdown" />
 			</template>

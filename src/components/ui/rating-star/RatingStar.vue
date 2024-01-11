@@ -3,13 +3,12 @@ import Icon from '../icon/Icon.vue'
 
 export interface Props {
 	modelValue: number
-	size: string | number
+	size?: string | number
 }
 
 const emit = defineEmits(['update:modelValue', 'update'])
 const props = withDefaults(defineProps<Props>(), {
 	modelValue: 1,
-	size: 20
 })
 
 const getClass = (star: number) => {

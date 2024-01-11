@@ -25,15 +25,15 @@ const translateKey = (item: string) => {
 
 const dateFormat = (date: any) => {
 	let dates = date.split('--')
-	const startDate =  DateTime.fromSQL(dates[0]).toFormat('dd/MM/yyyy')
-	
-	if(dates.length > 1){
+	const startDate = DateTime.fromSQL(dates[0]).toFormat('dd/MM/yyyy')
+
+	if (dates.length > 1) {
 		const endDate = DateTime.fromSQL(dates[1]).toFormat('dd/MM/yyyy')
 		dates = `${startDate} ~ ${endDate}`
-	}else{
+	} else {
 		dates = startDate
 	}
-	
+
 	return dates
 }
 
@@ -45,7 +45,7 @@ const translateValue = (item: any, key: string) => {
 		return item
 	}
 
-	if (key == 'created_at'){
+	if (key == 'created_at') {
 		return dateFormat(item)
 	}
 
@@ -95,7 +95,7 @@ const showTags = computed(() => {
 <template>
 	<TagList class="table-list-tags" v-if="showTags">
 		<Tag
-			variant="dark"
+			variant="primary"
 			@remove="removeFilter(String(key))"
 			v-for="(item, key) in state.omitFilters"
 			v-show="String(key) != 'q'"

@@ -37,7 +37,11 @@ const picker = shallowRef()
 const uid = `ui-form-datepicker-${getCurrentInstance()?.uid}`
 const FORMAT_DATE = 'DD/MM/YYYY'
 
-const classList = computed(() => [props.range && '-range', props.size && `-${props.size}`])
+const classList = computed(() => [
+	props.range && '-range',
+	props.size && `-${props.size}`,
+	props.state === true ? '-valid' : props.state === false ? '-invalid' : ''
+])
 
 const update = (value: null) => {
 	emit('update:modelValue', value)
