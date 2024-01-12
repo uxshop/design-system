@@ -48,16 +48,6 @@
 		justify-content: center;
 		text-align: center;
 	}
-
-	@include darkmode {
-		.ui-toast {
-			&.-variant {
-				&-default {
-					background-color: var(--s-color-fill-dark);
-				}
-			}
-		}
-	}
 }
 
 @keyframes slideUp {
