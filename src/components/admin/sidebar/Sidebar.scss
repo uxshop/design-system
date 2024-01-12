@@ -4,13 +4,12 @@
 .ui-sidebar {
 	position: fixed;
 	top: 0;
-	z-index: 888;
+	z-index: var(--s-index-very-high);
 	height: 100%;
 
 	> .ui-sidebar-wrapper {
 		min-width: var(--layout-sidebar-width);
 		max-width: var(--layout-sidebar-width);
-		z-index: 900;
 		display: flex;
 		flex-direction: column;
 		position: sticky;
