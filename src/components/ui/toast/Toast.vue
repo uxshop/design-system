@@ -9,7 +9,7 @@ interface ToastProps {
 	duration?: number
 	id?: string
 	message?: string
-	variant?: Variant
+	variant?: Variant | 'default'
 }
 
 interface StateInterface {
