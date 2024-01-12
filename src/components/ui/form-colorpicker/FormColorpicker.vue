@@ -150,7 +150,7 @@ defineExpose({
 			<div class="pickr" :id="uid"></div>
 			<input
 				v-if="withInput"
-				class="form-control -sm"
+				class="form-control"
 				maxlength="9"
 				v-bind="$attrs"
 				:placeholder="placeholder"
@@ -169,9 +169,10 @@ defineExpose({
 .pcr-button {
 	position: absolute;
 	&.clear {
-		background-size: 40% !important;
-		background: $add-icon no-repeat center;
-		background-color: var(--s-color-fill-default);
+		--pcr-color: none !important;
+		background-size: 60% !important;
+		background: $add-icon no-repeat center var(--s-color-fill-default);
+		border: var(--s-border-light);
 	}
 }
 </style>
