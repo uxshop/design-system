@@ -157,7 +157,7 @@ defineExpose({
 				:value="modelValue"
 				@focus="focused = true"
 				@blur="focused = false"
-				@update="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
+				@input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)" />
 		</div>
 	</label>
 </template>
