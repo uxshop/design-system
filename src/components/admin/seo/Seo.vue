@@ -8,7 +8,7 @@ import { slugify as _slugify, truncate } from '../../../filters'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue'
 
-export type SeoModelValue = {
+export interface SeoInterface  {
 	meta_title?: string
 	meta_description?: string
 	meta_keywords?: string
@@ -20,7 +20,7 @@ export type SeoModelValue = {
 export interface Props {
 	title?: string
 	domain?: string
-	modelValue: SeoModelValue
+	modelValue: SeoInterface
 	viewOnly?: boolean
 	writeOnly?: boolean
 	isMetaTitle?: boolean

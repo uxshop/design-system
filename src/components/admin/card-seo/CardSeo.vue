@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import Card from '../../ui/card/Card.vue'
-import Seo, { type SeoModelValue } from '../seo/Seo.vue'
+import Seo, { type SeoInterface } from '../seo/Seo.vue'
 
 const props = defineProps<{
-	modelValue: SeoModelValue
+	modelValue: SeoInterface
 	keyTitle?: string
 	keySubTitle?: string
 	keyDescription?: string
