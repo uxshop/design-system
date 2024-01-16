@@ -18,7 +18,7 @@
 		height: 100%;
 		position: sticky;
 		top: 0;
-		z-index: 444;
+		z-index: var(--s-index-high);
 	}
 
 	.ui-layout-content {
@@ -32,7 +32,7 @@
 		grid-area: ui-layout-sidebar;
 		position: sticky;
 		top: 0;
-		z-index: 888;
+		z-index: var(--s-index-very-high);
 	}
 
 	.ui-layout-content-page {
