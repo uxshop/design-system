@@ -459,7 +459,7 @@ VueWrapper {
               "show": {
                 "0": true,
                 "1": true,
-                "required": true,
+                "required": false,
                 "type": [Function],
               },
               "title": {
@@ -691,7 +691,7 @@ VueWrapper {
                 "type": [Function],
               },
               "show": {
-                "required": true,
+                "required": false,
                 "type": [Function],
               },
               "title": {
@@ -767,7 +767,7 @@ VueWrapper {
               "type": [Function],
             },
             "show": {
-              "required": true,
+              "required": false,
               "type": [Function],
             },
             "title": {
@@ -877,7 +877,7 @@ VueWrapper {
     "runWithContext": [Function],
     "unmount": [Function],
     "use": [Function],
-    "version": "3.4.5",
+    "version": "3.4.7",
   },
   "__setProps": [Function],
   "cleanUpCallbacks": [],
@@ -1912,7 +1912,7 @@ VueWrapper {
               "show": {
                 "0": true,
                 "1": true,
-                "required": true,
+                "required": false,
                 "type": [Function],
               },
               "title": {
@@ -2953,7 +2953,7 @@ VueWrapper {
                 "type": [Function],
               },
               "show": {
-                "required": true,
+                "required": false,
                 "type": [Function],
               },
               "title": {
@@ -3050,7 +3050,7 @@ VueWrapper {
               "type": [Function],
             },
             "show": {
-              "required": true,
+              "required": false,
               "type": [Function],
             },
             "title": {
@@ -3181,7 +3181,7 @@ VueWrapper {
     "runWithContext": [Function],
     "unmount": [Function],
     "use": [Function],
-    "version": "3.4.5",
+    "version": "3.4.7",
   },
   "__setProps": [Function],
   "cleanUpCallbacks": [
@@ -4431,7 +4431,7 @@ VueWrapper {
               "show": {
                 "0": true,
                 "1": true,
-                "required": true,
+                "required": false,
                 "type": [Function],
               },
               "title": {
@@ -6325,7 +6325,7 @@ VueWrapper {
                 "type": [Function],
               },
               "show": {
-                "required": true,
+                "required": false,
                 "type": [Function],
               },
               "title": {
@@ -6428,7 +6428,7 @@ VueWrapper {
               "type": [Function],
             },
             "show": {
-              "required": true,
+              "required": false,
               "type": [Function],
             },
             "title": {
@@ -6564,7 +6564,7 @@ VueWrapper {
     "runWithContext": [Function],
     "unmount": [Function],
     "use": [Function],
-    "version": "3.4.5",
+    "version": "3.4.7",
   },
   "__setProps": [Function],
   "cleanUpCallbacks": [
