@@ -30,6 +30,12 @@ const meta: Meta<typeof FormCurrency> = {
 		},
 		step: {
 			control: 'number'
+		},
+		min: {
+			control: 'number'
+		},
+		max: {
+			control: 'number'
 		}
 	}
 }
@@ -52,11 +58,7 @@ export const Loading: Story = {
 	}
 }
 
-export const Disabled: Story = {
-	args: {
-		disabled: true
-	}
-}
+export const Disabled: Story = {}
 
 export const LeadingIcon: Story = {
 	args: {
@@ -80,5 +82,12 @@ export const InvalidFeedback: Story = {
 	args: {
 		state: false,
 		invalidFeedback: 'Campo inválido'
+	}
+}
+
+export const MinAndMax: Story = {
+	args: {
+		min: 10,
+		max: 100
 	}
 }

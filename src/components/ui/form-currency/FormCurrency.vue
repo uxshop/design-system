@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue'
 import { useCurrencyInput, type CurrencyInputOptions, CurrencyDisplay } from 'vue-currency-input'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import type { Size } from '../../../types'
+import { number } from 'src/filters'
 
 export interface Props {
 	leadingIcon?: string
@@ -28,10 +29,11 @@ export interface Props {
 	readonly?: boolean
 	options?: Record<string, unknown>
 }
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'change'])
 const props = withDefaults(defineProps<Props>(), {
+	state: undefined,
 	placeholder: '0.00',
-	state: undefined
+	max: 999999.99
 })
 const focused = ref(props.autofocus ?? false)
 
@@ -42,6 +44,7 @@ const classList = computed(() => [
 
 /* @see https://dm4t2.github.io/vue-currency-input/config.html */
 const settings: CurrencyInputOptions = {
+	...props.options,
 	...{
 		locale: 'pt-BR',
 		currency: 'BRL',
@@ -54,11 +57,10 @@ const settings: CurrencyInputOptions = {
 		useGrouping: true,
 		accountingSign: false,
 		valueRange: {
-			min: Number(props.min) ?? null,
-			max: Number(props.max) ?? 999999.99
+			min: props.min,
+			max: props.max
 		}
-	},
-	...props.options
+	}
 }
 
 const { inputRef, setValue } = useCurrencyInput(settings)
@@ -66,8 +68,17 @@ const { inputRef, setValue } = useCurrencyInput(settings)
 watch(
 	() => props.modelValue,
 	(newVal: any) => {
-		if (newVal) setValue(parseFloat(newVal))
-		else setValue(null)
+		setValue(parseFloat(newVal))
+	},
+	{ immediate: true }
+)
+
+watch(
+	() => focused.value,
+	(newVal: any) => {
+		if (!newVal) return
+		emit('change', newVal)
+		emit('update:modelValue', newVal)
 	},
 	{ immediate: true }
 )
