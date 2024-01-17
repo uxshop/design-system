@@ -2,18 +2,28 @@
 
 .ui-form-radio {
 	display: flex;
+	align-items: center;
+	gap: var(--s-spacing-nano);
 	position: relative;
 	cursor: pointer;
 	user-select: none;
-	font-weight: 600;
+	font-weight: var(--s-font-weight-semibold);
 
 	+ .ui-form-radio {
-		margin-top: var(--form-group-margin-bottom);
+		margin-top: var(--s-spacing-x-small);
 	}
 
 	&:hover {
 		.ui-form-radio-checkmark {
-			border-color: var(--primary);
+			border-color: var(--s-color-border-highlight);
+		}
+	}
+
+	&.-disabled {
+		cursor: not-allowed;
+
+		.ui-form-radio-checkmark {
+			border-color: var(--s-color-border-disable);
 		}
 	}
 
@@ -24,7 +34,7 @@
 		transform: translate(3.5px, 4px);
 
 		&:checked ~ .ui-form-radio-checkmark {
-			background-color: var(--primary);
+			background-color: var(--s-color-fill-highlight);
 			border-color: transparent;
 		}
 	}
@@ -34,20 +44,21 @@
 	}
 
 	.ui-form-radio-text {
-		margin-left: 8px;
+		font: var(--s-typography-paragraph-regular);
 	}
 
 	.ui-form-radio-checkmark {
 		position: relative;
 		top: 0;
 		left: 0;
-		height: var(--form-check-height);
-		width: var(--form-check-height);
-		min-height: var(--form-check-height);
-		min-width: var(--form-check-height);
-		background-color: var(--bg-white);
-		border-radius: 100%;
-		border: solid var(--form-check-border-width) var(--input-border-color);
+		height: var(--s-spacing-x-small);
+		width: var(--s-spacing-x-small);
+		min-height: var(--s-spacing-x-small);
+		min-width: var(--s-spacing-x-small);
+		border: var(--s-border-light);
+		border-color: var(--s-color-content-placeholder);
+		background-color: var(--s-color-fill-default);
+		border-radius: var(--s-border-radius-pill);
 
 		&:after {
 			display: block;
@@ -57,16 +68,29 @@
 			right: 0;
 			left: 0;
 			top: 0;
-			border: solid 2px var(--bg-white);
+			border: var(--s-border-light);
+			border-color: var(--s-color-content-placeholder);
 			background-color: transparent;
-			border-radius: 100%;
+			border-radius: var(--s-border-radius-pill);
 		}
 	}
 
-	&:disabled {
-		&:not(:checked) {
+	@include darkmode {
+		.ui-form-radio-text {
+			color: var(--s-color-content-dark);
+		}
+
+		.ui-form-radio-checkmark {
+			border-color: var(--s-color-content-dark-placeholder);
+
 			&:after {
-				opacity: 0.6;
+				border-color: var(--s-color-content-dark-placeholder);
+			}
+		}
+
+		&.-disabled {
+			.ui-form-radio-checkmark {
+				border-color: var(--s-color-content-dark-disable);
 			}
 		}
 	}
