@@ -3,7 +3,6 @@ import { computed, ref, watch } from 'vue'
 import { useCurrencyInput, type CurrencyInputOptions, CurrencyDisplay } from 'vue-currency-input'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import type { Size } from '../../../types'
-import { number } from 'src/filters'
 
 export interface Props {
 	leadingIcon?: string
