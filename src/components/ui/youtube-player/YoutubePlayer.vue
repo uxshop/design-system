@@ -26,10 +26,6 @@ function onPlayerReady(event) {
 	event.target.playVideo()
 }
 
-function stopVideo() {
-	player.value.stopVideo()
-}
-
 onMounted(() => {
 	if (!window.onYTReady) {
 		const tag = document.createElement('script')
@@ -43,5 +39,5 @@ onMounted(() => {
 </script>
 
 <template>
-	<div id="player"></div>
+	<div id="player" />
 </template>
