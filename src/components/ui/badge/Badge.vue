@@ -8,8 +8,8 @@ type BadgeVariant = Variant
 export interface BadgeProps {
 	label?: string | number
 	pill?: boolean
-	size?: BadgeSize
-	variant?: BadgeVariant
+	size?: Size
+	variant?: Variant | 'default'
 }
 
 const props = withDefaults(defineProps<BadgeProps>(), {
