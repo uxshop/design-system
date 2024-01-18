@@ -3,20 +3,20 @@ import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue'
 import Icon from '../icon/Icon.vue'
 
 const props = defineProps<{
-	modelValue?: boolean
-	title?: string
-	scrollable?: boolean
-	noCloseOnBackdrop?: boolean
-	show?: boolean
-	size?: string
-	inner?: boolean
+	centered?: boolean
 	class?: string
 	hideHeader?: boolean
 	hideFooter?: boolean
-	centered?: boolean
 	id?: string
-	width?: string
+	inner?: boolean
+	modelValue?: boolean
+	noCloseOnBackdrop?: boolean
 	params?: Record<string, unknown>
+	scrollable?: boolean
+	show?: boolean
+	size?: string
+	title?: string
+	width?: string
 }>()
 
 const emit = defineEmits(['update:modelValue', 'close', 'open'])
