@@ -1,6 +1,7 @@
 @import '../../../scss/mixins.scss';
 
 .ui-slider {
+	// TODO: nedd create rgb color to fix this
 	--pure-material-safari-helper1: rgba(var(--primary-rgb, 33, 150, 243), 0.1);
 	--pure-material-safari-helper2: rgba(var(--primary-rgb, 33, 150, 243), 0.12);
 	--pure-material-safari-helper3: rgba(var(--primary-rgb, 33, 150, 243), 0.16);
@@ -10,17 +11,15 @@
 	color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
 	line-height: 1.5;
 	position: relative;
-	height: 36px;
+	height: var(--s-spacing-large);
 }
 
 /* Input */
 .ui-slider > input {
 	-webkit-appearance: none;
-	top: 24px;
 	display: block;
-	margin: 0 0 -36px;
 	width: 100%;
-	height: 36px;
+	height: var(--s-spacing-large);
 	background-color: transparent;
 	cursor: pointer;
 }
@@ -34,7 +33,7 @@
 /* Span */
 .ui-slider > span {
 	display: inline-block;
-	margin-bottom: 36px;
+	margin-bottom: var(--s-spacing-large);
 }
 
 /* Focus */
@@ -48,17 +47,16 @@
 	opacity: 0.38;
 }
 
-.ui-slider > input:disabled + span {
-	color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
-}
-
 /* Webkit | Track */
 .ui-slider > input::-webkit-slider-runnable-track {
 	margin: 17px 0;
 	border-radius: 1px;
 	width: 100%;
 	height: 2px;
-	background-color: rgba(var(--primary-rgb, 33, 150, 243), 0.24);
+	background-color: var(--s-color-background-highlight);
+}
+.ui-slider > input:disabled::-webkit-slider-runnable-track {
+	background-color: var(--s-color-fill-disable) !important;
 }
 
 /* Webkit | Thumb */
@@ -66,10 +64,10 @@
 	appearance: none;
 	-webkit-appearance: none;
 	border: none;
-	border-radius: 50%;
+	border-radius: var(--s-border-radius-pill);
 	height: 2px;
 	width: 2px;
-	background-color: rgb(var(--primary-rgb, 33, 150, 243));
+	background-color: var(--s-color-background-highlight);
 	transform: scale(6, 6);
 	transition: box-shadow 0.2s;
 }
@@ -106,7 +104,7 @@
 
 /* Moz | Track */
 .ui-slider > input::-moz-range-track {
-	margin: 17px 0;
+	margin: var(--s-spacing-x-small) 0;
 	border-radius: 1px;
 	width: 100%;
 	height: 2px;
@@ -118,7 +116,7 @@
 	appearance: none;
 	-moz-appearance: none;
 	border: none;
-	border-radius: 50%;
+	border-radius: var(--s-border-radius-pill);
 	height: 2px;
 	width: 2px;
 	background-color: rgb(var(--primary-rgb, 33, 150, 243));
@@ -173,10 +171,10 @@
 /* MS | Track */
 .ui-slider > input::-ms-track {
 	box-sizing: border-box;
-	margin: 17px 0;
+	margin: var(--s-spacing-x-small) 0;
 	border: none;
 	border-radius: 1px;
-	padding: 0 17px;
+	padding: 0 var(--s-spacing-x-small);
 	width: 100%;
 	height: 2px;
 	background-color: transparent;
@@ -198,9 +196,9 @@
 /* MS | Thumb */
 .ui-slider > input::-ms-thumb {
 	appearance: none;
-	margin: 0 17px;
+	margin: 0 var(--s-spacing-x-small);
 	border: none;
-	border-radius: 50%;
+	border-radius: var(--s-border-radius-pill);
 	height: 2px;
 	width: 2px;
 	background-color: rgb(var(--primary-rgb, 33, 150, 243));
@@ -244,19 +242,19 @@
 
 .ui-slider-bubble {
 	background: var(--dark);
-	color: white;
-	padding: 4px 12px;
+	color: var(--s-color-fill-default);
+	padding: var(--s-spacing-quark) var(--s-spacing-x-small);
 	position: absolute;
-	border-radius: 4px;
+	border-radius: var(--s-spacing-quark);
 	left: 50%;
 	top: 100%;
 	transform: translateX(-50%) scale(0.7);
 	opacity: 0;
 	transition-duration: 0.2s;
 	transition-property: transform, opacity;
-	width: 50px;
+	width: var(--s-spacing-x-large);
 	text-align: center;
-	font-size: 11px;
+	font-size: --s-spacing-x-small;
 
 	&.-active {
 		transform: translateX(-50%) scale(1);
