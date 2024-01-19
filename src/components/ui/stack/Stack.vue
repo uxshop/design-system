@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue'
+import type { Alignment, Distribuition, Spacing } from '../../../types/Types'
 
 export interface StackProps {
-	distribution?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
-	spacing?: string
-	alignment?: 'start' | 'center' | 'end' | 'fill'
+	distribution?: Distribuition
+	spacing?: Spacing
+	alignment?: Alignment
 	vertical?: boolean
 	wrap?: boolean
 	columns?: string | number
@@ -14,18 +15,12 @@ export interface StackProps {
 const props = defineProps<StackProps>()
 
 const stackClassList = computed(() => [
-	props.distribution != 'default' && props.distribution != undefined && `-distribute-${props.distribution}`,
-
-	props.spacing != 'default' && props.spacing != undefined && `-spacing-${props.spacing}`,
-
+	props.distribution !== 'default' && props.distribution != undefined && `-distribute-${props.distribution}`,
+	props.spacing !== 'default' && props.spacing != undefined && `-spacing-${props.spacing}`,
 	props.vertical == true && '-vertical',
-
 	props.alignment && `-align-${props.alignment}`,
-
-	props.wrap == null && props.wrap == false && '-no-wrap',
-
+	props.wrap == null || (props.wrap == false && '-no-wrap'),
 	props.horizontal && '-sm-horizontal',
-
 	props.columns && props.columns > 1 && '-custom-grid'
 ])
 
