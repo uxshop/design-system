@@ -58,7 +58,11 @@ export const Loading: Story = {
 	}
 }
 
-export const Disabled: Story = {}
+export const Disabled: Story = {
+	args: {
+		disabled: true
+	}
+}
 
 export const LeadingIcon: Story = {
 	args: {
