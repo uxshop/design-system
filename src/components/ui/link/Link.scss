@@ -5,9 +5,11 @@
 	border-radius: var(--s-border-small);
 
 	&:hover {
-		background-color: var(--s-color-fill-highlight-light);
 		color: var(--s-color-content-highlight);
-		text-decoration: none;
+		&-content {
+			text-decoration: underline;
+			text-underline-offset: calc(var(--s-spacing-quark) / 2);
+		}
 
 		.ui-link-icon {
 			text-decoration: none;
@@ -32,8 +34,6 @@
 
 	&-content {
 		font: var(--s-typography-label-medium);
-		text-decoration: underline;
-		text-underline-offset: calc(var(--s-spacing-quark) / 2);
 	}
 
 	&-icon {

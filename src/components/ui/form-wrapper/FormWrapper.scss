@@ -13,6 +13,7 @@
 		display: inline-flex;
 		align-items: center;
 		cursor: pointer;
+		margin: 0 var(--s-spacing-xx-small);
 		&:hover {
 			color: var(--s-color-fill-critical);
 		}
@@ -32,7 +33,7 @@
 		}
 	}
 
-  &.-lg {
+	&.-lg {
 		.form-wrapper-content-bx {
 			height: var(--s-spacing-x-large);
 		}
@@ -51,7 +52,6 @@
 		position: relative;
 		display: flex;
 		align-items: center;
-    height: var(--s-spacing-large);
 		border-radius: var(--s-border-radius-small);
 		background-color: var(--s-color-fill-default);
 		@include darkmode {
@@ -131,8 +131,9 @@
 
 	.trailing-wrapper {
 		display: inline-flex;
+
 		.trailing-icon {
-			padding-right: var(--s-spacing-xx-small);
+			padding: 0 var(--s-spacing-xx-small);
 		}
 		.trailing-icon-text {
 			padding: 0 var(--s-spacing-x-small);
@@ -140,7 +141,7 @@
 	}
 
 	.leading-icon {
-		padding-left: var(--s-spacing-xx-small);
+		padding: 0 var(--s-spacing-xx-small);
 	}
 
 	.form-control {
@@ -288,8 +289,7 @@
 
 			~ .form-wrapper-notched .form-wrapper-notched-label {
 				> label {
-					top: var(--s-spacing-x-small);
-					transform: translateY(0);
+					transform: translateY(-50%);
 				}
 			}
 		}

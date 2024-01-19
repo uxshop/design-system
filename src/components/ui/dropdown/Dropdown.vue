@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, onMounted, ref } from 'vue'
+import { computed, getCurrentInstance, nextTick, ref } from 'vue'
 
 const props = defineProps<{
-	variant?: 'white' | 'dark'
 	dropUp?: boolean
 	right?: boolean
 	left?: boolean
-	disabled?: boolean
 	closeOn?: boolean
 }>()
 
@@ -90,9 +88,9 @@ defineExpose({
 </script>
 
 <template>
-	<div class="ui-dropdown" :class="{ '-open': show, '-left': left, '-right': right, '-disbled': disabled }" :id="uid">
+	<div class="ui-dropdown" :class="{ '-open': show, '-left': left, '-right': right }" :id="uid">
 		<div class="ui-dropdown-button" @click="toggleDropdown">
-			<slot name="button-content" />
+			<slot name="button-content" class="ui-dropdown-menu" />
 		</div>
 		<div class="ui-dropdown-menu" :id="uidMenu" :style="style">
 			<slot />

@@ -1,6 +1,4 @@
 .ui-infinite-loading {
 	display: flex;
-	padding: 20px;
-	.ui-infinite-loading-content {
-	}
+	padding: var(--s-spacing-x-small);
 }

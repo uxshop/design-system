@@ -1,18 +1,14 @@
 .ui-text-style {
 	&.-variant {
-		&-highlight {
+		&-primary {
 			color: var(--s-color-content-highlight);
-		}
-
-		&-warning {
-			color: var(--s-color-content-warning);
 		}
 
 		&-success {
 			color: var(--s-color-content-success);
 		}
 
-		&-critical {
+		&-danger {
 			color: var(--s-color-content-critical);
 		}
 

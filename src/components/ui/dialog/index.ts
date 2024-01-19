@@ -1,5 +1,6 @@
 import { render, createVNode } from 'vue'
 import DialogComponent from './Dialog.vue'
+import type { Variant } from '../../../types'
 
 export interface OpenDialogConfig {
 	id?: string
@@ -14,7 +15,7 @@ export interface OpenDialogConfig {
 	promptPlaceholder?: string
 	cancelLabel?: string
 	destructLabel?: string
-	destructVariant?:  'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain'
+	destructVariant?:  Variant
 	destructIcon?: string
 	type?: 'prompt' | 'confirm'
 	opened?: boolean

@@ -67,13 +67,6 @@ const changeSchemeColor = () => emit('changeSchemeColor')
 				<div class="ui-topbar-actions">
 					<slot name="topbar-actions" />
 
-					<IconButton
-						icon="notifications"
-						variant="plain"
-						@click="onNotification"
-						class="ui-topbar-notification-button"
-						:class="{ '-new': notifications }" />
-
 					<ButtonDarkmode @on-changed-theme="changeSchemeColor" />
 				</div>
 			</div>

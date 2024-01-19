@@ -6,12 +6,12 @@ const props = defineProps<{
 	variant?: 'success' | 'danger' | 'info' | 'warning'
 	icon?: string
 	dismissible?: boolean
-	show: boolean
+	show?: boolean
 	center?: boolean
 	label?: string
 }>()
 const emit = defineEmits(['dismissed'])
-const open = ref(props.show)
+const open = ref(Boolean(props.show))
 
 const iconsByVariant: Record<string, string> = {
 	success: 'check_circle',
@@ -42,7 +42,7 @@ const styleClassList = computed(() => {
 })
 
 const currentIcon = computed(() => {
-	let icon = ''
+	let icon = props.icon
 	if (!props.icon && props.variant) {
 		icon = iconsByVariant[props.variant]
 	}
@@ -50,12 +50,12 @@ const currentIcon = computed(() => {
 })
 
 watchEffect(() => {
-	open.value = props.show
+	open.value = Boolean(props.show)
 })
 </script>
 <template>
 	<div v-if="open" class="ui-alert" :class="styleClassList">
-		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24"/>
+		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24" />
 		<div class="ui-alert-content">
 			<h5 class="ui-alert-title" v-if="title">
 				{{ title }}
@@ -65,7 +65,7 @@ watchEffect(() => {
 			</div>
 		</div>
 		<button v-if="dismissible" type="button" class="ui-alert-close" @click="close">
-			<Icon name="close" size="16"/>
+			<Icon name="close" size="24" />
 		</button>
 	</div>
 </template>

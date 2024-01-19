@@ -5,15 +5,15 @@ import QuickSearch from './QuickSearch.vue'
 const meta = {
 	title: 'Admin/QuickSearch',
 	component: QuickSearch,
-	// This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
 	tags: ['autodocs'],
 	args: {
-		isOpen: false,
+		modelValue: true,
+		title: 'Title',
+		caption: 'Encontre os produtos e pedidos da sua loja virtual.',
 		searchOptions: [
 			{ value: 'product', label: 'Produtos' },
 			{ value: 'order', label: 'Pedidos' }
-		],
-		caption: 'Encontre os produtos e pedidos da sua loja virtual.'
+		]
 	}
 } satisfies Meta<typeof QuickSearch>
 
@@ -21,6 +21,4 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-	args: meta.args
-}
+export const Default: Story = {}

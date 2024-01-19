@@ -3,10 +3,10 @@
 
 @layer brand {
 	:root {
-		--b-color-base: #{tokens.getPrimitiveVar($primitives-color, neutral, 600)};
-		--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, neutral, 500)};
-		--b-color-light: #{tokens.getPrimitiveVar($primitives-color, neutral, 100)};
-		--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, neutral, 1000)};
+		--b-color-base: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
+		--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, pink, 500)};
+		--b-color-light: #{tokens.getPrimitiveVar($primitives-color, pink, 100)};
+		--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, pink, 1000)};
 
 		&[data-company='bagy'] {
 			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
@@ -20,7 +20,6 @@
 			--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, blue, 500)};
 			--b-color-light: #{tokens.getPrimitiveVar($primitives-color, blue, 100)};
 			--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, blue, 1000)};
-
 		}
 	}
 }
@@ -30,8 +29,7 @@ $semantic-color: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
 		dark: tokens.getPrimitiveVar($primitives-color, neutral, 1000),
 		overlay: tokens.getPrimitiveVar($primitives-color, black, null, 64),
-		highlight: var(--b-color-base),
-
+		highlight: var(--b-color-base)
 	),
 	fill: (
 		default: tokens.getPrimitiveVar($primitives-color, white),
@@ -58,7 +56,6 @@ $semantic-color: (
 		critical-hover: tokens.getPrimitiveVar($primitives-color, red, 500),
 		critical-light: tokens.getPrimitiveVar($primitives-color, red, 100),
 		critical-dark: tokens.getPrimitiveVar($primitives-color, red, 1000)
-
 	),
 	border: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 300),
@@ -73,7 +70,6 @@ $semantic-color: (
 		dark-success: tokens.getPrimitiveVar($primitives-color, green, 500),
 		dark-warning: tokens.getPrimitiveVar($primitives-color, orange, 500),
 		dark-critical: tokens.getPrimitiveVar($primitives-color, red, 500)
-
 	),
 	content: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 800),

@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 /** The button group is employed for adding and removing items. It is utilized in categories or menu trees. */
 const meta: Meta<typeof ButtonGroup> = {
-	title: 'Ui/ButtonGroup',
+	title: 'Ui/Button/ButtonGroup',
 	component: ButtonGroup,
 	tags: ['autodocs'],
 	render: () => ({

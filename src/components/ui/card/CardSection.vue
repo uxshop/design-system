@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { IAction } from '../../../types/IAction'
 import Link from '../link/Link.vue'
+import type { IAction } from '../../../types/IAction'
+
 defineProps<{
 	title?: string
 	actions?: IAction[]

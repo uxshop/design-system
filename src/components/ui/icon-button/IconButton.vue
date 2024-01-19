@@ -2,11 +2,11 @@
 import { computed } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
-import type { Size } from 'src/types'
+import type { Size, Variant } from '../../../types'
 
 export interface Props {
 	icon?: string
-	variant?: 'primary' | 'success' | 'danger' | 'link' | 'plain'
+	variant?: Variant
 	size?: Size
 	fab?: boolean
 	disabled?: boolean

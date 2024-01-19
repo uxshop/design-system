@@ -4,6 +4,8 @@ export type Distribuition = 'center' | 'right' | 'around' | 'evenly' | 'between'
 
 export type DestructVariant = 'success' | 'danger' | 'highlight'
 
+export type InputMode = 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+
 export type Size = 'sm' | 'md' | 'lg'
 
 export type Spacing = 'xs' | 'sm' | 'default' | 'lg' | 'xl'

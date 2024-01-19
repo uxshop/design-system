@@ -7,6 +7,8 @@ const meta: Meta<typeof FormSelect> = {
 	component: FormSelect,
 	tags: ['autodocs'],
 	args: {
+		state: undefined,
+		invalidFeedback: '',
 		label: 'Label',
 		float: false,
 		disabled: false,
@@ -30,6 +32,11 @@ const meta: Meta<typeof FormSelect> = {
 		]
 	},
 	argTypes: {
+		state: {
+			control: 'radio',
+			options: [true, false, 'undefined'],
+			description: 'Determines input state: `true` for valid, `false` for invalid, `undefined` for neutral'
+		},
 		size: {
 			control: 'select',
 			options: ['sm', 'md', 'lg']
@@ -75,5 +82,12 @@ export const TrailingIcon: Story = {
 export const LabelInfo: Story = {
 	args: {
 		labelInfo: 'Label Info'
+	}
+}
+
+export const InvalidFeedback: Story = {
+	args: {
+		state: false,
+		invalidFeedback: 'Campo inválido'
 	}
 }

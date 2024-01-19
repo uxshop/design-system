@@ -32,12 +32,15 @@ export interface FormSelectProps {
 	required?: boolean
 	options?: IFormSelectOptions[]
 	disabled?: boolean
+	state?: boolean
+	invalidFeedback?: string
 }
 
 const props = withDefaults(defineProps<FormSelectProps>(), {
 	options: () => {
 		return []
-	}
+	},
+	state: undefined
 })
 
 const emit = defineEmits(['update:modelValue', 'update'])
@@ -68,7 +71,7 @@ const update = (evt: Event) => {
 
 const model = ref(stringifyValue(props.modelValue))
 const classList = computed(() => [
-  props.size && `-${props.size}`,
+	props.size && `-${props.size}`,
 	props.float && '-float',
 	props.loading && '-loading',
 	props.last && '-last',
@@ -101,7 +104,8 @@ watchEffect(updateModelValue)
 		:labelInfo="labelInfo"
 		:autofocus="autofocus"
 		:size="size"
-    :state="undefined"
+		:state="state"
+		:invalidFeedback="invalidFeedback"
 		class="ui-form-select">
 		<select
 			v-model="model"

@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-breadcrumb {
 	> .ui-breadcrumb-item {
 		display: flex;
@@ -15,16 +17,18 @@
 			z-index: var(--s-index-very-high);
 			display: inline-flex;
 			align-items: center;
-			height: 38px;
+			height: var(--s-spacing-x-large);
 			text-decoration: none;
 			color: var(--s-color-content-default);
+
+			@include darkmode {
+				color: var(--s-color-content-dark);
+			}
 
 			&:hover {
 				text-decoration: none;
 				color: var(--s-color-fill-highlight);
-				span {
-					text-decoration: underline;
-				}
+				text-decoration: underline;
 			}
 		}
 

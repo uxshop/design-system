@@ -1,8 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts" />
 
 <template>
 	<div class="ui-description-list">
-		<slot></slot>
+		<slot />
 	</div>
 </template>
 
