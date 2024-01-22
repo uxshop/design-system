@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue'
 import Icon from '../icon/Icon.vue'
+import type { Size } from '../../../types'
 
 const props = defineProps<{
 	centered?: boolean
@@ -14,7 +15,7 @@ const props = defineProps<{
 	params?: Record<string, unknown>
 	scrollable?: boolean
 	show?: boolean
-	size?: string
+	size?: Size
 	title?: string
 	width?: string
 }>()
