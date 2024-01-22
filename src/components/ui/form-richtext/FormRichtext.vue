@@ -5,7 +5,6 @@ import './redactor/plugins/alignment/alignment.js'
 
 export interface Props {
 	modelValue?: any
-	toolbar?: object
 	name?: string
 	placeholder?: string
 	label?: string
@@ -70,9 +69,7 @@ const focus = () => {
 }
 
 onMounted(() => {
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	// eslint-disable-next-line no-undef
 	redactor = $R(`#${uid}`, config)
 })
 
@@ -85,9 +82,7 @@ watchEffect(() => {
 
 onUnmounted(() => {
 	setTimeout(() => {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		// eslint-disable-next-line no-undef
 		$R(`#${uid}`, 'destroy')
 		redactor = null
 	}, 300)
