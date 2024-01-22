@@ -41,6 +41,10 @@ export const Selectable: Story = {
 			{
 				label: 'Hello!',
 				value: 'hello'
+			},
+      {
+				label: 'World!',
+				value: 'world'
 			}
 		]
 	}
