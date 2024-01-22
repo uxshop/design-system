@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-divider {
 	min-width: 100%;
 	border-width: var(--s-border-none);
@@ -8,5 +10,9 @@
 
 	&.-transparent {
 		background-color: transparent;
+	}
+
+	@include darkmode {
+		background-color: var(--s-color-background-dark);
 	}
 }
