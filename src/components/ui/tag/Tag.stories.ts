@@ -7,13 +7,12 @@ const meta = {
 	component: Tag,
 	tags: ['autodocs'],
 	args: {
-		label: 'Tag label',
-		variant: 'default'
+		label: 'Tag label'
 	},
 	argTypes: {
 		variant: {
 			control: 'select',
-			options: ['default', 'highlight', 'warning', 'success', 'critical']
+			options: ['warning', 'success', 'danger', 'primary', 'default']
 		}
 	}
 } satisfies Meta<typeof Tag>
@@ -22,15 +21,11 @@ type Story = StoryObj<typeof meta>
 
 export default meta
 
-export const Default: Story = {
-	args: {
-		variant: 'default'
-	}
-}
+export const Default: Story = {}
 
-export const Highlight: Story = {
+export const Primary: Story = {
 	args: {
-		variant: 'highlight'
+		variant: 'primary'
 	}
 }
 
@@ -46,8 +41,8 @@ export const Success: Story = {
 	}
 }
 
-export const Critical: Story = {
+export const Danger: Story = {
 	args: {
-		variant: 'critical'
+		variant: 'danger'
 	}
 }

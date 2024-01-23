@@ -1,5 +1,5 @@
 .ui-tag-list {
 	display: flex;
-	gap: 8px;
+	gap: var(--s-spacing-nano);
 	flex-wrap: wrap;
 }
