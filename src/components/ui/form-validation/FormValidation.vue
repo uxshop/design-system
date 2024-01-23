@@ -73,11 +73,6 @@ watchEffect(() => {
 					<b v-if="!hideKey" class="ui-form-validation-key">{{ trans(String(key)) }}:</b>
 					{{ val }}
 				</li>
-
-				<!-- <li :key="key">
-					<b v-if="!hideKey" class="ui-form-validation-key">{{ trans(String(key)) }}:</b>
-					{{ item }}
-				</li> -->
 			</ul>
 		</Alert>
 	</div>
