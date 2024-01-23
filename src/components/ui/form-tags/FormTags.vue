@@ -10,13 +10,13 @@ export interface Props {
 	modelValue?: any
 	placeholder?: string
 	label?: string
-	config?: any
 	closeOnSelect?: boolean
 	last?: boolean
 	actions?: IAction[]
 	options?: any
 	create?: boolean
 	variant?: string
+	disabled?: boolean
 }
 
 export interface SettingsInterface {
@@ -163,7 +163,14 @@ onMounted(() => {
 				label: 'Remover'
 			}" />
 		<div class="ui-form-tags-content">
-			<input v-if="props.create" ref="selectRef" :id="uid" type="text" autocomplete="off" :placeholder="placeholder" />
+			<input
+				v-if="props.create"
+				ref="selectRef"
+				:id="uid"
+				type="text"
+				autocomplete="off"
+				:placeholder="placeholder"
+				:disabled="disabled" />
 			<select v-else multiple ref="selectRef" :id="uid" autocomplete="off" />
 			<div v-if="actions" class="ui-form-tags-actions">
 				<Button v-for="item in actions" :label="item.label" @click="item.onAction" />
