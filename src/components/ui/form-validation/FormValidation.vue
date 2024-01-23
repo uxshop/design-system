@@ -4,8 +4,8 @@ import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 
 export interface Props {
-	modelValue?: Record<string, string> | null
-	translate?: Record<string, string>
+	modelValue: Record<string, string[]>
+	translate?: Record<string, string | Record<string, string>>
 	scrollToTop?: boolean
 	title?: string
 	hideKey?: boolean
@@ -18,14 +18,13 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const trans = (val: string) => {
-	if (!props.translate) {
-		return val
-	}
-	if (val.indexOf('.') >= 0) {
-		const keys = val.split('.')
-		const key = keys[0]
-		const line = Number(keys[1]) + 1
-		const field = keys[2]
+	if (!props.translate) return val
+
+	const modelValueKeys = val.split('.')
+	if (modelValueKeys.length >= 3) {
+		const key = modelValueKeys[0]
+		const line = Number(modelValueKeys[1]) + 1
+		const field = modelValueKeys[2]
 		const object: any = props.translate[key]
 		if (object[field]) {
 			const name = object[key]
@@ -71,19 +70,23 @@ watchEffect(() => {
 			@dismissed="removemodelValue">
 			<ul v-for="(item, key) in modelValue" :key="key">
 				<li v-for="val in item" :key="val">
-					<b v-if="!hideKey">{{ trans(String(key)) }}:</b>
+					<b v-if="!hideKey" class="ui-form-validation-key">{{ trans(String(key)) }}:</b>
 					{{ val }}
 				</li>
+
+				<!-- <li :key="key">
+					<b v-if="!hideKey" class="ui-form-validation-key">{{ trans(String(key)) }}:</b>
+					{{ item }}
+				</li> -->
 			</ul>
 		</Alert>
 	</div>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .ui-form-validation {
-	margin-bottom: var(--form-group-margin-bottom);
-}
-.ui-form-validation b {
-	text-transform: capitalize;
+	&-key {
+		text-transform: capitalize;
+	}
 }
 </style>

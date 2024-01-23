@@ -81,10 +81,6 @@
 	.ui-alert-content {
 		flex-grow: 1;
 		background-color: transparent;
-
-		ul ~ ul {
-			margin-top: var(--s-spacing-quark);
-		}
 	}
 
 	.ui-alert-title {
