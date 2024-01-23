@@ -38,6 +38,12 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 
+export const Inputable: Story = {
+	args: {
+		inputable: true
+	}
+}
+
 export const Loading: Story = {
 	args: {
 		loading: true
