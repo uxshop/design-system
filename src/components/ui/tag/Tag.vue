@@ -4,8 +4,8 @@ import Icon from '../icon/Icon.vue'
 import type { Variant } from '../../../types/Types'
 
 export interface TagProps {
-	label?: string | null
-	variant?: Variant | 'default'
+	label: string
+	variant?: 'primary' | 'success' | 'danger' | 'default' | 'warning'
 }
 
 const props = withDefaults(defineProps<TagProps>(), {
@@ -31,7 +31,7 @@ const tagClassList = computed(() => {
 
 <template>
 	<span class="ui-tag" :class="tagClassList">
-		{{ label }}
+		<slot>{{ label }}</slot>
 		<Icon name="close" class="ui-tag-close" @click="onRemove" />
 	</span>
 </template>
