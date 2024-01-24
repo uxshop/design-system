@@ -38,7 +38,7 @@ const badgeClassList = computed(() => {
 
 <template>
 	<span class="ui-badge" :class="badgeClassList">
-		{{ label }}
+		<slot>{{ label }}</slot>
 	</span>
 </template>
 
