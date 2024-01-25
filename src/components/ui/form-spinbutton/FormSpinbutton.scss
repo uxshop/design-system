@@ -6,91 +6,63 @@
 	padding-right: 0;
 	align-items: stretch;
 
-	input {
-		appearance: none !important;
-		box-shadow: none !important;
-		border: none !important;
-		background-color: transparent !important;
-		width: 100%;
-		height: 100%;
-		text-align: center;
+	&-action {
+		&:hover {
+			color: var(--s-color-content-highlight);
+		}
+
+		.ui-button-label {
+			display: flex;
+			align-items: center;
+		}
 	}
 
-	&.-disabled,
-	button:disabled {
-		background-color: var(--gray-100);
-		border: solid 1px var(--gray-200);
-		button {
-			border: none !important;
-			background: none !important;
+	&.-disabled {
+		background-color: var(--s-color-fill-disable);
+		border: var(--s-border-light);
+		border-color: var(--s-color-border-disable);
+
+		&-action {
+			border: none;
 		}
 	}
 
 	&.-lg {
 		padding-left: 0;
 		padding-right: 0;
-		button {
-			font-size: 16px;
-		}
 	}
 
 	&.-sm {
 		height: unset;
-		border-radius: var(--input-border-radius-sm);
+		border-radius: var(--s-border-radius-small);
 		padding-left: 0;
 		padding-right: 0;
-
-		button {
-			min-height: var(--input-height-sm);
-			min-width: var(--input-height-sm);
-		}
 	}
 
 	.output {
 		flex-grow: 1;
 		text-align: center;
-		border-top: 0;
-		border-bottom: 0;
-		min-width: 40px;
-		line-height: 1;
-		border-left: solid 1px var(--input-border-color);
-		border-right: solid 1px var(--input-border-color);
+		border-right: 0;
+		border-left: 0;
+		min-width: var(--s-spacing-large);
 		align-items: center;
 		width: 100%;
-	}
-
-	button {
-		padding: 0 10px;
-		color: var(--body-color);
-		min-width: var(--input-height);
-		box-shadow: none;
-		filter: none;
-		border-radius: inherit;
-
-		&:last-child {
-			border-top-left-radius: 0;
-			border-bottom-left-radius: 0;
+		font: var(--s-typography-paragraph-regular);
+		input {
+			appearance: none;
+			box-shadow: none;
+			border: none;
+			background-color: transparent;
+			width: 100%;
+			height: 100%;
+			text-align: center;
 		}
-
-		&:first-child {
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
-		}
-
-		&:hover {
-			color: var(--primary);
-			background-color: var(--gray-200);
-		}
-	}
-
-	.ui-icon {
-		width: 18px;
 	}
 
 	.ui-form-spinbutton-loader {
 		position: absolute;
-		z-index: 8;
-		background-color: var(--bg-white);
+		z-index: var(--s-index-max);
+		background-color: var(--s-color-background-default);
 		opacity: 0.8;
 		width: 100%;
 		height: 100%;
@@ -98,5 +70,33 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	@include darkmode {
+		border-color: var(--s-color-border-dark);
+		background-color: var(--s-color-fill-dark);
+
+		.output {
+			background-color: var(--s-color-fill-dark);
+			border: none;
+
+			> input {
+				color: var(--s-color-content-dark);
+			}
+		}
+	}
+
+	&-action {
+		border: unset;
+		background-color: transparent;
+
+		&:hover {
+			color: var(--s-color-content-highlight);
+		}
+
+		.ui-button-label {
+			display: flex;
+			align-items: center;
+		}
 	}
 }
