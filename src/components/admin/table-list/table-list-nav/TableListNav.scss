@@ -3,8 +3,10 @@
 .table-list-nav {
 	position: sticky;
 	top: var(--layout-navbar-height);
+	z-index: 88;
 
 	.table-list-nav-wrapper {
+		z-index: 88;
 		border-bottom: solid 1px var(--primary);
 	}
 
@@ -14,6 +16,7 @@
 		display: flex;
 		background: #fff;
 		padding: 0;
+		z-index: 2;
 		align-items: center;
 		height: 80px;
 		padding: 0 15px;
@@ -42,6 +45,7 @@
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
+			z-index: 5;
 			left: 10px;
 			display: flex;
 			opacity: 0.6;
