@@ -65,7 +65,7 @@ watchEffect(() => {
 			</div>
 		</div>
 		<button v-if="dismissible" type="button" class="ui-alert-close" @click="close">
-			<Icon name="close" size="24" />
+			<Icon name="close" />
 		</button>
 	</div>
 </template>
