@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue'
-import Icon from '../icon/Icon.vue'
+import IconButton from '../icon-button/IconButton.vue'
 import type { Size } from '../../../types'
 
 const props = defineProps<{
@@ -109,10 +109,8 @@ watchEffect(() => {
 							</h4>
 							<slot name="caption" />
 						</div>
-						<button @click="close()" class="ui-modal-close" id="btn-close">
-							<span>Fechar</span>
-							<Icon class="ui-modal-close-icon" name="close" />
-						</button>
+
+						<IconButton class="ui-modal-close" id="btn-close" @click="close" size="sm" variant="plain" icon="close" />
 					</div>
 
 					<div class="ui-modal-body">
