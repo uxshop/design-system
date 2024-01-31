@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch, ref, reactive, onBeforeMount } from 'vue'
+import { onMounted, watch, ref, reactive } from 'vue'
 import { union, clone, omit, concat, isEqual } from 'lodash-es'
 import { useRoute } from 'vue-router'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
@@ -51,7 +51,6 @@ const meta = ref({})
 const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false }, props.config)
 const storageNameFilters = `adm_table_filters_${String(route.name)}`
 const formError = ref<Record<string, string> | null>(null)
-const hasQueryParams = ref()
 const queryDefault = Object.assign(
 	{
 		sort: '-id',
@@ -184,47 +183,13 @@ const removeSelected = async () => {
 	fetchData()
 }
 
-const assignDefaultQueryParams = () => {
-	return Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
-}
-
-onBeforeMount(() => {
-	hasQueryParams.value = route.query.sort
-})
-
-onMounted(() => {
-	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
+const initQueryParams = () => {
+	union(omitFiltersValues, props.config.omitFilters)
 	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
+	const query = useRoute().query?.q ? { q: useRoute().query.q } : localStorageParams
 
-	if (!hasQueryParams.value && localStorageParams) {
-		queryParams.value = Object.assign(localStorageParams)
-	} else {
-		queryParams.value = assignDefaultQueryParams()
-	}
-})
-
-let timerQ: ReturnType<typeof setTimeout>
-
-watch(
-	() => queryParams.value,
-	(newVal: any, oldVal) => {
-		clearTimeout(timerQ)
-		if (newVal != oldVal) {
-			timerQ = setTimeout(() => {
-				if (newVal.q) {
-					state.term = newVal.q
-				}
-
-				if (!newVal.selectedView && !newVal.customFilterId) {
-					newVal.selectedView = 'all'
-				}
-
-				fetchData()
-			}, 100)
-		}
-	},
-	{ deep: true }
-)
+	setQueryParams(query as TQueryParams)
+}
 
 const state = reactive({
 	queryParams: queryParams,
@@ -246,10 +211,34 @@ const state = reactive({
 	clickRow: clickRow
 })
 
+let timerQ: ReturnType<typeof setTimeout>
+watch(
+	() => queryParams.value,
+	(newVal: any, oldVal) => {
+		clearTimeout(timerQ)
+		if (newVal != oldVal) {
+			timerQ = setTimeout(() => {
+				if (newVal.q) {
+					state.term = newVal.q
+				}
+
+				if (!newVal.selectedView && !newVal.customFilterId) {
+					newVal.selectedView = 'all'
+				}
+
+				fetchData()
+			}, 100)
+		}
+	},
+	{ deep: true }
+)
+
 defineExpose({
 	unshiftItem: unshiftItem,
 	refresh: fetchData
 })
+
+onMounted(initQueryParams)
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, withDefaults } from 'vue'
+import { computed, ref, withDefaults } from 'vue'
 import Modal from '../../ui/modal/Modal.vue'
 import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
@@ -22,15 +22,28 @@ const props = withDefaults(
 )
 const emit = defineEmits(['onSubmit', 'update:modelValue'])
 
+const isVisible = computed({
+	get: () => props.modelValue,
+	set: (value: any) => {
+		emit('update:modelValue', value)
+	}
+})
+
 const formValues = ref<IQuickSearchFormValue>({
 	searchKey: '',
 	searchType: props.searchOptions[0].value
 })
 
-const isVisible = ref(props.modelValue)
+function resetSearchValues() {
+	formValues.value = {
+		searchKey: '',
+		searchType: props.searchOptions[0].value
+	}
+}
 
-function onSubmit(ev: Event) {
+function onSubmit() {
 	emit('onSubmit', formValues.value)
+	resetSearchValues()
 }
 </script>
 <template>
