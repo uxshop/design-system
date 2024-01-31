@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
-import type { SideBarItem, SideBarItemType } from './types'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
+import type { SideBarItem, SideBarItemType } from './types'
 
 export interface MenuProviderInterface {
 	open: boolean
@@ -14,11 +14,10 @@ export interface Props {
 	isActive: (item: SideBarItem, isOnlyChildren?: boolean) => boolean
 	menuOpen?: boolean
 	menus: SideBarItem[]
-	currentSection?: string | null
 }
 
 const menu = inject('menu') as MenuProviderInterface
-const props = defineProps<Props>()
+defineProps<Props>()
 
 const emit = defineEmits<{
 	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem): void
@@ -62,7 +61,6 @@ const toggleMenu = (item: any) => {
 								<div
 									class="ui-sidebar-link"
 									:class="{
-										'-nodes': item.nodes?.length,
 										'-node-active': item.active,
 										'-active': item.active
 									}"
@@ -103,7 +101,9 @@ const toggleMenu = (item: any) => {
 							</li>
 						</ul>
 					</div>
-					<slot name="footer" @click="emit('onClickItem', 'footer')" />
+					<div class="ui-sidebar-footer">
+						<slot name="footer" class="ui-sidebar-footer" @click="emit('onClickItem', 'footer')" />
+					</div>
 				</div>
 			</div>
 		</div>
