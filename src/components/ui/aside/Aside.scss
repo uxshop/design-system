@@ -151,42 +151,7 @@
 		}
 
 		> .ui-icon-button {
-			padding: 0 var(--s-spacing-quark);
-			margin-right: calc(var(--s-spacing-nano) * -1);
 			margin-left: auto;
-			background: none;
-			display: flex;
-			align-items: center;
-			border: var(--s-border-thin) transparent;
-			border-radius: var(--s-border-radius-medium);
-			height: 36px;
-			cursor: pointer;
-			color: var(--s-color-content-default);
-			font-weight: var(--s-font-weight-medium);
-
-			> span {
-				margin-right: 10px;
-			}
-
-			> .ui-icon {
-				border-radius: var(--s-border-radius-small);
-				padding: 0;
-				font-size: var(--s-font-size-base);
-				color: var(--s-color-content-default);
-				min-width: 24px;
-				min-height: 24px;
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			&:hover {
-				color: var(--s-color-fill-highlight);
-				background-color: var(--s-color-fill-highlight);
-				.ui-icon {
-					color: var(--s-color-fill-default-hover);
-				}
-			}
 		}
 	}
 
