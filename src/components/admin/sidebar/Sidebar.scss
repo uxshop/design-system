@@ -85,7 +85,7 @@
 	.ui-sidebar-list {
 		display: flex;
 		flex-grow: 1;
-		overflow: hidden;
+		overflow-y: auto;
 		padding-bottom: var(--s-spacing-xx-small);
 
 		> .ui-sidebar-list {
