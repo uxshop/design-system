@@ -114,7 +114,7 @@ defineExpose({
 				</div>
 				<div class="ui-dialog-body">
 					<slot />
-					<div v-html="message" />
+					<div v-html="message" class="ui-dialog-message" />
 					<div class="ui-dialog-prompt mt-5" v-if="isPrompt">
 						<FormTextfield
 							:label="promptLabel"

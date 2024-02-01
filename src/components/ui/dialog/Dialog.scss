@@ -77,6 +77,7 @@
 
 				> .title {
 					font: var(--s-typography-heading-medium);
+					color: (--s-color-content-default);
 					margin-bottom: 0;
 				}
 			}
@@ -89,10 +90,10 @@
 				&:first-child {
 					padding-top: 0;
 				}
+			}
 
-				ul {
-					padding-left: var(--s-spacing-small);
-				}
+			.ui-dialog-message {
+				font: var(--s-typography-paragraph-regular);
 			}
 
 			> .ui-dialog-footer {
