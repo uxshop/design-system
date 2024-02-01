@@ -219,6 +219,11 @@
 			position: relative;
 			z-index: var(--s-index-low);
 			@include move-horizontal(var(--s-motion-duration-default));
+			font: var(--s-typography-paragraph-regular);
+		}
+
+		&-text.-title {
+			font: var(--s-typography-paragraph-strong);
 		}
 
 		&-icon {
@@ -301,7 +306,14 @@
 			background-color: var(--s-color-fill-dark);
 		}
 		.ui-sidebar-link {
-			color: var(--s-color-content-dark);
+			&-text {
+				color: var(--s-color-content-dark-light);
+
+				&.-title {
+					color: var(--s-color-content-dark);
+				}
+			}
+
 			&:hover {
 				background-color: var(--s-color-fill-dark-hover);
 				&.-sub {

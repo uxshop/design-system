@@ -70,7 +70,7 @@ const toggleMenu = (item: any) => {
 										<span class="ui-sidebar-link-icon">
 											<Icon size="16" :name="item.icon" filled />
 										</span>
-										<span class="ui-sidebar-link-text">
+										<span class="ui-sidebar-link-text -title">
 											{{ item.name }}
 										</span>
 									</div>
