@@ -12,10 +12,6 @@
 		+ .ui-table-row > .ui-table-cell {
 			border-top: none;
 		}
-
-		+ .ui-table-body > .ui-table-row > .ui-table-cell {
-			// border-top: none;
-		}
 	}
 
 	.ui-table-link {
@@ -101,6 +97,10 @@
 		vertical-align: middle;
 		padding: 10px;
 		border-top: solid 1px var(--border-color);
+
+		> .ui-link:hover {
+			text-decoration: none;
+		}
 
 		strong {
 			font-weight: var(--font-weight-semibold);
