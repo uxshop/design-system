@@ -4,7 +4,6 @@ import Breadcrumb from '../../ui/breadcrumb/UiBreadcrumb.vue'
 import BreadcrumbItem from '../../ui/breadcrumb/BreadcrumbItem.vue'
 import Icon from '../../ui/icon/Icon.vue'
 import { initials as filterInitials } from '../../../filters'
-import IconButton from '../../ui/icon-button/IconButton.vue'
 import ButtonDarkmode from '../../admin/button-darkmode/ButtonDarkmode.vue'
 
 export interface Props {

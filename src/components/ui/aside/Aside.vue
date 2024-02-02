@@ -87,7 +87,7 @@ watchEffect(() => {
 
 				<div class="ui-aside-content" :id="scrollableContentId">
 					<div class="ui-aside-header">
-						<div>
+						<div class="header-wrapper">
 							<h4 class="title">
 								{{ title }}
 							</h4>

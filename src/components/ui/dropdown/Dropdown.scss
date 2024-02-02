@@ -2,7 +2,7 @@
 
 .ui-dropdown {
 	position: relative;
-	z-index: 111;
+	z-index: var(--s-index-max);
 
 	.ui-dropdown-button {
 		position: relative;
@@ -136,6 +136,7 @@
 	@include darkmode {
 		.ui-dropdown-menu {
 			background-color: var(--s-color-fill-dark);
+			border-color: var(--s-color-border-dark);
 		}
 
 		.ui-dropdown-item {
