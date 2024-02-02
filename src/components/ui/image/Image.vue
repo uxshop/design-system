@@ -52,7 +52,7 @@ const iconStyleList = computed(() => {
 <template>
 	<div class="ui-image" :class="imageClassList">
 		<img v-if="src" :src="src" class="ui-image-content" />
-		<Icon v-else name="wallpaper" class="ui-image-icon" />
+		<Icon v-else name="wallpaper" class="ui-image-icon" size="22" />
 	</div>
 </template>
 
