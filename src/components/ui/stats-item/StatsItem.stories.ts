@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 import StatsItem from './StatsItem.vue'
 
+/** Base component used for the Stats Group. */
 const meta = {
 	title: 'Ui/Stats Item',
 	component: StatsItem,
