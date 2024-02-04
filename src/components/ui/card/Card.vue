@@ -100,7 +100,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 						</div>
 						<div v-if="!showBody">
 							<Link v-if="dropdownLabel">{{ dropdownLabel }}</Link>
-							<Icon class="btn-collapse-icon" v-else name="expand_more" />
+							<Icon class="btn-collapse-icon" v-else name="expand_more" :size="24" />
 						</div>
 					</button>
 				</div>

@@ -58,10 +58,7 @@ const emit = defineEmits<{
 	(e: 'updateRaw', val: any): void
 }>()
 
-const classList = computed(() => [
-	props.size ? `-${props.size}` : '',
-	props.state === true ? '-valid' : props.state === false ? '-invalid' : ''
-])
+const classList = computed(() => [props.size ? `-${props.size}` : ''])
 
 const maskOptions = computed<MaskOptions>(() => {
 	return {
