@@ -2,7 +2,7 @@
 
 .ui-dropdown {
 	position: relative;
-	z-index: var(--s-index-max);
+	z-index: var(--s-index-medium);
 
 	.ui-dropdown-button {
 		position: relative;
@@ -18,7 +18,7 @@
 
 	&.-open {
 		outline: none;
-		z-index: var(--s-index-high);
+		z-index: var(--s-index-low-medium);
 
 		> .ui-dropdown-menu {
 			display: block;
