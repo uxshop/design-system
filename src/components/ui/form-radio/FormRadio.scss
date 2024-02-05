@@ -51,8 +51,8 @@
 		position: relative;
 		top: 0;
 		left: 0;
-		height: var(--s-spacing-x-small);
-		width: var(--s-spacing-x-small);
+		width: 20px;
+		aspect-ratio: 1;
 		min-height: var(--s-spacing-x-small);
 		min-width: var(--s-spacing-x-small);
 		border: var(--s-border-light);

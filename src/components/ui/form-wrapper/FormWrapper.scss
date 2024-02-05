@@ -149,6 +149,7 @@
 		resize: vertical;
 		position: relative;
 		background-color: transparent;
+		color: var(--s-color-content-default);
 	}
 
 	.form-invalid-feedback {
@@ -296,26 +297,32 @@
 	}
 
 	&.-invalid {
-		.form-control,
-		.form-wrapper-notched {
-			border-color: var(--s-color-border-critical);
-		}
+		&:not(.-disabled) {
+			.form-control,
+			.form-wrapper-notched {
+				border-color: var(--s-color-border-critical);
+			}
 
-		label,
-		i {
-			color: var(--s-color-fill-critical);
+			label,
+			i,
+			input {
+				color: var(--s-color-fill-critical);
+			}
 		}
 	}
 
 	&.-valid {
-		.form-control,
-		.form-wrapper-notched {
-			border-color: var(--s-color-border-success);
-		}
+		&:not(.-disabled) {
+			.form-control,
+			.form-wrapper-notched {
+				border-color: var(--s-color-border-success);
+			}
 
-		label,
-		i {
-			color: var(--s-color-content-success);
+			label,
+			i,
+			input {
+				color: var(--s-color-content-success);
+			}
 		}
 	}
 }
