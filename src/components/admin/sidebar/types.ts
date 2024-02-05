@@ -16,4 +16,12 @@ export interface SideBarItem {
 	dropdown?: boolean
 }
 
-export type SideBarItemType = 'logo' | 'node' | 'footer' | string
+export interface SidebarMobileMenu {
+	icon: string
+	title: string
+  type: SideBarItemType
+  to?: string
+}
+
+
+export type SideBarItemType = 'logo' | 'node' | 'footer' | 'action' | string
