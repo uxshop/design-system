@@ -38,6 +38,7 @@ body.redactor-body-fullscreen {
 
 .redactor-layer,
 .redactor-toolbar {
+	z-index: var(--s-index-low);
 	border-radius: calc(var(--s-border-radius-small) - 1px);
 	font: var(--s-typography-caption-small);
 }

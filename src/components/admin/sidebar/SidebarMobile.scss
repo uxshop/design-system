@@ -27,4 +27,8 @@
 	@include desktop {
 		transform: translateY(100%);
 	}
+
+	@include darkmode {
+		background-color: var(--s-color-fill-dark);
+	}
 }
