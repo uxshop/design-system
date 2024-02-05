@@ -9,6 +9,8 @@
 	justify-content: center;
 	flex-direction: column;
 	position: relative;
+	background-color: var(--s-color-fill-default);
+	color: var(--s-color-content-default);
 
 	&-label {
 		font: var(--s-typography-caption-medium);
@@ -18,5 +20,10 @@
 	&-value {
 		font: var(--s-typography-heading-x-small);
 		display: block;
+	}
+
+  @include darkmode {
+		background-color: var(--s-color-fill-dark);
+    color: var(--s-color-content-dark);
 	}
 }
