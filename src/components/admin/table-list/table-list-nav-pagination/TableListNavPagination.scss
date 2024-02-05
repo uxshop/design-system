@@ -33,7 +33,7 @@
 
 	@include mobile {
 		position: fixed;
-		bottom: 0;
+		bottom: var(--s-spacing-huge);
 		border-top: solid 1px var(--border-color);
 		background: var(--bg-white);
 		width: 100%;

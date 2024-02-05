@@ -3,10 +3,10 @@
 .table-list-nav {
 	position: sticky;
 	top: var(--layout-navbar-height);
-	z-index: 88;
+	z-index: var(--s-index-low);
 
 	.table-list-nav-wrapper {
-		z-index: 88;
+		z-index: var(--s-index-low);
 		border-bottom: solid 1px var(--primary);
 	}
 
