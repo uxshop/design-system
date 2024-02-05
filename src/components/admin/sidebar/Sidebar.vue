@@ -2,7 +2,8 @@
 import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
-import type { SideBarItem, SideBarItemType } from './types'
+import SidebarMobile from './SidebarMobile.vue'
+import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types'
 
 export interface MenuProviderInterface {
 	open: boolean
@@ -14,13 +15,14 @@ export interface Props {
 	isActive: (item: SideBarItem, isOnlyChildren?: boolean) => boolean
 	menuOpen?: boolean
 	menus: SideBarItem[]
+	mobileNavigationBar: SidebarMobileMenu[]
 }
 
 const menu = inject('menu') as MenuProviderInterface
 defineProps<Props>()
 
 const emit = defineEmits<{
-	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem): void
+	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void
 }>()
 
 const toggleMenu = (item: any) => {
@@ -28,6 +30,15 @@ const toggleMenu = (item: any) => {
 		menu.toggle()
 		emit('onClickItem', 'node', item)
 	}
+}
+
+const handleMobileBar = (item: SidebarMobileMenu) => {
+	if (item.type === 'action') {
+		menu.toggle()
+		return
+	}
+
+	emit('onClickItem', 'node', item)
 }
 </script>
 
@@ -108,10 +119,9 @@ const toggleMenu = (item: any) => {
 			</div>
 		</div>
 		<div class="ui-sidebar-overlay" @click="toggleMenu"></div>
-		<div v-if="menu.open === true" class="ui-close-sidebar" @click="toggleMenu">
-			<Icon name="close" />
-		</div>
 	</div>
+
+	<SidebarMobile :mobile-menus="mobileNavigationBar" @on-click-action="handleMobileBar" />
 </template>
 
 <style lang="scss">
