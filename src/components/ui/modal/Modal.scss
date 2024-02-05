@@ -11,6 +11,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	outline: 0;
+	color: var(--s-color-content-default);
 
 	&.-sm {
 		> .ui-modal-dialog {
@@ -110,10 +111,11 @@
 				margin-bottom: 0;
 				align-items: center;
 
-				> .title {
-					font: var(--s-typography-heading-medium);
-					display: inline-block;
-					margin: 0;
+				> .ui-modal-header-wrapper {
+					display: flex;
+					flex-direction: column;
+					row-gap: var(--s-spacing-nano);
+					align-items: flex-start;
 				}
 
 				> .ui-modal-close {
@@ -133,21 +135,16 @@
 					> span {
 						margin-right: var(--s-spacing-xx-small);
 					}
-
-					&:hover {
-						> .ui-modal-close-icon {
-							background-color: var(--s-color-fill-default-hover);
-						}
-					}
 				}
 
-				.ui-modal-close-icon {
-					transition: transform var(--s-motion-duration-fast) var(--s-motion-ease-in-out);
-					min-width: var(--s-spacing-small);
-					min-height: var(--s-spacing-small);
-					display: inline-flex;
-					align-items: center;
-					justify-content: center;
+				.ui-modal-title {
+					font: var(--s-typography-heading-medium);
+					display: inline-block;
+					margin: 0;
+				}
+
+				.ui-modal-caption {
+					font: var(--s-typography-paragraph-regular);
 				}
 			}
 		}
