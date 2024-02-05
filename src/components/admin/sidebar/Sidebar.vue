@@ -3,6 +3,7 @@ import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
 import SidebarMobile from './SidebarMobile.vue'
+import { isMobile } from '../../../helpers'
 import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types'
 
 export interface MenuProviderInterface {
@@ -112,7 +113,7 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 							</li>
 						</ul>
 					</div>
-					<div class="ui-sidebar-footer">
+					<div class="ui-sidebar-footer" v-if="!isMobile">
 						<slot name="footer" class="ui-sidebar-footer" @click="emit('onClickItem', 'footer')" />
 					</div>
 				</div>
