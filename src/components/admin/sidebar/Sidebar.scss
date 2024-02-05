@@ -251,8 +251,6 @@
 		}
 	}
 
-	// ---------
-
 	@include mobile() {
 		height: calc(100% - var(--s-spacing-huge));
 
