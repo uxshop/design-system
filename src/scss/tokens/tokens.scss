@@ -6,6 +6,7 @@
 @use './semantic/typographies' as *;
 @use './semantic/spacing' as *;
 @use './semantic/z-indexes' as *;
+@import '../mixins.scss';
 
 body {
 	/**
@@ -67,4 +68,36 @@ body {
   * @presenter LineHeight
   */
 	@include tokens.generateVars($semantic-typographies, typography);
+
+  /**
+  * @tokens-end
+  */
+  
+  @include darkmode {
+      
+    --s-color-background-default: var(--s-color-background-dark);
+    --s-color-fill-default: var(--s-color-fill-dark);
+    --s-color-fill-default-hover: var(--s-color-fill-dark-hover);
+    --s-color-fill-default-light: var(--s-color-fill-dark-light);
+    --s-color-fill-highliht-light: var(--b-color-dark);
+    --s-color-fill-success-light: var(--s-color-fill-success-dark);
+    --s-color-fill-warning-light: var(--s-color-fill-warning-dark);
+    --s-color-fill-critical-light: var(--s-color-fill-critical-dark);
+    --s-color-border-default: var(--s-color-border-dark);
+    --s-color-border-disable: var(--s-color-border-dark-disable);
+    --s-color-border-highlight: var(--b-color-medium);
+    --s-color-border-success: var(--s-color-border-dark-success);
+    --s-color-border-warning: var(--s-color-border-dark-warning);
+    --s-color-border-critical: var(--s-color-border-dark-critical);
+    --s-color-content-default: var(--s-color-content-dark);
+    --s-color-content-light: var(--s-color-content-dark-light);
+    --s-color-content-placeholder: var(--s-color-content-dark-placeholder);  
+    --s-color-content-disable: var(--s-color-content-dark-disable);
+    --s-color-content-highlight: var(--b-color-medium);
+    --s-color-content-success: var(--s-color-content-dark-success);
+    --s-color-content-warning: var(--s-color-content-dark-warning);
+    --s-color-content-critical: var(--s-color-content-dark-critical);
+
+  }
+  
 }

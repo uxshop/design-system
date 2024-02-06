@@ -24,7 +24,7 @@ code {
 }
 
 small {
-	line-height: 1.3;
+	line-height: var(--s-line-height-16);
 }
 
 p {
@@ -91,46 +91,48 @@ h4,
 h5,
 h6 {
 	margin-top: 0;
-	font-weight: var(--font-headings-weight);
-	font-family: var(--headings-font-family);
-	margin-bottom: 8px;
-	line-height: 1.3;
+	font-weight: var(--s-font-weight-semibold);
+	font-family: var(--font-family);
+	margin-bottom: var(--s-spacing-nano);
+	line-height: var(--s-line-height-24);
 }
 
 h1 {
-	font-size: calc(var(--font-size-base) * 1.8);
+	font-size: calc(var(--s-font-size-base) * 1.8);
+	line-height: var(--s-line-height-32);
+
 }
 h2 {
-	font-size: calc(var(--font-size-base) * 1.6);
+	font-size: calc(var(--s-font-size-base) * 1.6);
 }
 h3 {
-	font-size: calc(var(--font-size-base) * 1.4);
+	font-size: calc(var(--s-font-size-base) * 1.4);
 }
 h4 {
-	font-size: calc(var(--font-size-base) * 1.3);
+	font-size: calc(var(--s-font-size-base) * 1.3);
 }
 h5 {
-	font-size: calc(var(--font-size-base) * 1.1);
+	font-size: calc(var(--s-font-size-base) * 1.1);
 }
 h6 {
-	font-size: calc(var(--font-size-base) * 0.95);
+	font-size: calc(var(--s-font-size-base) * 0.9);
 	text-transform: uppercase;
 }
 
 .font-md {
-	font-size: calc(var(--font-size-base) * 1.1);
+	font-size: calc(var(--s-font-size-base) * 1.1);
 }
 
 .font-lg {
-	font-size: calc(var(--font-size-base) * 1.2);
+	font-size: calc(var(--s-font-size-base) * 1.2);
 }
 
 .font-sm {
-	font-size: calc(var(--font-size-base) * 0.9);
+	font-size: calc(var(--s-font-size-base) * 0.9);
 }
 
 .font-semibold {
-	font-weight: var(--font-weight-semibold);
+	font-weight: var(--s-font-weight-semibold);
 }
 
 .font-normal {
@@ -138,7 +140,7 @@ h6 {
 }
 
 .font-bold {
-	font-weight: var(--font-weight-bold);
+	font-weight: var(--s-font-weight-bold);
 }
 
 .text-center {
@@ -154,7 +156,7 @@ h6 {
 }
 
 .text-muted {
-	color: var(--text-muted) !important;
+	color: var(--s-color-content-light) !important;
 }
 
 .text-right {
@@ -166,19 +168,19 @@ h6 {
 }
 
 .text-link {
-	color: var(--link-color) !important;
+	color: var(--s-color-content-highlight) !important;
 }
 
 .text-primary {
-	color: var(--primary) !important;
+	color: var(--s-color-content-highlight) !important;
 }
 
 .text-success {
-	color: var(--success) !important;
+	color: var(--s-color-content-success) !important;
 }
 
 .text-danger {
-	color: var(--danger) !important;
+	color: var(--s-color-content-critical) !important;
 }
 
 .text-truncate {
@@ -214,7 +216,7 @@ hr {
 	border: none;
 	margin-top: 50px;
 	margin-bottom: 50px;
-	background-color: var(--border-color);
+	background-color: var(--s-color-border-default);
 }
 
 $increment: 4;

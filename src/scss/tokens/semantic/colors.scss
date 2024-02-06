@@ -3,10 +3,10 @@
 
 @layer brand {
 	:root {
-		--b-color-base: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
-		--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, pink, 500)};
-		--b-color-light: #{tokens.getPrimitiveVar($primitives-color, pink, 100)};
-		--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, pink, 1000)};
+		--b-color-base: #{tokens.getPrimitiveVar($primitives-color, neutral, 600)};
+		--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, neutral, 500)};
+		--b-color-light: #{tokens.getPrimitiveVar($primitives-color, neutral, 100)};
+		--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, neutral, 1000)};
 
 		&[data-company='bagy'] {
 			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, pink, 600)};
