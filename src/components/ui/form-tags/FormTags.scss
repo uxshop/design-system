@@ -1,6 +1,7 @@
 @import '../../../../src/scss/mixins.scss';
 .ui-form-tags {
 	--choice-item-height: var(--s-spacing-large);
+	color: var(--s-typography-caption-small);
 
 	&:not(.-has-value) {
 		.choices__inner {
@@ -36,6 +37,10 @@
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: 0;
 			}
+		}
+
+		&.is-focused .choices__inner {
+			border: 1px solid var(--s-color-fill-highlight);
 		}
 
 		.choices__list {

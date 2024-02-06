@@ -6,6 +6,8 @@
 	position: relative;
 	cursor: pointer;
 	user-select: none;
+	font: var(--s-typography-paragraph-regular);
+	color: var(--s-color-content-default);
 
 	&.-disabled {
 		cursor: not-allowed;
