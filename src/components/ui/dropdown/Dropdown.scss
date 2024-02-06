@@ -18,7 +18,7 @@
 
 	&.-open {
 		outline: none;
-		z-index: var(--s-index-low-medium);
+		z-index: var(--s-index-very-high);
 
 		> .ui-dropdown-menu {
 			display: block;
@@ -27,8 +27,6 @@
 
 	&.-right {
 		.ui-dropdown-menu {
-			left: auto;
-			right: var(--s-spacing-x-small);
 			transform: translateX(0);
 		}
 	}

@@ -15,7 +15,7 @@ const uidMenu = `ui-dropdown-${getCurrentInstance()?.uid}-menu`
 const style = ref({})
 let initialHeight: number = 0
 
-const showOnTop = computed(() => (props.dropUp ? '-400px' : 'unset'))
+const showOnTop = computed(() => (props.dropUp ? '-450px' : 'unset'))
 
 const listener = (e: MouseEvent | KeyboardEvent) => {
 	let noClose = e.target.tagName == 'INPUT'
