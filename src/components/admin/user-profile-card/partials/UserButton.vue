@@ -7,6 +7,7 @@ const props = defineProps<{
 	userName: string
 	caption?: string
 	image?: string
+  hideIcon?: boolean
 }>()
 
 const userInitials = computed(() => filterInitials(props.userName))
@@ -25,7 +26,7 @@ const userInitials = computed(() => filterInitials(props.userName))
 				<span v-if="caption" class="user-card-btn-text-caption">{{ caption }}</span>
 			</div>
 			<span class="icon-arrow-up">
-				<Icon name="keyboard_arrow_up" size="sm" />
+				<Icon v-if="!hideIcon" name="keyboard_arrow_up" size="sm" />
 			</span>
 		</div>
 	</div>

@@ -14,6 +14,7 @@ export interface Props {
 	dropdownLabel?: string
 	dropdownClosed?: boolean
 	fullHeight?: boolean
+  fullWidth?: boolean
 	noBorder?: boolean
 	noPadding?: boolean
 	closeCaption?: string
@@ -67,6 +68,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			'-gray': gray,
 			'-last': last,
 			'-full-height': fullHeight,
+			'-full-width': fullWidth,
 			'-loading': loading,
 			'-transparent': transparent,
 			'-no-padding': noPadding,

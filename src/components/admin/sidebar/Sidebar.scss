@@ -97,6 +97,24 @@
 		}
 	}
 
+	@include mobile {
+		.ui-sidebar-nav {
+			padding: unset;
+		}
+
+		.ui-sidebar-list {
+			display: flex;
+			padding: 0 var(--s-spacing-x-small) var(--s-spacing-x-small);
+			background-color: var(--s-color-background-default);
+
+			> .ui-sidebar-list {
+				background-color: var(--s-color-fill-default);
+				padding: var(--s-spacing-small) var(--s-spacing-x-small);
+				border-radius: var(--s-border-radius-medium);
+			}
+		}
+	}
+
 	.ui-sidebar-footer {
 		box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.08);
 	}
@@ -125,10 +143,7 @@
 	}
 
 	.ui-sidebar-link {
-		line-height: 1;
 		color: var(--s-color-content-default);
-		font-weight: 700;
-		font-size: 14px;
 		display: flex;
 		cursor: pointer;
 		position: relative;
@@ -194,7 +209,7 @@
 				transform: rotate(180deg);
 			}
 			~ .ui-sidebar-sublist {
-				max-height: 1000px;
+				max-height: 100vh;
 				opacity: 1;
 			}
 		}
@@ -227,7 +242,7 @@
 		}
 
 		&-icon {
-			width: 25px;
+			width: var(--s-spacing-small);
 			display: flex;
 			align-items: center;
 			margin-right: var(--s-spacing-quark);
@@ -251,33 +266,24 @@
 		}
 	}
 
-	@include mobile() {
-		z-index: 999;
+	@include mobile {
+		height: calc(100% - var(--s-spacing-huge));
 
-		.ui-close-sidebar {
-			position: fixed;
-			text-align: end;
-			display: none;
-			top: 30px;
-			left: 0;
-			right: 30px;
-			bottom: 0;
-			z-index: 600;
-
-			.is-menu-open & {
-				display: block;
-			}
+		> .ui-sidebar-wrapper {
+			width: 100vw;
+			max-width: 100vw;
 		}
 
 		.ui-sidebar-overlay {
-			background: var(--modal-backdrop-bg);
-			opacity: var(--modal-backdrop-opacity);
+			background: var(--s-color-background-overlay);
+			opacity: 0.8;
 			position: fixed;
 			top: 0;
 			left: 0;
 			right: 0;
 			bottom: 0;
-			z-index: 600;
+			z-index: var(--s-index-high);
+
 			display: none;
 
 			.is-menu-open & {
@@ -289,7 +295,7 @@
 			transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 			position: absolute;
 			transform: translateX(-100%);
-			z-index: 889;
+			z-index: var(--s-index-very-high);
 
 			.is-menu-open & {
 				transform: translateX(0);
