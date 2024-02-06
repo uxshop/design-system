@@ -28,7 +28,6 @@
 			border: var(--s-border-light);
 			z-index: var(--s-index-medium-high);
 			border-radius: inherit;
-			opacity: 0.2;
 			cursor: pointer;
 		}
 
@@ -50,6 +49,13 @@
 					background-size: 30%;
 				}
 			}
+		}
+	}
+
+	@include darkmode {
+		.form-control {
+			background-color: var(--s-color-fill-dark);
+			border-color: var(--s-color-border-dark);
 		}
 	}
 }
