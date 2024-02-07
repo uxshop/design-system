@@ -8,7 +8,7 @@ import type { IAction } from '../../../types/IAction'
 
 defineProps<{
 	title?: string | null
-	to?: object
+	to?: Record<string, any>
 	backlink?: { to: string }
 	primaryAction?: IAction
 	secondaryActions?: IAction[]

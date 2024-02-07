@@ -36,7 +36,7 @@
 		padding: 10px var(--modal-padding-x);
 		position: sticky;
 		top: 58px;
-		z-index: 778;
+		z-index: var(--s-index-medium);
 		background: inherit;
 		background-color: var(--bg-white);
 		border-bottom: solid 1px var(--border-color);

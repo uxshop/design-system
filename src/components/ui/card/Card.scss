@@ -23,6 +23,10 @@
 		}
 	}
 
+	&.-full-width {
+		width: 100%;
+	}
+
 	&.-hide {
 		padding-bottom: 0;
 	}
@@ -329,7 +333,7 @@
 	}
 
 	.ui-card-caption {
-		font: var(--s-typography-caption-small);
+		font: var(--s-typography-paragraph-regular);
 		min-width: 100%;
 		color: var(--s-color-content-light);
 

@@ -5,11 +5,11 @@
 	margin: 10px;
 
 	&-label {
-		font: var(--s-typography-label-medium);
+		font: var(--s-typography-caption-large);
 		text-transform: uppercase;
 		color: var(--s-color-content-light);
-		opacity: 0.9;
-		padding-left: var(--s-spacing-x-small);
+		margin: 0 var(--s-spacing-nano);
+		padding: var(--s-spacing-quark) var(--s-spacing-x-small);
 	}
 
 	.ui-dropdown {

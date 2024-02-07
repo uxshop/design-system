@@ -14,6 +14,7 @@ export interface Props {
 	dropdownLabel?: string
 	dropdownClosed?: boolean
 	fullHeight?: boolean
+  fullWidth?: boolean
 	noBorder?: boolean
 	noPadding?: boolean
 	closeCaption?: string
@@ -67,6 +68,7 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			'-gray': gray,
 			'-last': last,
 			'-full-height': fullHeight,
+			'-full-width': fullWidth,
 			'-loading': loading,
 			'-transparent': transparent,
 			'-no-padding': noPadding,
@@ -96,11 +98,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 					<slot name="header-button" v-if="haveSlot('header-button')" />
 					<button type="button" class="btn-collapse" v-if="isDropdown">
 						<div v-if="showBody">
-							<Icon class="btn-collapse-icon" name="expand_less" />
+							<Icon class="btn-collapse-icon" name="expand_less" :size="24"/>
 						</div>
 						<div v-if="!showBody">
 							<Link v-if="dropdownLabel">{{ dropdownLabel }}</Link>
-							<Icon class="btn-collapse-icon" v-else name="expand_more" />
+							<Icon class="btn-collapse-icon" v-else name="expand_more" :size="24" />
 						</div>
 					</button>
 				</div>

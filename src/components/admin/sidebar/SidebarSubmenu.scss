@@ -4,7 +4,7 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	z-index: 88;
+  z-index: var(--s-index-medium-high);
 	transition: transform 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 	will-change: transform;
 	transform: translateX(100%);
@@ -62,7 +62,7 @@
 			font-weight: 600;
 			position: sticky;
 			top: 0;
-			z-index: 88;
+      z-index: var(--s-index-medium-high);
 			margin-right: 1px;
 			user-select: none;
 			background: inherit;

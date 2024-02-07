@@ -67,7 +67,6 @@ onMounted(() => {
 		<Dropdown right ref="dropdownRef">
 			<template #button-content>
 				<span class="table-list-nav-btn">
-					<!-- <IconButton icon="sort_by_alpha" size="sm" /> -->
 					<Button size="sm" label="Ordenar" leadingIcon="swap_vert" />
 				</span>
 			</template>

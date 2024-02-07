@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TextStyle from '../text-style/TextStyle.vue'
 import Icon from '../../ui/icon/Icon.vue'
 import Link from '../../ui/link/Link.vue'
 import Button from '../button/Button.vue'
@@ -17,12 +18,12 @@ const isMobile = window.innerWidth <= 768
 </script>
 
 <template>
-	<div class="stats-item">
-		<small class="stats-text">
+	<div class="ui-stats-item">
+		<small class="ui-stats-item-label">
 			{{ label }}
 			<icon name="info" v-if="info" v-tooltip:top="info" />
 		</small>
-		<b class="stats-value">{{ value }}</b>
+		<span class="ui-stats-item-value">{{ value }}</span>
 
 		<div class="stats-perc" v-if="perc != undefined" :class="{ positive: Number(perc) > 0 }">
 			<icon name="south" />

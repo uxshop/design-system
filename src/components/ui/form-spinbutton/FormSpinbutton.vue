@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
+import Button from '../button/Button.vue'
+import type { Size } from 'src/types'
 
 export interface Props {
 	modelValue: number
 	min?: string | number
 	max?: string | number
-	placeholder?: string | number
-	size?: string | number
+	placeholder?: string
+	size?: Size
 	step?: string | number
 	loading?: boolean
 	disabled?: boolean
@@ -28,13 +30,13 @@ const update = (val: number) => {
 }
 
 const increase = () => {
-	if (props.max === undefined || props.modelValue < props.max) {
+	if (props.max === undefined || props.modelValue < Number(props.max)) {
 		update(Number(props.modelValue) + Number(props.step))
 	}
 }
 
 const decrease = () => {
-	if (props.min === undefined || props.modelValue > props.min) {
+	if (props.min === undefined || props.modelValue > Number(props.min)) {
 		update(Number(props.modelValue) - Number(props.step))
 	}
 }
@@ -74,11 +76,11 @@ watchEffect(() => {
 	disabledIncrement.value = false
 	disabledDecrement.value = false
 
-	if (props.max && props.modelValue >= props.max) {
+	if (props.max && props.modelValue >= Number(props.max)) {
 		disabledIncrement.value = true
 	}
 
-	if (props.max && props.modelValue <= props.min) {
+	if (props.max && props.modelValue <= Number(props.min)) {
 		disabledDecrement.value = true
 	}
 })
@@ -89,14 +91,15 @@ watchEffect(() => {
 		<div class="ui-form-spinbutton-loader" v-if="loading">
 			<Spinner class="ui-form-spinbutton-loader-spin" size="18" />
 		</div>
-		<button
+		<Button
 			:disabled="disabled || disabledDecrement"
 			tabindex="-1"
 			type="button"
 			aria-controls="demo-sb"
 			aria-label="Decrement"
 			aria-keyshortcuts="ArrowDown"
-			class="ui-button"
+			:class="classList"
+			class="ui-form-spinbutton-action"
 			@click="decrease">
 			<svg
 				viewBox="0 0 16 16"
@@ -113,7 +116,7 @@ watchEffect(() => {
 					<path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"></path>
 				</g>
 			</svg>
-		</button>
+		</Button>
 		<div
 			:disabled="disabled"
 			class="output"
@@ -133,14 +136,15 @@ watchEffect(() => {
 				@focus="$event.target.select()"
 				:placeholder="placeholder" />
 		</div>
-		<button
+		<Button
 			tabindex="-1"
 			:disabled="disabled || disabledIncrement"
 			type="button"
 			aria-controls="demo-sb"
 			aria-label="Increment"
 			aria-keyshortcuts="ArrowUp"
-			class="ui-button"
+			:class="classList"
+			class="ui-form-spinbutton-action"
 			@click="increase">
 			<svg
 				viewBox="0 0 16 16"
@@ -158,7 +162,7 @@ watchEffect(() => {
 						d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
 				</g>
 			</svg>
-		</button>
+		</Button>
 	</div>
 </template>
 

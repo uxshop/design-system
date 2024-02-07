@@ -1,55 +1,41 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, type StyleValue } from 'vue'
+import type { Alignment, Distribuition, Spacing } from '../../../types/Types'
 
-export interface Props {
-	distribution?: 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default'
-	spacing?: string
-	alignment?: 'start' | 'center' | 'end' | 'fill'
+export interface StackProps {
+	distribution?: Distribuition
+	spacing?: Spacing
+	alignment?: Alignment
 	vertical?: boolean
 	wrap?: boolean
 	columns?: string | number
 	horizontal?: boolean
 }
 
-const props = defineProps<Props>()
-const classList = ref<string[]>([])
+const props = defineProps<StackProps>()
 
-if (props.distribution != 'default' && props.distribution != undefined) {
-	classList.value.push(`-distribute-${props.distribution}`)
-}
+const stackClassList = computed(() => [
+	props.distribution !== 'default' && props.distribution != undefined && `-distribute-${props.distribution}`,
+	props.spacing !== 'default' && props.spacing != undefined && `-spacing-${props.spacing}`,
+	props.vertical == true && '-vertical',
+	props.alignment && `-align-${props.alignment}`,
+	props.wrap == null || (props.wrap == false && '-no-wrap'),
+	props.horizontal && '-sm-horizontal',
+	props.columns && props.columns > 1 && '-custom-grid'
+])
 
-if (props.spacing != 'default' && props.spacing != undefined) {
-	classList.value.push(`-spacing-${props.spacing}`)
-}
+const stackStyleList = computed(() => {
+	const styles: StyleValue = {}
 
-if (props.vertical == true) {
-	classList.value.push('-vertical')
-}
+	if (props.columns && window.innerWidth > 800) {
+		styles.gridTemplateColumns = `repeat(${props.columns}, 1fr)`
+	}
 
-if (props.alignment) {
-	classList.value.push(`-align-${props.alignment}`)
-}
-
-if (props.wrap == null && props.wrap == false) {
-	classList.value.push('-no-wrap')
-}
-
-if (props.horizontal) {
-	classList.value.push('-sm-horizontal')
-}
-
-const styleList = ref<string[]>([])
-
-if (props.columns && props.columns > 1) {
-	classList.value.push('-custom-grid')
-}
-
-if (props.columns && window.innerWidth > 800) {
-	styleList.value.push(`grid-template-columns: repeat(${props.columns}, 1fr)`)
-}
+	return styles
+})
 </script>
 <template>
-	<div class="ui-stack" :class="classList" :style="styleList">
+	<div class="ui-stack" :class="stackClassList" :style="stackStyleList">
 		<slot />
 	</div>
 </template>

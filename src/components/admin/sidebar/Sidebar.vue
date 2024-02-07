@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
-import type { SideBarItem, SideBarItemType } from './types'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
+import SidebarMobile from './SidebarMobile.vue'
+import { isMobile } from '../../../helpers'
+import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types'
 
 export interface MenuProviderInterface {
 	open: boolean
@@ -14,14 +16,14 @@ export interface Props {
 	isActive: (item: SideBarItem, isOnlyChildren?: boolean) => boolean
 	menuOpen?: boolean
 	menus: SideBarItem[]
-	currentSection?: string | null
+	mobileNavigationBar: SidebarMobileMenu[]
 }
 
 const menu = inject('menu') as MenuProviderInterface
-const props = defineProps<Props>()
+defineProps<Props>()
 
 const emit = defineEmits<{
-	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem): void
+	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void
 }>()
 
 const toggleMenu = (item: any) => {
@@ -29,6 +31,15 @@ const toggleMenu = (item: any) => {
 		menu.toggle()
 		emit('onClickItem', 'node', item)
 	}
+}
+
+const handleMobileBar = (item: SidebarMobileMenu) => {
+	if (item.type === 'action') {
+		menu.toggle()
+		return
+	}
+
+	emit('onClickItem', 'node', item)
 }
 </script>
 
@@ -62,7 +73,6 @@ const toggleMenu = (item: any) => {
 								<div
 									class="ui-sidebar-link"
 									:class="{
-										'-nodes': item.nodes?.length,
 										'-node-active': item.active,
 										'-active': item.active
 									}"
@@ -72,7 +82,7 @@ const toggleMenu = (item: any) => {
 										<span class="ui-sidebar-link-icon">
 											<Icon size="16" :name="item.icon" filled />
 										</span>
-										<span class="ui-sidebar-link-text">
+										<span class="ui-sidebar-link-text -title">
 											{{ item.name }}
 										</span>
 									</div>
@@ -103,15 +113,16 @@ const toggleMenu = (item: any) => {
 							</li>
 						</ul>
 					</div>
-					<slot name="footer" @click="emit('onClickItem', 'footer')" />
+					<div class="ui-sidebar-footer" v-if="!isMobile">
+						<slot name="footer" class="ui-sidebar-footer" @click="emit('onClickItem', 'footer')" />
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="ui-sidebar-overlay" @click="toggleMenu"></div>
-		<div v-if="menu.open === true" class="ui-close-sidebar" @click="toggleMenu">
-			<Icon name="close" />
-		</div>
 	</div>
+
+	<SidebarMobile :mobile-menus="mobileNavigationBar" @on-click-action="handleMobileBar" />
 </template>
 
 <style lang="scss">

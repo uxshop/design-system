@@ -2,7 +2,7 @@
 
 .ui-dropdown {
 	position: relative;
-	z-index: 111;
+	z-index: var(--s-index-medium);
 
 	.ui-dropdown-button {
 		position: relative;
@@ -18,7 +18,7 @@
 
 	&.-open {
 		outline: none;
-		z-index: var(--s-index-high);
+		z-index: var(--s-index-very-high);
 
 		> .ui-dropdown-menu {
 			display: block;
@@ -27,8 +27,6 @@
 
 	&.-right {
 		.ui-dropdown-menu {
-			left: auto;
-			right: var(--s-spacing-x-small);
 			transform: translateX(0);
 		}
 	}
@@ -136,6 +134,7 @@
 	@include darkmode {
 		.ui-dropdown-menu {
 			background-color: var(--s-color-fill-dark);
+			border-color: var(--s-color-border-dark);
 		}
 
 		.ui-dropdown-item {

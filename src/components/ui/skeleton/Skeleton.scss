@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .animated-background {
 	animation: {
 		timing-function: var(--s-motion-ease-linear);
@@ -5,7 +7,7 @@
 		iteration-count: infinite;
 		name: placeHolderShimmer;
 	}
-	background: #e4e4e8;
+
 	background: linear-gradient(
 		to right,
 		var(--s-color-fill-disable, #e0e8f2) 25%,
@@ -13,11 +15,20 @@
 		var(--s-color-fill-default-light, #f5f7fa) 75%,
 		var(--s-color-fill-default-light, #f5f7fa) 100%
 	);
-	background-size: 1000px 1000px;
 	height: var(--s-spacing-x-small);
 	width: 100%;
 	position: relative;
 	border-radius: var(--s-border-radius-large);
+
+	@include darkmode {
+		background: linear-gradient(
+			to right,
+			var(--s-color-fill-dark-disable, #e0e8f2) 25%,
+			var(--s-color-fill-dark-light, #f5f7fa) 50%,
+			var(--s-color-fill-dark-light, #f5f7fa) 75%,
+			var(--s-color-fill-dark-light, #f5f7fa) 100%
+		);
+	}
 }
 
 .ui-skeleton {
