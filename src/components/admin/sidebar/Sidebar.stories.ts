@@ -11,7 +11,8 @@ const meta = {
 	component: Sidebar,
 	tags: ['autodocs'],
 	args: {
-		menus
+		menus,
+		isActive: (node: SideBarItem, isOnlyChildren?: boolean) => false
 	},
 	argTypes: {}
 } satisfies Meta<typeof Sidebar>
