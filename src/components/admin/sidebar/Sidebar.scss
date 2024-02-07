@@ -97,6 +97,24 @@
 		}
 	}
 
+	.ui-sidebar-list::-webkit-scrollbar {
+		background-color: var(--s-color-fill-default);
+	}
+
+	.ui-sidebar-list::-webkit-scrollbar-track {
+		background-color: var(--s-color-fill-default);
+	}
+
+	.ui-sidebar-list::-webkit-scrollbar-thumb {
+		background-color: var(--s-color-fill-disable);
+		border-radius: var(--s-border-radius-large);
+		border: var(--s-border-radius-small) solid var(--s-color-fill-default);
+	}
+
+	.ui-sidebar-list::-webkit-scrollbar-button {
+		display: none;
+	}
+
 	@include mobile {
 		.ui-sidebar-nav {
 			padding: unset;
