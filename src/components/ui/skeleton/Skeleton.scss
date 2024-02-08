@@ -3,7 +3,7 @@
 .animated-background {
 	animation: {
 		timing-function: var(--s-motion-ease-linear);
-		duration: var(--s-motion-duration-slow);
+		duration: var(--s-motion-duration-extremely-slow);
 		iteration-count: infinite;
 		name: placeHolderShimmer;
 	}
