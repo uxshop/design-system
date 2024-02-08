@@ -108,7 +108,7 @@
 	.ui-sidebar-list::-webkit-scrollbar-thumb {
 		background-color: var(--s-color-fill-disable);
 		border-radius: var(--s-border-radius-large);
-		border: var(--s-border-radius-small) solid var(--s-color-fill-default);
+		border: var(--s-spacing-quark) solid var(--s-color-fill-default);
 	}
 
 	.ui-sidebar-list::-webkit-scrollbar-button {
