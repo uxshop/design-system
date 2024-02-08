@@ -11,7 +11,8 @@ const meta = {
 	component: Sidebar,
 	tags: ['autodocs'],
 	args: {
-		menus
+		menus,
+		isActive: (node: SideBarItem, isOnlyChildren?: boolean) => false
 	},
 	argTypes: {}
 } satisfies Meta<typeof Sidebar>
@@ -40,7 +41,6 @@ export const Default: Story = {
 				open: false,
 				toggle: () => {
 					menu.open = !menu.open
-
 					if (menu.open) {
 						document.body.classList.add('is-menu-open')
 					} else {

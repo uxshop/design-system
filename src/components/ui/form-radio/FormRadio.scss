@@ -8,6 +8,7 @@
 	cursor: pointer;
 	user-select: none;
 	font-weight: var(--s-font-weight-semibold);
+	color: var(--s-color-content-default);
 
 	+ .ui-form-radio {
 		margin-top: var(--s-spacing-x-small);

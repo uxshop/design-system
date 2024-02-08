@@ -8,7 +8,7 @@ import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types'
 
 export interface MenuProviderInterface {
 	open: boolean
-	removeSidebar(): void
+	close(): void
 	toggle(): void
 }
 
@@ -33,6 +33,11 @@ const toggleMenu = (item: any) => {
 	}
 }
 
+const handleMenuClick = (type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void => {
+	emit('onClickItem', type, menuItem)
+	if (isMobile) menu.close()
+}
+
 const handleMobileBar = (item: SidebarMobileMenu) => {
 	if (item.type === 'action') {
 		menu.toggle()
@@ -40,6 +45,7 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 	}
 
 	emit('onClickItem', 'node', item)
+	menu.close()
 }
 </script>
 
@@ -49,7 +55,7 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 			<div class="ui-sidebar-container">
 				<div class="ui-sidebar-content">
 					<div class="ui-sidebar-nav">
-						<div class="ui-sidebar-logo" @click="emit('onClickItem', 'logo')">
+						<div class="ui-sidebar-logo" @click="handleMenuClick('logo')">
 							<slot name="logo" />
 						</div>
 						<slot name="select-button" />
@@ -77,7 +83,7 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 										'-active': item.active
 									}"
 									activeClass="-active"
-									@click="emit('onClickItem', 'node', item)">
+									@click="handleMenuClick('node', item)">
 									<div class="d-flex">
 										<span class="ui-sidebar-link-icon">
 											<Icon size="16" :name="item.icon" filled />
@@ -114,7 +120,7 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 						</ul>
 					</div>
 					<div class="ui-sidebar-footer" v-if="!isMobile">
-						<slot name="footer" class="ui-sidebar-footer" @click="emit('onClickItem', 'footer')" />
+						<slot name="footer" class="ui-sidebar-footer" @click="handleMenuClick('footer')" />
 					</div>
 				</div>
 			</div>
