@@ -114,12 +114,12 @@ onMounted(() => {
 		</div>
 
 		<span v-show="selected.length && config.actions?.includes('remove')" class="table-list-nav-item">
-			<Button leadingIcon="delete" @click="onRemoveDialog" size="sm" label="Deletar" />
+			<Button leadingIcon="delete" @click="onRemoveDialog" label="Deletar" />
 		</span>
 
 		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0">
 			<template #button-content>
-				<Button size="sm" trailingIcon="unfold_more"> Ação em massa </Button>
+				<Button trailingIcon="unfold_more"> Ação em massa </Button>
 			</template>
 
 			<DropdownItemButton
@@ -137,18 +137,21 @@ onMounted(() => {
 	display: flex;
 	align-items: center;
 	height: 100%;
-	gap: 10px;
-	padding-right: 15px;
+	gap: var(--s-spacing-nano);
+	padding-right: var(--s-spacing-x-small);
+
+	.-checkbox {
+		padding: 0 var(--s-spacing-x-small);
+	}
 
 	&.-active {
-		padding-left: 15px;
 		width: 100%;
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
-    z-index: var(--s-index-low);
+		z-index: var(--s-index-medium-high);
 		background: inherit;
 	}
 

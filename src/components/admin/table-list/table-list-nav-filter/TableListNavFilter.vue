@@ -32,10 +32,9 @@ const closeFilter = (resFilters: Record<string, any>) => {
 
 <template>
 	<span class="table-list-nav-item" v-if="props.state.config.filters">
-		<Button size="sm" label="Filtros" @click="filterSidebarRef.open()" class="table-list-nav-btn" />
+		<Button label="Filtros" @click="filterSidebarRef.open()" class="table-list-nav-btn" />
 		<TableListNavFilterSidebar
 			ref="filterSidebarRef"
-			size="sm"
 			@close="closeFilter"
 			:filters="props.state.config.filters"
 			:currentFilters="state.omitFilters" />

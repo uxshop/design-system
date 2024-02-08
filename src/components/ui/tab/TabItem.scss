@@ -36,12 +36,11 @@
 		background: transparent;
 		width: 100%;
 		position: absolute;
-		bottom: 0px;
+		bottom: -1px;
 		display: block;
 		left: 0;
 		transition: var(--s-motion-ease-linear) var(--s-motion-duration-fast);
-		border-top-left-radius: var(--s-border-radius-medium);
-		border-top-right-radius: var(--s-border-radius-medium);
+		border-radius: var(--s-border-radius-medium);
 	}
 
 	&:hover:not(.-active) {
