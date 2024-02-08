@@ -4,24 +4,12 @@
 	position: relative;
 	z-index: var(--s-index-medium);
 
-	.ui-dropdown-button {
-		position: relative;
-		user-select: none;
-		display: flex;
-		align-items: center;
-		white-space: nowrap;
-
-		&:focus {
-			outline: none;
-		}
-	}
-
 	&.-open {
 		outline: none;
 		z-index: var(--s-index-very-high);
 
 		> .ui-dropdown-menu {
-			display: block;
+			display: flex;
 		}
 	}
 
@@ -31,22 +19,25 @@
 		}
 	}
 
-	.ui-dropdown-divider {
+	&-button {
+		position: relative;
+		user-select: none;
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		color: inherit;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	&-divider {
 		border-top: var(--s-border-light);
 		margin: 10px -10px;
 	}
 
-	.ui-dropdown-item-wrapper {
-		&:first-child {
-			margin-top: var(--s-spacing-nano);
-		}
-
-		&:last-child {
-			margin-bottom: var(--s-spacing-nano);
-		}
-	}
-
-	.ui-dropdown-menu {
+	&-menu {
 		min-width: 100%;
 		margin-top: var(--s-spacing-quark);
 		border: var(--s-border-light);
@@ -54,20 +45,17 @@
 		box-shadow: var(--s-shadow-level-1);
 		background: var(--s-color-fill-default);
 		display: none;
+		flex-direction: column;
+		row-gap: var(--s-spacing-quark);
 		position: absolute;
 		min-width: 220px;
 		left: 0;
 		overflow: hidden;
 		overflow-y: auto;
+		padding: var(--s-spacing-x-small) var(--s-spacing-nano);
 
 		input {
 			border: none;
-		}
-
-		a.ui-dropdown-item {
-			&:hover {
-				text-decoration: none;
-			}
 		}
 
 		.ui-dropdown-item {
@@ -78,12 +66,28 @@
 			background: none;
 			border-radius: var(--s-border-radius-small);
 			padding: var(--s-border-radius-medium) var(--s-border-radius-large);
-			border: 0;
+			border: none;
 			white-space: nowrap;
+			width: 100%;
+
+			&:hover,
+			&:focus {
+				&.-button {
+					background-color: var(--s-color-fill-default-hover);
+				}
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+
+			&:focus {
+				outline: none;
+			}
 
 			&.-button {
-				width: 100%;
 				cursor: pointer;
+				color: inherit;
 
 				> .ui-icon.leading-icon {
 					position: absolute;
@@ -92,20 +96,6 @@
 					border-radius: var(--s-border-radius-small);
 					right: 20px;
 				}
-			}
-
-			> .ui-icon + span {
-				margin-left: var(--s-spacing-nano);
-			}
-
-			&:hover,
-			&:focus {
-				background: none;
-				color: var(--s-color-fill-highlight);
-			}
-
-			&:focus {
-				outline: none;
 			}
 
 			&.-active {
@@ -120,10 +110,14 @@
 					background: var(--s-color-fill-critical);
 				}
 			}
+
+			> .ui-icon + span {
+				margin-left: var(--s-spacing-nano);
+			}
 		}
 	}
 
-	.ui-dropdown-section {
+	&-section {
 		padding: var(--s-spacing-x-small);
 
 		+ .ui-dropdown-section {
@@ -132,14 +126,16 @@
 	}
 
 	@include darkmode {
-		.ui-dropdown-menu {
+		&-menu {
 			background-color: var(--s-color-fill-dark);
 			border-color: var(--s-color-border-dark);
 		}
 
-		.ui-dropdown-item {
-			&:hover {
-				background-color: var(--s-color-fill-dark-hover);
+		&-item {
+			&.-button {
+				&:hover {
+					background-color: var(--s-color-fill-dark-hover);
+				}
 			}
 		}
 	}
