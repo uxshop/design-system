@@ -75,10 +75,9 @@
 	}
 
 	.ui-sidebar-nav {
-		padding: var(--s-spacing-small);
+		padding: var(--s-spacing-small) var(--s-spacing-x-small);
 		display: flex;
 		align-items: center;
-		padding-left: var(--s-spacing-medium);
 		gap: var(--s-spacing-nano);
 	}
 
@@ -127,7 +126,7 @@
 
 			> .ui-sidebar-list {
 				background-color: var(--s-color-fill-default);
-				padding: var(--s-spacing-small) var(--s-spacing-x-small);
+				padding: var(--s-spacing-small) 0 var(--s-spacing-x-small) 0;
 				border-radius: var(--s-border-radius-medium);
 			}
 		}
@@ -167,18 +166,18 @@
 		position: relative;
 		align-items: center;
 		justify-content: space-between;
-		margin: 0 var(--s-spacing-xx-small);
+		margin: 0 var(--s-spacing-nano);
+		padding: 0 var(--s-spacing-nano);
 		border-radius: var(--s-border-radius-small);
-		padding: 0 var(--s-spacing-x-small);
 		text-decoration: none;
 		height: var(--s-spacing-medium);
 
 		&-caption {
-			margin: 0 var(--s-spacing-xx-small);
+			margin: 0 var(--s-spacing-nano);
 			font: var(--s-typography-caption-large);
 			color: var(--s-color-content-light);
 			text-transform: uppercase;
-			padding: var(--s-spacing-quark) var(--s-spacing-x-small);
+			padding: var(--s-spacing-quark) var(--s-spacing-nano);
 		}
 
 		&.-sub {
@@ -310,47 +309,18 @@
 		}
 
 		.ui-sidebar-wrapper {
-			transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+			transition: transform var(--s-motion-duration-default) var(--s-motion-ease-in-out);
 			position: absolute;
-			transform: translateX(-100%);
+			transform: translateY(100%);
 			z-index: var(--s-index-very-high);
 
 			.is-menu-open & {
-				transform: translateX(0);
+				transform: translateY(0);
 			}
 		}
 
 		.ui-sidebar-nav {
-			padding: 20px auto;
-		}
-	}
-
-	@include darkmode {
-		.ui-sidebar-wrapper {
-			background-color: var(--s-color-fill-dark);
-		}
-		.ui-sidebar-link {
-			&-text {
-				color: var(--s-color-content-dark-light);
-
-				&.-title {
-					color: var(--s-color-content-dark);
-				}
-			}
-
-			&:hover {
-				background-color: var(--s-color-fill-dark-hover);
-				&.-sub {
-					color: var(--s-color-content-dark);
-				}
-			}
-			&.-sub.-active {
-				color: var(--s-color-content-highlight);
-			}
-
-			&-caption {
-				color: var(--s-color-content-dark);
-			}
+			padding: var(--s-spacing-small) auto;
 		}
 	}
 }
