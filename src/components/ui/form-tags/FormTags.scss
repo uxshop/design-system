@@ -1,6 +1,7 @@
 @import '../../../../src/scss/mixins.scss';
 .ui-form-tags {
 	--choice-item-height: var(--s-spacing-large);
+	color: var(--s-color-content-default);
 
 	&:not(.-has-value) {
 		.choices__inner {
@@ -38,6 +39,10 @@
 			}
 		}
 
+		&.is-focused .choices__inner {
+			border: 1px solid var(--s-color-border-highlight);
+		}
+
 		.choices__list {
 			border-color: var(--s-color-border-default);
 
@@ -71,7 +76,6 @@
 		border-radius: var(--s-border-radius-small);
 
 		.choices__input {
-			color: var(--s-color-content-default);
 			background-color: transparent;
 			height: var(--s-spacing-small);
 		}
@@ -97,6 +101,8 @@
 	}
 
 	@include darkmode {
+		color: var(--s-color-content-dark);
+
 		.choices {
 			.choices__inner {
 				background-color: var(--s-color-fill-dark);
@@ -104,6 +110,10 @@
 
 				&:hover {
 					border-color: var(--s-color-border-highlight);
+				}
+
+				.choices__input {
+					color: inherit;
 				}
 			}
 
