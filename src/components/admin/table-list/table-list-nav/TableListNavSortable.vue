@@ -65,7 +65,7 @@ onMounted(() => {
 		<Dropdown right ref="dropdownRef">
 			<template #button-content>
 				<span class="table-list-nav-btn">
-					<Button label="Ordenar" leadingIcon="swap_vert" />
+					<Button label="Ordenar" leadingIcon="swap_vert" size="sm" />
 				</span>
 			</template>
 			<DropdownItemButton

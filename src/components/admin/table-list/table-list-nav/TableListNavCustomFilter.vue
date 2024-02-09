@@ -128,14 +128,16 @@ const onShowDropdown = () => {
 					v-if="Number(state.currentTab) >= 1"
 					label="Editar filtro"
 					leadingIcon="star"
+					size="sm"
 					variant="primary"
 					:disabled="disableDropdown" />
-				<Button v-else label="Salvar filtro" leadingIcon="star" :disabled="disableDropdown" />
+				<Button v-else label="Salvar filtro" size="sm" leadingIcon="star" :disabled="disableDropdown" />
 			</template>
 			<DropdownSection>
 				<form @submit.prevent="onSave" id="form-custom-filter" autocomplete="off">
 					<h6>Salvar filtro</h6>
 					<FormTextfield
+						size="sm"
 						v-model="reg.name"
 						placeholder="Nome do filtro"
 						style="min-width: 210px"

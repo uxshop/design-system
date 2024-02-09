@@ -114,12 +114,12 @@ onMounted(() => {
 		</div>
 
 		<span v-show="selected.length && config.actions?.includes('remove')" class="table-list-nav-item">
-			<Button leadingIcon="delete" @click="onRemoveDialog" label="Deletar" />
+			<Button size="sm" leadingIcon="delete" @click="onRemoveDialog" label="Deletar" />
 		</span>
 
 		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0">
 			<template #button-content>
-				<Button trailingIcon="unfold_more"> Ação em massa </Button>
+				<Button size="sm" trailingIcon="unfold_more"> Ação em massa </Button>
 			</template>
 
 			<DropdownItemButton
@@ -139,10 +139,6 @@ onMounted(() => {
 	height: 100%;
 	gap: var(--s-spacing-nano);
 	padding-right: var(--s-spacing-x-small);
-
-	.-checkbox {
-		padding: 0 var(--s-spacing-x-small);
-	}
 
 	&.-active {
 		width: 100%;

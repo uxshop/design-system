@@ -169,6 +169,7 @@ defineExpose({
 						</div>
 						<div class="text-left mt-2">
 							<Button
+								size="sm"
 								variant="link"
 								flush="left"
 								@click="onClearFilter(filter, key)"
@@ -182,10 +183,12 @@ defineExpose({
 		<template #footer>
 			<Row alignV="center">
 				<Col>
-					<Button type="submit" form="form-filter" block variant="primary" leadingIcon="check"> Aplicar </Button>
+					<Button size="sm" type="submit" form="form-filter" block variant="primary" leadingIcon="check">
+						Aplicar
+					</Button>
 				</Col>
 				<Col>
-					<Button @click="onClearAll" :disabled="!hasSelected()"> limpar os filtros </Button>
+					<Button size="sm" @click="onClearAll" :disabled="!hasSelected()"> limpar os filtros </Button>
 				</Col>
 			</Row>
 		</template>

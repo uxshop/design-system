@@ -44,6 +44,7 @@ const onClear = () => {
 		<form autocomplete="off" @submit.prevent="onSubmit">
 			<div class="table-search-input">
 				<FormTextfield
+					size="sm"
 					leadingIcon="search"
 					clearable
 					@clear="onClear"
