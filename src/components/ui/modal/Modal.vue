@@ -4,6 +4,7 @@ import IconButton from '../icon-button/IconButton.vue'
 import type { Size } from '../../../types'
 
 const props = defineProps<{
+	caption?: string
 	centered?: boolean
 	class?: string
 	hideHeader?: boolean
@@ -107,10 +108,7 @@ watchEffect(() => {
 							<h4 class="ui-modal-title">
 								{{ currentTitle }}
 							</h4>
-							<span class="ui-modal-caption">
-								<slot name="caption" />
-								caption
-							</span>
+							<span v-if="caption" class="ui-modal-caption"> {{ caption }}</span>
 						</div>
 
 						<IconButton class="ui-modal-close" id="btn-close" @click="close" size="md" variant="plain" icon="close" />
