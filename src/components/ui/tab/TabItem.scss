@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-tab-item {
 	-webkit-appearance: none;
 	background: none;
@@ -15,19 +17,10 @@
 	position: relative;
 	font: var(--s-typography-paragraph-regular);
 
-	.ui-tab-item-badge {
-		background-color: var(--s-color-fill-disable);
-		border-radius: var(--s-border-radius-large);
-		padding: 0 var(--s-spacing-quark);
-		font: var(--s-typography-label-small);
-	}
-
-	.ui-tab-item-content {
-		justify-content: center;
-		align-items: center;
-		display: flex;
-		column-gap: var(--s-spacing-quark);
-		height: 100%;
+	&:hover:not(.-active) {
+		&:after {
+			background: var(--s-color-fill-default-hover);
+		}
 	}
 
 	&::after {
@@ -44,18 +37,33 @@
 		border-top-right-radius: var(--s-border-radius-medium);
 	}
 
-	&:hover:not(.-active) {
-		&:after {
-			background: var(--s-color-fill-default-hover);
-		}
-	}
-
 	&.-active {
 		color: var(--s-color-content-highlight);
 		font: var(--s-typography-paragraph-strong);
 
 		&:after {
 			background-color: var(--s-color-fill-highlight);
+		}
+	}
+
+	&-badge {
+		background-color: var(--s-color-fill-disable);
+		border-radius: var(--s-border-radius-large);
+		padding: 0 var(--s-spacing-quark);
+		font: var(--s-typography-label-small);
+	}
+
+	&-content {
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		column-gap: var(--s-spacing-quark);
+		height: 100%;
+	}
+
+	@include darkmode {
+		.ui-tab-item-badge {
+			background-color: var(--s-color-fill-dark-disable);
 		}
 	}
 }
