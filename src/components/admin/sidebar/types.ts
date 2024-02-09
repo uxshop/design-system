@@ -15,6 +15,7 @@ export interface SideBarItem {
 	spacer?: boolean
 	last?: boolean
 	dropdown?: boolean
+	action?: () => void
 }
 
 export interface SidebarMobileMenu {

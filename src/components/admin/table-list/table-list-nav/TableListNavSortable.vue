@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Icon from '../../../ui/icon/Icon.vue'
 import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue'
 import FormRadio from '../../../ui/form-radio/FormRadio.vue'
-import IconButton from '../../../ui/icon-button/IconButton.vue'
 import Button from '../../../ui/button/Button.vue'
 
 const props = withDefaults(
@@ -67,7 +65,7 @@ onMounted(() => {
 		<Dropdown right ref="dropdownRef">
 			<template #button-content>
 				<span class="table-list-nav-btn">
-					<Button size="sm" label="Ordenar" leadingIcon="swap_vert" />
+					<Button label="Ordenar" leadingIcon="swap_vert" size="sm" />
 				</span>
 			</template>
 			<DropdownItemButton

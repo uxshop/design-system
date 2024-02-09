@@ -13,11 +13,11 @@ defineProps({
 
 <style lang="scss">
 .table-list-empty-message {
-	padding: 20px;
-	border: solid 1px var(--border-color);
-	border-radius: var(--border-radius);
+	padding: var(--s-spacing-small);
+	border: var(--s-border-light);
+	border-radius: var(--s-border-radius-medium);
 	.table-list-empty-message-title {
-		margin-bottom: 10px;
+		margin-bottom: var(--s-spacing-xx-small);
 	}
 }
 </style>

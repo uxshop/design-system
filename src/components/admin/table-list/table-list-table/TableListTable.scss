@@ -10,7 +10,7 @@
 		font-weight: normal;
 		&:hover {
 			text-decoration: none;
-			background-color: var(--gray-100);
+			background-color: var(--s-color-fill-default-hover);
 			cursor: pointer;
 			.hover {
 				opacity: 1;
@@ -21,20 +21,20 @@
 	.table-list-header {
 		.table-list-item {
 			text-transform: uppercase;
-			font-size: 12px;
-			font-weight: 600;
+			font-size: var(--s-line-height-12);
+			font-weight: var(--s-font-weight-semibold);
 		}
 	}
 
 	.table-list-item {
-		color: var(--body-color);
+		color: var(--s-color-content-highlight);
 		display: table-cell;
-		padding: 9px var(--td-padding);
-		border-top: solid 1px var(--border-color);
+		padding: var(--s-spacing-nano) var(--s-spacing-x-small);
+		border-top: var(--s-border-light);
 		vertical-align: middle;
 
 		a {
-			color: var(--body-color);
+			color: var(--s-color-content-highlight);
 		}
 
 		b,
@@ -55,14 +55,4 @@
 			width: 1px;
 		}
 	}
-
-	// .table-list-row {
-	// 	display: grid;
-	// 	grid-template-rows: 1fr 1fr;
-	// 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	// 	grid-template-areas:
-	// 		'checkbox primary primary primary actions'
-	// 		'checkbox secondary secondary secondary actions';
-	// 	gap: 0px;
-	// }
 }

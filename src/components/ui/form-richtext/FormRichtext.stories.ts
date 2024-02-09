@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import FormRichtext from './FormRichtext.vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
 
