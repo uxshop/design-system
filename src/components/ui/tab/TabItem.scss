@@ -19,7 +19,7 @@
 
 	&:hover:not(.-active) {
 		&:after {
-			background: var(--s-color-fill-default-hover);
+			background: var(--s-color-border-highlight);
 		}
 	}
 
@@ -46,19 +46,19 @@
 		}
 	}
 
-	&-badge {
-		background-color: var(--s-color-fill-disable);
-		border-radius: var(--s-border-radius-large);
-		padding: 0 var(--s-spacing-quark);
-		font: var(--s-typography-label-small);
-	}
-
 	&-content {
 		justify-content: center;
 		align-items: center;
 		display: flex;
 		column-gap: var(--s-spacing-quark);
 		height: 100%;
+	}
+
+	&-badge {
+		background-color: var(--s-color-fill-disable);
+		border-radius: var(--s-border-radius-large);
+		padding: 0 var(--s-spacing-quark);
+		font: var(--s-typography-label-small);
 	}
 
 	@include darkmode {
