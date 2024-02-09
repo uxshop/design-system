@@ -1,16 +1,18 @@
 @import '../../../scss/mixins.scss';
 
 .titlebar {
-	margin: 20px 0;
+	margin: var(--s-spacing-small) 0;
 	display: flex;
 	align-items: center;
 	min-height: 40px;
 
-	.titlebar-title {
+	&-content {
 		color: var(--body-color);
-		display: flex;
-		gap: 15px;
-		align-items: center;
+
+		&-title-text {
+			font: var(--s-typography-heading-large);
+			margin: 0;
+		}
 
 		&.-mobile {
 			display: none;
@@ -45,40 +47,11 @@
 	}
 
 	@include mobile {
-		.titlebar-actions {
-			> .btn-icon {
-				border: none;
-			}
-		}
-
-		.titlebar-content {
+		&-content {
 			flex: 1;
 			overflow: hidden;
-		}
 
-		.titlebar-title {
-			align-items: center;
-
-			&.-dekstop {
-				display: none;
-			}
-
-			&.-mobile {
-				display: flex;
-			}
-
-			a {
-				display: flex;
-				align-items: center;
-				line-height: 1.5;
-
-				.ui-icon {
-					font-size: 28px;
-				}
-			}
-
-			.titlebar-text {
-				font-size: 18px;
+			&-title-text {
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;

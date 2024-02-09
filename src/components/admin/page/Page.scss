@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-page {
 	flex-grow: 1;
 	display: flex;
@@ -6,8 +8,13 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: var(--container-max-width);
-	padding: var(--layout-content-padding-x);
+	padding: var(--s-spacing-large);
 	padding-top: 0;
+
+	@include mobile {
+		margin-bottom: var(--s-spacing-huge);
+		padding: var(--s-spacing-xx-small);
+	}
 
 	&.-sm {
 		max-width: 660px;
@@ -24,5 +31,9 @@
 	&.-iframe {
 		max-width: none;
 		padding: 0;
+	}
+
+	@include mobile {
+		margin-bottom: var(--s-spacing-huge);
 	}
 }
