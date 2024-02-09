@@ -1,15 +1,13 @@
 @import '../../../scss/mixins.scss';
 
 .table-list {
-	--td-padding: 15px;
-
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
 	position: relative;
 	border-collapse: collapse;
-	background: var(--card-bg);
-	border-radius: 6px;
+	background-color: var(--s-color-fill-default);
+	border-radius: var(--s-border-radius-small);
 	box-shadow: var(--shadow-card);
 	width: 100%;
 
@@ -24,7 +22,6 @@
 	}
 
 	.table-list-wrapper {
-		margin-bottom: 15px;
 		position: relative;
 		overflow-x: auto;
 		flex-grow: 1;
@@ -32,24 +29,19 @@
 
 		&.-scroll {
 			.fixed-cell {
-				background: #fff;
-				box-shadow: inset -1px 0 0 var(--gray-100);
+				background-color: var(--s-color-fill-default);
+				box-shadow: inset -1px 0 0 var(--s-color-fill-disable);
 			}
 		}
 	}
 
 	.table-list-nav-item {
-		padding: 0;
-
-		&.-checkbox {
-			width: auto;
-			padding-left: 0;
-		}
+		padding-left: 8px;
 
 		&.-danger {
 			&:hover {
-				background-color: var(--danger);
-				color: #fff;
+				background-color: var(--s-color-fill-critical-hover);
+				color: var(--s-color-content-on-color);
 			}
 		}
 
@@ -58,8 +50,8 @@
 		}
 
 		&[disabled] {
-			background: var(--gray-100);
-			color: var(--text-muted);
+			background-color: var(--s-color-fill-disable);
+			color: var(--s-color-content-disable);
 			cursor: not-allowed;
 			box-shadow: none;
 			opacity: 0.5;
@@ -69,7 +61,7 @@
 	@include darkmode {
 		.table-list-wrapper,
 		.table-list-nav-content {
-			background: var(--card-bg);
+			background-color: var(--s-color-background-dark);
 		}
 	}
 }

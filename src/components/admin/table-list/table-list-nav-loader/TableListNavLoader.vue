@@ -5,7 +5,7 @@ defineProps<{ loading: boolean }>()
 
 <template>
 	<div class="table-list-loader" :class="{ '-show': loading }">
-		<Spinner class="table-list-loader-spinner" size="16" />
+		<Spinner class="table-list-loader-spinner" size="24" />
 		<span>Carregando dados da tabela</span>
 	</div>
 </template>
