@@ -22,7 +22,7 @@
 					border-radius: 100%;
 					display: inline-block;
 					margin-left: auto;
-					margin-right: var(--s-border-radius-medium);
+					margin-right: var(--s-spacing-nano);
 				}
 			}
 		}
@@ -35,7 +35,7 @@
 		font: var(--s-typography-paragraph-strong);
 		padding: 0;
 		cursor: pointer;
-		background-color: var(--s-color-fill-disable);
+		background-color: var(--s-color-fill-default-light);
 		border-radius: var(--s-border-radius-small);
 		padding: 0 var(--s-spacing-x-small);
 
@@ -47,12 +47,12 @@
 		}
 
 		&:hover {
-			background-color: var(--s-color-fill-disable);
+			background-color: var(--s-color-fill-default-hover);
 		}
 	}
 
 	.filter-list-accordion {
-		padding: var(--s-border-radius-medium);
-		margin-top: var(--s-border-radius-medium);
+		padding: var(--s-spacing-nano);
+		margin-top: var(--s-spacing-nano);
 	}
 }

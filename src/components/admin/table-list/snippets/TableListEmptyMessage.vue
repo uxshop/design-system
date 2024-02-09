@@ -14,7 +14,7 @@ defineProps({
 <style lang="scss">
 .table-list-empty-message {
 	padding: var(--s-spacing-small);
-	border: (--s-border-light);
+	border: var(--s-border-light);
 	border-radius: var(--s-border-radius-medium);
 	.table-list-empty-message-title {
 		margin-bottom: var(--s-spacing-xx-small);

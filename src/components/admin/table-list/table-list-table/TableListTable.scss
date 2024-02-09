@@ -10,7 +10,7 @@
 		font-weight: normal;
 		&:hover {
 			text-decoration: none;
-			background-color: var(--s-color-fill-disable);
+			background-color: var(--s-color-fill-default-hover);
 			cursor: pointer;
 			.hover {
 				opacity: 1;
@@ -29,7 +29,7 @@
 	.table-list-item {
 		color: var(--s-color-content-highlight);
 		display: table-cell;
-		padding: var(--s-spacing-nano) var(--td-padding);
+		padding: var(--s-spacing-nano) var(--s-spacing-x-small);
 		border-top: var(--s-border-light);
 		vertical-align: middle;
 

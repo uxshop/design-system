@@ -14,14 +14,14 @@ export interface SideBarItem {
 	spacer?: boolean
 	last?: boolean
 	dropdown?: boolean
+	action?: () => void
 }
 
 export interface SidebarMobileMenu {
 	icon: string
 	title: string
-  type: SideBarItemType
-  to?: string
+	type: SideBarItemType
+	to?: string
 }
-
 
 export type SideBarItemType = 'logo' | 'node' | 'footer' | 'action' | string

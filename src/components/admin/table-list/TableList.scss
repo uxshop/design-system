@@ -1,8 +1,6 @@
 @import '../../../scss/mixins.scss';
 
 .table-list {
-	--td-padding: var(--s-spacing-x-small);
-
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
@@ -48,7 +46,7 @@
 		&.-danger {
 			&:hover {
 				background-color: var(--s-color-fill-critical-hover);
-				color: var(--s-color-fill-default);
+				color: var(--s-color-content-on-color);
 			}
 		}
 
