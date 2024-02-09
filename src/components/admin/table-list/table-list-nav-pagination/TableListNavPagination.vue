@@ -33,16 +33,16 @@ const nextPage = () => {
 			</div>
 			<div class="table-list-pagination-item prev">
 				<IconButton
-					@click="prevPage"
 					size="sm"
+					@click="prevPage"
 					icon="arrow_back"
 					:disabled="1 == meta.current_page"
 					class="table-list-nav-btn prev" />
 			</div>
 			<div class="table-list-pagination-item next">
 				<IconButton
-					@click="nextPage"
 					size="sm"
+					@click="nextPage"
 					icon="arrow_forward"
 					:disabled="meta.last_page == meta.current_page || !meta.total"
 					class="table-list-nav-btn next" />

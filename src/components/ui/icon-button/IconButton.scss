@@ -5,13 +5,16 @@
 		}
 	}
 
-	&.-sm,
-	&.-md {
+	&.-sm {
 		padding: var(--s-spacing-quark);
 	}
 
-	&.-lg {
+	&.-md {
 		padding: var(--s-spacing-nano);
+	}
+
+	&.-lg {
+		padding: var(--s-spacing-xx-small);
 	}
 
 	&.-fab {

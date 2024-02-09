@@ -14,7 +14,7 @@
 	.table-list-pagination-item {
 		display: inline-block;
 		vertical-align: top;
-		padding: 0 5px;
+		padding: 0 var(--s-spacing-quark);
 		order: 2;
 
 		&:first-child {
@@ -26,7 +26,7 @@
 		}
 
 		&.meta {
-			padding: 0 10px;
+			padding: 0 var(--s-spacing-nano);
 			opacity: 0.6;
 		}
 	}
@@ -34,8 +34,8 @@
 	@include mobile {
 		position: fixed;
 		bottom: var(--s-spacing-huge);
-		border-top: solid 1px var(--border-color);
-		background: var(--bg-white);
+		border-top: var(--s-border-light);
+		background-color: var(--s-color-fill-default);
 		width: 100%;
 		left: 0;
 		height: 50px;

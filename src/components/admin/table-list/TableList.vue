@@ -88,7 +88,7 @@ const resetQueryParams = (params = {}) => {
 const emitNoFilteredData = () => emit('emptyData')
 
 const fetchData = async () => {
-	const params = clone(queryParams.value)
+		const params = clone(queryParams.value)
 	selected.value = []
 	loading.value = true
 	omitFilters.value = omit(params, omitFiltersValues)
@@ -186,7 +186,7 @@ const removeSelected = async () => {
 const initQueryParams = () => {
 	union(omitFiltersValues, props.config.omitFilters)
 	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
-	const query = useRoute().query?.q ? { q: useRoute().query.q } : localStorageParams
+	const query = route.query?.q ? { q: route.query.q } : localStorageParams
 
 	setQueryParams(query as TQueryParams)
 }
@@ -242,7 +242,7 @@ onMounted(initQueryParams)
 </script>
 
 <template>
-	<FormValidation v-model="formError" />
+<FormValidation v-model="formError" />
 	<Card v-if="loading && !firstGet" class="table-list-skeleton" noPadding>
 		<SkeletonTable cols="3" rows="6" withAction="1" />
 	</Card>
