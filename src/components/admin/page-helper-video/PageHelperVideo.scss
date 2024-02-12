@@ -1,41 +1,22 @@
 @import '../../../scss/mixins.scss';
 
 .ui-page-helper-video {
-	margin-bottom: var(--grid-gutter-width);
-
 	.ui-page-helper-video-message {
 		display: flex;
 		align-items: center;
-		padding: 10px 15px;
-		border: solid 1px var(--border-color);
-		background-color: #fff;
-		border-radius: 6px;
+		gap: var(--s-spacing-nano);
+		padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
+		border-radius: var(--s-border-radius-small);
+		border: var(--s-border-light);
+		background-color: var(--s-color-fill-default);
 
 		.ui-page-helper-video-icon {
-			margin-right: 10px;
-			color: var(--primary);
+			color: var(--s-color-content-dark-highlight);
 		}
 
 		&:hover {
 			cursor: pointer;
-			color: var(--primary);
-		}
-	}
-
-	@include mobile {
-		margin-top: 0;
-		margin-bottom: 20px;
-
-		.ui-page-helper-video-message {
-			background: var(--gray-200);
-			font-size: 12px;
-		}
-	}
-
-	@include darkmode {
-		.ui-page-helper-video-message {
-			background: var(--dark-300);
-			border-color: var(--dark-200);
+			background-color: var(--s-color-fill-default-hover);
 		}
 	}
 }
