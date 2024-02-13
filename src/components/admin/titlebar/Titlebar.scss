@@ -7,22 +7,16 @@
 	min-height: 40px;
 
 	&-content {
-		color: var(--body-color);
+		color: var(--s-color-content-default);
 
 		&-title-text {
+			padding-top: var(--s-spacing-small);
 			font: var(--s-typography-heading-large);
 			margin: 0;
 		}
 
 		&.-mobile {
 			display: none;
-		}
-	}
-
-	&-info {
-		&-text {
-			font-size: 22px;
-			margin: 0;
 		}
 	}
 
