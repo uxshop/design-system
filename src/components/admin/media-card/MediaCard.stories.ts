@@ -1,8 +1,8 @@
 import MediaCard from './MediaCard.vue'
-import vueRouter from 'storybook-vue3-router'
+import type { Meta, StoryObj } from '@storybook/vue3'
 
-// More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
-export default {
+/** Media cards are used to effectively communicate notices, promotions or new features. */
+const meta: Meta<typeof MediaCard> = {
 	title: 'Components/MediaCard',
 	component: MediaCard,
 	args: {
@@ -14,26 +14,20 @@ export default {
 	}
 }
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
-const Template = (args) => ({
-	components: { MediaCard },
-	setup() {
-		return { args }
-	},
-	template: `
-    <MediaCard v-bind="args"/>
-  `
-})
+export default meta
+type Story = StoryObj<typeof MediaCard>
 
-export const Default = Template.bind({})
-Default.args = {
-	image: 'https://picsum.photos/id/237/400/200'
+export const Default: Story = {}
+
+export const Inverse: Story = {
+	args: {
+		inverse: true
+	}
 }
 
-export const Video = Template.bind({})
-Video.args = {
-	inverse: true,
-	video: '4CaEGG0xpMk'
+export const WithVideo: Story = {
+	args: {
+		inverse: true,
+		video: '4CaEGG0xpMk'
+	}
 }
-
-Default.decorators = [vueRouter()]

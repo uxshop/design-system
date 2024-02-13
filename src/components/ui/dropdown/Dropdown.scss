@@ -52,7 +52,6 @@
 		left: 0;
 		overflow: hidden;
 		overflow-y: auto;
-		padding: var(--s-spacing-x-small) var(--s-spacing-nano);
 
 		input {
 			border: none;
@@ -121,7 +120,7 @@
 		padding: var(--s-spacing-x-small);
 
 		+ .ui-dropdown-section {
-			border-top: solid 1px darken(#2e3338, 5%);
+			border-top: var(--s-border-light);
 		}
 	}
 
