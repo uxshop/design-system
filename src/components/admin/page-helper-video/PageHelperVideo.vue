@@ -4,8 +4,8 @@ import Icon from '../../ui/icon/Icon.vue'
 import PageHelperVideoModal from './PageHelperVideoModal.vue'
 
 export interface IVideo {
-	name?: string
 	video_id: string
+	name?: string
 	articles?: {
 		name: string
 		url: string
