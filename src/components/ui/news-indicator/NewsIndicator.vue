@@ -1,7 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Badge from '../badge/Badge.vue'
+
+defineProps<{
+	label?: string
+}>()
+</script>
 
 <template>
-	<div class="new-indicator"></div>
+	<Badge v-if="label" :label="label" />
+	<div v-else class="new-indicator"></div>
 </template>
 
 <style lang="scss">
