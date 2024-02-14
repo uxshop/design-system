@@ -112,7 +112,10 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 											<span class="ui-sidebar-link-icon">
 												<Icon size="16" name="subdirectory_arrow_right" />
 											</span>
-											<span class="ui-sidebar-link-text"> {{ node.name }} </span>
+											<div class="ui-sidebar-link-content">
+												<span class="ui-sidebar-link-text"> {{ node.name }} </span>
+												<NewsIndicator v-if="node.isNew" label="Novo" />
+											</div>
 										</div>
 									</li>
 								</ul>
