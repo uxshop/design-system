@@ -1,6 +1,6 @@
 .ui-form-helper {
-	margin-top: 5px;
+	margin-top: var(--s-spacing-quark);
 	display: block;
-	font-size: 11px;
+	font: var(--s-typography-paragraph-strong);
 	opacity: 0.6;
 }

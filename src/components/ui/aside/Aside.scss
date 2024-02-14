@@ -109,10 +109,6 @@
 	}
 
 	.ui-aside-section {
-		margin-left: calc(var(--s-spacing-medium) * -1);
-		margin-right: calc(var(--s-spacing-medium) * -1);
-		padding: var(--s-spacing-small);
-
 		&:first-child {
 			padding-top: 0;
 		}

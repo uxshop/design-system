@@ -4,22 +4,17 @@ import Icon from '../../ui/icon/Icon.vue'
 import PageHelperVideoModal from './PageHelperVideoModal.vue'
 
 export interface IVideo {
+	video_id: string
 	name?: string
-	video_id?: string
 	articles?: {
 		name: string
 		url: string
 	}[]
 }
 
-const props = withDefaults(
-	defineProps<{
-		video?: IVideo
-	}>(),
-	{
-		video: () => ({})
-	}
-)
+const props = defineProps<{
+	video: IVideo
+}>()
 
 const pageHelperVideoModalRef = ref()
 
@@ -31,7 +26,7 @@ const onClick = () => {
 <template>
 	<div class="ui-page-helper-video" v-if="video.video_id" @click="onClick">
 		<div class="ui-page-helper-video-message">
-			<Icon class="ui-page-helper-video-icon" name="play_circle" filled></Icon>
+			<Icon class="ui-page-helper-video-icon" name="play_circle" filled size="24"></Icon>
 			<span>
 				<b>Precisa de ajuda?</b> Assista o vídeo sobre
 				<b class="text-lowercase">{{ video.name }}</b>

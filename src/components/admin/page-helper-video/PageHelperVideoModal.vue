@@ -68,7 +68,7 @@ defineExpose({
 	}
 
 	.videoWrapper iframe {
-		border-radius: var(--border-radius);
+		border-radius: var(--s-border-radius-small);
 		display: block;
 		position: absolute;
 		top: 0;
@@ -78,7 +78,7 @@ defineExpose({
 	}
 
 	.page-helper-video-default {
-		margin: 0 0 20px;
+		padding: 0 0 var(--s-spacing-small);
 		display: inline-block;
 
 		&-support {
@@ -91,9 +91,9 @@ defineExpose({
 		list-style: none;
 
 		li {
-			padding: 10px 0;
+			padding: var(--s-spacing-xx-small) 0;
+			border-top: var(--s-border-light);
 			margin: 0;
-			border-top: solid 1px var(--border-color);
 		}
 	}
 }
