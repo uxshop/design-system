@@ -264,6 +264,12 @@
 			align-items: center;
 			margin-right: var(--s-spacing-quark);
 		}
+
+		&-content {
+			display: flex;
+			align-items: center;
+			gap: var(--s-spacing-nano);
+		}
 	}
 
 	.ui-sidebar-sublist {
