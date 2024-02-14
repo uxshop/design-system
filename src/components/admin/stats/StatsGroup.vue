@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import StatsItem from '../../ui/stats-item/StatsItem.vue'
 
 const props = defineProps<{
-	infos?: { label: string; value: string; primaryAction?: []; text: string }[]
-	vertical?: boolean
+	infos?: {
+		label: string
+		value: string
+		primaryAction?: { text: string; to?: object; href?: string; button?: boolean }[]
+		text: string
+	}[]
 }>()
-
-const classList = ref<string[]>([])
-
-if (props.vertical) {
-	classList.value.push('-vertical')
-}
 </script>
 
 <template>
-	<div class="stats-group" :class="classList">
+	<div class="stats-group">
 		<div class="stats-group-wrapper" v-if="infos">
 			<StatsItem
 				v-for="item in infos"

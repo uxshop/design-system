@@ -1,10 +1,10 @@
 @import '../../../scss/mixins.scss';
 
 .ui-media-card {
-	--border-bottom: 0 0 var(--card-border-radius, 8px) var(--card-border-radius, 8px);
-	--border-top: var(--card-border-radius, 8px) var(--card-border-radius, 8px) 0 0;
-	--border-left: var(--card-border-radius, 8px) 0 0 var(--card-border-radius, 8px);
-	--border-right: 0 var(--card-border-radius, 8px) var(--card-border-radius, 8px) 0;
+	--border-bottom: 0 0 var(--s-border-radius-small) var(--s-border-radius-small);
+	--border-top: var(--s-border-radius-small) var(--s-border-radius-small) 0 0;
+	--border-left: var(--s-border-radius-small) 0 0 var(--s-border-radius-small);
+	--border-right: 0 var(--s-border-radius-small) var(--s-border-radius-small) 0;
 
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -18,7 +18,6 @@
 		width: 100%;
 		object-fit: cover;
 		object-position: center;
-		box-shadow: var(--shadow-card);
 		border-radius: var(--border-left);
 	}
 
@@ -66,22 +65,19 @@
 		transform: translate(-50%, -50%);
 		font-size: 6em;
 		font-variation-settings: 'FILL' 1;
-		background-color: var(--body-bg);
+		background-color: var(--s-color-background-default);
 		border-radius: 100%;
 		cursor: pointer;
-
-		&:hover {
-			background-color: var(--gray-300, --dark-300);
-		}
 	}
 
 	&-info-text {
-		margin-bottom: 16px;
+		padding-bottom: var(--s-spacing-small);
+		font: var(--s-typography-paragraph-regular);
 	}
 
 	&-info-buttons {
 		display: flex;
-		gap: 8px;
+		gap: var(--s-spacing-nano);
 	}
 
 	iframe {

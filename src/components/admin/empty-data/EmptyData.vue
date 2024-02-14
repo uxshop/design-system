@@ -17,10 +17,10 @@ defineProps<{
 <template>
 	<div class="ui-empty-data" :class="{ 'ui-empty-data-link': link, '-border': !noBorder }">
 		<div class="ui-empty-data-content">
-			<Icon v-if="icon" :name="icon" :type="iconType" v-show="icon" class="ui-empty-data-icon" />
-			<span class="ui-empty-data-text">
+			<Icon v-if="icon" :name="icon" :type="iconType" v-show="icon" class="ui-empty-data-icon" size="24" />
+			<p class="ui-empty-data-text">
 				<slot>{{ label }}</slot>
-			</span>
+			</p>
 		</div>
 		<div v-if="caption" class="ui-empty-data-caption">
 			<slot name="caption">{{ caption }}</slot>

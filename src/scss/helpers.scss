@@ -28,7 +28,7 @@ small {
 }
 
 p {
-	margin-bottom: 12px;
+	margin-bottom: var(--s-spacing-xx-small);
 }
 
 .nowrap {
@@ -100,7 +100,6 @@ h6 {
 h1 {
 	font-size: calc(var(--s-font-size-base) * 1.8);
 	line-height: var(--s-line-height-32);
-
 }
 h2 {
 	font-size: calc(var(--s-font-size-base) * 1.6);
