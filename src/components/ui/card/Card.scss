@@ -303,7 +303,6 @@
 		width: 100%;
 		align-items: flex-start;
 		gap: var(--s-spacing-x-small);
-		padding-bottom: var(--s-spacing-x-small);
 
 		@include mobile {
 			> .ui-card-header-content-button {
