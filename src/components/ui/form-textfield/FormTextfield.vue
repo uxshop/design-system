@@ -76,6 +76,7 @@ const update = (evt: Event) => {
 
 const maskRawValue = (evt: Event) => {
 	const target = evt.target as HTMLInputElement
+	if (props.modelValue == target.value.replace(/\.|-/g, '')) return
 	update(evt)
 	emit('updateRaw', target.dataset.maskRawValue)
 }
