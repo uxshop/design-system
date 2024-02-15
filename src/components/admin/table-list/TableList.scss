@@ -8,7 +8,6 @@
 	border-collapse: collapse;
 	background-color: var(--s-color-fill-default);
 	border-radius: var(--s-border-radius-small);
-	box-shadow: var(--shadow-card);
 	width: 100%;
 
 	.table-search {
@@ -53,13 +52,6 @@
 			cursor: not-allowed;
 			box-shadow: none;
 			opacity: 0.5;
-		}
-	}
-
-	@include darkmode {
-		.table-list-wrapper,
-		.table-list-nav-content {
-			background-color: var(--s-color-background-dark);
 		}
 	}
 }

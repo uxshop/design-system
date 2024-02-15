@@ -59,8 +59,8 @@ if (props.size) {
 				<slot name="titlebar-subtitle" />
 			</template>
 		</Titlebar>
-		<div class="ui-page-help">
-			<PageHelperVideo v-if="videoHelp?.video_id" :video="videoHelp" />
+		<div v-if="videoHelp?.video_id" class="ui-page-help">
+			<PageHelperVideo :video="videoHelp" />
 			<PageHelperArticles
 				v-if="!videoHelp?.video_id && !!articlesHelp?.articles?.length"
 				:articles="articlesHelp.articles"
