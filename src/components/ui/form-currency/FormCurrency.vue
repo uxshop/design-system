@@ -67,6 +67,7 @@ const { inputRef, setValue } = useCurrencyInput(settings)
 watch(
 	() => props.modelValue,
 	(newVal: any) => {
+		if (newVal === null) return
 		setValue(parseFloat(newVal))
 	},
 	{ immediate: true }

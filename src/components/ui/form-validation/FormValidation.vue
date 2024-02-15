@@ -4,7 +4,7 @@ import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 
 export interface Props {
-	modelValue: Record<string, string[]>
+	modelValue?: Record<string, string[]>
 	translate?: Record<string, string | Record<string, string>>
 	scrollToTop?: boolean
 	title?: string
