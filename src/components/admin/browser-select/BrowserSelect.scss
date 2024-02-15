@@ -1,23 +1,23 @@
 .ui-browser-select {
 	.ui-browser-list {
-		padding-top: 16px;
-		
+		padding-top: var(--s-spacing-x-small);
+
 		&-row {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 
 			+ .ui-browser-list-row {
-				border-top: solid 1px var(--border-color);
+				border-top: solid 1px var(--s-color-border-default);
 			}
 
 			&.-no-button {
-				padding: 16px;
+				padding: var(--s-spacing-x-small);
 			}
 		}
 
 		&-cell {
-			padding: 8px;
+			padding: var(--s-spacing-nano);
 			flex-grow: 1;
 			&.-auto {
 				flex-grow: 0;
@@ -26,7 +26,7 @@
 	}
 
 	.ui-browser-list-more {
-		padding: 10px;
+		padding: var(--s-spacing-xx-small);
 		text-align: center;
 		display: block;
 	}
