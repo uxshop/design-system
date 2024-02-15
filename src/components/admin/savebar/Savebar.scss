@@ -10,7 +10,7 @@
 	display: flex;
 	opacity: 0;
 	pointer-events: none;
-	background-color: var(--body-bg);
+	background-color: var(--s-color-fill-default);
 	box-shadow:
 		1px 1px 2px 1px rgba(0, 0, 0, 0.02),
 		2px 2px 4px rgba(0, 0, 0, 0.05);
@@ -46,8 +46,7 @@
 	&-text {
 		display: flex;
 		align-items: center;
-		font-size: 14px;
-		font-weight: var(--font-weight-semibold);
+		font: var(--s-typography-heading-x-small);
 	}
 
 	&-actions {
@@ -78,9 +77,5 @@
 
 	@include desktop {
 		left: var(--layout-sidebar-width);
-	}
-
-	@include darkmode {
-		background-color: var(--dark-300);
 	}
 }

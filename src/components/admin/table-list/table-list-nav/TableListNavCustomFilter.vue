@@ -133,28 +133,26 @@ const onShowDropdown = () => {
 					:disabled="disableDropdown" />
 				<Button v-else label="Salvar filtro" size="sm" leadingIcon="star" :disabled="disableDropdown" />
 			</template>
-			<DropdownSection>
-				<form @submit.prevent="onSave" id="form-custom-filter" autocomplete="off">
-					<h6>Salvar filtro</h6>
-					<FormTextfield
-						size="sm"
-						v-model="reg.name"
-						placeholder="Nome do filtro"
-						style="min-width: 210px"
-						data-close="none"
-						required
-						tabindex="1" />
-					<div class="mt-2">Os filtros são salvos como uma nova aba no topo desta lista.</div>
-				</form>
-			</DropdownSection>
-			<DropdownSection>
-				<Stack distribution="between">
-					<div>
-						<Button v-if="reg.id" tabindex="-1" label="Remover" variant="danger" outline @click="onRemoveTab" />
-					</div>
-					<Button label="Salvar" tabindex="2" type="submit" form="form-custom-filter" />
-				</Stack>
-			</DropdownSection>
+			<div class="dropdown-section">
+				<DropdownSection>
+					<form @submit.prevent="onSave" id="form-custom-filter" autocomplete="off">
+						<h6>Salvar filtro</h6>
+						<FormTextfield
+							size="sm"
+							v-model="reg.name"
+							placeholder="Nome do filtro"
+							style="min-width: 210px"
+							data-close="none"
+							required
+							tabindex="1" />
+						<div class="mt-2">Os filtros são salvos como uma nova aba no topo desta lista.</div>
+					</form>
+				</DropdownSection>
+				<div class="dropdown-section-buttons">
+					<Button v-if="reg.id" size="sm" tabindex="-1" label="Remover" variant="danger" outline @click="onRemoveTab" />
+					<Button size="sm" label="Salvar" tabindex="2" type="submit" form="form-custom-filter" />
+				</div>
+			</div>
 		</Dropdown>
 	</span>
 </template>

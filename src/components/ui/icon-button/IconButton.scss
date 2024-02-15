@@ -6,15 +6,21 @@
 	}
 
 	&.-sm {
+		max-height: var(--s-spacing-small);
+		max-width: var(--s-spacing-small);
 		padding: var(--s-spacing-quark);
 	}
 
 	&.-md {
-		padding: var(--s-spacing-nano);
+		max-height: var(--s-spacing-medium);
+		max-width: var(--s-spacing-medium);
+		padding: var(--s-spacing-quark);
 	}
 
 	&.-lg {
-		padding: var(--s-spacing-xx-small);
+		max-height: var(--s-spacing-large);
+		max-width: var(--s-spacing-large);
+		padding: var(--s-spacing-x-small);
 	}
 
 	&.-fab {

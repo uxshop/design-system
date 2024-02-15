@@ -1,8 +1,7 @@
 .choices .choices__list {
 	input.choices__input {
-		background-color: var(--bg-white);
-		color: var(--body-color);
-		border-bottom-color: var(--border-color);
+		background-color: var(--s-color-fill-default);
+		color: var(--s-color-content-default);
 	}
 
 	div.choices__item.is-highlighted {

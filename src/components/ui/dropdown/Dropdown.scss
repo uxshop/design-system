@@ -40,6 +40,7 @@
 	&-menu {
 		min-width: 100%;
 		margin-top: var(--s-spacing-quark);
+		padding: var(--s-spacing-x-small) var(--s-spacing-nano);
 		border: var(--s-border-light);
 		border-radius: var(--s-border-radius-small);
 		box-shadow: var(--s-shadow-level-1);
@@ -62,9 +63,9 @@
 			align-items: center;
 			position: relative;
 			font: var(--s-typography-label-medium);
+			padding: var(--s-spacing-quark) var(--s-spacing-nano);
 			background: none;
 			border-radius: var(--s-border-radius-small);
-			padding: var(--s-border-radius-medium) var(--s-border-radius-large);
 			border: none;
 			white-space: nowrap;
 			width: 100%;
@@ -117,8 +118,6 @@
 	}
 
 	&-section {
-		padding: var(--s-spacing-x-small);
-
 		+ .ui-dropdown-section {
 			border-top: var(--s-border-light);
 		}

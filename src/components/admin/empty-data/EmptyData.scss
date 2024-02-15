@@ -42,6 +42,7 @@
 	}
 
 	.ui-empty-data-text {
+		margin: 0;
 		text-align: center;
 		display: block;
 		font: var(--s-typography-label-small);
@@ -54,12 +55,5 @@
 
 	.ui-empty-data-icon-text {
 		display: block;
-	}
-
-	@include darkmode {
-		.ui-empty-data-text,
-		.ui-empty-data-icon {
-			opacity: 0.3;
-		}
 	}
 }

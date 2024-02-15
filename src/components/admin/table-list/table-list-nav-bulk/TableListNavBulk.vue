@@ -138,7 +138,7 @@ onMounted(() => {
 	align-items: center;
 	height: 100%;
 	gap: var(--s-spacing-nano);
-	padding-right: var(--s-spacing-x-small);
+	padding-right: var(--s-spacing-small);
 
 	&.-active {
 		width: 100%;
@@ -148,6 +148,7 @@ onMounted(() => {
 		right: 0;
 		left: 0;
 		z-index: var(--s-index-medium-high);
+		padding: var(--s-spacing-x-small);
 		background: inherit;
 	}
 

@@ -70,7 +70,7 @@
 			border-color: var(--s-color-border-default);
 			min-height: var(--s-spacing-large);
 			padding-top: 0;
-			padding-bottom: 0;
+			padding-bottom: 0 !important;
 			display: flex;
 			align-items: center;
 
@@ -82,23 +82,7 @@
 		.choices__list--dropdown,
 		.choices__list[aria-expanded] {
 			background-color: var(--s-color-fill-default);
-			border-color: var(--s-color-border-default);
-		}
-		@include darkmode {
-			.choices__inner {
-				background-color: var(--s-color-fill-default-dark);
-				border-color: var(--s-color-border-dark);
-
-				&:hover {
-					background-color: var(--s-color-fill-dark-hover);
-				}
-			}
-
-			.choices__list--dropdown,
-			.choices__list[aria-expanded] {
-				background-color: var(--s-color-fill-default-dark);
-				border-color: var(--s-color-border-dark);
-			}
+			border-color: var(--s-color-border-highlight);
 		}
 
 		.choices__item > .choices__button {

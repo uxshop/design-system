@@ -389,24 +389,6 @@
 	}
 
 	@include darkmode {
-		background-color: var(--s-color-fill-dark);
-
-		.ui-header-content-title {
-			> .ui-card-title,
-			> span:first-child {
-				color: var(--s-color-content-dark);
-			}
-		}
-
-		.ui-card-section,
-		.ui-card-footer {
-			border-color: var(--s-color-border-dark);
-		}
-
-		hr {
-			background-color: var(--s-color-background-dark);
-		}
-
 		.ui-card-header-content > .muted {
 			opacity: 0.8;
 		}
