@@ -7,10 +7,12 @@
 	min-height: 40px;
 
 	&-content {
+		display: flex;
+		align-items: center;
+		gap: var(--s-spacing-x-small);
 		color: var(--s-color-content-default);
 
 		&-title-text {
-			padding-top: var(--s-spacing-small);
 			font: var(--s-typography-heading-large);
 			margin: 0;
 		}

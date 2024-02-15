@@ -59,11 +59,13 @@ if (props.size) {
 				<slot name="titlebar-subtitle" />
 			</template>
 		</Titlebar>
-		<PageHelperVideo v-if="videoHelp?.video_id" :video="videoHelp" />
-		<PageHelperArticles
-			v-if="!videoHelp?.video_id && !!articlesHelp?.articles?.length"
-			:articles="articlesHelp.articles"
-			:title="articlesHelp.title" />
+		<div class="ui-page-help">
+			<PageHelperVideo v-if="videoHelp?.video_id" :video="videoHelp" />
+			<PageHelperArticles
+				v-if="!videoHelp?.video_id && !!articlesHelp?.articles?.length"
+				:articles="articlesHelp.articles"
+				:title="articlesHelp.title" />
+		</div>
 		<slot name="default" />
 		<PageMessageSupport v-if="footerHelp" :name="footerHelp.name" :link="footerHelp.link" />
 	</div>

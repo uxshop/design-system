@@ -11,9 +11,8 @@
 	padding: var(--s-spacing-large);
 	padding-top: 0;
 
-	@include mobile {
-		margin-bottom: var(--s-spacing-huge);
-		padding: var(--s-spacing-xx-small);
+	&-help {
+		margin-bottom: var(--s-spacing-small);
 	}
 
 	&.-sm {
@@ -35,5 +34,6 @@
 
 	@include mobile {
 		margin-bottom: var(--s-spacing-huge);
+		padding: var(--s-spacing-xx-small);
 	}
 }

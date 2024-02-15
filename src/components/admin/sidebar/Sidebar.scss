@@ -174,7 +174,8 @@
 
 		&-caption {
 			margin: 0 var(--s-spacing-nano);
-			font: var(--s-typography-caption-large);
+			font: var(--s-typography-caption-medium);
+			font-weight: var(--s-font-weight-semibold);
 			color: var(--s-color-content-light);
 			text-transform: uppercase;
 			padding: var(--s-spacing-quark) var(--s-spacing-nano);

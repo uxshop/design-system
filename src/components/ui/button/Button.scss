@@ -43,14 +43,17 @@
 	}
 
 	&.-sm {
+		max-height: var(--s-spacing-medium);
 		padding: var(--s-spacing-quark) var(--s-spacing-xx-small);
 	}
 
 	&.-md {
+		max-height: var(--s-spacing-large);
 		padding: var(--s-spacing-nano) var(--s-spacing-xx-small);
 	}
 
 	&.-lg {
+		max-height: var(--s-spacing-x-large);
 		padding: var(--s-spacing-xx-small);
 	}
 
