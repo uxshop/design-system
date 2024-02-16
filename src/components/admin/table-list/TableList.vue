@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch, ref, reactive } from 'vue'
+import { watch, ref, reactive } from 'vue'
 import { union, clone, omit, concat, isEqual } from 'lodash-es'
 import { useRoute } from 'vue-router'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
@@ -88,7 +88,7 @@ const resetQueryParams = (params = {}) => {
 const emitNoFilteredData = () => emit('emptyData')
 
 const fetchData = async () => {
-		const params = clone(queryParams.value)
+	const params = clone(queryParams.value)
 	selected.value = []
 	loading.value = true
 	omitFilters.value = omit(params, omitFiltersValues)
@@ -238,11 +238,17 @@ defineExpose({
 	refresh: fetchData
 })
 
-onMounted(initQueryParams)
+watch(
+	() => route.query,
+	() => {
+		initQueryParams()
+	},
+	{ immediate: true }
+)
 </script>
 
 <template>
-<FormValidation v-model="formError" />
+	<FormValidation v-model="formError" />
 	<Card v-if="loading && !firstGet" class="table-list-skeleton" noPadding>
 		<SkeletonTable cols="3" rows="6" withAction="1" />
 	</Card>
