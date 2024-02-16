@@ -21,6 +21,13 @@
 			--b-color-light: #{tokens.getPrimitiveVar($primitives-color, blue, 100)};
 			--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, blue, 1000)};
 		}
+
+		&[data-company='rede'] {
+			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, orange, 800)};
+			--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, orange, 500)};
+			--b-color-light: #{tokens.getPrimitiveVar($primitives-color, orange, 100)};
+			--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, orange, 1000)};
+		}
 	}
 }
 
@@ -28,7 +35,7 @@ $semantic-color: (
 	background: (
 		default: tokens.getPrimitiveVar($primitives-color, neutral, 100),
 		dark: tokens.getPrimitiveVar($primitives-color, neutral, 1000),
-		overlay: tokens.getPrimitiveVar($primitives-color, black, null, 64),
+		overlay: tokens.getPrimitiveVar($primitives-color, black, null, 80),
 		highlight: var(--b-color-base)
 	),
 	fill: (

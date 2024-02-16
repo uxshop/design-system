@@ -130,35 +130,4 @@
 		}
 	}
 
-	@include darkmode {
-		& {
-			background-color: var(--s-color-fill-dark);
-			color: var(--s-color-content-dark);
-			border: 1px solid var(--s-color-border-dark);
-		}
-
-		&.-success {
-			background-color: var(--s-color-fill-success-dark);
-			color: var(--s-color-content-dark-success);
-			border: 1px solid var(--s-color-border-dark-success);
-		}
-
-		&.-danger {
-			background-color: var(--s-color-fill-critical-dark);
-			color: var(--s-color-content-dark-critical);
-			border: 1px solid var(--s-color-border-dark-critical);
-		}
-
-		&.-info {
-			background-color: var(--s-color-fill-highlight-dark);
-			color: var(--s-color-content-dark-highlight);
-			border: 1px solid var(--s-color-border-dark-highlight);
-		}
-
-		&.-warning {
-			background-color: var(--s-color-fill-warning-dark);
-			color: var(--s-color-content-dark-warning);
-			border: 1px solid var(--s-color-border-dark-warning);
-		}
-	}
 }
