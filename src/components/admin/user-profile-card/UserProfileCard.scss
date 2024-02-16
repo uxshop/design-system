@@ -11,6 +11,11 @@
 		padding: var(--s-spacing-nano);
 	}
 
+	.dropdown-item-caption {
+		font: var(--s-typography-caption-medium);
+		font-weight: var(--s-font-weight-semibold);
+	}
+
 	.ui-dropdown {
 		.ui-dropdown-menu {
 			@include fade-in-out(var(--s-motion-duration-default));
@@ -40,33 +45,6 @@
 		transition: background-color var(--s-motion-duration-default) ease-in;
 		&:hover {
 			background-color: var(--s-color-fill-default-hover);
-		}
-	}
-
-	@include darkmode {
-		.dropdown-item {
-			&-caption {
-				color: var(--s-color-content-dark);
-			}
-			.ui-dropdown-item {
-				color: var(--s-color-content-dark);
-
-				&:hover {
-					background-color: var(--s-color-fill-dark-hover);
-					color: var(--s-color-content-dark);
-				}
-			}
-		}
-		.user-card {
-			&-btn {
-				&:hover,
-				&:active {
-					background: var(--s-color-fill-dark-hover);
-				}
-			}
-			&-label {
-				color: var(--s-color-content-dark);
-			}
 		}
 	}
 }
