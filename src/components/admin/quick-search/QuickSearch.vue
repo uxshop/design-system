@@ -29,7 +29,7 @@ const props = withDefaults(
 		buttonLabel: 'Pesquisar'
 	}
 )
-const emit = defineEmits(['onSubmit', 'update:modelValue'])
+const emit = defineEmits(['onSubmit', 'update:modelValue', 'onChangeOption'])
 
 const isVisible = computed({
 	get: () => props.modelValue,
@@ -54,18 +54,17 @@ function onSubmit() {
 	emit('onSubmit', formValues.value)
 	resetSearchValues()
 }
+
+function onChange(value: string) {
+	emit('onChangeOption', value)
+}
 </script>
 <template>
-	<Modal class="modal-container" v-model="isVisible" :title="title">
-		<template #caption>
-			<p class="caption-text">
-				{{ caption }}
-			</p>
-		</template>
+	<Modal class="modal-container" v-model="isVisible" :title="title" :caption="caption">
 		<form v-on:submit.prevent="onSubmit">
 			<Stack class="form">
 				<FormLayoutItem>
-					<FormSelect v-model="formValues.searchType" :options="searchOptions" name="searchType" />
+					<FormSelect v-model="formValues.searchType" :options="searchOptions" name="searchType" @update="onChange" />
 				</FormLayoutItem>
 				<FormTextfield v-model="formValues.searchKey" name="searchKey" :placeholder="placeholder" />
 				<Button leadingIcon="search" type="submit" :block="isMobile" variant="primary">{{ buttonLabel }}</Button>
