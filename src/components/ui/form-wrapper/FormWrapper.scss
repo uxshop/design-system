@@ -54,9 +54,7 @@
 		align-items: center;
 		border-radius: var(--s-border-radius-small);
 		background-color: var(--s-color-fill-default);
-		@include darkmode {
-			background-color: var(--s-color-fill-dark);
-		}
+
 	}
 
 	.form-wrapper-append {
@@ -82,9 +80,7 @@
 
 		.form-wrapper-content-bx {
 			background-color: var(--s-color-fill-disable);
-			@include darkmode {
-				background-color: var(--s-color-fill-dark-disable);
-			}
+		
 		}
 
 		.form-control.-select {
@@ -171,9 +167,7 @@
 		pointer-events: none;
 		top: 0;
 		border-color: var(--s-color-border-default);
-		@include darkmode {
-			border-color: var(--s-color-border-dark);
-		}
+	
 
 		.form-wrapper-notched-label {
 			flex: 0 0 auto;
@@ -195,9 +189,7 @@
 			display: block;
 			opacity: 0.8;
 			font-weight: normal;
-			@include darkmode {
-				color: var(--s-color-content-dark-light);
-			}
+			
 		}
 
 		.form-wrapper-notched-prepend {
@@ -239,9 +231,6 @@
 			label {
 				color: var(--s-color-content-default);
 
-				@include darkmode {
-					color: var(--s-color-content-dark);
-				}
 			}
 		}
 	}

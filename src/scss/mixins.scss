@@ -58,7 +58,7 @@
 }
 
 @mixin select-arrow {
-	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='%23293B50' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='%293B50' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
 		right var(--s-spacing-x-small) center;
 	background-size: var(--s-spacing-xx-small), auto;
 	background-repeat: no-repeat;
@@ -70,12 +70,20 @@
 
 	[data-theme='dark'] & {
 		background:
-			url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='%23b1b9c9' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
-				right var(--s-spacing-x-small) center,
-			linear-gradient(180deg, var(--s-color-fill-dark) 0%, var(--s-color-fill-dark) 100%);
+			url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='rgba(224, 232, 242, 1)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+				right var(--s-spacing-x-small) center;
+			
 		background-size: var(--s-spacing-xx-small), auto;
 		background-repeat: no-repeat;
+	
+		&:hover {
+			cursor: pointer;
+			background-color: var(--s-color-fill-default-hover);
+		}
+	
 	}
+
+	
 }
 
 @mixin container {

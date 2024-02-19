@@ -21,10 +21,6 @@
 		}
 	}
 
-	&:last-child {
-		margin-bottom: 0;
-	}
-
 	&.-center {
 		text-align: center;
 	}
@@ -112,6 +108,12 @@
 		&:hover {
 			background-color: rgba(0, 0, 0, 0.08);
 		}
+
+		@include darkmode {
+		&:hover {background-color: rgba(0, 0, 0, 0.8);
+		}
+	}
+
 	}
 
 	ul {

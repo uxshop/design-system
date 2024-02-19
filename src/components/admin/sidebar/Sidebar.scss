@@ -145,6 +145,13 @@
 				background-color: var(--s-color-fill-default);
 				padding: var(--s-spacing-small) 0 var(--s-spacing-x-small) 0;
 				border-radius: var(--s-border-radius-medium);
+				background-attachment: unset;
+			}
+		}
+
+		> .ui-sidebar-container {
+			&::after {
+				background: transparent;
 			}
 		}
 	}

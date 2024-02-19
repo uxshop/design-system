@@ -18,6 +18,7 @@
 
 		&::after {
 			right: var(--s-spacing-xx-small);
+			border-color: var(--s-color-content-default) transparent transparent transparent;
 		}
 
 		&.is-focused {
@@ -61,6 +62,7 @@
 		}
 
 		.choices__item {
+			opacity: 1;
 			line-height: var(--s-line-height-16);
 		}
 

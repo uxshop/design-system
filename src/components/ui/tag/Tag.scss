@@ -14,10 +14,6 @@
 		&-default {
 			color: var(--s-color-content-on-color);
 			background-color: var(--s-color-fill-default-light);
-
-			@include darkmode {
-				background-color: var(--s-color-fill-dark);
-			}
 		}
 
 		&-primary {
@@ -38,7 +34,11 @@
 	}
 
 	.ui-tag-close {
+		border-radius: var(--s-border-radius-small);
 		cursor: pointer;
 		font-size: 1rem;
+	
+	&:hover {background-color: rgba(0, 0, 0, 0.24)}
+		
 	}
 }

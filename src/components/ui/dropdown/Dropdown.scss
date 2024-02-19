@@ -15,7 +15,7 @@
 
 	&.-right {
 		.ui-dropdown-menu {
-			transform: translateX(0);
+		left: 0
 		}
 	}
 
@@ -50,7 +50,7 @@
 		row-gap: var(--s-spacing-quark);
 		position: absolute;
 		min-width: 220px;
-		left: 0;
+		right: 0;
 		overflow: hidden;
 		overflow-y: auto;
 
@@ -120,21 +120,6 @@
 	&-section {
 		+ .ui-dropdown-section {
 			border-top: var(--s-border-light);
-		}
-	}
-
-	@include darkmode {
-		&-menu {
-			background-color: var(--s-color-fill-dark);
-			border-color: var(--s-color-border-dark);
-		}
-
-		&-item {
-			&.-button {
-				&:hover {
-					background-color: var(--s-color-fill-dark-hover);
-				}
-			}
 		}
 	}
 }
