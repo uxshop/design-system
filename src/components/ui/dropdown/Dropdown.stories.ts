@@ -23,10 +23,6 @@ const meta = {
 			control: 'boolean',
 			defaultValue: true
 		},
-		left: {
-			control: 'boolean',
-			defaultValue: false
-		},
 		closeOn: {
 			control: 'boolean',
 			defaultValue: false
@@ -49,7 +45,7 @@ export const Default: Story = {
 			return { args }
 		},
 		template: `
-    <div style="width: 200px; margin: 100px;">
+    <div style="width: 500px; justify-content:center; display:flex; align-items:center;">
       <Dropdown v-bind="args">
         <template #button-content>
           <Button>Dropdown</Button>

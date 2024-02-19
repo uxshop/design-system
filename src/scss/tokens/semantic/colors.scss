@@ -16,14 +16,14 @@
 		}
 
 		&[data-company='tray'] {
-			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, blue, 800)};
+			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, blue, 600)};
 			--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, blue, 500)};
 			--b-color-light: #{tokens.getPrimitiveVar($primitives-color, blue, 100)};
 			--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, blue, 1000)};
 		}
 
 		&[data-company='rede'] {
-			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, orange, 800)};
+			--b-color-base: #{tokens.getPrimitiveVar($primitives-color, orange, 600)};
 			--b-color-medium: #{tokens.getPrimitiveVar($primitives-color, orange, 500)};
 			--b-color-light: #{tokens.getPrimitiveVar($primitives-color, orange, 100)};
 			--b-color-dark: #{tokens.getPrimitiveVar($primitives-color, orange, 1000)};

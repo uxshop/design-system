@@ -11,6 +11,10 @@
 
 	.ui-card {
 		border-radius: var(--border-right);
+
+		&-header {
+		padding: var(--s-spacing-small) var(--s-spacing-small) var(--s-spacing-nano);
+		}
 	}
 
 	img {
@@ -71,6 +75,7 @@
 	}
 
 	&-info-text {
+		margin: 0;
 		padding-bottom: var(--s-spacing-small);
 		font: var(--s-typography-paragraph-regular);
 	}
@@ -83,4 +88,5 @@
 	iframe {
 		min-height: 250px;
 	}
+
 }

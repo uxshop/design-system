@@ -51,13 +51,6 @@
 			}
 		}
 	}
-
-	@include darkmode {
-		.form-control {
-			background-color: var(--s-color-fill-dark);
-			border-color: var(--s-color-border-dark);
-		}
-	}
 }
 
 .pcr-app {

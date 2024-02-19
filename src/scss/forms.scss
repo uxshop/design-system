@@ -2,11 +2,6 @@
 	color: var(--s-color-content-placeholder);
 }
 
-@include theme-dark {
-	::placeholder {
-		color: var(--s-color-content-dark-placeholder);
-	}
-}
 
 .form-control-loader {
 	position: absolute;
@@ -30,9 +25,7 @@
 	font: var(--s-typography-label-medium);
 	color: var(--s-color-content-default);
 
-	@include darkmode {
-		color: var(--s-color-content-dark);
-	}
+
 }
 
 textarea {
@@ -56,15 +49,6 @@ textarea {
 		color: var(--s-color-fill-critical);
 	}
 
-	@include darkmode {
-		color: var(--s-color-content-dark);
-		caret-color: var(--s-color-content-dark);
-
-		&:focus {
-			border-color: var(--s-color-border-dark-highlight);
-			box-shadow: none;
-		}
-	}
 }
 
 .form-control.-select {
