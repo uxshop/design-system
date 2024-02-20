@@ -31,6 +31,7 @@
 		color: var(--s-color-content-light);
 		text-transform: uppercase;
 		position: relative;
+		flex-shrink: 0;
 
 		img {
 			max-width: 100%;
@@ -45,6 +46,8 @@
 		justify-content: space-between;
 		line-height: var(--s-line-height-20);
 		text-align: left;
+		max-width: 100%;
+
 		.name {
 			display: block;
 			font-weight: bold;
@@ -53,6 +56,13 @@
 
 		&-info {
 			width: 100%;
+		}
+
+		&-caption {
+			text-overflow: ellipsis;
+			max-width: 120px;
+			overflow: hidden;
+			display: block;
 		}
 	}
 
