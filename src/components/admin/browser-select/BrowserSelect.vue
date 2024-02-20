@@ -216,19 +216,15 @@ defineExpose({ onClickSearch })
 		</div>
 		<div v-else>
 			<div class="ui-browser-select-input">
-				<Row>
-					<Col>
+				
 						<FormTextfield
 							v-model="term"
 							placeholder="Procurar..."
 							@keyup="onChangeTerm"
 							autocomplete="off"
 							:disabled="searchDisabled" />
-					</Col>
-					<Col auto>
 						<Button variant="primary" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
-					</Col>
-				</Row>
+
 			</div>
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">

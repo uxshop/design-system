@@ -54,15 +54,9 @@
 	}
 
 	&-badge {
-		background-color: var(--s-color-fill-disable);
-		border-radius: var(--s-border-radius-large);
-		padding: 0 var(--s-spacing-quark);
+		background-color: var(--s-color-fill-default);
+		border-radius: var(--s-border-radius-pill);
+		padding: 0 var(--s-spacing-nano);
 		font: var(--s-typography-label-small);
-	}
-
-	@include darkmode {
-		.ui-tab-item-badge {
-			background-color: var(--s-color-fill-dark-disable);
-		}
 	}
 }

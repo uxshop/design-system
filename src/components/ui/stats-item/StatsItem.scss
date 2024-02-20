@@ -2,7 +2,7 @@
 
 .ui-stats-item {
 	text-align: center;
-	padding: var(--s-spacing-nano) var(--s-spacing-small);
+	padding: var(--s-spacing-small);
 	border-radius: var(--s-border-radius-small);
 	display: inline-flex;
 	align-items: center;
@@ -14,6 +14,7 @@
 
 	&-label {
 		font: var(--s-typography-caption-medium);
+		text-transform: uppercase;
 		display: block;
 	}
 

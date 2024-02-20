@@ -5,6 +5,7 @@
 
 	&.-gray {
 		.ui-seo-card {
+			margin-top: var(--s-spacing-x-small);
 			border-radius: var(--s-border-radius-medium);
 			border: dotted 2px var(--s-color-border-default);
 			padding: var(--s-spacing-x-small);

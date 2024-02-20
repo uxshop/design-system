@@ -5,29 +5,15 @@
 
 	.selectable-list-item {
 		display: flex;
-		padding: 8px;
-		border: solid 1px transparent;
-		border-radius: var(--input-border-radius);
 		cursor: pointer;
+		padding-bottom: 8px;
 		align-items: center;
 		gap: 8px;
 		margin: 0;
 		border-radius: var(--input-border-radius);
 
-		&:hover {
-			background-color: var(--input-bg-color);
-		}
-
-		&.-selected {
-			background-color: var(--gray-100);
-		}
-
 		&:last-child {
 			border: none;
-		}
-
-		+ .selectable-list-item {
-			margin-top: 2px;
 		}
 
 		label {
