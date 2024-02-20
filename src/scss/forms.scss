@@ -2,7 +2,6 @@
 	color: var(--s-color-content-placeholder);
 }
 
-
 .form-control-loader {
 	position: absolute;
 	right: var(--s-spacing-x-small);
@@ -24,8 +23,6 @@
 	display: inline-block;
 	font: var(--s-typography-label-medium);
 	color: var(--s-color-content-default);
-
-
 }
 
 textarea {
@@ -48,10 +45,14 @@ textarea {
 	&.-invalid {
 		color: var(--s-color-fill-critical);
 	}
-
 }
 
 .form-control.-select {
 	padding-right: var(--s-spacing-x-large);
+
+	.form-select-option {
+		background-color: var(--s-color-fill-default);
+	}
+
 	@include select-arrow;
 }
