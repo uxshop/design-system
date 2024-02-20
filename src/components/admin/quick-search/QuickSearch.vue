@@ -69,6 +69,7 @@ function onChange(value: string) {
 				<FormTextfield v-model="formValues.searchKey" name="searchKey" :placeholder="placeholder" />
 				<Button leadingIcon="search" type="submit" :block="isMobile" variant="primary">{{ buttonLabel }}</Button>
 			</Stack>
+			<slot />
 		</form>
 	</Modal>
 </template>
