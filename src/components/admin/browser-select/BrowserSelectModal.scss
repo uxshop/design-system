@@ -38,14 +38,18 @@
 
 		.ui-browser-search-input {
 			.box-icon {
-				padding-left: var(--s-spacing-quark);
 				display: flex;
 				width: var(--s-spacing-large);
 				justify-content: center;
+
 				.icon {
 					margin: 0;
 				}
 			}
+		}
+
+		.form-wrapper-content-item {
+			padding: 0 var(--s-spacing-xx-small);
 		}
 	}
 
