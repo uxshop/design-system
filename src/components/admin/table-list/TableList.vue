@@ -146,10 +146,10 @@ const onGet = (data: TApiData[]) => {
 
 const clickRow = (item: Record<string, string>) => emit('clickRow', item)
 
-// const onScrollHorizontal = (e: UIEvent) => {
-// 	const target = e.target as HTMLDivElement
-// 	return (scrollLeft.value = target.scrollLeft > 10)
-// }
+const onScrollHorizontal = (e: UIEvent) => {
+	const target = e.target as HTMLDivElement
+	return (scrollLeft.value = target.scrollLeft > 10)
+}
 
 const unshiftItem = (item: Record<string, string>) => {
 	if (rows.value) {
@@ -278,7 +278,7 @@ defineExpose({
 
 		<TableListTags :state="state" />
 
-		<div class="table-list-wrapper" :class="{ '-scroll': scrollLeft }">
+		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
 			<TableListTable v-model:selected="selected" :rows="rows" :state="state" :to="to">
 				<template #head v-if="$slots.head">
