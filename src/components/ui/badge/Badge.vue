@@ -9,7 +9,7 @@ export interface BadgeProps {
 	label?: string | number
 	pill?: boolean
 	size?: Size
-	variant?: Variant | 'default'
+	variant?: 'highlight' | 'warning' | 'success' | 'critical' | 'default'
 }
 
 const props = withDefaults(defineProps<BadgeProps>(), {
