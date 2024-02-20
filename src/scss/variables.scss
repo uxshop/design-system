@@ -85,7 +85,7 @@ $add-icon: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg"
 	--tab-height: 44px;
 
 	--alert-border-radius: 4px;
-	--layout-sidebar-width: 244px;
+	--layout-sidebar-width: 264px;
 	--layout-navbar-height: 65px;
 	// --shadow-card: 0 1px 6px rgba(23, 24, 24, 0.06), 0 0 1px rgba(0, 0, 0, 0.2);
 	--shadow-card: 0px 0px 5px 0px rgba(23, 24, 24, 0.05), 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
@@ -132,4 +132,5 @@ $add-icon: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg"
 	--text-muted: #{transparentize(#b1b9c9, 0.2)};
 	--modal-backdrop-bg: #15191f;
 	--input-border-color: var(--dark-200);
-	--input-bg-color: var(--dark-300);}
+	--input-bg-color: var(--dark-300);
+}
