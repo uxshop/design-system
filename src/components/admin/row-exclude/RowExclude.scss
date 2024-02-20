@@ -6,11 +6,11 @@
 	.selectable-list-item {
 		display: flex;
 		cursor: pointer;
-		padding-bottom: 8px;
+		padding-bottom: var(--s-spacing-nano);
 		align-items: center;
-		gap: 8px;
+		gap: var(--s-spacing-nano);
 		margin: 0;
-		border-radius: var(--input-border-radius);
+		border-radius: var(--s-border-radius-small);
 
 		&:last-child {
 			border: none;
