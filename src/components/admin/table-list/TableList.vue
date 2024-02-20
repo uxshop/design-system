@@ -20,6 +20,7 @@ import TableListNavCustomFilter from './table-list-nav/TableListNavCustomFilter.
 import TableListNavPagination from './table-list-nav-pagination/TableListNavPagination.vue'
 import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
 import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue'
+import isMobile from '../../../services/MobileDetector'
 import type { TApiData } from 'src/types/IApiResource'
 import type { ITableListConfig } from 'src/types'
 
@@ -145,10 +146,10 @@ const onGet = (data: TApiData[]) => {
 
 const clickRow = (item: Record<string, string>) => emit('clickRow', item)
 
-const onScrollHorizontal = (e: UIEvent) => {
-	const target = e.target as HTMLDivElement
-	return (scrollLeft.value = target.scrollLeft > 10)
-}
+// const onScrollHorizontal = (e: UIEvent) => {
+// 	const target = e.target as HTMLDivElement
+// 	return (scrollLeft.value = target.scrollLeft > 10)
+// }
 
 const unshiftItem = (item: Record<string, string>) => {
 	if (rows.value) {
@@ -272,12 +273,12 @@ defineExpose({
 				:state="state" />
 			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />
 			<TableListNavFilter ref="tableListNavFilterRef" :state="state" />
-			<TableListNavPagination :meta="meta" :state="state" />
+			<TableListNavPagination v-if="!isMobile()" :meta="meta" :state="state" />
 		</TableListNav>
 
 		<TableListTags :state="state" />
 
-		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
+		<div class="table-list-wrapper" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
 			<TableListTable v-model:selected="selected" :rows="rows" :state="state" :to="to">
 				<template #head v-if="$slots.head">
@@ -288,6 +289,7 @@ defineExpose({
 				</template>
 			</TableListTable>
 		</div>
+		<TableListNavPagination v-if="isMobile()" :meta="meta" :state="state" />
 	</div>
 </template>
 
