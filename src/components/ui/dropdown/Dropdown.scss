@@ -15,7 +15,7 @@
 
 	&.-right {
 		.ui-dropdown-menu {
-		left: 0
+			left: 0;
 		}
 	}
 
@@ -120,6 +120,14 @@
 	&-section {
 		+ .ui-dropdown-section {
 			border-top: var(--s-border-light);
+		}
+	}
+
+	@include mobile {
+		&.-right {
+			.ui-dropdown-menu {
+				left: unset;
+			}
 		}
 	}
 }
