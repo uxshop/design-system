@@ -35,6 +35,8 @@
 
 	&.-size {
 		&-sm {
+			font: var(--s-typography-caption-small);
+			font-weight: var(--s-font-weight-semibold);
 			padding: 0 var(--s-spacing-quark);
 
 			&.-pill {

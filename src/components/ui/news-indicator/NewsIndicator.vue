@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-	<Badge v-if="label" :label="label" variant="highlight" />
+	<Badge v-if="label" :label="label" variant="highlight" size="sm" />
 	<div v-else class="new-indicator"></div>
 </template>
 
