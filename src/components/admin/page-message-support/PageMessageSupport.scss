@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .page-message-support {
 	display: flex;
 	align-items: center;
@@ -14,5 +16,9 @@
 		a {
 			text-transform: lowercase;
 		}
+	}
+
+	@include mobile {
+		margin: auto 0 64px 0;
 	}
 }
