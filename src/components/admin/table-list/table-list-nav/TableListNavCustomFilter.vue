@@ -122,7 +122,7 @@ const onShowDropdown = () => {
 
 <template>
 	<span class="table-list-nav-item -custom-filter">
-		<Dropdown right ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown">
+		<Dropdown ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown">
 			<template #button-content>
 				<Button
 					v-if="Number(state.currentTab) >= 1"

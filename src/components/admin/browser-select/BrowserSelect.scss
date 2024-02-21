@@ -1,4 +1,12 @@
 .ui-browser-select {
+
+	.ui-browser-select-input {
+		display: flex;
+		align-items: center;
+		gap: var(--s-spacing-nano);
+	}
+
+
 	.ui-browser-list {
 		padding-top: var(--s-spacing-x-small);
 

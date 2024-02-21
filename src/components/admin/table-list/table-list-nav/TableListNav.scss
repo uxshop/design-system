@@ -17,7 +17,7 @@
 		background: var(--s-color-fill-default);
 		z-index: var(--s-index-low);
 		align-items: center;
-		height: 80px;
+		height: var(--s-spacing-huge);
 		padding: var(--s-spacing-x-small);
 		gap: var(--s-spacing-nano);
 		border-top: var(--s-border-light);

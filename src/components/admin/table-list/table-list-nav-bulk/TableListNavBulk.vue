@@ -150,7 +150,12 @@ onMounted(() => {
 		z-index: var(--s-index-medium-high);
 		padding: var(--s-spacing-x-small);
 		background: inherit;
+
+		.-checkbox{
+			padding-right: var(--s-spacing-small);
+		}
 	}
+	
 
 	.table-list-nav-select {
 		display: flex;
