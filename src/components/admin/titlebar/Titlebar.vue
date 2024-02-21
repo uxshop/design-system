@@ -62,7 +62,7 @@ onUnmounted(() => {
 						@click="item.onAction" />
 				</template>
 
-				<Dropdown v-else right>
+				<Dropdown v-else>
 					<template #button-content>
 						<Button
 							:label="getButtonLabel('Mais ações', moreBtnMobileIcon)"

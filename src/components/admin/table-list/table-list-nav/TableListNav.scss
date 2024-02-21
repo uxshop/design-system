@@ -27,9 +27,15 @@
 		position: relative;
 		top: 0;
 
+		&-wrapper {
+			display: flex;
+			align-items: center;
+		}
+
 		.table-list-nav-content {
 			height: var(--s-spacing-huge);
-			overflow-x: auto;
+			flex-wrap: wrap;
+			height: auto;
 		}
 	}
 }

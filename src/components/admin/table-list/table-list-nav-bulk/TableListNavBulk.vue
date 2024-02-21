@@ -133,6 +133,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+@import '../../../../scss/mixins.scss';
 .table-list-nav-bulk {
 	display: flex;
 	align-items: center;
@@ -151,15 +152,18 @@ onMounted(() => {
 		padding: var(--s-spacing-x-small);
 		background: inherit;
 
-		.-checkbox{
+		.-checkbox {
 			padding-right: var(--s-spacing-small);
 		}
 	}
-	
 
 	.table-list-nav-select {
 		display: flex;
 		align-items: center;
+	}
+
+	@include mobile {
+		padding: unset;
 	}
 }
 </style>

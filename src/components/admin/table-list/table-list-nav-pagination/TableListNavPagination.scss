@@ -32,7 +32,6 @@
 	}
 
 	@include mobile {
-		position: fixed;
 		bottom: var(--s-spacing-huge);
 		border-top: var(--s-border-light);
 		background-color: var(--s-color-fill-default);

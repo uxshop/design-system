@@ -27,7 +27,7 @@ const dropdownItems = computed(() => {
 	<div class="user-card">
 		<small v-if="label" class="user-card-label">{{ label }}</small>
 		<div class="user-card-btn">
-			<Dropdown right closeOn :drop-up="dropUp">
+			<Dropdown no-close-on-click-tag="SMALL" close-on right :drop-up="dropUp">
 				<template #button-content>
 					<UserButton :user-name="user.name" :image="user.image?.src" :caption="caption" />
 				</template>

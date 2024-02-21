@@ -50,6 +50,7 @@
 
 			&.choices__list--dropdown {
 				border-color: var(--s-color-background-highlight);
+				background-color: var(--s-color-fill-default);
 			}
 		}
 
@@ -105,6 +106,4 @@
 			}
 		}
 	}
-
-	
 }

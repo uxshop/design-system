@@ -6,6 +6,7 @@ const props = defineProps<{
 	right?: boolean
 	left?: boolean
 	closeOn?: boolean
+	noCloseOnClickTag?: string
 }>()
 
 const emit = defineEmits(['show', 'hide'])
@@ -18,20 +19,10 @@ let initialHeight: number = 0
 const showOnTop = computed(() => (props.dropUp ? '-450px' : 'unset'))
 
 const listener = (e: MouseEvent | KeyboardEvent) => {
-	let noClose = e.target.tagName == 'INPUT'
+	if (e instanceof KeyboardEvent && e.key != 'Escape') return
+	if (props.closeOn && e.target.tagName == props.noCloseOnClickTag) return
+	if (e.target.tagName == 'INPUT') return
 	if (props.closeOn) hide()
-
-	if (e.target.dataset?.close != true) {
-		e.path?.map((item: Element) => {
-			if (item.className == 'ui-dropdown-menu') {
-				noClose = true
-			}
-		})
-	}
-
-	if (noClose) return
-
-	hide()
 }
 
 const toggle = (val: boolean) => {

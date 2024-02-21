@@ -122,12 +122,4 @@
 			border-top: var(--s-border-light);
 		}
 	}
-
-	@include mobile {
-		&.-right {
-			.ui-dropdown-menu {
-				left: unset;
-			}
-		}
-	}
 }

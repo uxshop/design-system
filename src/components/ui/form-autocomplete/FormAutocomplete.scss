@@ -7,8 +7,8 @@
 	.choices {
 		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 
-		&.is-open{
-			&::after{
+		&.is-open {
+			&::after {
 				@include darkmode {
 					margin-bottom: 8px;
 					transform: rotate(180deg);
@@ -30,11 +30,10 @@
 		&::after {
 			right: var(--s-spacing-xx-small);
 			border-color: var(--s-color-content-default) transparent transparent transparent;
-		
-		@include darkmode {
-			border-color: var(--s-color-content-default) transparent transparent transparent;
-		}
-		
+
+			@include darkmode {
+				border-color: var(--s-color-content-default) transparent transparent transparent;
+			}
 		}
 
 		&.is-focused {
