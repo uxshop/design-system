@@ -28,6 +28,10 @@ const closeFilter = (resFilters: Record<string, any>) => {
 	props.state.resetQueryParams(current)
 	filterSidebarRef.value.open()
 }
+
+defineExpose({
+	openFilterSidebar: () => filterSidebarRef.value.open()
+})
 </script>
 
 <template>

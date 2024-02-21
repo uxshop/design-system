@@ -37,13 +37,12 @@
 		border-top: var(--s-border-light);
 		background-color: var(--s-color-fill-default);
 		width: 100%;
-		left: 0;
-		height: 50px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 
 		.table-list-pagination-list {
+			padding: 16px;
 			.table-list-nav-btn {
 				width: 36px;
 				height: 36px;
