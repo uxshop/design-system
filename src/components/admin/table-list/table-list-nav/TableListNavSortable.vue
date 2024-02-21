@@ -62,7 +62,7 @@ onMounted(() => {
 
 <template>
 	<span class="table-list-nav-item" v-show="sortableFinal.length">
-		<Dropdown right ref="dropdownRef">
+		<Dropdown ref="dropdownRef">
 			<template #button-content>
 				<span class="table-list-nav-btn">
 					<Button label="Ordenar" leadingIcon="swap_vert" size="sm" />
