@@ -33,8 +33,9 @@ const toggleMenu = (item: any) => {
 	}
 }
 
-const handleMenuClick = (type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void => {
+const handleMenuClick = (type: SideBarItemType, menuItem?: SideBarItem): void => {
 	emit('onClickItem', type, menuItem)
+	if (!menuItem?.nodes?.length) menu.toggle()
 }
 
 const handleMobileBar = (item: SidebarMobileMenu) => {
