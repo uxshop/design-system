@@ -33,6 +33,10 @@
 		border-top: var(--s-border-light);
 		vertical-align: middle;
 
+		a {
+		color: var(--s-color-content-default);
+		}
+
 		b,
 		strong {
 			font-weight: var(--font-weight-semibold);

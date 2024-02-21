@@ -149,11 +149,10 @@
 			}
 		}
 
-		> .ui-sidebar-container {
-			&::after {
-				background: transparent;
-			}
+		.ui-sidebar-container::after{
+			background: none !important;
 		}
+		
 	}
 
 	.ui-sidebar-item {

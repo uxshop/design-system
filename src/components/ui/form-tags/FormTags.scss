@@ -106,41 +106,5 @@
 		}
 	}
 
-	@include darkmode {
-		color: var(--s-color-content-dark);
-
-		.choices {
-			.choices__inner {
-				background-color: var(--s-color-fill-dark);
-				border-color: var(--s-color-border-dark);
-
-				&:hover {
-					border-color: var(--s-color-border-highlight);
-				}
-
-				.choices__input {
-					color: inherit;
-				}
-			}
-
-			.choices__list {
-				&.choices__list--dropdown {
-					background-color: var(--s-color-fill-dark);
-				}
-			}
-
-			&.is-disabled {
-				.choices__inner {
-					background-color: var(--s-color-fill-dark-disable);
-					color: var(--s-color-content-dark-disable);
-					border-color: var(--s-color-content-dark-disable);
-
-					.choices__input {
-						color: var(--s-color-content-dark);
-						background-color: transparent;
-					}
-				}
-			}
-		}
-	}
+	
 }

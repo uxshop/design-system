@@ -16,8 +16,8 @@
 
 		&:hover {
 			text-decoration: none;
-			border-color: var(--s-color-border-highlight);
-			color: var(--s-color-content-highlight);
+			border-color: var(--s-color-border-default);
+			color: var(--s-color-content-default);
 			background-color: var(--s-color-fill-default-hover);
 		}
 	}
