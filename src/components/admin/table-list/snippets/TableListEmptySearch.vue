@@ -24,8 +24,7 @@ const emit = defineEmits<{
 .table-list-empty-search {
 	text-align: center;
 	height: 100%;
-	padding: 20px;
-	padding-bottom: 5px;
+	padding: var(--s-spacing-x-small);
 
 	.table-list-empty-search-content {
 		border-radius: var(--border-radius);

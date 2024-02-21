@@ -122,7 +122,7 @@
 	}
 
 	.ui-sidebar-list::-webkit-scrollbar-thumb {
-		background-color: var(--s-color-fill-default);
+		background-color: var(--s-color-background-default);
 		border-radius: var(--s-border-radius-large);
 		border: var(--s-spacing-quark) solid var(--s-color-fill-default);
 	}
@@ -149,10 +149,9 @@
 			}
 		}
 
-		.ui-sidebar-container::after{
+		.ui-sidebar-container::after {
 			background: none !important;
 		}
-		
 	}
 
 	.ui-sidebar-item {
