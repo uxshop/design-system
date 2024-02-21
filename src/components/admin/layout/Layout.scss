@@ -15,7 +15,6 @@
 
 	.ui-layout-navbar {
 		grid-area: ui-layout-navbar;
-		height: 100%;
 		position: sticky;
 		top: 0;
 		z-index: 444;
@@ -24,7 +23,6 @@
 	.ui-layout-content {
 		grid-area: ui-layout-content;
 		display: flex;
-		min-height: 100%;
 		width: calc(100vw - var(--layout-sidebar-width));
 	}
 

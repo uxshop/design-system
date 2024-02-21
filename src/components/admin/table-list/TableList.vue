@@ -20,6 +20,7 @@ import TableListNavCustomFilter from './table-list-nav/TableListNavCustomFilter.
 import TableListNavPagination from './table-list-nav-pagination/TableListNavPagination.vue'
 import TableListEmptySearch from './snippets/TableListEmptySearch.vue'
 import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue'
+import isMobile from '../../../services/MobileDetector'
 import type { TApiData } from 'src/types/IApiResource'
 import type { ITableListConfig } from 'src/types'
 
@@ -272,7 +273,7 @@ defineExpose({
 				:state="state" />
 			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />
 			<TableListNavFilter ref="tableListNavFilterRef" :state="state" />
-			<TableListNavPagination :meta="meta" :state="state" />
+			<TableListNavPagination v-if="!isMobile()" :meta="meta" :state="state" />
 		</TableListNav>
 
 		<TableListTags :state="state" />
@@ -288,6 +289,7 @@ defineExpose({
 				</template>
 			</TableListTable>
 		</div>
+		<TableListNavPagination v-if="isMobile()" :meta="meta" :state="state" />
 	</div>
 </template>
 
