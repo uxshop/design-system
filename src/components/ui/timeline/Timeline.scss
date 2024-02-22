@@ -1,13 +1,13 @@
 .ui-timeline {
 	position: relative;
-	padding: 0 var(--s-spacing-x-small);
+
+	&-item {
+		margin-right: 8px;
+		margin-left: 8px;
+	}
 
 	&-avatar {
 		align-self: baseline;
-	}
-
-	&-input {
-		margin-bottom: var(--s-spacing-small);
 	}
 
 	&-info {
@@ -16,7 +16,8 @@
 
 	&-item-wrapper {
 		display: flex;
-		margin-bottom: var(--s-spacing-medium);
+		margin-top: var(--s-spacing-xx-small);
+		margin-bottom: var(--s-spacing-xx-small);
 		z-index: 1;
 		position: relative;
 		flex: 1;
