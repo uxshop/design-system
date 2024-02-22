@@ -42,7 +42,8 @@ const classList = computed(() => [
 	props.flush ? `-flush-${props.flush}` : '',
 	props.block ? '-block' : '',
 	props.outline ? '-outline' : '',
-	props.disclosure ? '-disclosure' : ''
+	props.disclosure ? '-disclosure' : '',
+	(props.trailingIcon || props.leadingIcon) && !props.label ? '-only-icon' : ''
 ])
 
 const trailingIcon = computed(() => (props.disclosure ? 'arrow_drop_down' : props.trailingIcon))
