@@ -20,9 +20,9 @@ const showOnTop = computed(() => (props.dropUp ? '-450px' : 'unset'))
 
 const listener = (e: MouseEvent | KeyboardEvent) => {
 	if (e instanceof KeyboardEvent && e.key != 'Escape') return
-	if (props.closeOn && e.target.tagName == props.noCloseOnClickTag) return
-	if (e.target.tagName == 'INPUT') return
-	if (props.closeOn) hide()
+	if (props.closeOn && e.target?.tagName == props.noCloseOnClickTag) return
+	if (e.target?.tagName == 'INPUT') return
+	hide()
 }
 
 const toggle = (val: boolean) => {
