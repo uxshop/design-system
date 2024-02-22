@@ -31,8 +31,35 @@
 			}
 		}
 
+		&.is-focused .choices__inner {
+			border: 1px solid var(--s-color-border-highlight);
+		}
+
+		[class='choices__list'] {
+			width: 100%;
+		}
+
 		.choices__list {
+			display: flex;
+			align-items: center;
+			border-color: var(--s-color-border-default);
 			background-color: var(--s-color-fill-default);
+			flex-direction: column;
+
+			&.choices__list--dropdown {
+				border-color: var(--s-color-background-highlight);
+				background-color: var(--s-color-fill-default);
+			}
+		}
+
+		.choices__item--selectable {
+			width: 100%;
+			padding: var(--s-spacing-nano);
+		}
+
+		.choices__item.choices__item--choice.choices__item--selectable.is-highlighted {
+			font: var(--s-typography-paragraph-regular);
+			background-color: var(--s-color-fill-default-hover);
 			border-color: var(--s-color-border-default);
 		}
 	}
