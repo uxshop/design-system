@@ -2,8 +2,8 @@
 	position: relative;
 
 	&-item {
-		margin-right: 8px;
-		margin-left: 8px;
+		margin-right: var(--s-spacing-nano);
+		margin-left: var(--s-spacing-nano);
 	}
 
 	&-avatar {
@@ -18,7 +18,7 @@
 		display: flex;
 		margin-top: var(--s-spacing-xx-small);
 		margin-bottom: var(--s-spacing-xx-small);
-		z-index: 1;
+		z-index: var(--s-index-default);
 		position: relative;
 		flex: 1;
 	}
