@@ -37,6 +37,7 @@
 
 		[class='choices__list'] {
 			width: 100%;
+			flex-direction: column;
 		}
 
 		.choices__list {
@@ -44,7 +45,6 @@
 			align-items: center;
 			border-color: var(--s-color-border-default);
 			background-color: var(--s-color-fill-default);
-			flex-direction: column;
 
 			&.choices__list--dropdown {
 				border-color: var(--s-color-background-highlight);
@@ -52,8 +52,11 @@
 			}
 		}
 
-		.choices__item--selectable {
+		.choices__item--choice {
 			width: 100%;
+		}
+
+		.choices__item--selectable {
 			padding: var(--s-spacing-nano);
 		}
 
