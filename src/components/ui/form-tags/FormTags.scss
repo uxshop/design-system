@@ -1,11 +1,9 @@
 @import '../../../../src/scss/mixins.scss';
-.ui-form-tags {
-	--choice-item-height: var(--s-spacing-large);
-	color: var(--s-color-content-default);
 
+.ui-form-tags {
 	&:not(.-has-value) {
 		.choices__inner {
-			padding-left: var(--s-spacing-xx-small);
+			padding-left: calc(var(--s-spacing-x-small) - 2px);
 		}
 	}
 
@@ -25,79 +23,45 @@
 	.choices {
 		margin: 0;
 
-		.choices__inner {
-			&:hover {
-				border-color: var(--s-color-border-highlight);
-			}
-		}
-
 		&.is-open {
-			z-index: var(--s-spacing-nano);
+			z-index: var(--s-index-max);
 			.choices__inner {
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: 0;
 			}
 		}
 
-		&.is-focused .choices__inner {
-			border: 1px solid var(--s-color-border-highlight);
-		}
-
 		.choices__list {
-			display: flex;
-			align-items: center;
-			border-color: var(--s-color-border-default);
-
-			&.choices__list--dropdown {
-				border-color: var(--s-color-background-highlight);
-				background-color: var(--s-color-fill-default);
-			}
-		}
-
-		.choices__item.choices__item--choice.choices__item--selectable.is-highlighted {
-			font: var(--s-typography-paragraph-regular);
 			background-color: var(--s-color-fill-default);
-
-			&:hover {
-				background-color: var(--s-color-fill-default-hover);
-			}
-		}
-
-		&.is-disabled {
-			.choices__inner {
-				background-color: var(--s-color-fill-disable);
-				border-color: var(--s-color-border-default);
-			}
+			border-color: var(--s-color-border-default);
 		}
 	}
 
 	.choices__inner {
-		display: flex;
-		align-items: center;
 		background-color: var(--s-color-fill-default);
 		min-height: var(--s-spacing-large);
 		border: var(--s-border-light);
-		padding: 0 var(--s-spacing-xx-small);
+		padding: var(--s-spacing-nano);
+		padding-bottom: 0;
 		border-radius: var(--s-border-radius-small);
 
 		.choices__input {
-			margin: 0;
 			color: var(--s-color-content-default);
-			background-color: transparent;
+			background-color: var(--s-color-fill-default);
 			height: var(--s-spacing-small);
 		}
 
 		.choices__item {
-			margin: 0 var(--s-spacing-nano) 0 0;
-			border-radius: var(--s-border-radius-small);
-			background-color: var(--s-color-background-highlight) !important;
+			border-radius: calc(var(--s-border-radius-small) - 1px);
+			background-color: var(--s-color-fill-highlight);
 			text-shadow: none;
 			box-shadow: none !important;
 			display: inline-flex;
+			align-items: center;
 			font: var(--s-typography-caption-small);
 			border: none;
 			height: var(--s-spacing-small);
-			line-height: var(--s-line-height-16);
+			line-height: 1;
 
 			.choices__button {
 				font-weight: var(--s-font-weight-regular);
