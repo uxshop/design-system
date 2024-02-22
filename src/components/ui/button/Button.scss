@@ -47,13 +47,25 @@
 		padding: var(--s-spacing-quark) var(--s-spacing-xx-small);
 	}
 
+	&.-sm.-only-icon {
+		padding: var(--s-spacing-quark);
+	}
+
 	&.-md {
 		max-height: var(--s-spacing-large);
 		padding: var(--s-spacing-nano) var(--s-spacing-xx-small);
 	}
 
+	&.-md.-only-icon {
+		padding: var(--s-spacing-nano);
+	}
+
 	&.-lg {
 		max-height: var(--s-spacing-x-large);
+		padding: var(--s-spacing-xx-small);
+	}
+
+	&.-lg.-only-icon {
 		padding: var(--s-spacing-xx-small);
 	}
 
