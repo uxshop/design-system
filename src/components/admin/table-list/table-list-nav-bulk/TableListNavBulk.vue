@@ -161,9 +161,5 @@ onMounted(() => {
 		display: flex;
 		align-items: center;
 	}
-
-	// @include mobile {
-	// 	padding: unset;
-	// }
 }
 </style>
