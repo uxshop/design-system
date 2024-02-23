@@ -4,10 +4,10 @@ import { cloneDeep, keys, pick, find, omit, isNumber, isObject, each } from 'lod
 import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import Button from '../../../ui/button/Button.vue'
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
-import Stack from '../../../ui/stack/Stack.vue'
 import DropdownSection from '../../../ui/dropdown/DropdownSection.vue'
 import toast from '../../../ui/toast'
 import { slugify } from '../../../../filters'
+import isMobile from '../../../../services/MobileDetector'
 import type { ITableListState } from '../types/ITableListState'
 
 const props = defineProps<{
@@ -39,6 +39,7 @@ const addTab = (tab: any) => {
 
 onMounted(async () => {
 	const res = await props.service.get({ resource: props.state.config.customFilterResource })
+	console.log('🚀 ~ onMounted ~ res:', props.state.config.customFilterPresets)
 
 	each(props.state.config.customFilterPresets, (item) => {
 		if (isObject(item)) {
@@ -121,7 +122,7 @@ const onShowDropdown = () => {
 </script>
 
 <template>
-	<span class="table-list-nav-item -custom-filter">
+	<span v-if="!isMobile()" class="table-list-nav-item -custom-filter">
 		<Dropdown ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown" right>
 			<template #button-content>
 				<Button

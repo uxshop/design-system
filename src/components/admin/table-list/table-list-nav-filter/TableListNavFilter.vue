@@ -40,7 +40,7 @@ defineExpose({
 		<Button
 			:size="isMobile() ? 'md' : 'sm'"
 			:label="isMobile() ? '' : 'Filtros'"
-			:leadingIcon="isMobile() ? 'filter_list' : ''"
+			leadingIcon="filter_list"
 			@click="filterSidebarRef.open()"
 			class="table-list-nav-btn" />
 		<TableListNavFilterSidebar
