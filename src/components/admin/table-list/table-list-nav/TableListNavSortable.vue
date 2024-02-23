@@ -4,6 +4,7 @@ import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue'
 import FormRadio from '../../../ui/form-radio/FormRadio.vue'
 import Button from '../../../ui/button/Button.vue'
+import isMobile from '../../../../services/MobileDetector'
 
 const props = withDefaults(
 	defineProps<{
@@ -65,7 +66,7 @@ onMounted(() => {
 		<Dropdown ref="dropdownRef">
 			<template #button-content>
 				<span class="table-list-nav-btn">
-					<Button label="Ordenar" leadingIcon="swap_vert" size="sm" />
+					<Button :label="isMobile() ? '' : 'Ordenar'" :size="isMobile() ? 'md' : 'sm'" leadingIcon="swap_vert" />
 				</span>
 			</template>
 			<DropdownItemButton

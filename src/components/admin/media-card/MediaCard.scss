@@ -13,7 +13,7 @@
 		border-radius: var(--border-right);
 
 		&-header {
-		padding: var(--s-spacing-small) var(--s-spacing-small) var(--s-spacing-nano);
+			padding: var(--s-spacing-small) var(--s-spacing-small) var(--s-spacing-nano);
 		}
 	}
 
@@ -27,6 +27,10 @@
 
 	@include mobile {
 		grid-template-columns: 1fr;
+
+		&-info-buttons {
+			flex-direction: column;
+		}
 
 		.ui-card {
 			border-radius: var(--border-bottom);
@@ -88,5 +92,4 @@
 	iframe {
 		min-height: 250px;
 	}
-
 }
