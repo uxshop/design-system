@@ -16,7 +16,7 @@ const prevPage = () => {
 }
 
 const nextPage = () => {
-	let page = props.state.queryParams.page
+	let page = props.state.queryParams.page ?? 1
 	if (props.meta.last_page > page) {
 		props.state.setQueryParams({
 			page: ++page
