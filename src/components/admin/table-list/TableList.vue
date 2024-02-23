@@ -263,7 +263,7 @@ watch(
 			<TableListNavRefresh v-if="!isMobile()" :state="state" />
 			<TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
 			<TableListNavCustomFilter
-				v-if="config.customFilterService && !isMobile()"
+				v-if="config.customFilterService"
 				:service="config.customFilterService"
 				:state="state" />
 			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />

@@ -117,9 +117,9 @@ onMounted(() => {
 			<Button size="sm" leadingIcon="delete" @click="onRemoveDialog" label="Deletar" />
 		</span>
 
-		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0">
+		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0" right>
 			<template #button-content>
-				<Button size="sm" trailingIcon="unfold_more"> Ação em massa </Button>
+				<Button size="sm" trailingIcon="unfold_more" label="Ação em massa" />
 			</template>
 
 			<DropdownItemButton
@@ -162,8 +162,8 @@ onMounted(() => {
 		align-items: center;
 	}
 
-	@include mobile {
-		padding: unset;
-	}
+	// @include mobile {
+	// 	padding: unset;
+	// }
 }
 </style>
