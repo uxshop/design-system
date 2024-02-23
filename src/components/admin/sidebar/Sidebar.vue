@@ -29,7 +29,7 @@ const emit = defineEmits<{
 const toggleMenu = (item: any) => {
 	if (menu) {
 		menu.toggle()
-		emit('onClickItem', 'node', item)
+		emit('onClickItem', 'sub', item)
 	}
 }
 
