@@ -11,7 +11,7 @@ const globalConfig = {
 }
 
 let seed = 1
-const open = (text: string, config = {}) => {
+const open = (text: string, config: any = {}) => {
 	let toastWrapper = null
 	let toastVM = null
 	const id = 'ui-toast-' + seed++
@@ -23,7 +23,8 @@ const open = (text: string, config = {}) => {
 			...globalConfig,
 			...config,
 			message: text,
-			id
+			id,
+			variant: config.type
 		},
 		null
 	)
@@ -37,7 +38,7 @@ const Toast = {
 		open(text, { type: 'success' })
 	},
 	danger(text: string) {
-		open(text, { type: 'danger' })
+		open(text, { type: 'critical' })
 	}
 }
 
