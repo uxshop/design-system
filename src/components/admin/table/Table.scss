@@ -138,6 +138,7 @@
 	}
 
 	.ui-table-cell.-auto {
+		color: var(--s-color-content-light);
 		width: 1px;
 		z-index: var(--s-index-low);
 		white-space: nowrap;

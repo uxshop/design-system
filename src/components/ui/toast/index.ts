@@ -37,7 +37,7 @@ const Toast = {
 		open(text, { type: 'success' })
 	},
 	danger(text: string) {
-		open(text, { type: 'danger' })
+		open(text, { type: 'critical' })
 	}
 }
 
