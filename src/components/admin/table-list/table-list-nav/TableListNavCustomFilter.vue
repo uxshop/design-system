@@ -39,7 +39,6 @@ const addTab = (tab: any) => {
 
 onMounted(async () => {
 	const res = await props.service.get({ resource: props.state.config.customFilterResource })
-	console.log('🚀 ~ onMounted ~ res:', props.state.config.customFilterPresets)
 
 	each(props.state.config.customFilterPresets, (item) => {
 		if (isObject(item)) {
