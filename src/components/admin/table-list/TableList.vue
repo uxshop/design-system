@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch, ref, reactive } from 'vue'
+import { onMounted, watch, ref, reactive, onBeforeMount } from 'vue'
 import { union, clone, omit, concat, isEqual } from 'lodash-es'
 import { useRoute } from 'vue-router'
 import HistoryReplaceState from '../../../services/HistoryReplaceState'
@@ -53,6 +53,7 @@ const meta = ref({})
 const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false }, props.config)
 const storageNameFilters = `adm_table_filters_${String(route.name)}`
 const formError = ref<Record<string, string> | null>(null)
+const hasQueryParams = ref()
 const queryDefault = Object.assign(
 	{
 		sort: '-id',
@@ -64,7 +65,7 @@ const queryDefault = Object.assign(
 )
 
 let omitFiltersValues = concat(
-	['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId'],
+	['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId', 'version'],
 	props.config.omitFiltersValues
 )
 
@@ -185,35 +186,27 @@ const removeSelected = async () => {
 	fetchData()
 }
 
-const initQueryParams = () => {
-	union(omitFiltersValues, props.config.omitFilters)
-	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
-	const query = route.query?.q ? { q: route.query.q } : localStorageParams
-
-	setQueryParams(query as TQueryParams)
+const assignDefaultQueryParams = () => {
+	return Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
 }
 
-const state = reactive({
-	queryParams: queryParams,
-	omitFilters: omitFilters,
-	config: cfg,
-	tabs: [],
-	currentTab: {},
-	term: null,
-	omitFiltersValues: omitFiltersValues,
-	fetchData: fetchData,
-	checkAll: checkAll,
-	setQueryParams: setQueryParams,
-	resetQueryParams: resetQueryParams,
-	removeFilter: removeFilter,
-	removeSelected: removeSelected,
-	toggleActiveSelected: activeInactiveSelected,
-	activeOne: activeOne,
-	deleteOne: deleteOne,
-	clickRow: clickRow
+onBeforeMount(() => {
+	hasQueryParams.value = route.query.sort
+})
+
+onMounted(() => {
+	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
+	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
+
+	if (!hasQueryParams.value && localStorageParams) {
+		queryParams.value = Object.assign(localStorageParams)
+	} else {
+		queryParams.value = assignDefaultQueryParams()
+	}
 })
 
 let timerQ: ReturnType<typeof setTimeout>
+
 watch(
 	() => queryParams.value,
 	(newVal: any, oldVal) => {
@@ -235,19 +228,43 @@ watch(
 	{ deep: true }
 )
 
+watch(
+	() => route.query,
+	(newValue) => {
+		if (newValue.q) {
+			setQueryParams({
+				q: String(newValue.q),
+				page: 1
+			})
+		}
+	}
+)
+
+const state = reactive({
+	queryParams: queryParams,
+	omitFilters: omitFilters,
+	config: cfg,
+	tabs: [],
+	currentTab: {},
+	term: null,
+	omitFiltersValues: omitFiltersValues,
+	fetchData: fetchData,
+	checkAll: checkAll,
+	setQueryParams: setQueryParams,
+	resetQueryParams: resetQueryParams,
+	removeFilter: removeFilter,
+	removeSelected: removeSelected,
+	toggleActiveSelected: activeInactiveSelected,
+	activeOne: activeOne,
+	deleteOne: deleteOne,
+	clickRow: clickRow
+})
+
 defineExpose({
 	unshiftItem: unshiftItem,
 	refresh: fetchData,
 	openFilterSidebar: () => tableListNavFilterRef.value.openFilterSidebar()
 })
-
-watch(
-	() => route.query,
-	() => {
-		initQueryParams()
-	},
-	{ immediate: true }
-)
 </script>
 
 <template>
