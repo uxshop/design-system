@@ -197,9 +197,10 @@ onBeforeMount(() => {
 onMounted(() => {
 	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
 	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
+	const quickSearchQuery = route.query
 
 	if (!hasQueryParams.value && localStorageParams) {
-		queryParams.value = Object.assign(localStorageParams)
+		queryParams.value = Object.assign(localStorageParams, quickSearchQuery ?? {})
 	} else {
 		queryParams.value = assignDefaultQueryParams()
 	}
@@ -231,6 +232,7 @@ watch(
 watch(
 	() => route.query,
 	(newValue) => {
+		console.log('query', newValue)
 		if (newValue.q) {
 			setQueryParams({
 				q: String(newValue.q),

@@ -66,7 +66,7 @@ function onChange(value: string) {
 				<FormLayoutItem>
 					<FormSelect v-model="formValues.searchType" :options="searchOptions" name="searchType" @update="onChange" />
 				</FormLayoutItem>
-				<FormTextfield v-model="formValues.searchKey" name="searchKey" :placeholder="placeholder" />
+				<FormTextfield v-model="formValues.searchKey" name="searchKey" :placeholder="placeholder" autofocus />
 				<Button leadingIcon="search" type="submit" :block="isMobile" variant="primary">{{ buttonLabel }}</Button>
 			</Stack>
 			<slot />
