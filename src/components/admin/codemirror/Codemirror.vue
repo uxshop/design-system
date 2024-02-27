@@ -38,7 +38,6 @@ onMounted(() => {
 	const el = document.querySelector(`#${uid}`) as Element
 	const updateListenerExtension = EditorView.updateListener.of((update: ViewUpdate) => {
 		if (update.docChanged && !noUpdate.value) {
-			stopWatch()
 			const doc = update.state.doc as Text
 			const docFinal = Array(doc)
 			const value = docFinal.join('\n')
@@ -66,14 +65,6 @@ onMounted(() => {
 			})
 		})
 	}
-
-	const stopWatch = watchEffect(() => {
-		const update = cm.value.state.update({
-			changes: { from: 0, to: cm.value.state.doc.length, insert: props.modelValue }
-		})
-		noUpdate.value = true
-		cm.value.update([update])
-	})
 })
 </script>
 
