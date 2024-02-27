@@ -1,30 +1,27 @@
 .table {
 	width: 100%;
 	margin-bottom: 0;
-	color: var(--body-color);
+	color: var(--s-color-content-default);
 	border-spacing: 0;
 	border-collapse: separate;
-	line-height: 1.3;
 
 	th,
 	td {
 		vertical-align: middle;
-		padding: 10px 10px;
+		padding: var(--s-spacing-nano);
 	}
 
 	tr th {
 		border-top: none;
 		font-weight: var(--font-weight-semibold);
-		border-bottom: solid 1px var(--border-color);
+		border-bottom: solid 1px var(--s-color-border-default);
 		font-size: 12px;
 		text-transform: uppercase;
-		opacity: 0.9;
-		font-weight: var(--font-weight-semibold);
 	}
 
 	tr td {
 		border-top: none;
-		border-bottom: solid 1px var(--border-color);
+		border-bottom: solid 1px var(--s-color-border-default);
 	}
 
 	&:not(.-excel) {
@@ -37,20 +34,20 @@
 
 	tr.-inactive {
 		td:not(.td-checkbox):not(.td-action) {
-			opacity: 0.6;
+			opacity: 0.8;
 		}
 	}
 
 	tbody + tbody {
 		border: none;
-		border-top: solid 1px var(--border-color);
+		border-top: solid 1px var(--s-color-border-default);
 	}
 
 	.td-action {
 		width: 1px;
 		white-space: nowrap;
 		button + button {
-			margin-left: 5px;
+			margin-left: var(--s-spacing-quark);
 		}
 		a {
 			display: inline-flex;
@@ -62,8 +59,8 @@
 		text-align: center;
 		cursor: grab !important;
 		width: 1px;
-		color: var(--dark);
-		padding-left: 5px;
+		color: var(--s-color-content-default);
+		padding-left: var(--s-spacing-quark);
 
 		.ui-icon {
 			display: flex;
@@ -91,8 +88,8 @@
 
 		> tr:hover,
 		tbody tr:hover {
-			background-color: var(--gray-100);
-			color: var(--body-color);
+			background-color: var(--s-color-fill-default-hover);
+			color: var(--s-color-content-default);
 		}
 	}
 
@@ -124,19 +121,13 @@
 				display: flex;
 				font-size: 18px;
 			}
-
-			&:hover {
-				.ui-icon {
-					color: var(--secondary);
-				}
-			}
 		}
 	}
 
 	&.-tiny {
 		td,
 		th {
-			padding: 6px;
+			padding: var(--s-spacing-quark);
 		}
 	}
 
@@ -148,31 +139,33 @@
 
 	&.-th-primary {
 		th {
-			border-bottom: solid 2px var(--primary);
+			border-bottom: solid 2px var(--s-color-border-highlight);
 		}
 	}
 
 	&.-radius {
-		border-radius: 4px;
+		border-radius: var(--s-border-radius-small);
 		overflow: hidden;
 	}
 
 	&.-excel {
+		border-left: solid 1px var(--s-color-border-default);
+    	border-top: solid 1px var(--s-color-border-default);
 		border-collapse: unset;
 
 		input[readonly] {
-			background-color: var(--gray-100);
+			background-color: var(--s-color-fill-default-disable);
 		}
 
 		td,
 		th {
-			border: solid 1px var(--border-color);
-			padding: 10px 8px;
+			border-right: solid 1px var(--s-color-border-default);
+			padding: var(--s-spacing-nano);
 			vertical-align: middle;
 		}
 
 		th {
-			background: var(--gray-100);
+			background: var(--s-color-fill-default-light);
 			text-transform: uppercase;
 		}
 
@@ -188,22 +181,23 @@
 				border: solid 1px transparent;
 				width: 100%;
 				border-radius: 0;
-				height: 40px;
-				padding: 6px;
-				color: var(--body-color);
-				background: var(--bg-white);
+				height: var(--s-spacing-large);
+				padding: var(--s-spacing-nano);
+				color: var(--s-color-content-default);
+				background: var(--s-color-fill-default);
 
 				&:focus {
-					border: solid 1px var(--primary);
+					border: solid 1px var(--s-color-border-highlight);
 					border-radius: 0;
 					outline: none;
-					box-shadow: 0 0 0 1px var(--primary);
+					box-shadow: 0 0 0 1px var(--s-color-background-highlight);
 				}
 			}
 
 			button {
 				background: none;
 				border: none;
+				border-radius: 0;
 				appearance: none;
 				box-shadow: none;
 				display: flex;
@@ -215,14 +209,10 @@
 				.ui-icon {
 					font-size: 20px;
 				}
-
-				&:hover {
-					color: var(--danger);
-				}
 			}
 
 			&:last-child {
-				background: var(--gray-100);
+				background: var(--s-color-fill-default-light);
 			}
 		}
 	}
