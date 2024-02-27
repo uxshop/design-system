@@ -7,6 +7,7 @@ const props = defineProps<{
 	left?: boolean
 	closeOn?: boolean
 	noCloseOnClickTag?: string
+	disabled?: boolean
 }>()
 
 const emit = defineEmits(['show', 'hide'])
