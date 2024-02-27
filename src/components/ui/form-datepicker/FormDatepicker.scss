@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-form-datepicker {
 	&.-range {
 		input {
@@ -6,6 +8,12 @@
 	}
 
 	.btn-remove {
-		margin-right: var(--s-spacing-xx-small);
+		margin-right: var(--s-spacing-x-large);
+	}
+
+	@include mobile {
+		.easepick-wrapper {
+			position: unset !important;
+		}
 	}
 }
