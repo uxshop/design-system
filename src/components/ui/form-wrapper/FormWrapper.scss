@@ -3,6 +3,10 @@
 .ui-form-wrapper {
 	width: 100%;
 
+    input[type="time"]::-webkit-calendar-picker-indicator {
+		display: none;
+	  }
+
 	.ui-form-wrapper-main {
 		display: flex;
 		gap: var(--s-spacing-quark);
@@ -14,8 +18,9 @@
 		align-items: center;
 		cursor: pointer;
 		margin: 0 var(--s-spacing-xx-small);
+
 		&:hover {
-			color: var(--s-color-fill-critical);
+			color: var(--s-color-content-critical);
 		}
 	}
 
@@ -67,7 +72,11 @@
 		pointer-events: none;
 
 		.form-select-option {
-			color: var(--s-color-content-disabled);
+			color: var(--s-color-content-disable);
+
+			@include darkmode {
+				color: var(--s-color-content-dark-disable);
+			}
 		}
 
 		input:-webkit-autofill {
@@ -75,12 +84,23 @@
 		}
 
 		.ui-icon {
-			color: var(--s-color-content-disabled);
+			color: var(--s-color-content-disable);
+
+			@include darkmode {
+				color: var(--s-color-content-dark-disable);
+			}
 		}
 
 		.form-wrapper-content-bx {
+			color: var(--s-color-content-disable);
 			background-color: var(--s-color-fill-disable);
-		
+
+			@include darkmode {
+				color: var(--s-color-content-dark-disable);
+				background-color: var(--s-color-fill-dark-disable);
+				border: 1px solid var(--s-color-border-default);
+			}
+
 		}
 
 		.form-control.-select {
@@ -131,6 +151,7 @@
 		.trailing-icon {
 			padding: 0 var(--s-spacing-xx-small);
 		}
+
 		.trailing-icon-text {
 			padding: 0 var(--s-spacing-x-small);
 		}
@@ -167,7 +188,7 @@
 		pointer-events: none;
 		top: 0;
 		border-color: var(--s-color-border-default);
-	
+
 
 		.form-wrapper-notched-label {
 			flex: 0 0 auto;
@@ -189,7 +210,7 @@
 			display: block;
 			opacity: 0.8;
 			font-weight: normal;
-			
+
 		}
 
 		.form-wrapper-notched-prepend {
@@ -221,10 +242,10 @@
 	}
 
 	.form-control:focus {
-		~ .form-wrapper-notched {
+		~.form-wrapper-notched {
 			border-color: var(--s-color-border-highlight);
 
-			> div {
+			>div {
 				border-width: 2px;
 			}
 
@@ -239,7 +260,7 @@
 	input:not(:placeholder-shown),
 	select:not(:placeholder-shown),
 	textarea:not(:placeholder-shown) {
-		~ .form-wrapper-notched {
+		~.form-wrapper-notched {
 			.form-wrapper-notched-label {
 				border-top: none;
 			}
@@ -254,12 +275,12 @@
 		}
 	}
 
-	> .form-wrapper-label {
+	>.form-wrapper-label {
 		position: relative;
 		display: flex;
 		align-items: center;
 
-		> .form-wrapper-label-icon {
+		>.form-wrapper-label-icon {
 			display: inline-flex;
 			align-items: center;
 			margin-left: var(--s-spacing-quark);
@@ -277,8 +298,8 @@
 			margin-top: var(--s-spacing-x-small);
 			padding-top: 0;
 
-			~ .form-wrapper-notched .form-wrapper-notched-label {
-				> label {
+			~.form-wrapper-notched .form-wrapper-notched-label {
+				>label {
 					transform: translateY(-50%);
 				}
 			}
@@ -287,6 +308,7 @@
 
 	&.-invalid {
 		&:not(.-disabled) {
+
 			.form-control,
 			.form-wrapper-notched {
 				border-color: var(--s-color-border-critical);
@@ -302,6 +324,7 @@
 
 	&.-valid {
 		&:not(.-disabled) {
+
 			.form-control,
 			.form-wrapper-notched {
 				border-color: var(--s-color-border-success);

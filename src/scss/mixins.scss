@@ -41,7 +41,7 @@
 
 	&:disabled,
 	&[readonly] {
-		background-color: var(--s-color-fill-highlight-light);
+		background-color: var(--s-color-fill-default-disable);
 		opacity: 1;
 	}
 

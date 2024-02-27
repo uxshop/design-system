@@ -108,13 +108,19 @@
 		transform: translateZ(0);
 	}
 
-	.ui-aside-section {
+	.ui-aside-section 
+	
+	{
+		padding: var(--s-spacing-small);
+		margin-left: calc(var(--s-spacing-small) * -1);
+    	margin-right: calc(var(--s-spacing-small) * -1);
+
 		&:first-child {
 			padding-top: 0;
 		}
 
 		+ .ui-aside-section {
-			border-top: var(--s-border-thin);
+			border-top: var(--s-border-light);
 			padding-top: var(--s-spacing-small);
 		}
 

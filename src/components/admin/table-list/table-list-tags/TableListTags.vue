@@ -107,6 +107,6 @@ const showTags = computed(() => {
 
 <style lang="scss">
 .table-list-tags {
-	padding: 10px 15px;
+	padding: var(--s-spacing-x-small);
 }
 </style>
