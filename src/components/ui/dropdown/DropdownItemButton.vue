@@ -15,7 +15,7 @@ defineProps<{
 			<slot>
 				<p class="ui-dropdown-item-label">{{ label }}</p>
 			</slot>
-			<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" />
+			<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" filled/>
 		</button>
 	</div>
 </template>

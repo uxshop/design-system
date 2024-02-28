@@ -59,7 +59,7 @@
 
 		.ui-dropdown-item {
 			display: inline-flex;
-			align-items: center;
+			align-items: start;
 			position: relative;
 			font: var(--s-typography-label-medium);
 			padding: var(--s-spacing-quark) var(--s-spacing-nano);
@@ -73,6 +73,9 @@
 			&:focus {
 				&.-button {
 					background-color: var(--s-color-fill-default-hover);
+					> .ui-icon.leading-icon {
+						background-color: var(--s-color-fill-default-hover);
+					}
 				}
 			}
 
@@ -93,7 +96,8 @@
 					background-color: var(--s-color-fill-default);
 					padding: var(--s-spacing-quark);
 					border-radius: var(--s-border-radius-small);
-					right: 20px;
+					right: var(--s-spacing-x-small);
+					color: var(--s-color-content-highlight);
 				}
 			}
 
