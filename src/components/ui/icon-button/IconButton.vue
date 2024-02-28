@@ -24,13 +24,13 @@ const iconSize = computed(() => {
 		case 'md':
 			return 24
 		case 'lg':
-			return 32
+			return 24
 	}
 })
 </script>
 
 <template>
-	<Button class="ui-icon-button" :class="{ '-fab': fab, '-on-color': onColor }" :variant="variant" :disabled="disabled">
+	<Button class="ui-icon-button" :class="{ '-fab': fab, '-on-color': onColor }" :size="size"  :variant="variant" :disabled="disabled">
 		<Icon :name="icon" :size="iconSize" />
 	</Button>
 </template>
