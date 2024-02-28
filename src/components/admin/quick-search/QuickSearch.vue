@@ -5,8 +5,9 @@ import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Stack from '../../ui/stack/Stack.vue'
 import Button from '../../ui/button/Button.vue'
-import { isMobile } from '../../../helpers'
 import FormSelect, { type IFormSelectOptions } from '../../ui/form-select/FormSelect.vue'
+import mobileDetector from '../../../services/MobileDetector'
+import { MOBILE_WIDTH } from '../../../constants'
 
 export interface IQuickSearchFormValue {
 	searchType: string
@@ -31,6 +32,7 @@ const props = withDefaults(
 )
 const emit = defineEmits(['onSubmit', 'update:modelValue', 'onChangeOption'])
 
+const isMobile = mobileDetector(MOBILE_WIDTH)
 const isVisible = computed({
 	get: () => props.modelValue,
 	set: (value: any) => {
