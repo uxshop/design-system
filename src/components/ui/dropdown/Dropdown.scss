@@ -94,7 +94,8 @@
 					background-color: var(--s-color-fill-default);
 					padding: var(--s-spacing-quark);
 					border-radius: var(--s-border-radius-small);
-					right: 20px;
+					right: var(--s-spacing-small);
+					color: var(--s-color-content-highlight);
 				}
 			}
 

@@ -13,7 +13,7 @@ defineProps<{
 	<div class="ui-dropdown-item-wrapper">
 		<button class="ui-dropdown-item -button" type="button" :data-close="close" :class="class">
 			<slot>{{ label }}</slot>
-			<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" />
+			<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" filled />
 		</button>
 	</div>
 </template>
