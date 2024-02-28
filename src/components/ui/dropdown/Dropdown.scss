@@ -38,7 +38,6 @@
 	}
 
 	&-menu {
-		min-width: 100%;
 		margin-top: var(--s-spacing-quark);
 		padding: var(--s-spacing-x-small) var(--s-spacing-nano);
 		border: var(--s-border-light);
@@ -49,7 +48,7 @@
 		flex-direction: column;
 		row-gap: var(--s-spacing-quark);
 		position: absolute;
-		min-width: 220px;
+		min-width: fit-content;
 		right: 0;
 		overflow: hidden;
 		overflow-y: auto;
@@ -74,6 +73,9 @@
 			&:focus {
 				&.-button {
 					background-color: var(--s-color-fill-default-hover);
+					> .ui-icon.leading-icon {
+						background-color: var(--s-color-fill-default-hover);
+					}
 				}
 			}
 
@@ -94,7 +96,7 @@
 					background-color: var(--s-color-fill-default);
 					padding: var(--s-spacing-quark);
 					border-radius: var(--s-border-radius-small);
-					right: var(--s-spacing-small);
+					right: var(--s-spacing-x-small);
 					color: var(--s-color-content-highlight);
 				}
 			}
@@ -121,6 +123,12 @@
 	&-section {
 		+ .ui-dropdown-section {
 			border-top: var(--s-border-light);
+		}
+	}
+
+	@include mobile {
+		&-menu {
+			min-width: 220px;
 		}
 	}
 }
