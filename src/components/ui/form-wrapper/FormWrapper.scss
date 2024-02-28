@@ -3,9 +3,9 @@
 .ui-form-wrapper {
 	width: 100%;
 
-    input[type="time"]::-webkit-calendar-picker-indicator {
+	input[type='time']::-webkit-calendar-picker-indicator {
 		display: none;
-	  }
+	}
 
 	.ui-form-wrapper-main {
 		display: flex;
@@ -59,7 +59,6 @@
 		align-items: center;
 		border-radius: var(--s-border-radius-small);
 		background-color: var(--s-color-fill-default);
-
 	}
 
 	.form-wrapper-append {
@@ -80,7 +79,13 @@
 		}
 
 		input:-webkit-autofill {
-			-webkit-box-shadow: 0 0 0 50px var(--s-color-border-default) inset;
+			-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+			-webkit-text-fill-color: var(--s-color-content-default) !important;
+		}
+
+		input:-webkit-autofill:focus {
+			-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+			-webkit-text-fill-color: var(--s-color-content-default) !important;
 		}
 
 		.ui-icon {
@@ -100,7 +105,6 @@
 				background-color: var(--s-color-fill-dark-disable);
 				border: 1px solid var(--s-color-border-default);
 			}
-
 		}
 
 		.form-control.-select {
@@ -189,7 +193,6 @@
 		top: 0;
 		border-color: var(--s-color-border-default);
 
-
 		.form-wrapper-notched-label {
 			flex: 0 0 auto;
 			width: auto;
@@ -210,7 +213,6 @@
 			display: block;
 			opacity: 0.8;
 			font-weight: normal;
-
 		}
 
 		.form-wrapper-notched-prepend {
@@ -242,16 +244,15 @@
 	}
 
 	.form-control:focus {
-		~.form-wrapper-notched {
+		~ .form-wrapper-notched {
 			border-color: var(--s-color-border-highlight);
 
-			>div {
+			> div {
 				border-width: 2px;
 			}
 
 			label {
 				color: var(--s-color-content-default);
-
 			}
 		}
 	}
@@ -260,7 +261,7 @@
 	input:not(:placeholder-shown),
 	select:not(:placeholder-shown),
 	textarea:not(:placeholder-shown) {
-		~.form-wrapper-notched {
+		~ .form-wrapper-notched {
 			.form-wrapper-notched-label {
 				border-top: none;
 			}
@@ -275,12 +276,12 @@
 		}
 	}
 
-	>.form-wrapper-label {
+	> .form-wrapper-label {
 		position: relative;
 		display: flex;
 		align-items: center;
 
-		>.form-wrapper-label-icon {
+		> .form-wrapper-label-icon {
 			display: inline-flex;
 			align-items: center;
 			margin-left: var(--s-spacing-quark);
@@ -298,8 +299,8 @@
 			margin-top: var(--s-spacing-x-small);
 			padding-top: 0;
 
-			~.form-wrapper-notched .form-wrapper-notched-label {
-				>label {
+			~ .form-wrapper-notched .form-wrapper-notched-label {
+				> label {
 					transform: translateY(-50%);
 				}
 			}
@@ -308,7 +309,6 @@
 
 	&.-invalid {
 		&:not(.-disabled) {
-
 			.form-control,
 			.form-wrapper-notched {
 				border-color: var(--s-color-border-critical);
@@ -324,7 +324,6 @@
 
 	&.-valid {
 		&:not(.-disabled) {
-
 			.form-control,
 			.form-wrapper-notched {
 				border-color: var(--s-color-border-success);

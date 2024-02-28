@@ -7,13 +7,13 @@ $colors: ('primary', 'secondary', 'danger', 'dark');
 }
 
 input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0 50px var(--input-bg-color) inset !important;
-	-webkit-text-fill-color: var(--body-color) !important;
+	-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+	-webkit-text-fill-color: var(--s-color-content-default) !important;
 }
 
 input:-webkit-autofill:focus {
-	-webkit-box-shadow: 0 0 0 50px var(--input-bg-color) inset !important;
-	-webkit-text-fill-color: var(--body-color) !important;
+	-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+	-webkit-text-fill-color: var(--s-color-content-default) !important;
 }
 
 code {
