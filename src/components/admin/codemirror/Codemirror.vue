@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getCurrentInstance, onMounted, ref, shallowRef, watch } from 'vue'
 import { keymap, ViewUpdate } from '@codemirror/view'
 import { EditorView, basicSetup } from '@codemirror/basic-setup'
 import { EditorState, Compartment, Text } from '@codemirror/state'
@@ -9,7 +10,6 @@ import { language } from '@codemirror/language'
 import { css } from '@codemirror/lang-css'
 import { history, historyKeymap } from '@codemirror/history'
 import { defaultKeymap, indentWithTab } from '@codemirror/commands'
-import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
 // const isMac = /Mac/.test(navigator.platform)
 const languageConf = new Compartment()
@@ -66,6 +66,17 @@ onMounted(() => {
 		})
 	}
 })
+
+watch(
+	() => props.modelValue,
+	(newVal) => {
+		const update = cm.value.state.update({
+			changes: { from: 0, to: cm.value.state.doc.length, insert: newVal }
+		})
+		noUpdate.value = true
+		cm.value.update([update])
+	}
+)
 </script>
 
 <template>
