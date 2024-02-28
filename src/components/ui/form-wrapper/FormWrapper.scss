@@ -79,7 +79,13 @@
 		}
 
 		input:-webkit-autofill {
-			-webkit-box-shadow: 0 0 0 50px var(--s-color-border-default) inset;
+			-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+			-webkit-text-fill-color: var(--s-color-content-default) !important;
+		}
+
+		input:-webkit-autofill:focus {
+			-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+			-webkit-text-fill-color: var(--s-color-content-default) !important;
 		}
 
 		.ui-icon {
