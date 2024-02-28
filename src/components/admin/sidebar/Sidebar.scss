@@ -5,7 +5,7 @@
 	position: fixed;
 	top: 0;
 	z-index: var(--s-index-very-high);
-	height: 100%;
+	height: 100vh;
 
 	> .ui-sidebar-wrapper {
 		min-width: var(--layout-sidebar-width);
@@ -309,7 +309,7 @@
 	}
 
 	@include mobile {
-		height: calc(100% - var(--s-spacing-huge));
+		height: calc(100vh - var(--s-spacing-huge));
 
 		> .ui-sidebar-wrapper {
 			width: 100vw;
