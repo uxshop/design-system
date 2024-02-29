@@ -189,7 +189,13 @@
 		> div {
 			flex: 1;
 		}
+	
 	}
+
+	.align-start {
+		align-items: flex-start;
+		}
+		
 
 	@include mobile {
 		.ui-aside-content {

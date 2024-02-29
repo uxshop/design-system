@@ -86,12 +86,12 @@ watchEffect(() => {
 				<div class="ui-aside-overlay" :class="{ '-close': !noCloseOnBackdrop }" @click="onClickBackdrop"></div>
 
 				<div class="ui-aside-content" :id="scrollableContentId">
-					<div class="ui-aside-header">
+					<div class="ui-aside-header" :style="subtitle? 'align-items: flex-start' : 'align-items: center'">
 						<div class="header-wrapper">
 							<h4 class="title">
 								{{ title }}
 							</h4>
-							<small class="d-block text-muted font-sm" v-if="subtitle">{{ subtitle }}</small>
+							<p class="d-block text-muted mb-0" v-if="subtitle">{{ subtitle }}</p>
 						</div>
 						<IconButton @click="onClose" id="btn-close" icon="close" variant="plain" type="rounded" />
 					</div>
