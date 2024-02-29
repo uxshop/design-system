@@ -13,7 +13,6 @@ const data = [
 
 const service = {
 	get(params: any): Promise<any> {
-		console.log(params)
 		const meta = {
 			current_page: params.page,
 			from: 1,

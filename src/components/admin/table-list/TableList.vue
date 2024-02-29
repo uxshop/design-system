@@ -232,7 +232,6 @@ watch(
 watch(
 	() => route.query,
 	(newValue) => {
-		console.log('query', newValue)
 		if (newValue.q) {
 			setQueryParams({
 				q: String(newValue.q),
