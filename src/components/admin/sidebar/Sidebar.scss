@@ -152,6 +152,10 @@
 		.ui-sidebar-container::after {
 			background: none !important;
 		}
+
+		.ui-sidebar-footer {
+			display: none;
+		}
 	}
 
 	.ui-sidebar-item {
@@ -335,11 +339,11 @@
 
 		.ui-sidebar-wrapper {
 			position: absolute;
-			transform: translateY(100%);
+			display: none;
 			z-index: var(--s-index-very-high);
 
 			.is-menu-open & {
-				transform: translateY(0);
+				display: block;
 			}
 		}
 
