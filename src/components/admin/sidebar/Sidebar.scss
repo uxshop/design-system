@@ -152,6 +152,10 @@
 		.ui-sidebar-container::after {
 			background: none !important;
 		}
+
+		.ui-sidebar-footer {
+			display: none;
+		}
 	}
 
 	.ui-sidebar-item {
