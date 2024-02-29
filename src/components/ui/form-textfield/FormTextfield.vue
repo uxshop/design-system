@@ -1,49 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { vMaska, type MaskOptions, type MaskType } from 'maska'
+import { vMaska, type MaskOptions } from 'maska'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
-import type { Size, IAction } from '../../../types'
+import type { FormTextFieldProps } from './FormTextFieldProps'
 
-export interface Props {
-	leadingIcon?: string
-	trailingIcon?: string
-	labelInfo?: string
-	trailingText?: string
-	state?: boolean
-	invalidFeedback?: string
-	loading?: boolean
-	last?: boolean
-	float?: boolean
-	modelValue?: string | number | null
-	label?: string
-	id?: string
-	placeholder?: string
-	step?: string | number
-	tabindex?: string
-	inputmode?: 'text' | 'search' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal'
-	size?: Size
-	pattern?: string
-	title?: string
-	name?: string
-	clearable?: boolean
-	autocomplete?: string
-	minlength?: string | number
-	maxlength?: string | number
-	autofocus?: boolean
-	disabled?: boolean
-	required?: boolean
-	readonly?: boolean
-	type?: string
-	mask?: MaskType
-	raw?: any
-	actions?: IAction[]
-	max?: string | number
-	min?: string | number
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormTextFieldProps>(), {
 	state: undefined
 })
 
@@ -123,6 +86,7 @@ const onClear = () => {
 		class="ui-form-textfield">
 		<slot name="before" />
 		<input
+			v-bind="$attrs"
 			v-maska:[maskOptions]
 			class="form-control"
 			@focus="onFocus"
