@@ -3,7 +3,8 @@ import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
 import SidebarMobile from './SidebarMobile.vue'
-import { isMobile } from '../../../helpers'
+import mobileDetector from '../../../services/MobileDetector'
+import { MOBILE_WIDTH } from '../../../constants'
 import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types'
 
 export interface MenuProviderInterface {
@@ -25,6 +26,8 @@ defineProps<Props>()
 const emit = defineEmits<{
 	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void
 }>()
+
+const isMobile = mobileDetector(MOBILE_WIDTH)
 
 const toggleMenu = (item: any) => {
 	if (menu) {
