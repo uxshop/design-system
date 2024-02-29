@@ -129,7 +129,7 @@
 
 		&:disabled,
 		&.-disabled {
-			background-color: transparent;
+			background-color: var(--s-color-fill-default-disable);
 		}
 
 		&::before {
@@ -159,9 +159,8 @@
 
 	&:disabled,
 	&.-disabled {
-		pointer-events: none;
-		opacity: 0.6;
 		background-color: var(--s-color-fill-disable);
+		pointer-events: none;
 		color: var(--s-color-content-disable);
 		border: var(--s-border-light);
 		border-color: var(--s-color-border-disable);
@@ -183,38 +182,6 @@
 		line-height: 1;
 		gap: var(--s-spacing-nano);
 		align-items: center;
-	}
-
-	@include darkmode {
-		&.-default {
-			background-color: var(--s-color-fill-dark);
-			color: var(--s-color-content-dark);
-			border-color: var(--s-color-border-dark);
-
-			&:hover {
-				background-color: var(--s-color-fill-dark-hover);
-			}
-		}
-
-		&.-plain {
-			color: var(--s-color-content-dark);
-
-			&:hover {
-				background-color: var(--s-color-fill-dark-hover);
-			}
-		}
-
-		&:disabled,
-		&.-disabled {
-			background-color: var(--s-color-fill-dark-disable);
-			color: var(--s-color-content-dark-disable);
-			border-color: var(--s-color-border-dark-disable);
-
-			&.-link {
-				border: none;
-				box-shadow: none;
-			}
-		}
 	}
 
 	@include mobile {
