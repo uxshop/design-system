@@ -119,7 +119,7 @@ onMounted(() => {
 
 		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0" right>
 			<template #button-content>
-				<Button size="sm" trailingIcon="unfold_more" label="Ação em massa" />
+				<Button size="sm" leading-icon="unfold_more" label="Ação em massa" />
 			</template>
 
 			<DropdownItemButton

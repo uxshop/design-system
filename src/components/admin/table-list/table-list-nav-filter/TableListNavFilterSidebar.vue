@@ -182,14 +182,10 @@ defineExpose({
 		</form>
 		<template #footer>
 			<Row alignV="center">
-				<Col>
-					<Button size="sm" type="submit" form="form-filter" block variant="primary" leadingIcon="check">
-						Aplicar
-					</Button>
-				</Col>
-				<Col>
-					<Button size="sm" @click="onClearAll" :disabled="!hasSelected()"> limpar os filtros </Button>
-				</Col>
+				<div class="filter-list-actions">
+					<Button size="md" type="submit" form="form-filter" variant="primary" leadingIcon="check">Aplicar</Button>
+					<Button size="md" @click="onClearAll" :disabled="!hasSelected()">Limpar os filtros</Button>
+				</div>
 			</Row>
 		</template>
 	</Aside>

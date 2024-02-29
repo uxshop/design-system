@@ -55,4 +55,9 @@
 		padding: var(--s-spacing-nano);
 		margin-top: var(--s-spacing-nano);
 	}
+
+	&-actions {
+		display: flex;
+		gap: var(--s-spacing-xx-small);
+	}
 }
