@@ -2,7 +2,7 @@
 @import '../../../scss/animations/fade-in-out.scss';
 
 .user-card {
-	margin: 10px;
+	margin: var(--s-spacing-xx-small);
 
 	&-label {
 		font: var(--s-typography-caption-medium);
@@ -44,7 +44,7 @@
 	}
 
 	&-btn {
-		transition: background-color var(--s-motion-duration-default) ease-in;
+		border-radius: var(--s-border-radius-small);
 		&:hover {
 			background-color: var(--s-color-fill-default-hover);
 		}
