@@ -96,7 +96,24 @@ const onClear = () => {
 			@maska="maskRawValue"
 			:value="modelValue"
 			:class="classList"
-			:placeholder="!float ? placeholder : ''" />
+			:placeholder="!float ? placeholder : ''"
+			:type="type"
+			:step="step"
+			:inputmode="inputmode"
+			:autocomplete="autocomplete"
+			:disabled="disabled"
+			:minlength="minlength"
+			:maxlength="maxlength"
+			:pattern="pattern"
+			:autofocus="autofocus"
+			:readonly="readonly"
+			:tabindex="tabindex"
+			:name="name"
+			:title="title"
+			:id="id"
+			:max="max"
+			:min="min"
+			:required="required" />
 		<slot name="after" />
 		<div v-if="clearable && modelValue" class="close" @click="onClear">
 			<Icon name="cancel" filled size="24" />
