@@ -94,26 +94,9 @@ const onClear = () => {
 			@keydown="onKeydown"
 			@keydown.enter="onEnter"
 			@maska="maskRawValue"
-			:type="type"
-			:step="step"
 			:value="modelValue"
 			:class="classList"
-			:inputmode="inputmode"
-			:autocomplete="autocomplete"
-			:disabled="disabled"
-			:minlength="minlength"
-			:maxlength="maxlength"
-			:pattern="pattern"
-			:autofocus="autofocus"
-			:placeholder="!float ? placeholder : ''"
-			:readonly="readonly"
-			:tabindex="tabindex"
-			:name="name"
-			:title="title"
-			:id="id"
-			:max="max"
-			:min="min"
-			:required="required" />
+			:placeholder="!float ? placeholder : ''" />
 		<slot name="after" />
 		<div v-if="clearable && modelValue" class="close" @click="onClear">
 			<Icon name="cancel" filled size="24" />
