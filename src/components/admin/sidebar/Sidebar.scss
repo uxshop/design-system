@@ -137,6 +137,7 @@
 		}
 
 		.ui-sidebar-list {
+			height: calc(100vh - var(--s-spacing-huge));
 			display: flex;
 			padding: 0 var(--s-spacing-x-small) var(--s-spacing-x-small);
 			background-color: var(--s-color-background-default);
