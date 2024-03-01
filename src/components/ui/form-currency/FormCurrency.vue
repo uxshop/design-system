@@ -78,7 +78,6 @@ watch(
 	(newVal: any) => {
 		if (!newVal) return
 		emit('change', newVal)
-		emit('update:modelValue', newVal)
 	},
 	{ immediate: true }
 )
