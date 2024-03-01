@@ -167,11 +167,10 @@ defineExpose({
 									:label="item.name" />
 							</div>
 						</div>
-						<div class="text-left mt-2">
+						<div class="mt-2">
 							<Button
-								size="sm"
+								size="md"
 								variant="link"
-								flush="left"
 								@click="onClearFilter(filter, key)"
 								:disabled="!hasFilterSelected(filter, key)"
 								label="Limpar" />

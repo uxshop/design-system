@@ -43,6 +43,8 @@
 	}
 
 	@include mobile {
+		margin: var(--s-spacing-x-small) 0 var(--s-spacing-small) 0;
+
 		&-content {
 			flex: 1;
 			overflow: hidden;
