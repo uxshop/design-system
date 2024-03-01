@@ -5,8 +5,8 @@
 	align-items: center;
 	justify-content: center;
 	margin-top: auto;
-	padding-top: 40px;
-	gap: 10px;
+	padding-top: var(--s-spacing-large);
+	gap: var(--s-spacing-nano);
 
 	> .icon {
 		font-size: 18px;
@@ -19,6 +19,7 @@
 	}
 
 	@include mobile {
-		margin: auto 0 64px 0;
+		padding-top: var(--s-spacing-small);
+		margin: auto 0 var(--s-spacing-small) 0;
 	}
 }

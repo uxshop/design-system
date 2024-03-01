@@ -41,7 +41,8 @@
 		justify-content: center;
 
 		.table-list-pagination-list {
-			padding: 16px;
+			width: 100%;
+			padding: var(--s-spacing-x-small) var(--s-spacing-nano);
 			.table-list-nav-btn {
 				width: 36px;
 				height: 36px;
@@ -50,6 +51,11 @@
 
 		.table-list-pagination-item.prev {
 			order: 1;
+		}
+
+		.meta{
+			width: 100%;
+			text-align: center;
 		}
 	}
 }
