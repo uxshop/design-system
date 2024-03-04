@@ -137,10 +137,10 @@
 		}
 
 		.ui-sidebar-list {
-			height: calc(100vh - var(--s-spacing-huge));
 			display: flex;
 			padding: 0 var(--s-spacing-x-small) var(--s-spacing-x-small);
 			background-color: var(--s-color-background-default);
+			margin-bottom: var(--s-spacing-medium);
 
 			> .ui-sidebar-list {
 				background-color: var(--s-color-fill-default);
@@ -314,8 +314,6 @@
 	}
 
 	@include mobile {
-		height: calc(100vh - var(--s-spacing-huge));
-
 		> .ui-sidebar-wrapper {
 			width: 100vw;
 			max-width: 100vw;

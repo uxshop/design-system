@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watchEffect, type StyleValue } from 'vue'
+import { computed, type StyleValue } from 'vue'
 import type { Size } from '../../../types/Types'
 
 export interface ColorThumbProps {
@@ -37,7 +37,7 @@ const colorThumbStyleList = computed(() => {
 
 <template>
 	<span class="ui-color-thumb" :class="colorThumbClassList" :style="colorThumbStyleList">
-		<span v-if="image" class="ui-color-thumb-image" :style="{ backgroundImage: `url(${image})` }" />
+		<img v-if="image" :src="image.src" class="ui-color-thumb-image" />
 		<template v-else>
 			<span class="ui-color-thumb-color" :style="{ backgroundColor: hexadecimal }" />
 			<span class="ui-color-thumb-color -secondary" :style="{ backgroundColor: hexadecimalSecondary }" />

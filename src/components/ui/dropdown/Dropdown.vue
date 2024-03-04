@@ -17,7 +17,7 @@ const uidMenu = `ui-dropdown-${getCurrentInstance()?.uid}-menu`
 const style = ref({})
 let initialHeight: number = 0
 
-const showOnTop = computed(() => (props.dropUp ? '-450px' : 'unset'))
+const showOnTop = computed(() => (props.dropUp ? '-480px' : 'unset'))
 
 const listener = (e: MouseEvent | KeyboardEvent) => {
 	if (e instanceof KeyboardEvent && e.key != 'Escape') return
