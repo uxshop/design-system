@@ -104,8 +104,6 @@ const onClear = () => {
 	emit('update:modelValue', null)
 	emit('update', null)
 }
-
-if (props.label === 'Peso (kg)') console.log('$attrs', props)
 </script>
 
 <template>
