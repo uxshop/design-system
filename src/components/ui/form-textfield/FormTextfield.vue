@@ -4,7 +4,7 @@ import { vMaska, type MaskOptions, type MaskType } from 'maska'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
-import type { IAction, Size } from 'src/types'
+import type { IAction, Size } from '../../../types'
 
 const props = withDefaults(
 	defineProps<{
