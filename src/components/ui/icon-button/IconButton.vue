@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import Icon from '../icon/Icon.vue'
 import Button from '../button/Button.vue'
 import type { Size, Variant } from '../../../types'
@@ -11,11 +11,14 @@ export interface Props {
 	fab?: boolean
 	disabled?: boolean
 	onColor?: boolean
+	customClass?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	size: 'md'
 })
+
+const styleClass = ref(['ui-icon-button', props.customClass])
 
 const iconSize = computed(() => {
 	switch (props.size) {
@@ -30,7 +33,11 @@ const iconSize = computed(() => {
 </script>
 
 <template>
-	<Button class="ui-icon-button" :class="{ '-fab': fab, '-on-color': onColor }" :size="size"  :variant="variant" :disabled="disabled">
+	<Button
+		:class="[styleClass, fab ? '-fab' : '', onColor ? '-on-color' : '']"
+		:size="size"
+		:variant="variant"
+		:disabled="disabled">
 		<Icon :name="icon" :size="iconSize" />
 	</Button>
 </template>
