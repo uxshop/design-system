@@ -33,8 +33,6 @@ const colorThumbStyleList = computed(() => {
 
 	return styles
 })
-
-console.log(props.image)
 </script>
 
 <template>
