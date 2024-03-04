@@ -46,6 +46,8 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 	emit('onClickItem', 'node', item)
 	menu.close()
 }
+
+const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 </script>
 
 <template>
@@ -75,8 +77,10 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 									item.to
 								]">
 								<small v-if="item.caption" class="ui-sidebar-link-caption">{{ item.caption }}</small>
-								<div
+								<component
+									:is="getTemplate(item)"
 									class="ui-sidebar-link"
+									:to="item.to ?? ''"
 									:class="{
 										'-node-active': item.active,
 										'-active': item.active
@@ -97,11 +101,13 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 										</div>
 										<Icon v-if="item.nodes?.length" class="icon-arrow" name="expand_more" />
 									</div>
-								</div>
+								</component>
 
 								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
 									<li v-for="(node, index) in item.nodes" class="ui-sidebar-item" :key="index">
-										<div
+										<component
+											:is="getTemplate(node)"
+											:to="item.to ?? ''"
 											class="ui-sidebar-link -sub"
 											@click="toggleMenu(node)"
 											:class="{
@@ -115,7 +121,7 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 												<span class="ui-sidebar-link-text"> {{ node.name }} </span>
 												<NewsIndicator v-if="node.isNew" label="Novo" />
 											</div>
-										</div>
+										</component>
 									</li>
 								</ul>
 							</li>
