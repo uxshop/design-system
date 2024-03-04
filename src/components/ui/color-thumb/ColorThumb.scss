@@ -30,7 +30,7 @@
 		bottom: 0;
 		filter: opacity(0.32);
 		z-index: var(--s-index-default);
-		border-radius: var(--s-border-pill);
+		border-radius: var(--s-border-radius-pill);
 	}
 
 	&-image {
@@ -41,7 +41,9 @@
 		right: 0;
 		background-size: cover;
 		background-position: center;
-		border-radius: var(--s-border-pill);
+		border-radius: var(--s-border-radius-pill);
+		max-width: 100%;
+		aspect-ratio: 1;
 	}
 
 	.ui-color-thumb-color {
@@ -51,7 +53,7 @@
 		bottom: 0;
 		right: 0;
 		background-size: cover;
-		border-radius: var(--s-border-pill);
+		border-radius: var(--s-border-radius-pill);
 
 		&.-secondary {
 			top: 48%;
