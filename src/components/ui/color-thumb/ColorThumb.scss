@@ -1,41 +1,36 @@
 .ui-color-thumb {
-	width: var(--input-height);
-	height: var(--input-height);
 	display: inline-block;
 	position: relative;
-	border-radius: 100%;
 	overflow: hidden;
-	vertical-align: middle;
+	border-radius: var(--s-border-radius-pill);
+	aspect-ratio: 1;
 
-	&.-sm {
-		width: var(--input-height-sm);
-		height: var(--input-height-sm);
-	}
+	&.-size {
+		&-sm {
+			width: var(--s-spacing-small);
+		}
 
-	&::after {
-		content: '';
-		display: block;
-		border: solid 2px rgba(#fff, 0.2);
-		position: absolute;
-		left: 1px;
-		top: 1px;
-		right: 1px;
-		bottom: 1px;
-		z-index: 8;
-		border-radius: 100%;
+		&-md {
+			width: var(--s-spacing-medium);
+		}
+
+		&-lg {
+			width: var(--s-spacing-large);
+		}
 	}
 
 	&::before {
 		content: '';
 		display: block;
-		border: solid 1px rgba(0, 0, 0, 0.1);
+		border: var(--s-border-thin);
 		position: absolute;
 		left: 0;
 		top: 0;
 		right: 0;
 		bottom: 0;
-		z-index: 8;
-		border-radius: 100%;
+		filter: opacity(0.32);
+		z-index: var(--s-index-default);
+		border-radius: var(--s-border-pill);
 	}
 
 	&-image {
@@ -46,7 +41,7 @@
 		right: 0;
 		background-size: cover;
 		background-position: center;
-		border-radius: 100%;
+		border-radius: var(--s-border-pill);
 	}
 
 	.ui-color-thumb-color {
@@ -56,7 +51,7 @@
 		bottom: 0;
 		right: 0;
 		background-size: cover;
-		border-radius: 100%;
+		border-radius: var(--s-border-pill);
 
 		&.-secondary {
 			top: 48%;
@@ -66,6 +61,6 @@
 	}
 
 	+ span {
-		margin-left: 5px;
+		margin-left: var(--s-spacing-quark);
 	}
 }

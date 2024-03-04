@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue'
-import Icon from '../icon/Icon.vue'
+import IconButton from '../icon-button/IconButton.vue'
+import type { Size } from '../../../types'
 
 const props = defineProps<{
-	modelValue?: boolean
-	title?: string
-	scrollable?: boolean
-	noCloseOnBackdrop?: boolean
-	show?: boolean
-	size?: string
-	inner?: boolean
+	caption?: string
+	centered?: boolean
 	class?: string
 	hideHeader?: boolean
 	hideFooter?: boolean
-	centered?: boolean
 	id?: string
-	width?: string
+	inner?: boolean
+	modelValue?: boolean
+	noCloseOnBackdrop?: boolean
 	params?: Record<string, unknown>
+	scrollable?: boolean
+	show?: boolean
+	size?: Size
+	title?: string
+	width?: string
 }>()
 
 const emit = defineEmits(['update:modelValue', 'close', 'open'])
@@ -102,13 +104,14 @@ watchEffect(() => {
 			<div class="ui-modal-dialog" :style="style">
 				<div class="ui-modal-content">
 					<div class="ui-modal-header" v-if="!hideHeader">
-						<h4 class="title">
-							{{ currentTitle }}
-						</h4>
-						<button @click="close()" class="ui-modal-close" id="btn-close">
-							<span>Fechar</span>
-							<Icon class="ui-modal-close-icon" name="close" />
-						</button>
+						<div class="ui-modal-header-wrapper">
+							<h4 class="ui-modal-title">
+								{{ currentTitle }}
+							</h4>
+							<span v-if="caption" class="ui-modal-caption"> {{ caption }}</span>
+						</div>
+
+						<IconButton class="ui-modal-close" id="btn-close" @click="close" size="md" variant="plain" icon="close" />
 					</div>
 
 					<div class="ui-modal-body">

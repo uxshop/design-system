@@ -1,69 +1,64 @@
+@import '../../../scss/mixins.scss';
+
 .ui-toast {
+	color: var(--s-color-content-on-color);
+	padding: var(--s-spacing-x-small);
+	animation: var(--s-motion-duration-fast) slideUp;
+	animation-fill-mode: forwards;
+	border-radius: var(--s-border-small);
 	position: fixed;
 	bottom: 20px;
 	left: 20px;
-	z-index: 99999;
+	z-index: var(--s-index-max);
 	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	font-size: 18px;
+	column-gap: var(--s-spacing-quark);
+	align-items: center;
 
-	.ui-toast-content {
-		background: #000;
-		color: #fff;
-		padding: 20px 24px;
-		min-width: 320px;
-		animation: 0.2s animatetoast;
-		animation-fill-mode: forwards;
-		transition: all 3s;
-		position: relative;
-		border-radius: 3px;
-		display: inline-flex;
-		align-items: center;
-
-		+ .ui-toast-content {
-			margin-top: 5px;
+	&.-variant {
+		&-default {
+			color: var(--s-color-content-primary);
+			background-color: var(--s-color-fill-default-light);
 		}
 
-		&.-leave {
-			animation: 0.35s animatetoast2;
-			animation-fill-mode: both;
+		&-highlight {
+			background-color: var(--s-color-fill-highlight);
 		}
 
-		&.-danger {
-			background: var(--danger);
-
-			> .ui-toast-close > .ui-icon {
-				color: var(--danger-300);
-			}
+		&-warning {
+			background-color: var(--s-color-fill-warning);
 		}
 
-		> .ui-toast-close-icon {
-			margin-right: 10px;
-			font-size: 24px;
+		&-success {
+			background-color: var(--s-color-fill-success);
+		}
+
+		&-critical {
+			background-color: var(--s-color-fill-critical);
 		}
 	}
 
-	.ui-toast-body {
+	&.-leave {
+		animation: var(--s-motion-duration-fast) slideDown;
+		animation-fill-mode: both;
+	}
+
+	&-body {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
 	}
 
-	.ui-toast-close {
-		margin-left: auto;
-		display: flex;
-		cursor: pointer;
-		&:hover {
-			> .ui-icon {
-				color: var(--primary);
+	@include darkmode {
+		&.-variant {
+			&-default {
+				background-color: var(--s-color-fill-dark-light);
 			}
 		}
 	}
 }
 
-@keyframes animatetoast {
+@keyframes slideUp {
 	from {
 		transform: translateY(1rem);
 		opacity: 0;
@@ -75,7 +70,7 @@
 	}
 }
 
-@keyframes animatetoast2 {
+@keyframes slideDown {
 	from {
 		opacity: 1;
 		transform: translateY(0);

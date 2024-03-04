@@ -1,0 +1,102 @@
+@import '../../../../src/scss/mixins.scss';
+
+.ui-form-spinbutton {
+	@include form-control;
+	padding-left: 0;
+	padding-right: 0;
+	align-items: stretch;
+
+	&-action {
+		&:hover {
+			color: var(--s-color-content-highlight);
+		}
+
+		.ui-button-label {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&.-disabled {
+		background-color: var(--s-color-fill-disable);
+		border: var(--s-border-light);
+		border-color: var(--s-color-border-disable);
+
+		&-action {
+			border: none;
+		}
+	}
+
+	&.-lg {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	&.-sm {
+		height: unset;
+		border-radius: var(--s-border-radius-small);
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.output {
+		flex-grow: 1;
+		text-align: center;
+		border-right: 0;
+		border-left: 0;
+		min-width: var(--s-spacing-large);
+		align-items: center;
+		width: 100%;
+		font: var(--s-typography-paragraph-regular);
+		input {
+			appearance: none;
+			box-shadow: none;
+			border: none;
+			background-color: transparent;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+		}
+	}
+
+	.ui-form-spinbutton-loader {
+		position: absolute;
+		z-index: var(--s-index-max);
+		background-color: var(--s-color-background-default);
+		opacity: 0.8;
+		width: 100%;
+		height: 100%;
+		border-radius: inherit;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	@include darkmode {
+		border-color: var(--s-color-border-dark);
+		background-color: var(--s-color-fill-dark);
+
+		.output {
+			background-color: var(--s-color-fill-dark);
+			border: none;
+
+			> input {
+				color: var(--s-color-content-dark);
+			}
+		}
+	}
+
+	&-action {
+		border: unset;
+		background-color: transparent;
+
+		&:hover {
+			color: var(--s-color-content-highlight);
+		}
+
+		.ui-button-label {
+			display: flex;
+			align-items: center;
+		}
+	}
+}

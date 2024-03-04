@@ -4,7 +4,6 @@ import Icon from '../icon/Icon.vue'
 import Spinner from '../spinner/Spinner.vue'
 import Button from '../button/Button.vue'
 import Link from '../link/Link.vue'
-import Stack from '../stack/Stack.vue'
 import type { IAction } from '../../../types/IAction'
 
 export interface Props {
@@ -15,13 +14,12 @@ export interface Props {
 	dropdownLabel?: string
 	dropdownClosed?: boolean
 	fullHeight?: boolean
-	success?: boolean
+  fullWidth?: boolean
 	noBorder?: boolean
 	noPadding?: boolean
 	closeCaption?: string
 	gray?: boolean
 	last?: boolean
-	dropdownMobile?: string
 	loading?: boolean
 	transparent?: boolean
 	plain?: boolean
@@ -68,10 +66,9 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 			'-hide': !showBody,
 			'-collapse': isDropdown,
 			'-gray': gray,
-			'-no-border': noBorder,
 			'-last': last,
 			'-full-height': fullHeight,
-			'-success': success,
+			'-full-width': fullWidth,
 			'-loading': loading,
 			'-transparent': transparent,
 			'-no-padding': noPadding,
@@ -101,11 +98,11 @@ watchEffect(() => (showBody.value = !props.dropdownClosed))
 					<slot name="header-button" v-if="haveSlot('header-button')" />
 					<button type="button" class="btn-collapse" v-if="isDropdown">
 						<div v-if="showBody">
-							<Icon class="btn-collapse-icon" name="expand_less" />
+							<Icon class="btn-collapse-icon" name="expand_less" :size="24"/>
 						</div>
 						<div v-if="!showBody">
 							<Link v-if="dropdownLabel">{{ dropdownLabel }}</Link>
-							<Icon class="btn-collapse-icon" v-else name="expand_more" />
+							<Icon class="btn-collapse-icon" v-else name="expand_more" :size="24" />
 						</div>
 					</button>
 				</div>

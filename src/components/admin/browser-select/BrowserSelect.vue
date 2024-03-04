@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import { ref, watch } from 'vue'
+import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import ButtonAction from '../button-action/ButtonAction.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Row from '../../ui/grid/row/Row.vue'
@@ -206,36 +206,35 @@ defineExpose({ onClickSearch })
 	<div class="ui-browser-select">
 		<div class="ui-browser-select-button" v-if="selectType == 'btn' && !hideBtn">
 			<slot name="button">
-				<div class="area-select" @click="onClickSearch" :class="{ disabled: limit > 0 && rows.length == limit }">
+				<div
+					class="area-select"
+					@click="onClickSearch"
+					:class="{ disabled: Number(limit) > 0 && rows.length == limit }">
 					<span>{{ placeholder }}</span>
 				</div>
 			</slot>
 		</div>
 		<div v-else>
 			<div class="ui-browser-select-input">
-				<Row>
-					<Col>
+				
 						<FormTextfield
 							v-model="term"
 							placeholder="Procurar..."
 							@keyup="onChangeTerm"
 							autocomplete="off"
 							:disabled="searchDisabled" />
-					</Col>
-					<Col auto>
-						<Button variant="dark" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
-					</Col>
-				</Row>
+						<Button variant="primary" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
+
 			</div>
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
 				<div
+					v-for="item in rows.slice(0, paginateLimit)"
 					class="ui-browser-list-row"
 					:class="{ '-no-button': hideExcludeButton }"
-					v-for="item in rows.slice(0, paginateLimit)"
 					:key="item[identifier]">
-					<component :is="templateCustom" :item="item" />
-					<div v-if="!templateCustom" class="browser-list-cell">
+					<component v-if="templateCustom" :is="templateCustom" :item="item" />
+					<div v-else class="browser-list-cell">
 						{{ item.name }}
 					</div>
 					<div v-if="!hideExcludeButton" class="ui-browser-list-cell -auto">
@@ -243,8 +242,8 @@ defineExpose({ onClickSearch })
 					</div>
 				</div>
 
-				<div class="ui-browser-list-more">
-					<Link @click="nextPage" v-if="rows.length > paginateLimit" label="Exibir mais" />
+				<div v-if="rows.length > paginateLimit" class="ui-browser-list-more">
+					<Link @click="nextPage" label="Exibir mais" />
 				</div>
 			</div>
 		</div>

@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 import Spinner from '../spinner/Spinner.vue'
 import Icon from '../icon/Icon.vue'
+import type { Size, Variant } from '../../../types'
 
 export interface Props {
-	variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'link' | 'dark' | 'plain'
+	variant?: Variant
 	label?: string
 	leadingIcon?: string
 	trailingIcon?: string
-	size?: string | number
+	size?: Size
 	href?: string
 	flush?: 'left' | 'right'
 	block?: boolean
@@ -19,85 +20,49 @@ export interface Props {
 	outline?: boolean
 	disclosure?: boolean
 	target?: '_blank' | '_self'
+	disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	spinnerBorder: 2,
-	type: 'button'
+	type: 'button',
+	size: 'md'
 })
 
-let componentButton = 'BUTTON'
-const classList = ref<string[]>([])
-const trailingIcon = ref(props.trailingIcon)
+const componentType = computed(() => {
+	if (props.to) return 'router-link'
+	if (props.href) return 'a'
+	return 'BUTTON'
+})
 
-if (props.to) {
-	componentButton = 'router-link'
-}
+const classList = computed(() => [
+	props.size ? `-${props.size}` : '',
+	props.variant ? `-${props.variant}` : '-default',
+	props.leadingIcon ? '-icon' : '',
+	props.flush ? `-flush-${props.flush}` : '',
+	props.block ? '-block' : '',
+	props.outline ? '-outline' : '',
+	props.disclosure ? '-disclosure' : '',
+	(props.trailingIcon || props.leadingIcon) && !props.label ? '-only-icon' : ''
+])
 
-if (props.href) {
-	componentButton = 'a'
-}
-
-if (props.size) {
-	classList.value.push(`-${props.size}`)
-}
-
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
-} else {
-	classList.value.push(`-default`)
-}
-
-if (props.leadingIcon) {
-	classList.value.push(`-icon`)
-}
-
-if (props.flush) {
-	classList.value.push(`-flush-${props.flush}`)
-}
-
-if (props.block) {
-	classList.value.push(`-block`)
-}
-
-if (props.outline) {
-	classList.value.push(`-outline`)
-}
-
-if (props.disclosure) {
-	trailingIcon.value = 'arrow_drop_down'
-	classList.value.push('-disclousure')
-}
-
-watch(
-	() => props.variant,
-	(newVal) => {
-		classList.value.push(`-${newVal}`)
-	}
-)
-
-watch(
-	() => props.trailingIcon,
-	(newVal) => {
-		trailingIcon.value = newVal
-	}
-)
+const trailingIcon = computed(() => (props.disclosure ? 'arrow_drop_down' : props.trailingIcon))
 </script>
 
 <template>
 	<component
 		class="ui-button"
-		:is="componentButton"
+		:is="componentType"
 		:type="type"
-		:class="[classList, { '-loading': loading }]"
-		:disabled="loading"
+		:class="[classList, { '-loading': loading, '-disabled': disabled }]"
+		:disabled="disabled"
 		:to="to"
 		:href="href"
 		:target="target">
 		<div class="ui-button-content">
 			<Icon :name="leadingIcon" v-if="leadingIcon" />
-			<Spinner v-if="loading" :size="15" :border="spinnerBorder" />
-			<div v-if="label || $slots.default">
+			<Spinner v-if="loading" :size="16" :border="spinnerBorder" />
+			<div v-if="label || $slots.default" class="ui-button-label">
 				<slot>{{ label }}</slot>
 			</div>
 			<Icon :name="trailingIcon" v-if="trailingIcon" />

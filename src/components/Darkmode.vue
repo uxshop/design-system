@@ -1,21 +1,17 @@
-<template>
-	<span></span>
-</template>
+<script setup lang="ts">
+import { watchEffect } from 'vue'
 
-<script>
-import { onMounted } from 'vue'
-export default {
-	props: {
-		theme: String
-	},
-	setup(props) {
-		onMounted(() => {
-			if (props.theme == 'dark') {
-				document.documentElement.setAttribute('data-theme', 'dark')
-			} else {
-				document.documentElement.removeAttribute('data-theme')
-			}
-		})
+const props = defineProps<{
+	theme?: 'dark' | 'light'
+}>()
+
+watchEffect(() => {
+	if (props.theme == 'dark') {
+		document.documentElement.setAttribute('data-theme', 'dark')
+	} else {
+		document.documentElement.removeAttribute('data-theme')
 	}
-}
+})
 </script>
+
+<template></template>

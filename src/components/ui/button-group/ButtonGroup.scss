@@ -1,6 +1,10 @@
 @import '../../../scss//mixins.scss';
 
 .ui-button-group {
+	.ui-button {
+		padding: 0 var(--s-spacing-xx-small);
+	}
+
 	.ui-button:not(:first-child):not(:last-child) {
 		border-radius: 0;
 	}

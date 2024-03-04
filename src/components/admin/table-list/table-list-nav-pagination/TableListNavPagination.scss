@@ -14,7 +14,7 @@
 	.table-list-pagination-item {
 		display: inline-block;
 		vertical-align: top;
-		padding: 0 5px;
+		padding: 0 var(--s-spacing-quark);
 		order: 2;
 
 		&:first-child {
@@ -26,21 +26,23 @@
 		}
 
 		&.meta {
-			padding: 0 10px;
-			opacity: 0.6;
+			padding: 0 var(--s-spacing-nano);
+			color: var(--s-color-content-light);
 		}
 	}
 
 	@include mobile {
-		border-top: solid 1px var(--border-color);
-		background: var(--bg-white);
+		bottom: var(--s-spacing-huge);
+		border-top: var(--s-border-light);
+		background-color: var(--s-color-fill-default);
 		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 
 		.table-list-pagination-list {
-			padding: 16px;
+			width: 100%;
+			padding: var(--s-spacing-x-small) var(--s-spacing-nano);
 			.table-list-nav-btn {
 				width: 36px;
 				height: 36px;
@@ -49,6 +51,11 @@
 
 		.table-list-pagination-item.prev {
 			order: 1;
+		}
+
+		.meta{
+			width: 100%;
+			text-align: center;
 		}
 	}
 }

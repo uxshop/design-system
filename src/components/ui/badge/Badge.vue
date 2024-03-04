@@ -1,33 +1,43 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
+import type { Size, Variant } from '../../../types/Types'
 
-const props = defineProps<{
-	size?: string
-	pill?: boolean
-	variant?: string
+type BadgeSize = Size
+type BadgeVariant = Variant
+
+export interface BadgeProps {
 	label?: string | number
-}>()
-
-const classList = ref<string[]>([])
-const style = ref<string[]>([])
-
-if (props.pill) {
-	classList.value.push('-pill')
+	pill?: boolean
+	size?: Size
+	variant?: 'highlight' | 'warning' | 'success' | 'critical' | 'default'
 }
 
-if (props.size) {
-	classList.value.push(`-${props.size}`)
-}
+const props = withDefaults(defineProps<BadgeProps>(), {
+	size: 'md',
+	variant: 'default'
+})
 
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
-} else {
-	classList.value.push(`-default`)
-}
+const badgeClassList = computed(() => {
+	let classes = []
+
+	if (props.pill) {
+		classes.push('-pill')
+	}
+
+	if (props.size) {
+		classes.push(`-size-${props.size}`)
+	}
+
+	if (props.variant) {
+		classes.push(`-variant-${props.variant}`)
+	}
+
+	return classes
+})
 </script>
 
 <template>
-	<span class="ui-badge" :class="classList" :style="style">
+	<span class="ui-badge" :class="badgeClassList">
 		<slot>{{ label }}</slot>
 	</span>
 </template>

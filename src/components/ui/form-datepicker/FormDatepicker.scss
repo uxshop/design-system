@@ -1,19 +1,19 @@
-.litepicker {
-	font-size: 12px;
-}
+@import '../../../scss/mixins.scss';
 
 .ui-form-datepicker {
 	&.-range {
 		input {
 			min-width: 180px;
-		}
+	}
+	}
+	
+	.btn-remove {
+		margin-right: var(--s-spacing-nano);
 	}
 
-	.btn-remove {
-		cursor: pointer;
-
-		&:hover {
-			color: var(--primary);
+	@include mobile {
+		.easepick-wrapper {
+			position: unset !important;
 		}
 	}
 }

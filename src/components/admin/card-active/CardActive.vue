@@ -12,7 +12,9 @@ export interface Props {
 	preventActive?(): void
 	delete?(id: number): Promise<void>
 }
+
 const emit = defineEmits(['delete', 'toggleActive', 'update:modelValue'])
+
 const props = withDefaults(defineProps<Props>(), {
 	modelValue: () => ({ active: true })
 })

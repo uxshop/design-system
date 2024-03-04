@@ -1,39 +1,45 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, type StyleValue } from 'vue'
 
-export interface Props {
+export interface IconProps {
+	filled?: boolean
 	name?: string
 	size?: number | string
-	type?: 'filled' | 'rounded' | 'outlined' | 'twotone'
-	filled?: boolean
 }
 
-const props = defineProps<Props>()
-const fill = props.filled ? 1 : 0
+const props = withDefaults(defineProps<IconProps>(), {
+	size: 16
+})
 
-const style = ref<{
-	fontSize?: string
-	height?: string
-}>({})
+const iconStyleList = computed(() => {
+	let styles: StyleValue = {}
 
-if (props.size) {
-	style.value.fontSize = `${props.size}px`
-	style.value.height = `${props.size}px`
-}
+	if (props.filled) {
+		styles.fontVariationSettings = "'FILL' 1"
+	}
+
+	if (props.size) {
+		styles.fontSize = props.size + 'px'
+		styles.height = props.size + 'px'
+	}
+
+	return styles
+})
 </script>
 
 <template>
-	<i class="ui-icon material-symbols-rounded icon" :style="style">
+	<i class="ui-icon material-symbols-outlined" :style="iconStyleList">
 		{{ name }}
 	</i>
 </template>
 
 <style lang="scss">
-.material-symbols-rounded {
-	font-variation-settings: 'FILL' v-bind(fill), 'wght' 400, 'GRAD' 200, 'opsz' 32;
-}
-
 .ui-icon {
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 200,
+		'opsz' 32;
 	width: auto;
 	align-items: center;
 	color: inherit;

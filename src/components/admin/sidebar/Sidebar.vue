@@ -1,78 +1,50 @@
 <script setup lang="ts">
-import { inject, ref, watchEffect } from 'vue'
-import { useRoute } from 'vue-router'
-import type { SidebarInterface } from './SidebarInterface'
+import { inject } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
-import { map } from 'lodash-es'
-
-export interface PermissionInterface {
-	has(rule: string): boolean
-}
+import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
+import SidebarMobile from './SidebarMobile.vue'
+import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types'
 
 export interface MenuProviderInterface {
 	open: boolean
-	removeSidebar(): void
+	close(): void
 	toggle(): void
 }
 
 export interface Props {
-	permissionService: PermissionInterface
+	isActive: (item: SideBarItem, isOnlyChildren?: boolean) => boolean
 	menuOpen?: boolean
-	menus: any
-	currentSection?: string | null
+	menus: SideBarItem[]
+	mobileNavigationBar: SidebarMobileMenu[]
 }
 
 const menu = inject('menu') as MenuProviderInterface
-const props = defineProps<Props>()
-const route = useRoute()
-const menusFilter = ref<any>([])
+defineProps<Props>()
 
-watchEffect(() => {
-	const routeName = String(route.name).replace(/_[^_]+?$/, '')
+const emit = defineEmits<{
+	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void
+}>()
 
-	menusFilter.value = map(props.menus, (item: SidebarInterface.Item) => {
-		let disabled = !props.permissionService.has(item.permissions)
-
-		item.withNodeActive = false
-
-		map(item.nodes, (i) => {
-			const itemName = i.to.replace(/_[^_]+?$/, '')
-
-			item.rawTo = item.to
-			i.disabled = true
-			item.active = false
-
-			if (props.permissionService.has(i.permissions)) {
-				if (disabled === true) item.to = i.to
-				disabled = i.disabled = false
-			}
-
-			if (itemName == routeName) {
-				item.active = true
-				item.withNodeActive = true
-				i.active = true
-			}
-
-			return i
-		})
-
-		item.disabled = disabled
-
-		return item
-	})
-})
-
-const toggleMenu = () => {
+const toggleMenu = (item: any) => {
 	if (menu) {
 		menu.toggle()
+		emit('onClickItem', 'sub', item)
 	}
 }
 
-const isSubActive = (item: any) => {
-	const routeName = route.name.replace(/_[^_]+?$/, '')
-	const itemName = item.to.replace(/_[^_]+?$/, '')
+const handleMenuClick = (type: SideBarItemType, menuItem?: SideBarItem): void => {
+	emit('onClickItem', type, menuItem)
+	if (!menuItem?.nodes?.length) menu.toggle()
+}
 
-	return itemName == routeName
+const handleMobileBar = (item: SidebarMobileMenu) => {
+	if (item.type === 'action') {
+		menu.toggle()
+		return
+	}
+
+	emit('onClickItem', 'node', item)
+	menu.close()
 }
 </script>
 
@@ -82,15 +54,15 @@ const isSubActive = (item: any) => {
 			<div class="ui-sidebar-container">
 				<div class="ui-sidebar-content">
 					<div class="ui-sidebar-nav">
-						<router-link class="ui-sidebar-logo" :to="{ name: 'home' }">
+						<div class="ui-sidebar-logo" @click="handleMenuClick('logo')">
 							<slot name="logo" />
-						</router-link>
+						</div>
 						<slot name="select-button" />
 					</div>
 					<div class="ui-sidebar-list">
 						<ul class="ui-sidebar-list -primary">
 							<li
-								v-for="(item, key) in menusFilter"
+								v-for="(item, key) in menus"
 								class="ui-sidebar-item"
 								redirectLink
 								:key="key"
@@ -102,50 +74,63 @@ const isSubActive = (item: any) => {
 									},
 									item.to
 								]">
-								<router-link
-									:to="{ name: item.to }"
-									:class="{
-										'-nodes': item.nodes?.length,
-										'-node-active': item.withNodeActive
-									}"
+								<small v-if="item.caption" class="ui-sidebar-link-caption">{{ item.caption }}</small>
+								<div
 									class="ui-sidebar-link"
-									activeClass="-active">
-									<span class="ui-sidebar-link-icon">
-										<Icon :name="item.icon" filled />
-									</span>
-									<span class="ui-sidebar-link-text">
-										{{ item.name }}
-									</span>
-								</router-link>
+									:class="{
+										'-node-active': item.active,
+										'-active': item.active
+									}"
+									activeClass="-active"
+									@click="handleMenuClick('node', item)">
+									<div class="d-flex">
+										<span class="ui-sidebar-link-icon">
+											<Icon size="16" :name="item.icon" filled />
+										</span>
+										<span class="ui-sidebar-link-text -title">
+											{{ item.name }}
+										</span>
+									</div>
+									<div class="ui-sidebar-link-right-icons">
+										<div class="news-indicator" v-if="item.isNew">
+											<NewsIndicator />
+										</div>
+										<Icon v-if="item.nodes?.length" class="icon-arrow" name="expand_more" />
+									</div>
+								</div>
 
 								<ul v-if="item.nodes && item.dropdown !== false" class="ui-sidebar-sublist">
-									<li v-for="node in item.nodes" class="ui-sidebar-item">
-										<router-link
-											:to="{ name: node.to }"
+									<li v-for="(node, index) in item.nodes" class="ui-sidebar-item" :key="index">
+										<div
 											class="ui-sidebar-link -sub"
-											@click="toggleMenu"
+											@click="toggleMenu(node)"
 											:class="{
-												'-active': isSubActive(node),
+												'-active': isActive(node),
 												'-disabled': node.disabled
 											}">
-											<span class="ui-sidebar-link-icon"></span>
-											<span class="ui-sidebar-link-text">
-												{{ node.name }}
+											<span class="ui-sidebar-link-icon">
+												<Icon size="16" name="subdirectory_arrow_right" />
 											</span>
-										</router-link>
+											<div class="ui-sidebar-link-content">
+												<span class="ui-sidebar-link-text"> {{ node.name }} </span>
+												<NewsIndicator v-if="node.isNew" label="Novo" />
+											</div>
+										</div>
 									</li>
 								</ul>
 							</li>
 						</ul>
 					</div>
+					<div class="ui-sidebar-footer">
+						<slot name="footer" class="ui-sidebar-footer" @click="handleMenuClick('footer')" />
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="ui-sidebar-overlay" @click="toggleMenu"></div>
-		<div v-if="menu.open === true" class="ui-close-sidebar" @click="toggleMenu">
-			<Icon name="close" />
-		</div>
 	</div>
+
+	<SidebarMobile :mobile-menus="mobileNavigationBar" @on-click-action="handleMobileBar" />
 </template>
 
 <style lang="scss">

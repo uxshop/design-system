@@ -1,16 +1,25 @@
 import { render, createVNode } from 'vue'
 import DialogComponent from './Dialog.vue'
+import type { Variant } from '../../../types'
 
-interface ConfigInterface {
-	type?: 'danger' | 'prompt' | 'confirm'
-	destructLabel?: string
-	destructIcon?: string
-	destructVariant?: string
-	hideCancel?: boolean
+export interface OpenDialogConfig {
+	id?: string
 	title?: string
+	hideFooter?: boolean
 	message?: string
-	onCallback?(val: boolean): void
-	onClose?(val: boolean): void
+	onCallback?(val: string | boolean): void
+	onClose?(val: string | boolean): void
+	closeOnBackdrop?: boolean
+	promptLabel?: string
+	promptType?: string
+	promptPlaceholder?: string
+	cancelLabel?: string
+	destructLabel?: string
+	destructVariant?:  Variant
+	destructIcon?: string
+	type?: 'prompt' | 'confirm'
+	opened?: boolean
+	hideCancel?: boolean
 }
 
 const globalConfig = {
@@ -19,7 +28,7 @@ const globalConfig = {
 
 let seed = 1
 
-const open = (config: ConfigInterface = {}) => {
+const open = (config: OpenDialogConfig = {}) => {
 	let dialogWrapper = null
 	let dialogVM = null
 	const id = 'ui-dialog-' + seed++
@@ -36,8 +45,7 @@ const open = (config: ConfigInterface = {}) => {
 }
 const Dialog = {
 	open: open,
-	delete(config: ConfigInterface = {}) {
-		config.type = 'danger'
+	delete(config: OpenDialogConfig = {}) {
 		config.destructLabel = 'Deletar'
 		config.destructIcon = 'delete'
 		config.destructVariant = 'danger'
@@ -54,7 +62,7 @@ const Dialog = {
 		}
 		open(config)
 	},
-	confirm(config: ConfigInterface = {}) {
+	confirm(config: OpenDialogConfig = {}) {
 		config.type = 'confirm'
 		config.destructLabel = config.destructLabel || 'Confirmar'
 		config.destructIcon = 'check'

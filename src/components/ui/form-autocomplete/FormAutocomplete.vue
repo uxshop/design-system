@@ -3,17 +3,23 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, wat
 import { cloneDeep } from 'lodash-es'
 import * as Choices from 'choices.js'
 import FormLabel from '../form-label/FormLabel.vue'
+import type { Size } from '../../../types'
+
+interface AutocompleteOption {
+  label: string
+  value:  string | number
+}
 
 export interface Props {
 	modelValue?: any
 	placeholder?: string
-	options?: any[]
-	label?: string | null
-	size?: string
+	options?: AutocompleteOption[]
+	label?: string
+	size?: Size
 	last?: boolean
 	template?: any
 	position?: 'top' | 'bottom' | 'auto'
-	config?: object
+	config?: Record<string, any>
 	required?: boolean
 }
 
@@ -22,7 +28,9 @@ const Plugin = Choices.default || Choices
 const props = withDefaults(defineProps<Props>(), {
 	placeholder: 'Selecione',
 	config: () => ({}),
-	position: 'bottom'
+	options: () => [],
+	position: 'bottom',
+  size: 'md',
 })
 
 const uid = `ui-form-select-${getCurrentInstance()?.uid}`
@@ -35,7 +43,9 @@ const getTemplateChoice = (data: any) => {
 }
 
 const settings = computed(() => {
-	const _choices = cloneDeep(props.options)
+	const _choices: any = cloneDeep(props.options)
+	_choices.options = _choices.options ?? []
+
 	const config: any = {
 		searchEnabled: true,
 		searchChoices: true,
@@ -50,6 +60,7 @@ const settings = computed(() => {
 		choices: _choices,
 		allowHTML: false,
 		searchResultLimit: 20,
+		options: [],
 		...props.config
 	}
 

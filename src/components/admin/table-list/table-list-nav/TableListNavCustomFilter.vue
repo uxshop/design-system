@@ -1,22 +1,14 @@
 <script setup lang="ts">
+import { computed, onMounted, ref } from 'vue'
+import { cloneDeep, keys, pick, find, omit, isNumber, isObject, each } from 'lodash-es'
 import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import Button from '../../../ui/button/Button.vue'
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
-import { computed, onMounted, ref } from 'vue'
-import Stack from '../../../ui/stack/Stack.vue'
 import DropdownSection from '../../../ui/dropdown/DropdownSection.vue'
-import { cloneDeep, keys, pick, find, omit, isNumber, isObject, each } from 'lodash-es'
 import toast from '../../../ui/toast'
-import type { ITableListState } from '../types/ITableListState'
 import { slugify } from '../../../../filters'
-import FormLayoutItem from '../../../ui/form-layout/FormLayoutItem.vue'
-
-interface FilterInterface {
-	id: number | string
-	name: string
-	view: string | number
-	filter: Record<string, any>
-}
+import isMobile from '../../../../services/MobileDetector'
+import type { ITableListState } from '../types/ITableListState'
 
 const props = defineProps<{
 	state: ITableListState
@@ -129,47 +121,37 @@ const onShowDropdown = () => {
 </script>
 
 <template>
-	<span class="table-list-nav-item -custom-filter">
-		<Dropdown right ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown">
+	<span v-if="!isMobile()" class="table-list-nav-item -custom-filter">
+		<Dropdown ref="dropdownRef" @show="onShowDropdown" :disabled="disableDropdown" right>
 			<template #button-content>
 				<Button
 					v-if="Number(state.currentTab) >= 1"
 					label="Editar filtro"
 					leadingIcon="star"
 					size="sm"
-					variant="dark"
+					variant="primary"
 					:disabled="disableDropdown" />
-				<Button v-else label="Salvar filtro" leadingIcon="star" size="sm" :disabled="disableDropdown" />
+				<Button v-else label="Salvar filtro" size="sm" leadingIcon="star" :disabled="disableDropdown" />
 			</template>
-			<DropdownSection>
-				<form @submit.prevent="onSave" id="form-custom-filter" autocomplete="off">
-					<h6>Salvar filtro</h6>
-					<FormTextfield
-						size="sm"
-						v-model="reg.name"
-						placeholder="Nome do filtro"
-						style="min-width: 210px"
-						data-close="none"
-						required
-						tabindex="1" />
-					<div class="mt-2">Os filtros são salvos como uma nova aba no topo desta lista.</div>
-				</form>
-			</DropdownSection>
-			<DropdownSection>
-				<Stack distribution="between">
-					<div>
-						<Button
-							v-if="reg.id"
-							tabindex="-1"
+			<div class="dropdown-section">
+				<DropdownSection>
+					<form @submit.prevent="onSave" id="form-custom-filter" autocomplete="off">
+						<h6>Salvar filtro</h6>
+						<FormTextfield
 							size="sm"
-							label="Remover"
-							variant="danger"
-							outline
-							@click="onRemoveTab" />
-					</div>
+							v-model="reg.name"
+							placeholder="Nome do filtro"
+							data-close="none"
+							required
+							tabindex="1" />
+						<div class="mt-2">Os filtros são salvos como uma nova aba no topo desta lista.</div>
+					</form>
+				</DropdownSection>
+				<div class="dropdown-section-buttons">
+					<Button v-if="reg.id" size="sm" tabindex="-1" label="Remover" variant="danger" outline @click="onRemoveTab" />
 					<Button size="sm" label="Salvar" tabindex="2" type="submit" form="form-custom-filter" />
-				</Stack>
-			</DropdownSection>
+				</div>
+			</div>
 		</Dropdown>
 	</span>
 </template>

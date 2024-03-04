@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { getCurrentInstance, nextTick, onMounted, ref } from 'vue'
+import { computed, getCurrentInstance, nextTick, ref, useSlots } from 'vue'
 
 const props = defineProps<{
-	variant?: 'white' | 'dark'
+	dropUp?: boolean
 	right?: boolean
 	left?: boolean
-	disabled?: boolean
 	closeOn?: boolean
+	noCloseOnClickTag?: string
+	disabled?: boolean
 }>()
 
 const emit = defineEmits(['show', 'hide'])
@@ -16,20 +17,12 @@ const uidMenu = `ui-dropdown-${getCurrentInstance()?.uid}-menu`
 const style = ref({})
 let initialHeight: number = 0
 
+const showOnTop = computed(() => (props.dropUp ? '-450px' : 'unset'))
+
 const listener = (e: MouseEvent | KeyboardEvent) => {
-	let noClose = e.target.tagName == 'INPUT'
-	if (props.closeOn) hide()
-
-	if (e.target.dataset?.close != true) {
-		e.path?.map((item: Element) => {
-			if (item.className == 'ui-dropdown-menu') {
-				noClose = true
-			}
-		})
-	}
-
-	if (noClose) return
-
+	if (e instanceof KeyboardEvent && e.key != 'Escape') return
+	if (props.closeOn && e.target?.tagName == props.noCloseOnClickTag) return
+	if (e.target?.tagName == 'INPUT') return
 	hide()
 }
 
@@ -87,9 +80,9 @@ defineExpose({
 </script>
 
 <template>
-	<div class="ui-dropdown" :class="{ '-open': show, '-left': left, '-right': right, '-disbled': disabled }" :id="uid">
+	<div class="ui-dropdown" :class="{ '-open': show, '-left': left, '-right': right }" :id="uid">
 		<div class="ui-dropdown-button" @click="toggleDropdown">
-			<slot name="button-content" />
+			<slot name="button-content" class="ui-dropdown-menu" />
 		</div>
 		<div class="ui-dropdown-menu" :id="uidMenu" :style="style">
 			<slot />
@@ -99,4 +92,11 @@ defineExpose({
 
 <style lang="scss">
 @import './Dropdown.scss';
+.ui-dropdown {
+	&.-right {
+		.ui-dropdown-menu {
+			top: v-bind(showOnTop);
+		}
+	}
+}
 </style>

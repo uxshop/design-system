@@ -24,26 +24,22 @@ const emit = defineEmits<{
 .table-list-empty-search {
 	text-align: center;
 	height: 100%;
-	padding: 20px;
-	padding-bottom: 5px;
+	padding: var(--s-spacing-x-small);
 
 	.table-list-empty-search-content {
-		border-radius: var(--border-radius);
-		background-color: var(--gray-100);
+		border-radius: var(--s-border-radius-small);
+		background-color: var(--s-color-fill-default-light);
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 	}
 
-	.table-list-empty-search-icon {
-		opacity: 0.4;
-	}
-
 	.table-list-empty-search-title {
-		font-size: 20px;
-		font-weight: var(--font-weight-bold);
-		margin-bottom: 5px;
+		font: var(--s-typography-heading-large);
+		font-weight: var(--s-font-weight-semibold);
+		margin-top: var(--s-spacing-xx-small);
+		margin-bottom: var(--s-spacing-quark);
 	}
 }
 </style>

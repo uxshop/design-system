@@ -2,29 +2,23 @@
 .ui-alert {
 	text-align: left;
 	position: relative;
-	padding: 14px;
-	border-radius: var(--alert-border-radius);
-	background-color: var(--gray-200);
-	border: solid 1px transparent;
-	margin-bottom: var(--grid-gutter-width);
+	padding: var(--s-spacing-x-small);
+	border-radius: var(--s-border-radius-small);
+	background-color: var(--s-color-fill-default-light);
+	border: solid 1px var(--s-color-border-default);
+	margin-bottom: var(--s-spacing-x-small);
 	display: flex;
-	align-items: center;
+	align-items: start;
 
 	a {
-		color: var(--body-color);
 		color: inherit;
 		border-bottom: dashed 1px;
 		text-decoration: none;
+
 		&:hover {
-			border-bottom-style: solid;
+			border-bottom: solid 1px;
+			text-decoration: none;
 		}
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	&.-dismissible {
 	}
 
 	&.-center {
@@ -32,91 +26,94 @@
 	}
 
 	&.-success {
-		background-color: #e8fbf4;
-		border-color: #00a47c;
-		i {
-			color: #00a47c;
+		background-color: var(--s-color-fill-success-light);
+		border-color: var(--s-color-border-success);
+		color: var(--s-color-content-success);
+
+		a:hover {
+			color: var(--s-color-content-success);
 		}
 	}
 
 	&.-danger {
-		background-color: #f6e8e8;
-		border-color: #ec8787;
-		i {
-			color: #f25d5d;
+		background-color: var(--s-color-fill-critical-light);
+		border-color: var(--s-color-border-critical);
+		color: var(--s-color-content-critical);
+
+		a:hover {
+			color: var(--s-color-content-critical);
 		}
 	}
 
 	&.-info {
-		background-color: #dcf0ff;
-		border-color: #1c84ce;
-		i {
-			color: #1c84ce;
+		background-color: var(--s-color-fill-highlight-light);
+		border-color: var(--s-color-border-highlight);
+		color: var(--s-color-content-highlight);
+
+		a:hover {
+			color: var(--s-color-content-highlight);
 		}
 	}
 
 	&.-warning {
-		background-color: #f8e8d5;
-		border-color: #de8f2d;
-		i {
-			color: #de8f2d;
-		}
-	}
+		background-color: var(--s-color-fill-warning-light);
+		border-color: var(--s-color-border-warning);
+		color: var(--s-color-content-warning);
 
-	.ui-alert-icon {
-		align-self: center;
+		a:hover {
+			color: var(--s-color-content-warning);
+		}
 	}
 
 	> .ui-icon {
-		margin-right: 8px;
-		font-size: 20px;
+		margin-right: var(--s-spacing-nano);
 		color: inherit;
 	}
 
-	> .ui-alert-content {
-		flex-grow: 1;
-
-		> .ui-alert-title {
-			margin: 0;
-			margin-bottom: 5px;
-			font-weight: 600;
-			font-size: 15px;
-			text-transform: none;
-		}
-
-		> .ui-alert-text {
-			word-break: break-word;
-		}
-
-		ul ~ ul {
-			margin-top: 5px;
-		}
+	.ui-alert-icon {
+		align-self: flex-start;
 	}
 
-	> .ui-alert-close {
+	.ui-alert-content {
+		flex-grow: 1;
+		background-color: transparent;
+	}
+
+	.ui-alert-title {
+		font: var(--s-typography-paragraph-strong);
+		margin-bottom: 0px;
+	}
+
+	.ui-alert-text {
+		word-break: break-word;
+		font: var(--s-typography-paragraph-regular);
+		margin-bottom: 0px;
+	}
+
+	.ui-alert-close {
 		background: none;
 		appearance: none;
 		box-shadow: none;
 		border: none;
-		font-size: 18px;
 		display: inline-flex;
 		align-items: center;
 		align-self: baseline;
 		justify-content: center;
-		border-radius: 100%;
-		width: var(--input-height-sm);
-		height: var(--input-height-sm);
+		border-radius: var(--s-border-radius-small);
 		cursor: pointer;
 		align-self: flex-start;
 		color: inherit;
+		padding: var(--s-spacing-quark);
 
 		&:hover {
-			background-color: rgba(0, 0, 0, 0.05);
+			background-color: rgba(0, 0, 0, 0.08);
 		}
 
-		.ui-icon {
-			font-size: 18px;
+		@include darkmode {
+		&:hover {background-color: rgba(0, 0, 0, 0.8);
 		}
+	}
+
 	}
 
 	ul {
@@ -125,7 +122,7 @@
 		list-style: none;
 
 		li:not(:last-child) {
-			margin-bottom: 4px;
+			margin-bottom: var(--s-spacing-quark);
 		}
 	}
 
@@ -135,29 +132,4 @@
 		}
 	}
 
-	@include darkmode {
-		&.-success {
-			background-color: #019b7f25;
-			color: #019b7f;
-			border: none;
-		}
-
-		&.-danger {
-			background-color: #f25d5d20;
-			color: #f25d5d;
-			border: none;
-		}
-
-		&.-info {
-			background-color: #38a8f730;
-			color: #1c84ce;
-			border: none;
-		}
-
-		&.-warning {
-			background-color: #de8f2d20;
-			color: #de8f2d;
-			border: none;
-		}
-	}
 }

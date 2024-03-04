@@ -1,29 +1,29 @@
 <script setup lang="ts">
-const props = withDefaults(
-	defineProps<{
-		tag?: string
-		label?: string
-		variant?: 'muted' | 'primary' | 'danger' | 'success' | 'secondary' | 'strong'
-		block?: boolean
-	}>(),
-	{
-		tag: 'span'
-	}
-)
+import { computed } from 'vue'
+import type { Variant } from '../../../types/Types'
 
-const classList: string[] = []
+type TextStyleVariant = Omit<Variant, 'link' | 'plain'> | 'strong' | 'muted'
 
-if (props.variant) {
-	classList.push(`-${props.variant}`)
+export interface TextStyleProps {
+	block?: boolean
+	label?: string
+	tag?: string
+	variant?: TextStyleVariant
 }
 
-if (props.block) {
-	classList.push(`-block`)
-}
+const props = withDefaults(defineProps<TextStyleProps>(), {
+	tag: 'span'
+})
+
+const textStyleClassList = computed(() => {
+	let classes = [props.variant ? `-variant-${props.variant}` : '', props.block ? `-block` : '']
+
+	return classes
+})
 </script>
 
 <template>
-	<component :is="tag" class="ui-text-style" :class="classList">
+	<component :is="tag" class="ui-text-style" :class="textStyleClassList">
 		<slot>{{ label }}</slot>
 	</component>
 </template>

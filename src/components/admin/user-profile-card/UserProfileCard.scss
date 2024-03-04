@@ -1,0 +1,52 @@
+@import '../../../scss/mixins.scss';
+@import '../../../scss/animations/fade-in-out.scss';
+
+.user-card {
+	margin: var(--s-spacing-xx-small);
+
+	&-label {
+		font: var(--s-typography-caption-medium);
+		font-weight: var(--s-font-weight-semibold);
+		text-transform: uppercase;
+		color: var(--s-color-content-light);
+		padding: var(--s-spacing-nano);
+	}
+
+	.dropdown-item-caption {
+		font: var(--s-typography-caption-medium);
+		color: var(--s-color-content-light);
+		font-weight: var(--s-font-weight-semibold);
+	}
+
+	.ui-dropdown {
+		.ui-dropdown-menu {
+			@include fade-in-out(var(--s-motion-duration-default));
+			opacity: 0;
+			display: none;
+			padding: var(--s-spacing-xx-small) var(--s-spacing-nano) var(--s-spacing-xx-small) var(--s-spacing-nano);
+		}
+		&.-open {
+			.icon-arrow-up {
+				transform: rotate(180deg);
+			}
+			.ui-dropdown-menu {
+				opacity: 1;
+				display: block;
+			}
+		}
+		.ui-dropdown-item {
+			width: 100%;
+			&:hover,
+			&:focus {
+				background-color: var(--s-color-fill-default-hover);
+			}
+		}
+	}
+
+	&-btn {
+		border-radius: var(--s-border-radius-small);
+		&:hover {
+			background-color: var(--s-color-fill-default-hover);
+		}
+	}
+}

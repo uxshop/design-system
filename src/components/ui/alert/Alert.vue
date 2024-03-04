@@ -3,15 +3,15 @@ import { watchEffect, ref, computed } from 'vue'
 import Icon from '../icon/Icon.vue'
 const props = defineProps<{
 	title?: string
-	variant?: string
+	variant?: 'success' | 'danger' | 'info' | 'warning'
 	icon?: string
 	dismissible?: boolean
-	show: boolean
+	show?: boolean
 	center?: boolean
 	label?: string
 }>()
 const emit = defineEmits(['dismissed'])
-const open = ref(props.show)
+const open = ref(Boolean(props.show))
 
 const iconsByVariant: Record<string, string> = {
 	success: 'check_circle',
@@ -42,7 +42,7 @@ const styleClassList = computed(() => {
 })
 
 const currentIcon = computed(() => {
-	let icon = ''
+	let icon = props.icon
 	if (!props.icon && props.variant) {
 		icon = iconsByVariant[props.variant]
 	}
@@ -50,16 +50,16 @@ const currentIcon = computed(() => {
 })
 
 watchEffect(() => {
-	open.value = props.show
+	open.value = Boolean(props.show)
 })
 </script>
 <template>
 	<div v-if="open" class="ui-alert" :class="styleClassList">
-		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" />
+		<Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24" />
 		<div class="ui-alert-content">
-			<h6 class="ui-alert-title" v-if="title">
+			<h5 class="ui-alert-title" v-if="title">
 				{{ title }}
-			</h6>
+			</h5>
 			<div class="ui-alert-text">
 				<slot>{{ label }}</slot>
 			</div>

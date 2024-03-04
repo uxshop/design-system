@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-	to: object
+	to:Record<string,unknown>
 }>()
 </script>
 
@@ -9,9 +9,7 @@ defineProps<{
 		<router-link :to="to" v-if="to">
 			<slot />
 		</router-link>
-		<div v-else>
-			<slot />
-		</div>
+			<slot v-else />
 	</div>
 </template>
 

@@ -1,38 +1,43 @@
-.ui-seo {
-	--ui-seo-title-color: #1a0dab;
+@import '../../../scss/mixins.scss';
 
-	[data-theme='dark'] & {
-		--ui-seo-title-color: #8ab4f8;
-	}
+.ui-seo {
+	--ui-seo-title-color: var(--s-color-content-highlight);
 
 	&.-gray {
 		.ui-seo-card {
-			border-radius: var(--border-radius);
-			border: dotted 2px var(--border-color);
-			padding: 15px;
+			margin-top: var(--s-spacing-x-small);
+			border-radius: var(--s-border-radius-medium);
+			border: dotted 2px var(--s-color-border-default);
+			padding: var(--s-spacing-x-small);
 		}
 	}
 
-	.ui-seo-label {
-		font-size: 13px;
-		margin-bottom: 15px;
-		display: block;
-		opacity: 0.5;
-	}
-
 	.ui-seo-title {
+		font: var(--s-typography-heading-x-small);
 		color: var(--ui-seo-title-color);
-		font-size: 16px;
-		font-weight: var(--font-weight-bold);
 	}
 
 	.ui-seo-domain {
-		color: var(--success);
+		color: var(--s-color-content-success);
 		display: block;
+		overflow-wrap: break-word;
 	}
 
 	.ui-seo-description {
 		display: block;
-		margin-top: 5px;
+		margin-top: var(--s-spacing-quark);
+	}
+
+	@include darkmode {
+		&.-gray {
+			.ui-seo-card {
+				border-color: var(--s-color-border-dark);
+			}
+		}
+
+		.ui-seo-domain {
+			color: var(--s-color-content-dark-success);
+			display: block;
+		}
 	}
 }

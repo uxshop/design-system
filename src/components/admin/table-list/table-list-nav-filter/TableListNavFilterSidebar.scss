@@ -1,9 +1,24 @@
 .filter-list {
 	.filter-list-item {
-		padding: 5px 0;
+		margin: var(--s-spacing-x-small) 0;
+		border: 1px solid var(--s-color-border-default);
+		border-radius: var(--s-border-radius-small);
 
 		.ui-icon {
 			transition: transform 0.2s;
+		}
+
+		&:first-child {
+			margin: 0 0 var(--s-spacing-x-small) 0;
+		}
+
+		&:last-child {
+			margin: var(--s-spacing-x-small) 0 0 0;
+		}
+
+
+		&:hover {
+			border: 1px solid var(--s-color-border-highlight);
 		}
 
 		&.-active {
@@ -16,13 +31,13 @@
 			.filter-list-title {
 				span::after {
 					content: '';
-					width: 6px;
-					height: 6px;
-					background: var(--primary);
+					width: var(--s-spacing-nano);
+					height: var(--s-spacing-nano);
+					background-color: var(--s-color-background-highlight);
 					border-radius: 100%;
 					display: inline-block;
 					margin-left: auto;
-					margin-right: 10px;
+					margin-right: var(--s-spacing-nano);
 				}
 			}
 		}
@@ -32,27 +47,23 @@
 		user-select: none;
 		display: flex;
 		align-items: center;
-		font-weight: 600;
-		padding: 0;
+		font: var(--s-typography-paragraph-strong);
+		padding: var(--s-spacing-x-small);
 		cursor: pointer;
-		background: var(--gray-100);
-		border-radius: 6px;
-		padding: 0 15px;
 
 		span {
 			flex-grow: 1;
-			padding: 10px 0;
 			align-items: center;
 			display: inline-flex;
-		}
-
-		&:hover {
-			background: var(--gray-200);
 		}
 	}
 
 	.filter-list-accordion {
-		padding: 10px;
-		margin-top: 10px;
+		padding: 0 var(--s-spacing-x-small) var(--s-spacing-x-small) var(--s-spacing-x-small);
+	}
+
+	&-actions {
+		display: flex;
+		gap: var(--s-spacing-xx-small);
 	}
 }

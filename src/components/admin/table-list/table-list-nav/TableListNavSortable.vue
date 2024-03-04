@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import Icon from '../../../ui/icon/Icon.vue'
 import Dropdown from '../../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue'
 import FormRadio from '../../../ui/form-radio/FormRadio.vue'
-import IconButton from '../../../ui/icon-button/IconButton.vue'
 import Button from '../../../ui/button/Button.vue'
+import isMobile from '../../../../services/MobileDetector'
 
 const props = withDefaults(
 	defineProps<{
@@ -64,11 +63,10 @@ onMounted(() => {
 
 <template>
 	<span class="table-list-nav-item" v-show="sortableFinal.length">
-		<Dropdown right ref="dropdownRef">
+		<Dropdown ref="dropdownRef">
 			<template #button-content>
 				<span class="table-list-nav-btn">
-					<!-- <IconButton icon="sort_by_alpha" size="sm" /> -->
-					<Button size="sm" label="Ordenar" leadingIcon="swap_vert" />
+					<Button :label="isMobile() ? '' : 'Ordenar'" :size="isMobile() ? 'md' : 'sm'" leadingIcon="swap_vert" />
 				</span>
 			</template>
 			<DropdownItemButton

@@ -1,0 +1,13 @@
+$primitive-transition-linear: cubic-bezier(0, 0, 1, 1);
+$primitive-transition-ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+$primitive-transition-ease-out: cubic-bezier(0.19, 0.91, 0.38, 1);
+$primitive-transition-ease-in: cubic-bezier(0.42, 0, 1, 1);
+$primitive-transition-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+$primitive-duration-linear: 0;
+$primitive-duration-fast: 300ms;
+$primitive-duration-default: 500ms;
+$primitive-duration-moderate: 750ms;
+$primitive-duration-slow: 1000ms;
+$primitive-duration-very-slow: 3000ms;
+$primitive-duration-extremely-slow: 5000ms;

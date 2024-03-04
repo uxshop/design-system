@@ -23,65 +23,69 @@
 }
 
 @mixin form-control {
-	background: var(--input-bg-color);
-	min-height: var(--input-height);
+	background: var(--s-color-fill-default);
+	min-height: var(--s-spacing-large);
 	display: flex;
 	align-items: center;
-	padding: 0 var(--input-padding-x);
+	padding: 0 var(--s-spacing-xx-small);
 	width: 100%;
 	appearance: none;
-	border-radius: var(--input-border-radius);
-	border: solid var(--input-border-width) var(--input-border-color);
+	border-radius: var(--s-border-radius-small);
+	border: var(--s-border-light);
 	outline: none;
 	outline-offset: 0;
 	position: relative;
+  color: var(--s-color-content-default);
 	box-shadow: none;
-	font-weight: var(--input-font-weight, normal);
+	font: var(--s-typography-paragraph-regular);
 
 	&:disabled,
 	&[readonly] {
-		background-color: #e9ecef;
+		background-color: var(--s-color-fill-default-disable);
 		opacity: 1;
 	}
 
 	&.-sm {
-		height: var(--input-height-sm);
-		min-height: var(--input-height-sm);
-		padding: 0 var(--input-padding-x-sm);
+		height: var(--s-spacing-small);
+		min-height: var(--s-spacing-small);
+		padding: 0 var(--s-spacing-xx-small);
 	}
 
 	&.-lg {
-		font-size: calc(var(--font-size-base) * 1.15);
-		padding: 0 var(--input-padding-x-lg);
-		height: var(--input-height-lg);
+		font-size: calc(var(--s-font-size-base) * 1.15);
+		padding: 0 var(--s-spacing-x-small);
+		height: var(--s-spacing-x-large);
 	}
 }
 
 @mixin select-arrow {
-	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
-		right var(--input-padding-x) center;
-	// linear-gradient(180deg, var(--dark-100, white) 0%, var(--dark-100, rgba(213, 213, 213, 0.1)) 100%);
-	background-size: 9px, auto;
+	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='%293B50' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+		right var(--s-spacing-x-small) center;
+	background-size: var(--s-spacing-xx-small), auto;
 	background-repeat: no-repeat;
-
+	-webkit-appearance: none;
 	// Remove outline from select box in FF
 	&:-moz-focusring {
 		color: transparent;
 	}
 
 	[data-theme='dark'] & {
-		background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23b1b9c9' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
-				right 18px center,
-			linear-gradient(180deg, var(--input-bg-color) 0%, var(--input-bg-color, rgba(213, 213, 213, 0.1)) 100%);
-		background-size: 9px, auto;
+		background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='rgba(224, 232, 242, 1)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+			right var(--s-spacing-x-small) center;
+		background-size: var(--s-spacing-xx-small), auto;
 		background-repeat: no-repeat;
+
+		&:hover {
+			cursor: pointer;
+			background-color: var(--s-color-fill-default-hover);
+		}
 	}
 }
 
 @mixin container {
-	max-width: var(--container-max-width);
-	padding-left: calc(var(--grid-gutter-width));
-	padding-right: calc(var(--grid-gutter-width));
+	max-width: 1200px;
+	padding-left: calc(var(--s-spacing-x-small));
+	padding-right: calc(var(--s-spacing-x-small));
 	margin-right: auto;
 	margin-left: auto;
 }

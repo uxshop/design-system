@@ -12,8 +12,7 @@ defineProps<{
 <style lang="scss">
 .ui-form-layout-item {
 	display: flex;
-	gap: var(--form-group-margin-bottom);
-	align-items: flex-end;
+	gap: var(--s-spacing-x-small);
 
 	> div {
 		flex-grow: 1;
@@ -21,15 +20,15 @@ defineProps<{
 	}
 
 	+ .ui-form-layout-item {
-		margin-top: var(--form-group-margin-bottom);
+		margin-top: var(--s-spacing-x-small);
 	}
 
 	+ .ui-alert {
-		margin-top: var(--form-group-margin-bottom);
+		margin-top: var(--s-spacing-x-small);
 	}
 
 	+ .ui-button {
-		margin-top: var(--form-group-margin-bottom);
+		margin-top: var(--s-spacing-x-small);
 	}
 }
 </style>

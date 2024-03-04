@@ -4,17 +4,17 @@
 	position: fixed;
 	top: 0;
 	right: 0;
-	z-index: 888;
-	height: var(--layout-navbar-height);
+	z-index: var(--s-index-medium-high);
+	height: var(--s-spacing-huge);
 	align-items: center;
 	display: flex;
 	opacity: 0;
 	pointer-events: none;
-	background-color: var(--body-bg);
-	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.02), 2px 2px 4px rgba(0, 0, 0, 0.05);
+	background-color: var(--s-color-fill-default);
+	box-shadow: var(--s-shadow-level-1);
 
 	* {
-		z-index: 2;
+		z-index: var(--s-index-low);
 	}
 
 	&-container {
@@ -33,7 +33,7 @@
 		bottom: 0;
 		right: 0;
 		left: 0;
-		z-index: 1;
+		z-index: var(--s-index-default);
 	}
 
 	&.-show {
@@ -44,8 +44,7 @@
 	&-text {
 		display: flex;
 		align-items: center;
-		font-size: 14px;
-		font-weight: var(--font-weight-semibold);
+		font: var(--s-typography-heading-x-small);
 	}
 
 	&-actions {
@@ -76,9 +75,5 @@
 
 	@include desktop {
 		left: var(--layout-sidebar-width);
-	}
-
-	@include darkmode {
-		background-color: var(--dark-300);
 	}
 }

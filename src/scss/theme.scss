@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@layer default, brand;
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @import './mixins.scss';
 @import './normalize.scss';
 @import './helpers.scss';
@@ -6,6 +8,7 @@
 @import './table.scss';
 @import './tooltip.scss';
 @import './variables.scss';
+@import './tokens/tokens.scss';
 
 body,
 html {
@@ -14,16 +17,13 @@ html {
 }
 
 body {
-	color: var(--body-color);
-	font-size: var(--font-size-base);
-	font-family: var(--font-family);
+	color: var(--s-color-content-default);
+	font: var(--s-typography-paragraph-regular);
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
-	font-weight: 400;
 	text-align: left;
 	overflow-x: hidden;
 	overflow-y: auto;
-	line-height: 1.4;
 
 	&.dialog-open,
 	&.modal-open {
@@ -43,11 +43,11 @@ body {
 
 a {
 	text-decoration: none;
-	color: var(--link-color);
+	color: var(--s-color-content-highlight);
 	cursor: pointer;
 
 	&:hover {
-		color: var(--primary);
+		color: var(--s-color-content-highlight);
 		text-decoration: underline;
 	}
 }

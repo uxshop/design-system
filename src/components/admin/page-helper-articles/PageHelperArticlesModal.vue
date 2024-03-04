@@ -5,7 +5,7 @@ import Link from '../../ui/link/Link.vue'
 import type { IArticle, IArticlesHelper } from './PageHelperArticles.vue'
 
 const aside = ref(false)
-const itemTitle = ref<string>('Ajuda')
+const itemTitle = ref('Ajuda')
 const helperArticles = ref<IArticle[]>()
 
 const open = (item: IArticlesHelper) => {
@@ -38,7 +38,7 @@ defineExpose({
 <style lang="scss">
 .page-helper-articles {
 	&-support {
-		margin: 0 0 20px;
+		padding: 0 0 var(--s-spacing-small);
 		display: inline-block;
 	}
 
@@ -48,9 +48,8 @@ defineExpose({
 	}
 
 	&-item {
-		padding: 10px 0;
-		margin: 0;
-		border-top: solid 1px var(--border-color);
+		padding: var(--s-spacing-xx-small) 0;
+		border-top: var(--s-border-light);
 	}
 }
 </style>

@@ -1,52 +1,74 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, type StyleValue } from 'vue'
 import Icon from '../icon/Icon.vue'
 
-export interface Props {
-	src?: string | null
+export interface ImageProps {
+	src?: string
 	size?: number | string
+	rounded?: boolean
 }
 
-interface crop {
-	size: string
-}
-
-interface StyleInterface {
-	width?: string
-	height?: string
-}
-
-interface StyleIconInterface {
-	fontSize?: string
-	width?: string
-	minHeight?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ImageProps>(), {
 	size: 50
 })
 
-const style = ref<StyleInterface>({})
-const styleIcon = ref<StyleIconInterface>({})
+const imageClassList = computed(() => {
+	let classes = []
 
-if (props.size) {
-	style.value.width = `${props.size}px`
-	style.value.height = `${props.size}px`
-	styleIcon.value.fontSize = `${Number(props.size) / 2.5}px`
-	styleIcon.value.width = `${Number(props.size) / 2.5}px`
-	styleIcon.value.minHeight = `${Number(props.size) / 2.5}px`
-}
+	if (!props.src) {
+		classes.push('-no-image')
+	}
+
+	if (props.rounded) {
+		classes.push('-is-rounded')
+	}
+
+	return classes
+})
+
+const imageStyleList = computed(() => {
+	const styles: StyleValue = {}
+
+	if (props.size) {
+		styles.width = `${props.size}px`
+	}
+
+	return styles
+})
+
+const iconStyleList = computed(() => {
+	const styles: StyleValue = {}
+
+	if (props.size) {
+		styles.fontSize = `${Number(props.size) / 2.5}px`
+		styles.width = `${Number(props.size) / 2.5}px`
+		styles.minHeight = `${Number(props.size) / 2.5}px`
+	}
+
+	return styles
+})
 </script>
 
 <template>
-	<div class="ui-image -square" :style="style" :class="{ '-no-image': !src }">
-		<img class="image-content" v-if="src" :src="src" />
-		<span class="image-content" v-if="!src">
-			<Icon name="wallpaper" :style="styleIcon" />
-		</span>
+	<div class="ui-image" :class="imageClassList">
+		<img v-if="src" :src="src" class="ui-image-content" />
+		<Icon v-else name="wallpaper" class="ui-image-icon" size="22" />
 	</div>
 </template>
 
 <style lang="scss">
 @import './Image.scss';
+
+.ui-image,
+.ui-image-content {
+	width: v-bind('imageStyleList.width');
+}
+
+.ui-image {
+	&-icon {
+		font-size: v-bind('iconStyleList.fontSize');
+		width: v-bind('iconStyleList.width');
+		min-height: v-bind('iconStyleList.minHeight');
+	}
+}
 </style>

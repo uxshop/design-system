@@ -2,31 +2,11 @@
 import { nextTick, onMounted, reactive, ref } from 'vue'
 import Button from '../button/Button.vue'
 import FormTextfield from '../form-textfield/FormTextfield.vue'
+import type { OpenDialogConfig } from '.'
 
-export interface Props {
-	id?: string
-	title?: string
-	hideFooter?: boolean
-	message?: string
-	onCallback?(val: string | boolean): void
-	onClose?(val: string | boolean): void
-	closeOnBackdrop?: boolean
-	variant?: string
-	size?: string
-	promptLabel?: string
-	promptType?: string
-	promptPlaceholder?: string
-	cancelLabel?: string
-	destructLabel?: string
-	destructVariant?: 'success' | 'danger' | 'primary'
-	destructIcon?: string
-	type?: string
-	opened?: boolean
-}
+interface OpenDialogConfigProps extends OpenDialogConfig {}
 
-const props = withDefaults(defineProps<Props>(), {
-	variant: '',
-	size: 'md',
+const props = withDefaults(defineProps<OpenDialogConfigProps>(), {
 	promptType: 'text',
 	cancelLabel: 'Cancelar',
 	destructLabel: 'Deletar',
@@ -95,14 +75,6 @@ const onClickBackdrop = () => {
 	}
 }
 
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
-}
-
-if (props.size) {
-	classList.value.push(`-${props.size}`)
-}
-
 if (props.type == 'prompt') {
 	isPrompt.value = true
 }
@@ -142,7 +114,7 @@ defineExpose({
 				</div>
 				<div class="ui-dialog-body">
 					<slot />
-					<div v-html="message" />
+					<div v-html="message" class="ui-dialog-message" />
 					<div class="ui-dialog-prompt mt-5" v-if="isPrompt">
 						<FormTextfield
 							:label="promptLabel"
@@ -164,7 +136,7 @@ defineExpose({
 						tabindex="0">
 						{{ config.destructLabel }}
 					</Button>
-					<Button v-if="type != 'confirm'" @click="close(false)" class="ui-dialog-btn-cancel">
+					<Button v-if="type != 'confirm' && !hideCancel" @click="() => close(false)" class="ui-dialog-btn-cancel">
 						{{ cancelLabel }}
 					</Button>
 				</div>

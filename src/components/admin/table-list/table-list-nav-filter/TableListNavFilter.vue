@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { each } from 'lodash-es'
 import TableListNavFilterSidebar from './TableListNavFilterSidebar.vue'
 import Button from '../../../ui/button/Button.vue'
+import isMobile from '../../../../services/MobileDetector'
 import type { ITableListState } from '../types/ITableListState'
 
 const props = defineProps<{
@@ -36,10 +37,14 @@ defineExpose({
 
 <template>
 	<span class="table-list-nav-item" v-if="props.state.config.filters">
-		<Button size="sm" label="Filtros" @click="filterSidebarRef.open()" class="table-list-nav-btn" />
+		<Button
+			:size="isMobile() ? 'md' : 'sm'"
+			:label="isMobile() ? '' : 'Filtros'"
+			leadingIcon="filter_list"
+			@click="filterSidebarRef.open()"
+			class="table-list-nav-btn" />
 		<TableListNavFilterSidebar
 			ref="filterSidebarRef"
-			size="sm"
 			@close="closeFilter"
 			:filters="props.state.config.filters"
 			:currentFilters="state.omitFilters" />

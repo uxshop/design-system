@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import Icon from '../icon/Icon.vue'
+import type { Variant } from '../../../types/Types'
 
-interface Props {
-	id?: string
+interface ToastProps {
 	className?: string
-	// horizontalPosition: string,
-	// verticalPosition: string,
-	variant?: string
-	duration?: number
-	message?: string
 	closeable?: boolean
+	duration?: number
+	id?: string
+	message?: string
+	variant?: Variant | 'default'
 }
 
 interface StateInterface {
@@ -19,23 +18,33 @@ interface StateInterface {
 	showing: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-	duration: 2000
+const props = withDefaults(defineProps<ToastProps>(), {
+	duration: 2000,
+	variant: 'default'
 })
 
 const closed = ref(false)
-const classList = ref<string[]>([])
 const state = reactive<StateInterface>({
 	option: {},
 	showing: false,
 	timer: null
 })
 
+const toastClassList = computed(() => {
+	let classes = []
+
+	if (props.variant) {
+		classes.push(`-variant-${props.variant}`)
+	}
+
+	return classes
+})
+
 const close = () => {
 	closed.value = true
 	state.timer = null
 	state.showing = false
-	classList.value.push('-leave')
+	toastClassList.value.push('-leave')
 	setTimeout(() => {
 		if (props.id) {
 			const ele = document.getElementById(props.id)
@@ -44,10 +53,6 @@ const close = () => {
 			}
 		}
 	}, 300)
-}
-
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
 }
 
 onMounted(() => {
@@ -67,15 +72,11 @@ const startTimer = () => {
 </script>
 
 <template>
-	<div class="ui-toast">
-		<div class="ui-toast-content" :class="classList">
-			<div class="ui-toast-body">
-				<div v-html="message"></div>
-			</div>
-			<span @click="close" class="ui-toast-close" v-if="closeable">
-				<Icon class="ui-toast-close-icon" name="close" />
-			</span>
+	<div class="ui-toast" :class="toastClassList">
+		<div class="ui-toast-body">
+			<div v-html="message" />
 		</div>
+		<Icon v-if="closeable" class="ui-toast-close" name="close" @click="close" />
 	</div>
 </template>
 

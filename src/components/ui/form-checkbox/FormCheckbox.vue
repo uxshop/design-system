@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { getCurrentInstance, ref, watchEffect } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 
 const emit = defineEmits(['update:modelValue', 'update'])
 const props = defineProps<{
-	modelValue?: unknown
-	value?: unknown
+	modelValue?: any
+	value?: any
 	switch?: boolean
 	label?: string
-	id?:string
+	id?: string
 	name?: string
-	size?: string
 	tabindex?: string | number
 	required?: boolean
 	indeterminate?: boolean
@@ -18,22 +17,19 @@ const props = defineProps<{
 }>()
 
 const uid = props.id ?? `ui-form-checkbox-${getCurrentInstance()?.uid}`
-const classList = ref<string[]>([])
-const model = ref()
+const classList = computed(() => [
+	props.switch ? `-switch` : '',
+	props.disabled ? `-disabled` : '',
+	props.noEvents ? `-no-events` : ''
+])
 
-if (props.size) {
-	classList.value.push(`-${props.size}`)
-}
-
-if (props.noEvents) {
-	classList.value.push(`-no-events`)
-}
-if (props.switch) {
-	classList.value.push(`-switch`)
-}
-
-watchEffect(() => {
-	model.value = props.modelValue
+const model = computed({
+	get() {
+		return props.modelValue
+	},
+	set(newValue) {
+		update(newValue)
+	}
 })
 
 const update = (val: unknown) => {
@@ -43,7 +39,7 @@ const update = (val: unknown) => {
 </script>
 
 <template>
-	<label class="ui-form-checkbox" :for="uid" :class="[classList, { '-disabled': disabled }]">
+	<label class="ui-form-checkbox" :for="uid" :class="classList">
 		<input
 			v-model="model"
 			type="checkbox"

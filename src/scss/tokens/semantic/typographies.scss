@@ -1,0 +1,50 @@
+@use '../../mixins/tokens' as tokens;
+@use '../primitives/typographies.scss' as *;
+
+@function baseFont($font-weight: regular, $font-size: 1, $line-height: 24) {
+  @return tokens.getPrimitiveVar($primitive-typographies, font-weight, $font-weight) calc(tokens.getPrimitiveVar($primitive-typographies, font-size-base) * $font-size) '/'
+  tokens.getPrimitiveVar($primitive-typographies, line-height, $line-height) tokens.getPrimitiveVar($primitive-typographies, font-family-system);
+}
+
+$semantic-font-size: (
+  base: tokens.getPrimitiveVar($primitive-typographies, font-size-base)
+
+);
+
+$semantic-font-weight: (
+  thin: tokens.getPrimitiveVar($primitive-typographies, font-weight, thin),
+  light: tokens.getPrimitiveVar($primitive-typographies, font-weight, light),
+  regular: tokens.getPrimitiveVar($primitive-typographies, font-weight, regular),
+  medium: tokens.getPrimitiveVar($primitive-typographies, font-weight, medium),
+  semibold: tokens.getPrimitiveVar($primitive-typographies, font-weight, semibold),
+  bold: tokens.getPrimitiveVar($primitive-typographies, font-weight, bold)
+);
+
+$semantic-line-height: (
+  12: tokens.getPrimitiveVar($primitive-typographies, line-height, 12),
+  16: tokens.getPrimitiveVar($primitive-typographies, line-height, 16),
+  20: tokens.getPrimitiveVar($primitive-typographies, line-height, 20),
+  24: tokens.getPrimitiveVar($primitive-typographies, line-height, 24),
+  32: tokens.getPrimitiveVar($primitive-typographies, line-height, 32),
+  40: tokens.getPrimitiveVar($primitive-typographies, line-height, 40),
+  48: tokens.getPrimitiveVar($primitive-typographies, line-height, 48)
+);
+
+$semantic-typographies: (
+  heading-x-large: baseFont(semibold, 1.8, 32),
+  heading-large: baseFont(semibold, 1.6),
+  heading-medium: baseFont(semibold, 1.4),
+  heading-small: baseFont(semibold, 1.3),
+  heading-x-small: baseFont(semibold, 1.1),
+
+  label-small: baseFont(medium, 0.9),
+  label-medium: baseFont(medium),
+  label-large: baseFont(medium, 1.1),
+
+  paragraph-regular: baseFont(regular),
+  paragraph-strong: baseFont(semibold),
+
+  caption-small: baseFont(regular, 0.8, 16),
+  caption-medium: baseFont(regular, 0.9, 24),
+  caption-large: baseFont(semibold, 1, 24)
+);

@@ -3,13 +3,11 @@ import { computed, getCurrentInstance } from 'vue'
 
 export interface Props {
 	modelValue?: any
-	value?: string | number | boolean
+	value?: any
 	label?: string
 	name?: string
 	required?: boolean
-	noEvents?: boolean
 	disabled?: boolean
-	size?: string
 	tabindex?: string | number
 }
 
@@ -19,8 +17,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['update:modelValue', 'update'])
 const uid = `ui-form-radio-${getCurrentInstance()?.uid}`
-const model = computed(() => {
-	return props.modelValue
+
+const isChecked = computed(() => {
+	return JSON.stringify(props.value) == JSON.stringify(props.modelValue)
 })
 
 const update = (val: string | boolean) => {
@@ -30,17 +29,18 @@ const update = (val: string | boolean) => {
 </script>
 
 <template>
-	<label class="ui-form-radio" :for="uid" :class="{ 'no-events': noEvents }">
+	<label class="ui-form-radio" :for="uid" :class="{ '-disabled': disabled }">
 		<input
 			type="radio"
 			:id="uid"
+			:modelValue="modelValue"
 			:value="value"
 			:tabindex="tabindex"
 			:required="required"
 			:name="name"
 			:disabled="disabled"
-			v-model="model"
-			@update:modelValue="update" />
+			:checked="isChecked"
+			@input="update(value)" />
 		<span class="ui-form-radio-checkmark" />
 		<div class="ui-form-radio-text" v-if="label || $slots.default">
 			<slot>{{ label }}</slot>

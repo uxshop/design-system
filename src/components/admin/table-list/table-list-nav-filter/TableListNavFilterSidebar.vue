@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { each, clone, isFunction, keys } from 'lodash-es'
 import Icon from '../../../ui/icon/Icon.vue'
 import Row from '../../../ui/grid/row/Row.vue'
@@ -167,28 +167,25 @@ defineExpose({
 									:label="item.name" />
 							</div>
 						</div>
-						<div class="text-left mt-2">
+						<div class="mt-4">
 							<Button
+								size="md"
 								variant="link"
-								flush="left"
 								@click="onClearFilter(filter, key)"
 								:disabled="!hasFilterSelected(filter, key)"
-								size="sm"
 								label="Limpar" />
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 		</form>
 		<template #footer>
-			<Row alignV="center">
-				<Col>
-					<Button type="submit" form="form-filter" block variant="primary" leadingIcon="check"> Aplicar </Button>
-				</Col>
-				<Col>
-					<Button size="sm" @click="onClearAll" :disabled="!hasSelected()"> limpar os filtros </Button>
-				</Col>
-			</Row>
+			<div class="filter-list-actions">
+				<Button size="md" type="submit" form="form-filter" variant="primary" leadingIcon="check">Aplicar</Button>
+				<Button size="md" @click="onClearAll" :disabled="!hasSelected()">Limpar os filtros</Button>
+			</div>
 		</template>
 	</Aside>
 </template>

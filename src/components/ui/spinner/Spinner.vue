@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { computed, type StyleValue } from 'vue'
+import type { Variant } from '../../../types/Types'
 
 export interface Props {
-	border?: string | number
-	size?: string | number
+	border?: number | string
 	color?: string
-	variant?: string
+	size?: number | string
+	variant?: Variant
 }
 
 export interface Style {
-	width?: string
-	height?: string
-	color?: string
 	borderWidth?: string
+	color?: string
+	width?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -20,56 +20,71 @@ const props = withDefaults(defineProps<Props>(), {
 	size: 22
 })
 
-const style = reactive<Style>({})
-const classList = ref<string[]>([])
+const spinnerClassList = computed(() => {
+	let classes = []
 
-if (props.size) {
-	style.width = `${props.size}px`
-	style.height = `${props.size}px`
-}
+	if (props.variant) {
+		classes.push(`-variant-${props.variant}`)
+	}
 
-if (props.color) {
-	style.color = `${props.color}`
-}
+	return classes
+})
 
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
-}
+const spinnerStyleList = computed(() => {
+	let styles: StyleValue = {}
 
-style.borderWidth = `${props.border}px`
+	if (props.border) {
+		styles.borderWidth = props.border + 'px'
+	}
+
+	if (props.color) {
+		styles.color = props.color
+	}
+
+	if (props.size) {
+		styles.width = props.size + 'px'
+	}
+
+	return styles
+})
 </script>
 
 <template>
-	<div class="ui-spinner" :style="style" :class="classList" />
+	<div class="ui-spinner" :class="spinnerClassList" :style="spinnerStyleList" />
 </template>
 
 <style lang="scss">
 .ui-spinner {
 	display: inline-block;
-	width: 16px;
-	height: 16px;
 	vertical-align: text-bottom;
-	color: v-bind('style.color');
-	border: v-bind('style.borderWidth') solid currentColor;
+	border-style: solid;
+	border-color: currentColor;
 	border-right-color: transparent;
-	border-radius: 50%;
-	-webkit-animation: spinnerBorderer 0.75s linear infinite;
-	animation: spinnerBorderer 0.75s linear infinite;
+	border-radius: var(--s-border-radius-pill);
+	-webkit-animation: spinnerBorderer var(--s-motion-duration-moderate) var(--s-motion-ease-linear) infinite;
+	animation: spinnerBorderer var(--s-motion-duration-moderate) var(--s-motion-ease-linear) infinite;
+	aspect-ratio: 1;
 
-	&.-primary {
-		color: var(--primary);
-	}
+	&.-variant {
+		&-default {
+			color: var(--s-color-fill-content-default);
+		}
 
-	&.-danger {
-		color: var(--danger);
-	}
+		&-highlight {
+			color: var(--s-color-fill-highlight);
+		}
 
-	&.-dark {
-		color: var(--dark);
-	}
+		&-warning {
+			color: var(--s-color-fill-warning);
+		}
 
-	&.-success {
-		color: var(--success);
+		&-success {
+			color: var(--s-color-fill-success);
+		}
+
+		&-critical {
+			color: var(--s-color-fill-critical);
+		}
 	}
 }
 @keyframes spinnerBorderer {

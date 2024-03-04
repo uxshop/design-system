@@ -1,17 +1,15 @@
 @import '../../../../src/scss/mixins.scss';
 
 .ui-form-tags {
-	--choice-item-height: var(--input-height);
-
 	&:not(.-has-value) {
 		.choices__inner {
-			padding-left: calc(var(--input-padding-x) - 2px);
+			padding-left: calc(var(--s-spacing-x-small) - 2px);
 		}
 	}
 
 	.ui-form-tags-content {
 		display: flex;
-		gap: 8px;
+		gap: var(--s-spacing-nano);
 		.choices {
 			flex-grow: 1;
 		}
@@ -26,7 +24,7 @@
 		margin: 0;
 
 		&.is-open {
-			z-index: 555;
+			z-index: var(--s-index-max);
 			.choices__inner {
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: 0;
@@ -34,52 +32,42 @@
 		}
 
 		.choices__list {
-			background-color: var(--bg-white);
-			border-color: var(--input-border-color);
+			background-color: var(--s-color-fill-default);
+			border-color: var(--s-color-border-default);
 		}
 	}
 
 	.choices__inner {
-		min-height: var(--input-height);
-		background-color: var(--input-bg-color);
-		border: solid var(--input-border-width) var(--input-border-color);
-		padding: 7px;
+		background-color: var(--s-color-fill-default);
+		min-height: var(--s-spacing-large);
+		border: var(--s-border-light);
+		padding: var(--s-spacing-nano);
 		padding-bottom: 0;
-		border-radius: var(--input-border-radius);
+		border-radius: var(--s-border-radius-small);
 
 		.choices__input {
-			color: var(--body-color);
-			background-color: var(--input-bg-color);
-			height: 22px;
+			color: var(--s-color-content-default);
+			background-color: var(--s-color-fill-default);
+			height: var(--s-spacing-small);
 		}
 
 		.choices__item {
-			border-radius: calc(var(--input-border-radius) - 1px);
-			background: var(--primary) !important;
+			border-radius: calc(var(--s-border-radius-small) - 1px);
+			background-color: var(--s-color-fill-highlight);
 			text-shadow: none;
 			box-shadow: none !important;
 			display: inline-flex;
 			align-items: center;
-			font-size: 12px;
+			font: var(--s-typography-caption-small);
 			border: none;
-			height: 22px;
+			height: var(--s-spacing-small);
 			line-height: 1;
 
 			.choices__button {
-				font-weight: 400;
+				font-weight: var(--s-font-weight-regular);
 				border-left: none;
 				margin-left: 0 !important;
 			}
 		}
-	}
-
-	.choices__input--cloned {
-		// margin-bottom: 0;
-	}
-
-	@include mobile {
-	}
-
-	@include darkmode {
 	}
 }

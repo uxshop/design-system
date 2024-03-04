@@ -2,9 +2,12 @@
 
 .ui-form-checkbox {
 	display: flex;
+	align-items: center;
 	position: relative;
 	cursor: pointer;
 	user-select: none;
+	font: var(--s-typography-paragraph-regular);
+	color: var(--s-color-content-default);
 
 	&.-disabled {
 		cursor: not-allowed;
@@ -15,12 +18,12 @@
 	}
 
 	+ .ui-form-checkbox {
-		margin-top: 8px;
+		margin-top: var(--s-spacing-nano);
 	}
 
 	&:hover {
 		.ui-form-checkbox-checkmark {
-			border-color: var(--primary);
+			border-color: var(--s-color-border-highlight);
 		}
 	}
 
@@ -32,11 +35,13 @@
 		position: absolute;
 		opacity: 0;
 		cursor: pointer;
-		height: 0;
-		width: 0;
+		height: 1px;
+		width: 1px;
+		left: calc(var(--s-spacing-x-small) / 2 - 1px);
+		top: var(--s-spacing-x-small);
 
 		&:checked ~ .ui-form-checkbox-checkmark {
-			background-color: var(--primary);
+			background-color: var(--s-color-fill-highlight);
 			border-color: transparent;
 			&::after {
 				display: block;
@@ -44,13 +49,13 @@
 		}
 
 		&:indeterminate ~ .ui-form-checkbox-checkmark {
-			background-color: var(--primary);
-			border-color: var(--primary);
+			background-color: var(--s-color-fill-highlight);
+			border-color: var(--s-color-border-highlight);
 
 			&:after {
 				display: block;
 				left: 50%;
-				top: calc(var(--form-check-height) / 2 - 2px);
+				top: calc(var(--s-spacing-quark) + 2px);
 				width: 65%;
 				height: 2px;
 				transform: translateX(-50%) translateY(-50%);
@@ -62,7 +67,7 @@
 		cursor: not-allowed;
 		~ .ui-form-checkbox-checkmark {
 			opacity: 0.8;
-			background-color: var(--input-border-color) !important;
+			background-color: var(--s-color-fill-disable);
 		}
 	}
 
@@ -70,31 +75,33 @@
 		position: relative;
 		top: 0;
 		left: 0;
-		height: var(--form-check-height);
-		width: var(--form-check-height);
-		min-height: var(--form-check-height);
-		min-width: var(--form-check-height);
-		background-color: white;
-		border-radius: var(--form-check-border-radius);
-		border: solid var(--form-check-border-width) var(--input-border-color);
+		width: 20px;
+		aspect-ratio: 1;
+		min-height: var(--s-spacing-x-small);
+		min-width: var(--s-spacing-x-small);
+		background-color: var(--s-color-fill-default);
+		border: var(--s-border-thin);
+		border-radius: var(--s-border-radius-small);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		&:after {
 			display: none;
 			content: '';
 			position: absolute;
+			bottom: calc(50% - 3px);
 			left: calc(50% - 3px);
-			top: 2px;
 			width: 6px;
 			height: 9px;
-			border: solid white;
+			border: solid var(--s-color-fill-default);
 			border-width: 0 2px 2px 0;
 			transform: rotate(45deg);
 		}
 	}
 
 	.ui-form-checkbox-text {
-		margin-left: 8px;
-		// margin-top: 1px;
+		margin-left: var(--s-spacing-nano);
 	}
 
 	&.-switch {
@@ -102,16 +109,16 @@
 			~ .ui-form-checkbox-checkmark {
 				&::after {
 					display: block;
-					background: var(--dark-100, var(--input-border-color));
+					background-color: var(--s-color-fill-default-hover);
 				}
 			}
 		}
 
 		input:checked {
 			~ .ui-form-checkbox-checkmark {
-				background-color: var(--primary);
+				background-color: var(--s-color-fill-highlight);
 				&:after {
-					background-color: white;
+					background-color: var(--s-color-fill-default);
 					left: calc(100% - 1px);
 					transform: translateX(-100%);
 				}
@@ -130,9 +137,11 @@
 				top: 1px;
 				border-radius: 100%;
 				bottom: 1px;
-				background: white;
+				background-color: var(--s-color-fill-default);
 				transform: translateX(0);
-				transition: all 0.15s cubic-bezier(0.2, 0.85, 0.32, 1.2), opacity 0.15s;
+				transition:
+					all 0.15s cubic-bezier(0.2, 0.85, 0.32, 1.2),
+					opacity 0.15s;
 				border: none;
 			}
 		}
@@ -144,7 +153,8 @@
 
 	@include darkmode {
 		.ui-form-checkbox-checkmark {
-			background: var(--input-bg-color);
+			background: var(--s-color-fill-dark);
+			border-color: var(--s-color-border-dark);
 		}
 	}
 }

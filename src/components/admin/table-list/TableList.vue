@@ -65,7 +65,7 @@ const queryDefault = Object.assign(
 )
 
 let omitFiltersValues = concat(
-	['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId'],
+	['page', 'sort', '_', 'limit', 'selectedView', 'customFilterId', 'version'],
 	props.config.omitFiltersValues
 )
 
@@ -197,9 +197,10 @@ onBeforeMount(() => {
 onMounted(() => {
 	omitFiltersValues = union(omitFiltersValues, props.config.omitFilters)
 	const localStorageParams = LocalStorage.getObj(storageNameFilters) as TQueryParams
+	const quickSearchQuery = route.query
 
 	if (!hasQueryParams.value && localStorageParams) {
-		queryParams.value = Object.assign(localStorageParams)
+		queryParams.value = Object.assign(localStorageParams, quickSearchQuery ?? {})
 	} else {
 		queryParams.value = assignDefaultQueryParams()
 	}
@@ -226,6 +227,18 @@ watch(
 		}
 	},
 	{ deep: true }
+)
+
+watch(
+	() => route.query,
+	(newValue) => {
+		if (newValue.q) {
+			setQueryParams({
+				q: String(newValue.q),
+				page: 1
+			})
+		}
+	}
 )
 
 const state = reactive({
@@ -265,7 +278,7 @@ defineExpose({
 		<TableListTabs :state="state" />
 		<TableListNav :loading="loading">
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
-			<TableListNavRefresh :state="state" />
+			<TableListNavRefresh v-if="!isMobile()" :state="state" />
 			<TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
 			<TableListNavCustomFilter
 				v-if="config.customFilterService"

@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-breadcrumb {
 	> .ui-breadcrumb-item {
 		display: flex;
@@ -5,41 +7,43 @@
 
 		&:before {
 			position: relative;
-			z-index: 999;
+			z-index: var(--s-index-max);
 			float: none;
 		}
 
 		> a {
 			font-weight: inherit;
 			position: relative;
-			z-index: 11;
+			z-index: var(--s-index-very-high);
 			display: inline-flex;
 			align-items: center;
-			height: 38px;
+			height: var(--s-spacing-x-large);
 			text-decoration: none;
-			color: var(--body-color);
+			color: var(--s-color-content-default);
+
+			@include darkmode {
+				color: var(--s-color-content-dark);
+			}
 
 			&:hover {
 				text-decoration: none;
-				color: var(--primary);
-				span {
-					text-decoration: underline;
-				}
+				color: var(--s-color-fill-highlight);
+				text-decoration: underline;
 			}
 		}
 
 		+ .ui-breadcrumb-item {
-			padding-left: 5px;
+			padding-left: var(--s-spacing-quark);
 		}
 		+ .ui-breadcrumb-item::before {
-			padding-right: 5px;
-			color: var(--secondary);
+			padding-right: var(--s-spacing-quark);
+			color: var(--s-color-content-highlight);
 			content: '/';
-			margin: 0 5px;
+			margin: 0 var(--s-spacing-quark);
 		}
 
 		> .ui-breadcrumb-item::before {
-			margin: 0 50px;
+			margin: 0 var (--s-spacing-x-large);
 		}
 	}
 }

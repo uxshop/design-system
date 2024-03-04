@@ -1,28 +1,24 @@
 @import '../../../scss/mixins.scss';
 
 .titlebar {
-	margin: 20px 0;
+	margin: var(--s-spacing-small) 0;
 	display: flex;
 	align-items: center;
 	min-height: 40px;
 
-	&-title {
-		color: var(--body-color);
+	&-content {
 		display: flex;
-		gap: 15px;
 		align-items: center;
+		gap: var(--s-spacing-x-small);
+		color: var(--s-color-content-default);
+
+		&-title-text {
+			font: var(--s-typography-heading-large);
+			margin: 0;
+		}
 
 		&.-mobile {
 			display: none;
-		}
-
-		
-		&-info {
-			&-text {
-				font-size: 22px;
-				margin: 0;
-			}
-			
 		}
 	}
 
@@ -33,14 +29,7 @@
 		flex-grow: 1;
 	}
 
-	&-backlink {
-		display: flex;
-		gap: 10px;
-		color: var(--body-color);
-		text-decoration: none;
-	}
-
-	&-actions {
+	.titlebar-actions {
 		margin-left: auto;
 		white-space: nowrap;
 		display: flex;
@@ -48,54 +37,22 @@
 		gap: 10px;
 	}
 
-	&-actions-secondary {
+	.titlebar-actions-secondary {
 		display: flex;
 		gap: inherit;
 	}
 
 	@include mobile {
-		&-actions {
-			> .btn-icon {
-				border: none;
-			}
-		}
+		margin: var(--s-spacing-x-small) 0 var(--s-spacing-small) 0;
 
 		&-content {
 			flex: 1;
 			overflow: hidden;
-		}
 
-		&-title {
-			align-items: center;
-
-			&.-dekstop {
-				display: none;
-			}
-
-			&.-mobile {
-				display: flex;
-			}
-
-			a {
-				display: flex;
-				align-items: center;
-				line-height: 1.5;
-				.ui-icon {
-					font-size: 28px;
-				}
-			}
-
-			&-text {
-				font-size: 18px;
+			&-title-text {
 				text-overflow: ellipsis;
 				white-space: nowrap;
 				overflow: hidden;
-			}
-
-			&-backlink > .ui-icon {
-				color: var(--secondary);
-				margin-right: 5px;
-				margin-left: -5px;
 			}
 		}
 	}

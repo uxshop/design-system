@@ -8,15 +8,15 @@ import type { IAction } from '../../../types/IAction'
 
 export interface Props {
 	hideTitle?: boolean
-	primaryAction?: IAction | null
+	primaryAction?: IAction
 	secondaryActions?: IAction[]
-	to?: object
-	backlink?: object
+	to?: Record<string, any>
+	backlink?: { to: string }
 	size?: 'sm' | 'md' | 'lg' | 'full'
 	videoHelp?: IVideo
 	articlesHelp?: IArticle[]
 	footerHelp?: any
-	title?: string | null
+	title?: string
 	groupActions?: {
 		name: string
 		actions: IAction[]
@@ -47,20 +47,28 @@ if (props.size) {
 
 <template>
 	<div class="ui-page" :class="classList">
-		<Titlebar v-if="!props.hideTitle" :title="title" :to="to" :backlink="backlink" v-bind="props">
+		<Titlebar
+			v-if="!props.hideTitle"
+			:title="title"
+			:to="to"
+			:backlink="backlink"
+			:groupActions="groupActions"
+			:primary-action="primaryAction"
+			:secondary-actions="secondaryActions">
 			<template #titlebar-subtitle>
 				<slot name="titlebar-subtitle" />
 			</template>
 		</Titlebar>
-		<PageHelperVideo v-if="videoHelp?.video_id" :video="videoHelp" />
-		<PageHelperArticles
-			v-if="!videoHelp?.video_id && !!articlesHelp?.articles?.length"
-			:articles="articlesHelp.articles"
-			:title="articlesHelp.title" />
+		<div v-if="videoHelp?.video_id" class="ui-page-help">
+			<PageHelperVideo :video="videoHelp" />
+			<PageHelperArticles
+				v-if="!videoHelp?.video_id && !!articlesHelp?.articles?.length"
+				:articles="articlesHelp.articles"
+				:title="articlesHelp.title" />
+		</div>
 		<slot name="default" />
 		<PageMessageSupport v-if="footerHelp" :name="footerHelp.name" :link="footerHelp.link" />
 	</div>
-	<!-- <Advertisings /> -->
 </template>
 
 <style lang="scss">

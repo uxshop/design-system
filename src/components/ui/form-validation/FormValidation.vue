@@ -3,22 +3,29 @@ import { each } from 'lodash-es'
 import { watchEffect } from 'vue'
 import Alert from '../alert/Alert.vue'
 
+export interface Props {
+	modelValue?: Record<string, string[]>
+	translate?: Record<string, string | Record<string, string>>
+	scrollToTop?: boolean
+	title?: string
+	hideKey?: boolean
+	noDismissible?: boolean
+}
+
 const emit = defineEmits(['update:modelValue'])
-const props = defineProps<{
-	modelValue?: Record<string, string> | null
-	translate?: Record<string, string>
-}>()
+const props = withDefaults(defineProps<Props>(), {
+	title: 'Erros encontrados'
+})
 
 const trans = (val: string) => {
-	if (!props.translate) {
-		return val
-	}
-	if (val.indexOf('.') >= 0) {
-		const keys = val.split('.')
-		const key = keys[0]
-		const line = Number(keys[1]) + 1
-		const field = keys[2]
-		const object = props.translate[key]
+	if (!props.translate) return val
+
+	const modelValueKeys = val.split('.')
+	if (modelValueKeys.length >= 3) {
+		const key = modelValueKeys[0]
+		const line = Number(modelValueKeys[1]) + 1
+		const field = modelValueKeys[2]
+		const object: any = props.translate[key]
 		if (object[field]) {
 			const name = object[key]
 			return `${name}: ${object[field]} #${line}`
@@ -29,25 +36,19 @@ const trans = (val: string) => {
 	return props.translate[val] || val
 }
 
-const removeErrors = () => {
+const removemodelValue = () => {
 	emit('update:modelValue', null)
 }
 
 watchEffect(() => {
 	const newVal = props.modelValue
-	// eslint-disable-next-line no-undef
 	const items: NodeListOf<HTMLElement> | undefined = document.querySelectorAll("[class*='form-error-']")
 
 	each(items, (item: HTMLElement) => {
 		item.classList.remove('-invalid')
 	})
 
-	// for (var item of items) {
-	// 	item.classList.remove('-invalid')
-	// 	// items[item].classList.remove('-invalid')
-	// }
-
-	if (newVal) {
+	if (newVal && props.scrollToTop) {
 		window.scrollTo(0, 0)
 		each(newVal, (item, key) => {
 			const ele = document.getElementsByClassName(`error.${key}`)
@@ -60,19 +61,27 @@ watchEffect(() => {
 </script>
 
 <template>
-	<div v-if="modelValue != null" class="ui-form-validation mb-4">
-		<Alert variant="danger" show title="Erros encontrados" dismissible @dismissed="removeErrors">
-			<ul v-for="(item, key) in modelValue" :key="key" class="text-lowercase">
+	<div v-if="modelValue != null" class="ui-form-validation">
+		<Alert
+			variant="danger"
+			:show="Boolean(modelValue)"
+			:title="title"
+			:dismissible="!noDismissible"
+			@dismissed="removemodelValue">
+			<ul v-for="(item, key) in modelValue" :key="key">
 				<li v-for="val in item" :key="val">
-					<b>{{ trans(String(key)) }}:</b> {{ val }}
+					<b v-if="!hideKey" class="ui-form-validation-key">{{ trans(String(key)) }}:</b>
+					{{ val }}
 				</li>
 			</ul>
 		</Alert>
 	</div>
 </template>
 
-<style>
-.ui-form-validation b {
-	text-transform:capitalize;
+<style lang="scss" scoped>
+.ui-form-validation {
+	&-key {
+		text-transform: capitalize;
+	}
 }
 </style>

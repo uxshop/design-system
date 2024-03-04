@@ -1,26 +1,27 @@
 .ui-text-style {
-	&.-muted {
-		color: var(--text-muted);
-	}
-	&.-success {
-		color: var(--success);
-	}
-	&.-danger {
-		color: var(--danger);
-	}
-	&.-primary {
-		color: var(--primary);
-	}
-	&.-secondary {
-		color: var(--secondary);
-	}
-	&.-highlight {
-		background-color: #fff9c0;
-	}
-	&.-block {
-		display: block;
-	}
-	&.-strong {
-		font-weight: 600;
+	&.-variant {
+		&-primary {
+			color: var(--s-color-content-highlight);
+		}
+
+		&-success {
+			color: var(--s-color-content-success);
+		}
+
+		&-danger {
+			color: var(--s-color-content-critical);
+		}
+
+		&-strong {
+			font: var(--s-typography-paragraph-strong);
+		}
+
+		&-muted {
+			color: var(--s-color-content-light);
+		}
+
+		&.-block {
+			display: block;
+		}
 	}
 }

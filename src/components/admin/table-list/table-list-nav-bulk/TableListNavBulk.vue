@@ -114,12 +114,12 @@ onMounted(() => {
 		</div>
 
 		<span v-show="selected.length && config.actions?.includes('remove')" class="table-list-nav-item">
-			<Button leadingIcon="delete" @click="onRemoveDialog" size="sm" label="Deletar" />
+			<Button size="sm" leadingIcon="delete" @click="onRemoveDialog" label="Deletar" />
 		</span>
 
-		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0">
+		<Dropdown v-show="selected.length && bulkActions && bulkActions.length > 0" right>
 			<template #button-content>
-				<Button size="sm" trailingIcon="unfold_more"> Ação em massa </Button>
+				<Button size="sm" leading-icon="unfold_more" label="Ação em massa" />
 			</template>
 
 			<DropdownItemButton
@@ -133,23 +133,28 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+@import '../../../../scss/mixins.scss';
 .table-list-nav-bulk {
 	display: flex;
 	align-items: center;
 	height: 100%;
-	gap: 10px;
-	padding-right: 15px;
+	gap: var(--s-spacing-nano);
+	padding-right: var(--s-spacing-small);
 
 	&.-active {
-		padding-left: 15px;
 		width: 100%;
 		position: absolute;
 		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
-		z-index: 88;
+		z-index: var(--s-index-medium-high);
+		padding: var(--s-spacing-x-small);
 		background: inherit;
+
+		.-checkbox {
+			padding-right: var(--s-spacing-small);
+		}
 	}
 
 	.table-list-nav-select {

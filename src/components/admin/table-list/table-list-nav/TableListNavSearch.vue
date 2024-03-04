@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { ITableListState } from '../types/ITableListState'
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
+import type { ITableListState } from '../types/ITableListState'
 
 export interface Props {
 	state: ITableListState

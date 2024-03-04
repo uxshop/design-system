@@ -1,56 +1,53 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
-import { useCurrencyInput, type CurrencyInputOptions } from 'vue-currency-input'
+import { computed, ref, watch } from 'vue'
+import { useCurrencyInput, type CurrencyInputOptions, CurrencyDisplay } from 'vue-currency-input'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
+import type { Size } from '../../../types'
 
 export interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
-	trailingText?: string
-	state?: undefined
-	coutable?: boolean
+	state?: boolean
+	invalidFeedback?: string
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	invalidFeedback?: string
-	//
 	modelValue?: string | number | null
 	label?: string
 	placeholder?: any
-	tabindex?: string
-	inputmode?: string
-	size?: string
+	size?: Size
 	id?: string
-	pattern?: string
-	title?: string
-	name?: string
 	autocomplete?: string
 	min?: string | number
 	max?: string | number
 	step?: string | number
-	minlength?: string | number
-	maxlength?: string | number
 	autofocus?: boolean
 	disabled?: boolean
 	required?: boolean
 	readonly?: boolean
-	pill?: boolean
 	options?: Record<string, unknown>
 }
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'change'])
 const props = withDefaults(defineProps<Props>(), {
-	placeholder: '0.00'
+	state: undefined,
+	placeholder: '0.00',
+	max: 999999.99
 })
-const classList = ref<string[]>([])
-const focused = ref(false)
+const focused = ref(props.autofocus ?? false)
+
+const classList = computed(() => [
+	'form-control',
+	props.state === true ? '-valid' : props.state === false ? '-invalid' : ''
+])
 
 /* @see https://dm4t2.github.io/vue-currency-input/config.html */
 const settings: CurrencyInputOptions = {
+	...props.options,
 	...{
 		locale: 'pt-BR',
 		currency: 'BRL',
-		currencyDisplay: 'symbol',
+		currencyDisplay: CurrencyDisplay.symbol,
 		hideCurrencySymbolOnFocus: false,
 		hideGroupingSeparatorOnFocus: false,
 		hideNegligibleDecimalDigitsOnFocus: false,
@@ -59,24 +56,28 @@ const settings: CurrencyInputOptions = {
 		useGrouping: true,
 		accountingSign: false,
 		valueRange: {
-			min: props.min ?? null,
-			max: props.max ?? 999999.99
+			min: props.min,
+			max: props.max
 		}
-	},
-	...props.options
+	}
 }
 
 const { inputRef, setValue } = useCurrencyInput(settings)
 
-if (props.pill) {
-	classList.value.push('-pill')
-}
-
 watch(
 	() => props.modelValue,
 	(newVal: any) => {
-		if (newVal) setValue(parseFloat(newVal))
-		else setValue(null)
+		if (newVal === null) return
+		setValue(parseFloat(newVal))
+	},
+	{ immediate: true }
+)
+
+watch(
+	() => focused.value,
+	(newVal: any) => {
+		if (!newVal) return
+		emit('change', newVal)
 	},
 	{ immediate: true }
 )
@@ -100,9 +101,13 @@ watch(
 			:min="min"
 			:step="step"
 			ref="inputRef"
-			class="form-control"
-			:placeholder="placeholder"
+			:class="classList"
+			:placeholder="float ? '' : placeholder"
 			@focus="focused = true"
-			@blur="focused = false" />
+			@blur="focused = false"
+			:disabled="disabled"
+			:required="required"
+			:readonly="readonly"
+			:autocomplete="autocomplete" />
 	</FormWrapper>
 </template>

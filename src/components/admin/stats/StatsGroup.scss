@@ -1,18 +1,16 @@
 @import '../../../scss/mixins.scss';
 
 .stats-group {
-	position: relative;
-	margin-bottom: var(--grid-gutter-width);
-
-	&.-vertical {
-		.stats-group-wrapper {
-			flex-direction: column;
-		}
-	}
+	margin-bottom: var(--s-spacing-small);
 
 	.stats-group-wrapper {
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
 		justify-content: space-around;
+		gap: var(--s-spacing-x-small);
+
+		@include mobile {
+			grid-template-columns: 1fr;
+		}
 	}
 }

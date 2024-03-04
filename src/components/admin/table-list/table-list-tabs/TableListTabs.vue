@@ -33,7 +33,7 @@ watch(
 	(newVal) => {
 		props.state.currentTab = newVal.selectedView || 'all'
 	},
-	{ deep: true }
+	{ deep: true, immediate: true }
 )
 </script>
 

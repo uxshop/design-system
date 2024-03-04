@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
+import type { InputMode } from '../../../types'
 
 interface Props {
 	leadingIcon?: string
 	trailingIcon?: string
-	labelInfo?: string
-	trailingText?: string
-	state?: undefined
-	coutable?: boolean
+	state?: boolean
 	loading?: boolean
 	last?: boolean
 	float?: boolean
 	invalidFeedback?: string
-	//
 	modelValue?: any
 	rows?: string | number
 	label?: string
 	placeholder?: string
 	tabindex?: string
-	inputmode?: 'search' | 'text' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | undefined
-	size?: string
+	inputmode?: InputMode
 	id?: string
 	pattern?: string
 	title?: string
@@ -32,7 +28,7 @@ interface Props {
 	disabled?: boolean
 	required?: boolean
 	readonly?: boolean
-	pill?: string
+	labelInfo?: string
 }
 
 const emit = defineEmits<{
@@ -41,14 +37,11 @@ const emit = defineEmits<{
 }>()
 
 const props = withDefaults(defineProps<Props>(), {
-	rows: 4
+	rows: 4,
+	state: undefined
 })
 
-const classList = ref<string[]>([])
-
-if (props.pill) {
-	classList.value.push('-pill')
-}
+const classList = computed(() => [props.state === true ? '-valid' : props.state === false ? '-invalid' : ''])
 
 const update = (evt: Event) => {
 	const target = evt.target as HTMLTextAreaElement
@@ -61,14 +54,15 @@ const update = (evt: Event) => {
 	<FormWrapper
 		:id="id"
 		:leadingIcon="leadingIcon"
-		:trailingcon="trailingIcon"
+		:trailingIcon="trailingIcon"
 		:label="label"
-		:coutable="coutable"
 		:loading="loading"
 		:last="last"
 		:disabled="disabled"
 		:float="float"
-		:state="state">
+		:state="state"
+		:labelInfo="labelInfo"
+		:invalidFeedback="invalidFeedback">
 		<textarea
 			class="form-control"
 			@input="update"

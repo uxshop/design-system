@@ -5,11 +5,3 @@
 		<slot></slot>
 	</div>
 </template>
-
-<style lang="scss">
-.ui-form-layout {
-	> div {
-		// margin-bottom: var(--form-group-margin-bottom);
-	}
-}
-</style>

@@ -17,7 +17,7 @@
 		grid-area: ui-layout-navbar;
 		position: sticky;
 		top: 0;
-		z-index: 444;
+		z-index: var(--s-index-high);
 	}
 
 	.ui-layout-content {
@@ -30,7 +30,7 @@
 		grid-area: ui-layout-sidebar;
 		position: sticky;
 		top: 0;
-		z-index: 888;
+		z-index: var(--s-index-very-high);
 	}
 
 	.ui-layout-content-page {
@@ -43,7 +43,6 @@
 
 	@include mobile {
 		grid-template-columns: 0 100%;
-		grid-template-rows: 70px auto;
 		height: 100%;
 
 		.ui-layout-content {

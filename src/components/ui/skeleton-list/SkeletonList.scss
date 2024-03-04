@@ -2,9 +2,9 @@
 	width: 100%;
 
 	.ui-skeleton-list-item {
-		padding: 10px 0;
+		padding: var(--s-spacing-x-small) 0;
 		+ .ui-skeleton-list-item {
-			border-top: solid 1px var(--border-color);
+			border-top: var(--s-border-light);
 		}
 	}
 }

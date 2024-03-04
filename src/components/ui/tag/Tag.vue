@@ -1,27 +1,36 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import Icon from '../icon/Icon.vue'
-import { ref } from 'vue'
+import type { Variant } from '../../../types/Types'
 
-const props = defineProps<{
-	variant?: string
-	size?: string
-	label?: string
-}>()
+export interface TagProps {
+	label: string
+	variant?: 'primary' | 'success' | 'danger' | 'default' | 'warning'
+}
+
+const props = withDefaults(defineProps<TagProps>(), {
+	variant: 'default'
+})
 
 const emit = defineEmits(['remove'])
-const classList = ref<string[]>([])
 
 const onRemove = () => {
 	emit('remove')
 }
 
-if (props.variant) {
-	classList.value.push(`-${props.variant}`)
-}
+const tagClassList = computed(() => {
+	let classes = []
+
+	if (props.variant) {
+		classes.push(`-variant-${props.variant}`)
+	}
+
+	return classes
+})
 </script>
 
 <template>
-	<span class="ui-tag" :class="classList">
+	<span class="ui-tag" :class="tagClassList">
 		<slot>{{ label }}</slot>
 		<Icon name="close" class="ui-tag-close" @click="onRemove" />
 	</span>

@@ -1,9 +1,31 @@
 .ui-form-select {
 	select {
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+		color: var(--s-color-content-default);
+		min-height: auto;
+		height: var(--s-spacing-large);
+
+		&.-sm {
+			min-height: auto;
+			height: var(--s-spacing-medium);
+		}
+
+		&.-lg {
+			min-height: auto;
+			height: var(--s-spacing-xx-large);
+		}
 
 		&:hover {
-			background-color: var(--gray-100);
+			cursor: pointer;
+			background-color: var(--s-color-fill-default-hover);
+		}
+
+		.form-select-option {
+			font: var(--s-typography-paragraph-regular);
+			color: var(--s-color-content-default);
+		}
+
+		&.-disabled {
+			color: var(--s-color-content-disable);
 		}
 	}
 }

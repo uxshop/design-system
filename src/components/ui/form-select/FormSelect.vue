@@ -1,48 +1,46 @@
 <script setup lang="ts">
 import { isObject } from 'lodash-es'
-import { ref, watchEffect } from 'vue'
+import { computed, ref, watchEffect } from 'vue'
 import FormWrapper from '../form-wrapper/FormWrapper.vue'
+import type { Size } from './../../../types'
 
 export interface IFormSelectOptions {
 	value: any
-	label?: string | null
+	label?: string
 	disabled?: boolean
 }
 
-export interface Props {
+export interface FormSelectProps {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
 	trailingText?: string
-	state?: undefined
-	coutable?: boolean
 	loading?: boolean
 	last?: boolean
 	float?: boolean
-	invalidFeedback?: string
-	//
 	modelValue?: any
 	value?: any
 	placeholder?: string
 	label?: string
-	error?: string
-	type?: string
 	id?: string
-	size?: string | number
+	size?: Size
 	autofocus?: boolean
 	readonly?: boolean
 	tabindex?: string
 	name?: string
 	title?: string
 	required?: boolean
-	options?: Array<IFormSelectOptions>
+	options?: IFormSelectOptions[]
 	disabled?: boolean
+	state?: boolean
+	invalidFeedback?: string
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormSelectProps>(), {
 	options: () => {
 		return []
-	}
+	},
+	state: undefined
 })
 
 const emit = defineEmits(['update:modelValue', 'update'])
@@ -72,27 +70,24 @@ const update = (evt: Event) => {
 }
 
 const model = ref(stringifyValue(props.modelValue))
-const classList = ref<string[]>([])
+const classList = computed(() => [
+	props.size && `-${props.size}`,
+	props.float && '-float',
+	props.loading && '-loading',
+	props.last && '-last',
+	(props.disabled || props.loading) && '-disabled'
+])
 
-if (props.value) {
-	model.value = stringifyValue(props.value)
-}
-
-watchEffect(() => {
-	if (props.value !== undefined) {
-		model.value = stringifyValue(props.value)
-	} else {
-		model.value = stringifyValue(props.modelValue)
-	}
+const updateModelValue = () => {
+	const valueToUse = props.value !== undefined ? props.value : props.modelValue
+	model.value = stringifyValue(valueToUse)
 
 	if (props.modelValue === null) {
 		model.value = ''
 	}
-})
-
-if (props.size) {
-	classList.value.push(`-${props.size}`)
 }
+
+watchEffect(updateModelValue)
 </script>
 
 <template>
@@ -102,22 +97,20 @@ if (props.size) {
 		:trailingIcon="trailingIcon"
 		:trailingText="trailingText"
 		:label="label"
-		:coutable="coutable"
 		:loading="loading"
 		:last="last"
 		:disabled="disabled"
 		:float="float"
-		:state="state"
 		:labelInfo="labelInfo"
 		:autofocus="autofocus"
 		:size="size"
+		:state="state"
 		:invalidFeedback="invalidFeedback"
 		class="ui-form-select">
 		<select
 			v-model="model"
 			@input="update"
 			class="form-control -select"
-			:value="stringifyValue(value)"
 			:class="classList"
 			:autofocus="autofocus"
 			:readonly="readonly"
@@ -127,9 +120,10 @@ if (props.size) {
 			:id="id"
 			:required="required"
 			:disabled="disabled">
-			<option value selected disabled v-if="placeholder">{{ placeholder }}</option>
+			<option class="form-select-option" value selected disabled v-if="placeholder">{{ placeholder }}</option>
 			<slot />
 			<option
+				class="form-select-option"
 				v-show="options.length"
 				v-for="item in options"
 				:value="stringifyValue(item.value)"

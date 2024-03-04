@@ -1,28 +1,8 @@
 @import '../../../../scss/mixins.scss';
 
 .table-list-tabs {
-	color: var(--text-muted);
-
 	.table-list-tabs-content {
-		height: 50px;
+		height: var(--s-spacing-x-large);
 		border: none;
-	}
-
-	@include mobile {
-	}
-
-	.ps .ps__rail-x {
-		max-height: 4px;
-		&:hover {
-			background: rgba(0, 0, 0, 0.2) !important;
-		}
-	}
-
-	.ps__rail-x > .ps__thumb-x {
-		max-height: 0;
-	}
-
-	.ps__rail-x:hover > .ps__thumb-x {
-		height: 0;
 	}
 }

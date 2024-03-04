@@ -16,7 +16,7 @@ const onRefreshTable = () => {
 </script>
 
 <template>
-	<span class="table-list-nav-item hide-sm" @click="onRefreshTable">
-		<IconButton class="table-list-nav-btn" icon="refresh" size="sm" />
+	<span class="table-list-nav-item" @click="onRefreshTable">
+		<IconButton size="md" class="table-list-nav-btn" icon="refresh" />
 	</span>
 </template>

@@ -1,36 +1,49 @@
+@import '../../../scss/mixins.scss';
+
 .animated-background {
-	animation-duration: 1s;
-	animation-fill-mode: forwards;
-	animation-iteration-count: infinite;
-	animation-name: placeHolderShimmer;
-	animation-timing-function: linear;
-	background: #f6f6f6;
+	animation: {
+		timing-function: var(--s-motion-ease-linear);
+		duration: var(--s-motion-duration-extremely-slow);
+		iteration-count: infinite;
+		name: placeHolderShimmer;
+	}
+
 	background: linear-gradient(
 		to right,
-		var(--dark-200, #f1f0f0) 12%,
-		var(--dark-100, #e2e1e1) 25%,
-		var(--dark-300, #f1f0f0) 33%
+		var(--s-color-fill-disable, #e0e8f2) 25%,
+		var(--s-color-fill-default-light, #f5f7fa) 50%,
+		var(--s-color-fill-default-light, #f5f7fa) 75%,
+		var(--s-color-fill-default-light, #f5f7fa) 100%
 	);
-	background-size: 800px 104px;
-	height: 12px;
+	height: var(--s-spacing-x-small);
 	width: 100%;
 	position: relative;
-	border-radius: 10px;
+	border-radius: var(--s-border-radius-large);
+
+	@include darkmode {
+		background: linear-gradient(
+			to right,
+			var(--s-color-fill-dark-disable, #e0e8f2) 25%,
+			var(--s-color-fill-dark-light, #f5f7fa) 50%,
+			var(--s-color-fill-dark-light, #f5f7fa) 75%,
+			var(--s-color-fill-dark-light, #f5f7fa) 100%
+		);
+	}
 }
 
 .ui-skeleton {
 	@extend .animated-background;
 
 	+ .ui-skeleton {
-		margin-top: 5px;
+		margin-top: var(--s-spacing-quark);
 	}
 }
 
 @keyframes placeHolderShimmer {
 	0% {
-		background-position: -468px 0;
+		background-position: -500px 0;
 	}
 	100% {
-		background-position: 468px 0;
+		background-position: 500px 0;
 	}
 }

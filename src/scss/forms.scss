@@ -1,47 +1,33 @@
 ::placeholder {
-	color: var(--input-placeholder-color);
-}
-
-// input:-webkit-autofill {
-//   -webkit-text-fill-color: yellow !important;
-//   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
-// }
-
-@include theme-dark {
-	::placeholder {
-		color: rgba(#b1b9c9, 0.4) !important;
-	}
+	color: var(--s-color-content-placeholder);
 }
 
 .form-control-loader {
 	position: absolute;
-	right: var(--input-padding-x);
+	right: var(--s-spacing-x-small);
 	height: 100%;
 	display: flex;
 	align-items: center;
 	top: 0;
-
-	> .form-control-loader-spinner {
-		width: calc(var(--input-height) * 0.4) !important;
-		height: calc(var(--input-height) * 0.4) !important;
-	}
 }
 
 .invalid-feedback {
-	color: var(--danger);
-	padding: 5px;
-	font-size: 10px;
+	color: var(--s-color-content-critical);
+	padding: var(--s-spacing-quark);
+	font: var(--s-typography-caption-small);
 }
 
 .form-control-label {
 	text-align: left;
-	margin-bottom: 5px;
+	margin-bottom: var(--s-spacing-quark);
 	display: inline-block;
+	font: var(--s-typography-label-medium);
+	color: var(--s-color-content-default);
 }
 
 textarea {
 	&.form-control {
-		padding-top: var(--input-padding-x);
+		padding-top: var(--s-spacing-x-small);
 	}
 }
 
@@ -51,23 +37,22 @@ textarea {
 	justify-content: space-between;
 
 	&.-pill {
-		border-radius: 30px;
-		padding-inline-start: 15px;
-		padding-inline-end: 15px;
+		border-radius: var(--s-border-radius-pill);
+		padding-inline-start: var(--s-spacing-x-small);
+		padding-inline-end: var(--s-spacing-x-small);
 	}
 
-	@include darkmode {
-		color: var(--body-color);
-		caret-color: var(--body-color);
-
-		&:focus {
-			border-color: var(--body-color);
-			box-shadow: none;
-		}
+	&.-invalid {
+		color: var(--s-color-fill-critical);
 	}
 }
 
 .form-control.-select {
-	padding-right: 40px;
+	padding-right: var(--s-spacing-x-large);
+
+	.form-select-option {
+		background-color: var(--s-color-fill-default);
+	}
+
 	@include select-arrow;
 }

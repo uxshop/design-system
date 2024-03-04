@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, onMounted, ref, shallowRef, toRef, watchPostEffect } from 'vue'
+import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect } from 'vue'
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
 import Pickr from '@simonwep/pickr/src/js/pickr'
 import type PickerInterface from '@simonwep/pickr'
@@ -7,10 +7,8 @@ import FormLabel from '../form-label/FormLabel.vue'
 
 const props = defineProps<{
 	modelValue?: string | null
-	switch?: boolean
 	label?: string
-	required?: boolean
-	name?: string
+	placeholder?: string
 	width?: string
 	withInput?: boolean
 }>()
@@ -27,8 +25,6 @@ if (props.width) {
 }
 
 const update = (value: string | null) => {
-	console.log(value)
-
 	emit('update:modelValue', value)
 	emit('update', value)
 }
@@ -95,7 +91,6 @@ onMounted(() => {
 			'btn:save': 'Aplicar',
 			'btn:cancel': 'Cancelar',
 			'btn:clear': 'Limpar',
-
 			// Strings used for aria-labels
 			'aria:btn:save': 'save and close',
 			'aria:btn:cancel': 'cancel and close',
@@ -158,6 +153,7 @@ defineExpose({
 				class="form-control"
 				maxlength="9"
 				v-bind="$attrs"
+				:placeholder="placeholder"
 				:value="modelValue"
 				@focus="focused = true"
 				@blur="focused = false"
@@ -167,12 +163,25 @@ defineExpose({
 </template>
 
 <style lang="scss">
+@import '../../../scss/tokens/tokens.scss';
 @import './FormColorPicker.scss';
 @import '../../../scss/variables.scss';
 .pcr-button {
+	position: absolute;
 	&.clear {
-		background-size: 40% !important;
-		background: $add-icon no-repeat center;
+		--pcr-color: none !important;
+		background-size: 60% !important;
+		background: $add-icon no-repeat center var(--s-color-fill-default);
+		border: var(--s-border-light);
+
+		&:hover{
+		--pcr-color: var(--s-color-fill-default-hover);
+		}
+
+		@include darkmode {
+			background: $add-icon-dark no-repeat center var(--s-color-fill-default);
+
+		}
 	}
 }
 </style>

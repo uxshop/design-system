@@ -32,7 +32,7 @@ import Spinner from './components/ui/spinner/Spinner.vue'
 import Link from './components/ui/link/Link.vue'
 import FormValidation from './components/ui/form-validation/FormValidation.vue'
 import Avatar from './components/ui/avatar/Avatar.vue'
-import Progress from './components/ui/progress/Progress.vue'
+import Progress from './components/ui/progress/ProgressBar.vue'
 import Skeleton from './components/ui/skeleton/Skeleton.vue'
 import SkeletonTable from './components/ui/skeleton-table/SkeletonTable.vue'
 import SkeletonList from './components/ui/skeleton-list/SkeletonList.vue'
@@ -44,6 +44,8 @@ import Toast from './components/ui/toast/Toast.vue'
 import Dialog from './components/ui/dialog/Dialog.vue'
 import TextStyle from './components/ui/text-style/TextStyle.vue'
 import PageActions from './components/admin/page-actions/PageActions.vue'
+import ListGroup from './components/ui/list-group/ListGroup.vue'
+import ListGroupItem from './components/ui/list-group/ListGroupItem.vue'
 
 // plus / com externos
 import FormColorpicker from './components/ui/form-colorpicker/FormColorpicker.vue'
@@ -100,6 +102,8 @@ export default {
 		app.component(`${prefix}Dialog`, Dialog)
 		app.component(`${prefix}TextStyle`, TextStyle)
 		app.component(`${prefix}PageActions`, PageActions)
+		app.component(`${prefix}ListGroup`, ListGroup)
+		app.component(`${prefix}ListGroupItem`, ListGroupItem)
 
 		// plus
 		app.component(`${prefix}FormRichtext`, FormRichtext)

@@ -12,10 +12,6 @@
 		+ .ui-table-row > .ui-table-cell {
 			border-top: none;
 		}
-
-		+ .ui-table-body > .ui-table-row > .ui-table-cell {
-			// border-top: none;
-		}
 	}
 
 	.ui-table-link {
@@ -24,25 +20,23 @@
 		bottom: 0;
 		right: 0;
 		left: 0;
-		z-index: 1;
+		z-index: var(--s-index-default);
 	}
 
 	.ui-table-cell.-head {
 		border: none;
-		font-weight: var(--font-weight-semibold);
+		font-weight: var(--s-font-weight-semibold);
 		font-size: 12px;
-		padding-top: 6px;
-		padding-bottom: 6px;
-		line-height: 1;
+		padding-top: var(--s-spacing-nano);
+		padding-bottom: var(--s-spacing-nano);
+		line-height: var(--s-line-height-24);
 		text-transform: uppercase;
-		opacity: 0.9;
-		font-weight: var(--font-weight-semibold);
-		color: var(--text-muted);
+		color: var(--s-color-content-light);
 	}
 
 	.ui-table-row.-head {
 		.ui-table-cell {
-			border-bottom: solid 1px var(--border-color);
+			border-bottom: var(--s-border-light);
 		}
 	}
 
@@ -57,7 +51,7 @@
 		}
 
 		.ui-button:last-child {
-			margin-right: 3px;
+			margin-right: var(--s-spacing-quark);
 		}
 	}
 
@@ -66,14 +60,14 @@
 			cursor: pointer;
 
 			&:hover {
-				background-color: var(--gray-100);
+				background-color: var(--s-color-fill-default-hover);
 			}
 		}
 	}
 
 	&.-tiny {
 		.ui-table-cell {
-			padding: 8px;
+			padding: var(--s-spacing-nano);
 		}
 	}
 
@@ -99,8 +93,12 @@
 	.ui-table-cell {
 		display: table-cell;
 		vertical-align: middle;
-		padding: 10px;
-		border-top: solid 1px var(--border-color);
+		padding: var(--s-spacing-nano);
+		border-top: var(--s-border-light);
+
+		> .ui-link:hover {
+			text-decoration: none;
+		}
 
 		strong {
 			font-weight: var(--font-weight-semibold);
@@ -112,13 +110,12 @@
 
 			> i {
 				font-size: 18px;
-				color: var(--body-color);
-				opacity: 0.5;
+				color: var(--s-color-content-default);
 				display: flex;
 			}
 
 			&:hover i {
-				color: var(--primary);
+				color: var(--s-color-content-highlight);
 			}
 		}
 
@@ -127,7 +124,7 @@
 			text-align: center;
 			cursor: grab !important;
 			width: 1px;
-			color: var(--gray-300);
+			color: var(--s-color-fill-default-hover);
 
 			.ui-icon {
 				display: flex;
@@ -141,8 +138,9 @@
 	}
 
 	.ui-table-cell.-auto {
+		color: var(--s-color-content-light);
 		width: 1px;
-		z-index: 2;
+		z-index: var(--s-index-low);
 		white-space: nowrap;
 	}
 

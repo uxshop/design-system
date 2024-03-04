@@ -3,14 +3,10 @@ import { ref } from 'vue'
 import InfiniteLoading, { type IContext } from './components/ui/infinite-scroll/InfiniteScroll.vue'
 import { easepick } from '@easepick/bundle'
 
-console.log(easepick)
-
 const items = ref(0)
 const InfiniteLoadingRef = ref()
 
 const load = (context: IContext) => {
-	console.log('laod', items.value)
-
 	items.value += 10
 
 	if (items.value > 100) {

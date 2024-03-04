@@ -7,17 +7,17 @@ defineProps({
 <template>
 	<div class="table-list-empty-message">
 		<h4 class="table-list-empty-message-title">Esta seção não possui registros</h4>
-		<div class="table-list-empty-message-text" v-html="msg"></div>
+		<div v-if="msg" v-html="msg" class="table-list-empty-message-text"></div>
 	</div>
 </template>
 
 <style lang="scss">
 .table-list-empty-message {
-	padding: 20px;
-	border: solid 1px var(--border-color);
-	border-radius: var(--border-radius);
+	padding: var(--s-spacing-small);
+	border: var(--s-border-light);
+	border-radius: var(--s-border-radius-medium);
 	.table-list-empty-message-title {
-		margin-bottom: 10px;
+		margin-bottom: var(--s-spacing-xx-small);
 	}
 }
 </style>

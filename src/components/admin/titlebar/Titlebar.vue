@@ -8,7 +8,7 @@ import type { IAction } from '../../../types/IAction'
 
 defineProps<{
 	title?: string | null
-	to?: object
+	to?: Record<string, any>
 	backlink?: { to: string }
 	primaryAction?: IAction
 	secondaryActions?: IAction[]
@@ -23,7 +23,7 @@ const checkIsDesktop = () => window.innerWidth > 768
 const isDesktop = shallowRef(checkIsDesktop())
 
 const getButtonLabel = computed(
-	() => (label?: string, leadingIcon?: string) => isDesktop.value || !leadingIcon ? label : undefined
+	() => (label?: string, leadingIcon?: string) => (isDesktop.value || !leadingIcon ? label : undefined)
 )
 
 onMounted(() => {
@@ -40,13 +40,11 @@ onUnmounted(() => {
 <template>
 	<div class="titlebar">
 		<div class="titlebar-content">
-			<div class="titlebar-title">
-				<IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" />
-				<div class="titlebar-title-info">
-					<h2 class="titlebar-title-info-text">{{ title }}</h2>
-					<div v-if="$slots['titlebar-subtitle']" class="titlebar-subtitle">
-						<slot name="titlebar-subtitle" />
-					</div>
+			<IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" size="lg" />
+			<div class="titlebar-content-title">
+				<h2 class="titlebar-content-title-text">{{ title }}</h2>
+				<div v-if="$slots['titlebar-subtitle']" class="titlebar-subtitle">
+					<slot name="titlebar-subtitle" />
 				</div>
 			</div>
 		</div>
@@ -64,7 +62,7 @@ onUnmounted(() => {
 						@click="item.onAction" />
 				</template>
 
-				<Dropdown v-else right>
+				<Dropdown v-else>
 					<template #button-content>
 						<Button
 							:label="getButtonLabel('Mais ações', moreBtnMobileIcon)"

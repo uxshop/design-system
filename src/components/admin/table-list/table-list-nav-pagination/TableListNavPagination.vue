@@ -16,7 +16,7 @@ const prevPage = () => {
 }
 
 const nextPage = () => {
-	let page = props.state.queryParams.page
+	let page = props.state.queryParams.page ?? 1
 	if (props.meta.last_page > page) {
 		props.state.setQueryParams({
 			page: ++page
@@ -33,16 +33,16 @@ const nextPage = () => {
 			</div>
 			<div class="table-list-pagination-item prev">
 				<IconButton
+					size="md"
 					@click="prevPage"
-					size="sm"
 					icon="arrow_back"
 					:disabled="1 == meta.current_page"
 					class="table-list-nav-btn prev" />
 			</div>
 			<div class="table-list-pagination-item next">
 				<IconButton
+					size="md"
 					@click="nextPage"
-					size="sm"
 					icon="arrow_forward"
 					:disabled="meta.last_page == meta.current_page || !meta.total"
 					class="table-list-nav-btn next" />
