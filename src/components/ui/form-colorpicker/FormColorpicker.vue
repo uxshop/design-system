@@ -173,6 +173,15 @@ defineExpose({
 		background-size: 60% !important;
 		background: $add-icon no-repeat center var(--s-color-fill-default);
 		border: var(--s-border-light);
+
+		&:hover{
+		--pcr-color: var(--s-color-fill-default-hover);
+		}
+
+		@include darkmode {
+			background: $add-icon-dark no-repeat center var(--s-color-fill-default);
+
+		}
 	}
 }
 </style>

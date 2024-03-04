@@ -113,12 +113,9 @@
 
 		.form-control,
 		.form-wrapper-notched {
+			color: var(--s-color-content-disable);
 			border-color: var(--s-color-border-disable);
 		}
-	}
-
-	.form-control[readonly] {
-		background-color: var(--s-color-fill-default) !important;
 	}
 
 	&.-with-leading-icon {

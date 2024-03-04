@@ -167,7 +167,7 @@ defineExpose({
 									:label="item.name" />
 							</div>
 						</div>
-						<div class="mt-2">
+						<div class="mt-4">
 							<Button
 								size="md"
 								variant="link"
@@ -177,6 +177,8 @@ defineExpose({
 						</div>
 					</div>
 				</div>
+
+
 			</div>
 		</form>
 		<template #footer>

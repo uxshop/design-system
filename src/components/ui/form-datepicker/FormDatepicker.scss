@@ -4,11 +4,11 @@
 	&.-range {
 		input {
 			min-width: 180px;
-		}
 	}
-
+	}
+	
 	.btn-remove {
-		margin-right: var(--s-spacing-x-large);
+		margin-right: var(--s-spacing-nano);
 	}
 
 	@include mobile {
