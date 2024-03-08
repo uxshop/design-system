@@ -3,6 +3,10 @@
 	white-space: nowrap;
 	border-radius: var(--s-border-small);
 
+	&.-wrap {
+		white-space: wrap;
+	}
+
 	&:hover {
 		color: var(--s-color-content-highlight);
 		&-content {
