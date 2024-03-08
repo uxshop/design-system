@@ -12,13 +12,18 @@
 		gap: var(--s-spacing-x-small);
 		color: var(--s-color-content-default);
 
-		&-title-text {
-			font: var(--s-typography-heading-large);
-			margin: 0;
-		}
+		& &-title {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			&-text {
+				font: var(--s-typography-heading-large);
+				margin: 0;
+			}
 
-		&.-mobile {
-			display: none;
+			&.-mobile {
+				display: none;
+			}
 		}
 	}
 
