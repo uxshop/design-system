@@ -28,9 +28,6 @@
 	@include mobile {
 		grid-template-columns: 1fr;
 
-		&-info-buttons {
-			flex-direction: column;
-		}
 
 		.ui-card {
 			border-radius: var(--border-bottom);
