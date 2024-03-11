@@ -14,6 +14,7 @@ const props = defineProps<{
 	imageHref?: string
 	inverse?: boolean
 	buttons?: IAction[]
+  horizontal?: boolean
 }>()
 
 const openModal = ref<boolean>(false)
@@ -21,6 +22,7 @@ const mediaCardClasses = ref<string[]>([])
 
 if (props.inverse) mediaCardClasses.value.push('-inverted')
 if (props.video) mediaCardClasses.value.push('-video')
+if (props.horizontal) mediaCardClasses.value.push('-horizontal')
 </script>
 
 <template>

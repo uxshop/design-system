@@ -93,3 +93,7 @@
 		min-height: 250px;
 	}
 }
+
+.-horizontal {
+	grid-template-columns: 1fr;
+}
