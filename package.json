@@ -33,7 +33,9 @@
 		"lodash-es": "^4.17.21",
 		"luxon": "^3.2.1",
 		"maska": "^2.1.8",
+		"patch-package": "^8.0.0",
 		"perfect-scrollbar": "^1.5.5",
+		"postinstall-postinstall": "^2.1.0",
 		"vue-currency-input": "^3.0.3",
 		"vue-router": "^4.1.6"
 	},
