@@ -66,7 +66,8 @@ onUnmounted(() => {
 					<template #button-content>
 						<Button
 							:label="getButtonLabel('Mais ações', moreBtnMobileIcon)"
-							:trailingIcon="isDesktop ? 'expand_more' : moreBtnMobileIcon" />
+							:trailingIcon="isDesktop ? 'expand_more' : moreBtnMobileIcon"
+							:size="isDesktop ? 'md' : 'lg'" />
 					</template>
 					<DropdownItemButton
 						v-for="(item, index) in secondaryActions"
@@ -84,7 +85,8 @@ onUnmounted(() => {
 					:label="getButtonLabel(primaryAction.label, primaryAction.leadingIcon)"
 					@click="primaryAction.onAction"
 					:class="primaryAction.class"
-					:leading-icon="primaryAction.leadingIcon" />
+					:leading-icon="primaryAction.leadingIcon"
+					:size="isDesktop ? 'md' : 'lg'" />
 			</div>
 		</div>
 	</div>
