@@ -27,19 +27,19 @@ const emit = defineEmits<{
 
 const toggleMenu = (item: any) => {
 	if (menu) {
-		menu.toggle()
+		menu?.toggle()
 		emit('onClickItem', 'sub', item)
 	}
 }
 
 const handleMenuClick = (type: SideBarItemType, menuItem?: SideBarItem): void => {
 	emit('onClickItem', type, menuItem)
-	if (!menuItem?.nodes?.length) menu.toggle()
+	if (!menuItem?.nodes?.length) menu?.toggle()
 }
 
 const handleMobileBar = (item: SidebarMobileMenu) => {
 	if (item.type === 'action') {
-		menu.toggle()
+		menu?.toggle()
 		return
 	}
 
