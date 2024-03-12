@@ -14,19 +14,18 @@ const props = defineProps<{
 	imageHref?: string
 	inverse?: boolean
 	buttons?: IAction[]
-  horizontal?: boolean
+	horizontal?: boolean
 }>()
 
 const openModal = ref<boolean>(false)
-const mediaCardClasses = computed<string[]>(() => {
-const classes = ["ui-media-card"]
-  if (props.inverse) classes.push('-inverted')
-  if (props.video) classes.push('-video')
-  if (props.horizontal) classes.push('-horizontal')
-  return classes
+const mediaCardClasses = computed(() => {
+	return [
+		'ui-media-card',
+		props.inverse && '-inverted',
+		props.video && '-video',
+		props.horizontal && '-horizontal'
+	].filter((styleClass) => styleClass)
 })
-
-const
 </script>
 
 <template>
