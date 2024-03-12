@@ -54,6 +54,11 @@
 		}
 	}
 
+  &.-horizontal {
+    grid-template-columns: 1fr;
+  }
+
+
 	iframe {
 		display: block;
 		aspect-ratio: 16 / 9;
@@ -91,6 +96,3 @@
 	}
 }
 
-.-horizontal {
-	grid-template-columns: 1fr;
-}

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import Card from '../../ui/card/Card.vue'
 import Button from '../../ui/button/Button.vue'
 import Icon from '../../ui/icon/Icon.vue'
@@ -18,15 +18,19 @@ const props = defineProps<{
 }>()
 
 const openModal = ref<boolean>(false)
-const mediaCardClasses = ref<string[]>([])
+const mediaCardClasses = computed<string[]>(() => {
+const classes = ["ui-media-card"]
+  if (props.inverse) classes.push('-inverted')
+  if (props.video) classes.push('-video')
+  if (props.horizontal) classes.push('-horizontal')
+  return classes
+})
 
-if (props.inverse) mediaCardClasses.value.push('-inverted')
-if (props.video) mediaCardClasses.value.push('-video')
-if (props.horizontal) mediaCardClasses.value.push('-horizontal')
+const
 </script>
 
 <template>
-	<div class="ui-media-card" :class="mediaCardClasses">
+	<div :class="mediaCardClasses">
 		<div v-if="video" class="ui-media-card-video">
 			<img :src="`https://img.youtube.com/vi/${video}/mqdefault.jpg`" @click="openModal = !openModal" />
 			<Modal v-model="openModal">
