@@ -8,6 +8,7 @@ export interface Props {
 	href?: string
 	label?: string
 	to?: string | object
+	wrapText?: boolean
 }
 
 const props = defineProps<Props>()
@@ -28,6 +29,10 @@ const linkClassList = computed(() => {
 
 	if (props.disabled) {
 		classes.push('-disabled')
+	}
+
+	if (props.wrapText) {
+		classes.push('-wrap')
 	}
 
 	return classes
