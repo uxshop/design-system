@@ -2,6 +2,7 @@ export interface SideBarItem {
 	name: string
 	isNew?: boolean
 	to?: string
+	params?: any
 	href?: string
 	key?: string
 	isKeyActive?: boolean
