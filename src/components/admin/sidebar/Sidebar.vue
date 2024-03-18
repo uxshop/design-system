@@ -80,7 +80,7 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 								<component
 									:is="getTemplate(item)"
 									class="ui-sidebar-link"
-									:to="{ name: item.to } ?? ''"
+									:to="{ name: item.to, params: item.params } ?? ''"
 									:class="{
 										'-node-active': item.active,
 										'-active': item.active
@@ -107,7 +107,7 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 									<li v-for="(node, index) in item.nodes" class="ui-sidebar-item" :key="index">
 										<component
 											:is="getTemplate(node)"
-											:to="{ name: node.to } ?? ''"
+											:to="{ name: node.to, params: item.params } ?? ''"
 											class="ui-sidebar-link -sub"
 											@click="toggleMenu(node)"
 											:class="{
