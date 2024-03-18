@@ -164,6 +164,10 @@
 
 	.leading-icon {
 		padding: 0 var(--s-spacing-xx-small);
+
+		&-text {
+			padding: 0 0 0 var(--s-spacing-xx-small);
+		}
 	}
 
 	.form-control {

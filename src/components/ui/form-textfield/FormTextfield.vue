@@ -11,6 +11,7 @@ const props = withDefaults(
 		leadingIcon?: string
 		trailingIcon?: string
 		labelInfo?: string
+		leadingText?: string
 		trailingText?: string
 		state?: boolean
 		invalidFeedback?: string
@@ -111,6 +112,7 @@ const onClear = () => {
 		:id="id"
 		:leadingIcon="leadingIcon"
 		:trailingIcon="trailingIcon"
+		:leading-text="leadingText"
 		:trailingText="trailingText"
 		:label="label"
 		:loading="loading"

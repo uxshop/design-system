@@ -9,6 +9,7 @@ export interface FormWrapperProps {
 	leadingIcon?: string
 	trailingIcon?: string
 	labelInfo?: string
+	leadingText?: string
 	trailingText?: string
 	state?: boolean
 	loading?: boolean
@@ -73,6 +74,7 @@ const inputValidation = computed(() => (props.state === true ? '-valid' : props.
 		<div class="ui-form-wrapper-main">
 			<div class="form-wrapper-content-item form-wrapper-content-bx">
 				<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" :size="20" />
+				<span class="leading-icon-text" v-if="leadingText">{{ leadingText }}</span>
 				<slot />
 
 				<div class="form-wrapper-notched">
