@@ -28,7 +28,6 @@
 	@include mobile {
 		grid-template-columns: 1fr;
 
-
 		.ui-card {
 			border-radius: var(--border-bottom);
 		}
@@ -54,10 +53,16 @@
 		}
 	}
 
-  &.-horizontal {
-    grid-template-columns: 1fr;
-  }
+	&.-horizontal {
+		grid-template-columns: 1fr;
+		.ui-card {
+			border-radius: var(--border-bottom);
+		}
 
+		img {
+			border-radius: var(--border-top);
+		}
+	}
 
 	iframe {
 		display: block;
@@ -95,4 +100,3 @@
 		min-height: 250px;
 	}
 }
-
