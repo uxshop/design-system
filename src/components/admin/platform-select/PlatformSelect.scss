@@ -4,6 +4,7 @@
 	border-radius: var(--s-border-radius-small);
 	border: var(--s-border-light);
 	gap: var(--s-spacing-x-small);
+	width: 100%;
 	cursor: pointer;
 	align-items: center;
 	background-color: var(--s-color-fill-default);
@@ -12,6 +13,12 @@
 	&:hover {
 		background-color: var(--s-color-fill-default-hover);
 	}
+
+	.logo-container {
+		display: flex;
+		align-items: center;
+	}
+
 	.plaform-container {
 		display: flex;
 		flex-direction: column;
