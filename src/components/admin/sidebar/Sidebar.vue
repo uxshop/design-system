@@ -58,7 +58,7 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 		<div class="ui-sidebar-wrapper">
 			<div class="ui-sidebar-container">
 				<div class="ui-sidebar-content">
-					<div v-if="haveSlot('top-content')" class="ui-sidebar-nav -vertial-padding">
+					<div v-if="haveSlot('top-content')" class="ui-sidebar-nav -vertical-padding">
 						<slot name="top-content" />
 					</div>
 					<div v-if="haveSlot('logo') || haveSlot('select-button')" class="ui-sidebar-nav">
