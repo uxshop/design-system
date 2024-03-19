@@ -4,6 +4,11 @@ import Modal from '../../ui/modal/Modal.vue'
 import SelectItemCard from '../../ui/select-item-card/SelectItemCard.vue'
 import type { IPlatform } from './PlatformSelectTypes'
 
+withDefaults(defineProps<{ title?: string; caption?: string }>(), {
+	title: 'O que você gostaria de gerenciar?',
+	caption: 'Selecione o módulo abaixo e tenha acesso a novos recursos.'
+})
+
 const isOpen = ref(false)
 const platforms = ref<IPlatform[]>([])
 
@@ -26,11 +31,7 @@ defineExpose({ open, close })
 </script>
 
 <template>
-	<Modal
-		class="modal-container"
-		v-model="isOpen"
-		title="O que você gostaria de gerenciar?"
-		caption="Selecione o módulo abaixo e tenha acesso a novos recursos.">
+	<Modal class="modal-container" v-model="isOpen" :title="title" :caption="caption">
 		<div class="items-container">
 			<SelectItemCard
 				v-for="item in platforms"

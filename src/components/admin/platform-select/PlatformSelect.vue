@@ -7,7 +7,15 @@ import type { Item } from 'choices.js'
 
 export type { IPlatform } from './PlatformSelectTypes'
 
-const props = defineProps<{ organization: string; platform: string; platformsList: IPlatform[] }>()
+interface PlatformSelectProps {
+	organization: string
+	platform: string
+	platformsList: IPlatform[]
+	modalConfig?: { title: string; caption: string }
+}
+
+const props = defineProps<PlatformSelectProps>()
+
 const emits = defineEmits(['change:platform'])
 
 const platformSelectModalRef = ref<InstanceType<typeof PlatformSelectModal>>()
@@ -36,7 +44,11 @@ const openSelectModal = () => {
 			<Icon name="expand_more"></Icon>
 		</div>
 	</div>
-	<PlatformSelectModal @on-chosen-platform="onChosenPlatform" ref="platformSelectModalRef" />
+	<PlatformSelectModal
+		@on-chosen-platform="onChosenPlatform"
+		ref="platformSelectModalRef"
+		:title="modalConfig?.title"
+		:caption="modalConfig?.caption" />
 </template>
 
 <style lang="scss">
