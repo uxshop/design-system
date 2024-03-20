@@ -17,6 +17,9 @@
 	.logo-container {
 		display: flex;
 		align-items: center;
+		padding: var(--s-spacing-nano);
+		background-color: var(--s-color-fill-highlight);
+		border-radius: var(--s-border-radius-small);
 	}
 
 	.plaform-container {

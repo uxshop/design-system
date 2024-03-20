@@ -33,7 +33,7 @@ const openSelectModal = () => {
 <template>
 	<div class="platform-select-container" @click="openSelectModal">
 		<div class="logo-container">
-			<slot name="logo" />
+			<slot name="logo-icon" />
 		</div>
 		<div class="plaform-container">
 			<span>{{ organization }}</span>

@@ -40,7 +40,7 @@ export const Default: Story = {
 		template: `
     <div style="max-width:350px">
       <PlatformSelect v-bind="args"  >
-        <template #logo>
+        <template #logo-icon>
             <img width="100%" src="./logo.svg"/>
         </template>
       </PlatformSelect>
