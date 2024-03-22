@@ -1,0 +1,28 @@
+@import 'design-system/src/scss/theme.scss';
+@import 'design-system/src/scss/mixins';
+
+
+
+body {
+  // --s-border-radius-small: 100px;
+  // --s-color-fill-success: #7B9B0E;
+
+  background-color: var(--s-color-background-default);
+  font-size: var(--s-font-size-base);
+  font-weight: var(--s-font-weight-regular);
+  font-family: var(--font-family);
+  text-align: left;
+  overflow-y: auto;
+}
+
+.wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+
+
