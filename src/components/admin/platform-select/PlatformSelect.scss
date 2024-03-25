@@ -1,0 +1,43 @@
+.platform-select-container {
+	display: flex;
+	padding: var(--s-spacing-x-small);
+	border-radius: var(--s-border-radius-small);
+	border: var(--s-border-light);
+	gap: var(--s-spacing-x-small);
+	width: 100%;
+	cursor: pointer;
+	align-items: center;
+	background-color: var(--s-color-fill-default);
+
+	transition: background-color var(--s-motion-duration-default);
+	&:hover {
+		background-color: var(--s-color-fill-default-hover);
+	}
+
+	.logo-container {
+		display: flex;
+		align-items: center;
+		padding: var(--s-spacing-nano);
+		background-color: var(--s-color-fill-highlight);
+		border-radius: var(--s-border-radius-small);
+
+		.image {
+			max-width: 30px;
+		}
+	}
+
+	.plaform-container {
+		display: flex;
+		flex-direction: column;
+		color: var(--s-color-content-light);
+		.platform-name {
+			color: var(--s-color-content-default);
+			font: var(--s-typography-paragraph-strong);
+		}
+	}
+
+	.icon-select-container {
+		display: flex;
+		flex-direction: column;
+	}
+}

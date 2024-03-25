@@ -14,6 +14,7 @@ const meta = {
 		inner: false,
 		noCloseOnBackdrop: false,
 		scrollable: true,
+		hideClose: false,
 		show: true,
 		size: 'md',
 		title: 'Modal title',
