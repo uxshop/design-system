@@ -7,6 +7,7 @@ defineProps<{ name: string; description?: string; icon?: string }>()
 <template>
 	<div class="select-item-card-container">
 		<div class="info-container">
+			<slot name="leftImage"> </slot>
 			<div v-if="!!icon" class="icon-container">
 				<Icon :name="icon" />
 			</div>
