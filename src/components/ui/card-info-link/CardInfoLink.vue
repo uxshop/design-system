@@ -2,7 +2,7 @@
 import Link from '../link/Link.vue'
 import Icon from '../icon/Icon.vue'
 
-export interface CardInfoLinkProps {
+export interface ICardInfoLinkProps {
 	iconName: string
 	title?: string
 	description?: string
@@ -12,7 +12,7 @@ export interface CardInfoLinkProps {
 	routeName?: string
 }
 
-const props = withDefaults(defineProps<CardInfoLinkProps>(), {
+const props = withDefaults(defineProps<ICardInfoLinkProps>(), {
 	linkLabel: 'Acessar'
 })
 
