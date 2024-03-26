@@ -108,4 +108,5 @@ export { default as SelectItemCard } from './components/ui/select-item-card/Sele
 export { default as MediaCard } from './components/admin/media-card/MediaCard.vue'
 export { default as UserProfileCard } from './components/admin/user-profile-card/UserProfileCard.vue'
 export { default as UserButton } from './components/admin/user-profile-card/partials/UserButton.vue'
+export { default as HomeBar } from './components/admin/home-bar/HomeBar.vue'
 export { default as QuickSearch, type IQuickSearchFormValue } from './components/admin/quick-search/QuickSearch.vue'
