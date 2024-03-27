@@ -1,9 +1,21 @@
 {
 	"name": "design-system",
-	"version": "0.0.1",
-	"main": "src/main.ts",
+	"version": "3.1.0",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/design-system.umd.cjs",
+  "module": "./dist/design-system.js",
+  "exports": {
+    ".": {
+      "import": "./dist/design-system.js",
+      "require": "./dist/design-system.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "types": "./dist/index.d.ts",
 	"scripts": {
 		"dev": "vite",
+    "build": "vite build && vue-tsc --noEmit",
 		"preview": "vite preview --port 5050",
 		"test:unit": "vitest --environment jsdom",
 		"test:e2e": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress open'",
@@ -13,7 +25,8 @@
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
 		"prepare": "husky install",
 		"storybook": "node ./.storybook/helpers/parse-tokens.js && storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"build-storybook": "storybook build",
+    "postinstall": "vite build && vue-tsc --noEmit"
 	},
 	"dependencies": {
 		"@codemirror/basic-setup": "^0.19.1",
