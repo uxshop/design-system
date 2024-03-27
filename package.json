@@ -25,8 +25,7 @@
 		"lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
 		"prepare": "husky install",
 		"storybook": "node ./.storybook/helpers/parse-tokens.js && storybook dev -p 6006",
-		"build-storybook": "storybook build",
-    "postinstall": "vite build && vue-tsc --noEmit"
+		"build-storybook": "storybook build"
 	},
 	"dependencies": {
 		"@codemirror/basic-setup": "^0.19.1",
