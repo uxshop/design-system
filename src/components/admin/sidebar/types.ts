@@ -24,6 +24,7 @@ export interface SidebarMobileMenu {
 	title: string
 	type: SideBarItemType
 	to?: string
+	params?: any
 }
 
 export type SideBarItemType = 'logo' | 'node' | 'footer' | 'action' | string
