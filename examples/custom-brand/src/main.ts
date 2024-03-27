@@ -1,4 +1,4 @@
-import { DS } from 'design-system/src/setup'
+import { DS } from 'design-system'
 import { createApp } from 'vue'
 
 import App from './App.vue'

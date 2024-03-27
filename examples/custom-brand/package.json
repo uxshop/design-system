@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "design-system": "https://github.com/uxshop/design-system#3.0.2",
+    "design-system": "https://github.com/uxshop/design-system#feature/examples-ds",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Card from 'design-system/src/components/ui/card/Card.vue'
-import CardTitle from 'design-system/src/components/ui/card/CardTitle.vue'
-import TextStyle from 'design-system/src/components/ui/text-style/TextStyle.vue'
-import FormTextfield from 'design-system/src/components/ui/form-textfield/FormTextfield.vue'
-import FormLayoutItem from 'design-system/src/components/ui/form-layout/FormLayoutItem.vue'
-import Button from 'design-system/src/components/ui/button/Button.vue'
+import {Card} from 'design-system'
+import {CardTitle} from 'design-system'
+import {TextStyle} from 'design-system'
+import {FormTextfield} from 'design-system'
+import {FormLayoutItem} from 'design-system'
+import {Button} from 'design-system'
 </script>
 
 <template>
