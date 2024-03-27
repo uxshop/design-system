@@ -2,6 +2,7 @@ export interface SideBarItem {
 	name: string
 	isNew?: boolean
 	to?: string
+	params?: any
 	href?: string
 	key?: string
 	isKeyActive?: boolean
@@ -23,6 +24,7 @@ export interface SidebarMobileMenu {
 	title: string
 	type: SideBarItemType
 	to?: string
+	params?: any
 }
 
 export type SideBarItemType = 'logo' | 'node' | 'footer' | 'action' | string

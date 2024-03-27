@@ -14,6 +14,7 @@ const props = defineProps<{
 	modelValue?: boolean
 	noCloseOnBackdrop?: boolean
 	params?: Record<string, unknown>
+	hideClose?: boolean
 	scrollable?: boolean
 	show?: boolean
 	size?: Size
@@ -26,7 +27,6 @@ const emit = defineEmits(['update:modelValue', 'close', 'open'])
 const slots = useSlots()
 const showDialog = ref(false)
 const classList = ref<string[]>([])
-const currentTitle = ref(props.title)
 const style = ref<{
 	maxWidth?: string
 }>({})
@@ -105,13 +105,18 @@ watchEffect(() => {
 				<div class="ui-modal-content">
 					<div class="ui-modal-header" v-if="!hideHeader">
 						<div class="ui-modal-header-wrapper">
-							<h4 class="ui-modal-title">
-								{{ currentTitle }}
-							</h4>
+							<h4 class="ui-modal-title">{{ title }}</h4>
 							<span v-if="caption" class="ui-modal-caption"> {{ caption }}</span>
 						</div>
 
-						<IconButton class="ui-modal-close" id="btn-close" @click="close" size="md" variant="plain" icon="close" />
+						<IconButton
+							v-if="!hideClose"
+							class="ui-modal-close"
+							id="btn-close"
+							@click="close"
+							size="md"
+							variant="plain"
+							icon="close" />
 					</div>
 
 					<div class="ui-modal-body">
