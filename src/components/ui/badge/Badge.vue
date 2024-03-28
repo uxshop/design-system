@@ -9,6 +9,7 @@ export interface BadgeProps {
 	label?: string | number
 	pill?: boolean
 	size?: Size
+	noWrap?: boolean
 	variant?: 'highlight' | 'warning' | 'success' | 'critical' | 'default'
 }
 
@@ -17,23 +18,12 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 	variant: 'default'
 })
 
-const badgeClassList = computed(() => {
-	let classes = []
-
-	if (props.pill) {
-		classes.push('-pill')
-	}
-
-	if (props.size) {
-		classes.push(`-size-${props.size}`)
-	}
-
-	if (props.variant) {
-		classes.push(`-variant-${props.variant}`)
-	}
-
-	return classes
-})
+const badgeClassList = computed(() => [
+	props.pill && '-pill',
+	props.size && `-size-${props.size}`,
+	props.variant && `-variant-${props.variant}`,
+	props.noWrap && '-no-wrap'
+])
 </script>
 
 <template>
