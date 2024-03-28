@@ -1,21 +1,23 @@
 {
 	"name": "design-system",
 	"version": "3.1.0",
-  "type": "module",
-  "files": ["dist"],
-  "main": "./dist/design-system.umd.cjs",
-  "module": "./dist/design-system.js",
-  "exports": {
-    ".": {
-      "import": "./dist/design-system.js",
-      "require": "./dist/design-system.umd.cjs"
-    },
-    "./style.css": "./dist/style.css"
-  },
-  "types": "./dist/index.d.ts",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/design-system.umd.cjs",
+	"module": "./dist/design-system.js",
+	"exports": {
+		".": {
+			"import": "./dist/design-system.js",
+			"require": "./dist/design-system.umd.cjs"
+		},
+		"./style.css": "./dist/style.css"
+	},
+	"types": "./dist/index.d.ts",
 	"scripts": {
 		"dev": "vite",
-    "build": "vite build && vue-tsc --noEmit",
+		"build": "vite build && vue-tsc --emitDeclarationOnly",
 		"preview": "vite preview --port 5050",
 		"test:unit": "vitest --environment jsdom",
 		"test:e2e": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress open'",
@@ -96,13 +98,14 @@
 		"storybook-design-token": "3.0.0-beta.7",
 		"typescript": "~5.1.6",
 		"vite": "^4.4.9",
+		"vite-plugin-dts": "^3.8.1",
 		"vitest": "^0.34.2",
 		"vue": "^3.2.47",
 		"vue-loader": "^16.8.3",
 		"vue-tsc": "^1.8.8"
 	},
-  "peerDependencies": {
-    "vite": "^4.4.9",
-    "vue-tsc": "^1.8.8"
-  }
+	"peerDependencies": {
+		"vite": "^4.4.9",
+		"vue-tsc": "^1.8.8"
+	}
 }

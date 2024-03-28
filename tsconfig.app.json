@@ -13,6 +13,10 @@
     "composite": true,
     "allowJs": true,
     "baseUrl": ".",
-    "paths": {}
+    "outDir": "dist",
+    "declaration": true,
+    "noEmit": false,
+    "paths": {},
+
   }
 }

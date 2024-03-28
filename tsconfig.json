@@ -3,9 +3,14 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "preserve",
-    "allowJs": true
+    "allowJs": true,
+    "outDir": "dist",
+    "noEmit": false,
+    "declaration": true
   },
   "exclude": [
+    "src/App.vue",
+    "src/main.ts",
     "src/**/__tests__/*",
     "dist"
   ],

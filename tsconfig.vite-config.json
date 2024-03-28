@@ -6,6 +6,9 @@
   ],
   "compilerOptions": {
     "composite": true,
+    "outDir": "dist",
+    "noEmit": false,
+    "declaration": true,
     "types": ["node", "vitest"]
   }
 }
