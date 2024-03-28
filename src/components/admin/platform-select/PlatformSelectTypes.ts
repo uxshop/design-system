@@ -1,6 +1,8 @@
+import type { IconType } from 'src/components/ui/icon/types'
+
 export interface IPlatform {
 	name: string
 	description: string
-	icon?: string
+	icon?: IconType
 	url: string
 }
