@@ -1,10 +1,10 @@
 @import '../../../scss/mixins.scss';
 
 .ui-media-card {
-	--border-bottom: 0 0 var(--s-border-radius-small) var(--s-border-radius-small);
-	--border-top: var(--s-border-radius-small) var(--s-border-radius-small) 0 0;
-	--border-left: var(--s-border-radius-small) 0 0 var(--s-border-radius-small);
-	--border-right: 0 var(--s-border-radius-small) var(--s-border-radius-small) 0;
+	--border-bottom: 0 0 var(--s-border-radius-medium) var(--s-border-radius-medium);
+	--border-top: var(--s-border-radius-medium) var(--s-border-radius-medium) 0 0;
+	--border-left: var(--s-border-radius-medium) 0 0 var(--s-border-radius-medium);
+	--border-right: 0 var(--s-border-radius-medium) var(--s-border-radius-medium) 0;
 
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -53,7 +53,7 @@
 		}
 	}
 
-	&.-horizontal {
+	&.-vertical {
 		grid-template-columns: 1fr;
 		.ui-card {
 			border-radius: var(--border-bottom);
@@ -88,7 +88,7 @@
 	&-info {
 		display: flex;
 		flex-direction: column;
-    justify-content: space-between;
+		justify-content: space-between;
 		height: 100%;
 
 		&-text {
