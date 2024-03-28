@@ -1,4 +1,4 @@
-import type { Target, Variant } from './Types'
+import type { Size, Target, Variant } from './Types'
 
 export interface IAction {
 	leadingIcon?: string
@@ -11,4 +11,5 @@ export interface IAction {
 	to?: any
 	target?: Target
 	class?: string
+  size?: Size
 }
