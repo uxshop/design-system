@@ -28,6 +28,7 @@ const iconStyleList = computed(() => {
 	}
 
 	if (isDSIcon.value) {
+		delete styles.fontSize
 		styles.width = props.size + 'px'
 	}
 
