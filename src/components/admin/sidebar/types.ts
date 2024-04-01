@@ -22,7 +22,7 @@ export interface SideBarItem {
 }
 
 export interface SidebarMobileMenu {
-	icon: string
+	icon: IconType
 	title: string
 	type: SideBarItemType
 	to?: string
