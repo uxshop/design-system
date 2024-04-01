@@ -45,7 +45,7 @@ const mediaCardClasses = computed(() => {
 			<Icon name="play_arrow" @click="openModal = !openModal" />
 		</div>
 		<div v-else class="ui-media-card-image" :style="customMediaStyle">
-			<a :href="imageHref" target="_blank">
+			<a :href="imageHref" :target="imageTarget">
 				<img :src="image" />
 			</a>
 		</div>
