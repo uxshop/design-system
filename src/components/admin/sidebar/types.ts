@@ -1,3 +1,5 @@
+import type { IconType } from 'src/components/ui/icon/types'
+
 export interface SideBarItem {
 	name: string
 	isNew?: boolean
@@ -8,7 +10,7 @@ export interface SideBarItem {
 	isKeyActive?: boolean
 	permissions?: string
 	section?: string
-	icon?: string
+	icon?: IconType
 	caption?: string
 	nodes?: SideBarItem[]
 	active?: boolean
@@ -20,7 +22,7 @@ export interface SideBarItem {
 }
 
 export interface SidebarMobileMenu {
-	icon: string
+	icon: IconType
 	title: string
 	type: SideBarItemType
 	to?: string
