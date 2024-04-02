@@ -15,16 +15,16 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 	variant: 'default'
 })
 
-const badgeClasses = computed(() => {
-	return [
+const badgeClassList = computed(() => {
+	const badgeClasses = [
 		props.pill && '-pill',
 		props.size && `-size-${props.size}`,
 		props.variant && `-variant-${props.variant}`,
 		props.noWrap && '-no-wrap'
 	]
-})
 
-const badgeClassList = badgeClasses.value.filter((badgeClass) => badgeClass)
+	return badgeClasses.filter((badgeClass) => badgeClass)
+})
 </script>
 
 <template>
