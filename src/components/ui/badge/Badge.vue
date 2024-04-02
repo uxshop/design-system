@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Size, Variant } from '../../../types/Types'
-
-type BadgeSize = Size
-type BadgeVariant = Variant
+import type { Size } from '../../../types/Types'
 
 export interface BadgeProps {
 	label?: string | number
