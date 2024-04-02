@@ -17,7 +17,6 @@ $columns: 12;
 	width: auto;
 	max-width: 100%;
 	padding: 0 calc(var(--s-spacing-x-small) * 0.5);
-	// margin-top: var(--grid-gutter-width);
 }
 
 @for $i from 1 through $columns {
@@ -45,8 +44,6 @@ $columns: 12;
 		@include mobile {
 			flex: 0 0 calc(100% / (12 / $i));
 			min-width: calc(100% / (12 / $i));
-			// flex: 0 0 100%;
-			// max-width: 100%;
 		}
 	}
 
