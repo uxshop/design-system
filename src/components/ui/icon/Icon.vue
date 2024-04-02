@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<IconProps>(), {
 	size: 16
 })
 
-const isDSIcon = computed(() => !!props.name && props.name in DSIcons)
+const isDSIcon = computed(() => !!props.name && (props.name as DSIconsType) in DSIcons)
 
 const iconStyleList = computed(() => {
 	let styles: StyleValue = {}
@@ -37,7 +37,7 @@ const iconStyleList = computed(() => {
 </script>
 
 <template>
-	<span v-if="isDSIcon" class="ui-ds-icon" :style="iconStyleList" v-html="DSIcons[name as DSIconsType]"></span>
+	<i v-if="isDSIcon" class="ui-ds-icon" :style="iconStyleList" v-html="DSIcons[name as DSIconsType]"></i>
 	<i v-if="!isDSIcon" class="ui-icon material-symbols-outlined" :style="iconStyleList">
 		{{ name }}
 	</i>
@@ -45,6 +45,7 @@ const iconStyleList = computed(() => {
 
 <style lang="scss">
 .ui-ds-icon {
+	display: inline-block;
 	color: inherit;
 	fill: currentColor;
 }

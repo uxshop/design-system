@@ -31,3 +31,10 @@ export const Filled: Story = {
 		filled: true
 	}
 }
+
+export const DsIcons: Story = {
+	args: {
+		size: 16,
+		name: 'ds-amazon'
+	}
+}
