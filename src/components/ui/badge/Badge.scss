@@ -53,6 +53,10 @@
 		}
 	}
 
+	&.-no-wrap {
+		text-wrap: nowrap;
+	}
+
 	&.-pill {
 		border-radius: var(--s-border-radius-large);
 	}
