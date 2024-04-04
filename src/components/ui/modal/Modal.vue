@@ -106,6 +106,7 @@ watchEffect(() => {
 					<div class="ui-modal-header" v-if="!hideHeader">
 						<div class="ui-modal-header-wrapper">
 							<h4 class="ui-modal-title">{{ title }}</h4>
+							<span v-if="haveSlot('caption')" class="ui-modal-caption"> <slot name="caption" /></span>
 							<span v-if="caption" class="ui-modal-caption"> {{ caption }}</span>
 						</div>
 
