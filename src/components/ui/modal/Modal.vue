@@ -107,6 +107,7 @@ watchEffect(() => {
 						<div class="ui-modal-header-wrapper">
 							<h4 class="ui-modal-title">{{ title }}</h4>
 							<span v-if="caption" class="ui-modal-caption"> {{ caption }}</span>
+							<slot name="caption" />
 						</div>
 
 						<IconButton
