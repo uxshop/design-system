@@ -10,6 +10,8 @@ defineProps<{
 </template>
 
 <style lang="scss">
+@import '../../../scss/mixins.scss';
+
 .ui-form-layout-item {
 	display: flex;
 	gap: var(--s-spacing-x-small);
@@ -21,6 +23,10 @@ defineProps<{
 
 	+ .ui-form-layout-item {
 		margin-top: var(--s-spacing-x-small);
+
+		@include mobile {
+			flex-direction: column;
+		}
 	}
 
 	+ .ui-alert {
