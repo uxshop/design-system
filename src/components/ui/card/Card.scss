@@ -284,10 +284,6 @@
 			display: none;
 		}
 
-		.ui-button.-link {
-			margin-right: calc(var(--s-spacing-xx-small) * -1);
-		}
-
 		> button,
 		> button:hover,
 		> button:focus,
@@ -312,6 +308,7 @@
 
 		> .ui-header-content-title {
 			align-self: center;
+      width: 100%;
 
 			> .ui-card-title,
 			> span:first-child {

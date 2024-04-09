@@ -4,19 +4,27 @@ import Card from '../../ui/card/Card.vue'
 import Button from '../../ui/button/Button.vue'
 import Icon from '../../ui/icon/Icon.vue'
 import Modal from '../../ui/modal/Modal.vue'
-import type { IAction } from 'src/types'
+import type { IAction } from '../../../types/IAction'
 
-const props = defineProps<{
-	title: string
-	text: string
-	video?: string
-	image?: string
-	imageHref?: string
-	inverse?: boolean
-	buttons?: IAction[]
-	vertical?: boolean
-	maxMediaHeight?: number
-}>()
+const props = withDefaults(
+	defineProps<{
+		title: string
+		text: string
+		video?: string
+		image?: string
+		imageHref?: string
+		imageTarget?: '_blank' | '_self'
+		inverse?: boolean
+		buttons?: IAction[]
+		vertical?: boolean
+		maxMediaHeight?: number
+	}>(),
+	{
+		imageTarget: '_self',
+		inverse: false,
+		vertical: false
+	}
+)
 
 const openModal = ref<boolean>(false)
 const customMediaStyle = computed<{ maxHeight?: string }>(() => {
@@ -37,7 +45,7 @@ const mediaCardClasses = computed(() => {
 			<Icon name="play_arrow" @click="openModal = !openModal" />
 		</div>
 		<div v-else class="ui-media-card-image" :style="customMediaStyle">
-			<a :href="imageHref" target="_blank">
+			<a :href="imageHref" :target="imageTarget">
 				<img :src="image" />
 			</a>
 		</div>

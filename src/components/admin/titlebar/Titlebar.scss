@@ -11,14 +11,19 @@
 		align-items: center;
 		gap: var(--s-spacing-x-small);
 		color: var(--s-color-content-default);
+		overflow: hidden;
+		padding-right: var(--s-spacing-x-small);
 
 		& &-title {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
+
 			&-text {
 				font: var(--s-typography-heading-large);
 				margin: 0;
+				text-overflow: ellipsis;
+				overflow: hidden;
 			}
 
 			&.-mobile {
@@ -52,12 +57,9 @@
 
 		&-content {
 			flex: 1;
-			overflow: hidden;
 
 			&-title-text {
-				text-overflow: ellipsis;
 				white-space: nowrap;
-				overflow: hidden;
 			}
 		}
 	}

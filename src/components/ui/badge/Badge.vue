@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Size, Variant } from '../../../types/Types'
-
-type BadgeSize = Size
-type BadgeVariant = Variant
+import type { Size } from '../../../types/Types'
 
 export interface BadgeProps {
 	label?: string | number
 	pill?: boolean
 	size?: Size
+	noWrap?: boolean
 	variant?: 'highlight' | 'warning' | 'success' | 'critical' | 'default'
 }
 
@@ -18,21 +16,14 @@ const props = withDefaults(defineProps<BadgeProps>(), {
 })
 
 const badgeClassList = computed(() => {
-	let classes = []
+	const badgeClasses = [
+		props.pill && '-pill',
+		props.size && `-size-${props.size}`,
+		props.variant && `-variant-${props.variant}`,
+		props.noWrap && '-no-wrap'
+	]
 
-	if (props.pill) {
-		classes.push('-pill')
-	}
-
-	if (props.size) {
-		classes.push(`-size-${props.size}`)
-	}
-
-	if (props.variant) {
-		classes.push(`-variant-${props.variant}`)
-	}
-
-	return classes
+	return badgeClasses.filter((badgeClass) => badgeClass)
 })
 </script>
 

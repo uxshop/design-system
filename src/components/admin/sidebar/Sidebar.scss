@@ -272,10 +272,11 @@
 		}
 
 		&-text {
-			display: inline-flex;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 			border-radius: var(--s-border-radius-small);
 			padding: var(--s-spacing-quark) 0;
-			align-items: center;
 			position: relative;
 			z-index: var(--s-index-low);
 			@include move-horizontal(var(--s-motion-duration-default));
@@ -288,12 +289,14 @@
 
 		&-icon {
 			width: var(--s-spacing-small);
+			padding-right: var(--s-spacing-nano);
 			display: flex;
 			align-items: center;
 			margin-right: var(--s-spacing-quark);
 		}
 
 		&-content {
+			min-width: 0;
 			display: flex;
 			align-items: center;
 			gap: var(--s-spacing-nano);
