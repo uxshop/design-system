@@ -18,7 +18,7 @@
 	height: var(--s-spacing-x-small);
 	width: 100%;
 	position: relative;
-	border-radius: var(--s-border-radius-large);
+	border-radius: var(--s-border-radius-medium);
 
 	@include darkmode {
 		background: linear-gradient(
