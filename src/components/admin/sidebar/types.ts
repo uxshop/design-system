@@ -19,6 +19,7 @@ export interface SideBarItem {
 	last?: boolean
 	dropdown?: boolean
 	action?: () => void
+	customClass?: string
 }
 
 export interface SidebarMobileMenu {

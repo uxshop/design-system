@@ -28,6 +28,14 @@ const emit = defineEmits<{
 	(evt: 'onClickItem', type: SideBarItemType, menuItem?: SideBarItem | SidebarMobileMenu): void
 }>()
 
+const getClassMenuItem = (itemCustomClass?: string) => {
+	const defaultClass = 'ui-sidebar-link'
+	if (itemCustomClass) {
+		return `${defaultClass} ${itemCustomClass}`
+	}
+	return defaultClass
+}
+
 const toggleMenu = (item: any) => {
 	if (menu) {
 		menu?.toggle()
@@ -61,7 +69,7 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 					<div v-if="haveSlot('top-content')" class="ui-sidebar-nav -vertical-padding">
 						<slot name="top-content" />
 					</div>
-					<div v-if="haveSlot('logo') || haveSlot('select-button')" class="ui-sidebar-nav">
+					<div v-if="haveSlot('logo') || haveSlot('select-button')" class="ui-sidebar-nav container-logo">
 						<div class="ui-sidebar-logo" @click="handleMenuClick('logo')">
 							<slot name="logo" />
 						</div>
@@ -85,11 +93,11 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 								<small v-if="item.caption" class="ui-sidebar-link-caption">{{ item.caption }}</small>
 								<component
 									:is="getTemplate(item)"
-									class="ui-sidebar-link"
 									:to="{ name: item.to, params: item.params } ?? ''"
 									:class="{
 										'-node-active': item.active,
-										'-active': item.active
+										'-active': item.active,
+										[getClassMenuItem(item.customClass)]: true
 									}"
 									activeClass="-active"
 									@click="handleMenuClick('node', item)">
