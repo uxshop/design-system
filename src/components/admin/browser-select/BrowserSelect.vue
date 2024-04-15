@@ -3,8 +3,6 @@ import { ref, watch } from 'vue'
 import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import ButtonAction from '../button-action/ButtonAction.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
-import Row from '../../ui/grid/row/Row.vue'
-import Col from '../../ui/grid/col/Col.vue'
 import Button from '../../ui/button/Button.vue'
 import Link from '../../ui/link/Link.vue'
 import BrowserSelectModal from './BrowserSelectModal.vue'
@@ -179,22 +177,24 @@ watch(
 watch(
 	() => props.modelValue,
 	(newVal) => {
-		if (newVal == selectedIds.value) {
-			return
-		}
+		if (newVal?.length || props.selectOne) {
+			if (newVal == selectedIds.value) {
+				return
+			}
 
-		if (newVal) {
-			selectedIds.value = isArray(newVal) ? newVal : [newVal]
-		} else {
-			selectedIds.value = []
-		}
+			if (newVal) {
+				selectedIds.value = isArray(newVal) ? newVal : [newVal]
+			} else {
+				selectedIds.value = []
+			}
 
-		if (!memoryList.value.length) {
-			populateList(props.list)
-		}
+			if (!memoryList.value.length) {
+				populateList(props.list)
+			}
 
-		if (props.noFetch === false) {
-			fetch()
+			if (props.noFetch === false) {
+				fetch()
+			}
 		}
 	},
 	{ deep: true, immediate: true }
@@ -216,15 +216,13 @@ defineExpose({ onClickSearch })
 		</div>
 		<div v-else>
 			<div class="ui-browser-select-input">
-				
-						<FormTextfield
-							v-model="term"
-							placeholder="Procurar..."
-							@keyup="onChangeTerm"
-							autocomplete="off"
-							:disabled="searchDisabled" />
-						<Button variant="primary" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
-
+				<FormTextfield
+					v-model="term"
+					placeholder="Procurar..."
+					@keyup="onChangeTerm"
+					autocomplete="off"
+					:disabled="searchDisabled" />
+				<Button variant="primary" @click="onClickSearch" :disabled="searchDisabled">Pesquisar</Button>
 			</div>
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
