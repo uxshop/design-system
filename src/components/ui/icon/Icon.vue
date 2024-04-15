@@ -37,9 +37,10 @@ const iconStyleList = computed(() => {
 </script>
 
 <template>
-	<i v-if="isDSIcon" class="ui-ds-icon" :style="iconStyleList" v-html="DSIcons[name as DSIconsType]"></i>
-	<i v-if="!isDSIcon" class="ui-icon material-symbols-outlined" :style="iconStyleList">
-		{{ name }}
+	<i
+		:class="{ 'ui-ds-icon': isDSIcon, 'ui-icon material-symbols-outlined': !isDSIcon }"
+		:style="iconStyleList"
+		v-html="isDSIcon ? DSIcons[name as DSIconsType] : name">
 	</i>
 </template>
 

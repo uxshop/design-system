@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { startCase } from 'lodash-es'
+
 import Icon from '../../ui/icon/Icon.vue'
 import PlatformSelectModal from './PlatformSelectModal.vue'
 import type { IPlatform } from './PlatformSelectTypes'
@@ -16,6 +18,7 @@ interface PlatformSelectProps {
 
 const props = defineProps<PlatformSelectProps>()
 
+const organizationName = computed(() => startCase(props.organization))
 const emits = defineEmits(['change:platform'])
 
 const platformSelectModalRef = ref<InstanceType<typeof PlatformSelectModal>>()
@@ -36,12 +39,11 @@ const openSelectModal = () => {
 			<slot name="logo-icon" />
 		</div>
 		<div class="plaform-container">
-			<span>{{ organization }}</span>
+			<small>{{ organizationName }}</small>
 			<span class="platform-name">{{ platform }}</span>
 		</div>
 		<div class="icon-select-container">
-			<Icon name="expand_less"></Icon>
-			<Icon name="expand_more"></Icon>
+			<Icon size="24" name="unfold_more"></Icon>
 		</div>
 	</div>
 	<PlatformSelectModal

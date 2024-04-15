@@ -30,12 +30,15 @@
 			}
 		}
 		.content-container {
+			display: flex;
+			flex-direction: column;
 			.name {
 				font: var(--s-typography-paragraph-strong);
 				margin-bottom: 0;
 			}
 			.description {
 				font: var(--s-typography-caption-small);
+				color: var(--s-color-content-light);
 			}
 		}
 	}
