@@ -33,6 +33,10 @@
 
 	&.-highlighted {
 		background-color: var(--s-color-fill-highlight);
+		.title-wrapper,
+		.-no-link {
+			color: var(--s-color-content-on-color);
+		}
 		.ui-link {
 			text-decoration: none;
 			font: var(--s-typography-heading-x-small);

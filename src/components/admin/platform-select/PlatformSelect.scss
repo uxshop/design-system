@@ -20,9 +20,10 @@
 		padding: var(--s-spacing-nano);
 		background-color: var(--s-color-fill-highlight);
 		border-radius: var(--s-border-radius-small);
-
+		width: 40px;
+		height: 40px;
 		.image {
-			max-width: 30px;
+			width: 100%;
 		}
 	}
 
@@ -38,6 +39,6 @@
 
 	.icon-select-container {
 		display: flex;
-		flex-direction: column;
+		align-items: center;
 	}
 }
