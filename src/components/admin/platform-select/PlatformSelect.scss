@@ -4,6 +4,7 @@
 	gap: var(--s-spacing-quark);
 
 	.ui-tab-item {
+		border-radius: var(--s-border-radius-small);
 		&.-active {
 			background-color: var(--s-color-fill-highlight-light);
 		}
