@@ -1,56 +1,39 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { startCase } from 'lodash-es'
-
+import { ref } from 'vue'
 import Icon from '../../ui/icon/Icon.vue'
-import PlatformSelectModal from './PlatformSelectModal.vue'
+import Tab from '../../ui/tab/Tab.vue'
+import TabItem from '../../ui/tab/TabItem.vue'
 import type { IPlatform } from './PlatformSelectTypes'
-import type { Item } from 'choices.js'
-
 export type { IPlatform } from './PlatformSelectTypes'
 
 interface PlatformSelectProps {
-	organization: string
-	platform: string
 	platformsList: IPlatform[]
-	modalConfig?: { title: string; caption: string }
 }
 
 const props = defineProps<PlatformSelectProps>()
 
-const organizationName = computed(() => startCase(props.organization))
+const tab = ref(props.platformsList.find((item) => item.active)?.key)
+
 const emits = defineEmits(['change:platform'])
 
-const platformSelectModalRef = ref<InstanceType<typeof PlatformSelectModal>>()
-
-const onChosenPlatform = (item: Item) => {
-	emits('change:platform', item)
-	platformSelectModalRef.value?.close()
-}
-
-const openSelectModal = () => {
-	platformSelectModalRef.value?.open(props.platformsList)
+const onChangeTab = (platform: IPlatform) => {
+	emits('change:platform', platform)
 }
 </script>
 
 <template>
-	<div class="platform-select-container" @click="openSelectModal">
-		<div class="logo-container">
-			<slot name="logo-icon" />
-		</div>
-		<div class="plaform-container">
-			<small>{{ organizationName }}</small>
-			<span class="platform-name">{{ platform }}</span>
-		</div>
-		<div class="icon-select-container">
-			<Icon size="24" name="unfold_more"></Icon>
-		</div>
-	</div>
-	<PlatformSelectModal
-		@on-chosen-platform="onChosenPlatform"
-		ref="platformSelectModalRef"
-		:title="modalConfig?.title"
-		:caption="modalConfig?.caption" />
+	<Tab v-model="tab" class="tab-container">
+		<TabItem
+			v-for="platform in platformsList"
+			:label="platform.name"
+			:index="platform.key"
+			@click="onChangeTab(platform)">
+			<div class="tab-item-container">
+				<Icon :name="platform.icon" />
+				<span>{{ platform.name }}</span>
+			</div>
+		</TabItem>
+	</Tab>
 </template>
 
 <style lang="scss">

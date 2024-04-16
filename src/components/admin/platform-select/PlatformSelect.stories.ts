@@ -1,18 +1,23 @@
-import PlatformSelect, { type IPlatform } from './PlatformSelect.vue'
 import type { Meta, StoryObj } from '@storybook/vue3'
+import PlatformSelect from './PlatformSelect.vue'
+import type { IPlatform } from './PlatformSelectTypes'
 
 const platforms: IPlatform[] = [
 	{
 		name: 'Loja virtual',
 		description: 'Adicione seus produtos, customize sua loja e veja seus pedidos.',
 		url: 'https://loja-virtual.bagy.com.br',
-		icon: 'storefront'
+		icon: 'storefront',
+		key: 'storefront',
+		active: true
 	},
 	{
-		name: 'Marketing',
+		name: 'Marketplace',
 		description: 'Configure campanhas do Google, Facebook e Tiktok.',
 		url: 'https://loja-virtual.bagy.com.br',
-		icon: 'campaign'
+		icon: 'hub',
+		key: 'marketplace',
+		active: true
 	}
 ]
 
@@ -21,8 +26,6 @@ const meta = {
 	component: PlatformSelect,
 	tags: ['autodocs'],
 	args: {
-		platform: 'Marketplace',
-		organization: 'Bagy',
 		platformsList: platforms
 	}
 } satisfies Meta<typeof PlatformSelect>
