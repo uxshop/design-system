@@ -87,7 +87,8 @@
 		}
 	}
 	.top-content {
-		padding: 0;
+		padding: 0 0 var(--s-spacing-x-small) 0;
+		min-height: auto;
 	}
 
 	.ui-sidebar-list {
