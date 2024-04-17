@@ -14,6 +14,7 @@ const props = defineProps<{
 	modelValue?: boolean
 	noCloseOnBackdrop?: boolean
 	params?: Record<string, unknown>
+	hideClose?: boolean
 	scrollable?: boolean
 	show?: boolean
 	size?: Size
@@ -106,9 +107,17 @@ watchEffect(() => {
 						<div class="ui-modal-header-wrapper">
 							<h4 class="ui-modal-title">{{ title }}</h4>
 							<span v-if="caption" class="ui-modal-caption"> {{ caption }}</span>
+							<slot name="caption" />
 						</div>
 
-						<IconButton class="ui-modal-close" id="btn-close" @click="close" size="md" variant="plain" icon="close" />
+						<IconButton
+							v-if="!hideClose"
+							class="ui-modal-close"
+							id="btn-close"
+							@click="close"
+							size="md"
+							variant="plain"
+							icon="close" />
 					</div>
 
 					<div class="ui-modal-body">
