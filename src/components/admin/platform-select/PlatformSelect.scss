@@ -4,6 +4,7 @@
 	gap: var(--s-spacing-quark);
 
 	.ui-tab-item {
+		flex: 1;
 		border-radius: var(--s-border-radius-small);
 		&.-active {
 			background-color: var(--s-color-fill-highlight-light);
@@ -14,5 +15,9 @@
 		flex-direction: column;
 		align-items: center;
 		gap: var(--s-spacing-quark);
+		span {
+			font-size: calc(var(--s-font-size-base) * 0.6);
+			list-style: var(--s-line-height-16);
+		}
 	}
 }
