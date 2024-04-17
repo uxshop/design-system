@@ -1,44 +1,18 @@
-.platform-select-container {
-	display: flex;
-	padding: var(--s-spacing-x-small);
-	border-radius: var(--s-border-radius-small);
-	border: var(--s-border-light);
-	gap: var(--s-spacing-x-small);
+.tab-container {
 	width: 100%;
-	cursor: pointer;
-	align-items: center;
-	background-color: var(--s-color-fill-default);
+	justify-content: center;
+	gap: var(--s-spacing-quark);
 
-	transition: background-color var(--s-motion-duration-default);
-	&:hover {
-		background-color: var(--s-color-fill-default-hover);
-	}
-
-	.logo-container {
-		display: flex;
-		align-items: center;
-		padding: var(--s-spacing-nano);
-		background-color: var(--s-color-fill-highlight);
+	.ui-tab-item {
 		border-radius: var(--s-border-radius-small);
-		width: 40px;
-		height: 40px;
-		.image {
-			width: 100%;
+		&.-active {
+			background-color: var(--s-color-fill-highlight-light);
 		}
 	}
-
-	.plaform-container {
+	.tab-item-container {
 		display: flex;
 		flex-direction: column;
-		color: var(--s-color-content-light);
-		.platform-name {
-			color: var(--s-color-content-default);
-			font: var(--s-typography-paragraph-strong);
-		}
-	}
-
-	.icon-select-container {
-		display: flex;
 		align-items: center;
+		gap: var(--s-spacing-quark);
 	}
 }
