@@ -16,19 +16,19 @@ const props = withDefaults(defineProps<SidebarHeaderProps>(), {
 	height: '40px'
 })
 
-const emits = defineEmits(['onClickQuickSearch', 'onClickLogo'])
+const emits = defineEmits(['onQuickSearchClick', 'onLogoClick'])
 
 const notificationConfig = ref(props.actionsConfig.notification)
 const quickSearchConfig = ref(props.actionsConfig.quickSearch)
 </script>
 <template>
 	<div class="sidebar-header-container">
-		<div class="logo" @click="emits('onClickLogo')">
+		<div class="logo" @click="emits('onLogoClick')">
 			<div v-if="logoSvg" v-html="logoSvg" class="boxSvg" />
 			<img v-if="logoImage" :src="logoImage" />
 		</div>
 		<div class="sidebar-header-container-icons">
-			<IconButton v-if="quickSearchConfig.show" @click="emits('onClickQuickSearch')" icon="search" variant="plain" />
+			<IconButton v-if="quickSearchConfig.show" @click="emits('onQuickSearchClick')" icon="search" variant="plain" />
 			<IconButton
 				v-if="notificationConfig.show"
 				icon="notifications"
