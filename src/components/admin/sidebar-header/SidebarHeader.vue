@@ -1,33 +1,49 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import IconButton from '../../../components/ui/icon-button/IconButton.vue'
 
 interface SidebarHeaderProps {
 	height?: string
 	logoImage?: string
 	logoSvg?: string
+	actionsConfig: {
+		notification: { show: boolean; nameClass: string }
+		quickSearch: { show: boolean }
+	}
 }
 
-withDefaults(defineProps<SidebarHeaderProps>(), {
+const props = withDefaults(defineProps<SidebarHeaderProps>(), {
 	height: '40px'
 })
 
 const emits = defineEmits(['quickSearch:submit', 'quickSearch:click', 'quickSearch:option'])
+
+const notificationConfig = ref(props.actionsConfig.notification)
+const quickSearchConfig = ref(props.actionsConfig.quickSearch)
 </script>
 <template>
-	<div class="sidebar-header-logo-container">
+	<div class="sidebar-header-container">
 		<div class="logo" scoped>
 			<div v-if="logoSvg" v-html="logoSvg" class="boxSvg" />
 			<img v-if="logoImage" :src="logoImage" />
 		</div>
-		<div class="sidebar-header-logo-container-icons">
-			<IconButton @click="emits('quickSearch:click', true)" icon="search" variant="plain" />
-			<IconButton icon="notifications" variant="plain" custom-class="ui-topbar-notification-button" />
+		<div class="sidebar-header-container-icons">
+			<IconButton
+				v-if="quickSearchConfig.show"
+				@click="emits('quickSearch:click', true)"
+				icon="search"
+				variant="plain" />
+			<IconButton
+				v-if="notificationConfig.show"
+				icon="notifications"
+				variant="plain"
+				:custom-class="notificationConfig.nameClass" />
 		</div>
 	</div>
 </template>
 
 <style lang="scss">
-.sidebar-header-logo-container {
+.sidebar-header-container {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
