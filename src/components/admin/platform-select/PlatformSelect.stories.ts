@@ -15,7 +15,16 @@ const platforms: IPlatform[] = [
 		url: 'https://loja-virtual.bagy.com.br',
 		icon: 'hub',
 		key: 'marketplace',
-		active: true
+		active: true,
+		badgeStatus: 'beta'
+	},
+	{
+		name: 'Markenting',
+		url: 'https://loja-virtual.bagy.com.br',
+		icon: 'campaign',
+		key: 'marketing',
+		active: true,
+		badgeStatus: 'comingSoon'
 	}
 ]
 
@@ -24,7 +33,10 @@ const meta = {
 	component: PlatformSelect,
 	tags: ['autodocs'],
 	args: {
-		platformsList: platforms
+		platformsList: platforms,
+		badgeConfig: {
+			beta: { label: 'Beta alterado', variant: 'highlight' }
+		}
 	}
 } satisfies Meta<typeof PlatformSelect>
 
