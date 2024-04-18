@@ -6,10 +6,10 @@
 	justify-content: center;
 	overflow: hidden;
 	aspect-ratio: 1;
-	border-radius: var(--s-border-small);
+	border-radius: var(--s-border-radius-small);
 
 	&.-is-rounded {
-		border-radius: var(--s-border-pill);
+		border-radius: var(--s-border-radius-pill);
 	}
 
 	&-icon {
