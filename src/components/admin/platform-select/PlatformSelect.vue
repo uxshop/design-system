@@ -30,23 +30,21 @@ const onChangeTab = (platform: IPlatform) => {
 	emits('change:platform', platform)
 }
 
-const hasBadge = (platform: IPlatform) => !!platform.launchStatus
-
-const isDisabled = (platform: IPlatform) => hasBadge(platform) && platform.launchStatus === 'comingSoon'
+const hasBadge = (platform: IPlatform) => !!platform.badgeStatus
 </script>
 
 <template>
 	<Tab v-model="tab" class="tab-container">
 		<TabItem
-			class="tab-item-btn"
-			:class="{ '-item-disabled': isDisabled(platform) }"
 			v-for="platform in platformsList"
+			class="tab-item-btn"
+			:class="{ '-item-disabled': platform.disabled }"
 			:label="platform.name"
 			:index="platform.key"
 			@click="onChangeTab(platform)">
 			<div class="tab-item-container">
 				<div class="badge-container" v-if="hasBadge(platform)">
-					<Badge pill v-bind="badgeConfigMerged[platform.launchStatus!]" />
+					<Badge pill v-bind="badgeConfigMerged[platform.badgeStatus!]" />
 				</div>
 				<Icon :name="platform.icon" />
 				<span class="name">{{ platform.name }}</span>

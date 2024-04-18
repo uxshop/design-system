@@ -16,7 +16,7 @@ const platforms: IPlatform[] = [
 		icon: 'hub',
 		key: 'marketplace',
 		active: true,
-		launchStatus: 'beta'
+		badgeStatus: 'beta'
 	},
 	{
 		name: 'Markenting',
@@ -24,7 +24,7 @@ const platforms: IPlatform[] = [
 		icon: 'campaign',
 		key: 'marketing',
 		active: true,
-		launchStatus: 'comingSoon'
+		badgeStatus: 'comingSoon'
 	}
 ]
 

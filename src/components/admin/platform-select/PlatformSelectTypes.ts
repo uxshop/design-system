@@ -1,9 +1,9 @@
 import type { BadgeProps } from '../../ui/badge/Badge.vue'
 import type { IconType } from '../../ui/icon/types'
 
-export type PlatformLaunchStatusType = 'beta' | 'comingSoon'
+export type BadgeStatusType = 'beta' | 'comingSoon'
 
-export type BadgeConfigType = { [key in PlatformLaunchStatusType]: BadgeProps }
+export type BadgeConfigType = { [key in BadgeStatusType]: BadgeProps }
 
 export interface IPlatform {
 	name: string
@@ -11,5 +11,6 @@ export interface IPlatform {
 	active: boolean
 	icon?: IconType
 	url: string
-	launchStatus?: PlatformLaunchStatusType
+	badgeStatus?: BadgeStatusType
+	disabled?: boolean
 }
