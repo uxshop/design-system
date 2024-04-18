@@ -2,8 +2,12 @@
 	width: 100%;
 	justify-content: center;
 	gap: var(--s-spacing-quark);
-
+	padding: 0 var(--s-spacing-x-small);
 	.ui-tab-item {
+		flex: 1;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: var(--s-spacing-nano);
 		border-radius: var(--s-border-radius-small);
 		&.-active {
 			background-color: var(--s-color-fill-highlight-light);
@@ -13,6 +17,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--s-spacing-quark);
+		span {
+			font-size: calc(var(--s-font-size-base) * 0.7);
+			list-style: var(--s-line-height-16);
+		}
 	}
 }
