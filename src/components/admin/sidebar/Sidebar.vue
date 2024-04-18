@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { inject, useSlots } from 'vue'
+import SidebarMobile from './SidebarMobile.vue'
 import Icon from '../../ui/icon/Icon.vue'
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue'
-import SidebarMobile from './SidebarMobile.vue'
+import Badge from '../../ui/badge/Badge.vue'
 import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types'
 
 export interface MenuProviderInterface {
@@ -100,11 +101,19 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 										<span class="ui-sidebar-link-text -title">
 											{{ item.name }}
 										</span>
+										<Badge
+											class="badge-soon-container"
+											v-if="item.isComingSoon"
+											no-wrap
+											pill
+											variant="default"
+											label="Em breve" />
 									</div>
 									<div class="ui-sidebar-link-right-icons">
 										<div class="news-indicator" v-if="item.isNew">
 											<NewsIndicator />
 										</div>
+
 										<Icon v-if="item.nodes?.length" class="icon-arrow" name="expand_more" />
 									</div>
 								</component>
@@ -125,6 +134,13 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 											</span>
 											<div class="ui-sidebar-link-content">
 												<span class="ui-sidebar-link-text"> {{ node.name }} </span>
+												<Badge
+													class="badge-soon-container"
+													v-if="node.isComingSoon"
+													pill
+													variant="default"
+													no-wrap
+													label="Em breve" />
 												<NewsIndicator v-if="node.isNew" label="Novo" />
 											</div>
 										</component>
