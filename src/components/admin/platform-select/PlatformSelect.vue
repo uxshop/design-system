@@ -15,7 +15,7 @@ interface PlatformSelectProps {
 
 const badgeConfigDefault: BadgeConfigType = {
 	beta: { variant: 'highlight', label: 'Beta' },
-	commingSoon: { variant: 'default', label: 'Em Breve' }
+	comingSoon: { variant: 'default', label: 'Em Breve' }
 }
 
 const props = defineProps<PlatformSelectProps>()
@@ -32,7 +32,7 @@ const onChangeTab = (platform: IPlatform) => {
 
 const hasBadge = (platform: IPlatform) => !!platform.launchStatus
 
-const isDisabled = (platform: IPlatform) => hasBadge(platform) && platform.launchStatus === 'commingSoon'
+const isDisabled = (platform: IPlatform) => hasBadge(platform) && platform.launchStatus === 'comingSoon'
 </script>
 
 <template>

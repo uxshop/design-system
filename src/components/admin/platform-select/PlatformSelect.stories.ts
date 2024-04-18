@@ -24,7 +24,7 @@ const platforms: IPlatform[] = [
 		icon: 'campaign',
 		key: 'marketing',
 		active: true,
-		launchStatus: 'commingSoon'
+		launchStatus: 'comingSoon'
 	}
 ]
 
