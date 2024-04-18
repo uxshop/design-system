@@ -15,7 +15,7 @@ interface PlatformSelectProps {
 
 const badgeConfigDefault: BadgeConfigType = {
 	beta: { variant: 'highlight', label: 'Beta' },
-	comingSoon: { variant: 'default', label: 'Em Breve' }
+	comingSoon: { variant: 'default', label: 'Em breve' }
 }
 
 const props = defineProps<PlatformSelectProps>()
