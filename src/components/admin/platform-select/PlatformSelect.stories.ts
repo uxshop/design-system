@@ -5,7 +5,6 @@ import type { IPlatform } from './PlatformSelectTypes'
 const platforms: IPlatform[] = [
 	{
 		name: 'Loja virtual',
-		description: 'Adicione seus produtos, customize sua loja e veja seus pedidos.',
 		url: 'https://loja-virtual.bagy.com.br',
 		icon: 'storefront',
 		key: 'storefront',
@@ -13,11 +12,19 @@ const platforms: IPlatform[] = [
 	},
 	{
 		name: 'Marketplace',
-		description: 'Configure campanhas do Google, Facebook e Tiktok.',
 		url: 'https://loja-virtual.bagy.com.br',
 		icon: 'hub',
 		key: 'marketplace',
-		active: true
+		active: true,
+		badgeStatus: 'beta'
+	},
+	{
+		name: 'Markenting',
+		url: 'https://loja-virtual.bagy.com.br',
+		icon: 'campaign',
+		key: 'marketing',
+		active: true,
+		badgeStatus: 'comingSoon'
 	}
 ]
 
@@ -26,7 +33,10 @@ const meta = {
 	component: PlatformSelect,
 	tags: ['autodocs'],
 	args: {
-		platformsList: platforms
+		platformsList: platforms,
+		badgeConfig: {
+			beta: { label: 'Beta alterado', variant: 'highlight' }
+		}
 	}
 } satisfies Meta<typeof PlatformSelect>
 
