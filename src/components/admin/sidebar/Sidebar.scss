@@ -204,6 +204,11 @@
 		text-decoration: none;
 		height: var(--s-spacing-medium);
 
+		.badge-soon-container {
+			margin-left: var(--s-spacing-x-small);
+			border-radius: var(--s-border-radius-small);
+		}
+
 		&-caption {
 			margin: 0 var(--s-spacing-nano);
 			font: var(--s-typography-caption-medium);
