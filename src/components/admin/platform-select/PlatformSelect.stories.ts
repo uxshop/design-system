@@ -5,7 +5,6 @@ import type { IPlatform } from './PlatformSelectTypes'
 const platforms: IPlatform[] = [
 	{
 		name: 'Loja virtual',
-		description: 'Adicione seus produtos, customize sua loja e veja seus pedidos.',
 		url: 'https://loja-virtual.bagy.com.br',
 		icon: 'storefront',
 		key: 'storefront',
@@ -13,7 +12,6 @@ const platforms: IPlatform[] = [
 	},
 	{
 		name: 'Marketplace',
-		description: 'Configure campanhas do Google, Facebook e Tiktok.',
 		url: 'https://loja-virtual.bagy.com.br',
 		icon: 'hub',
 		key: 'marketplace',
