@@ -13,7 +13,7 @@ interface SidebarHeaderProps {
 }
 
 const props = withDefaults(defineProps<SidebarHeaderProps>(), {
-	height: '40px'
+	height: '32px'
 })
 
 const emits = defineEmits(['onQuickSearchClick', 'onLogoClick'])
@@ -48,7 +48,6 @@ const quickSearchConfig = ref(props.actionsConfig.quickSearch)
 	.logo {
 		height: v-bind(height);
 		cursor: pointer;
-
 		img {
 			height: 100%;
 			display: block;
