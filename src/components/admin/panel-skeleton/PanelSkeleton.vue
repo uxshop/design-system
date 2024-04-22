@@ -16,7 +16,7 @@ const props = withDefaults(
 
 const delayInSeconds = computed(() => `${props.delayMiliseconds / 1000}s`)
 
-const isVisible = ref<boolean>(true)
+const isVisible = ref<boolean>(false)
 
 watch(
 	() => props.isLoading,
@@ -25,8 +25,11 @@ watch(
 			setTimeout(() => {
 				isVisible.value = false
 			}, props.delayMiliseconds)
+		} else {
+			isVisible.value = true
 		}
-	}
+	},
+	{ immediate: true }
 )
 </script>
 <template>
