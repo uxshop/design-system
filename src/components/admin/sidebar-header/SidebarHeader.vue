@@ -47,6 +47,7 @@ const quickSearchConfig = ref(props.actionsConfig.quickSearch)
 
 	.logo {
 		height: v-bind(height);
+		cursor: pointer;
 
 		img {
 			height: 100%;
