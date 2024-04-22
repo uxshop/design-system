@@ -77,11 +77,3 @@ watchEffect(() => {
 		</Alert>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-.ui-form-validation {
-	&-key {
-		text-transform: capitalize;
-	}
-}
-</style>
