@@ -51,7 +51,7 @@ const mediaCardClasses = computed(() => {
 		</div>
 		<Card :title="title" :style="customMediaStyle">
 			<div class="ui-media-card-info">
-				<p class="ui-media-card-info-text" v-text="text" />
+				<p class="ui-media-card-info-text" v-html="text" />
 				<div class="ui-media-card-info-buttons">
 					<Button
 						v-for="button in buttons"
