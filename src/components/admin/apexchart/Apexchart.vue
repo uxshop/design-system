@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import apexcharts from 'apexcharts/src/apexcharts.js'
-import type ApexCharts from 'apexcharts'
+import type {ApexOptions} from 'apexcharts'
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
 export interface Props {
-	options?: ApexCharts.ApexOptions
+	options?: ApexOptions
 	series: any[]
 	height?: string
 	type:
 		| 'line'
 		| 'area'
 		| 'bar'
-		| 'histogram'
 		| 'pie'
 		| 'donut'
 		| 'radialBar'
@@ -32,8 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
 })
 const uid = `apex-${getCurrentInstance()?.uid}`
 
-const settings = ref<ApexCharts.ApexOptions>({
-	...{
+const settings = ref<ApexOptions>({
 		chart: {
 			type: props.type
 		},
@@ -41,8 +39,7 @@ const settings = ref<ApexCharts.ApexOptions>({
 			{
 				data: []
 			}
-		]
-	},
+		],
 	...props.options
 })
 

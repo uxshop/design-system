@@ -6,11 +6,15 @@
     "src/**/*.vue"
   ],
   "exclude": [
-    "src/**/__tests__/*"
+    "node_modules/@simonwep/pickr/",
+    "src/**/__tests__/*",
+    "**/*.stories.ts"
   ],
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
+    "ignoreDeprecations": "5.0",
+    "skipLibCheck": true,
     "paths": {}
   }
 }

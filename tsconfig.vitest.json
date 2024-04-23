@@ -1,9 +1,18 @@
 {
   "extends": "./tsconfig.app.json",
-  "exclude": [],
+  "exclude": [
+    "node_modules/@simonwep/pickr/",
+    "src/**/__tests__/*",
+    "**/*.stories.ts"
+  ],
   "compilerOptions": {
     "composite": true,
+    "skipLibCheck": true,
+    "ignoreDeprecations": "5.0",
     "lib": [],
-    "types": ["node", "jsdom"]
+    "types": [
+      "node",
+      "jsdom"
+    ]
   }
 }

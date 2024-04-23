@@ -3,8 +3,15 @@
   "compilerOptions": {
     "strict": true,
     "jsx": "preserve",
-    "allowJs": true
+    "allowJs": true,
+    "ignoreDeprecations": "5.0",
+    "skipLibCheck": true
   },
+  "exclude": [
+    "node_modules/@simonwep/pickr/",
+    "src/**/__tests__/*",
+    "**/*.stories.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.vite-config.json"

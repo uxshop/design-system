@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect } from 'vue'
-import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
-import Pickr from '@simonwep/pickr/src/js/pickr'
+import '@simonwep/pickr/dist/themes/monolith.min.css'
+import Pickr from '@simonwep/pickr'
 import type PickerInterface from '@simonwep/pickr'
 import FormLabel from '../form-label/FormLabel.vue'
 
@@ -116,18 +116,19 @@ onMounted(() => {
 		}
 	})
 
-	watchPostEffect(() => {
-		if (
-			pickr.value &&
-			props.modelValue != undefined &&
-			pickr.value.getColor().toHEXA().toString() != props.modelValue
-		) {
-			pickr.value.setColor(props.modelValue)
-		}
-	})
+})
+watchPostEffect(() => {
+  if (
+    pickr.value &&
+    props.modelValue != undefined &&
+    pickr.value.getColor().toHEXA().toString() != props.modelValue
+  ) {
+    pickr.value.setColor(props.modelValue)
+  }
 })
 
 watchPostEffect(() => {
+  console.log(props.modelValue)
 	if (pickr.value && props.modelValue && !focused.value) {
 		pickr.value.setColor(props.modelValue)
 	}
