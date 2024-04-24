@@ -53,8 +53,11 @@
 	}
 
 	.panel-content {
-		grid-area: panel-content;
 		display: flex;
+		grid-area: panel-content;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
 		flex-direction: column;
 		padding: var(--s-spacing-x-small) var(--s-spacing-small);
 		gap: var(--s-spacing-small) 0;
