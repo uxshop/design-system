@@ -116,19 +116,18 @@ onMounted(() => {
 		}
 	})
 
-})
-watchPostEffect(() => {
-  if (
-    pickr.value &&
-    props.modelValue != undefined &&
-    pickr.value.getColor().toHEXA().toString() != props.modelValue
-  ) {
-    pickr.value.setColor(props.modelValue)
-  }
+  watchPostEffect(() => {
+    if (
+      pickr.value &&
+      props.modelValue != undefined &&
+      pickr.value.getColor().toHEXA().toString() != props.modelValue
+    ) {
+      pickr.value.setColor(props.modelValue)
+    }
+  })
 })
 
 watchPostEffect(() => {
-  console.log(props.modelValue)
 	if (pickr.value && props.modelValue && !focused.value) {
 		pickr.value.setColor(props.modelValue)
 	}
@@ -165,21 +164,23 @@ defineExpose({
 
 <style lang="scss">
 @import '../../../scss/tokens/tokens.scss';
-@import './FormColorPicker.scss';
 @import '../../../scss/variables.scss';
+@import './FormColorPicker.scss';
+
 .pcr-button {
 	position: absolute;
-	&.clear {
+
+  &.clear {
 		--pcr-color: none !important;
 		background-size: 60% !important;
 		background: $add-icon no-repeat center var(--s-color-fill-default);
 		border: var(--s-border-light);
 
-		&:hover{
+    &:hover{
 		--pcr-color: var(--s-color-fill-default-hover);
 		}
 
-		@include darkmode {
+    @include darkmode {
 			background: $add-icon-dark no-repeat center var(--s-color-fill-default);
 
 		}

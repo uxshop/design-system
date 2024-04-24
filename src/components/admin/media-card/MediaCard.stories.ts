@@ -3,8 +3,9 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 /** Media cards are used to effectively communicate notices, promotions or new features. */
 const meta: Meta<typeof MediaCard> = {
-	title: 'Components/MediaCard',
+	title: 'Admin/MediaCard',
 	component: MediaCard,
+  tags: ['autodocs'],
 	args: {
 		title: 'Lorem Ipsum',
 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
