@@ -34,6 +34,6 @@
 
 	@include mobile {
 		margin-bottom: var(--s-spacing-huge);
-		padding: var(--s-spacing-xx-small);
+		padding: 0 var(--s-spacing-xx-small);
 	}
 }
