@@ -58,6 +58,7 @@ const mediaCardClasses = computed(() => {
 						@click="button.onAction"
 						:key="button.label"
 						:href="button.to"
+						@click="button.onAction && button.onAction()"
 						:target="button.target"
 						:size="button.size || 'sm'"
 						:label="button.label"
