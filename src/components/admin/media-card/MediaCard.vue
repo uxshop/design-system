@@ -56,8 +56,8 @@ const mediaCardClasses = computed(() => {
 					<Button
 						v-for="button in buttons"
 						:key="button.label"
+						@click="button.onAction"
 						:href="button.to"
-						@click="button.onAction && button.onAction()"
 						:target="button.target"
 						:size="button.size || 'sm'"
 						:label="button.label"
