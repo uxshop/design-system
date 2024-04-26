@@ -55,7 +55,6 @@ const mediaCardClasses = computed(() => {
 				<div class="ui-media-card-info-buttons">
 					<Button
 						v-for="button in buttons"
-						@click="button.onAction"
 						:key="button.label"
 						@click="button.onAction"
 						:href="button.to"
