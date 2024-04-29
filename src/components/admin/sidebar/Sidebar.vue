@@ -101,15 +101,15 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 										<span class="ui-sidebar-link-text -title">
 											{{ item.name }}
 										</span>
+									</div>
+									<div class="ui-sidebar-link-right-icons">
 										<Badge
 											class="badge-soon-container"
 											v-if="item.isComingSoon"
 											no-wrap
-											pill
+											size="sm"
 											variant="default"
 											label="Em breve" />
-									</div>
-									<div class="ui-sidebar-link-right-icons">
 										<div class="news-indicator" v-if="item.isNew">
 											<NewsIndicator />
 										</div>
@@ -137,7 +137,7 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 												<Badge
 													class="badge-soon-container"
 													v-if="node.isComingSoon"
-													pill
+													size="sm"
 													variant="default"
 													no-wrap
 													label="Em breve" />
