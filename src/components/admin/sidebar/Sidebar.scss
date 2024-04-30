@@ -23,23 +23,6 @@
 			flex-grow: 1;
 			height: 100%;
 
-			&::after {
-				content: '';
-				left: 0;
-				width: var(--s-spacing-quark);
-				background: var(--s-color-content-highlight);
-				position: absolute;
-				top: 0;
-				bottom: 0;
-				z-index: var(--s-index-default);
-			}
-
-			&.-submenu-open {
-				&::after {
-					transform: translateX(-100%);
-				}
-			}
-
 			> .ui-sidebar-content {
 				display: flex;
 				flex-direction: column;
@@ -76,8 +59,7 @@
 	}
 
 	.ui-sidebar-nav {
-		min-height: 88px;
-		padding: 0 var(--s-spacing-small);
+		padding: var(--s-spacing-small) var(--s-spacing-x-small);
 		display: flex;
 		align-items: center;
 		gap: var(--s-spacing-nano);
@@ -92,6 +74,8 @@
 	}
 
 	.ui-sidebar-list {
+		margin: 0 calc(var(--s-spacing-quark)/2) 0 0;
+		padding: 0;
 		display: flex;
 		flex-grow: 1;
 		overflow-y: auto;
@@ -100,8 +84,7 @@
 			display: flex;
 			flex-direction: column;
 			flex-grow: 1;
-			padding-left: var(--s-spacing-quark);
-			overflow: auto;
+			overflow-y: scroll;
 			background:
 				linear-gradient(var(--s-color-fill-default) 30%, rgba(255, 255, 255, 0)),
 				linear-gradient(rgba(255, 255, 255, 0), var(--s-color-fill-default) 70%) 0 100%,
@@ -120,25 +103,17 @@
 			background-repeat: no-repeat;
 			background-attachment: local, local, scroll, scroll;
 		}
+		&::-webkit-scrollbar {
+			width: var(--s-spacing-nano);
+		}
+	
+		&::-webkit-scrollbar-thumb {
+			background: var(--s-color-fill-default-light);
+			border-radius: var(--s-spacing-xx-small);
+		}
 	}
 
-	.ui-sidebar-list::-webkit-scrollbar {
-		background-color: var(--s-color-fill-default);
-	}
-
-	.ui-sidebar-list::-webkit-scrollbar-track {
-		background-color: var(--s-color-fill-default);
-	}
-
-	.ui-sidebar-list::-webkit-scrollbar-thumb {
-		background-color: var(--s-color-background-default);
-		border-radius: var(--s-border-radius-large);
-		border: var(--s-spacing-quark) solid var(--s-color-fill-default);
-	}
-
-	.ui-sidebar-list::-webkit-scrollbar-button {
-		display: none;
-	}
+	
 
 	@include mobile {
 		.ui-sidebar-nav {
@@ -146,6 +121,7 @@
 		}
 
 		.ui-sidebar-list {
+			margin: 0;
 			display: flex;
 			padding: 0 var(--s-spacing-x-small) var(--s-spacing-x-small);
 			background-color: var(--s-color-background-default);
@@ -153,9 +129,13 @@
 
 			> .ui-sidebar-list {
 				background-color: var(--s-color-fill-default);
-				padding: var(--s-spacing-small) 0 var(--s-spacing-x-small) 0;
-				border-radius: var(--s-border-radius-medium);
+				padding: 0;
+				border-radius: 0 0 var(--s-border-radius-medium) var(--s-border-radius-medium);
 				background-attachment: unset;
+			}
+
+			&::-webkit-scrollbar {
+				width: 0px;
 			}
 		}
 
@@ -178,7 +158,7 @@
 		}
 
 		&.-spacer {
-			margin-top: var(--s-spacing-small);
+			margin-top: var(--s-spacing-x-small);
 		}
 
 		&.-spacer-flex {
@@ -198,7 +178,7 @@
 		position: relative;
 		align-items: center;
 		justify-content: space-between;
-		margin: 0 var(--s-spacing-nano);
+		margin:  0 var(--s-spacing-quark) 0 var(--s-spacing-nano);
 		padding: 0 var(--s-spacing-nano);
 		border-radius: var(--s-border-radius-small);
 		text-decoration: none;
@@ -242,6 +222,9 @@
 		&.-active {
 			&.-sub {
 				color: var(--s-color-content-highlight);
+			}
+			.ui-sidebar-link-icon {
+				opacity: 1;
 			}
 			.ui-sidebar-link-right-icons {
 				.news-indicator {

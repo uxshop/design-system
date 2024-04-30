@@ -2,17 +2,18 @@
 
 .ui-toast {
 	color: var(--s-color-content-on-color);
-	padding: var(--s-spacing-x-small);
-	animation: var(--s-motion-duration-fast) slideUp;
+	padding:var(--s-spacing-x-small) var(--s-spacing-x-small);
+	animation: var(--s-motion-duration-default) slideUp;
 	animation-fill-mode: forwards;
-	border-radius: var(--s-border-small);
+	border-radius: var(--s-border-radius-small);
 	position: fixed;
-	bottom: 20px;
-	left: 20px;
+	bottom: 24px;
+	left: 40%;
 	z-index: var(--s-index-max);
 	display: flex;
 	column-gap: var(--s-spacing-quark);
 	align-items: center;
+	box-shadow: var(--s-shadow-level-1);
 
 	&.-variant {
 		&-default {
@@ -38,23 +39,16 @@
 	}
 
 	&.-leave {
-		animation: var(--s-motion-duration-fast) slideDown;
+		animation: var(--s-motion-duration-default) slideDown;
 		animation-fill-mode: both;
 	}
 
 	&-body {
+		font: var(--s-typography-paragraph-strong);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
-	}
-
-	@include darkmode {
-		&.-variant {
-			&-default {
-				background-color: var(--s-color-fill-dark-light);
-			}
-		}
 	}
 }
 

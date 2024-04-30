@@ -23,6 +23,8 @@ const props = withDefaults(defineProps<ToastProps>(), {
 	variant: 'default'
 })
 
+const styleClasses = ref<string[]>([])
+
 const closed = ref(false)
 const state = reactive<StateInterface>({
 	option: {},
@@ -31,28 +33,19 @@ const state = reactive<StateInterface>({
 })
 
 const toastClassList = computed(() => {
-	let classes = []
 
 	if (props.variant) {
-		classes.push(`-variant-${props.variant}`)
+		styleClasses.value.push(`-variant-${props.variant}`)
 	}
 
-	return classes
+	return styleClasses.value
 })
 
 const close = () => {
+	toastClassList.value.push('-leave')
 	closed.value = true
 	state.timer = null
 	state.showing = false
-	toastClassList.value.push('-leave')
-	setTimeout(() => {
-		if (props.id) {
-			const ele = document.getElementById(props.id)
-			if (ele) {
-				document.body.removeChild(ele)
-			}
-		}
-	}, 300)
 }
 
 onMounted(() => {

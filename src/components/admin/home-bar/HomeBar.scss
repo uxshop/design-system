@@ -1,7 +1,7 @@
 .home-bar {
-	margin-top: var(--s-spacing-medium);
+	margin-top: var(--s-spacing-small);
 	&-title {
 		font: var(--s-typography-heading-large);
-		margin: var(--s-spacing-nano) 0;
+		margin-bottom: 0;
 	}
 }
