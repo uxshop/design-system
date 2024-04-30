@@ -2,7 +2,7 @@
 @import '../../../scss/animations/fade-in-out.scss';
 
 .user-card {
-	margin: var(--s-spacing-xx-small);
+	margin: var(--s-spacing-x-small) var(--s-spacing-nano) var(--s-spacing-nano) var(--s-spacing-nano);
 
 	&-label {
 		font: var(--s-typography-caption-medium);

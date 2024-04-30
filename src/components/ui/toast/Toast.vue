@@ -23,6 +23,8 @@ const props = withDefaults(defineProps<ToastProps>(), {
 	variant: 'default'
 })
 
+const styleClasses = ref<string[]>([])
+
 const closed = ref(false)
 const state = reactive<StateInterface>({
 	option: {},
@@ -31,27 +33,20 @@ const state = reactive<StateInterface>({
 })
 
 const toastClassList = computed(() => {
-	let classes = []
 
 	if (props.variant) {
-		classes.push(`-variant-${props.variant}`)
+		styleClasses.value.push(`-variant-${props.variant}`)
 	}
 
-	return classes
+	return styleClasses.value
 })
 
 const close = () => {
 	closed.value = true
 	state.timer = null
-	state.showing = false
 	toastClassList.value.push('-leave')
 	setTimeout(() => {
-		if (props.id) {
-			const ele = document.getElementById(props.id)
-			if (ele) {
-				document.body.removeChild(ele)
-			}
-		}
+		state.showing = false
 	}, 300)
 }
 
@@ -72,7 +67,7 @@ const startTimer = () => {
 </script>
 
 <template>
-	<div class="ui-toast" :class="toastClassList">
+	<div class="ui-toast" :class="toastClassList" v-if="state.showing">
 		<div class="ui-toast-body">
 			<div v-html="message" />
 		</div>

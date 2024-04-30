@@ -49,7 +49,7 @@ const skeletonTableStyleList = computed(() => {
 				</td>
 				<td v-for="c in Number(cols)" :key="c">
 					<Skeleton width="85%" />
-					<Skeleton width="40%" height="14px" v-if="Number(lines) > 1" />
+					<Skeleton style="margin-top: 4px;" width="40%" height="14px" v-if="Number(lines) > 1" />
 				</td>
 				<td width="1" v-for="c in Number(withAction)" :key="c">
 					<Skeleton width="32px" />
