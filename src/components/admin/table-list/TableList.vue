@@ -271,7 +271,7 @@ defineExpose({
 <template>
 	<FormValidation v-model="formError" />
 	<Card v-if="loading && !firstGet" class="table-list-skeleton" noPadding>
-		<SkeletonTable cols="3" rows="6" withAction="1" />
+		<SkeletonTable cols="4" rows="4" />
 	</Card>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />
 	<div v-else class="table-list" v-show="firstGet">

@@ -42,7 +42,7 @@ watch(
 						show: false,
 						nameClass: ''
 					},
-					quickSearch: { show: true }
+					quickSearch: { show: false }
 				}" />
 			<div class="tabs">
 				<Skeleton v-for="s in new Array(2)" />

@@ -160,11 +160,11 @@ defineExpose({
 				<Row alignV="center">
 					<Col>
 						<div class="ui-browser-search-input">
-							<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="sm" autocomplete="off">
+							<FormTextfield v-model="term" placeholder="Procurar" autofocus last size="md" autocomplete="off">
 								<template #before>
 									<div class="box-icon">
-										<Spinner class="icon" size="15" border="2" v-show="typing" variant="primary" />
-										<Icon class="icon" name="search" v-show="!typing" />
+										<Spinner class="icon" size="16" border="2" v-show="typing" variant="primary" />
+										<Icon class="icon" name="search" v-show="!typing" size="20"/>
 									</div>
 								</template>
 								<template #after>
