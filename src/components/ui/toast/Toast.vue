@@ -44,15 +44,9 @@ const toastClassList = computed(() => {
 const close = () => {
 	closed.value = true
 	state.timer = null
-	state.showing = false
 	toastClassList.value.push('-leave')
 	setTimeout(() => {
-		if (props.id) {
-			const ele = document.getElementById(props.id)
-			if (ele) {
-				document.body.removeChild(ele)
-			}
-		}
+		state.showing = false
 	}, 300)
 }
 
@@ -73,7 +67,7 @@ const startTimer = () => {
 </script>
 
 <template>
-	<div class="ui-toast" :class="toastClassList">
+	<div class="ui-toast" :class="toastClassList" v-if="state.showing">
 		<div class="ui-toast-body">
 			<div v-html="message" />
 		</div>
