@@ -42,10 +42,18 @@ const toastClassList = computed(() => {
 })
 
 const close = () => {
-	toastClassList.value.push('-leave')
 	closed.value = true
 	state.timer = null
 	state.showing = false
+	toastClassList.value.push('-leave')
+	setTimeout(() => {
+		if (props.id) {
+			const ele = document.getElementById(props.id)
+			if (ele) {
+				document.body.removeChild(ele)
+			}
+		}
+	}, 300)
 }
 
 onMounted(() => {
