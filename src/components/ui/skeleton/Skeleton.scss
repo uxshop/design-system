@@ -1,49 +1,82 @@
 @import '../../../scss/mixins.scss';
 
 .animated-background {
-	animation: {
-		timing-function: var(--s-motion-ease-linear);
-		duration: var(--s-motion-duration-extremely-slow);
-		iteration-count: infinite;
-		name: placeHolderShimmer;
-	}
-
-	background: linear-gradient(
-		to right,
-		var(--s-color-fill-disable, #e0e8f2) 25%,
-		var(--s-color-fill-default-light, #f5f7fa) 50%,
-		var(--s-color-fill-default-light, #f5f7fa) 75%,
-		var(--s-color-fill-default-light, #f5f7fa) 100%
-	);
-	height: var(--s-spacing-x-small);
-	width: 100%;
-	position: relative;
-	border-radius: var(--s-border-radius-medium);
-
-	@include darkmode {
-		background: linear-gradient(
-			to right,
-			var(--s-color-fill-dark-disable, #e0e8f2) 25%,
-			var(--s-color-fill-dark-light, #f5f7fa) 50%,
-			var(--s-color-fill-dark-light, #f5f7fa) 75%,
-			var(--s-color-fill-dark-light, #f5f7fa) 100%
-		);
-	}
+	border-radius: var(--s-border-radius-small);
+    background-color: var(--s-color-fill-default-light);
+    height: var(--s-spacing-x-small);
+    position: relative;
+    inline-size: 100%;
+    &::before {
+        position: absolute;
+        border-radius: var(--s-border-radius-small);
+        -webkit-animation: placeHolderShimmer 3000ms ease-in-out infinite;
+        animation: placeHolderShimmer 3000ms ease-in-out infinite;
+        background: var(--s-color-fill-disable);
+        block-size: 100%;
+        content: "";
+        inline-size: 100%;
+        will-change: transform-origin, transform, opacity;
+    }
 }
 
 .ui-skeleton {
 	@extend .animated-background;
 
-	+ .ui-skeleton {
-		margin-top: var(--s-spacing-quark);
-	}
 }
 
 @keyframes placeHolderShimmer {
-	0% {
-		background-position: -500px 0;
-	}
-	100% {
-		background-position: 500px 0;
-	}
+    0% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+    }
+    20% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+    }
+    28% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right;
+        transform-origin: right;
+    }
+    51% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right;
+        transform-origin: right;
+    }
+    58% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right;
+        transform-origin: right;
+    }
+    82% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right;
+        transform-origin: right;
+    }
+    83% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+    }
+    96% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+    }
+    100% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left;
+        transform-origin: left;
+    }
 }
