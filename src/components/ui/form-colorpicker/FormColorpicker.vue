@@ -62,6 +62,7 @@ onMounted(() => {
 	pickr.value = createPickrInstance({
 		el: `#${uid}`,
 		theme: 'monolith',
+		appClass: 'color-picker-custom-class',
 		default: props.modelValue || undefined,
 		defaultRepresentation: 'HEXA',
 		// container: 'body',
@@ -174,14 +175,16 @@ defineExpose({
 		background: $add-icon no-repeat center var(--s-color-fill-default);
 		border: var(--s-border-light);
 
-		&:hover{
-		--pcr-color: var(--s-color-fill-default-hover);
+		&:hover {
+			--pcr-color: var(--s-color-fill-default-hover);
 		}
 
 		@include darkmode {
 			background: $add-icon-dark no-repeat center var(--s-color-fill-default);
-
 		}
 	}
+}
+.color-picker-custom-class {
+	z-index: var(--s-index-very-high);
 }
 </style>
