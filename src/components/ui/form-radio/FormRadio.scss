@@ -10,13 +10,14 @@
 	font-weight: var(--s-font-weight-semibold);
 	color: var(--s-color-content-default);
 
-	+ .ui-form-radio {
+	+.ui-form-radio {
 		margin-top: var(--s-spacing-x-small);
+		border: 2px solid var(--s-color-border-default);
 	}
 
 	&:hover {
 		.ui-form-radio-checkmark {
-			border-color: var(--s-color-border-highlight);
+			border: 2px solid var(--s-color-border-highlight);
 		}
 	}
 
@@ -25,6 +26,11 @@
 
 		.ui-form-radio-checkmark {
 			border-color: var(--s-color-border-disable);
+			background-color: var(--s-color-fill-disable);
+
+			&:after {
+				border: 0px;
+			}
 		}
 	}
 
@@ -34,9 +40,9 @@
 		cursor: pointer;
 		transform: translate(3.5px, 4px);
 
-		&:checked ~ .ui-form-radio-checkmark {
+		&:checked~.ui-form-radio-checkmark {
 			background-color: var(--s-color-fill-highlight);
-			border-color: transparent;
+			border: 2px solid var(--s-color-border-highlight);
 		}
 	}
 
@@ -56,8 +62,7 @@
 		aspect-ratio: 1;
 		min-height: var(--s-spacing-x-small);
 		min-width: var(--s-spacing-x-small);
-		border: var(--s-border-light);
-		border-color: var(--s-color-content-placeholder);
+		border: var(--s-border-thin);
 		background-color: var(--s-color-fill-default);
 		border-radius: var(--s-border-radius-pill);
 
@@ -69,8 +74,7 @@
 			right: 0;
 			left: 0;
 			top: 0;
-			border: var(--s-border-light);
-			border-color: var(--s-color-content-placeholder);
+			border: 3px solid white;
 			background-color: transparent;
 			border-radius: var(--s-border-radius-pill);
 		}

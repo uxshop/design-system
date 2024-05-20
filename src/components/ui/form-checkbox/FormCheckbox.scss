@@ -55,7 +55,7 @@
 			&:after {
 				display: block;
 				left: 50%;
-				top: calc(var(--s-spacing-quark) + 2px);
+				top: 50%;
 				width: 65%;
 				height: 2px;
 				transform: translateX(-50%) translateY(-50%);
@@ -66,8 +66,8 @@
 	input:disabled {
 		cursor: not-allowed;
 		~ .ui-form-checkbox-checkmark {
-			opacity: 0.8;
 			background-color: var(--s-color-fill-disable);
+			border-color: var(--s-color-border-disable);
 		}
 	}
 
@@ -126,15 +126,15 @@
 		}
 
 		.ui-form-checkbox-checkmark {
-			width: 38px;
-			min-width: 38px;
-			border-radius: 11px;
-			height: 20px;
+			width: 40px;
+			min-width: 40px;
+			border-radius: 12px;
+			height: 24px;
 			&:after {
-				width: 14px;
-				height: 14px;
-				left: 1px;
-				top: 1px;
+				width: 16px;
+				height: 16px;
+				left: 5%;
+				top: 10%;
 				border-radius: 100%;
 				bottom: 1px;
 				background-color: var(--s-color-fill-default);

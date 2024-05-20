@@ -20,11 +20,9 @@ defineExpose({
 </script>
 
 <template>
-	<Aside v-model="aside" title="Ajuda" size="sm">
+	<Aside v-model="aside" title="Ajuda" subtitle="Para encontrar ainda mais informações, explore nossos artigos disponíveis na base de conhecimento.
+"  size="sm">
 		<div class="page-helper-articles">
-			<p class="page-helper-articles-support">
-				Para encontrar ainda mais informações, explore nossos artigos disponíveis na base de conhecimento.
-			</p>
 			<ul class="page-helper-articles-list">
 				<li class="page-helper-articles-item" v-for="item in helperArticles" :key="item.url">
 					<Link :href="item.url" target="_blank">
@@ -38,6 +36,7 @@ defineExpose({
 <style lang="scss">
 .page-helper-articles {
 	&-support {
+		margin-bottom: 0;
 		padding: 0 0 var(--s-spacing-small);
 		display: inline-block;
 	}
@@ -48,8 +47,16 @@ defineExpose({
 	}
 
 	&-item {
+		margin-bottom: 0;
 		padding: var(--s-spacing-xx-small) 0;
 		border-top: var(--s-border-light);
+
+		&:first-child {
+			margin-bottom: 0;
+			padding-top: 0;
+			border: 0;
+
+		}
 	}
 }
 </style>

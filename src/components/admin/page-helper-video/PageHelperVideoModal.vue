@@ -94,6 +94,13 @@ defineExpose({
 			padding: var(--s-spacing-xx-small) 0;
 			border-top: var(--s-border-light);
 			margin: 0;
+
+
+		&:first-child {
+			padding-top: 0;
+			border: 0;
+
+		}
 		}
 	}
 }

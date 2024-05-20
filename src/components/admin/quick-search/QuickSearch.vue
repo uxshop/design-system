@@ -64,7 +64,7 @@ function onChange(value: string) {
 <template>
 	<Modal class="modal-container" v-model="isVisible" :title="title" :caption="caption">
 		<form v-on:submit.prevent="onSubmit">
-			<Stack class="form">
+			<Stack class="form" style="gap:8px">
 				<FormLayoutItem>
 					<FormSelect v-model="formValues.searchType" :options="searchOptions" name="searchType" @update="onChange" />
 				</FormLayoutItem>
