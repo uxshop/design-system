@@ -14,7 +14,7 @@
 		overflow: hidden;
 		padding-right: var(--s-spacing-x-small);
 
-		&-title {
+		& &-title {
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
@@ -35,7 +35,7 @@
 	&-subtitle {
 		  display: flex;
 		}
-	}
+
 
 	> .ui-icon {
 		height: 100%;
@@ -68,3 +68,4 @@
 			}
 		}
 	}
+}
