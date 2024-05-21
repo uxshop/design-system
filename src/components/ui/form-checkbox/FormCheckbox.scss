@@ -75,10 +75,10 @@
 		position: relative;
 		top: 0;
 		left: 0;
+		min-width: 20px;
+		min-height: 20px;
 		width: 20px;
 		aspect-ratio: 1;
-		min-height: var(--s-spacing-x-small);
-		min-width: var(--s-spacing-x-small);
 		background-color: var(--s-color-fill-default);
 		border: var(--s-border-thin);
 		border-radius: var(--s-border-radius-small);
