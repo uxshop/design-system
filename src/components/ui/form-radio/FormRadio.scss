@@ -79,24 +79,4 @@
 			border-radius: var(--s-border-radius-pill);
 		}
 	}
-
-	// @include darkmode {
-	// 	.ui-form-radio-text {
-	// 		color: var(--s-color-content-dark);
-	// 	}
-
-	// 	.ui-form-radio-checkmark {
-	// 		border-color: var(--s-color-content-dark-placeholder);
-
-	// 		&:after {
-	// 			border-color: var(--s-color-content-dark-placeholder);
-	// 		}
-	// 	}
-
-	// 	&.-disabled {
-	// 		.ui-form-radio-checkmark {
-	// 			border-color: var(--s-color-content-dark-disable);
-	// 		}
-	// 	}
-	// }
 }
