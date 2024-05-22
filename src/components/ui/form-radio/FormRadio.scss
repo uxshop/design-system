@@ -74,29 +74,29 @@
 			right: 0;
 			left: 0;
 			top: 0;
-			border: 3px solid white;
+			border: 3px solid var(--s-color-fill-default);
 			background-color: transparent;
 			border-radius: var(--s-border-radius-pill);
 		}
 	}
 
-	@include darkmode {
-		.ui-form-radio-text {
-			color: var(--s-color-content-dark);
-		}
+	// @include darkmode {
+	// 	.ui-form-radio-text {
+	// 		color: var(--s-color-content-dark);
+	// 	}
 
-		.ui-form-radio-checkmark {
-			border-color: var(--s-color-content-dark-placeholder);
+	// 	.ui-form-radio-checkmark {
+	// 		border-color: var(--s-color-content-dark-placeholder);
 
-			&:after {
-				border-color: var(--s-color-content-dark-placeholder);
-			}
-		}
+	// 		&:after {
+	// 			border-color: var(--s-color-content-dark-placeholder);
+	// 		}
+	// 	}
 
-		&.-disabled {
-			.ui-form-radio-checkmark {
-				border-color: var(--s-color-content-dark-disable);
-			}
-		}
-	}
+	// 	&.-disabled {
+	// 		.ui-form-radio-checkmark {
+	// 			border-color: var(--s-color-content-dark-disable);
+	// 		}
+	// 	}
+	// }
 }

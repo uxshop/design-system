@@ -4,6 +4,7 @@ import { cloneDeep, each, find, first, isArray } from 'lodash-es'
 import ButtonAction from '../button-action/ButtonAction.vue'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Button from '../../ui/button/Button.vue'
+import IconButton from '../../ui/icon-button/IconButton.vue'
 import Link from '../../ui/link/Link.vue'
 import BrowserSelectModal from './BrowserSelectModal.vue'
 
@@ -236,7 +237,7 @@ defineExpose({ onClickSearch })
 						{{ item.name }}
 					</div>
 					<div v-if="!hideExcludeButton" class="ui-browser-list-cell -auto">
-						<ButtonAction size="sm" type="remove" @click="onRemoveItem(item)" />
+						<IconButton variant="plain" size="sm" icon="close" @click="onRemoveItem(item)" />
 					</div>
 				</div>
 
