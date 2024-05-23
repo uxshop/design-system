@@ -2,9 +2,16 @@
 	input.choices__input {
 		background-color: var(--s-color-fill-default);
 		color: var(--s-color-content-default);
+		border-bottom: var(--s-border-light);
 	}
 
 	div.choices__item.is-highlighted {
-		background-color: var(--gray-100);
+		background-color: var(--s-color-fill-default-hover);
 	}
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted::after,
+.choices__list[aria-expanded] .choices__item--selectable.is-highlighted::after {
+	color: var(--s-color-content-light);
+	opacity: 1;
 }

@@ -5,7 +5,6 @@
 	position: relative;
 
 	.choices {
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 
 		&.is-open {
 			&::after {
@@ -47,6 +46,8 @@
 
 			.choices__inner {
 				border-top-color: var(--s-color-border-highlight);
+				border-bottom-color: var(--s-color-border-highlight);
+
 			}
 
 			.choices__list {
@@ -103,7 +104,7 @@
 			border-color: var(--s-color-border-highlight);
 		}
 
-		.choices__item > .choices__button {
+		.choices__item>.choices__button {
 			margin-right: var(--s-spacing-medium);
 			margin-top: 0;
 			height: 100%;

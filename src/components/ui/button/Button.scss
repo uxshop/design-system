@@ -60,6 +60,7 @@
 	&.-default {
 		background-color: var(--s-color-fill-default);
 		color: var(--s-color-content-default);
+		border: 1px solid var(--s-color-border-default);
 
 		&:hover {
 			background-color: var(--s-color-fill-default-hover);
@@ -112,6 +113,11 @@
 		&:active {
 			background-color: var(--s-color-fill-default-hover);
 		}
+
+		&:disabled,
+		&.-disabled {
+			background-color: transparent;
+		}
 	}
 
 	&.-link {
@@ -122,6 +128,7 @@
 
 		&:hover .ui-button-content {
 			text-decoration: none;
+
 			.ui-button-label {
 				text-decoration: underline;
 			}
@@ -162,11 +169,14 @@
 		background-color: var(--s-color-fill-disable);
 		pointer-events: none;
 		color: var(--s-color-content-disable);
-		border: var(--s-border-light);
-		border-color: var(--s-color-border-disable);
-		box-shadow: 0 1px 0 rgb(0 0 0 / 6%);
+		border: 1px solid var(--s-color-border-disable);
 
 		&.-link {
+			border: none;
+			box-shadow: none;
+		}
+
+		&.-plain {
 			border: none;
 			box-shadow: none;
 		}

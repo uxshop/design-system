@@ -17,7 +17,7 @@
 		pointer-events: none;
 	}
 
-	+ .ui-form-checkbox {
+	+.ui-form-checkbox {
 		margin-top: var(--s-spacing-nano);
 	}
 
@@ -40,22 +40,23 @@
 		left: calc(var(--s-spacing-x-small) / 2 - 1px);
 		top: var(--s-spacing-x-small);
 
-		&:checked ~ .ui-form-checkbox-checkmark {
+		&:checked~.ui-form-checkbox-checkmark {
 			background-color: var(--s-color-fill-highlight);
 			border-color: transparent;
+
 			&::after {
 				display: block;
 			}
 		}
 
-		&:indeterminate ~ .ui-form-checkbox-checkmark {
+		&:indeterminate~.ui-form-checkbox-checkmark {
 			background-color: var(--s-color-fill-highlight);
 			border-color: var(--s-color-border-highlight);
 
 			&:after {
 				display: block;
 				left: 50%;
-				top: calc(var(--s-spacing-quark) + 2px);
+				top: 50%;
 				width: 65%;
 				height: 2px;
 				transform: translateX(-50%) translateY(-50%);
@@ -65,9 +66,14 @@
 
 	input:disabled {
 		cursor: not-allowed;
-		~ .ui-form-checkbox-checkmark {
-			opacity: 0.8;
+
+		~.ui-form-checkbox-checkmark {
 			background-color: var(--s-color-fill-disable);
+			border-color: var(--s-color-border-disable);
+
+			&::after {
+				border: none;
+			}
 		}
 	}
 
@@ -75,10 +81,9 @@
 		position: relative;
 		top: 0;
 		left: 0;
+		min-width: 20px;
 		width: 20px;
 		aspect-ratio: 1;
-		min-height: var(--s-spacing-x-small);
-		min-width: var(--s-spacing-x-small);
 		background-color: var(--s-color-fill-default);
 		border: var(--s-border-thin);
 		border-radius: var(--s-border-radius-small);
@@ -94,7 +99,7 @@
 			left: calc(50% - 3px);
 			width: 6px;
 			height: 9px;
-			border: solid var(--s-color-fill-default);
+			border: solid white;  // Border color will change when disabled
 			border-width: 0 2px 2px 0;
 			transform: rotate(45deg);
 		}
@@ -106,7 +111,7 @@
 
 	&.-switch {
 		input {
-			~ .ui-form-checkbox-checkmark {
+			~.ui-form-checkbox-checkmark {
 				&::after {
 					display: block;
 					background-color: var(--s-color-fill-default-hover);
@@ -115,10 +120,11 @@
 		}
 
 		input:checked {
-			~ .ui-form-checkbox-checkmark {
+			~.ui-form-checkbox-checkmark {
 				background-color: var(--s-color-fill-highlight);
+
 				&:after {
-					background-color: var(--s-color-fill-default);
+					background-color: var(--s-color-content-on-color);
 					left: calc(100% - 1px);
 					transform: translateX(-100%);
 				}
@@ -126,15 +132,16 @@
 		}
 
 		.ui-form-checkbox-checkmark {
-			width: 38px;
-			min-width: 38px;
-			border-radius: 11px;
+			width: 32px;
+			min-width: 32px;
+			border-radius: 12px;
 			height: 20px;
+
 			&:after {
-				width: 14px;
-				height: 14px;
-				left: 1px;
-				top: 1px;
+				width: 12px;
+				height: 12px;
+				left: 8%;
+				top: 12%;
 				border-radius: 100%;
 				bottom: 1px;
 				background-color: var(--s-color-fill-default);
@@ -148,13 +155,6 @@
 
 		.ui-form-checkbox-text {
 			margin-top: 0;
-		}
-	}
-
-	@include darkmode {
-		.ui-form-checkbox-checkmark {
-			background: var(--s-color-fill-dark);
-			border-color: var(--s-color-border-dark);
 		}
 	}
 }

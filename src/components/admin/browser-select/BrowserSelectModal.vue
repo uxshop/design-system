@@ -187,7 +187,7 @@ defineExpose({
 					@keypress.space="onCheckOne(item, $event)"
 					class="ui-browser-list-row">
 					<div class="ui-browser-list-cell">
-						<FormCheckbox :value="item[identifier]" v-model="ids" no-events />
+						<FormCheckbox :value="item[identifier]" v-model="ids" />
 					</div>
 					<component :is="getTemplate()" :item="item" modal />
 				</div>
