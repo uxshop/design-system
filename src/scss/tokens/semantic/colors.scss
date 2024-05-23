@@ -71,7 +71,7 @@ $semantic-color: (
 		success: tokens.getPrimitiveVar($primitives-color, green, 600),
 		warning: tokens.getPrimitiveVar($primitives-color, orange, 600),
 		critical: tokens.getPrimitiveVar($primitives-color, red, 600),
-		dark: tokens.getPrimitiveVar($primitives-color, neutral, 600),
+		dark: tokens.getPrimitiveVar($primitives-color, neutral, 700),
 		dark-disable: tokens.getPrimitiveVar($primitives-color, neutral, 700),
 		dark-highlight: var(--b-color-medium),
 		dark-success: tokens.getPrimitiveVar($primitives-color, green, 500),

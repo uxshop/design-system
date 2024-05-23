@@ -65,6 +65,8 @@
 		background-color: var(--s-color-fill-default);
 		min-height: var(--s-spacing-large);
 		border: var(--s-border-light);
+		padding: var(--s-spacing-nano);
+		padding-bottom: 0;
 		border-radius: var(--s-border-radius-small);
 
 		.choices__input {
