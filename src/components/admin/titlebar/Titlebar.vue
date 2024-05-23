@@ -43,9 +43,7 @@ onUnmounted(() => {
 			<IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" size="lg" />
 			<div class="titlebar-content-title">
 				<h2 class="titlebar-content-title-text">{{ title }}</h2>
-				<div v-if="$slots['titlebar-subtitle']" class="titlebar-subtitle">
-					<slot name="titlebar-subtitle" />
-				</div>
+				<slot v-if="$slots['titlebar-subtitle']" name="titlebar-subtitle" class="titlebar-subtitle"></slot>
 			</div>
 		</div>
 		<div class="titlebar-actions">
