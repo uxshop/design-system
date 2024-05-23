@@ -55,10 +55,14 @@
 	}
 
 	&-logo {
-		align-items: center;
 		display: flex;
 		height: var(--s-spacing-large);
 		width: 100%;
+	
+		@include mobile {
+			display: unset;
+			height: unset;
+		}
 	}
 
 	.ui-sidebar-nav {
