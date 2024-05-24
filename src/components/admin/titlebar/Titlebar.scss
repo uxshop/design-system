@@ -14,7 +14,7 @@
 		overflow: hidden;
 		padding-right: var(--s-spacing-x-small);
 
-		& &-title {
+		&-title {
 			display: flex;
 			flex-direction: column;
 			overflow: hidden;
@@ -26,6 +26,7 @@
 				margin: 0;
 				text-overflow: ellipsis;
 				overflow: hidden;
+				line-height: var(--s-line-height-40);
 			}
 
 			&.-mobile {
