@@ -17,7 +17,7 @@ const uidMenu = `ui-dropdown-${getCurrentInstance()?.uid}-menu`
 const style = ref({})
 let initialHeight: number = 0
 
-const showOnTop = computed(() => (props.dropUp ? 'translateY(calc(-100% - 100px))' : 'unset'))
+const showOnTop = computed(() => (props.dropUp ? 'translateY(calc(-120%))' : 'unset'))
 
 const listener = (e: MouseEvent | KeyboardEvent) => {
 	if (e instanceof KeyboardEvent && e.key != 'Escape') return
@@ -93,10 +93,8 @@ defineExpose({
 <style lang="scss">
 @import './Dropdown.scss';
 .ui-dropdown {
-	&.-right {
-		.ui-dropdown-menu {
-			transform: v-bind(showOnTop);
-		}
+	.ui-dropdown-menu {
+		transform: v-bind(showOnTop);
 	}
 }
 </style>
