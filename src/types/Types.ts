@@ -12,4 +12,4 @@ export type Spacing = 'xs' | 'sm' | 'default' | 'lg' | 'xl'
 
 export type Target = '_blank' | '_self'
 
-export type Variant = 'primary' | 'success' | 'danger' | 'link' | 'plain'
+export type Variant = 'primary' | 'success' | 'danger' | 'link' | 'plain' | 'default'
