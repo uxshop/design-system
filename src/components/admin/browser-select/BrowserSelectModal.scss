@@ -12,15 +12,19 @@
 		display: flex;
 		align-items: center;
 		cursor: pointer;
-
+	
 		&:hover {
-			background-color: var(--s-color-fill-default-hover);
+	
+			.ui-form-checkbox-checkmark {
+				border-color: var(--s-color-fill-highlight);
+			}
 		}
-
+	
 		+ .ui-browser-list-row {
 			border-top: var(--s-border-light);
 		}
 	}
+	
 
 	.ui-browser-list-cell {
 		user-select: none;
