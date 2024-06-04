@@ -13,10 +13,14 @@
 	}
 
 	&-icon {
+		font-size: inherit;
+		width: inherit;
+		height: inherit;
 		color: var(--s-color-content-light);
 	}
 
 	&-content {
 		aspect-ratio: 1;
+		width: 100%;
 	}
 }
