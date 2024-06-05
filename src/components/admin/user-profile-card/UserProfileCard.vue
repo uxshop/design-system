@@ -16,8 +16,11 @@ const props = defineProps<{
 const dropdownItems = computed(() => {
 	return props.dropdown?.map((item) => {
 		if (!item.text) item.component = DropdownDivider
-		else if (item.to || item.href) item.component = DropdownItem
-		else item.component = DropdownItemButton
+		else if (item.to) item.component = DropdownItem
+		else if (item.href) {
+			item.component = DropdownItem
+			item.target = '_blank'
+		} else item.component = DropdownItemButton
 		return item
 	})
 })
