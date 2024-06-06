@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getCurrentInstance, onMounted, ref, shallowRef, watchPostEffect, computed } from 'vue'
 import '@simonwep/pickr/dist/themes/monolith.min.css' // 'monolith' theme
-import Pickr from '@simonwep/pickr'
+import Pickr from '@simonwep/pickr/dist/pickr.es5.min'
 import type PickerInterface from '@simonwep/pickr'
 import FormLabel from '../form-label/FormLabel.vue'
 
