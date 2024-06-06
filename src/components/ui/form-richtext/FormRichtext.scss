@@ -61,7 +61,6 @@ body.redactor-body-fullscreen {
 		margin: 0 !important;
 
 		&:hover {
-			background-color: var(--s-color-fill-default);
 			text-decoration: none;
 			color: var(--s-color-content-highlight);
 		}
@@ -112,7 +111,7 @@ body.redactor-body-fullscreen {
 .redactor-box {
 	width: 100%;
 
-	+ small {
+	+small {
 		margin-left: var(--s-spacing-quark);
 		margin-top: var(--s-spacing-small);
 		opacity: 0.8;
@@ -145,21 +144,11 @@ body.redactor-body-fullscreen {
 	@include darkmode {
 		background-color: var(--s-color-fill-dark);
 		border-color: var(--s-color-border-dark);
+
 		.redactor-layer,
 		.redactor-toolbar {
 			color: #fff;
 			border-color: var(--s-color-border-dark);
-		}
-
-		.redactor-toolbar {
-			a.re-button-icon {
-				color: var(--s-color-content-dark);
-
-				&:hover {
-					background-color: var(--s-color-fill-dark-hover);
-					color: var(--s-color-content-highlight);
-				}
-			}
 		}
 	}
 }

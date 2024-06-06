@@ -14,7 +14,9 @@
 		overflow: hidden;
 		padding-right: var(--s-spacing-x-small);
 
-		& &-title {
+		&-title {
+			display: flex;
+			flex-direction: column;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
