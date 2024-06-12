@@ -35,6 +35,9 @@
 		"vue-currency-input": "^3.0.3",
 		"vue-router": "^4.1.6"
 	},
+	"resolutions": {
+		"eslint-config-simon": "2.1.0"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.17.5",
 		"@rushstack/eslint-patch": "^1.1.0",
