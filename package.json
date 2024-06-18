@@ -25,7 +25,7 @@
 		"@codemirror/state": "^0.19.9",
 		"@codemirror/view": "^0.19.47",
 		"@easepick/bundle": "^1.2.0",
-		"@simonwep/pickr": "github:uxshop/pickr#hotfix/remove-dependencia-quebrada",
+		"@simonwep/pickr": "github:uxshop/pickr",
 		"apexcharts": "3.37.1",
 		"choices.js": "^10.2.0",
 		"lodash-es": "^4.17.21",
