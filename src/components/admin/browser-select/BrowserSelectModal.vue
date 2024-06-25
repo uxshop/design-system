@@ -197,7 +197,8 @@ defineExpose({
 
 		<template #footer>
 			<Button variant="primary" @click="apply">
-				Aplicar ({{ ids.length < 10 ? zerofill(ids.length) : ids.length || 0 }} selecionados)
+				Aplicar ({{ ids.length < 10 ? zerofill(ids.length) : ids.length || 0 }}
+				{{ ids.length == 1 ? 'selecionado' : 'selecionados' }})
 			</Button>
 		</template>
 	</Aside>
