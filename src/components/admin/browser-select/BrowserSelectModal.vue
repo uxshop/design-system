@@ -164,7 +164,7 @@ defineExpose({
 								<template #before>
 									<div class="box-icon">
 										<Spinner class="icon" size="16" border="2" v-show="typing" variant="primary" />
-										<Icon class="icon" name="search" v-show="!typing" size="20"/>
+										<Icon class="icon" name="search" v-show="!typing" size="20" />
 									</div>
 								</template>
 								<template #after>
@@ -196,7 +196,10 @@ defineExpose({
 		</div>
 
 		<template #footer>
-			<Button variant="primary" @click="apply"> Aplicar ({{ zerofill(ids.length) }} selecionados) </Button>
+			<Button variant="primary" @click="apply">
+				Aplicar ({{ ids.length < 10 ? zerofill(ids.length) : ids.length || 0 }}
+				{{ ids.length == 1 ? 'selecionado' : 'selecionados' }})
+			</Button>
 		</template>
 	</Aside>
 </template>
