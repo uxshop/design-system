@@ -3,6 +3,7 @@ import type { IconType } from 'src/components/ui/icon/types'
 export interface SideBarItem {
 	name: string
 	isNew?: boolean
+	highlightedLabel?: string
 	isComingSoon?: boolean
 	to?: string
 	params?: any

@@ -141,7 +141,7 @@ const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div')
 													variant="default"
 													no-wrap
 													label="Em breve" />
-												<NewsIndicator v-if="node.isNew" label="Novo" />
+												<NewsIndicator v-if="node.isNew" :label="node.highlightedLabel ?? 'Novo'" />
 											</div>
 										</component>
 									</li>
