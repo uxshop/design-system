@@ -41,7 +41,14 @@ const onSave = () => emit('save')
 				<Button @click="handleDiscardChanges" class="ui-savebar-restore" :disabled="loading">
 					<div>Descartar alterações</div>
 				</Button>
-				<Button variant="success" type="submit" leadingIcon="check" label="Salvar" :loading="loading" @click="onSave" />
+				<Button
+					variant="success"
+					type="submit"
+					leadingIcon="check"
+					label="Salvar"
+					:loading="loading"
+					:disabled="loading"
+					@click="onSave" />
 			</div>
 		</Container>
 	</div>
