@@ -35,4 +35,6 @@ export interface ITableListConfig {
 	placeholder?: string
 	omitFiltersValues?: string[]
 	dialogDelete?: DialogDelete
+	hideTabsFilter?: boolean
+	hideButtonFilter?: boolean
 }
