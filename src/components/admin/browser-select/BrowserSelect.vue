@@ -30,6 +30,7 @@ export interface Props {
 	limit?: number | string
 	identifier?: string
 	placeholder?: string
+	paginateListLimit?: number
 }
 
 const emit = defineEmits(['remove', 'change', 'update:modelValue', 'update'])
@@ -38,7 +39,8 @@ const props = withDefaults(defineProps<Props>(), {
 	type: 'product',
 	placeholder: 'Selecione',
 	identifier: 'id',
-	limit: 0
+	limit: 0,
+	paginateListLimit: 5
 })
 
 const searchBy = ref<string | null>(null)
@@ -46,7 +48,8 @@ const term = ref<string | null>(null)
 const selectedIds = ref<number[]>([])
 const rows = ref<any[]>([])
 const memoryList = ref([])
-const paginateLimit = ref(5)
+const paginateStart = ref(0)
+const paginateLimit = ref(props.paginateListLimit)
 const browserSelectModalRef = ref()
 
 const onClickSearch = () => {
@@ -64,8 +67,10 @@ const onChangeTerm = () => {
 	}
 }
 
-const nextPage = () => {
+const nextPage = async () => {
+	paginateStart.value += 5
 	paginateLimit.value += 5
+	await fetch()
 }
 
 const onRemoveItem = (item: any) => {
@@ -122,14 +127,14 @@ const fetch = async () => {
 				newRows = [newRows]
 			} else {
 				const res = await props.service.get({
-					ids: selectedIds.value.join(',')
+					ids: getPaginatedIds().join(',')
 				})
 				newRows = res.data
 			}
 		}
 	}
 
-	rows.value = newRows
+	rows.value.push(...newRows)
 }
 
 const populateList = (newVal: any) => {
@@ -157,6 +162,10 @@ const updateByModal = ({ memoryList, ids }: any) => {
 	if (ids) {
 		updateInput(ids)
 	}
+}
+
+const getPaginatedIds = () => {
+	return selectedIds.value.slice(paginateStart.value, paginateLimit.value)
 }
 
 watch(
@@ -228,7 +237,7 @@ defineExpose({ onClickSearch })
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
 				<div
-					v-for="item in rows.slice(0, paginateLimit)"
+					v-for="item in rows"
 					class="ui-browser-list-row"
 					:class="{ '-no-button': hideExcludeButton }"
 					:key="item[identifier]">
@@ -241,7 +250,7 @@ defineExpose({ onClickSearch })
 					</div>
 				</div>
 
-				<div v-if="rows.length > paginateLimit" class="ui-browser-list-more">
+				<div v-if="selectedIds.length > paginateLimit" class="ui-browser-list-more">
 					<Link @click="nextPage" label="Exibir mais" />
 				</div>
 			</div>
