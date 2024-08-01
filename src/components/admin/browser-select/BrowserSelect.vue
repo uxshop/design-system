@@ -111,17 +111,17 @@ const getFromMemoryList = (newRows: unknown[]) => {
 	})
 }
 
-const getProductsList = async () => {
-	const products = []
+const getItemsList = async () => {
+	const items = []
 	const chunkSize = 25
 	const paginatedIds = chunk(selectedIds.value, chunkSize)
 	for (const ids of paginatedIds) {
 		const res = await props.service.get({
 			ids: ids.join(',')
 		})
-		products.push(...res.data)
+		items.push(...res.data)
 	}
-	return products
+	return items
 }
 
 const fetch = async () => {
@@ -136,7 +136,7 @@ const fetch = async () => {
 				newRows = await props.service.first(id)
 				newRows = [newRows]
 			} else {
-				newRows = await getProductsList()
+				newRows = await getItemsList()
 			}
 		}
 	}
