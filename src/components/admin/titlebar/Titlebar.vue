@@ -5,8 +5,9 @@ import Dropdown from '../../ui/dropdown/Dropdown.vue'
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue'
 import Button from '../../ui/button/Button.vue'
 import type { IAction } from '../../../types/IAction'
+import type { Variant } from '../../../types'
 
-defineProps<{
+const props = defineProps<{
 	title?: string | null
 	to?: Record<string, any>
 	backlink?: { to: string }
@@ -25,6 +26,8 @@ const isDesktop = shallowRef(checkIsDesktop())
 const getButtonLabel = computed(
 	() => (label?: string, leadingIcon?: string) => (isDesktop.value || !leadingIcon ? label : undefined)
 )
+
+const variantBtn = computed<Variant>(() => props.primaryAction?.variant || 'primary')
 
 onMounted(() => {
 	window.onresize = () => {
@@ -78,7 +81,7 @@ onUnmounted(() => {
 			</div>
 			<div v-if="primaryAction" class="titlebar-actions-primary">
 				<Button
-					variant="primary"
+					:variant="variantBtn"
 					:to="primaryAction.to"
 					:label="getButtonLabel(primaryAction.label, primaryAction.leadingIcon)"
 					@click="primaryAction.onAction"

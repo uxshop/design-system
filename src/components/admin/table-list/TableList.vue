@@ -275,7 +275,7 @@ defineExpose({
 	</Card>
 	<TableListEmptyMessage v-if="!loading && noData" :msg="config.empty" />
 	<div v-else class="table-list" v-show="firstGet">
-		<TableListTabs :state="state" />
+		<TableListTabs v-if="!props.config.hideTabsFilter" :state="state" />
 		<TableListNav :loading="loading">
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
 			<TableListNavRefresh v-if="!isMobile()" :state="state" />
@@ -285,7 +285,7 @@ defineExpose({
 				:service="config.customFilterService"
 				:state="state" />
 			<TableListNavSortable :sortable="cfg.sortable" :queryParams="queryParams" :setQueryParams="setQueryParams" />
-			<TableListNavFilter ref="tableListNavFilterRef" :state="state" />
+			<TableListNavFilter v-if="!props.config.hideButtonFilter" ref="tableListNavFilterRef" :state="state" />
 			<TableListNavPagination v-if="!isMobile()" :meta="meta" :state="state" />
 		</TableListNav>
 

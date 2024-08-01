@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { cloneDeep, each, find, first, isArray } from 'lodash-es'
-import ButtonAction from '../button-action/ButtonAction.vue'
+import { chunk, cloneDeep, each, find, first, isArray } from 'lodash-es'
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue'
 import Button from '../../ui/button/Button.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
@@ -68,9 +67,7 @@ const onChangeTerm = () => {
 }
 
 const nextPage = async () => {
-	paginateStart.value += 5
 	paginateLimit.value += 5
-	await fetch()
 }
 
 const onRemoveItem = (item: any) => {
@@ -114,6 +111,19 @@ const getFromMemoryList = (newRows: unknown[]) => {
 	})
 }
 
+const getItemsList = async () => {
+	const items = []
+	const chunkSize = 25
+	const paginatedIds = chunk(selectedIds.value, chunkSize)
+	for (const ids of paginatedIds) {
+		const res = await props.service.get({
+			ids: ids.join(',')
+		})
+		items.push(...res.data)
+	}
+	return items
+}
+
 const fetch = async () => {
 	let newRows: unknown[] = []
 
@@ -126,15 +136,12 @@ const fetch = async () => {
 				newRows = await props.service.first(id)
 				newRows = [newRows]
 			} else {
-				const res = await props.service.get({
-					ids: getPaginatedIds().join(',')
-				})
-				newRows = res.data
+				newRows = await getItemsList()
 			}
 		}
 	}
 
-	rows.value.push(...newRows)
+	rows.value = newRows
 }
 
 const populateList = (newVal: any) => {
@@ -162,10 +169,6 @@ const updateByModal = ({ memoryList, ids }: any) => {
 	if (ids) {
 		updateInput(ids)
 	}
-}
-
-const getPaginatedIds = () => {
-	return selectedIds.value.slice(paginateStart.value, paginateLimit.value)
 }
 
 watch(
@@ -209,6 +212,7 @@ watch(
 	},
 	{ deep: true, immediate: true }
 )
+
 defineExpose({ onClickSearch })
 </script>
 
@@ -237,7 +241,7 @@ defineExpose({ onClickSearch })
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
 				<div
-					v-for="item in rows"
+					v-for="item in rows.slice(0, paginateLimit)"
 					class="ui-browser-list-row"
 					:class="{ '-no-button': hideExcludeButton }"
 					:key="item[identifier]">
@@ -249,8 +253,7 @@ defineExpose({ onClickSearch })
 						<IconButton variant="plain" size="sm" icon="close" @click="onRemoveItem(item)" />
 					</div>
 				</div>
-
-				<div v-if="selectedIds.length > paginateLimit" class="ui-browser-list-more">
+				<div v-if="rows.length > paginateLimit" class="ui-browser-list-more">
 					<Link @click="nextPage" label="Exibir mais" />
 				</div>
 			</div>
