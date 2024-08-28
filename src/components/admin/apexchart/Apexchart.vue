@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import apexcharts from 'apexcharts/src/apexcharts.js'
-import type ApexCharts from 'apexcharts'
+import ApexCharts from 'apexcharts'
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue'
 
 export interface Props {
@@ -11,7 +10,6 @@ export interface Props {
 		| 'line'
 		| 'area'
 		| 'bar'
-		| 'histogram'
 		| 'pie'
 		| 'donut'
 		| 'radialBar'
@@ -23,6 +21,7 @@ export interface Props {
 		| 'radar'
 		| 'polarArea'
 		| 'rangeBar'
+		| 'rangeArea'
 		| 'treemap'
 }
 
@@ -33,16 +32,14 @@ const props = withDefaults(defineProps<Props>(), {
 const uid = `apex-${getCurrentInstance()?.uid}`
 
 const settings = ref<ApexCharts.ApexOptions>({
-	...{
-		chart: {
-			type: props.type
-		},
-		series: [
-			{
-				data: []
-			}
-		]
+	chart: {
+		type: props.type
 	},
+	series: [
+		{
+			data: []
+		}
+	],
 	...props.options
 })
 
@@ -60,7 +57,7 @@ watchEffect(() => {
 })
 
 onMounted(() => {
-	chart.value = new apexcharts(document.querySelector(`#${uid}`), settings.value)
+	chart.value = new ApexCharts(document.querySelector(`#${uid}`), settings.value)
 	chart.value.render()
 })
 </script>

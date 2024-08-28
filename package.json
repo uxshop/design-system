@@ -1,7 +1,7 @@
 {
 	"name": "design-system",
-	"version": "0.0.1",
-	"main": "src/main.ts",
+	"version": "3.1.9",
+	"main": "src/index.ts",
 	"scripts": {
 		"dev": "vite",
 		"preview": "vite preview --port 5050",
@@ -88,5 +88,6 @@
 		"vue": "^3.2.47",
 		"vue-loader": "^16.8.3",
 		"vue-tsc": "^1.8.8"
-	}
+	},
+	"packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
