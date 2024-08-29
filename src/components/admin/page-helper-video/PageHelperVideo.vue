@@ -1,16 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Icon from '../../ui/icon/Icon.vue'
 import PageHelperVideoModal from './PageHelperVideoModal.vue'
-
-export interface IVideo {
-	video_id: string
-	name?: string
-	articles?: {
-		name: string
-		url: string
-	}[]
-}
+import Icon from '../../ui/icon/Icon.vue'
+import type { IVideo } from './types'
 
 const props = defineProps<{
 	video: IVideo
