@@ -4,7 +4,7 @@ import Aside from '../../ui/aside/Aside.vue'
 import Link from '../../ui/link/Link.vue'
 import AsideSection from '../../ui/aside/AsideSection.vue'
 import YoutubePlayer from '../../ui/youtube-player/YoutubePlayer.vue'
-import type { IVideo } from './PageHelperVideo.vue'
+import type { IVideo } from './types'
 
 withDefaults(
 	defineProps<{
@@ -17,7 +17,11 @@ withDefaults(
 	}
 )
 
-const video = ref<IVideo>({})
+const video = ref<IVideo>({
+	video_id: '_QzHQ3zxUS4',
+	name: 'PageHelperVideo'
+})
+
 const aside = ref(false)
 
 const open = (item: IVideo) => {
@@ -95,10 +99,10 @@ defineExpose({
 			border-top: var(--s-border-light);
 			margin: 0;
 
-		&:first-child {
-			padding-top: 0;
-			border: 0;
-		}
+			&:first-child {
+				padding-top: 0;
+				border: 0;
+			}
 		}
 	}
 }

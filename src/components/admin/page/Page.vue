@@ -2,7 +2,8 @@
 import { ref, computed } from 'vue'
 import Titlebar from '../titlebar/Titlebar.vue'
 import PageMessageSupport from '../page-message-support/PageMessageSupport.vue'
-import PageHelperVideo, { type IVideo } from '../page-helper-video/PageHelperVideo.vue'
+import PageHelperVideo from '../page-helper-video/PageHelperVideo.vue'
+import type { IVideo } from '../page-helper-video/types'
 import PageHelperArticles, { type IArticle, type IArticlesHelper } from '../page-helper-articles/PageHelperArticles.vue'
 import type { IAction } from '../../../types/IAction'
 

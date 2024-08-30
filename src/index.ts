@@ -57,7 +57,7 @@ export { default as TableListItem } from './components/admin/table-list/TableLis
 export { default as TableListTable } from './components/admin/table-list/table-list-table/TableListTable.vue'
 export { default as TableListEmptyMessage } from './components/admin/table-list/snippets/TableListEmptyMessage.vue'
 export { default as InfiniteScroll } from './components/ui/infinite-scroll/InfiniteScroll.vue'
-export { default as PageHelperVideo } from './components/admin/page-helper-video/PageHelperVideo.vue'
+export * from './components/admin/page-helper-video'
 export { default as PageMessageSupport } from './components/admin/page-message-support/PageMessageSupport.vue'
 export { default as PageHelper } from './components/admin/page-helper/PageHelper.vue'
 export { default as Page } from './components/admin/page/Page.vue'
