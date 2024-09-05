@@ -68,11 +68,18 @@
 			border: none;
 			white-space: nowrap;
 			width: 100%;
+      color: var(--s-color-content-default);
+
+      &.-caption {
+        color: var(--s-color-content-light);
+        font-weight: var(--s-font-weight-semibold);
+      }
 
 			&:hover,
 			&:focus {
 				&.-button {
 					background-color: var(--s-color-fill-default-hover);
+          font-weight: var(--s-font-weight-medium);
 				}
 			}
 
@@ -86,12 +93,18 @@
 
 			&.-button {
 				cursor: pointer;
-				color: inherit;
 
 				> .ui-icon.leading-icon {
 					color: var(--s-color-content-highlight);
 					margin-left: var(--s-spacing-nano);
+
+          &.-left {
+            order: -1;
+            margin-left: 0;
+            margin-right: var(--s-spacing-nano);
+          }
 				}
+
 			}
 
 			&.-active {
@@ -110,6 +123,13 @@
 			> .ui-icon + span {
 				margin-left: var(--s-spacing-nano);
 			}
+
+      .ui-dropdown-item-label {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin: unset;
+      }
 		}
 	}
 

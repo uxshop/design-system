@@ -1,16 +1,6 @@
-import Dropdown from './Dropdown.vue'
-import DropdownItem from './DropdownItem.vue'
-import DropdownItemButton from './DropdownItemButton.vue'
-import DropdownDivider from './DropdownDivider.vue'
-import type { ComponentOptions } from 'vue'
-
-export default {
-	install(app: ComponentOptions, { prefix }: { prefix: string }) {
-		app.component(`${prefix}Dropdown`, Dropdown)
-		app.component(`${prefix}DropdownItem`, DropdownItem)
-		app.component(`${prefix}DropdownItemButton`, DropdownItemButton)
-		app.component(`${prefix}DropdownDivider`, DropdownDivider)
-	}
-}
-
-export { Dropdown, DropdownItem, DropdownItemButton, DropdownDivider }
+export { default as Dropdown } from './Dropdown.vue';
+export { default as DropdownDivider } from './DropdownDivider.vue';
+export { default as DropdownItem } from './DropdownItem.vue';
+export { default as DropdownItemButton } from './DropdownItemButton.vue';
+export { default as DropdownSection } from './DropdownSection.vue';
+export type { IDropdownItem, IDropdownItemButton, DropdownItemButtonIconPositionOptions } from './types';

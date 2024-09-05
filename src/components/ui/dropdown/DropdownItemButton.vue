@@ -1,29 +1,40 @@
 <script setup lang="ts">
-import Icon from '../icon/Icon.vue'
+import { computed } from 'vue';
+import Icon from '../icon/Icon.vue';
+import { IDropdownItemButton } from './types';
 
-defineProps<{
-	label?: string
-	close?: boolean
-	class?: string
-	leadingIcon?: string
-}>()
+const props = withDefaults(defineProps<IDropdownItemButton>(), {
+	iconPosition: 'right',
+	iconFilled: true
+})
+
+const getComponent = computed(() => {
+  if (props.href) return 'a'
+
+  if (props.to) return 'router-link'
+
+  return 'button'
+})
+
+const typeToButton = computed(() => getComponent.value === 'button' ?  'button' : '')
 </script>
 
 <template>
 	<div class="ui-dropdown-item-wrapper">
-		<button class="ui-dropdown-item -button" type="button" :data-close="close" :class="class">
+    <component :is="getComponent" class="ui-dropdown-item -button" :data-close="close" :class="class" :href="href" :to="to" :type="typeToButton">
 			<slot>
-				<p class="ui-dropdown-item-label">{{ label }}</p>
+				<span class="ui-dropdown-item-label">{{ label }}</span>
 			</slot>
-			<Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" filled/>
-		</button>
+
+			<Icon
+				v-if="icon ?? leadingIcon"
+				:name="icon ?? leadingIcon"
+				:filled="iconFilled"
+				:size="iconSize"
+				:class="{
+					'leading-icon': true,
+					'-left': iconPosition === 'left'
+				}" />
+    </component>
 	</div>
 </template>
-<style scoped lang="scss">
-.ui-dropdown-item-label {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-	margin: unset;
-}
-</style>
