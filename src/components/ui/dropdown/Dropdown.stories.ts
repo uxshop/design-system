@@ -1,9 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type {
+  Meta,
+  StoryObj,
+} from '@storybook/vue3';
 
-import Dropdown from './Dropdown.vue'
-import DropdownItem from './DropdownItem.vue'
-import DropdownItemButton from './DropdownItemButton.vue'
-import Button from '../button/Button.vue'
+import Button from '../button/Button.vue';
+import Dropdown from './Dropdown.vue';
+import DropdownItem from './DropdownItem.vue';
+import DropdownItemButton from './DropdownItemButton.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
@@ -51,10 +54,10 @@ export const Default: Story = {
           <Button>Dropdown</Button>
         </template>
         <DropdownItem>
-          dropdown-item-slot
+          Dropdown-item-slot
         </DropdownItem>
         <DropdownItemButton>
-        dropdown-item-slot
+          dropdown-item-button-slot
         </DropdownItemButton>
       </Dropdown>
     </div>

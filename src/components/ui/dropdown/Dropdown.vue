@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, ref, useSlots } from 'vue'
+import { computed, getCurrentInstance, nextTick, ref } from 'vue'
 
 const props = defineProps<{
 	dropUp?: boolean
