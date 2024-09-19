@@ -1,41 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import InfiniteLoading, { type IContext } from './components/ui/infinite-scroll/InfiniteScroll.vue'
-import { easepick } from '@easepick/bundle'
+import Layout from './components/admin/layout/Layout.vue';
+import Page from './components/admin/page/Page.vue';
+import TextStyle from './components/ui/text-style/TextStyle.vue';
+import type { IAction } from './types';
 
-const items = ref(0)
-const InfiniteLoadingRef = ref()
-
-const load = (context: IContext) => {
-	items.value += 10
-
-	if (items.value > 100) {
-		context.noMore()
-	} else {
-		context.loaded()
-	}
-}
-
-const reset = () => {
-	items.value = 0
-	InfiniteLoadingRef.value.reset()
-}
+const action: IAction = {
+  label: 'Visitar Bagy',
+};
 </script>
-<template>
-	<div class="content">
-		<ul>
-			<li v-for="item in items">Teste - {{ item }}</li>
-		</ul>
-		<InfiniteLoading :load="load" spinnerSize="10" ref="InfiniteLoadingRef" />
-	</div>
 
-	<button @click="reset">teste</button>
+<template>
+  <Page title="Bagy Design System" size="full" :primaryAction="action">
+    <TextStyle variant="muted">Inicie seus testes por aqui...</TextStyle>
+  </Page>
 </template>
 
 <style lang="scss">
-.content {
-	max-height: 100px;
-	overflow-y: auto;
-	background-color: red;
-}
+@import './scss/theme.scss';
 </style>
