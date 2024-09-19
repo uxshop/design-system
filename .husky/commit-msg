@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+npx branch-name-lint .branchconfigrc.json
 
-npx branch-name-lint branchConfig.json
-.git/hooks/commit-msg
+npx --no -- commitlint --edit \$1

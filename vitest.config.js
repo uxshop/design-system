@@ -13,7 +13,7 @@ export default mergeConfig(
         enabled: true,
         include: ['src/**/*.{ts,vue}'],
         exclude: [],
-        reporter: ['text', 'html'],
+        reporter: ['html'],
       },
       exclude: [...configDefaults.exclude, 'e2e/**'],
     },
