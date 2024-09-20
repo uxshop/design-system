@@ -136,7 +136,7 @@ const getTemplateTo = computed<any>(() => {
                   <li v-for="(node, index) in item.nodes" class="ui-sidebar-item" :key="index">
                     <component
                       :is="getTemplate(node)"
-                      :to="{ name: node.to, params: item.params } ?? ''"
+                      :to="getTemplateTo(node)"
                       class="ui-sidebar-link -sub"
                       @click="toggleMenu(node)"
                       :class="{
