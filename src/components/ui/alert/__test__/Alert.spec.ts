@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, test, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import Alert from '../Alert.vue';
 
@@ -9,7 +9,7 @@ const mockAlert = {
 };
 
 describe('UI / Alert', () => {
-  it('Renderiza Alert com props basicas', () => {
+  test('Renderiza Alert com props basicas', () => {
     const wrapper = mount(Alert, {
       props: mockAlert,
     });
@@ -17,7 +17,7 @@ describe('UI / Alert', () => {
     expect(wrapper.text()).toContain(mockAlert.title);
   });
 
-  it('Renderiza Alert com variação de sucesso', () => {
+  test('Renderiza Alert com variação de sucesso', () => {
     const wrapper = mount(Alert, {
       props: { ...mockAlert, variant: 'success' },
     });
@@ -25,7 +25,7 @@ describe('UI / Alert', () => {
     expect(wrapper.classes()).toContain('-success');
   });
 
-  it('Title do Alert não deve ser renderizado', () => {
+  test('Title do Alert não deve ser renderizado', () => {
     const wrapper = mount(Alert, {
       props: { ...mockAlert, show: false },
     });
@@ -33,7 +33,7 @@ describe('UI / Alert', () => {
     expect(wrapper.text()).not.contains(mockAlert.title);
   });
 
-  it('Renderiza Alert com a opção de fechar', async () => {
+  test('Renderiza Alert com a opção de fechar', async () => {
     const wrapper = mount(Alert, {
       props: { ...mockAlert, dismissible: true },
     });

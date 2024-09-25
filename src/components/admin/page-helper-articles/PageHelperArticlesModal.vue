@@ -1,62 +1,65 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Aside from '../../ui/aside/Aside.vue'
-import Link from '../../ui/link/Link.vue'
-import type { IArticle, IArticlesHelper } from './PageHelperArticles.vue'
+import { ref } from 'vue';
+import Aside from '../../ui/aside/Aside.vue';
+import Link from '../../ui/link/Link.vue';
+import type { IArticle, IArticlesHelper } from './PageHelperArticles.vue';
 
-const aside = ref(false)
-const itemTitle = ref('Ajuda')
-const helperArticles = ref<IArticle[]>()
+const aside = ref(false);
+const itemTitle = ref('Ajuda');
+const helperArticles = ref<IArticle[]>();
 
 const open = (item: IArticlesHelper) => {
-	helperArticles.value = item.articles
-	if (item.title) itemTitle.value = item.title
-	aside.value = true
-}
+  helperArticles.value = item.articles;
+  if (item.title) itemTitle.value = item.title;
+  aside.value = true;
+};
 
 defineExpose({
-	open
-})
+  open,
+});
 </script>
 
 <template>
-	<Aside v-model="aside" title="Ajuda" subtitle="Para encontrar ainda mais informações, explore nossos artigos disponíveis na base de conhecimento.
-"  size="sm">
-		<div class="page-helper-articles">
-			<ul class="page-helper-articles-list">
-				<li class="page-helper-articles-item" v-for="item in helperArticles" :key="item.url">
-					<Link :href="item.url" target="_blank">
-						{{ item.name }}
-					</Link>
-				</li>
-			</ul>
-		</div>
-	</Aside>
+  <Aside
+    v-model="aside"
+    title="Ajuda"
+    subtitle="Para encontrar ainda mais informações, explore nossos artigos disponíveis na base de conhecimento.
+"
+    size="sm">
+    <div class="page-helper-articles">
+      <ul class="page-helper-articles-list">
+        <li class="page-helper-articles-item" v-for="item in helperArticles" :key="item.url">
+          <Link :href="item.url" target="_blank">
+            {{ item.name }}
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </Aside>
 </template>
 <style lang="scss">
 .page-helper-articles {
-	&-support {
-		margin-bottom: 0;
-		padding: 0 0 var(--s-spacing-small);
-		display: inline-block;
-	}
+  &-support {
+    margin-bottom: 0;
+    padding: 0 0 var(--s-spacing-small);
+    display: inline-block;
+  }
 
-	&-list {
-		padding-left: 0;
-		list-style: none;
-	}
+  &-list {
+    padding-left: 0;
+    list-style: none;
+  }
 
-	&-item {
-		margin-bottom: 0;
-		padding: var(--s-spacing-xx-small) 0;
-		border-top: var(--s-border-light);
+  &-item {
+    margin-bottom: 0;
+    padding: var(--s-spacing-xx-small) 0;
+    border-top: var(--s-border-light);
 
-		&:first-child {
-			margin-bottom: 0;
-			padding-top: 0;
-			border: 0;
-
-		}
-	}
+    &:first-child {
+      margin-bottom: 0;
+      padding-top: 0;
+      border: 0;
+    }
+  }
 }
 </style>

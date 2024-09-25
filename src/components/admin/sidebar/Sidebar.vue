@@ -54,7 +54,7 @@ const handleMobileBar = (item: SidebarMobileMenu) => {
 const getTemplate = (item: SideBarItem) => (item.to ? 'router-link' : 'div');
 
 const getTemplateTo = computed<any>(() => {
-  (item: SideBarItem) => {
+  return (item: SideBarItem) => {
     if (item.to && item.params) {
       return { to: item.to, params: item.params };
     }

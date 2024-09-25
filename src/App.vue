@@ -9,7 +9,7 @@ const action: IAction = {
 </script>
 
 <template>
-  <Page title="Bagy Design System" size="full" :primaryAction="action">
+  <Page title="Bagy Design System" size="full" :primary-action="action">
     <TextStyle variant="muted">Inicie seus testes por aqui...</TextStyle>
   </Page>
 </template>
