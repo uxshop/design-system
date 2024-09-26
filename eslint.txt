@@ -1,0 +1,1612 @@
+
+> design-system@4.0.0-alpha lint:js
+> eslint
+
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/.storybook/decorators/brandMode.ts
+  19:71  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/.storybook/decorators/schemeMode.ts
+  22:72  warning  Unexpected any. Specify a different type                                       @typescript-eslint/no-explicit-any
+  22:90  error    Function name `SchemeMode` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/.storybook/preview.ts
+  7:8  error  'app' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/Darkmode.vue
+   1:1   warning  Component name "Darkmode" should always be multi-word  vue/multi-word-component-names
+   9:18  error    Expected '===' and instead saw '=='                    eqeqeq
+  17:1   error    The template requires child element                    vue/valid-template-root
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/apexchart/Apexchart.vue
+   1:1   warning  Component name "Apexchart" should always be multi-word                                                      vue/multi-word-component-names
+   6:3   warning  Prop 'options' requires default value to be set                                                             vue/require-default-prop
+   7:11  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  34:18  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/browser-select/BrowserSelect.stories.ts
+   6:20  warning  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+  11:38  warning  Unexpected any. Specify a different type                                    @typescript-eslint/no-explicit-any
+  32:14  error    Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  42:14  error    Variable name `Button` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/browser-select/BrowserSelect.vue
+   11:15  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   12:3   warning  Prop 'templateCustom' requires default value to be set                                                      vue/require-default-prop
+   12:20  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   13:3   warning  Prop 'id' requires default value to be set                                                                  vue/require-default-prop
+   15:17  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   15:23  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   16:24  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   19:3   warning  Prop 'title' requires default value to be set                                                               vue/require-default-prop
+   25:3   warning  Prop 'size' requires default value to be set                                                                vue/require-default-prop
+   27:3   warning  Prop 'selectType' requires default value to be set                                                          vue/require-default-prop
+   28:3   warning  Prop 'list' requires default value to be set                                                                vue/require-default-prop
+   28:10  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   48:18  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   50:7   warning  'paginateStart' is assigned a value but never used                                                          @typescript-eslint/no-unused-vars
+   51:23  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   73:29  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   78:36  error    Expected '!==' and instead saw '!='                                                                         eqeqeq
+  133:24  error    Expected '!==' and instead saw '!='                                                                         eqeqeq
+  147:31  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  157:34  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  158:20  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  166:45  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  194:18  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+  221:43  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  226:11  warning  Attribute ":class" should go before "@click"                                                                vue/attributes-order
+  237:11  warning  Attribute "autocomplete" should go before "@keyup"                                                          vue/attributes-order
+  238:11  warning  Attribute ":disabled" should go before "@keyup"                                                             vue/attributes-order
+  239:58  warning  Attribute ":disabled" should go before "@click"                                                             vue/attributes-order
+  242:36  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  247:11  warning  Attribute ":key" should go before ":class"                                                                  vue/attributes-order
+  248:44  warning  Attribute ":is" should go before "v-if"                                                                     vue/attributes-order
+  257:35  warning  Attribute "label" should go before "@click"                                                                 vue/attributes-order
+  266:5   warning  Attribute ":templateCustom" should go before "@update"                                                      vue/attributes-order
+  266:5   warning  Attribute ':templateCustom' must be hyphenated                                                              vue/attribute-hyphenation
+  267:5   warning  Attribute ":service" should go before "@update"                                                             vue/attributes-order
+  268:5   warning  Attribute ":searchBy" should go before "@update"                                                            vue/attributes-order
+  268:5   warning  Attribute ':searchBy' must be hyphenated                                                                    vue/attribute-hyphenation
+  269:5   warning  Attribute ":selectOne" should go before "@update"                                                           vue/attributes-order
+  269:5   warning  Attribute ':selectOne' must be hyphenated                                                                   vue/attribute-hyphenation
+  270:5   warning  Attribute ":identifier" should go before "@update"                                                          vue/attributes-order
+  271:5   warning  Attribute ":limit" should go before "@update"                                                               vue/attributes-order
+  272:5   warning  Attribute ":title" should go before "@update"                                                               vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/browser-select/BrowserSelectModal.vue
+   34:7   error    Variable name `TIMER_INSTANT_SEARCH` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+   37:7   error    Variable name `InfiniteScrollRef` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+   69:19  error    Expected '!==' and instead saw '!='                                                      eqeqeq
+   78:20  warning  Unexpected any. Specify a different type                                                 @typescript-eslint/no-explicit-any
+   98:16  error    Expected '===' and instead saw '=='                                                      eqeqeq
+   98:34  error    Expected '===' and instead saw '=='                                                      eqeqeq
+  102:16  error    Expected '===' and instead saw '=='                                                      eqeqeq
+  132:42  warning  Unexpected any. Specify a different type                                                 @typescript-eslint/no-explicit-any
+  146:52  warning  Attribute 'noCloseOnBackdrop' must be hyphenated                                         vue/attribute-hyphenation
+  149:14  warning  Attribute 'alignV' must be hyphenated                                                    vue/attribute-hyphenation
+  155:64  warning  Attribute "v-show" should go before "border"                                             vue/attributes-order
+  156:54  warning  Attribute "v-show" should go before "name"                                               vue/attributes-order
+  160:59  warning  Attribute "v-show" should go before "@click"                                             vue/attributes-order
+  177:11  warning  Attribute "class" should go before "@keypress.space"                                     vue/attributes-order
+  179:53  warning  Attribute "v-model" should go before ":value"                                            vue/attributes-order
+  183:38  warning  Attribute "ref" should go before ":load"                                                 vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/browser-select/__mocks__/BrowserSelect.ts
+  15:14  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  15:28  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/browser-select/snippets/BrowserSelectCategory.vue
+  16:26  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/browser-select/snippets/BrowserSelectCell.vue
+  6:1  error  Expected blank line before this block  vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/browser-select/type.ts
+  10:16  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:20  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  13:17  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/button-action/ButtonAction.vue
+  16:59  error  `close` is defined as emit but never used                                                                   vue/no-unused-emit-declarations
+  25:19  error  Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  45:16  error  Expected '===' and instead saw '=='                                                                         eqeqeq
+  52:17  error  Expected '===' and instead saw '=='                                                                         eqeqeq
+  62:17  error  Expected '===' and instead saw '=='                                                                         eqeqeq
+  80:17  error  Expected '===' and instead saw '=='                                                                         eqeqeq
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/button-darkmode/ButtonDarkmode.vue
+  10:30  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  13:10  error    Expected '===' and instead saw '=='       eqeqeq
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/card-active/CardActive.vue
+  10:15  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  12:3   warning  Prop 'preventActive' requires default value to be set  vue/require-default-prop
+  13:3   warning  Prop 'delete' requires default value to be set         vue/require-default-prop
+  16:53  error    `update:modelValue` is defined as emit but never used  vue/no-unused-emit-declarations
+  50:10  warning  Attribute 'alignV' must be hyphenated                  vue/attribute-hyphenation
+  52:32  error    Unexpected mutation of "modelValue" prop               vue/no-mutating-props
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/card-annotation/CardAnnotation.vue
+  18:40  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/card-seo/CardSeo.vue
+  27:34  warning  Attribute 'dropdownLabel' must be hyphenated    vue/attribute-hyphenation
+  27:92  warning  Attribute 'dropdownClosed' must be hyphenated   vue/attribute-hyphenation
+  31:5   warning  Attribute ':keyTitle' must be hyphenated        vue/attribute-hyphenation
+  32:5   warning  Attribute ':keySubTitle' must be hyphenated     vue/attribute-hyphenation
+  33:5   warning  Attribute ':keyDescription' must be hyphenated  vue/attribute-hyphenation
+  35:5   warning  Attribute 'viewOnly' must be hyphenated         vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/codemirror/Codemirror.vue
+   1:1   warning  Component name "Codemirror" should always be multi-word  vue/multi-word-component-names
+  17:7   error    'docIsHTML' is never reassigned. Use 'const' instead     prefer-const
+  18:7   error    'stateIsHTML' is never reassigned. Use 'const' instead   prefer-const
+  18:51  error    Expected '===' and instead saw '=='                      eqeqeq
+  19:17  error    Expected '===' and instead saw '=='                      eqeqeq
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/content-403/Content403.vue
+  1:1  warning  Component name "Content403" should always be multi-word  vue/multi-word-component-names
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/content-404/Content404.vue
+  1:1  warning  Component name "Content404" should always be multi-word  vue/multi-word-component-names
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/empty-data/EmptyData.vue
+  20:52  warning  Attribute "v-show" should go before ":type"                   vue/attributes-order
+  29:4   error    Custom elements in iteration require 'v-bind:key' directives  vue/valid-v-for
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/form-register/FormRegister.vue
+   8:13  warning  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  39:36  warning  Attribute "id" should go before "@submit.prevent"     vue/attributes-order
+  39:55  warning  Attribute "class" should go before "@submit.prevent"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/gmaps/Gmaps.vue
+   1:1   warning  Component name "Gmaps" should always be multi-word  vue/multi-word-component-names
+  25:2   warning  Prop 'style' requires default value to be set       vue/require-default-prop
+  67:70  warning  Attribute "v-if" should go before "class"           vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/home-bar/HomeBar.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/home-bar/HomeBar.vue
+  7:30  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+  8:30  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/layout/Layout.vue
+   1:1   warning  Component name "Layout" should always be multi-word  vue/multi-word-component-names
+   6:7   warning  'onScroll' is assigned a value but never used        @typescript-eslint/no-unused-vars
+  13:44  warning  Attribute "id" should go before "_scroll"            vue/attributes-order
+  21:34  warning  Attribute "id" should go before "class"              vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/media-card/MediaCard.stories.ts
+  20:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  22:14  error  Variable name `Inverse` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  28:14  error  Variable name `WithVideo` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/media-card/MediaCard.vue
+  13:3   warning  Prop 'video' requires default value to be set           vue/require-default-prop
+  14:3   warning  Prop 'image' requires default value to be set           vue/require-default-prop
+  15:3   warning  Prop 'imageHref' requires default value to be set       vue/require-default-prop
+  18:3   warning  Prop 'buttons' requires default value to be set         vue/require-default-prop
+  20:3   warning  Prop 'maxMediaHeight' requires default value to be set  vue/require-default-prop
+  54:40  warning  'v-html' directive can lead to XSS attack               vue/no-v-html
+  60:7   warning  Attribute ":href" should go before "@click"             vue/attributes-order
+  61:7   warning  Attribute ":target" should go before "@click"           vue/attributes-order
+  62:7   warning  Attribute ":size" should go before "@click"             vue/attributes-order
+  63:7   warning  Attribute ":label" should go before "@click"            vue/attributes-order
+  64:7   warning  Attribute ":variant" should go before "@click"          vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-actions/PageActions.vue
+  14:4   error    Custom elements in iteration require 'v-bind:key' directives  vue/valid-v-for
+  14:92  warning  Attribute "outline" should go before "@click"                 vue/attributes-order
+  18:40  warning  Attribute "v-if" should go before "class"                     vue/attributes-order
+  24:5   warning  Attribute ":to" should go before "@click"                     vue/attributes-order
+  25:5   warning  Attribute ":leadingIcon" should go before "@click"            vue/attributes-order
+  25:5   warning  Attribute ':leadingIcon' must be hyphenated                   vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper-articles/PageHelperArticles.stories.ts
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper-articles/PageHelperArticles.vue
+   6:18  error    Interface name `IArticle` must not match the RegExp: /^I[A-Z]/u         @typescript-eslint/naming-convention
+  11:18  error    Interface name `IArticlesHelper` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+  25:50  warning  v-on event '@onClickLink' must be hyphenated                            vue/v-on-event-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper-articles/PageHelperArticlesModal.vue
+  31:47  warning  Attribute "v-for" should go before "class"  vue/attributes-order
+  31:78  warning  Attribute ":key" should go before "class"   vue/attributes-order
+  40:1   error    Expected blank line before this block       vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper-video/PageHelperVideo.stories.ts
+  28:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper-video/PageHelperVideo.vue
+  19:36  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper-video/types.ts
+  1:18  error  Interface name `IVideo` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper/PageHelper.stories.ts
+  17:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page-helper/PageHelper.vue
+  4:18  error  Interface name `IPageHelper` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/page/Page.vue
+   1:1   warning  Component name "Page" should always be multi-word  vue/multi-word-component-names
+  14:22  warning  Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+  19:15  warning  Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+  56:4   warning  Attribute ':groupActions' must be hyphenated       vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/panel-skeleton/PanelSkeleton.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/panel-skeleton/PanelSkeleton.vue
+  35:1   error    Expected blank line before this block                         vue/padding-line-between-blocks
+  39:5   warning  Attribute ':logoImage' must be hyphenated                     vue/attribute-hyphenation
+  40:5   warning  Attribute ':actionsConfig' must be hyphenated                 vue/attribute-hyphenation
+  48:5   error    Custom elements in iteration require 'v-bind:key' directives  vue/valid-v-for
+  48:22  error    's' is defined but never used                                 vue/no-unused-vars
+  50:4   error    Custom elements in iteration require 'v-bind:key' directives  vue/valid-v-for
+  50:21  error    's' is defined but never used                                 vue/no-unused-vars
+  59:5   error    Custom elements in iteration require 'v-bind:key' directives  vue/valid-v-for
+  59:22  error    's' is defined but never used                                 vue/no-unused-vars
+  63:5   error    Custom elements in iteration require 'v-bind:key' directives  vue/valid-v-for
+  63:22  error    's' is defined but never used                                 vue/no-unused-vars
+  71:1   error    Expected blank line before this block                         vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/platform-select/PlatformSelect.stories.ts
+  47:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/platform-select/PlatformSelect.vue
+  25:13  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  25:17  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  38:3   error    Custom elements in iteration require 'v-bind:key' directives                                                vue/valid-v-for
+  46:34  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/platform-select/PlatformSelectTypes.ts
+  8:18  error  Interface name `IPlatform` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/quick-search/QuickSearch.stories.ts
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/quick-search/QuickSearch.vue
+  12:18  error    Interface name `IQuickSearchFormValue` must not match the RegExp: /^I[A-Z]/u                                @typescript-eslint/naming-convention
+  38:15  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  43:20  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  64:1   error    Expected blank line before this block                                                                       vue/padding-line-between-blocks
+  65:33  warning  Attribute "v-model" should go before "class"                                                                vue/attributes-order
+  66:9   warning  Expected '@' instead of 'v-on:'                                                                             vue/v-on-style
+  72:13  warning  Attribute 'leadingIcon' must be hyphenated                                                                  vue/attribute-hyphenation
+  78:1   error    Expected blank line before this block                                                                       vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/row-exclude/RowExclude.vue
+  12:8   warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+  16:11  error    Interface name `IRow` must not match the RegExp: /^I[A-Z]/u            @typescript-eslint/naming-convention
+  25:39  error    Expected '!==' and instead saw '!='                                    eqeqeq
+  27:14  error    Expected '!==' and instead saw '!='                                    eqeqeq
+  38:19  error    Array type using 'Array<number>' is forbidden. Use 'number[]' instead  @typescript-eslint/array-type
+  40:41  error    Expected '===' and instead saw '=='                                    eqeqeq
+  53:43  error    Expected '===' and instead saw '=='                                    eqeqeq
+  68:4   warning  Attribute "v-for" should go before ":class"                            vue/attributes-order
+  69:4   warning  Attribute ":key" should go before ":class"                             vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/savebar/Savebar.vue
+   1:1   warning  Component name "Savebar" should always be multi-word  vue/multi-word-component-names
+   7:25  warning  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+  41:43  warning  Attribute "class" should go before "@click"           vue/attributes-order
+  41:70  warning  Attribute ":disabled" should go before "@click"       vue/attributes-order
+  47:6   warning  Attribute 'leadingIcon' must be hyphenated            vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/seo/Seo.stories.ts
+  27:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  28:14  error  Variable name `WriteOnly` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  33:14  error  Variable name `ViewOnly` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/seo/Seo.vue
+    1:1   warning  Component name "Seo" should always be multi-word                                    vue/multi-word-component-names
+   21:2   warning  Prop 'title' requires default value to be set                                       vue/require-default-prop
+   22:2   warning  Prop 'domain' requires default value to be set                                      vue/require-default-prop
+   32:2   warning  Prop 'metaTitle' requires default value to be set                                   vue/require-default-prop
+   42:7   error    Variable name `TITLE_SEPARATOR` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+   44:7   error    Duplicate key 'metaTitle'. May cause name collision in script or template tag       vue/no-dupe-keys
+   71:39  warning  Unexpected any. Specify a different type                                            @typescript-eslint/no-explicit-any
+   83:22  error    Redundant double negation                                                           no-extra-boolean-cast
+  123:38  warning  Attribute "v-if" should go before "class"                                           vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/sidebar-header/SidebarHeader.stories.ts
+  22:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/sidebar-header/SidebarHeader.vue
+   7:2   warning  Prop 'logoImage' requires default value to be set                                                           vue/require-default-prop
+   8:2   warning  Prop 'logoSvg' requires default value to be set                                                             vue/require-default-prop
+  21:28  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  22:27  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  24:1   error    Expected blank line before this block                                                                       vue/padding-line-between-blocks
+  27:24  warning  'v-html' directive can lead to XSS attack                                                                   vue/no-v-html
+  27:41  warning  Attribute "class" should go before "v-html"                                                                 vue/attributes-order
+  31:83  warning  Attribute "icon" should go before "@click"                                                                  vue/attributes-order
+  31:97  warning  Attribute "variant" should go before "@click"                                                               vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/sidebar/Sidebar.stories.ts
+  15:14  error  'node' is defined but never used                                            @typescript-eslint/no-unused-vars
+  15:33  error  'isOnlyChildren' is defined but never used                                  @typescript-eslint/no-unused-vars
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/sidebar/Sidebar.vue
+    1:1   warning  Component name "Sidebar" should always be multi-word  vue/multi-word-component-names
+   32:27  warning  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+   56:32  warning  Unexpected any. Specify a different type              @typescript-eslint/no-explicit-any
+   72:27  warning  Attribute "id" should go before "class"               vue/attributes-order
+   91:17  warning  Attribute ":key" should go before "redirectLink"      vue/attributes-order
+  109:19  warning  Attribute 'activeClass' must be hyphenated            vue/attribute-hyphenation
+  122:23  warning  Attribute "v-if" should go before "class"             vue/attributes-order
+  127:49  warning  Attribute "v-if" should go before "class"             vue/attributes-order
+  136:83  warning  Attribute ":key" should go before "class"             vue/attributes-order
+  142:23  warning  Attribute ":class" should go before "@click"          vue/attributes-order
+  153:27  warning  Attribute "v-if" should go before "class"             vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/sidebar/types.ts
+   9:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  31:11  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/stats/StatsGroup.stories.ts
+  20:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/stats/StatsGroup.vue
+   4:7   warning  'props' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  16:36  warning  Attribute "v-if" should go before "class"      vue/attributes-order
+  22:5   warning  Attribute ':primaryAction' must be hyphenated  vue/attribute-hyphenation
+  26:36  warning  Attribute "v-else" should go before "class"    vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/TableList.vue
+    3:30  warning  'concat' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+   26:10  error    Duplicate key 'placeholder'. May cause name collision in script or template tag                             vue/no-dupe-keys
+   26:10  warning  'placeholder' is defined but never used                                                                     @typescript-eslint/no-unused-vars
+   32:13  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   34:8   warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   38:26  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   54:13  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   58:22  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  120:31  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  184:19  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  217:12  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  219:16  error    Expected '!==' and instead saw '!='                                                                         eqeqeq
+  277:65  warning  Attribute 'noPadding' must be hyphenated                                                                    vue/attribute-hyphenation
+  281:34  warning  Attribute "v-show" should go before "class"                                                                 vue/attributes-order
+  286:48  warning  Attribute ":placeholder" should go before "@refresh"                                                        vue/attributes-order
+  286:79  warning  Attribute ":state" should go before "@refresh"                                                              vue/attributes-order
+  291:54  warning  Attribute ':queryParams' must be hyphenated                                                                 vue/attribute-hyphenation
+  291:81  warning  Attribute ':setQueryParams' must be hyphenated                                                              vue/attribute-hyphenation
+  298:66  warning  Attribute ":class" should go before "@scroll"                                                               vue/attributes-order
+  299:63  warning  v-on event '@resetQueryParams' must be hyphenated                                                           vue/v-on-event-hyphenation
+  301:25  warning  Attribute "v-if" should go before "#head"                                                                   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/TableListRow.vue
+  4:7   warning  'props' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  4:27  error    The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/snippets/TableListEmptyMessage.vue
+   3:2   warning  Prop 'msg' requires default value to be set  vue/require-default-prop
+  10:19  warning  'v-html' directive can lead to XSS attack    vue/no-v-html
+  10:32  warning  Attribute "class" should go before "v-html"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav-bulk/TableListNavBulk.vue
+   17:9   warning  Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+   68:49  error    Expected '===' and instead saw '=='                  eqeqeq
+   84:12  error    Expected '===' and instead saw '=='                  eqeqeq
+   95:12  error    Expected '===' and instead saw '=='                  eqeqeq
+  112:28  warning  Attribute "class" should go before "@click"          vue/attributes-order
+  113:70  warning  Attribute "v-model" should go before ":value"        vue/attributes-order
+  113:89  warning  Attribute 'noEvents' must be hyphenated              vue/attribute-hyphenation
+  117:22  warning  Attribute 'leadingIcon' must be hyphenated           vue/attribute-hyphenation
+  117:67  warning  Attribute "label" should go before "@click"          vue/attributes-order
+  128:5   warning  Attribute ":key" should go before "@click.stop"      vue/attributes-order
+  129:5   warning  Attribute ":variant" should go before "@click.stop"  vue/attributes-order
+  130:5   warning  Attribute ":label" should go before "@click.stop"    vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav-filter/TableListNavFilter.vue
+  15:49  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  16:32  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  18:11  error    Expected '===' and instead saw '=='                    eqeqeq
+  18:56  error    Expected '===' and instead saw '=='                    eqeqeq
+  39:36  warning  Attribute "v-if" should go before "class"              vue/attributes-order
+  43:4   warning  Attribute 'leadingIcon' must be hyphenated             vue/attribute-hyphenation
+  45:4   warning  Attribute "class" should go before "@click"            vue/attributes-order
+  49:4   warning  Attribute ":filters" should go before "@close"         vue/attributes-order
+  50:4   warning  Attribute ":currentFilters" should go before "@close"  vue/attributes-order
+  50:4   warning  Attribute ':currentFilters' must be hyphenated         vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav-filter/TableListNavFilterSidebar.vue
+   14:12  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   15:34  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   18:37  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   20:38  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   21:37  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   22:27  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   25:37  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   28:21  error    Expected '===' and instead saw '=='                                    eqeqeq
+   41:7   error    Unexpected mutation of "filters" prop                                  vue/no-mutating-props
+   54:41  error    Expected '!==' and instead saw '!='                                    eqeqeq
+   74:3   error    Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+   78:19  error    Expected '===' and instead saw '=='                                    eqeqeq
+   85:43  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+   95:41  error    Expected '===' and instead saw '=='                                    eqeqeq
+  114:37  warning  Attribute "id" should go before "@submit.prevent"                      vue/attributes-order
+  125:46  warning  Attribute "v-if" should go before "class"                              vue/attributes-order
+  125:68  warning  Attribute "v-show" should go before "class"                            vue/attributes-order
+  150:25  warning  Attribute "v-for" should go before "v-else"                            vue/attributes-order
+  173:17  warning  Attribute ":disabled" should go before "@click"                        vue/attributes-order
+  174:17  warning  Attribute "label" should go before "@click"                            vue/attributes-order
+  182:78  warning  Attribute 'leadingIcon' must be hyphenated                             vue/attribute-hyphenation
+  183:47  warning  Attribute ":disabled" should go before "@click"                        vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav-pagination/TableListNavPagination.vue
+   5:8   warning  Unexpected any. Specify a different type         @typescript-eslint/no-explicit-any
+  31:49  warning  Attribute "v-show" should go before "class"      vue/attributes-order
+  38:6   warning  Attribute "icon" should go before "@click"       vue/attributes-order
+  39:6   warning  Attribute ":disabled" should go before "@click"  vue/attributes-order
+  40:6   warning  Attribute "class" should go before "@click"      vue/attributes-order
+  46:6   warning  Attribute "icon" should go before "@click"       vue/attributes-order
+  47:6   warning  Attribute ":disabled" should go before "@click"  vue/attributes-order
+  48:6   warning  Attribute "class" should go before "@click"      vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav/TableListNavCustomFilter.vue
+   16:17  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   17:18  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   18:30  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   23:13  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   29:12  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   35:22  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   43:57  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   48:14  error    Expected '===' and instead saw '=='                          eqeqeq
+   54:11  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   54:36  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+   58:3   error    Unexpected mutation of "state" prop                          vue/no-mutating-props
+   66:84  error    Expected '===' and instead saw '=='                          eqeqeq
+   77:5   error    Unexpected mutation of "state" prop                          vue/no-mutating-props
+   78:22  error    Expected '!==' and instead saw '!='                          eqeqeq
+   90:12  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  101:5   error    Unexpected mutation of "state" prop                          vue/no-mutating-props
+  125:56  warning  Attribute ":disabled" should go before "@show"               vue/attributes-order
+  125:84  warning  Attribute "right" should go before "@show"                   vue/attributes-order
+  130:11  warning  Attribute 'leadingIcon' must be hyphenated                   vue/attribute-hyphenation
+  134:56  warning  Attribute 'leadingIcon' must be hyphenated                   vue/attribute-hyphenation
+  138:42  warning  Attribute "id" should go before "@submit.prevent"            vue/attributes-order
+  138:66  warning  Attribute "autocomplete" should go before "@submit.prevent"  vue/attributes-order
+  142:15  warning  Attribute "v-model" should go before "size"                  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav/TableListNavRefresh.vue
+  5:9  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav/TableListNavSearch.vue
+  37:2   error    Unexpected mutation of "state" prop                 vue/no-mutating-props
+  48:6   warning  Attribute 'leadingIcon' must be hyphenated          vue/attribute-hyphenation
+  51:6   warning  Attribute "v-model" should go before "@clear"       vue/attributes-order
+  51:15  error    Unexpected mutation of "state" prop                 vue/no-mutating-props
+  52:6   warning  Attribute "id" should go before "@clear"            vue/attributes-order
+  53:6   warning  Attribute ":placeholder" should go before "@clear"  vue/attributes-order
+  54:6   warning  Attribute "last" should go before "@clear"          vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-nav/TableListNavSortable.vue
+  11:36  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  12:13  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  13:16  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  23:2   error    Array type using 'Array<T>' is forbidden. Use 'T[]' instead  @typescript-eslint/array-type
+  29:25  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  38:28  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  65:36  warning  Attribute "v-show" should go before "class"                  vue/attributes-order
+  69:84  warning  Attribute 'leadingIcon' must be hyphenated                   vue/attribute-hyphenation
+  75:5   warning  Attribute ":key" should go before "data-close"               vue/attributes-order
+  77:5   warning  Attribute ":active" should go before "@click"                vue/attributes-order
+  78:25  error    Unexpected mutation of "queryParams" prop                    vue/no-mutating-props
+  78:81  warning  Attribute 'noEvents' must be hyphenated                      vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-table/TableListTable.vue
+  10:24   warning  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+  12:8    warning  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+  19:28   warning  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+  19:39   warning  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+  20:42   error    Expected '===' and instead saw '=='                         eqeqeq
+  26:28   warning  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+  31:42   warning  Unexpected any. Specify a different type                    @typescript-eslint/no-explicit-any
+  35:17   error    Expected '!==' and instead saw '!='                         eqeqeq
+  40:5    error    Unexpected mutation of "selected" prop                      vue/no-mutating-props
+  46:45   warning  Attribute "v-if" should go before "class"                   vue/attributes-order
+  46:64   warning  Attribute "v-memo" should go before "class"                 vue/attributes-order
+  47:36   warning  Attribute "v-if" should go before "class"                   vue/attributes-order
+  53:21   error    'key' is defined but never used                             vue/no-unused-vars
+  55:7    warning  Attribute "class" should go before "@click"                 vue/attributes-order
+  56:7    warning  Attribute ":is" should go before "@click"                   vue/attributes-order
+  57:7    warning  Attribute ":to" should go before "@click"                   vue/attributes-order
+  58:7    warning  Attribute ":key" should go before "@click"                  vue/attributes-order
+  59:7    warning  Attribute ":class" should go before "@click"                vue/attributes-order
+  63:103  warning  Attribute "auto" should go before "@click.stop.prevent"     vue/attributes-order
+  64:23   warning  Attribute ':modelValue' must be hyphenated                  vue/attribute-hyphenation
+  64:63   warning  Attribute 'noEvents' must be hyphenated                     vue/attribute-hyphenation
+  67:13   warning  Unexpected 'v-bind' before ':'                              vue/v-bind-style
+  73:11   warning  Attribute "variant" should go before "@click.stop.prevent"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-tabs/TableListTabs.vue
+   8:31  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+   9:9   warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  12:47  warning  Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+  24:2   error    Unexpected mutation of "state" prop           vue/no-mutating-props
+  34:3   error    Unexpected mutation of "state" prop           vue/no-mutating-props
+  48:17  error    Unexpected mutation of "state" prop           vue/no-mutating-props
+  49:49  warning  Attribute "index" should go before "@click"   vue/attributes-order
+  54:5   warning  Attribute ":index" should go before "@click"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/table-list-tags/TableListTags.vue
+   14:7   error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   19:14  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   26:27  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   40:31  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   48:11  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   52:11  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   52:25  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   67:11  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   96:36  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  101:7   warning  Attribute "v-for" should go before "@remove"                                                                vue/attributes-order
+  102:7   warning  Attribute "v-show" should go before "@remove"                                                               vue/attributes-order
+  103:7   warning  Attribute ":key" should go before "@remove"                                                                 vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table-list/types/ITableListState.ts
+   3:18  error    Interface name `ITableListState` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+   4:15  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+   5:15  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+   7:8   warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+   8:14  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  10:21  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  12:25  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  13:27  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  14:23  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  15:25  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  17:18  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  18:18  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+  19:17  warning  Unexpected any. Specify a different type                                @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table/Table.vue
+  1:1   warning  Component name "Table" should always be multi-word  vue/multi-word-component-names
+  2:14  error    `click` is defined as emit but never used           vue/no-unused-emit-declarations
+  9:1   error    Expected blank line before this block               vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table/TableCell.vue
+  39:1  error  Expected blank line before this block  vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/table/TableRow.vue
+   3:7  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:1  error    Expected blank line before this block     vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/titlebar/Titlebar.vue
+   1:1   warning  Component name "Titlebar" should always be multi-word  vue/multi-word-component-names
+  12:22  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  70:8   warning  Attribute ':trailingIcon' must be hyphenated           vue/attribute-hyphenation
+  78:7   warning  Attribute ":leading-icon" should go before "@click"    vue/attributes-order
+  79:7   warning  Attribute ":class" should go before "@click"           vue/attributes-order
+  88:6   warning  Attribute ":class" should go before "@click"           vue/attributes-order
+  89:6   warning  Attribute ":leading-icon" should go before "@click"    vue/attributes-order
+  90:6   warning  Attribute ":size" should go before "@click"            vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/topbar/Topbar.vue
+   1:1   warning  Component name "Topbar" should always be multi-word    vue/multi-word-component-names
+   2:10  warning  'computed' is defined but never used                   @typescript-eslint/no-unused-vars
+   6:22  warning  'filterInitials' is defined but never used             @typescript-eslint/no-unused-vars
+  10:3   warning  Prop 'slug' requires default value to be set           vue/require-default-prop
+  11:3   warning  Prop 'backlink' requires default value to be set       vue/require-default-prop
+  11:14  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  12:3   warning  Prop 'breadcrumb' requires default value to be set     vue/require-default-prop
+  13:3   warning  Prop 'notifications' requires default value to be set  vue/require-default-prop
+  13:19  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  14:14  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  17:7   warning  'props' is assigned a value but never used             @typescript-eslint/no-unused-vars
+  30:7   warning  'onNotification' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  38:26  warning  Attribute "id" should go before "class"                vue/attributes-order
+  48:72  warning  Attribute "v-if" should go before "class"              vue/attributes-order
+  55:78  warning  Attribute ":key" should go before ":to"                vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/user-profile-card/UserProfileCard.stories.ts
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  28:14  error  Variable name `Image` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/user-profile-card/UserProfileCard.vue
+  38:5   error    Elements in iteration expect to have 'v-bind:key' directives  vue/require-v-for-key
+  40:95  warning  Attribute "v-bind" should go before "@click"                  vue/attributes-order
+  41:31  warning  Attribute "v-if" should go before ":name"                     vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/user-profile-card/partials/UserButton.vue
+  15:1   error    Expected blank line before this block      vue/padding-line-between-blocks
+  23:35  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/admin/user-profile-card/types.ts
+   1:18  error    Interface name `IDropdownItem` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+  10:14  warning  Unexpected any. Specify a different type                              @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/alert/Alert.stories.ts
+  40:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  44:14  error  Variable name `Info` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  49:14  error  Variable name `Success` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  54:14  error  Variable name `Warning` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  59:14  error  Variable name `Danger` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/alert/Alert.vue
+   1:1   warning  Component name "Alert" should always be multi-word                                                          vue/multi-word-component-names
+  14:14  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  14:18  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  28:6   error    'classList' is never reassigned. Use 'const' instead                                                        prefer-const
+  56:1   error    Expected blank line before this block                                                                       vue/padding-line-between-blocks
+  60:31  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/alert/AlertTitle.vue
+  2:1  error  Expected blank line before this block  vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/alert/__test__/Alert.spec.ts
+  1:1  error  use test file name pattern .*\.test\.[tj]sx?$  vitest/consistent-test-filename
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/aside/Aside.stories.ts
+  40:14  error  Variable name `Default` must match one of the following formats: camelCase                @typescript-eslint/naming-convention
+  59:14  error  Variable name `WithButtons` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+  75:14  error  Variable name `Scrollable` must match one of the following formats: camelCase             @typescript-eslint/naming-convention
+  82:14  error  Variable name `ScrollableWithButtons` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/aside/Aside.vue
+    1:1   warning  Component name "Aside" should always be multi-word                                                          vue/multi-word-component-names
+   27:19  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   58:12  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   88:35  warning  Attribute ":id" should go before "class"                                                                    vue/attributes-order
+   94:43  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+   96:36  warning  Attribute "id" should go before "@click"                                                                    vue/attributes-order
+   96:51  warning  Attribute "icon" should go before "@click"                                                                  vue/attributes-order
+   96:64  warning  Attribute "variant" should go before "@click"                                                               vue/attributes-order
+   96:80  warning  Attribute "type" should go before "@click"                                                                  vue/attributes-order
+  103:35  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  107:8   warning  Attribute ":label" should go before "@click"                                                                vue/attributes-order
+  108:8   warning  Attribute ":disabled" should go before "@click"                                                             vue/attributes-order
+  109:8   warning  Attribute ":variant" should go before "@click"                                                              vue/attributes-order
+  110:8   warning  Attribute ":form" should go before "@click"                                                                 vue/attributes-order
+  112:7   error    Custom elements in iteration require 'v-bind:key' directives                                                vue/valid-v-for
+  112:85  warning  Attribute ":label" should go before "@click"                                                                vue/attributes-order
+  114:35  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/aside/AsideSection.vue
+  12:40  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+  16:42  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/avatar/Avatar.stories.ts
+  32:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  39:14  error  Variable name `Highlight` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  45:14  error  Variable name `Success` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/avatar/Avatar.vue
+   1:1   warning  Component name "Avatar" should always be multi-word  vue/multi-word-component-names
+  34:20  warning  Attribute "v-if" should go before ":src"             vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/badge/Badge.stories.ts
+  34:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  41:14  error  Variable name `Highlight` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  49:14  error  Variable name `Warning` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  57:14  error  Variable name `Success` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  65:14  error  Variable name `Critical` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/badge/Badge.vue
+  1:1  warning  Component name "Badge" should always be multi-word  vue/multi-word-component-names
+  6:2  warning  Prop 'label' requires default value to be set       vue/require-default-prop
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/breadcrumb/Breadcrumb.stories.ts
+  15:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/breadcrumb/BreadcrumbItem.vue
+  9:25  warning  Attribute "v-if" should go before ":to"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/button-group/ButtonGroup.stories.ts
+  25:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/button/Button.stories.ts
+   60:14  error  Variable name `Default` must match one of the following formats: camelCase       @typescript-eslint/naming-convention
+   62:14  error  Variable name `Primary` must match one of the following formats: camelCase       @typescript-eslint/naming-convention
+   68:14  error  Variable name `Success` must match one of the following formats: camelCase       @typescript-eslint/naming-convention
+   74:14  error  Variable name `Danger` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+   80:14  error  Variable name `Plain` must match one of the following formats: camelCase         @typescript-eslint/naming-convention
+   86:14  error  Variable name `Link` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+   93:14  error  Variable name `Loading` must match one of the following formats: camelCase       @typescript-eslint/naming-convention
+   99:14  error  Variable name `Disabled` must match one of the following formats: camelCase      @typescript-eslint/naming-convention
+  105:14  error  Variable name `TrailingIcon` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  111:14  error  Variable name `LeadingIcon` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/button/Button.vue
+   1:1   warning  Component name "Button" should always be multi-word   vue/multi-word-component-names
+   8:2   warning  Prop 'variant' requires default value to be set       vue/require-default-prop
+   9:2   warning  Prop 'label' requires default value to be set         vue/require-default-prop
+  10:2   warning  Prop 'leadingIcon' requires default value to be set   vue/require-default-prop
+  11:2   warning  Prop 'trailingIcon' requires default value to be set  vue/require-default-prop
+  13:2   warning  Prop 'href' requires default value to be set          vue/require-default-prop
+  14:2   warning  Prop 'flush' requires default value to be set         vue/require-default-prop
+  16:2   warning  Prop 'to' requires default value to be set            vue/require-default-prop
+  22:2   warning  Prop 'target' requires default value to be set        vue/require-default-prop
+  55:3   warning  Attribute ":is" should go before "class"              vue/attributes-order
+  63:30  warning  Attribute "v-if" should go before ":name"             vue/attributes-order
+  68:31  warning  Attribute "v-if" should go before ":name"             vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/callout-card/CalloutCard.stories.ts
+  22:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/callout-card/CalloutCard.vue
+  24:39  warning  Attribute "v-if" should go before "class"           vue/attributes-order
+  35:5   warning  Attribute "v-if" should go before ":style"          vue/attributes-order
+  41:6   warning  Attribute ":leadingIcon" should go before "@click"  vue/attributes-order
+  41:6   warning  Attribute ':leadingIcon' must be hyphenated         vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/card-info-link/CardInfoLink.stories.ts
+  26:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/card-info-link/CardInfoLink.vue
+   5:18  error    Interface name `ICardInfoLinkProps` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+   7:2   warning  Prop 'title' requires default value to be set                              vue/require-default-prop
+   8:2   warning  Prop 'description' requires default value to be set                        vue/require-default-prop
+  11:2   warning  Prop 'href' requires default value to be set                               vue/require-default-prop
+  12:2   warning  Prop 'routeName' requires default value to be set                          vue/require-default-prop
+  15:7   warning  'props' is assigned a value but never used                                 @typescript-eslint/no-unused-vars
+  28:31  warning  Attribute "v-if" should go before "class"                                  vue/attributes-order
+  29:9   warning  'v-html' directive can lead to XSS attack                                  vue/no-v-html
+  32:67  warning  Attribute "v-if" should go before ":class"                                 vue/attributes-order
+  33:7   warning  'v-html' directive can lead to XSS attack                                  vue/no-v-html
+  35:92  error    Using v-html on component may break component's content                    vue/no-v-text-v-html-on-component
+  35:92  warning  'v-html' directive can lead to XSS attack                                  vue/no-v-html
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/card/Card.stories.ts
+   34:14  error  Variable name `Default` must match one of the following formats: camelCase               @typescript-eslint/naming-convention
+   35:14  error  Variable name `Loading` must match one of the following formats: camelCase               @typescript-eslint/naming-convention
+   41:14  error  Variable name `WithTitleMuted` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+   47:14  error  Variable name `WithTitleComponent` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+   60:14  error  Variable name `WithSection` must match one of the following formats: camelCase           @typescript-eslint/naming-convention
+   78:14  error  Variable name `WithFooter` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+   94:14  error  Variable name `Dropdown` must match one of the following formats: camelCase              @typescript-eslint/naming-convention
+  100:14  error  Variable name `DropdownWithLabel` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  108:14  error  Variable name `DropdownCloseCaption` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  117:14  error  Variable name `WithActionButtons` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/card/Card.vue
+    1:1   warning  Component name "Card" should always be multi-word                                                           vue/multi-word-component-names
+    5:8   warning  'Button' is defined but never used                                                                          @typescript-eslint/no-unused-vars
+   10:2   warning  Prop 'title' requires default value to be set                                                               vue/require-default-prop
+   11:2   warning  Prop 'titleMuted' requires default value to be set                                                          vue/require-default-prop
+   12:2   warning  Prop 'caption' requires default value to be set                                                             vue/require-default-prop
+   14:2   warning  Prop 'dropdownLabel' requires default value to be set                                                       vue/require-default-prop
+   20:2   warning  Prop 'closeCaption' requires default value to be set                                                        vue/require-default-prop
+   26:2   warning  Prop 'actions' requires default value to be set                                                             vue/require-default-prop
+   35:20  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   36:18  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   64:3   warning  Attribute ":id" should go before "class"                                                                    vue/attributes-order
+   77:32  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+   80:77  warning  Attribute "v-if" should go before "@click"                                                                  vue/attributes-order
+   86:46  warning  'v-html' directive can lead to XSS attack                                                                   vue/no-v-html
+   89:50  warning  'v-html' directive can lead to XSS attack                                                                   vue/no-v-html
+   95:12  error    This 'v-if' should be moved to the wrapper element                                                          vue/no-use-v-if-with-v-for
+   95:27  warning  Attribute "v-for" should go before "v-if"                                                                   vue/attributes-order
+   98:33  warning  Attribute "v-if" should go before "name"                                                                    vue/attributes-order
+   99:49  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  105:40  warning  Attribute "v-else" should go before "class"                                                                 vue/attributes-order
+  120:29  warning  Attribute "v-show" should go before "class"                                                                 vue/attributes-order
+  124:31  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  124:57  warning  Attribute "v-show" should go before "class"                                                                 vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/card/CardSection.vue
+  13:39  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+  17:41  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/color-thumb/ColorThumb.stories.ts
+  38:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  44:14  error  Variable name `Image` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/color-thumb/ColorThumb.vue
+   6:3  warning  Prop 'hexadecimal' requires default value to be set           vue/require-default-prop
+   7:3  warning  Prop 'hexadecimalSecondary' requires default value to be set  vue/require-default-prop
+   8:3  warning  Prop 'image' requires default value to be set                 vue/require-default-prop
+  10:3  warning  Prop 'width' requires default value to be set                 vue/require-default-prop
+  18:7  error    'classes' is never reassigned. Use 'const' instead            prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/custom-scroll/CustomScroll.stories.ts
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/custom-scroll/CustomScroll.vue
+  11:42  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  35:30  warning  Attribute ":id" should go before "class"                                                                    vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/description-list/DescriptionList.stories.ts
+  17:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/dialog/Dialog.stories.ts
+  38:14  error  Variable name `Default` must match one of the following formats: camelCase           @typescript-eslint/naming-convention
+  53:14  error  Variable name `DefaultPrompt` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  63:14  error  Variable name `PromptWithFooter` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/dialog/Dialog.vue
+    1:1   warning  Component name "Dialog" should always be multi-word                                                         vue/multi-word-component-names
+    7:11  error    An interface declaring no members is equivalent to its supertype                                            @typescript-eslint/no-empty-object-type
+   33:16  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   34:23  error    'destructLabel' is not defined                                                                              vue/no-undef-properties
+   35:22  error    'destructIcon' is not defined                                                                               vue/no-undef-properties
+   36:25  error    'destructVariant' is not defined                                                                            vue/no-undef-properties
+   53:13  error    'id' is not defined                                                                                         vue/no-undef-properties
+   67:12  error    'closeOnBackdrop' is not defined                                                                            vue/no-undef-properties
+   78:11  error    'type' is not defined                                                                                       vue/no-undef-properties
+   78:16  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   83:12  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+   99:2   error    Expected an assignment or function call and instead saw an expression                                       @typescript-eslint/no-unused-expressions
+   99:8   error    'opened' is not defined                                                                                     vue/no-undef-properties
+  108:84  warning  Attribute "ref" should go before "tabindex"                                                                 vue/attributes-order
+  111:64  warning  Attribute "ref" should go before "@submit.prevent"                                                          vue/attributes-order
+  112:35  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  112:41  error    'title' is not defined                                                                                      vue/no-undef-properties
+  113:24  warning  'v-html' directive can lead to XSS attack                                                                   vue/no-v-html
+  117:11  warning  'v-html' directive can lead to XSS attack                                                                   vue/no-v-html
+  117:19  error    'message' is not defined                                                                                    vue/no-undef-properties
+  117:28  warning  Attribute "class" should go before "v-html"                                                                 vue/attributes-order
+  118:41  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  120:16  error    'promptLabel' is not defined                                                                                vue/no-undef-properties
+  121:22  error    'promptPlaceholder' is not defined                                                                          vue/no-undef-properties
+  122:15  error    'promptType' is not defined                                                                                 vue/no-undef-properties
+  123:8   warning  Attribute "v-model" should go before ":type"                                                                vue/attributes-order
+  125:8   warning  Attribute "id" should go before "size"                                                                      vue/attributes-order
+  130:35  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  130:42  error    'hideFooter' is not defined                                                                                 vue/no-undef-properties
+  132:7   warning  Attribute ':leadingIcon' must be hyphenated                                                                 vue/attribute-hyphenation
+  139:42  error    'hideCancel' is not defined                                                                                 vue/no-undef-properties
+  139:82  warning  Attribute "class" should go before "@click"                                                                 vue/attributes-order
+  140:10  error    'cancelLabel' is not defined                                                                                vue/no-undef-properties
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/dialog/index.ts
+  46:7  error  Variable name `Dialog` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/divider/Divider.stories.ts
+  25:14  error  Variable name `Default` must match one of the following formats: camelCase      @typescript-eslint/naming-convention
+  29:14  error  Variable name `Margin` must match one of the following formats: camelCase       @typescript-eslint/naming-convention
+  35:14  error  Variable name `Transparent` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/divider/Divider.vue
+   1:1  warning  Component name "Divider" should always be multi-word  vue/multi-word-component-names
+   6:2  warning  Prop 'margin' requires default value to be set        vue/require-default-prop
+  15:6  error    'classes' is never reassigned. Use 'const' instead    prefer-const
+  25:6  error    'styles' is never reassigned. Use 'const' instead     prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/dropdown/Dropdown.stories.ts
+  43:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/dropdown/Dropdown.vue
+   1:1   warning  Component name "Dropdown" should always be multi-word  vue/multi-word-component-names
+  17:19  warning  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  25:43  error    Expected '!==' and instead saw '!='                    eqeqeq
+  26:40  error    Expected '===' and instead saw '=='                    eqeqeq
+  27:23  error    Expected '===' and instead saw '=='                    eqeqeq
+  85:87  warning  Attribute ":id" should go before ":class"              vue/attributes-order
+  89:35  warning  Attribute ":id" should go before "class"               vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/dropdown/DropdownItemButton.vue
+  28:20  error  Parsing error: Unexpected end of expression  vue/no-parsing-error
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/dropdown/DropdownSection.vue
+  2:1  error  Expected blank line before this block  vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-autocomplete/FormAutocomplete.stories.ts
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-autocomplete/FormAutocomplete.vue
+   14:2   warning  Prop 'modelValue' requires default value to be set                           vue/require-default-prop
+   14:15  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   17:2   warning  Prop 'label' requires default value to be set                                vue/require-default-prop
+   20:2   warning  Prop 'template' requires default value to be set                             vue/require-default-prop
+   20:13  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   22:26  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   26:56  error    `close` is defined as emit but never used                                    vue/no-unused-emit-declarations
+   27:7   error    Variable name `Plugin` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+   41:34  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   46:8   error    Variable name `_choices` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+   46:18  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   49:16  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   68:58  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   70:30  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+   70:41  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+  104:35  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+  112:25  error    Expected '===' and instead saw '=='                                          eqeqeq
+  132:14  warning  'event' is defined but never used                                            @typescript-eslint/no-unused-vars
+  153:22  warning  Unexpected any. Specify a different type                                     @typescript-eslint/no-explicit-any
+  164:34  warning  Attribute ":id" should go before "class"                                     vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-checkbox/FormCheckbox.stories.ts
+  21:14  error  Variable name `Default` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  22:14  error  Variable name `Switch` must match one of the following formats: camelCase         @typescript-eslint/naming-convention
+  28:14  error  Variable name `Indeterminate` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  34:14  error  Variable name `Disabled` must match one of the following formats: camelCase       @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-checkbox/FormCheckbox.vue
+   6:15  warning  Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   7:10  warning  Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  46:4   warning  Attribute ":id" should go before "type"    vue/attributes-order
+  56:38  warning  Attribute "v-if" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-colorpicker/FormColorpicker.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  20:14  error  Variable name `WithInput` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-colorpicker/FormColorpicker.vue
+  122:39  error    Expected '!==' and instead saw '!='       eqeqeq
+  122:98  error    Expected '!==' and instead saw '!='       eqeqeq
+  145:26  warning  Attribute ":id" should go before "class"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-currency/FormCurrency.stories.ts
+  47:14  error  Variable name `Default` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  49:14  error  Variable name `Float` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+  55:14  error  Variable name `Loading` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  61:14  error  Variable name `Disabled` must match one of the following formats: camelCase         @typescript-eslint/naming-convention
+  67:14  error  Variable name `LeadingIcon` must match one of the following formats: camelCase      @typescript-eslint/naming-convention
+  73:14  error  Variable name `TrailingIcon` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  79:14  error  Variable name `LabelInfo` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  85:14  error  Variable name `InvalidFeedback` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  92:14  error  Variable name `MinAndMax` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-currency/FormCurrency.vue
+    8:3   warning  Prop 'leadingIcon' requires default value to be set                                                         vue/require-default-prop
+    9:3   warning  Prop 'trailingIcon' requires default value to be set                                                        vue/require-default-prop
+   10:3   warning  Prop 'labelInfo' requires default value to be set                                                           vue/require-default-prop
+   12:3   warning  Prop 'invalidFeedback' requires default value to be set                                                     vue/require-default-prop
+   16:3   warning  Prop 'modelValue' requires default value to be set                                                          vue/require-default-prop
+   17:3   warning  Prop 'label' requires default value to be set                                                               vue/require-default-prop
+   18:17  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   19:3   warning  Prop 'size' requires default value to be set                                                                vue/require-default-prop
+   20:3   warning  Prop 'id' requires default value to be set                                                                  vue/require-default-prop
+   21:3   warning  Prop 'autocomplete' requires default value to be set                                                        vue/require-default-prop
+   22:3   warning  Prop 'min' requires default value to be set                                                                 vue/require-default-prop
+   24:3   warning  Prop 'step' requires default value to be set                                                                vue/require-default-prop
+   29:3   warning  Prop 'options' requires default value to be set                                                             vue/require-default-prop
+   31:27  error    `update:modelValue` is defined as emit but never used                                                       vue/no-unused-emit-declarations
+   37:17  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   45:40  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   68:12  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   77:12  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   88:5   warning  Attribute ':leadingIcon' must be hyphenated                                                                 vue/attribute-hyphenation
+   89:5   warning  Attribute ':trailingIcon' must be hyphenated                                                                vue/attribute-hyphenation
+   94:5   warning  Attribute ':labelInfo' must be hyphenated                                                                   vue/attribute-hyphenation
+   98:5   warning  Attribute ':invalidFeedback' must be hyphenated                                                             vue/attribute-hyphenation
+  102:7   warning  Attribute "ref" should go before ":step"                                                                    vue/attributes-order
+  107:7   warning  Attribute ":disabled" should go before "@blur"                                                              vue/attributes-order
+  108:7   warning  Attribute ":required" should go before "@blur"                                                              vue/attributes-order
+  109:7   warning  Attribute ":readonly" should go before "@blur"                                                              vue/attributes-order
+  110:7   warning  Attribute ":autocomplete" should go before "@blur"                                                          vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-datepicker/FormDatepicker.stories.ts
+  39:14  error  Variable name `Default` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  41:14  error  Variable name `DateRange` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  47:14  error  Variable name `Float` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+  53:14  error  Variable name `Loading` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  59:14  error  Variable name `Disabled` must match one of the following formats: camelCase         @typescript-eslint/naming-convention
+  65:14  error  Variable name `LabelInfo` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  71:14  error  Variable name `InvalidFeedback` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-datepicker/FormDatepicker.vue
+   16:3   warning  Prop 'modelValue' requires default value to be set                                        vue/require-default-prop
+   18:3   warning  Prop 'placeholder' requires default value to be set                                       vue/require-default-prop
+   19:3   warning  Prop 'label' requires default value to be set                                             vue/require-default-prop
+   22:3   warning  Prop 'size' requires default value to be set                                              vue/require-default-prop
+   26:3   warning  Prop 'labelInfo' requires default value to be set                                         vue/require-default-prop
+   28:3   warning  Prop 'invalidFeedback' requires default value to be set                                   vue/require-default-prop
+   44:7   error    Variable name `FORMAT_DATE` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+   52:24  error    Prefer using the primitive `string` as a type name, rather than the upper-cased `String`  @typescript-eslint/no-wrapper-object-types
+   70:5   error    Unexpected mutation of "config" prop                                                      vue/no-mutating-props
+   71:5   error    Unexpected mutation of "config" prop                                                      vue/no-mutating-props
+   72:5   error    Unexpected mutation of "config" prop                                                      vue/no-mutating-props
+   79:19  warning  Unexpected any. Specify a different type                                                  @typescript-eslint/no-explicit-any
+  131:5   warning  Attribute ':invalidFeedback' must be hyphenated                                           vue/attribute-hyphenation
+  132:5   warning  Attribute 'leadingIcon' must be hyphenated                                                vue/attribute-hyphenation
+  137:5   warning  Attribute ':labelInfo' must be hyphenated                                                 vue/attribute-hyphenation
+  140:33  warning  Attribute ":id" should go before "class"                                                  vue/attributes-order
+  141:29  warning  Attribute "v-if" should go before "#trailingIcon"                                         vue/attributes-order
+  142:69  warning  Attribute "variant" should go before "@click"                                             vue/attributes-order
+  142:85  warning  Attribute "size" should go before "@click"                                                vue/attributes-order
+  142:95  warning  Attribute "class" should go before "@click"                                               vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-label/FormLabel.vue
+  6:1  error  Expected blank line before this block  vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-layout/FormLayoutItem.vue
+  6:1  error  Expected blank line before this block  vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-radio/FormRadio.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+  21:14  error  Variable name `Disabled` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-radio/FormRadio.vue
+   5:2   warning  Prop 'modelValue' requires default value to be set  vue/require-default-prop
+   5:15  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+   6:10  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+   7:2   warning  Prop 'label' requires default value to be set       vue/require-default-prop
+   8:2   warning  Prop 'name' requires default value to be set        vue/require-default-prop
+  11:2   warning  Prop 'tabindex' requires default value to be set    vue/require-default-prop
+  22:37  error    Expected '===' and instead saw '=='                 eqeqeq
+  35:4   warning  Attribute ":id" should go before "type"             vue/attributes-order
+  45:35  warning  Attribute "v-if" should go before "class"           vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-range/FormRange.stories.ts
+  16:14  error  Variable name `Default` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+  26:14  error  Variable name `Disabled` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-range/FormRange.vue
+  83:4  warning  Attribute ":id" should go before ":step"             vue/attributes-order
+  89:4  warning  Attribute ":disabled" should go before "@mousedown"  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-richtext/FormRichtext.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-richtext/FormRichtext.vue
+   7:2   warning  Prop 'modelValue' requires default value to be set                                                                                                                                                                                                                                                                                                                                         vue/require-default-prop
+   7:15  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+   8:2   warning  Prop 'name' requires default value to be set                                                                                                                                                                                                                                                                                                                                               vue/require-default-prop
+   9:2   warning  Prop 'placeholder' requires default value to be set                                                                                                                                                                                                                                                                                                                                        vue/require-default-prop
+  10:2   warning  Prop 'label' requires default value to be set                                                                                                                                                                                                                                                                                                                                              vue/require-default-prop
+  12:2   warning  Prop 'config' requires default value to be set                                                                                                                                                                                                                                                                                                                                             vue/require-default-prop
+  13:2   warning  Prop 'configCallbacks' requires default value to be set                                                                                                                                                                                                                                                                                                                                    vue/require-default-prop
+  13:41  error    The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+  20:17  warning  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  29:48  error    `update` is defined as emit but never used                                                                                                                                                                                                                                                                                                                                                 vue/no-unused-emit-declarations
+  34:16  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity                                                                                                                                                                                                                                                                                 vue/no-setup-props-reactivity-loss
+  46:14  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity                                                                                                                                                                                                                                                                                 vue/no-setup-props-reactivity-loss
+  72:2   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free                                                                                                                                                                                                                                                                        @typescript-eslint/ban-ts-comment
+  85:3   error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free                                                                                                                                                                                                                                                                        @typescript-eslint/ban-ts-comment
+  94:22  warning  Attribute "v-if" should go before ":for"                                                                                                                                                                                                                                                                                                                                                   vue/attributes-order
+  95:73  warning  Attribute ":id" should go before ":value"                                                                                                                                                                                                                                                                                                                                                  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-select/FormSelect.stories.ts
+  51:14  error  Variable name `Default` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  52:14  error  Variable name `Float` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+  58:14  error  Variable name `Loading` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  64:14  error  Variable name `Disabled` must match one of the following formats: camelCase         @typescript-eslint/naming-convention
+  70:14  error  Variable name `LeadingIcon` must match one of the following formats: camelCase      @typescript-eslint/naming-convention
+  76:14  error  Variable name `TrailingIcon` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  82:14  error  Variable name `LabelInfo` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  88:14  error  Variable name `InvalidFeedback` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-select/FormSelect.vue
+    7:18  error    Interface name `IFormSelectOptions` must not match the RegExp: /^I[A-Z]/u                                   @typescript-eslint/naming-convention
+    8:9   warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   14:2   warning  Prop 'leadingIcon' requires default value to be set                                                         vue/require-default-prop
+   15:2   warning  Prop 'trailingIcon' requires default value to be set                                                        vue/require-default-prop
+   16:2   warning  Prop 'labelInfo' requires default value to be set                                                           vue/require-default-prop
+   17:2   warning  Prop 'trailingText' requires default value to be set                                                        vue/require-default-prop
+   21:2   warning  Prop 'modelValue' requires default value to be set                                                          vue/require-default-prop
+   21:15  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   22:2   warning  Prop 'value' requires default value to be set                                                               vue/require-default-prop
+   22:10  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   23:2   warning  Prop 'placeholder' requires default value to be set                                                         vue/require-default-prop
+   24:2   warning  Prop 'label' requires default value to be set                                                               vue/require-default-prop
+   25:2   warning  Prop 'id' requires default value to be set                                                                  vue/require-default-prop
+   26:2   warning  Prop 'size' requires default value to be set                                                                vue/require-default-prop
+   29:2   warning  Prop 'tabindex' requires default value to be set                                                            vue/require-default-prop
+   30:2   warning  Prop 'name' requires default value to be set                                                                vue/require-default-prop
+   31:2   warning  Prop 'title' requires default value to be set                                                               vue/require-default-prop
+   36:2   warning  Prop 'invalidFeedback' requires default value to be set                                                     vue/require-default-prop
+   56:30  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+   72:15  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   72:19  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   96:3   warning  Attribute ':leadingIcon' must be hyphenated                                                                 vue/attribute-hyphenation
+   97:3   warning  Attribute ':trailingIcon' must be hyphenated                                                                vue/attribute-hyphenation
+   98:3   warning  Attribute ':trailingText' must be hyphenated                                                                vue/attribute-hyphenation
+  104:3   warning  Attribute ':labelInfo' must be hyphenated                                                                   vue/attribute-hyphenation
+  108:3   warning  Attribute ':invalidFeedback' must be hyphenated                                                             vue/attribute-hyphenation
+  113:4   warning  Attribute "class" should go before "@input"                                                                 vue/attributes-order
+  114:4   warning  Attribute ":class" should go before "@input"                                                                vue/attributes-order
+  115:4   warning  Attribute ":autofocus" should go before "@input"                                                            vue/attributes-order
+  116:4   warning  Attribute ":readonly" should go before "@input"                                                             vue/attributes-order
+  117:4   warning  Attribute ":tabindex" should go before "@input"                                                             vue/attributes-order
+  118:4   warning  Attribute ":name" should go before "@input"                                                                 vue/attributes-order
+  119:4   warning  Attribute ":title" should go before "@input"                                                                vue/attributes-order
+  120:4   warning  Attribute ":id" should go before "@input"                                                                   vue/attributes-order
+  121:4   warning  Attribute ":required" should go before "@input"                                                             vue/attributes-order
+  122:4   warning  Attribute ":disabled" should go before "@input"                                                             vue/attributes-order
+  123:63  warning  Attribute "v-if" should go before "disabled"                                                                vue/attributes-order
+  127:5   warning  Attribute "v-show" should go before "class"                                                                 vue/attributes-order
+  128:5   warning  Attribute "v-for" should go before "class"                                                                  vue/attributes-order
+  130:5   warning  Attribute ":key" should go before ":value"                                                                  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-spinbutton/FormSpinbutton.stories.ts
+  39:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  41:14  error  Variable name `Inputable` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  47:14  error  Variable name `Loading` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  53:14  error  Variable name `Disabled` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-spinbutton/FormSpinbutton.vue
+   10:3   warning  Prop 'min' requires default value to be set          vue/require-default-prop
+   11:3   warning  Prop 'max' requires default value to be set          vue/require-default-prop
+   12:3   warning  Prop 'placeholder' requires default value to be set  vue/require-default-prop
+   13:3   warning  Prop 'size' requires default value to be set         vue/require-default-prop
+   71:11  error    Expected '!==' and instead saw '!='                  eqeqeq
+   96:44  warning  Attribute "v-if" should go before "class"            vue/attributes-order
+  128:9   warning  Attribute ":placeholder" should go before "@focus"   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-tags/FormTags.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  37:14  error  Variable name `Selectable` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  53:14  error  Variable name `Disabled` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-tags/FormTags.vue
+   10:2   warning  Prop 'modelValue' requires default value to be set                         vue/require-default-prop
+   10:15  warning  Unexpected any. Specify a different type                                   @typescript-eslint/no-explicit-any
+   12:2   warning  Prop 'label' requires default value to be set                              vue/require-default-prop
+   15:2   warning  Prop 'actions' requires default value to be set                            vue/require-default-prop
+   16:12  warning  Unexpected any. Specify a different type                                   @typescript-eslint/no-explicit-any
+   18:2   warning  Prop 'variant' requires default value to be set                            vue/require-default-prop
+   30:7   error    Variable name `Plugin` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+   31:58  error    `open` is defined as emit but never used                                   vue/no-unused-emit-declarations
+   31:66  error    `close` is defined as emit but never used                                  vue/no-unused-emit-declarations
+   55:20  warning  Unexpected any. Specify a different type                                   @typescript-eslint/no-explicit-any
+   90:13  error    Expected '===' and instead saw '=='                                        eqeqeq
+  116:14  warning  'event' is defined but never used                                          @typescript-eslint/no-unused-vars
+  129:21  warning  Unexpected any. Specify a different type                                   @typescript-eslint/no-explicit-any
+  136:21  warning  Unexpected any. Specify a different type                                   @typescript-eslint/no-explicit-any
+  169:5   warning  Attribute ":id" should go before "ref"                                     vue/attributes-order
+  174:28  warning  Attribute "ref" should go before "multiple"                                vue/attributes-order
+  174:44  warning  Attribute ":id" should go before "multiple"                                vue/attributes-order
+  176:5   error    Custom elements in iteration require 'v-bind:key' directives               vue/valid-v-for
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-textarea/FormTextarea.stories.ts
+  38:14  error  Variable name `Default` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  40:14  error  Variable name `Float` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+  46:14  error  Variable name `Loading` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  52:14  error  Variable name `Disabled` must match one of the following formats: camelCase         @typescript-eslint/naming-convention
+  58:14  error  Variable name `LeadingIcon` must match one of the following formats: camelCase      @typescript-eslint/naming-convention
+  64:14  error  Variable name `TrailingIcon` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  70:14  error  Variable name `LabelInfo` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  76:14  error  Variable name `InvalidFeedback` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-textarea/FormTextarea.vue
+   7:2   warning  Prop 'leadingIcon' requires default value to be set      vue/require-default-prop
+   8:2   warning  Prop 'trailingIcon' requires default value to be set     vue/require-default-prop
+  13:2   warning  Prop 'invalidFeedback' requires default value to be set  vue/require-default-prop
+  14:2   warning  Prop 'modelValue' requires default value to be set       vue/require-default-prop
+  14:15  warning  Unexpected any. Specify a different type                 @typescript-eslint/no-explicit-any
+  16:2   warning  Prop 'label' requires default value to be set            vue/require-default-prop
+  17:2   warning  Prop 'placeholder' requires default value to be set      vue/require-default-prop
+  18:2   warning  Prop 'tabindex' requires default value to be set         vue/require-default-prop
+  19:2   warning  Prop 'inputmode' requires default value to be set        vue/require-default-prop
+  20:2   warning  Prop 'id' requires default value to be set               vue/require-default-prop
+  21:2   warning  Prop 'pattern' requires default value to be set          vue/require-default-prop
+  22:2   warning  Prop 'title' requires default value to be set            vue/require-default-prop
+  23:2   warning  Prop 'name' requires default value to be set             vue/require-default-prop
+  24:2   warning  Prop 'autocomplete' requires default value to be set     vue/require-default-prop
+  25:2   warning  Prop 'minlength' requires default value to be set        vue/require-default-prop
+  26:2   warning  Prop 'maxlength' requires default value to be set        vue/require-default-prop
+  31:2   warning  Prop 'labelInfo' requires default value to be set        vue/require-default-prop
+  56:3   warning  Attribute ':leadingIcon' must be hyphenated              vue/attribute-hyphenation
+  57:3   warning  Attribute ':trailingIcon' must be hyphenated             vue/attribute-hyphenation
+  64:3   warning  Attribute ':labelInfo' must be hyphenated                vue/attribute-hyphenation
+  65:3   warning  Attribute ':invalidFeedback' must be hyphenated          vue/attribute-hyphenation
+  69:4   warning  Attribute ":value" should go before "@input"             vue/attributes-order
+  70:4   warning  Attribute ":class" should go before "@input"             vue/attributes-order
+  71:4   warning  Attribute ":inputmode" should go before "@input"         vue/attributes-order
+  72:4   warning  Attribute ":autocomplete" should go before "@input"      vue/attributes-order
+  73:4   warning  Attribute ":autofocus" should go before "@input"         vue/attributes-order
+  74:4   warning  Attribute ":disabled" should go before "@input"          vue/attributes-order
+  75:4   warning  Attribute ":minlength" should go before "@input"         vue/attributes-order
+  76:4   warning  Attribute ":maxlength" should go before "@input"         vue/attributes-order
+  77:4   warning  Attribute ":pattern" should go before "@input"           vue/attributes-order
+  78:4   warning  Attribute ":placeholder" should go before "@input"       vue/attributes-order
+  79:4   warning  Attribute ":readonly" should go before "@input"          vue/attributes-order
+  80:4   warning  Attribute ":tabindex" should go before "@input"          vue/attributes-order
+  81:4   warning  Attribute ":name" should go before "@input"              vue/attributes-order
+  82:4   warning  Attribute ":title" should go before "@input"             vue/attributes-order
+  83:4   warning  Attribute ":id" should go before "@input"                vue/attributes-order
+  84:4   warning  Attribute ":required" should go before "@input"          vue/attributes-order
+  85:4   warning  Attribute ":rows" should go before "@input"              vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-textfield/FormTextfield.stories.ts
+  38:14  error  Variable name `Default` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  40:14  error  Variable name `Float` must match one of the following formats: camelCase            @typescript-eslint/naming-convention
+  46:14  error  Variable name `Loading` must match one of the following formats: camelCase          @typescript-eslint/naming-convention
+  52:14  error  Variable name `Disabled` must match one of the following formats: camelCase         @typescript-eslint/naming-convention
+  58:14  error  Variable name `LeadingIcon` must match one of the following formats: camelCase      @typescript-eslint/naming-convention
+  64:14  error  Variable name `TrailingIcon` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  70:14  error  Variable name `LabelInfo` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  76:14  error  Variable name `InvalidFeedback` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  84:14  error  Variable name `Mask` must match one of the following formats: camelCase             @typescript-eslint/naming-convention
+  91:14  error  Variable name `Clearable` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-textfield/FormTextfield.vue
+   11:3   warning  Prop 'leadingIcon' requires default value to be set      vue/require-default-prop
+   12:3   warning  Prop 'trailingIcon' requires default value to be set     vue/require-default-prop
+   13:3   warning  Prop 'labelInfo' requires default value to be set        vue/require-default-prop
+   14:3   warning  Prop 'trailingText' requires default value to be set     vue/require-default-prop
+   16:3   warning  Prop 'invalidFeedback' requires default value to be set  vue/require-default-prop
+   20:3   warning  Prop 'modelValue' requires default value to be set       vue/require-default-prop
+   21:3   warning  Prop 'label' requires default value to be set            vue/require-default-prop
+   22:3   warning  Prop 'id' requires default value to be set               vue/require-default-prop
+   23:3   warning  Prop 'placeholder' requires default value to be set      vue/require-default-prop
+   24:3   warning  Prop 'step' requires default value to be set             vue/require-default-prop
+   25:3   warning  Prop 'tabindex' requires default value to be set         vue/require-default-prop
+   26:3   warning  Prop 'inputmode' requires default value to be set        vue/require-default-prop
+   27:3   warning  Prop 'size' requires default value to be set             vue/require-default-prop
+   28:3   warning  Prop 'pattern' requires default value to be set          vue/require-default-prop
+   29:3   warning  Prop 'title' requires default value to be set            vue/require-default-prop
+   30:3   warning  Prop 'name' requires default value to be set             vue/require-default-prop
+   32:3   warning  Prop 'autocomplete' requires default value to be set     vue/require-default-prop
+   33:3   warning  Prop 'minlength' requires default value to be set        vue/require-default-prop
+   34:3   warning  Prop 'maxlength' requires default value to be set        vue/require-default-prop
+   39:3   warning  Prop 'type' requires default value to be set             vue/require-default-prop
+   40:3   warning  Prop 'mask' requires default value to be set             vue/require-default-prop
+   41:3   warning  Prop 'raw' requires default value to be set              vue/require-default-prop
+   41:9   warning  Unexpected any. Specify a different type                 @typescript-eslint/no-explicit-any
+   42:3   warning  Prop 'actions' requires default value to be set          vue/require-default-prop
+   43:3   warning  Prop 'max' requires default value to be set              vue/require-default-prop
+   44:3   warning  Prop 'min' requires default value to be set              vue/require-default-prop
+   45:3   warning  Prop 'dataMaskaTokens' requires default value to be set  vue/require-default-prop
+   54:21  warning  Unexpected any. Specify a different type                 @typescript-eslint/no-explicit-any
+   60:24  warning  Unexpected any. Specify a different type                 @typescript-eslint/no-explicit-any
+   81:23  error    Expected '===' and instead saw '=='                      eqeqeq
+  112:3   warning  Attribute ':leadingIcon' must be hyphenated              vue/attribute-hyphenation
+  113:3   warning  Attribute ':trailingIcon' must be hyphenated             vue/attribute-hyphenation
+  114:3   warning  Attribute ':trailingText' must be hyphenated             vue/attribute-hyphenation
+  121:3   warning  Attribute ':labelInfo' must be hyphenated                vue/attribute-hyphenation
+  124:3   warning  Attribute ':invalidFeedback' must be hyphenated          vue/attribute-hyphenation
+  137:4   warning  Attribute ":value" should go before "@maska"             vue/attributes-order
+  138:4   warning  Attribute ":class" should go before "@maska"             vue/attributes-order
+  139:4   warning  Attribute ":placeholder" should go before "@maska"       vue/attributes-order
+  140:4   warning  Attribute ":type" should go before "@maska"              vue/attributes-order
+  141:4   warning  Attribute ":step" should go before "@maska"              vue/attributes-order
+  142:4   warning  Attribute ":inputmode" should go before "@maska"         vue/attributes-order
+  143:4   warning  Attribute ":autocomplete" should go before "@maska"      vue/attributes-order
+  144:4   warning  Attribute ":disabled" should go before "@maska"          vue/attributes-order
+  145:4   warning  Attribute ":minlength" should go before "@maska"         vue/attributes-order
+  146:4   warning  Attribute ":maxlength" should go before "@maska"         vue/attributes-order
+  147:4   warning  Attribute ":pattern" should go before "@maska"           vue/attributes-order
+  148:4   warning  Attribute ":autofocus" should go before "@maska"         vue/attributes-order
+  149:4   warning  Attribute ":readonly" should go before "@maska"          vue/attributes-order
+  150:4   warning  Attribute ":tabindex" should go before "@maska"          vue/attributes-order
+  151:4   warning  Attribute ":name" should go before "@maska"              vue/attributes-order
+  152:4   warning  Attribute ":title" should go before "@maska"             vue/attributes-order
+  153:4   warning  Attribute ":id" should go before "@maska"                vue/attributes-order
+  154:4   warning  Attribute ":max" should go before "@maska"               vue/attributes-order
+  155:4   warning  Attribute ":min" should go before "@maska"               vue/attributes-order
+  156:4   warning  Attribute ":required" should go before "@maska"          vue/attributes-order
+  161:21  warning  Attribute "v-if" should go before "#append"              vue/attributes-order
+  169:6   warning  Attribute ':leadingIcon' must be hyphenated              vue/attribute-hyphenation
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-validation/FormValidation.stories.ts
+  21:14  error  Variable name `Default` must match one of the following formats: camelCase           @typescript-eslint/naming-convention
+  23:14  error  Variable name `WithTranslateObj` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  32:14  error  Variable name `WithManyErrors` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  53:14  error  Variable name `WithoutKey` must match one of the following formats: camelCase        @typescript-eslint/naming-convention
+  59:14  error  Variable name `NoDismissible` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-validation/FormValidation.vue
+   7:2   warning  Prop 'modelValue' requires default value to be set  vue/require-default-prop
+   8:2   warning  Prop 'translate' requires default value to be set   vue/require-default-prop
+  28:17  warning  Unexpected any. Specify a different type            @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/form-wrapper/FormWrapper.vue
+   27:13  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   66:35  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+   67:49  warning  'v-html' directive can lead to XSS attack                                                                   vue/no-v-html
+   75:52  warning  Attribute "v-if" should go before ":name"                                                                   vue/attributes-order
+   80:46  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+   81:52  warning  'v-html' directive can lead to XSS attack                                                                   vue/no-v-html
+   87:55  warning  Attribute "v-if" should go before ":name"                                                                   vue/attributes-order
+   88:39  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+   92:38  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+   96:37  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  101:38  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/grid/col/Col.vue
+   1:1   warning  Component name "Col" should always be multi-word  vue/multi-word-component-names
+  15:16  error    Expected '===' and instead saw '=='               eqeqeq
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/grid/container/Container.vue
+  1:1  warning  Component name "Container" should always be multi-word  vue/multi-word-component-names
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/grid/row/Row.vue
+  1:1  warning  Component name "Row" should always be multi-word  vue/multi-word-component-names
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/icon-button/IconButton.stories.ts
+  43:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  45:14  error  Variable name `OnColor` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/icon-button/IconButton.vue
+   8:2   warning  Prop 'icon' requires default value to be set                                                                vue/require-default-prop
+   9:2   warning  Prop 'variant' requires default value to be set                                                             vue/require-default-prop
+  14:2   warning  Prop 'customClass' requires default value to be set                                                         vue/require-default-prop
+  21:20  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  23:27  error    Expected to return a value in computed function                                                             vue/return-in-computed-property
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/icon/Icon.stories.ts
+  27:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  29:14  error  Variable name `Filled` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+  35:14  error  Variable name `DsIcons` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/icon/Icon.vue
+   1:1  warning  Component name "Icon" should always be multi-word  vue/multi-word-component-names
+   8:2  warning  Prop 'name' requires default value to be set       vue/require-default-prop
+  19:6  error    'styles' is never reassigned. Use 'const' instead  prefer-const
+  43:3  warning  'v-html' directive can lead to XSS attack          vue/no-v-html
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/icon/types.ts
+  5:38  error  Prefer using the primitive `string` as a type name, rather than the upper-cased `String`  @typescript-eslint/no-wrapper-object-types
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/image/Image.stories.ts
+  26:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  30:14  error  Variable name `Rounded` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/image/Image.vue
+   1:1  warning  Component name "Image" should always be multi-word  vue/multi-word-component-names
+   6:2  warning  Prop 'src' requires default value to be set         vue/require-default-prop
+  16:6  error    'classes' is never reassigned. Use 'const' instead  prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/infinite-scroll/InfiniteScroll.stories.ts
+  27:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/infinite-scroll/InfiniteScroll.vue
+   6:18  error    Interface name `IContext` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+  12:8   warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  13:16  warning  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  69:39  warning  Attribute ":id" should go before "className"                     vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/link/Link.stories.ts
+  27:14  error  Variable name `Internal` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  33:14  error  Variable name `External` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  39:14  error  Variable name `Disabled` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/link/Link.vue
+   1:1  warning  Component name "Link" should always be multi-word      vue/multi-word-component-names
+  24:6  error    'classes' is never reassigned. Use 'const' instead     prefer-const
+  42:6  error    'attributes' is never reassigned. Use 'const' instead  prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/list-group/ListGroup.stories.ts
+  17:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/modal/Modal.stories.ts
+  32:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/modal/Modal.vue
+    1:1   warning  Component name "Modal" should always be multi-word                                                          vue/multi-word-component-names
+   39:13  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+   70:12  error    Expected '===' and instead saw '=='                                                                         eqeqeq
+  106:35  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+  116:8   warning  Attribute "id" should go before "class"                                                                     vue/attributes-order
+  118:8   warning  Attribute "size" should go before "@click"                                                                  vue/attributes-order
+  119:8   warning  Attribute "variant" should go before "@click"                                                               vue/attributes-order
+  120:8   warning  Attribute "icon" should go before "@click"                                                                  vue/attributes-order
+  124:29  warning  Attribute "v-if" should go before "v-bind"                                                                  vue/attributes-order
+  127:35  warning  Attribute "v-if" should go before "class"                                                                   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/pagination/Pagination.stories.ts
+  17:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/progress-indeterminate/ProgressIndeterminate.stories.ts
+  17:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/progress/ProgressBar.stories.ts
+  25:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  27:14  error  Variable name `Completed` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/progress/ProgressBar.vue
+  5:2  warning  Prop 'value' requires default value to be set  vue/require-default-prop
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/rating-star/RatingStar.stories.ts
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/rating-star/RatingStar.vue
+   6:2   warning  Prop 'size' requires default value to be set  vue/require-default-prop
+  28:30  warning  Attribute "v-for" should go before ":class"   vue/attributes-order
+  28:45  warning  Attribute ":key" should go before ":class"    vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/select-item-card/SelectItemCard.stories.ts
+  17:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/skeleton-list/SkeletonList.stories.ts
+  29:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/skeleton-list/SkeletonList.vue
+  17:38  warning  Attribute "v-for" should go before "class"  vue/attributes-order
+  17:64  warning  Attribute ":key" should go before "class"   vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/skeleton-table/SkeletonTable.stories.ts
+  43:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/skeleton-table/SkeletonTable.vue
+   8:2   warning  Prop 'lines' requires default value to be set       vue/require-default-prop
+  12:2   warning  Prop 'width' requires default value to be set       vue/require-default-prop
+  13:2   warning  Prop 'withAction' requires default value to be set  vue/require-default-prop
+  42:19  warning  Attribute "v-for" should go before "width"          vue/attributes-order
+  42:51  warning  Attribute ":key" should go before "width"           vue/attributes-order
+  47:19  warning  Attribute "v-if" should go before "width"           vue/attributes-order
+  52:67  warning  Attribute "v-if" should go before "height"          vue/attributes-order
+  54:19  warning  Attribute "v-for" should go before "width"          vue/attributes-order
+  54:51  warning  Attribute ":key" should go before "width"           vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/skeleton/Skeleton.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/skeleton/Skeleton.vue
+  1:1  warning  Component name "Skeleton" should always be multi-word  vue/multi-word-component-names
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/spinner/Spinner.stories.ts
+  30:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  34:14  error  Variable name `Highlight` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  40:14  error  Variable name `Warning` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  46:14  error  Variable name `Success` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  52:14  error  Variable name `Critical` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/spinner/Spinner.vue
+   1:1  warning  Component name "Spinner" should always be multi-word  vue/multi-word-component-names
+   7:2  warning  Prop 'color' requires default value to be set         vue/require-default-prop
+   9:2  warning  Prop 'variant' requires default value to be set       vue/require-default-prop
+  24:6  error    'classes' is never reassigned. Use 'const' instead    prefer-const
+  34:6  error    'styles' is never reassigned. Use 'const' instead     prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/stack/Stack.stories.ts
+  37:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/stack/Stack.vue
+   1:1   warning  Component name "Stack" should always be multi-word  vue/multi-word-component-names
+  18:58  error    Expected '!==' and instead saw '!='                 eqeqeq
+  19:48  error    Expected '!==' and instead saw '!='                 eqeqeq
+  20:18  error    Expected '===' and instead saw '=='                 eqeqeq
+  22:14  error    Expected '===' and instead saw '=='                 eqeqeq
+  22:37  error    Expected '===' and instead saw '=='                 eqeqeq
+  37:1   error    Expected blank line before this block               vue/padding-line-between-blocks
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/stats-item/StatsItem.stories.ts
+  25:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/stats-item/StatsItem.vue
+   2:8   warning  'TextStyle' is defined but never used               @typescript-eslint/no-unused-vars
+  17:7   warning  'isMobile' is assigned a value but never used       @typescript-eslint/no-unused-vars
+  24:22  warning  Attribute "v-if" should go before "name"            vue/attributes-order
+  24:34  warning  Attribute "v-tooltip:top" should go before "name"   vue/attributes-order
+  28:27  warning  Attribute "v-if" should go before "class"           vue/attributes-order
+  36:31  warning  Attribute "v-if" should go before "class"           vue/attributes-order
+  36:31  error    This 'v-if' should be moved to the wrapper element  vue/no-use-v-if-with-v-for
+  36:52  warning  Attribute "v-for" should go before "class"          vue/attributes-order
+  36:82  warning  Attribute ":key" should go before "class"           vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/tab/Tab.stories.ts
+  20:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  24:8   error  'tab' is never reassigned. Use 'const' instead                              prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/tab/Tab.vue
+   1:1   warning  Component name "Tab" should always be multi-word                                                            vue/multi-word-component-names
+   6:14  warning  Unexpected any. Specify a different type                                                                    @typescript-eslint/no-explicit-any
+  12:15  error    Getting a value from the `props` in root scope of `<script setup>` will cause the value to lose reactivity  vue/no-setup-props-reactivity-loss
+  35:22  warning  Attribute ":id" should go before "class"                                                                    vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/tab/TabItem.vue
+   7:10  warning  Unexpected any. Specify a different type                                   @typescript-eslint/no-explicit-any
+  13:5   error    Variable name `_index` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  27:35  error    Expected '===' and instead saw '=='                                        eqeqeq
+  39:36  warning  Attribute "v-if" should go before "class"                                  vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/tab/TabProviderInterface.ts
+  2:8  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/tag/Tag.stories.ts
+  24:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  26:14  error  Variable name `Primary` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  32:14  error  Variable name `Warning` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  38:14  error  Variable name `Success` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  44:14  error  Variable name `Danger` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/tag/Tag.vue
+   1:1   warning  Component name "Tag" should always be multi-word    vue/multi-word-component-names
+   4:15  warning  'Variant' is defined but never used                 @typescript-eslint/no-unused-vars
+  22:7   error    'classes' is never reassigned. Use 'const' instead  prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/text-style/TextStyle.stories.ts
+  26:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  28:14  error  Variable name `Highlight` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  32:14  error  Variable name `Success` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  36:14  error  Variable name `Danger` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  40:14  error  Variable name `Strong` must match one of the following formats: camelCase     @typescript-eslint/naming-convention
+  44:14  error  Variable name `Muted` must match one of the following formats: camelCase      @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/text-style/TextStyle.vue
+   9:2  warning  Prop 'label' requires default value to be set       vue/require-default-prop
+  11:2  warning  Prop 'variant' requires default value to be set     vue/require-default-prop
+  19:6  error    'classes' is never reassigned. Use 'const' instead  prefer-const
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/timeline/Timeline.stories.ts
+  19:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/timeline/Timeline.vue
+   1:1   warning  Component name "Timeline" should always be multi-word        vue/multi-word-component-names
+  10:15  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  16:28  warning  Unexpected any. Specify a different type                     @typescript-eslint/no-explicit-any
+  27:34  warning  Attribute "v-if" should go before "class"                    vue/attributes-order
+  28:49  warning  Attribute "autocomplete" should go before "@submit.prevent"  vue/attributes-order
+  30:30  warning  Attribute "v-model" should go before "required"              vue/attributes-order
+  36:33  warning  Attribute "v-for" should go before "class"                   vue/attributes-order
+  36:67  warning  Attribute ":key" should go before "class"                    vue/attributes-order
+  43:10  warning  Attribute ":is" should go before "v-if"                      vue/attributes-order
+  51:40  warning  Attribute ":is" should go before "v-if"                      vue/attributes-order
+  57:59  warning  Attribute "icon" should go before "@click"                   vue/attributes-order
+  57:72  warning  Attribute "size" should go before "@click"                   vue/attributes-order
+  57:82  warning  Attribute "variant" should go before "@click"                vue/attributes-order
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/toast/Toast.stories.ts
+  32:14  error  Variable name `Default` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  36:14  error  Variable name `Closeable` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  42:14  error  Variable name `Highlight` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  48:14  error  Variable name `Warning` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  54:14  error  Variable name `Success` must match one of the following formats: camelCase    @typescript-eslint/naming-convention
+  60:14  error  Variable name `Critical` must match one of the following formats: camelCase   @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/toast/Toast.vue
+   1:1   warning  Component name "Toast" should always be multi-word  vue/multi-word-component-names
+   7:2   warning  Prop 'className' requires default value to be set   vue/require-default-prop
+  10:2   warning  Prop 'id' requires default value to be set          vue/require-default-prop
+  11:2   warning  Prop 'message' requires default value to be set     vue/require-default-prop
+  38:3   error    Unexpected side effect in computed function         vue/no-side-effects-in-computed-properties
+  70:48  warning  Attribute "v-if" should go before ":class"          vue/attributes-order
+  72:9   warning  'v-html' directive can lead to XSS attack           vue/no-v-html
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/toast/index.ts
+  14:37  warning  Unexpected any. Specify a different type                                  @typescript-eslint/no-explicit-any
+  35:7   error    Variable name `Toast` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/toast/toast.d.ts
+  2:19  error  Interface name `toast` must match one of the following formats: PascalCase  @typescript-eslint/naming-convention
+  9:18  error  Interface name `toast` must match one of the following formats: PascalCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/youtube-player/YoutubePlayer.stories.ts
+  33:14  error  Variable name `Default` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/components/ui/youtube-player/YoutubePlayer.vue
+  12:12  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  38:19  warning  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/constants/index.ts
+  1:7  error  Variable name `MOBILE_WIDTH` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/filters.ts
+  18:50  error    'valueFormat' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  24:10  error    Expected '!==' and instead saw '!='               eqeqeq
+  30:10  error    Expected '===' and instead saw '=='               eqeqeq
+  33:10  error    Expected '!==' and instead saw '!='               eqeqeq
+  66:13  error    Expected '===' and instead saw '=='               eqeqeq
+  69:13  error    Expected '===' and instead saw '=='               eqeqeq
+  80:27  warning  Unexpected any. Specify a different type          @typescript-eslint/no-explicit-any
+  86:17  error    Expected '===' and instead saw '=='               eqeqeq
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/services/ColorSchemeService.ts
+  2:2  error  Enum Member name `dark` must match the RegExp: /^['"]?[A-Z]+([-_][A-Z]+)*['"]?$/u   @typescript-eslint/naming-convention
+  3:2  error  Enum Member name `light` must match the RegExp: /^['"]?[A-Z]+([-_][A-Z]+)*['"]?$/u  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/services/HistoryReplaceState.ts
+  7:21  error  Expected '!==' and instead saw '!='  eqeqeq
+  7:44  error  Expected '!==' and instead saw '!='  eqeqeq
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/setup.ts
+  5:14  error    Variable name `DS` must match one of the following formats: camelCase  @typescript-eslint/naming-convention
+  6:43  warning  Unexpected any. Specify a different type                               @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/types/IAction.ts
+   3:18  error    Interface name `IAction` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+  11:7   warning  Unexpected any. Specify a different type                        @typescript-eslint/no-explicit-any
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/types/IApiResource.ts
+   5:18  error  Interface name `IApiMeta` must not match the RegExp: /^I[A-Z]/u          @typescript-eslint/naming-convention
+  15:18  error  Interface name `IApiResource` must not match the RegExp: /^I[A-Z]/u      @typescript-eslint/naming-convention
+  21:18  error  Interface name `IResourceService` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+
+/home/rafaelandrade/Arquivos/Projetos/Code/Docker/bagy/design-system/src/types/ITableListConfig.ts
+   3:28  error    Array type using 'Array<T>' is forbidden. Use 'T[]' instead              @typescript-eslint/array-type
+  19:18  error    Interface name `ITableListConfig` must not match the RegExp: /^I[A-Z]/u  @typescript-eslint/naming-convention
+  20:11  warning  Unexpected any. Specify a different type                                 @typescript-eslint/no-explicit-any
+  21:24  warning  Unexpected any. Specify a different type                                 @typescript-eslint/no-explicit-any
+  22:24  warning  Unexpected any. Specify a different type                                 @typescript-eslint/no-explicit-any
+  31:12  warning  Unexpected any. Specify a different type                                 @typescript-eslint/no-explicit-any
+  32:13  warning  Unexpected any. Specify a different type                                 @typescript-eslint/no-explicit-any
+
+✖ 1182 problems (429 errors, 753 warnings)
+  38 errors and 368 warnings potentially fixable with the `--fix` option.
+

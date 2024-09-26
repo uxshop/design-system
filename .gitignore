@@ -31,3 +31,5 @@ coverage
 /src/scss/tokens/stories/tokens.css
 
 /public/design-tokens.source.json
+
+*storybook.log
