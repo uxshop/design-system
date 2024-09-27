@@ -21,9 +21,8 @@ import TableListNavPagination from './table-list-nav-pagination/TableListNavPagi
 import TableListEmptySearch from './snippets/TableListEmptySearch.vue';
 import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue';
 import isMobile from '../../../services/MobileDetector';
-import type { TApiData } from 'src/types/IApiResource';
-import type { ITableListConfig } from 'src/types';
-import { placeholder } from '@codemirror/view';
+import type { TApiData } from '../../../types';
+import type { ITableListConfig } from './types';
 
 type TQueryParams = Record<string, string | number>;
 
