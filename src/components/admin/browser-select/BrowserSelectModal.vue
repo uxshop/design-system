@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, withDefaults } from 'vue';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
 import Icon from '../../ui/icon/Icon.vue';
 import Row from '../../ui/grid/row/Row.vue';
@@ -10,10 +10,9 @@ import Spinner from '../../ui/spinner/Spinner.vue';
 import { zerofill } from '../../../filters';
 import BrowserSelectDefaultVue from './snippets/BrowserSelectDefault.vue';
 import Aside from '../../ui/aside/Aside.vue';
-import InfiniteScroll, { type IContext } from '../../ui/infinite-scroll/InfiniteScroll.vue';
-
-import { withDefaults } from 'vue';
-import type { BrowserSelectProps } from './type';
+import InfiniteScroll from '../../ui/infinite-scroll/InfiniteScroll.vue';
+import type { BrowserSelectProps } from './types';
+import type { IContext } from '../../ui/infinite-scroll';
 
 const templates = {
   default: BrowserSelectDefaultVue,
