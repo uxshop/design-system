@@ -1,10 +1,12 @@
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
-export * from './components/ui/dropdown';
 export * from './components/admin/browser-select';
 export * from './components/admin/sidebar';
 export * from './components/admin/table-list';
+export * from './components/ui/badge';
+export * from './components/ui/dropdown';
+export * from './components/ui/infinite-scroll';
 export * from './types';
 
 export { Toast as $toast } from './components/ui/toast';
@@ -60,8 +62,6 @@ export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
 export { default as EmptyData } from './components/admin/empty-data/EmptyData.vue';
 export { default as FormRegister } from './components/admin/form-register/FormRegister.vue';
 export { default as CardAnnotation } from './components/admin/card-annotation/CardAnnotation.vue';
-
-export { default as InfiniteScroll } from './components/ui/infinite-scroll/InfiniteScroll.vue';
 
 export { default as PageMessageSupport } from './components/admin/page-message-support/PageMessageSupport.vue';
 
