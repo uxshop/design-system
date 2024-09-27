@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
-import type { Alignment, Distribuition, Spacing } from '../../../types/Types';
+import type { Alignment, Distribuition, Spacing } from '../../../types';
 
 export interface StackProps {
   distribution?: Distribuition;

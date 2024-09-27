@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import Icon from '../icon/Icon.vue';
-import type { Variant } from '../../../types/Types';
 
 export interface TagProps {
   label: string;

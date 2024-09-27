@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
-import type { Size } from '../../../types/Types';
+import type { Size } from '../../../types';
 
 export interface ColorThumbProps {
   hexadecimal?: string;

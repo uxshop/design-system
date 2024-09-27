@@ -3,7 +3,7 @@ import { computed, ref, watchEffect } from 'vue';
 import Spinner from '../spinner/Spinner.vue';
 import Icon from '../icon/Icon.vue';
 import Button from '../button/Button.vue';
-import type { Size } from 'src/types';
+import type { Size } from '../../../types';
 
 export interface Props {
   modelValue: number;
