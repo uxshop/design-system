@@ -4,13 +4,7 @@ import SidebarMobile from './SidebarMobile.vue';
 import Icon from '../../ui/icon/Icon.vue';
 import NewsIndicator from '../../ui/news-indicator/NewsIndicator.vue';
 import Badge from '../../ui/badge/Badge.vue';
-import type { SideBarItem, SideBarItemType, SidebarMobileMenu } from './types';
-
-export interface MenuProviderInterface {
-  open: boolean;
-  close(): void;
-  toggle(): void;
-}
+import type { MenuProviderInterface, SideBarItem, SideBarItemType, SidebarMobileMenu } from './types';
 
 export interface Props {
   isActive: (item: SideBarItem, isOnlyChildren?: boolean) => boolean;

@@ -1,34 +1,40 @@
-import type { IconType } from 'src/components/ui/icon/types'
+import type { IconType } from '../../ui/icon';
 
 export interface SideBarItem {
-	name: string
-	isNew?: boolean
-	highlightedLabel?: string
-	isComingSoon?: boolean
-	to?: string
-	params?: any
-	href?: string
-	key?: string
-	isKeyActive?: boolean
-	permissions?: string
-	section?: string
-	icon?: IconType
-	caption?: string
-	nodes?: SideBarItem[]
-	active?: boolean
-	disabled?: boolean
-	spacer?: boolean
-	last?: boolean
-	dropdown?: boolean
-	action?: () => void
+  name: string;
+  isNew?: boolean;
+  highlightedLabel?: string;
+  isComingSoon?: boolean;
+  to?: string;
+  params?: any;
+  href?: string;
+  key?: string;
+  isKeyActive?: boolean;
+  permissions?: string;
+  section?: string;
+  icon?: IconType;
+  caption?: string;
+  nodes?: SideBarItem[];
+  active?: boolean;
+  disabled?: boolean;
+  spacer?: boolean;
+  last?: boolean;
+  dropdown?: boolean;
+  action?: () => void;
 }
 
 export interface SidebarMobileMenu {
-	icon: IconType
-	title: string
-	type: SideBarItemType
-	to?: string
-	params?: any
+  icon: IconType;
+  title: string;
+  type: SideBarItemType;
+  to?: string;
+  params?: any;
 }
 
-export type SideBarItemType = 'logo' | 'node' | 'footer' | 'action' | string
+export type SideBarItemType = 'logo' | 'node' | 'footer' | 'action' | string;
+
+export interface MenuProviderInterface {
+  open: boolean;
+  close(): void;
+  toggle(): void;
+}
