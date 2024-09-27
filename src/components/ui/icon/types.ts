@@ -1,5 +1,5 @@
-import type DSIcons from './snipets/ds-icons.json'
+import type DSIcons from './snipets/ds-icons.json';
 
-export type DSIconsType = keyof typeof DSIcons
+export type DSIconsType = keyof typeof DSIcons;
 
-export type IconType = DSIconsType | String
+export type IconType = DSIconsType | string;
