@@ -28,8 +28,6 @@ const props = withDefaults(defineProps<BrowserSelectProps>(), {
   limit: 0,
 });
 
-// const props = defineProps<BrowserSelectProps>();
-
 const TIMER_INSTANT_SEARCH = 500;
 const term = ref<string>();
 const params = ref({ q: null, page: 1 });
