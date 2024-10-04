@@ -1,31 +1,31 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
-import PanelSkeleton from './PanelSkeleton.vue'
+import type { Meta, StoryObj } from '@storybook/vue3';
+import PanelSkeleton from './PanelSkeleton.vue';
 
 const meta = {
-	title: 'Admin/PanelSkeleton',
-	component: PanelSkeleton,
-	tags: ['autodocs'],
-	args: {
-		isLoading: true,
-		delayMiliseconds: 200,
-		logoImage: './logo.svg'
-	}
-} satisfies Meta<typeof PanelSkeleton>
+  title: 'Admin/PanelSkeleton',
+  component: PanelSkeleton,
+  tags: ['autodocs'],
+  args: {
+    isLoading: true,
+    delayMiliseconds: 200,
+    logoImage: './logo.svg',
+  },
+} satisfies Meta<typeof PanelSkeleton>;
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: (args) => ({
-		components: { PanelSkeleton },
-		setup() {
-			return { args }
-		},
-		template: `
+  render: (args) => ({
+    components: { PanelSkeleton },
+    setup() {
+      return { args };
+    },
+    template: `
     <div>
       <PanelSkeleton v-bind="args" />
     </div>
-    `
-	})
-}
+    `,
+  }),
+};

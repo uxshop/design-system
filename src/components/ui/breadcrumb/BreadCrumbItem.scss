@@ -1,49 +1,49 @@
 @import '../../../scss/mixins.scss';
 
 .ui-breadcrumb {
-	> .ui-breadcrumb-item {
-		display: flex;
-		align-items: center;
+  > .ui-breadcrumb-item {
+    display: flex;
+    align-items: center;
 
-		&:before {
-			position: relative;
-			z-index: var(--s-index-max);
-			float: none;
-		}
+    &:before {
+      position: relative;
+      z-index: var(--s-index-max);
+      float: none;
+    }
 
-		> a {
-			font-weight: inherit;
-			position: relative;
-			z-index: var(--s-index-very-high);
-			display: inline-flex;
-			align-items: center;
-			height: var(--s-spacing-x-large);
-			text-decoration: none;
-			color: var(--s-color-content-default);
+    > a {
+      font-weight: inherit;
+      position: relative;
+      z-index: var(--s-index-very-high);
+      display: inline-flex;
+      align-items: center;
+      height: var(--s-spacing-x-large);
+      text-decoration: none;
+      color: var(--s-color-content-default);
 
-			@include darkmode {
-				color: var(--s-color-content-dark);
-			}
+      @include darkmode {
+        color: var(--s-color-content-dark);
+      }
 
-			&:hover {
-				text-decoration: none;
-				color: var(--s-color-fill-highlight);
-				text-decoration: underline;
-			}
-		}
+      &:hover {
+        text-decoration: none;
+        color: var(--s-color-fill-highlight);
+        text-decoration: underline;
+      }
+    }
 
-		+ .ui-breadcrumb-item {
-			padding-left: var(--s-spacing-quark);
-		}
-		+ .ui-breadcrumb-item::before {
-			padding-right: var(--s-spacing-quark);
-			color: var(--s-color-content-highlight);
-			content: '/';
-			margin: 0 var(--s-spacing-quark);
-		}
+    + .ui-breadcrumb-item {
+      padding-left: var(--s-spacing-quark);
+    }
+    + .ui-breadcrumb-item::before {
+      padding-right: var(--s-spacing-quark);
+      color: var(--s-color-content-highlight);
+      content: '/';
+      margin: 0 var(--s-spacing-quark);
+    }
 
-		> .ui-breadcrumb-item::before {
-			margin: 0 var (--s-spacing-x-large);
-		}
-	}
+    > .ui-breadcrumb-item::before {
+      margin: 0 var (--s-spacing-x-large);
+    }
+  }
 }

@@ -1,30 +1,30 @@
 @import '../../../scss/mixins.scss';
 
 .ui-stats-item {
-	text-align: center;
-	padding: var(--s-spacing-small);
-	border-radius: var(--s-border-radius-small);
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	position: relative;
-	background-color: var(--s-color-fill-default);
-	color: var(--s-color-content-default);
+  text-align: center;
+  padding: var(--s-spacing-small);
+  border-radius: var(--s-border-radius-small);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--s-color-fill-default);
+  color: var(--s-color-content-default);
 
-	&-label {
-		font: var(--s-typography-caption-medium);
-		text-transform: uppercase;
-		display: block;
-	}
+  &-label {
+    font: var(--s-typography-caption-medium);
+    text-transform: uppercase;
+    display: block;
+  }
 
-	&-value {
-		font: var(--s-typography-heading-x-small);
-		display: block;
-	}
+  &-value {
+    font: var(--s-typography-heading-x-small);
+    display: block;
+  }
 
   @include darkmode {
-		background-color: var(--s-color-fill-dark);
+    background-color: var(--s-color-fill-dark);
     color: var(--s-color-content-dark);
-	}
+  }
 }

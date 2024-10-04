@@ -1,219 +1,219 @@
 .table {
-	width: 100%;
-	margin-bottom: 0;
-	color: var(--s-color-content-default);
-	border-spacing: 0;
-	border-collapse: separate;
+  width: 100%;
+  margin-bottom: 0;
+  color: var(--s-color-content-default);
+  border-spacing: 0;
+  border-collapse: separate;
 
-	th,
-	td {
-		vertical-align: middle;
-		padding: var(--s-spacing-nano);
-	}
+  th,
+  td {
+    vertical-align: middle;
+    padding: var(--s-spacing-nano);
+  }
 
-	tr th {
-		border-top: none;
-		font-weight: var(--font-weight-semibold);
-		border-bottom: solid 1px var(--s-color-border-default);
-		font-size: 12px;
-		text-transform: uppercase;
-	}
+  tr th {
+    border-top: none;
+    font-weight: var(--font-weight-semibold);
+    border-bottom: solid 1px var(--s-color-border-default);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
 
-	tr td {
-		border-top: none;
-		border-bottom: solid 1px var(--s-color-border-default);
-	}
+  tr td {
+    border-top: none;
+    border-bottom: solid 1px var(--s-color-border-default);
+  }
 
-	&:not(.-excel) {
-		tr:last-child {
-			td {
-				border: none;
-			}
-		}
-	}
+  &:not(.-excel) {
+    tr:last-child {
+      td {
+        border: none;
+      }
+    }
+  }
 
-	tr.-inactive {
-		td:not(.td-checkbox):not(.td-action) {
-			opacity: 0.8;
-		}
-	}
+  tr.-inactive {
+    td:not(.td-checkbox):not(.td-action) {
+      opacity: 0.8;
+    }
+  }
 
-	tbody + tbody {
-		border: none;
-		border-top: solid 1px var(--s-color-border-default);
-	}
+  tbody + tbody {
+    border: none;
+    border-top: solid 1px var(--s-color-border-default);
+  }
 
-	.td-action {
-		width: 1px;
-		white-space: nowrap;
-		button + button {
-			margin-left: var(--s-spacing-quark);
-		}
-		a {
-			display: inline-flex;
-		}
-	}
+  .td-action {
+    width: 1px;
+    white-space: nowrap;
+    button + button {
+      margin-left: var(--s-spacing-quark);
+    }
+    a {
+      display: inline-flex;
+    }
+  }
 
-	.td-drag {
-		padding: 0;
-		text-align: center;
-		cursor: grab !important;
-		width: 1px;
-		color: var(--s-color-content-default);
-		padding-left: var(--s-spacing-quark);
+  .td-drag {
+    padding: 0;
+    text-align: center;
+    cursor: grab !important;
+    width: 1px;
+    color: var(--s-color-content-default);
+    padding-left: var(--s-spacing-quark);
 
-		.ui-icon {
-			display: flex;
-			font-size: 16px;
-		}
-	}
+    .ui-icon {
+      display: flex;
+      font-size: 16px;
+    }
+  }
 
-	> .ui-icon {
-		display: inline-block;
-		vertical-align: middle;
-	}
+  > .ui-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-	.ui-badge {
-		white-space: nowrap;
-	}
+  .ui-badge {
+    white-space: nowrap;
+  }
 
-	&.-pointer {
-		cursor: pointer;
-	}
+  &.-pointer {
+    cursor: pointer;
+  }
 
-	&.-hover {
-		td:not(.td-action):not(.td-checkbox) {
-			cursor: pointer;
-		}
+  &.-hover {
+    td:not(.td-action):not(.td-checkbox) {
+      cursor: pointer;
+    }
 
-		> tr:hover,
-		tbody tr:hover {
-			background-color: var(--s-color-fill-default-hover);
-			color: var(--s-color-content-default);
-		}
-	}
+    > tr:hover,
+    tbody tr:hover {
+      background-color: var(--s-color-fill-default-hover);
+      color: var(--s-color-content-default);
+    }
+  }
 
-	&.-top {
-		td {
-			vertical-align: top;
-		}
-	}
+  &.-top {
+    td {
+      vertical-align: top;
+    }
+  }
 
-	&.-no-padding {
-		td,
-		th {
-			&:first-child {
-				padding-left: 0;
-			}
+  &.-no-padding {
+    td,
+    th {
+      &:first-child {
+        padding-left: 0;
+      }
 
-			&:last-child {
-				padding-right: 0;
-			}
-		}
-	}
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
 
-	&.-drag {
-		td:first-child {
-			cursor: grab;
-			width: 1px;
+  &.-drag {
+    td:first-child {
+      cursor: grab;
+      width: 1px;
 
-			.ui-icon {
-				display: flex;
-				font-size: 18px;
-			}
-		}
-	}
+      .ui-icon {
+        display: flex;
+        font-size: 18px;
+      }
+    }
+  }
 
-	&.-tiny {
-		td,
-		th {
-			padding: var(--s-spacing-quark);
-		}
-	}
+  &.-tiny {
+    td,
+    th {
+      padding: var(--s-spacing-quark);
+    }
+  }
 
-	&.-hover {
-		tr {
-			cursor: pointer;
-		}
-	}
+  &.-hover {
+    tr {
+      cursor: pointer;
+    }
+  }
 
-	&.-th-primary {
-		th {
-			border-bottom: solid 2px var(--s-color-border-highlight);
-		}
-	}
+  &.-th-primary {
+    th {
+      border-bottom: solid 2px var(--s-color-border-highlight);
+    }
+  }
 
-	&.-radius {
-		border-radius: var(--s-border-radius-small);
-		overflow: hidden;
-	}
+  &.-radius {
+    border-radius: var(--s-border-radius-small);
+    overflow: hidden;
+  }
 
-	&.-excel {
-		border-left: solid 1px var(--s-color-border-default);
-    	border-top: solid 1px var(--s-color-border-default);
-		border-collapse: unset;
+  &.-excel {
+    border-left: solid 1px var(--s-color-border-default);
+    border-top: solid 1px var(--s-color-border-default);
+    border-collapse: unset;
 
-		input[readonly] {
-			background-color: var(--s-color-fill-default-disable);
-		}
+    input[readonly] {
+      background-color: var(--s-color-fill-default-disable);
+    }
 
-		td,
-		th {
-			border-right: solid 1px var(--s-color-border-default);
-			padding: var(--s-spacing-nano);
-			vertical-align: middle;
-		}
+    td,
+    th {
+      border-right: solid 1px var(--s-color-border-default);
+      padding: var(--s-spacing-nano);
+      vertical-align: middle;
+    }
 
-		th {
-			background: var(--s-color-fill-default-light);
-			text-transform: uppercase;
-		}
+    th {
+      background: var(--s-color-fill-default-light);
+      text-transform: uppercase;
+    }
 
-		tbody th {
-			text-align: center;
-		}
+    tbody th {
+      text-align: center;
+    }
 
-		td {
-			padding: 0;
+    td {
+      padding: 0;
 
-			input {
-				border-radius: 0;
-				border: solid 1px transparent;
-				width: 100%;
-				border-radius: 0;
-				height: var(--s-spacing-large);
-				padding: var(--s-spacing-nano);
-				color: var(--s-color-content-default);
-				background: var(--s-color-fill-default);
+      input {
+        border-radius: 0;
+        border: solid 1px transparent;
+        width: 100%;
+        border-radius: 0;
+        height: var(--s-spacing-large);
+        padding: var(--s-spacing-nano);
+        color: var(--s-color-content-default);
+        background: var(--s-color-fill-default);
 
-				&:focus {
-					border: solid 1px var(--s-color-border-highlight);
-					border-radius: 0;
-					outline: none;
-					box-shadow: 0 0 0 1px var(--s-color-background-highlight);
-				}
-			}
+        &:focus {
+          border: solid 1px var(--s-color-border-highlight);
+          border-radius: 0;
+          outline: none;
+          box-shadow: 0 0 0 1px var(--s-color-background-highlight);
+        }
+      }
 
-			button {
-				background: none;
-				border: none;
-				border-radius: 0;
-				appearance: none;
-				box-shadow: none;
-				display: flex;
-				align-items: center;
-				color: var(--body-color);
-				min-height: 40px;
-				outline: none;
+      button {
+        background: none;
+        border: none;
+        border-radius: 0;
+        appearance: none;
+        box-shadow: none;
+        display: flex;
+        align-items: center;
+        color: var(--body-color);
+        min-height: 40px;
+        outline: none;
 
-				.ui-icon {
-					font-size: 20px;
-				}
-			}
+        .ui-icon {
+          font-size: 20px;
+        }
+      }
 
-			&:last-child {
-				background: var(--s-color-fill-default-light);
-			}
-		}
-	}
+      &:last-child {
+        background: var(--s-color-fill-default-light);
+      }
+    }
+  }
 }

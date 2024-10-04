@@ -1,27 +1,27 @@
 .ui-text-style {
-	&.-variant {
-		&-primary {
-			color: var(--s-color-content-highlight);
-		}
+  &.-variant {
+    &-primary {
+      color: var(--s-color-content-highlight);
+    }
 
-		&-success {
-			color: var(--s-color-content-success);
-		}
+    &-success {
+      color: var(--s-color-content-success);
+    }
 
-		&-danger {
-			color: var(--s-color-content-critical);
-		}
+    &-danger {
+      color: var(--s-color-content-critical);
+    }
 
-		&-strong {
-			font: var(--s-typography-paragraph-strong);
-		}
+    &-strong {
+      font: var(--s-typography-paragraph-strong);
+    }
 
-		&-muted {
-			color: var(--s-color-content-light);
-		}
+    &-muted {
+      color: var(--s-color-content-light);
+    }
 
-		&.-block {
-			display: block;
-		}
-	}
+    &.-block {
+      display: block;
+    }
+  }
 }

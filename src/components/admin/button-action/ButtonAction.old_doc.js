@@ -1,41 +1,41 @@
-import ButtonAction from './ButtonAction.vue'
+import ButtonAction from './ButtonAction.vue';
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-	title: 'Components/ButtonAction',
-	component: ButtonAction,
-	argTypes: {}
-}
+  title: 'Components/ButtonAction',
+  component: ButtonAction,
+  argTypes: {},
+};
 
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
-	components: { ButtonAction },
-	setup() {
-		return { args }
-	},
-	template: `
+  components: { ButtonAction },
+  setup() {
+    return { args };
+  },
+  template: `
     <ButtonAction v-bind="args">
       meu ButtonAction 
     </ButtonAction>
-  `
-})
+  `,
+});
 
-export const edit = Template.bind({})
+export const edit = Template.bind({});
 edit.args = {
-	type: 'edit'
-}
+  type: 'edit',
+};
 
-export const active = Template.bind({})
+export const active = Template.bind({});
 active.args = {
-	type: 'active'
-}
+  type: 'active',
+};
 
-export const Delete = Template.bind({})
+export const Delete = Template.bind({});
 Delete.args = {
-	type: 'delete'
-}
+  type: 'delete',
+};
 
-export const remove = Template.bind({})
+export const remove = Template.bind({});
 remove.args = {
-	type: 'remove'
-}
+  type: 'remove',
+};

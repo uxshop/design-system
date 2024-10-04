@@ -1,7 +1,7 @@
 <template>
-	<div class="ui-pagination">
-		<slot />
-	</div>
+  <div class="ui-pagination">
+    <slot />
+  </div>
 </template>
 
 <style lang="scss">

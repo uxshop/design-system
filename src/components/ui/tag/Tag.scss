@@ -1,44 +1,45 @@
 @import '../../../scss/mixins.scss';
 
 .ui-tag {
-	display: inline-flex;
-	align-items: center;
-	overflow: hidden;
-	font: var(--s-typography-caption-medium);
-	gap: var(--s-spacing-quark);
-	padding: 0 var(--s-spacing-quark) 0 var(--s-spacing-nano);
-	border-radius: var(--s-border-radius-small);
-	color: var(--s-color-content-on-color);
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  font: var(--s-typography-caption-medium);
+  gap: var(--s-spacing-quark);
+  padding: 0 var(--s-spacing-quark) 0 var(--s-spacing-nano);
+  border-radius: var(--s-border-radius-small);
+  color: var(--s-color-content-on-color);
 
-	&.-variant {
-		&-default {
-			color: var(--s-color-content-on-color);
-			background-color: var(--s-color-fill-default-light);
-		}
+  &.-variant {
+    &-default {
+      color: var(--s-color-content-on-color);
+      background-color: var(--s-color-fill-default-light);
+    }
 
-		&-primary {
-			background-color: var(--s-color-fill-highlight);
-		}
+    &-primary {
+      background-color: var(--s-color-fill-highlight);
+    }
 
-		&-warning {
-			background-color: var(--s-color-fill-warning);
-		}
+    &-warning {
+      background-color: var(--s-color-fill-warning);
+    }
 
-		&-success {
-			background-color: var(--s-color-fill-success);
-		}
+    &-success {
+      background-color: var(--s-color-fill-success);
+    }
 
-		&-danger {
-			background-color: var(--s-color-fill-critical);
-		}
-	}
+    &-danger {
+      background-color: var(--s-color-fill-critical);
+    }
+  }
 
-	.ui-tag-close {
-		border-radius: var(--s-border-radius-small);
-		cursor: pointer;
-		font-size: 1rem;
-	
-	&:hover {background-color: rgba(0, 0, 0, 0.24)}
-		
-	}
+  .ui-tag-close {
+    border-radius: var(--s-border-radius-small);
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.24);
+    }
+  }
 }

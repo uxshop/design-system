@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { computed, type StyleValue } from 'vue'
+import { computed, type StyleValue } from 'vue';
 
 export interface SkeletonProps {
-	width?: string
-	height?: string
+  width?: string;
+  height?: string;
 }
 
-const props = defineProps<SkeletonProps>()
+const props = defineProps<SkeletonProps>();
 
 const skeletonStyleList = computed(() => {
-	const styles: StyleValue = {}
+  const styles: StyleValue = {};
 
-	if (props.width) {
-		styles.width = props.width
-	}
-	if (props.height) {
-		styles.height = props.height
-	}
+  if (props.width) {
+    styles.width = props.width;
+  }
+  if (props.height) {
+    styles.height = props.height;
+  }
 
-	return styles
-})
+  return styles;
+});
 </script>
 
 <template>
-	<div class="ui-skeleton" :style="skeletonStyleList" />
+  <div class="ui-skeleton" :style="skeletonStyleList" />
 </template>
 
 <style lang="scss">

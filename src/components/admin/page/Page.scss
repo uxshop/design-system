@@ -1,39 +1,39 @@
 @import '../../../scss/mixins.scss';
 
 .ui-page {
-	flex-grow: 1;
-	display: flex;
-	flex-direction: column;
-	align-items: initial;
-	margin: 0 auto;
-	width: 100%;
-	max-width: var(--container-max-width);
-	padding: var(--s-spacing-large);
-	padding-top: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: initial;
+  margin: 0 auto;
+  width: 100%;
+  max-width: var(--container-max-width);
+  padding: var(--s-spacing-large);
+  padding-top: 0;
 
-	&-help {
-		margin-bottom: var(--s-spacing-small);
-	}
+  &-help {
+    margin-bottom: var(--s-spacing-small);
+  }
 
-	&.-sm {
-		max-width: 660px;
-	}
+  &.-sm {
+    max-width: 660px;
+  }
 
-	&.-md {
-		max-width: 960px;
-	}
+  &.-md {
+    max-width: 960px;
+  }
 
-	&.-full {
-		max-width: none;
-	}
+  &.-full {
+    max-width: none;
+  }
 
-	&.-iframe {
-		max-width: none;
-		padding: 0;
-	}
+  &.-iframe {
+    max-width: none;
+    padding: 0;
+  }
 
-	@include mobile {
-		margin-bottom: var(--s-spacing-huge);
-		padding: 0 var(--s-spacing-xx-small);
-	}
+  @include mobile {
+    margin-bottom: var(--s-spacing-huge);
+    padding: 0 var(--s-spacing-xx-small);
+  }
 }

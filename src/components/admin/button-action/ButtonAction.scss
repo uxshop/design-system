@@ -1,41 +1,41 @@
 .ui-button-action {
-	color: var(--body-color);
-	opacity: 0.8;
-	border: none !important;
-	box-shadow: none !important;
+  color: var(--body-color);
+  opacity: 0.8;
+  border: none !important;
+  box-shadow: none !important;
 
-	&:last-child {
-		margin: 0;
-	}
+  &:last-child {
+    margin: 0;
+  }
 
-	&:hover:not(.btn-active),
-	&:focus:not(.btn-active) {
-		text-decoration: none;
-		opacity: 1;
-	}
+  &:hover:not(.btn-active),
+  &:focus:not(.btn-active) {
+    text-decoration: none;
+    opacity: 1;
+  }
 
-	&.-delete {
-		background-color: none;
-		border: none;
-	}
+  &.-delete {
+    background-color: none;
+    border: none;
+  }
 
-	&.-btn-active {
-		color: var(--success);
+  &.-btn-active {
+    color: var(--success);
 
-		&.-inactive {
-			color: var(--danger);
-		}
+    &.-inactive {
+      color: var(--danger);
+    }
 
-		&:hover {
-			opacity: 1;
-		}
-	}
+    &:hover {
+      opacity: 1;
+    }
+  }
 
-	+ .ui-button-action {
-		margin-left: 5px;
-	}
+  + .ui-button-action {
+    margin-left: 5px;
+  }
 
-	i {
-		display: flex;
-	}
+  i {
+    display: flex;
+  }
 }

@@ -2,113 +2,111 @@
 @import '../../../../src/scss/plugins/choices.scss';
 
 .ui-form-autocomplete {
-	position: relative;
+  position: relative;
 
-	.choices {
+  .choices {
+    &.is-open {
+      &::after {
+        @include darkmode {
+          margin-bottom: 8px;
+          transform: rotate(180deg);
+          height: min-content;
+          border-color: var(--s-color-content-default) transparent transparent transparent;
+        }
+      }
+    }
 
-		&.is-open {
-			&::after {
-				@include darkmode {
-					margin-bottom: 8px;
-					transform: rotate(180deg);
-					height: min-content;
-					border-color: var(--s-color-content-default) transparent transparent transparent;
-				}
-			}
-		}
+    &[data-type*='select-one'] select.choices__input {
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
 
-		&[data-type*='select-one'] select.choices__input {
-			display: block;
-			opacity: 0;
-			pointer-events: none;
-			position: absolute;
-			left: 0;
-			bottom: 0;
-		}
+    &::after {
+      right: var(--s-spacing-xx-small);
+      border-color: var(--s-color-content-default) transparent transparent transparent;
 
-		&::after {
-			right: var(--s-spacing-xx-small);
-			border-color: var(--s-color-content-default) transparent transparent transparent;
+      @include darkmode {
+        border-color: var(--s-color-content-default) transparent transparent transparent;
+      }
+    }
 
-			@include darkmode {
-				border-color: var(--s-color-content-default) transparent transparent transparent;
-			}
-		}
+    &.is-focused {
+      z-index: var(--s-index-max);
 
-		&.is-focused {
-			z-index: var(--s-index-max);
+      .choices__inner,
+      .choices__list {
+        border-left-color: var(--s-color-border-highlight);
+        border-right-color: var(--s-color-border-highlight);
+      }
 
-			.choices__inner,
-			.choices__list {
-				border-left-color: var(--s-color-border-highlight);
-				border-right-color: var(--s-color-border-highlight);
-			}
+      .choices__inner {
+        border-top-color: var(--s-color-border-highlight);
+        border-bottom-color: var(--s-color-border-highlight);
+      }
 
-			.choices__inner {
-				border-top-color: var(--s-color-border-highlight);
-				border-bottom-color: var(--s-color-border-highlight);
+      .choices__list {
+        border-bottom-color: var(--s-color-border-highlight);
+      }
+    }
 
-			}
+    &.is-open.is-flipped {
+      .choices__inner {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
 
-			.choices__list {
-				border-bottom-color: var(--s-color-border-highlight);
-			}
-		}
+    &.is-open:not(.is-flipped) {
+      .choices__inner {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
 
-		&.is-open.is-flipped {
-			.choices__inner {
-				border-top-left-radius: 0;
-				border-top-right-radius: 0;
-			}
-		}
+    .choices__button {
+      background-size: var(--s-spacing-xx-small);
+      opacity: 0.64;
 
-		&.is-open:not(.is-flipped) {
-			.choices__inner {
-				border-bottom-left-radius: 0;
-				border-bottom-right-radius: 0;
-			}
-		}
+      @include darkmode {
+        filter: invert(1);
+      }
+    }
 
-		.choices__button {
-			background-size: var(--s-spacing-xx-small);
-			opacity: 0.64;
+    .choices__item {
+      opacity: 1;
+      line-height: var(--s-line-height-16);
+    }
 
-			@include darkmode {
-				filter: invert(1);
-			}
-		}
+    .choices__inner {
+      border-radius: var(--s-border-radius-small);
+      background-color: var(--s-color-fill-default);
+      border-color: var(--s-color-border-default);
+      min-height: var(--s-spacing-large);
+      padding-top: 0;
+      padding-bottom: 0 !important;
+      display: flex;
+      align-items: center;
 
-		.choices__item {
-			opacity: 1;
-			line-height: var(--s-line-height-16);
-		}
+      &:hover {
+        background-color: var(--s-color-fill-default-hover);
+      }
+    }
 
-		.choices__inner {
-			border-radius: var(--s-border-radius-small);
-			background-color: var(--s-color-fill-default);
-			border-color: var(--s-color-border-default);
-			min-height: var(--s-spacing-large);
-			padding-top: 0;
-			padding-bottom: 0 !important;
-			display: flex;
-			align-items: center;
+    .choices__list--dropdown,
+    .choices__list[aria-expanded] {
+      background-color: var(--s-color-fill-default);
+      border-color: var(--s-color-border-highlight);
+    }
 
-			&:hover {
-				background-color: var(--s-color-fill-default-hover);
-			}
-		}
-
-		.choices__list--dropdown,
-		.choices__list[aria-expanded] {
-			background-color: var(--s-color-fill-default);
-			border-color: var(--s-color-border-highlight);
-		}
-
-		.choices__item>.choices__button {
-			margin-right: var(--s-spacing-medium);
-			margin-top: 0;
-			height: 100%;
-			top: 0;
-		}
-	}
+    .choices__item > .choices__button {
+      margin-right: var(--s-spacing-medium);
+      margin-top: 0;
+      height: 100%;
+      top: 0;
+    }
+  }
 }

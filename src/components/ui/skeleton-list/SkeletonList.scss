@@ -1,10 +1,10 @@
 .ui-skeleton-list {
-	width: 100%;
+  width: 100%;
 
-	.ui-skeleton-list-item {
-		padding: var(--s-spacing-x-small) 0;
-		+ .ui-skeleton-list-item {
-			border-top: var(--s-border-light);
-		}
-	}
+  .ui-skeleton-list-item {
+    padding: var(--s-spacing-x-small) 0;
+    + .ui-skeleton-list-item {
+      border-top: var(--s-border-light);
+    }
+  }
 }

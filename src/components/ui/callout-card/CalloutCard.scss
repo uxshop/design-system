@@ -1,39 +1,39 @@
 .ui-callout-card {
-	.ui-card-body {
-		display: flex;
-		align-items: flex-start;
-		gap: var(--s-spacing-xx-small);
-	}
+  .ui-card-body {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--s-spacing-xx-small);
+  }
 
-	&-content {
-		width: 100%;
-	}
+  &-content {
+    width: 100%;
+  }
 
-	&-header {
-		display: flex;
-		gap: var(--s-spacing-xx-small);
-		align-items: center;
-		margin-bottom: var(--s-spacing-nano);
-	}
+  &-header {
+    display: flex;
+    gap: var(--s-spacing-xx-small);
+    align-items: center;
+    margin-bottom: var(--s-spacing-nano);
+  }
 
-	&-title {
-		margin: 0;
-		font: var(--s-typography-paragraph-strong);
-	}
+  &-title {
+    margin: 0;
+    font: var(--s-typography-paragraph-strong);
+  }
 
-	.ui-callout-card-actions {
-		margin-top: var(--s-spacing-xx-small);
-		display: flex;
-	}
+  .ui-callout-card-actions {
+    margin-top: var(--s-spacing-xx-small);
+    display: flex;
+  }
 
-	.ui-callout-card-icon {
-		background-color: var(--s-color-fill-success);
-		border-radius: var(--s-border-radius-medium);
-		padding: var(--s-spacing-xx-small);
-		display: flex;
-	}
+  .ui-callout-card-icon {
+    background-color: var(--s-color-fill-success);
+    border-radius: var(--s-border-radius-medium);
+    padding: var(--s-spacing-xx-small);
+    display: flex;
+  }
 
-	.-bg-primary {
-		background-color: var(--s-color-fill-highilight);
-	}
+  .-bg-primary {
+    background-color: var(--s-color-fill-highilight);
+  }
 }

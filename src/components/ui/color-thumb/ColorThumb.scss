@@ -1,68 +1,68 @@
 .ui-color-thumb {
-	display: inline-block;
-	position: relative;
-	overflow: hidden;
-	border-radius: var(--s-border-radius-pill);
-	aspect-ratio: 1;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--s-border-radius-pill);
+  aspect-ratio: 1;
 
-	&.-size {
-		&-sm {
-			width: var(--s-spacing-small);
-		}
+  &.-size {
+    &-sm {
+      width: var(--s-spacing-small);
+    }
 
-		&-md {
-			width: var(--s-spacing-medium);
-		}
+    &-md {
+      width: var(--s-spacing-medium);
+    }
 
-		&-lg {
-			width: var(--s-spacing-large);
-		}
-	}
+    &-lg {
+      width: var(--s-spacing-large);
+    }
+  }
 
-	&::before {
-		content: '';
-		display: block;
-		border: var(--s-border-thin);
-		position: absolute;
-		left: 0;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		filter: opacity(0.32);
-		z-index: var(--s-index-default);
-		border-radius: var(--s-border-radius-pill);
-	}
+  &::before {
+    content: '';
+    display: block;
+    border: var(--s-border-thin);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    filter: opacity(0.32);
+    z-index: var(--s-index-default);
+    border-radius: var(--s-border-radius-pill);
+  }
 
-	&-image {
-		position: absolute;
-		left: 0;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		background-size: cover;
-		background-position: center;
-		border-radius: var(--s-border-radius-pill);
-		max-width: 100%;
-		aspect-ratio: 1;
-	}
+  &-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--s-border-radius-pill);
+    max-width: 100%;
+    aspect-ratio: 1;
+  }
 
-	.ui-color-thumb-color {
-		position: absolute;
-		left: 0;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		background-size: cover;
-		border-radius: var(--s-border-radius-pill);
+  .ui-color-thumb-color {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    border-radius: var(--s-border-radius-pill);
 
-		&.-secondary {
-			top: 48%;
-			transform: rotate(-45deg);
-			width: 130%;
-		}
-	}
+    &.-secondary {
+      top: 48%;
+      transform: rotate(-45deg);
+      width: 130%;
+    }
+  }
 
-	+ span {
-		margin-left: var(--s-spacing-quark);
-	}
+  + span {
+    margin-left: var(--s-spacing-quark);
+  }
 }

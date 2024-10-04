@@ -1,62 +1,62 @@
 @import '../../../scss/mixins.scss';
 
 .ui-tab-item {
-	-webkit-appearance: none;
-	background: none;
-	border: none;
-	box-sizing: border-box;
-	box-shadow: none;
-	cursor: pointer;
-	margin: 0;
-	outline: none;
-	text-align: center;
-	white-space: nowrap;
-	z-index: var(--s-index-default);
-	padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
-	color: inherit;
-	position: relative;
-	font: var(--s-typography-paragraph-regular);
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: none;
+  cursor: pointer;
+  margin: 0;
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+  z-index: var(--s-index-default);
+  padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
+  color: inherit;
+  position: relative;
+  font: var(--s-typography-paragraph-regular);
 
-	&:hover:not(.-active) {
-		&:after {
-			background: var(--s-color-border-highlight);
-		}
-	}
+  &:hover:not(.-active) {
+    &:after {
+      background: var(--s-color-border-highlight);
+    }
+  }
 
-	&::after {
-		content: '';
-		height: 2px;
-		background: transparent;
-		width: 100%;
-		position: absolute;
-		bottom: -1px;
-		display: block;
-		left: 0;
-		transition: var(--s-motion-ease-linear) var(--s-motion-duration-fast);
-		border-radius: var(--s-border-radius-medium);
-	}
+  &::after {
+    content: '';
+    height: 2px;
+    background: transparent;
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    display: block;
+    left: 0;
+    transition: var(--s-motion-ease-linear) var(--s-motion-duration-fast);
+    border-radius: var(--s-border-radius-medium);
+  }
 
-	&.-active {
-		color: var(--s-color-content-highlight);
-		font: var(--s-typography-paragraph-strong);
+  &.-active {
+    color: var(--s-color-content-highlight);
+    font: var(--s-typography-paragraph-strong);
 
-		&:after {
-			background-color: var(--s-color-fill-highlight);
-		}
-	}
+    &:after {
+      background-color: var(--s-color-fill-highlight);
+    }
+  }
 
-	&-content {
-		justify-content: center;
-		align-items: center;
-		display: flex;
-		column-gap: var(--s-spacing-quark);
-		height: 100%;
-	}
+  &-content {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    column-gap: var(--s-spacing-quark);
+    height: 100%;
+  }
 
-	&-badge {
-		background-color: var(--s-color-fill-default);
-		border-radius: var(--s-border-radius-pill);
-		padding: 0 var(--s-spacing-nano);
-		font: var(--s-typography-label-small);
-	}
+  &-badge {
+    background-color: var(--s-color-fill-default);
+    border-radius: var(--s-border-radius-pill);
+    padding: 0 var(--s-spacing-nano);
+    font: var(--s-typography-label-small);
+  }
 }

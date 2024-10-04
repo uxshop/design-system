@@ -1,29 +1,29 @@
 .ui-rating {
-	user-select: none;
-	white-space: nowrap;
-	display: inline-flex;
-	align-items: center;
+  user-select: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
 
-	.ui-icon {
-		display: none;
-		color: var(--s-color-content-light);
-		transition: color var(--s-motion-duration-fast);
-	}
+  .ui-icon {
+    display: none;
+    color: var(--s-color-content-light);
+    transition: color var(--s-motion-duration-fast);
+  }
 
-	> span {
-		display: inline-flex;
+  > span {
+    display: inline-flex;
 
-		.ui-icon:hover {
-			color: var(--s-color-fill-highlight);
-		}
-	}
+    .ui-icon:hover {
+      color: var(--s-color-fill-highlight);
+    }
+  }
 
-	.star > .ui-icon:first-child {
-		display: block;
-		color: var(--s-color-fill-highlight);
-	}
+  .star > .ui-icon:first-child {
+    display: block;
+    color: var(--s-color-fill-highlight);
+  }
 
-	.star-border > .ui-icon:last-child {
-		display: block;
-	}
+  .star-border > .ui-icon:last-child {
+    display: block;
+  }
 }

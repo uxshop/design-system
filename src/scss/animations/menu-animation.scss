@@ -1,5 +1,5 @@
 @mixin menu-animation($time, $timeOpacity) {
-	transition:
-		max-height $time var(--s-motion-ease-in-out),
-		opacity $timeOpacity var(--s-motion-ease-in-out);
+  transition:
+    max-height $time var(--s-motion-ease-in-out),
+    opacity $timeOpacity var(--s-motion-ease-in-out);
 }

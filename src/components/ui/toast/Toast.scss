@@ -1,77 +1,77 @@
 @import '../../../scss/mixins.scss';
 
 .ui-toast {
-	color: var(--s-color-content-on-color);
-	padding:var(--s-spacing-x-small) var(--s-spacing-x-small);
-	animation: var(--s-motion-duration-default) slideUp;
-	animation-fill-mode: forwards;
-	border-radius: var(--s-border-radius-small);
-	position: fixed;
-	bottom: var(--s-spacing-small);
-	left: 40%;
-	z-index: var(--s-index-max);
-	display: flex;
-	column-gap: var(--s-spacing-quark);
-	align-items: center;
-	box-shadow: var(--s-shadow-level-1);
+  color: var(--s-color-content-on-color);
+  padding: var(--s-spacing-x-small) var(--s-spacing-x-small);
+  animation: var(--s-motion-duration-default) slideUp;
+  animation-fill-mode: forwards;
+  border-radius: var(--s-border-radius-small);
+  position: fixed;
+  bottom: var(--s-spacing-small);
+  left: 40%;
+  z-index: var(--s-index-max);
+  display: flex;
+  column-gap: var(--s-spacing-quark);
+  align-items: center;
+  box-shadow: var(--s-shadow-level-1);
 
-	&.-variant {
-		&-default {
-			color: var(--s-color-content-primary);
-			background-color: var(--s-color-fill-default-light);
-		}
+  &.-variant {
+    &-default {
+      color: var(--s-color-content-primary);
+      background-color: var(--s-color-fill-default-light);
+    }
 
-		&-highlight {
-			background-color: var(--s-color-fill-highlight);
-		}
+    &-highlight {
+      background-color: var(--s-color-fill-highlight);
+    }
 
-		&-warning {
-			background-color: var(--s-color-fill-warning);
-		}
+    &-warning {
+      background-color: var(--s-color-fill-warning);
+    }
 
-		&-success {
-			background-color: var(--s-color-fill-success);
-		}
+    &-success {
+      background-color: var(--s-color-fill-success);
+    }
 
-		&-critical {
-			background-color: var(--s-color-fill-critical);
-		}
-	}
+    &-critical {
+      background-color: var(--s-color-fill-critical);
+    }
+  }
 
-	&.-leave {
-		animation: var(--s-motion-duration-default) slideDown;
-		animation-fill-mode: both;
-	}
+  &.-leave {
+    animation: var(--s-motion-duration-default) slideDown;
+    animation-fill-mode: both;
+  }
 
-	&-body {
-		font: var(--s-typography-paragraph-strong);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-	}
+  &-body {
+    font: var(--s-typography-paragraph-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 @keyframes slideUp {
-	from {
-		transform: translateY(1rem);
-		opacity: 0;
-	}
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
 
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideDown {
-	from {
-		opacity: 1;
-		transform: translateY(0);
-	}
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-	to {
-		opacity: 0;
-		transform: translateY(1rem);
-	}
+  to {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
 }

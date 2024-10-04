@@ -1,6 +1,6 @@
 .ui-frame-annotation {
-	padding: var(--grid-gutter-width) 0;
-	+ .ui-frame-annotation {
-		border-top: solid 2px var(--border-color);
-	}
+  padding: var(--grid-gutter-width) 0;
+  + .ui-frame-annotation {
+    border-top: solid 2px var(--border-color);
+  }
 }

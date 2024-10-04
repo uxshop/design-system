@@ -1,242 +1,242 @@
 @import '../../../scss/mixins.scss';
 
 .ui-modal {
-	display: block;
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: var(--s-index-max);
-	width: 100%;
-	height: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
-	outline: 0;
-	color: var(--s-color-content-default);
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--s-index-max);
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  color: var(--s-color-content-default);
 
-	&.-sm {
-		> .ui-modal-dialog {
-			max-width: 520px;
-		}
-	}
+  &.-sm {
+    > .ui-modal-dialog {
+      max-width: 520px;
+    }
+  }
 
-	&.-lg {
-		> .ui-modal-dialog {
-			width: 90%;
-			max-width: 90%;
-		}
-	}
+  &.-lg {
+    > .ui-modal-dialog {
+      width: 90%;
+      max-width: 90%;
+    }
+  }
 
-	&.-hide {
-		> .ui-modal-overlay {
-			opacity: 0;
-		}
+  &.-hide {
+    > .ui-modal-overlay {
+      opacity: 0;
+    }
 
-		> .ui-modal-dialog > .ui-modal-content {
-			animation: var(--s-motion-duration-fast) modalFadeOut forwards;
-		}
-	}
+    > .ui-modal-dialog > .ui-modal-content {
+      animation: var(--s-motion-duration-fast) modalFadeOut forwards;
+    }
+  }
 
-	&.-show {
-		> .ui-modal-overlay {
-			opacity: var(--s-color-background-overlay);
-		}
-	}
+  &.-show {
+    > .ui-modal-overlay {
+      opacity: var(--s-color-background-overlay);
+    }
+  }
 
-	&.-scrollable {
-		.ui-modal-body {
-			overflow-y: scroll;
-			padding-bottom: var(--s-spacing-x-small);
-		}
+  &.-scrollable {
+    .ui-modal-body {
+      overflow-y: scroll;
+      padding-bottom: var(--s-spacing-x-small);
+    }
 
-		.ui-modal-content {
-			height: calc(100vh - 40px);
-			overflow-y: scroll;
-		}
+    .ui-modal-content {
+      height: calc(100vh - 40px);
+      overflow-y: scroll;
+    }
 
-		.ui-modal-header {
-			position: sticky;
-			top: 0;
-			z-index: var(--s-index-max);
-		}
-	}
+    .ui-modal-header {
+      position: sticky;
+      top: 0;
+      z-index: var(--s-index-max);
+    }
+  }
 
-	> .ui-modal-overlay {
-		content: '';
-		position: fixed;
-		background: var(--s-color-background-overlay);
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		transition: opacity var(--s-motion-duration-fast);
-		cursor: not-allowed;
+  > .ui-modal-overlay {
+    content: '';
+    position: fixed;
+    background: var(--s-color-background-overlay);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: opacity var(--s-motion-duration-fast);
+    cursor: not-allowed;
 
-		&.-closable {
-			cursor: default;
-		}
-	}
+    &.-closable {
+      cursor: default;
+    }
+  }
 
-	> .ui-modal-dialog {
-		position: relative;
-		width: auto;
-		margin: var(--s-spacing-x-small) auto;
-		pointer-events: none;
-		z-index: var(--s-index-max);
-		width: 80%;
-		max-width: 500px;
-		display: flex;
-		align-items: center;
-		opacity: 1;
-		min-height: calc(100% - 40px);
+  > .ui-modal-dialog {
+    position: relative;
+    width: auto;
+    margin: var(--s-spacing-x-small) auto;
+    pointer-events: none;
+    z-index: var(--s-index-max);
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    min-height: calc(100% - 40px);
 
-		> .ui-modal-content {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			pointer-events: auto;
-			background-color: var(--s-color-fill-default);
-			background-clip: padding-box;
-			border-radius: var(--s-border-radius-medium);
-			outline: 0;
-			overflow: hidden;
-			transition: right var(--s-motion-duration-fast) var(--s-motion-ease-default);
-			animation: var(--s-motion-duration-fast) modalFadeIn forwards;
+    > .ui-modal-content {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      pointer-events: auto;
+      background-color: var(--s-color-fill-default);
+      background-clip: padding-box;
+      border-radius: var(--s-border-radius-medium);
+      outline: 0;
+      overflow: hidden;
+      transition: right var(--s-motion-duration-fast) var(--s-motion-ease-default);
+      animation: var(--s-motion-duration-fast) modalFadeIn forwards;
 
-			> .ui-modal-header {
-				background: inherit;
-				padding: var(--s-spacing-small);
-				display: flex;
-				border: none;
-				margin-bottom: 0;
-				align-items: center;
+      > .ui-modal-header {
+        background: inherit;
+        padding: var(--s-spacing-small);
+        display: flex;
+        border: none;
+        margin-bottom: 0;
+        align-items: center;
 
-				> .ui-modal-header-wrapper {
-					display: flex;
-					flex-direction: column;
-					row-gap: var(--s-spacing-nano);
-					align-items: flex-start;
-				}
+        > .ui-modal-header-wrapper {
+          display: flex;
+          flex-direction: column;
+          row-gap: var(--s-spacing-nano);
+          align-items: flex-start;
+        }
 
-				> .ui-modal-close {
-					border: none;
-					appearance: none;
-					margin-left: auto;
-					display: flex;
-					align-items: center;
-					align-self: flex-start;
-					border-radius: var(--s-border-radius-small);
-					cursor: pointer;
-					box-shadow: none;
-					margin-right: -6px;
-					line-height: 1;
+        > .ui-modal-close {
+          border: none;
+          appearance: none;
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          align-self: flex-start;
+          border-radius: var(--s-border-radius-small);
+          cursor: pointer;
+          box-shadow: none;
+          margin-right: -6px;
+          line-height: 1;
 
-					> span {
-						margin-right: var(--s-spacing-xx-small);
-					}
-				}
+          > span {
+            margin-right: var(--s-spacing-xx-small);
+          }
+        }
 
-				.ui-modal-title {
-					font: var(--s-typography-heading-medium);
-					display: inline-block;
-					margin: 0;
-				}
+        .ui-modal-title {
+          font: var(--s-typography-heading-medium);
+          display: inline-block;
+          margin: 0;
+        }
 
-				.ui-modal-caption {
-					font: var(--s-typography-paragraph-regular);
-				}
-			}
-		}
-	}
+        .ui-modal-caption {
+          font: var(--s-typography-paragraph-regular);
+        }
+      }
+    }
+  }
 
-	.ui-modal-body {
-		padding: 0 var(--s-spacing-small);
-		display: flex;
-		flex-direction: column;
-		flex-grow: 1;
-	}
+  .ui-modal-body {
+    padding: 0 var(--s-spacing-small);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
 
-	.ui-modal-item {
-		padding: var(--s-spacing-x-small) var(--s-spacing-small);
-		margin: 0 calc(var(--s-spacing-small) * -1);
+  .ui-modal-item {
+    padding: var(--s-spacing-x-small) var(--s-spacing-small);
+    margin: 0 calc(var(--s-spacing-small) * -1);
 
-		+ .ui-modal-item {
-			border-top: var(--s-border-light);
-		}
+    + .ui-modal-item {
+      border-top: var(--s-border-light);
+    }
 
-		&:first-child {
-			padding-top: 0;
-		}
-	}
+    &:first-child {
+      padding-top: 0;
+    }
+  }
 
-	.ui-modal-footer {
-		border: none;
-		bottom: 0;
-		padding: var(--s-spacing-small);
-		background: var(--s-color-fill-default);
-		right: 0;
-		left: 0;
-		flex-grow: 0;
-		display: flex;
-		align-items: flex-end;
-		width: 100%;
-		bottom: 0;
-		justify-content: flex-end;
-		gap: var(--s-spacing-x-small);
+  .ui-modal-footer {
+    border: none;
+    bottom: 0;
+    padding: var(--s-spacing-small);
+    background: var(--s-color-fill-default);
+    right: 0;
+    left: 0;
+    flex-grow: 0;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    bottom: 0;
+    justify-content: flex-end;
+    gap: var(--s-spacing-x-small);
 
-		> div {
-			flex: 1;
-		}
-	}
+    > div {
+      flex: 1;
+    }
+  }
 
-	@include mobile {
-		.ui-modal-dialog {
-			width: 90%;
-			max-width: 90%;
-		}
+  @include mobile {
+    .ui-modal-dialog {
+      width: 90%;
+      max-width: 90%;
+    }
 
-		.ui-modal-footer {
-			padding-top: var(--s-spacing-small);
-			padding-bottom: var(--s-spacing-small);
-		}
+    .ui-modal-footer {
+      padding-top: var(--s-spacing-small);
+      padding-bottom: var(--s-spacing-small);
+    }
 
-		.ui-modal-header {
-			padding: var(--s-spacing-x-small) 0;
+    .ui-modal-header {
+      padding: var(--s-spacing-x-small) 0;
 
-			> .title {
-				font-size: var(--s-spacing-small);
-				line-height: 1;
-			}
+      > .title {
+        font-size: var(--s-spacing-small);
+        line-height: 1;
+      }
 
-			> .ui-modal-close > span {
-				display: none;
-			}
+      > .ui-modal-close > span {
+        display: none;
+      }
 
-			> .ui-modal-close > i {
-				height: 20px;
-			}
-		}
-	}
+      > .ui-modal-close > i {
+        height: 20px;
+      }
+    }
+  }
 }
 
 @keyframes modalFadeOut {
-	from {
-		opacity: 1;
-		transform: scale(1);
-	}
-	to {
-		transform: scale(0.9);
-		opacity: 0;
-	}
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
 }
 
 @keyframes modalFadeIn {
-	from {
-		transform: scale(1.03);
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+  from {
+    transform: scale(1.03);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

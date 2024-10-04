@@ -1,56 +1,56 @@
 @import '../../../scss/mixins.scss';
 
 .table-list {
-	display: flex;
-	flex-direction: column;
-	position: relative;
-	border-collapse: collapse;
-	background-color: var(--s-color-fill-default);
-	border-radius: var(--s-border-radius-small);
-	width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-collapse: collapse;
+  background-color: var(--s-color-fill-default);
+  border-radius: var(--s-border-radius-small);
+  width: 100%;
 
-	.table-search {
-		flex-grow: 1;
-		display: flex;
-		max-width: 300px;
+  .table-search {
+    flex-grow: 1;
+    display: flex;
+    max-width: 300px;
 
-		form {
-			flex-grow: 1;
-		}
-	}
+    form {
+      flex-grow: 1;
+    }
+  }
 
-	.table-list-wrapper {
-		position: relative;
-		overflow-x: auto;
-		flex-grow: 1;
-		min-height: 300px;
+  .table-list-wrapper {
+    position: relative;
+    overflow-x: auto;
+    flex-grow: 1;
+    min-height: 300px;
 
-		&.-scroll {
-			.fixed-cell {
-				background-color: var(--s-color-fill-default);
-				box-shadow: inset -1px 0 0 var(--s-color-fill-disable);
-			}
-		}
-	}
+    &.-scroll {
+      .fixed-cell {
+        background-color: var(--s-color-fill-default);
+        box-shadow: inset -1px 0 0 var(--s-color-fill-disable);
+      }
+    }
+  }
 
-	.table-list-nav-item {
-		&.-danger {
-			&:hover {
-				background-color: var(--s-color-fill-critical-hover);
-				color: var(--s-color-content-on-color);
-			}
-		}
+  .table-list-nav-item {
+    &.-danger {
+      &:hover {
+        background-color: var(--s-color-fill-critical-hover);
+        color: var(--s-color-content-on-color);
+      }
+    }
 
-		&:focus {
-			outline: none;
-		}
+    &:focus {
+      outline: none;
+    }
 
-		&[disabled] {
-			background-color: var(--s-color-fill-disable);
-			color: var(--s-color-content-disable);
-			cursor: not-allowed;
-			box-shadow: none;
-			opacity: 0.5;
-		}
-	}
+    &[disabled] {
+      background-color: var(--s-color-fill-disable);
+      color: var(--s-color-content-disable);
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.5;
+    }
+  }
 }

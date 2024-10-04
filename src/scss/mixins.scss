@@ -1,127 +1,129 @@
 @mixin darkmode {
-	[data-theme='dark'] & {
-		@content;
-	}
+  [data-theme='dark'] & {
+    @content;
+  }
 }
 
 @mixin theme-dark {
-	[data-theme='dark'] {
-		@content;
-	}
+  [data-theme='dark'] {
+    @content;
+  }
 }
 
 @mixin mobile {
-	@media only screen and (max-width: 800px) {
-		@content;
-	}
+  @media only screen and (max-width: 800px) {
+    @content;
+  }
 }
 
 @mixin desktop {
-	@media (min-width: 800px) {
-		@content;
-	}
+  @media (min-width: 800px) {
+    @content;
+  }
 }
 
 @mixin form-control {
-	background: var(--s-color-fill-default);
-	min-height: var(--s-spacing-large);
-	display: flex;
-	align-items: center;
-	padding: 0 var(--s-spacing-xx-small);
-	width: 100%;
-	appearance: none;
-	border-radius: var(--s-border-radius-small);
-	border: var(--s-border-light);
-	outline: none;
-	outline-offset: 0;
-	position: relative;
-	color: var(--s-color-content-default);
-	box-shadow: none;
-	font: var(--s-typography-paragraph-regular);
+  background: var(--s-color-fill-default);
+  min-height: var(--s-spacing-large);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--s-spacing-xx-small);
+  width: 100%;
+  appearance: none;
+  border-radius: var(--s-border-radius-small);
+  border: var(--s-border-light);
+  outline: none;
+  outline-offset: 0;
+  position: relative;
+  color: var(--s-color-content-default);
+  box-shadow: none;
+  font: var(--s-typography-paragraph-regular);
 
-	&:disabled,
-	&[readonly] {
-		background-color: var(--s-color-fill-default-disable);
-		opacity: 1;
-	}
+  &:disabled,
+  &[readonly] {
+    background-color: var(--s-color-fill-default-disable);
+    opacity: 1;
+  }
 
-	&.-sm {
-		height: var(--s-spacing-small);
-		min-height: var(--s-spacing-small);
-		padding: 0 var(--s-spacing-xx-small);
-	}
+  &.-sm {
+    height: var(--s-spacing-small);
+    min-height: var(--s-spacing-small);
+    padding: 0 var(--s-spacing-xx-small);
+  }
 
-	&.-lg {
-		font-size: calc(var(--s-font-size-base) * 1.15);
-		padding: 0 var(--s-spacing-x-small);
-		height: var(--s-spacing-x-large);
-	}
+  &.-lg {
+    font-size: calc(var(--s-font-size-base) * 1.15);
+    padding: 0 var(--s-spacing-x-small);
+    height: var(--s-spacing-x-large);
+  }
 }
 
 @mixin select-arrow {
-	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='rgba(41, 59, 80, 1)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right var(--s-spacing-x-small) center;
-	background-size: var(--s-spacing-xx-small), auto;
-	background-repeat: no-repeat;
-	-webkit-appearance: none;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='rgba(41, 59, 80, 1)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+    right var(--s-spacing-x-small) center;
+  background-size: var(--s-spacing-xx-small), auto;
+  background-repeat: no-repeat;
+  -webkit-appearance: none;
 
-	// Remove outline from select box in FF
-	&:-moz-focusring {
-		color: transparent;
-	}
+  // Remove outline from select box in FF
+  &:-moz-focusring {
+    color: transparent;
+  }
 
-	[data-theme='dark'] & {
-		background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='rgba(224, 232, 242, 1)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") right var(--s-spacing-x-small) center;
-		background-size: var(--s-spacing-xx-small), auto;
-		background-repeat: no-repeat;
+  [data-theme='dark'] & {
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 5'%3e%3cpath fill='rgba(224, 232, 242, 1)' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+      right var(--s-spacing-x-small) center;
+    background-size: var(--s-spacing-xx-small), auto;
+    background-repeat: no-repeat;
 
-		&:hover {
-			cursor: pointer;
-			background-color: var(--s-color-fill-default-hover);
-		}
-	}
+    &:hover {
+      cursor: pointer;
+      background-color: var(--s-color-fill-default-hover);
+    }
+  }
 }
 
 @mixin container {
-	max-width: 1200px;
-	padding-left: calc(var(--s-spacing-x-small));
-	padding-right: calc(var(--s-spacing-x-small));
-	margin-right: auto;
-	margin-left: auto;
+  max-width: 1200px;
+  padding-left: calc(var(--s-spacing-x-small));
+  padding-right: calc(var(--s-spacing-x-small));
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @mixin input-hover {
-	content: '';
-	position: absolute;
-	top: calc(var(--input-border-width) * -1);
-	bottom: calc(var(--input-border-width) * -1);
-	right: calc(var(--input-border-width) * -1);
-	left: calc(var(--input-border-width) * -1);
-	border: solid var(--input-border-focus-width) var(--input-border-focus-color);
-	z-index: 99;
-	display: block;
-	border-radius: var(--input-border-radius);
+  content: '';
+  position: absolute;
+  top: calc(var(--input-border-width) * -1);
+  bottom: calc(var(--input-border-width) * -1);
+  right: calc(var(--input-border-width) * -1);
+  left: calc(var(--input-border-width) * -1);
+  border: solid var(--input-border-focus-width) var(--input-border-focus-color);
+  z-index: 99;
+  display: block;
+  border-radius: var(--input-border-radius);
 }
 
 @mixin resetButton {
-	border: none;
-	margin: 0;
-	padding: 0;
-	width: auto;
-	overflow: visible;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
 
-	background: transparent;
+  background: transparent;
 
-	/* inherit font & color from ancestor */
-	color: inherit;
-	font: inherit;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
 
-	/* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-	line-height: normal;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
 
-	/* Corrects font smoothing for webkit */
-	-webkit-font-smoothing: inherit;
-	-moz-osx-font-smoothing: inherit;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
 
-	/* Corrects inability to style clickable `input` types in iOS */
-	-webkit-appearance: none;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
 }

@@ -1,148 +1,148 @@
 <script setup lang="ts">
-import { nextTick, onMounted, reactive, ref } from 'vue'
-import Button from '../button/Button.vue'
-import FormTextfield from '../form-textfield/FormTextfield.vue'
-import type { OpenDialogConfig } from '.'
+import { nextTick, onMounted, reactive, ref } from 'vue';
+import Button from '../button/Button.vue';
+import FormTextfield from '../form-textfield/FormTextfield.vue';
+import type { OpenDialogConfig } from '.';
 
 interface OpenDialogConfigProps extends OpenDialogConfig {}
 
 const props = withDefaults(defineProps<OpenDialogConfigProps>(), {
-	promptType: 'text',
-	cancelLabel: 'Cancelar',
-	destructLabel: 'Deletar',
-	destructVariant: 'danger'
-})
+  promptType: 'text',
+  cancelLabel: 'Cancelar',
+  destructLabel: 'Deletar',
+  destructVariant: 'danger',
+});
 
-const emit = defineEmits(['close', 'callback'])
-const closed = ref(false)
-const classList = ref<string[]>([])
-const isPrompt = ref(false)
+const emit = defineEmits(['close', 'callback']);
+const closed = ref(false);
+const classList = ref<string[]>([]);
+const isPrompt = ref(false);
 
 const style = ref<{
-	transform?: string
-}>({})
+  transform?: string;
+}>({});
 
-const prompt = ref()
+const prompt = ref();
 
 const state = reactive({
-	option: {},
-	showing: false,
-	timer: null
-})
-const dialogRef = ref()
+  option: {},
+  showing: false,
+  timer: null,
+});
+const dialogRef = ref();
 const config = reactive({
-	destructLabel: props.destructLabel,
-	destructIcon: props.destructIcon,
-	destructVariant: props.destructVariant
-})
+  destructLabel: props.destructLabel,
+  destructIcon: props.destructIcon,
+  destructVariant: props.destructVariant,
+});
 
 const close = (val?: boolean) => {
-	document.body.classList.remove('dialog-open')
-	window.removeEventListener('keydown', listener, false)
-	closed.value = true
-	state.timer = null
-	state.showing = false
+  document.body.classList.remove('dialog-open');
+  window.removeEventListener('keydown', listener, false);
+  closed.value = true;
+  state.timer = null;
+  state.showing = false;
 
-	emit('close', val)
+  emit('close', val);
 
-	if (val) {
-		emit('callback', val)
-	}
+  if (val) {
+    emit('callback', val);
+  }
 
-	setTimeout(() => {
-		if (props.id) {
-			const ele = document.getElementById(props.id)
-			if (ele) {
-				document.body.removeChild(ele)
-			}
-		}
-	}, 300)
-}
+  setTimeout(() => {
+    if (props.id) {
+      const ele = document.getElementById(props.id);
+      if (ele) {
+        document.body.removeChild(ele);
+      }
+    }
+  }, 300);
+};
 
 const onConfirm = () => {
-	close(prompt.value || true)
-}
+  close(prompt.value || true);
+};
 
 const onClickBackdrop = () => {
-	if (props.closeOnBackdrop) {
-		close()
-	} else {
-		style.value.transform = 'scale(1.03)'
+  if (props.closeOnBackdrop) {
+    close();
+  } else {
+    style.value.transform = 'scale(1.03)';
 
-		setTimeout(() => {
-			style.value.transform = 'scale(1)'
-		}, 100)
-	}
-}
+    setTimeout(() => {
+      style.value.transform = 'scale(1)';
+    }, 100);
+  }
+};
 
 if (props.type == 'prompt') {
-	isPrompt.value = true
+  isPrompt.value = true;
 }
 
 const listener = (e: { key: string }) => {
-	if (e.key == 'Escape') {
-		onClickBackdrop()
-	}
-}
+  if (e.key == 'Escape') {
+    onClickBackdrop();
+  }
+};
 
 const open = () => {
-	state.showing = true
-	window.addEventListener('keydown', listener, false)
-	document.body.classList.add('dialog-open')
+  state.showing = true;
+  window.addEventListener('keydown', listener, false);
+  document.body.classList.add('dialog-open');
 
-	nextTick(() => {
-		dialogRef.value.focus()
-	})
-}
+  nextTick(() => {
+    dialogRef.value.focus();
+  });
+};
 
 onMounted(() => {
-	props.opened && open()
-})
+  props.opened && open();
+});
 
 defineExpose({
-	open
-})
+  open,
+});
 </script>
 
 <template>
-	<div v-if="state.showing" class="ui-dialog -show" :class="classList" tabindex="0" ref="dialogRef">
-		<div class="ui-dialog-wrapper" :style="style">
-			<div class="ui-dialog-overlay" @click="onClickBackdrop"></div>
-			<form class="ui-dialog-content" @submit.prevent="onConfirm" ref="form">
-				<div class="ui-dialog-header" v-if="title">
-					<h4 class="title" v-html="title" />
-				</div>
-				<div class="ui-dialog-body">
-					<slot />
-					<div v-html="message" class="ui-dialog-message" />
-					<div class="ui-dialog-prompt mt-5" v-if="isPrompt">
-						<FormTextfield
-							:label="promptLabel"
-							:placeholder="promptPlaceholder"
-							:type="promptType"
-							v-model="prompt"
-							size="sm"
-							id="prompt"
-							required
-							last />
-					</div>
-				</div>
-				<div class="ui-dialog-footer" v-if="!hideFooter">
-					<Button
-						:leadingIcon="config.destructIcon"
-						:variant="destructVariant"
-						type="submit"
-						class="btn-destruct"
-						tabindex="0">
-						{{ config.destructLabel }}
-					</Button>
-					<Button v-if="type != 'confirm' && !hideCancel" @click="() => close(false)" class="ui-dialog-btn-cancel">
-						{{ cancelLabel }}
-					</Button>
-				</div>
-			</form>
-		</div>
-	</div>
+  <div v-if="state.showing" class="ui-dialog -show" :class="classList" tabindex="0" ref="dialogRef">
+    <div class="ui-dialog-wrapper" :style="style">
+      <div class="ui-dialog-overlay" @click="onClickBackdrop"></div>
+      <form class="ui-dialog-content" @submit.prevent="onConfirm" ref="form">
+        <div class="ui-dialog-header" v-if="title">
+          <h4 class="title" v-html="title" />
+        </div>
+        <div class="ui-dialog-body">
+          <slot />
+          <div v-html="message" class="ui-dialog-message" />
+          <div class="ui-dialog-prompt mt-5" v-if="isPrompt">
+            <FormTextfield
+              :label="promptLabel"
+              :placeholder="promptPlaceholder"
+              :type="promptType"
+              v-model="prompt"
+              size="sm"
+              id="prompt"
+              required
+              last />
+          </div>
+        </div>
+        <div class="ui-dialog-footer" v-if="!hideFooter">
+          <Button
+            :leadingIcon="config.destructIcon"
+            :variant="destructVariant"
+            type="submit"
+            class="btn-destruct"
+            tabindex="0">
+            {{ config.destructLabel }}
+          </Button>
+          <Button v-if="type != 'confirm' && !hideCancel" @click="() => close(false)" class="ui-dialog-btn-cancel">
+            {{ cancelLabel }}
+          </Button>
+        </div>
+      </form>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

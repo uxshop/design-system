@@ -1,27 +1,27 @@
-import PaginationItem from './PaginationItem.vue'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import PaginationItem from './PaginationItem.vue';
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import Pagination from './UiPagination.vue'
+import Pagination from './UiPagination.vue';
 
 const meta = {
-	title: 'Ui/Pagination',
-	component: Pagination,
-	tags: ['autodocs'],
-	args: {}
-} satisfies Meta<typeof Pagination>
+  title: 'Ui/Pagination',
+  component: Pagination,
+  tags: ['autodocs'],
+  args: {},
+} satisfies Meta<typeof Pagination>;
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof meta>;
 
-export default meta
+export default meta;
 
 export const Default: Story = {
-	render: () => ({
-		components: { Pagination, PaginationItem },
-		template: `
+  render: () => ({
+    components: { Pagination, PaginationItem },
+    template: `
     <Pagination>
       <PaginationItem>Pagination item</PaginationItem>
       <PaginationItem>Pagination item</PaginationItem>
       <PaginationItem disabled>Pagination item</PaginationItem>
-    </Pagination>`
-	})
-}
+    </Pagination>`,
+  }),
+};

@@ -1,7 +1,7 @@
-<script setup lang="ts"/>
+<script setup lang="ts" />
 
 <template>
-	<div class="ui-card-item">
-		<slot />
-	</div>
+  <div class="ui-card-item">
+    <slot />
+  </div>
 </template>

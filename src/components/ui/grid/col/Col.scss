@@ -2,60 +2,60 @@
 $columns: 12;
 
 .ui-col {
-	flex-basis: 0;
-	flex-grow: 1;
-	max-width: 100%;
-	padding: 0 calc(var(--s-spacing-x-small) * 0.5);
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding: 0 calc(var(--s-spacing-x-small) * 0.5);
 
-	@include mobile {
-		flex-basis: auto;
-	}
+  @include mobile {
+    flex-basis: auto;
+  }
 }
 
 .ui-col-auto {
-	flex: 0 0 auto;
-	width: auto;
-	max-width: 100%;
-	padding: 0 calc(var(--s-spacing-x-small) * 0.5);
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+  padding: 0 calc(var(--s-spacing-x-small) * 0.5);
 }
 
 @for $i from 1 through $columns {
-	.-col-#{$i} {
-		flex: 0 0 calc(100% / (12 / $i));
-		max-width: calc(100% / (12 / $i));
-	}
+  .-col-#{$i} {
+    flex: 0 0 calc(100% / (12 / $i));
+    max-width: calc(100% / (12 / $i));
+  }
 
-	.ui-col.-md-#{$i} {
-		@include desktop {
-			flex: 0 0 calc(100% / (12 / $i));
-			max-width: calc(100% / (12 / $i));
-		}
-	}
+  .ui-col.-md-#{$i} {
+    @include desktop {
+      flex: 0 0 calc(100% / (12 / $i));
+      max-width: calc(100% / (12 / $i));
+    }
+  }
 
-	.ui-col.-md-auto {
-		@include desktop {
-			max-width: 100%;
-			flex: 0 0 auto;
-			width: auto;
-		}
-	}
+  .ui-col.-md-auto {
+    @include desktop {
+      max-width: 100%;
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
 
-	.ui-col.-sm-#{$i} {
-		@include mobile {
-			flex: 0 0 calc(100% / (12 / $i));
-			min-width: calc(100% / (12 / $i));
-		}
-	}
+  .ui-col.-sm-#{$i} {
+    @include mobile {
+      flex: 0 0 calc(100% / (12 / $i));
+      min-width: calc(100% / (12 / $i));
+    }
+  }
 
-	.ui-col.-offset-#{$i} {
-		margin-left: calc(100% / (12 / $i));
-	}
+  .ui-col.-offset-#{$i} {
+    margin-left: calc(100% / (12 / $i));
+  }
 
-	.ui-col.-offset-sm-#{$i} {
-		margin-left: calc(100% / (12 / $i));
+  .ui-col.-offset-sm-#{$i} {
+    margin-left: calc(100% / (12 / $i));
 
-		@include mobile {
-			margin-left: 0;
-		}
-	}
+    @include mobile {
+      margin-left: 0;
+    }
+  }
 }

@@ -1,25 +1,25 @@
 @import '../../../scss/mixins.scss';
 
 .page-message-support {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: auto;
-	padding-top: var(--s-spacing-large);
-	gap: var(--s-spacing-nano);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: var(--s-spacing-large);
+  gap: var(--s-spacing-nano);
 
-	> .icon {
-		font-size: 18px;
-	}
+  > .icon {
+    font-size: 18px;
+  }
 
-	.page-message-support-link {
-		a {
-			text-transform: lowercase;
-		}
-	}
+  .page-message-support-link {
+    a {
+      text-transform: lowercase;
+    }
+  }
 
-	@include mobile {
-		padding-top: var(--s-spacing-small);
-		margin: auto 0 var(--s-spacing-small) 0;
-	}
+  @include mobile {
+    padding-top: var(--s-spacing-small);
+    margin: auto 0 var(--s-spacing-small) 0;
+  }
 }

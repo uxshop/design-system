@@ -1,177 +1,177 @@
 @import '../../../scss/mixins.scss';
 
 .ui-slider {
-	display: inline-flex;
-	width: 200px;
-	line-height: var(--s-line-height-24);
-	position: relative;
-	height: var(--s-spacing-large);
+  display: inline-flex;
+  width: 200px;
+  line-height: var(--s-line-height-24);
+  position: relative;
+  height: var(--s-spacing-large);
 }
 
 /* Input */
 .ui-slider > input {
-	-webkit-appearance: none;
-	display: block;
-	width: 100%;
-	height: var(--s-spacing-large);
-	background-color: transparent;
-	cursor: pointer;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: var(--s-spacing-large);
+  background-color: transparent;
+  cursor: pointer;
 }
 
 /* Without Span */
 .ui-slider > input:last-child {
-	position: static;
-	margin: 0;
+  position: static;
+  margin: 0;
 }
 
 /* Span */
 .ui-slider > span {
-	display: inline-block;
-	margin-bottom: var(--s-spacing-large);
+  display: inline-block;
+  margin-bottom: var(--s-spacing-large);
 }
 
 /* Focus */
 .ui-slider > input:focus {
-	outline: none;
+  outline: none;
 }
 
 /* Disabled */
 .ui-slider > input:disabled {
-	cursor: default;
-	opacity: 0.38;
+  cursor: default;
+  opacity: 0.38;
 }
 
 /* Webkit | Track */
 .ui-slider > input::-webkit-slider-runnable-track {
-	margin: 17px 0;
-	border-radius: 1px;
-	width: 100%;
-	height: 2px;
-	background-color: var(--s-color-background-highlight);
+  margin: 17px 0;
+  border-radius: 1px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--s-color-background-highlight);
 
-	@include darkmode {
-		background-color: var(--s-color-fill-highlight-dark);
-	}
+  @include darkmode {
+    background-color: var(--s-color-fill-highlight-dark);
+  }
 }
 
 .ui-slider > input:disabled::-webkit-slider-runnable-track {
-	background-color: var(--s-color-fill-disable);
+  background-color: var(--s-color-fill-disable);
 }
 
 /* Webkit | Thumb */
 .ui-slider > input::-webkit-slider-thumb {
-	appearance: none;
-	-webkit-appearance: none;
-	border: none;
-	border-radius: var(--s-border-radius-pill);
-	height: 2px;
-	width: 2px;
-	background-color: var(--s-color-background-highlight);
-	transform: scale(6, 6);
-	transition: box-shadow 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: var(--s-border-radius-pill);
+  height: 2px;
+  width: 2px;
+  background-color: var(--s-color-background-highlight);
+  transform: scale(6, 6);
+  transition: box-shadow 0.2s;
 }
 
 .ui-slider > input:disabled::-webkit-slider-thumb {
-	transform: scale(4, 4);
+  transform: scale(4, 4);
 }
 
 /* Moz | Track */
 .ui-slider > input::-moz-range-track {
-	margin: var(--s-spacing-x-small) 0;
-	border-radius: 1px;
-	width: 100%;
-	height: 2px;
+  margin: var(--s-spacing-x-small) 0;
+  border-radius: 1px;
+  width: 100%;
+  height: 2px;
 }
 
 /* Moz | Thumb */
 .ui-slider > input::-moz-range-thumb {
-	appearance: none;
-	-moz-appearance: none;
-	border: none;
-	border-radius: var(--s-border-radius-pill);
-	height: 2px;
-	width: 2px;
-	transform: scale(6, 6);
-	transition: box-shadow 0.2s;
+  appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: var(--s-border-radius-pill);
+  height: 2px;
+  width: 2px;
+  transform: scale(6, 6);
+  transition: box-shadow 0.2s;
 }
 
 /* Moz | Progress */
 .ui-slider > input::-moz-range-progress {
-	border-radius: 1px;
-	height: 2px;
+  border-radius: 1px;
+  height: 2px;
 }
 
 .ui-slider > input:disabled::-moz-range-thumb {
-	transform: scale(4, 4);
+  transform: scale(4, 4);
 }
 
 .ui-slider > input::-moz-focus-outer {
-	border: none;
+  border: none;
 }
 
 /* MS | Track */
 .ui-slider > input::-ms-track {
-	box-sizing: border-box;
-	margin: var(--s-spacing-x-small) 0;
-	border: none;
-	border-radius: 1px;
-	padding: 0 var(--s-spacing-x-small);
-	width: 100%;
-	height: 2px;
-	background-color: transparent;
+  box-sizing: border-box;
+  margin: var(--s-spacing-x-small) 0;
+  border: none;
+  border-radius: 1px;
+  padding: 0 var(--s-spacing-x-small);
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
 }
 
 .ui-slider > input::-ms-fill-lower {
-	border-radius: 1px;
-	height: 2px;
+  border-radius: 1px;
+  height: 2px;
 }
 
 /* MS | Progress */
 .ui-slider > input::-ms-fill-upper {
-	border-radius: 1px;
-	height: 2px;
+  border-radius: 1px;
+  height: 2px;
 }
 
 /* MS | Thumb */
 .ui-slider > input::-ms-thumb {
-	appearance: none;
-	margin: 0 var(--s-spacing-x-small);
-	border: none;
-	border-radius: var(--s-border-radius-pill);
-	height: 2px;
-	width: 2px;
-	transform: scale(6, 6);
-	transition: box-shadow 0.2s;
+  appearance: none;
+  margin: 0 var(--s-spacing-x-small);
+  border: none;
+  border-radius: var(--s-border-radius-pill);
+  height: 2px;
+  width: 2px;
+  transform: scale(6, 6);
+  transition: box-shadow 0.2s;
 }
 
 .ui-slider > input:disabled::-ms-thumb {
-	transform: scale(4, 4);
+  transform: scale(4, 4);
 }
 
 .ui-slider-bubble {
-	background: var(--s-color-fill-highlight);
-	color: var(--s-color-fill-default);
-	padding: var(--s-spacing-quark) var(--s-spacing-x-small);
-	position: absolute;
-	border-radius: var(--s-spacing-quark);
-	left: 50%;
-	top: 100%;
-	transform: translateX(-50%) scale(0.7);
-	opacity: 0;
-	transition-duration: var(--s-motion-duration-fast);
-	transition-property: transform, opacity;
-	width: var(--s-spacing-x-large);
-	text-align: center;
-	font-size: --s-spacing-x-small;
+  background: var(--s-color-fill-highlight);
+  color: var(--s-color-fill-default);
+  padding: var(--s-spacing-quark) var(--s-spacing-x-small);
+  position: absolute;
+  border-radius: var(--s-spacing-quark);
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%) scale(0.7);
+  opacity: 0;
+  transition-duration: var(--s-motion-duration-fast);
+  transition-property: transform, opacity;
+  width: var(--s-spacing-x-large);
+  text-align: center;
+  font-size: --s-spacing-x-small;
 
-	&.-active {
-		transform: translateX(-50%) scale(1);
-		opacity: 1;
-		background-color: var(--s-color-background-highlight);
-		color: var(-s--color-content-default);
+  &.-active {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    background-color: var(--s-color-background-highlight);
+    color: var(-s--color-content-default);
 
-		@include darkmode {
-			color: var(--s-color-content-dark);
-		}
-	}
+    @include darkmode {
+      color: var(--s-color-content-dark);
+    }
+  }
 }

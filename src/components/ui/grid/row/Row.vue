@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const props = defineProps<{
-	alignV?: 'center' | 'top' | 'bottom'
-}>()
+  alignV?: 'center' | 'top' | 'bottom';
+}>();
 
-const classList = ref<string[]>([])
+const classList = ref<string[]>([]);
 
 if (props.alignV) {
-	classList.value.push(`-align-items-${props.alignV}`)
+  classList.value.push(`-align-items-${props.alignV}`);
 }
 </script>
 
 <template>
-	<div class="ui-row" :class="classList">
-		<slot />
-	</div>
+  <div class="ui-row" :class="classList">
+    <slot />
+  </div>
 </template>
 
 <style lang="scss">

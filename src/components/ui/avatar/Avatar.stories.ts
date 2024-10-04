@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3';
 
-import Avatar from './Avatar.vue'
+import Avatar from './Avatar.vue';
 
 const meta = {
   title: 'Ui/Avatar',
@@ -11,39 +11,35 @@ const meta = {
     size: 48,
     label: '',
     variant: '',
-    src: 'https://placehold.co/48x48'
+    src: 'https://placehold.co/48x48',
   },
   argTypes: {
     variant: {
       control: 'select',
-      options: [
-        '',
-        'highlight',
-        'success',
-      ],
+      options: ['', 'highlight', 'success'],
     },
-  }
-} satisfies Meta<typeof Avatar>
+  },
+} satisfies Meta<typeof Avatar>;
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof meta>;
 
-export default meta
+export default meta;
 
 export const Default: Story = {
   args: {
     label: 'AC',
-    src: undefined
-  }
-}
+    src: undefined,
+  },
+};
 
 export const Highlight: Story = {
   args: {
     variant: 'highlight',
-  }
-}
+  },
+};
 
 export const Success: Story = {
   args: {
     variant: 'success',
-  }
-}
+  },
+};

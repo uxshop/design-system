@@ -1,81 +1,81 @@
 $colors: ('primary', 'secondary', 'danger', 'dark');
 
 @each $name in $colors {
-	.text-#{$name} {
-		color: var(--#{$name});
-	}
+  .text-#{$name} {
+    color: var(--#{$name});
+  }
 }
 
 input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
-	-webkit-text-fill-color: var(--s-color-content-default) !important;
+  -webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+  -webkit-text-fill-color: var(--s-color-content-default) !important;
 }
 
 input:-webkit-autofill:focus {
-	-webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
-	-webkit-text-fill-color: var(--s-color-content-default) !important;
+  -webkit-box-shadow: 0 0 0 50px var(--s-color-fill-default) inset !important;
+  -webkit-text-fill-color: var(--s-color-content-default) !important;
 }
 
 code {
-	color: var(--body-color);
-	background-color: var(--dark-200);
-	padding: 2px;
-	font-size: 105%;
+  color: var(--body-color);
+  background-color: var(--dark-200);
+  padding: 2px;
+  font-size: 105%;
 }
 
 small {
-	line-height: var(--s-line-height-16);
+  line-height: var(--s-line-height-16);
 }
 
 p {
-	margin-bottom: var(--s-spacing-xx-small);
+  margin-bottom: var(--s-spacing-xx-small);
 }
 
 .nowrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .d-sm-none {
-	@include mobile {
-		display: none !important;
-	}
+  @include mobile {
+    display: none !important;
+  }
 }
 
 .d-block {
-	display: block !important;
+  display: block !important;
 }
 
 .d-flex {
-	display: flex !important;
+  display: flex !important;
 }
 
 .d-flex--center {
-	display: flex !important;
-	align-items: center !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .d-inline-flex {
-	display: inline-flex !important;
+  display: inline-flex !important;
 }
 
 .d-inline-block {
-	display: inline-block !important;
+  display: inline-block !important;
 }
 
 .align-items-center {
-	align-items: center;
+  align-items: center;
 }
 
 .align-items-end {
-	align-items: flex-end;
+  align-items: flex-end;
 }
 
 .flex-direction-column {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .no-events {
-	pointer-events: none;
+  pointer-events: none;
 }
 
 .h1,
@@ -90,288 +90,288 @@ h3,
 h4,
 h5,
 h6 {
-	margin-top: 0;
-	font-weight: var(--s-font-weight-semibold);
-	font-family: var(--font-family);
-	margin-bottom: var(--s-spacing-nano);
-	line-height: var(--s-line-height-24);
+  margin-top: 0;
+  font-weight: var(--s-font-weight-semibold);
+  font-family: var(--font-family);
+  margin-bottom: var(--s-spacing-nano);
+  line-height: var(--s-line-height-24);
 }
 
 h1 {
-	font-size: calc(var(--s-font-size-base) * 1.8);
-	line-height: var(--s-line-height-32);
+  font-size: calc(var(--s-font-size-base) * 1.8);
+  line-height: var(--s-line-height-32);
 }
 h2 {
-	font-size: calc(var(--s-font-size-base) * 1.6);
+  font-size: calc(var(--s-font-size-base) * 1.6);
 }
 h3 {
-	font-size: calc(var(--s-font-size-base) * 1.4);
+  font-size: calc(var(--s-font-size-base) * 1.4);
 }
 h4 {
-	font-size: calc(var(--s-font-size-base) * 1.3);
+  font-size: calc(var(--s-font-size-base) * 1.3);
 }
 h5 {
-	font-size: calc(var(--s-font-size-base) * 1.1);
+  font-size: calc(var(--s-font-size-base) * 1.1);
 }
 h6 {
-	font-size: calc(var(--s-font-size-base) * 0.9);
-	text-transform: uppercase;
+  font-size: calc(var(--s-font-size-base) * 0.9);
+  text-transform: uppercase;
 }
 
 .font-md {
-	font-size: calc(var(--s-font-size-base) * 1.1);
+  font-size: calc(var(--s-font-size-base) * 1.1);
 }
 
 .font-lg {
-	font-size: calc(var(--s-font-size-base) * 1.2);
+  font-size: calc(var(--s-font-size-base) * 1.2);
 }
 
 .font-sm {
-	font-size: calc(var(--s-font-size-base) * 0.9);
+  font-size: calc(var(--s-font-size-base) * 0.9);
 }
 
 .font-semibold {
-	font-weight: var(--s-font-weight-semibold);
+  font-weight: var(--s-font-weight-semibold);
 }
 
 .font-normal {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 .font-bold {
-	font-weight: var(--s-font-weight-bold);
+  font-weight: var(--s-font-weight-bold);
 }
 
 .text-center {
-	text-align: center !important;
+  text-align: center !important;
 }
 
 .text-lowercase {
-	text-transform: lowercase !important;
+  text-transform: lowercase !important;
 }
 
 .text-uppercase {
-	text-transform: uppercase !important;
+  text-transform: uppercase !important;
 }
 
 .text-muted {
-	color: var(--s-color-content-light) !important;
+  color: var(--s-color-content-light) !important;
 }
 
 .text-right {
-	text-align: right !important;
+  text-align: right !important;
 }
 
 .text-left {
-	text-align: left !important;
+  text-align: left !important;
 }
 
 .text-link {
-	color: var(--s-color-content-highlight) !important;
+  color: var(--s-color-content-highlight) !important;
 }
 
 .text-primary {
-	color: var(--s-color-content-highlight) !important;
+  color: var(--s-color-content-highlight) !important;
 }
 
 .text-success {
-	color: var(--s-color-content-success) !important;
+  color: var(--s-color-content-success) !important;
 }
 
 .text-danger {
-	color: var(--s-color-content-critical) !important;
+  color: var(--s-color-content-critical) !important;
 }
 
 .text-truncate {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .text-nowrap {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 .stretched-link::after {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 1;
-	content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: '';
 }
 
 .ml-auto {
-	margin-left: auto !important;
+  margin-left: auto !important;
 }
 
 .mr-auto {
-	margin-right: auto !important;
+  margin-right: auto !important;
 }
 
 hr {
-	height: 2px;
-	border: none;
-	margin-top: 50px;
-	margin-bottom: 50px;
-	background-color: var(--s-color-border-default);
+  height: 2px;
+  border: none;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: var(--s-color-border-default);
 }
 
 $increment: 4;
 
 @for $i from 0 through 5 {
-	.m-#{$i} {
-		margin: #{$i * $increment}px #{$i * $increment}px !important;
-	}
+  .m-#{$i} {
+    margin: #{$i * $increment}px #{$i * $increment}px !important;
+  }
 
-	.mx-#{$i} {
-		margin-left: #{$i * $increment}px !important;
-		margin-right: #{$i * $increment}px !important;
-	}
+  .mx-#{$i} {
+    margin-left: #{$i * $increment}px !important;
+    margin-right: #{$i * $increment}px !important;
+  }
 
-	.my-#{$i} {
-		margin-top: #{$i * $increment}px !important;
-		margin-bottom: #{$i * $increment}px !important;
-	}
+  .my-#{$i} {
+    margin-top: #{$i * $increment}px !important;
+    margin-bottom: #{$i * $increment}px !important;
+  }
 
-	.mt-#{$i} {
-		margin-top: #{$i * $increment}px !important;
-	}
+  .mt-#{$i} {
+    margin-top: #{$i * $increment}px !important;
+  }
 
-	.ml-#{$i} {
-		margin-left: #{$i * $increment}px !important;
-	}
+  .ml-#{$i} {
+    margin-left: #{$i * $increment}px !important;
+  }
 
-	.mb-#{$i} {
-		margin-bottom: #{$i * $increment}px !important;
-	}
+  .mb-#{$i} {
+    margin-bottom: #{$i * $increment}px !important;
+  }
 
-	.mr-#{$i} {
-		margin-right: #{$i * $increment}px !important;
-	}
+  .mr-#{$i} {
+    margin-right: #{$i * $increment}px !important;
+  }
 
-	.p-#{$i} {
-		padding: #{$i * $increment}px !important;
-	}
+  .p-#{$i} {
+    padding: #{$i * $increment}px !important;
+  }
 
-	.py-#{$i} {
-		padding-top: #{$i * $increment}px !important;
-		padding-bottom: #{$i * $increment}px !important;
-	}
+  .py-#{$i} {
+    padding-top: #{$i * $increment}px !important;
+    padding-bottom: #{$i * $increment}px !important;
+  }
 
-	.px-#{$i} {
-		padding-left: #{$i * $increment}px !important;
-		padding-right: #{$i * $increment}px !important;
-	}
+  .px-#{$i} {
+    padding-left: #{$i * $increment}px !important;
+    padding-right: #{$i * $increment}px !important;
+  }
 
-	.pl-#{$i} {
-		padding-left: #{$i * $increment}px !important;
-	}
+  .pl-#{$i} {
+    padding-left: #{$i * $increment}px !important;
+  }
 
-	.pr-#{$i} {
-		padding-right: #{$i * $increment}px !important;
-	}
+  .pr-#{$i} {
+    padding-right: #{$i * $increment}px !important;
+  }
 
-	.pt-#{$i} {
-		padding-top: #{$i * $increment}px !important;
-	}
+  .pt-#{$i} {
+    padding-top: #{$i * $increment}px !important;
+  }
 
-	.pb-#{$i} {
-		padding-bottom: #{$i * $increment}px !important;
-	}
+  .pb-#{$i} {
+    padding-bottom: #{$i * $increment}px !important;
+  }
 }
 
 .w-100 {
-	width: 100%;
+  width: 100%;
 }
 
 .w-50 {
-	width: 50%;
+  width: 50%;
 }
 
 .mt-form {
-	margin-top: var(--form-group-margin-bottom) !important;
+  margin-top: var(--form-group-margin-bottom) !important;
 }
 
 .mb-form {
-	margin-bottom: var(--form-group-margin-bottom) !important;
+  margin-bottom: var(--form-group-margin-bottom) !important;
 }
 
 .mb-gutter {
-	margin-bottom: var(--grid-gutter-width) !important;
+  margin-bottom: var(--grid-gutter-width) !important;
 }
 
 .mt-gutter {
-	margin-top: var(--grid-gutter-width) !important;
+  margin-top: var(--grid-gutter-width) !important;
 }
 
 .mt-auto {
-	margin-top: auto;
+  margin-top: auto;
 }
 
 .ml-auto {
-	margin-left: auto;
+  margin-left: auto;
 }
 
 .mr-auto {
-	margin-right: auto;
+  margin-right: auto;
 }
 
 .sticky-top {
-	position: sticky !important;
-	top: 0;
+  position: sticky !important;
+  top: 0;
 }
 
 @for $i from 0 through 5 {
-	.order-#{$i} {
-		order: #{$i} !important;
-	}
+  .order-#{$i} {
+    order: #{$i} !important;
+  }
 }
 
 @for $i from 0 through 3 {
-	@include desktop {
-		.order-#{$i} {
-			order: #{$i} !important;
-		}
-	}
+  @include desktop {
+    .order-#{$i} {
+      order: #{$i} !important;
+    }
+  }
 }
 
 mark {
-	background-color: #fff9c0;
-	position: relative;
-	&:before {
-		background-color: #46b96c;
+  background-color: #fff9c0;
+  position: relative;
+  &:before {
+    background-color: #46b96c;
 
-		content: '';
-		position: absolute;
-		width: calc(100% + 4px);
-		height: 60%;
-		left: -2px;
-		bottom: 0;
-		z-index: -1;
-		transform: rotate(-2deg);
-	}
+    content: '';
+    position: absolute;
+    width: calc(100% + 4px);
+    height: 60%;
+    left: -2px;
+    bottom: 0;
+    z-index: -1;
+    transform: rotate(-2deg);
+  }
 }
 
 ul,
 ol,
 dl {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 ul {
-	margin: 0;
-	padding-left: 18px;
-	li:not(:last-child) {
-		margin-bottom: 8px;
-	}
+  margin: 0;
+  padding-left: 18px;
+  li:not(:last-child) {
+    margin-bottom: 8px;
+  }
 }
 
 .handle {
-	cursor: grab;
+  cursor: grab;
 
-	&:active {
-		cursor: grabbing;
-	}
+  &:active {
+    cursor: grabbing;
+  }
 }

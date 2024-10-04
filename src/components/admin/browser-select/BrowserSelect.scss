@@ -1,51 +1,49 @@
 .ui-browser-select {
+  .ui-browser-select-input {
+    display: flex;
+    align-items: center;
+    gap: var(--s-spacing-nano);
+  }
 
-	.ui-browser-select-input {
-		display: flex;
-		align-items: center;
-		gap: var(--s-spacing-nano);
-	}
+  .ui-browser-list {
+    padding-top: var(--s-spacing-x-small);
 
+    &-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-	.ui-browser-list {
-		padding-top: var(--s-spacing-x-small);
+      + .ui-browser-list-row {
+        border-top: solid 1px var(--s-color-border-default);
+      }
 
-		&-row {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
+      &.-no-button {
+        padding: var(--s-spacing-x-small);
+      }
+    }
 
-			+ .ui-browser-list-row {
-				border-top: solid 1px var(--s-color-border-default);
-			}
+    &-cell {
+      padding: var(--s-spacing-nano);
+      flex-grow: 1;
+      &.-auto {
+        flex-grow: 0;
+      }
+    }
+  }
 
-			&.-no-button {
-				padding: var(--s-spacing-x-small);
-			}
-		}
+  .ui-browser-list-more {
+    padding: var(--s-spacing-xx-small);
+    text-align: center;
+    display: block;
+  }
 
-		&-cell {
-			padding: var(--s-spacing-nano);
-			flex-grow: 1;
-			&.-auto {
-				flex-grow: 0;
-			}
-		}
-	}
+  .ui-browser-item .grid-list-item {
+    :first-child {
+      padding-left: 0;
+    }
 
-	.ui-browser-list-more {
-		padding: var(--s-spacing-xx-small);
-		text-align: center;
-		display: block;
-	}
-
-	.ui-browser-item .grid-list-item {
-		:first-child {
-			padding-left: 0;
-		}
-
-		:last-child {
-			padding-right: 0;
-		}
-	}
+    :last-child {
+      padding-right: 0;
+    }
+  }
 }

@@ -1,135 +1,134 @@
 @import '../../../scss/mixins.scss';
 .ui-alert {
-	text-align: left;
-	position: relative;
-	padding: var(--s-spacing-x-small);
-	border-radius: var(--s-border-radius-small);
-	background-color: var(--s-color-fill-default-light);
-	border: solid 1px var(--s-color-border-default);
-	margin-bottom: var(--s-spacing-x-small);
-	display: flex;
-	align-items: start;
+  text-align: left;
+  position: relative;
+  padding: var(--s-spacing-x-small);
+  border-radius: var(--s-border-radius-small);
+  background-color: var(--s-color-fill-default-light);
+  border: solid 1px var(--s-color-border-default);
+  margin-bottom: var(--s-spacing-x-small);
+  display: flex;
+  align-items: start;
 
-	a {
-		color: inherit;
-		border-bottom: dashed 1px;
-		text-decoration: none;
+  a {
+    color: inherit;
+    border-bottom: dashed 1px;
+    text-decoration: none;
 
-		&:hover {
-			border-bottom: solid 1px;
-			text-decoration: none;
-		}
-	}
+    &:hover {
+      border-bottom: solid 1px;
+      text-decoration: none;
+    }
+  }
 
-	&.-center {
-		text-align: center;
-	}
+  &.-center {
+    text-align: center;
+  }
 
-	&.-success {
-		background-color: var(--s-color-fill-success-light);
-		border-color: var(--s-color-border-success);
-		color: var(--s-color-content-success);
+  &.-success {
+    background-color: var(--s-color-fill-success-light);
+    border-color: var(--s-color-border-success);
+    color: var(--s-color-content-success);
 
-		a:hover {
-			color: var(--s-color-content-success);
-		}
-	}
+    a:hover {
+      color: var(--s-color-content-success);
+    }
+  }
 
-	&.-danger {
-		background-color: var(--s-color-fill-critical-light);
-		border-color: var(--s-color-border-critical);
-		color: var(--s-color-content-critical);
+  &.-danger {
+    background-color: var(--s-color-fill-critical-light);
+    border-color: var(--s-color-border-critical);
+    color: var(--s-color-content-critical);
 
-		a:hover {
-			color: var(--s-color-content-critical);
-		}
-	}
+    a:hover {
+      color: var(--s-color-content-critical);
+    }
+  }
 
-	&.-info {
-		background-color: var(--s-color-fill-highlight-light);
-		border-color: var(--s-color-border-highlight);
-		color: var(--s-color-content-highlight);
+  &.-info {
+    background-color: var(--s-color-fill-highlight-light);
+    border-color: var(--s-color-border-highlight);
+    color: var(--s-color-content-highlight);
 
-		a:hover {
-			color: var(--s-color-content-highlight);
-		}
-	}
+    a:hover {
+      color: var(--s-color-content-highlight);
+    }
+  }
 
-	&.-warning {
-		background-color: var(--s-color-fill-warning-light);
-		border-color: var(--s-color-border-warning);
-		color: var(--s-color-content-warning);
+  &.-warning {
+    background-color: var(--s-color-fill-warning-light);
+    border-color: var(--s-color-border-warning);
+    color: var(--s-color-content-warning);
 
-		a:hover {
-			color: var(--s-color-content-warning);
-		}
-	}
+    a:hover {
+      color: var(--s-color-content-warning);
+    }
+  }
 
-	> .ui-icon {
-		margin-right: var(--s-spacing-nano);
-		color: inherit;
-	}
+  > .ui-icon {
+    margin-right: var(--s-spacing-nano);
+    color: inherit;
+  }
 
-	.ui-alert-icon {
-		align-self: flex-start;
-	}
+  .ui-alert-icon {
+    align-self: flex-start;
+  }
 
-	.ui-alert-content {
-		flex-grow: 1;
-		background-color: transparent;
-	}
+  .ui-alert-content {
+    flex-grow: 1;
+    background-color: transparent;
+  }
 
-	.ui-alert-title {
-		font: var(--s-typography-paragraph-strong);
-		margin-bottom: 0px;
-	}
+  .ui-alert-title {
+    font: var(--s-typography-paragraph-strong);
+    margin-bottom: 0px;
+  }
 
-	.ui-alert-text {
-		word-break: break-word;
-		font: var(--s-typography-paragraph-regular);
-		margin-bottom: 0px;
-	}
+  .ui-alert-text {
+    word-break: break-word;
+    font: var(--s-typography-paragraph-regular);
+    margin-bottom: 0px;
+  }
 
-	.ui-alert-close {
-		background: none;
-		appearance: none;
-		box-shadow: none;
-		border: none;
-		display: inline-flex;
-		align-items: center;
-		align-self: baseline;
-		justify-content: center;
-		border-radius: var(--s-border-radius-small);
-		cursor: pointer;
-		align-self: flex-start;
-		color: inherit;
-		padding: var(--s-spacing-quark);
+  .ui-alert-close {
+    background: none;
+    appearance: none;
+    box-shadow: none;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    align-self: baseline;
+    justify-content: center;
+    border-radius: var(--s-border-radius-small);
+    cursor: pointer;
+    align-self: flex-start;
+    color: inherit;
+    padding: var(--s-spacing-quark);
 
-		&:hover {
-			background-color: rgba(0, 0, 0, 0.08);
-		}
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
 
-		@include darkmode {
-		&:hover {background-color: rgba(0, 0, 0, 0.8);
-		}
-	}
+    @include darkmode {
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
 
-	}
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
-	ul {
-		padding: 0;
-		margin: 0;
-		list-style: none;
+    li:not(:last-child) {
+      margin-bottom: var(--s-spacing-quark);
+    }
+  }
 
-		li:not(:last-child) {
-			margin-bottom: var(--s-spacing-quark);
-		}
-	}
-
-	ul.circle {
-		li {
-			list-style: inside;
-		}
-	}
-
+  ul.circle {
+    li {
+      list-style: inside;
+    }
+  }
 }
