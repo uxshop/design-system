@@ -1,31 +1,23 @@
-import { setup, Preview } from '@storybook/vue3'
-import { scheme, SchemeMode } from './decorators/scheme-mode'
-import { brand, BrandMode } from './decorators/brand-mode';
-import './theme.scss'
-import '../src/scss/theme.scss'
-
-setup((app) => {
-});
-
+import type { Preview } from '@storybook/vue3';
+import { schema, schemaMode } from './decorators/schemaMode';
+import { brand, brandMode } from './decorators/brandMode';
+import './theme.scss';
+import '../src/scss/theme.scss';
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/i
-      }
-    }
+        date: /Date$/i,
+      },
+    },
   },
-  decorators: [
-    SchemeMode,
-    BrandMode
-  ],
+  decorators: [schemaMode, brandMode],
   globalTypes: {
-    scheme,
-    brand
+    schema,
+    brand,
   },
-}
+};
 
-export default preview
+export default preview;

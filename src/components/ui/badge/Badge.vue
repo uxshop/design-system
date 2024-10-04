@@ -1,36 +1,28 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { Size } from '../../../types/Types'
-
-export interface BadgeProps {
-	label?: string | number
-	pill?: boolean
-	size?: Size
-	noWrap?: boolean
-	variant?: 'highlight' | 'warning' | 'success' | 'critical' | 'default'
-}
+import { computed } from 'vue';
+import type { BadgeProps } from './types';
 
 const props = withDefaults(defineProps<BadgeProps>(), {
-	size: 'md',
-	variant: 'default'
-})
+  size: 'md',
+  variant: 'default',
+});
 
 const badgeClassList = computed(() => {
-	const badgeClasses = [
-		props.pill && '-pill',
-		props.size && `-size-${props.size}`,
-		props.variant && `-variant-${props.variant}`,
-		props.noWrap && '-no-wrap'
-	]
+  const badgeClasses = [
+    props.pill && '-pill',
+    props.size && `-size-${props.size}`,
+    props.variant && `-variant-${props.variant}`,
+    props.noWrap && '-no-wrap',
+  ];
 
-	return badgeClasses.filter((badgeClass) => badgeClass)
-})
+  return badgeClasses.filter((badgeClass) => badgeClass);
+});
 </script>
 
 <template>
-	<span class="ui-badge" :class="badgeClassList">
-		<slot>{{ label }}</slot>
-	</span>
+  <span class="ui-badge" :class="badgeClassList">
+    <slot>{{ label }}</slot>
+  </span>
 </template>
 
 <style lang="scss">
