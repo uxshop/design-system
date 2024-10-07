@@ -1,28 +1,28 @@
 .ui-page-helper {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	gap: var(--s-spacing-nano);
-	padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
-	border-radius: var(--s-border-radius-small);
-	border: var(--s-border-light);
-	background-color: var(--s-color-fill-default);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--s-spacing-nano);
+  padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
+  border-radius: var(--s-border-radius-small);
+  border: var(--s-border-light);
+  background-color: var(--s-color-fill-default);
 
-	&-name {
-		color: var(--s-color-content-default);
-	}
+  &-name {
+    color: var(--s-color-content-default);
+  }
 
-	&-name:hover {
-		text-decoration: none;
-		color: inherit;
-	}
+  &-name:hover {
+    text-decoration: none;
+    color: inherit;
+  }
 
-	> .ui-icon {
-		color: var(--s-color-content-highlight);
-	}
+  > .ui-icon {
+    color: var(--s-color-content-highlight);
+  }
 
-	&:hover {
-		cursor: pointer;
-		background-color: var(--s-color-fill-default-hover);
-	}
+  &:hover {
+    cursor: pointer;
+    background-color: var(--s-color-fill-default-hover);
+  }
 }

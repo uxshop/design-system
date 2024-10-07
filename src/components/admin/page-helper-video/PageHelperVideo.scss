@@ -1,22 +1,22 @@
 @import '../../../scss/mixins.scss';
 
 .ui-page-helper-video {
-	.ui-page-helper-video-message {
-		display: flex;
-		align-items: center;
-		gap: var(--s-spacing-nano);
-		padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
-		border-radius: var(--s-border-radius-small);
-		border: var(--s-border-light);
-		background-color: var(--s-color-fill-default);
+  .ui-page-helper-video-message {
+    display: flex;
+    align-items: center;
+    gap: var(--s-spacing-nano);
+    padding: var(--s-spacing-xx-small) var(--s-spacing-x-small);
+    border-radius: var(--s-border-radius-small);
+    border: var(--s-border-light);
+    background-color: var(--s-color-fill-default);
 
-		.ui-page-helper-video-icon {
-			color: var(--s-color-content-highlight);
-		}
+    .ui-page-helper-video-icon {
+      color: var(--s-color-content-highlight);
+    }
 
-		&:hover {
-			cursor: pointer;
-			background-color: var(--s-color-fill-default-hover);
-		}
-	}
+    &:hover {
+      cursor: pointer;
+      background-color: var(--s-color-fill-default-hover);
+    }
+  }
 }

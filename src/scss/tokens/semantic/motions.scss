@@ -5,7 +5,7 @@ $semantic-motion-ease: (
   in-out: $primitive-transition-ease-in-out,
   out: $primitive-transition-ease-out,
   in: $primitive-transition-ease-in,
-  default: $primitive-transition-ease
+  default: $primitive-transition-ease,
 );
 
 $semantic-motion-duration: (
@@ -15,5 +15,5 @@ $semantic-motion-duration: (
   moderate: $primitive-duration-moderate,
   slow: $primitive-duration-slow,
   very-slow: $primitive-duration-very-slow,
-  extremely-slow: $primitive-duration-extremely-slow
+  extremely-slow: $primitive-duration-extremely-slow,
 );

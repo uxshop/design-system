@@ -1,10 +1,10 @@
 .ui-progress-bar {
-	background-color: transparent;
-	vertical-align: super;
+  background-color: transparent;
+  vertical-align: super;
 }
 .ui-progress-bar::-webkit-progress-bar {
-	background-color: var(--s-color-border-disable);
+  background-color: var(--s-color-border-disable);
 }
 .ui-progress-bar::-webkit-progress-value {
-	background-color: var(--s-color-fill-highlight);
+  background-color: var(--s-color-fill-highlight);
 }

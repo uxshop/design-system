@@ -1,109 +1,108 @@
-import { DateTime } from 'luxon'
+import { DateTime } from 'luxon';
 
 const initials = (name: string) => {
-	if (name) {
-		name = name.trim()
-		let out = name[0]
+  if (name) {
+    name = name.trim();
+    let out = name[0];
 
-		const nameArr = name.split(/\s{1,3}/)
+    const nameArr = name.split(/\s{1,3}/);
 
-		if (nameArr.length > 1) {
-			out += nameArr[nameArr.length - 1][0]
-		}
+    if (nameArr.length > 1) {
+      out += nameArr[nameArr.length - 1][0];
+    }
 
-		return out
-	}
-}
+    return out;
+  }
+};
 
 const datetime = (value: string, format: string, valueFormat = true) => {
-	format = format || 'dd/MM/yyyy HH:mm'
-	return DateTime.fromSQL(value).toFormat(format)
-}
+  format = format || 'dd/MM/yyyy HH:mm';
+  return DateTime.fromSQL(value).toFormat(format);
+};
 
 const number = (val: string, decimal = 2) => {
-	if (val != undefined) {
-		return parseFloat(val).toFixed(decimal)
-	}
-}
+  if (val != undefined) {
+    return parseFloat(val).toFixed(decimal);
+  }
+};
 
 const zerofill = (val: number, fill = 2) => {
-	if (val == 0) {
-		return 0
-	}
-	if (val != undefined) {
-		return String('000000' + val).slice(-fill)
-	}
-}
+  if (val == 0) {
+    return 0;
+  }
+  if (val != undefined) {
+    return String('000000' + val).slice(-fill);
+  }
+};
 
 function slugify(val: string) {
-	if (val) {
-		val = val.replace(/^\s+|\s+$/g, '') // trim
-		val = val.toLowerCase()
+  if (val) {
+    val = val.replace(/^\s+|\s+$/g, ''); // trim
+    val = val.toLowerCase();
 
-		const from = 'ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;'
-		const to = 'aaaaaeeeeeiiiiooooouuuunc------'
+    const from = 'ãàáäâẽèéëêìíïîõòóöôùúüûñç·/_,:;';
+    const to = 'aaaaaeeeeeiiiiooooouuuunc------';
 
-		for (let i = 0, l = from.length; i < l; i++) {
-			val = val.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
-		}
+    for (let i = 0, l = from.length; i < l; i++) {
+      val = val.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+    }
 
-		val = val
-			.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-			.replace(/\s+/g, '-') // collapse whitespace and replace by -
-			.replace(/-+/g, '-') // collapse dashes
-	} else {
-		val = ''
-	}
+    val = val
+      .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+      .replace(/\s+/g, '-') // collapse whitespace and replace by -
+      .replace(/-+/g, '-'); // collapse dashes
+  } else {
+    val = '';
+  }
 
-	return val
+  return val;
 }
 
 function truncate(val: string, length: number, ending = '') {
-	if (!val) {
-		return val
-	}
+  if (!val) {
+    return val;
+  }
 
-	if (length == null) {
-		length = 100
-	}
-	if (ending == null) {
-		ending = '...'
-	}
+  if (length == null) {
+    length = 100;
+  }
+  if (ending == null) {
+    ending = '...';
+  }
 
-	if (val.length > length) {
-		return val.substring(0, length - ending.length) + ending
-	} else {
-		return val
-	}
+  if (val.length > length) {
+    return val.substring(0, length - ending.length) + ending;
+  } else {
+    return val;
+  }
 }
 
 function pluralize(value: any, textSingular: string, textPlural: string, textDefault = '', withVal = true) {
-	let text = ''
-	const val = parseFloat(String(value))
+  let text = '';
+  const val = parseFloat(String(value));
 
-	if (val > 1) {
-		text = textPlural
-	} else if (val == 1) {
-		text = textSingular
-	} else {
-		text = textDefault || textPlural
-	}
-	if (withVal) {
-		text = `${val} ${text}`
-	}
+  if (val > 1) {
+    text = textPlural;
+  } else if (val == 1) {
+    text = textSingular;
+  } else {
+    text = textDefault || textPlural;
+  }
+  if (withVal) {
+    text = `${val} ${text}`;
+  }
 
-	return text
+  return text;
 }
-
 
 export default {
-	initials,
-	datetime,
-	number,
-	zerofill,
-	slugify,
-	truncate,
-	pluralize
-}
+  initials,
+  datetime,
+  number,
+  zerofill,
+  slugify,
+  truncate,
+  pluralize,
+};
 
-export { initials, datetime, number, zerofill, slugify, truncate, pluralize }
+export { initials, datetime, number, zerofill, slugify, truncate, pluralize };

@@ -1,132 +1,131 @@
 @import '../../../scss/mixins.scss';
 
 .ui-colorpicker {
-	display: inline-block;
-	.ui-colorpicker-label {
-		display: block;
-	}
+  display: inline-block;
+  .ui-colorpicker-label {
+    display: block;
+  }
 
-	.ui-colorpicker-content {
-		display: flex;
-		gap: var(--s-spacing-nano);
-	}
+  .ui-colorpicker-content {
+    display: flex;
+    gap: var(--s-spacing-nano);
+  }
 
-	.pickr {
-		min-height: var(--s-spacing-large);
-		min-width: var(--s-spacing-large);
-		position: relative;
-		border-radius: var(--s-border-radius-small);
+  .pickr {
+    min-height: var(--s-spacing-large);
+    min-width: var(--s-spacing-large);
+    position: relative;
+    border-radius: var(--s-border-radius-small);
 
-		&:after {
-			position: absolute;
-			left: 0;
-			top: 0;
-			bottom: 0;
-			right: 0;
-			content: '';
-			display: block;
-			border: var(--s-border-light);
-			z-index: var(--s-index-medium-high);
-			border-radius: inherit;
-			cursor: pointer;
-		}
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      content: '';
+      display: block;
+      border: var(--s-border-light);
+      z-index: var(--s-index-medium-high);
+      border-radius: inherit;
+      cursor: pointer;
+    }
 
-		.pcr-button {
-			border-radius: inherit;
-			transition: none;
-			height: 100%;
-			width: 100%;
-			&::after,
-			&::before {
-				border-radius: inherit;
-				transition: none;
-			}
+    .pcr-button {
+      border-radius: inherit;
+      transition: none;
+      height: 100%;
+      width: 100%;
+      &::after,
+      &::before {
+        border-radius: inherit;
+        transition: none;
+      }
 
-			&.clear {
-				background-size: 25%;
+      &.clear {
+        background-size: 25%;
 
-				@include desktop {
-					background-size: 30%;
-				}
-			}
-		}
-	}
+        @include desktop {
+          background-size: 30%;
+        }
+      }
+    }
+  }
 }
 
 .pcr-app {
-	background-color: var(--s-color-fill-default);
-	border-radius: var(--s-border-radius-small);
-	z-index: var(--s-index-low);
-	box-shadow: var(--s-shadow-level-2);
+  background-color: var(--s-color-fill-default);
+  border-radius: var(--s-border-radius-small);
+  z-index: var(--s-index-low);
+  box-shadow: var(--s-shadow-level-2);
 
-	.pcr-interaction {
-		flex-wrap: wrap;
-		input {
-			font: var(--s-typography-caption-small);
-		}
+  .pcr-interaction {
+    flex-wrap: wrap;
+    input {
+      font: var(--s-typography-caption-small);
+    }
 
-		.pcr-result {
-			margin: var(--s-spacing-nano) 0 0 0;
-			font: var(--s-typography-label-small);
-			padding: var(--s-spacing-nano);
-			margin: var(--s-spacing-quark) 0 0 0;
-			width: 100%;
-			background-color: var(--s-color-fill-default);
-			color: var(--s-color-content-default);
-			border: var(--s-border-light);
-			border-radius: var(--s-border-radius-small);
+    .pcr-result {
+      margin: var(--s-spacing-nano) 0 0 0;
+      font: var(--s-typography-label-small);
+      padding: var(--s-spacing-nano);
+      margin: var(--s-spacing-quark) 0 0 0;
+      width: 100%;
+      background-color: var(--s-color-fill-default);
+      color: var(--s-color-content-default);
+      border: var(--s-border-light);
+      border-radius: var(--s-border-radius-small);
 
-			&:hover{
-				background: var(--s-color-fill-default-hover);
-			}
+      &:hover {
+        background: var(--s-color-fill-default-hover);
+      }
 
-			&:focus{
-				box-shadow: 0 0 0 1px var(--s-color-border-highlight);
-			}
-		}
+      &:focus {
+        box-shadow: 0 0 0 1px var(--s-color-border-highlight);
+      }
+    }
 
-		.pcr-save {
-			border-radius: var(--s-border-radius-small);
-			min-width: 85px;
-			font: var(--s-typography-label-small);
-			margin: var(--s-spacing-nano) 0 0 0;
-			padding: var(--s-spacing-nano);
-			background: var(--s-color-fill-highlight);
-			order: 2;
+    .pcr-save {
+      border-radius: var(--s-border-radius-small);
+      min-width: 85px;
+      font: var(--s-typography-label-small);
+      margin: var(--s-spacing-nano) 0 0 0;
+      padding: var(--s-spacing-nano);
+      background: var(--s-color-fill-highlight);
+      order: 2;
 
-			&:hover{
-				background: var(--s-color-fill-highlight-hover);
-			}
+      &:hover {
+        background: var(--s-color-fill-highlight-hover);
+      }
 
-			&:focus{
-				box-shadow: 0 0 0 1px var(--s-color-border-highlight);
-			}
-		}
+      &:focus {
+        box-shadow: 0 0 0 1px var(--s-color-border-highlight);
+      }
+    }
 
-		.pcr-clear {
-			margin: var(--s-spacing-nano) 0 0 var(--s-spacing-nano);
-			border-radius: var(--s-border-radius-small);
-			min-width: 86px;
-			font: var(--s-typography-label-small);
-			color: var(--s-color-content-default);
-			padding: var(--s-spacing-nano);
-			background: var(--s-color-fill-default);
-			border: var(--s-border-light);
-			order: 2;
+    .pcr-clear {
+      margin: var(--s-spacing-nano) 0 0 var(--s-spacing-nano);
+      border-radius: var(--s-border-radius-small);
+      min-width: 86px;
+      font: var(--s-typography-label-small);
+      color: var(--s-color-content-default);
+      padding: var(--s-spacing-nano);
+      background: var(--s-color-fill-default);
+      border: var(--s-border-light);
+      order: 2;
 
-			&:hover{
-				background: var(--s-color-fill-default-hover);
-			}
+      &:hover {
+        background: var(--s-color-fill-default-hover);
+      }
 
-			&:focus{
-				box-shadow: 0 0 0 1px var(--s-color-border-highlight);
-			}
-		}
-		}
-	}
+      &:focus {
+        box-shadow: 0 0 0 1px var(--s-color-border-highlight);
+      }
+    }
+  }
+}
 
-	.pcr-app[data-theme='monolith'] {
-		padding: var(--s-spacing-xx-small);
-		border: var(--s-border-light);
-	}
-
+.pcr-app[data-theme='monolith'] {
+  padding: var(--s-spacing-xx-small);
+  border: var(--s-border-light);
+}

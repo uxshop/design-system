@@ -1,52 +1,52 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { each } from 'lodash-es'
-import TableListNavFilterSidebar from './TableListNavFilterSidebar.vue'
-import Button from '../../../ui/button/Button.vue'
-import isMobile from '../../../../services/MobileDetector'
-import type { ITableListState } from '../types/ITableListState'
+import { ref } from 'vue';
+import { each } from 'lodash-es';
+import TableListNavFilterSidebar from './TableListNavFilterSidebar.vue';
+import Button from '../../../ui/button/Button.vue';
+import isMobile from '../../../../services/MobileDetector';
+import type { ITableListState } from '../types/ITableListState';
 
 const props = defineProps<{
-	state: ITableListState
-}>()
+  state: ITableListState;
+}>();
 
-const filterSidebarRef = ref()
+const filterSidebarRef = ref();
 
 const closeFilter = (resFilters: Record<string, any>) => {
-	const current: Record<string, any> = {}
-	each(resFilters, (val, key) => {
-		if (val == null || (Array.isArray(val) && val.length == 0)) {
-			return
-		}
+  const current: Record<string, any> = {};
+  each(resFilters, (val, key) => {
+    if (val == null || (Array.isArray(val) && val.length == 0)) {
+      return;
+    }
 
-		if (Array.isArray(val)) {
-			current[key] = val.join(',')
-		} else {
-			current[key] = val
-		}
-	})
+    if (Array.isArray(val)) {
+      current[key] = val.join(',');
+    } else {
+      current[key] = val;
+    }
+  });
 
-	props.state.resetQueryParams(current)
-	filterSidebarRef.value.open()
-}
+  props.state.resetQueryParams(current);
+  filterSidebarRef.value.open();
+};
 
 defineExpose({
-	openFilterSidebar: () => filterSidebarRef.value.open()
-})
+  openFilterSidebar: () => filterSidebarRef.value.open(),
+});
 </script>
 
 <template>
-	<span class="table-list-nav-item" v-if="props.state.config.filters">
-		<Button
-			:size="isMobile() ? 'md' : 'sm'"
-			:label="isMobile() ? '' : 'Filtros'"
-			leadingIcon="filter_list"
-			@click="filterSidebarRef.open()"
-			class="table-list-nav-btn" />
-		<TableListNavFilterSidebar
-			ref="filterSidebarRef"
-			@close="closeFilter"
-			:filters="props.state.config.filters"
-			:currentFilters="state.omitFilters" />
-	</span>
+  <span class="table-list-nav-item" v-if="props.state.config.filters">
+    <Button
+      :size="isMobile() ? 'md' : 'sm'"
+      :label="isMobile() ? '' : 'Filtros'"
+      leadingIcon="filter_list"
+      @click="filterSidebarRef.open()"
+      class="table-list-nav-btn" />
+    <TableListNavFilterSidebar
+      ref="filterSidebarRef"
+      @close="closeFilter"
+      :filters="props.state.config.filters"
+      :currentFilters="state.omitFilters" />
+  </span>
 </template>

@@ -1,12 +1,12 @@
 @import '../primitives/z-indexes';
 
 $semantic-z-indexes: (
-	default: $primitive-index-1,
-	low: $primitive-index-2,
-	medium-low: $primitive-index-3,
-	medium: $primitive-index-4,
-	medium-high: $primitive-index-5,
-	high: $primitive-index-6,
-	very-high: $primitive-index-7,
-	max: $primitive-index-8
+  default: $primitive-index-1,
+  low: $primitive-index-2,
+  medium-low: $primitive-index-3,
+  medium: $primitive-index-4,
+  medium-high: $primitive-index-5,
+  high: $primitive-index-6,
+  very-high: $primitive-index-7,
+  max: $primitive-index-8,
 );

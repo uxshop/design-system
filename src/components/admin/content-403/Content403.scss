@@ -1,19 +1,19 @@
 @import '../../../scss/mixins.scss';
 .content-403 {
-	> .empty-center {
-		max-width: 500px;
-		font-size: 20px;
+  > .empty-center {
+    max-width: 500px;
+    font-size: 20px;
 
-		> .empty-info {
-			margin-top: 20px;
-			color: var(--text-muted);
-			font-size: 18px;
-		}
+    > .empty-info {
+      margin-top: 20px;
+      color: var(--text-muted);
+      font-size: 18px;
+    }
 
-		@include mobile {
-			> .empty-info {
-				font-size: 14px;
-			}
-		}
-	}
+    @include mobile {
+      > .empty-info {
+        font-size: 14px;
+      }
+    }
+  }
 }

@@ -1,11 +1,11 @@
 .ui-tab {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	border-bottom: var(--s-border-light);
-	overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: var(--s-border-light);
+  overflow: auto;
 }
 
 .ui-tab::-webkit-scrollbar {
-	display: none;
+  display: none;
 }

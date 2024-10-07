@@ -1,7 +1,7 @@
 <template>
-	<div class="ui-breadcrumb">
-		<slot />
-	</div>
+  <div class="ui-breadcrumb">
+    <slot />
+  </div>
 </template>
 
 <style lang="scss">

@@ -1,104 +1,104 @@
 @import '../../../../src/scss/mixins.scss';
 
 .ui-form-spinbutton {
-	@include form-control;
-	border: none;
-	padding-left: 0;
-	padding-right: 0;
-	align-items: stretch;
+  @include form-control;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  align-items: stretch;
 
-	&-action {
-		.ui-button-label {
-			display: flex;
-			align-items: center;
-		}
-	}
+  &-action {
+    .ui-button-label {
+      display: flex;
+      align-items: center;
+    }
+  }
 
-	&.-disabled {
-		cursor: not-allowed;
-		background-color: var(--s-color-fill-disable);
-		border-color: var(--s-color-border-disable);
+  &.-disabled {
+    cursor: not-allowed;
+    background-color: var(--s-color-fill-disable);
+    border-color: var(--s-color-border-disable);
 
-		.output {
-			border-color: var(--s-color-border-disable);
+    .output {
+      border-color: var(--s-color-border-disable);
 
-			input {
-				color: var(--s-color-content-disable);
-			}
-		}
-	}
+      input {
+        color: var(--s-color-content-disable);
+      }
+    }
+  }
 
-	&.-lg {
-		padding-left: 0;
-		padding-right: 0;
-	}
+  &.-lg {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-	&.-sm {
-		height: unset;
-		border-radius: var(--s-border-radius-small);
-		padding-left: 0;
-		padding-right: 0;
-	}
+  &.-sm {
+    height: unset;
+    border-radius: var(--s-border-radius-small);
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-	.output {
-		border: var(--s-border-light);
-		flex-grow: 1;
-		text-align: center;
-		border-right: 0;
-		border-left: 0;
-		min-width: var(--s-spacing-large);
-		align-items: center;
-		width: 100%;
-		font: var(--s-typography-paragraph-regular);
+  .output {
+    border: var(--s-border-light);
+    flex-grow: 1;
+    text-align: center;
+    border-right: 0;
+    border-left: 0;
+    min-width: var(--s-spacing-large);
+    align-items: center;
+    width: 100%;
+    font: var(--s-typography-paragraph-regular);
 
-		input {
-			color: var(--s-color-content-default);
-			appearance: none;
-			box-shadow: none;
-			border: none;
-			background-color: transparent;
-			width: 100%;
-			height: 100%;
-			text-align: center;
-		}
-	}
+    input {
+      color: var(--s-color-content-default);
+      appearance: none;
+      box-shadow: none;
+      border: none;
+      background-color: transparent;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+  }
 
-	.ui-form-spinbutton-loader {
-		border: var(--s-border-light);
-		position: absolute;
-		z-index: var(--s-index-max);
-		background-color: var(--s-color-background-default);
-		opacity: 1;
-		width: 100%;
-		height: 100%;
-		border-radius: inherit;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+  .ui-form-spinbutton-loader {
+    border: var(--s-border-light);
+    position: absolute;
+    z-index: var(--s-index-max);
+    background-color: var(--s-color-background-default);
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-	&-action-decrease {
-		background-color: transparent;
-		border-radius: var(--s-border-radius-small) 0 0 var(--s-border-radius-small);
+  &-action-decrease {
+    background-color: transparent;
+    border-radius: var(--s-border-radius-small) 0 0 var(--s-border-radius-small);
 
-		.ui-button-label {
-			display: flex;
-			align-items: center;
-		}
-	}
+    .ui-button-label {
+      display: flex;
+      align-items: center;
+    }
+  }
 
-	&-action-increase {
-		background-color: transparent;
-		border-radius: 0 var(--s-border-radius-small) var(--s-border-radius-small) 0;
+  &-action-increase {
+    background-color: transparent;
+    border-radius: 0 var(--s-border-radius-small) var(--s-border-radius-small) 0;
 
-		.ui-button-label {
-			display: flex;
-			align-items: center;
-		}
-	}
+    .ui-button-label {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 .ui-button:disabled,
 .ui-button.-disabled {
-	border-color: var(--s-color-border-disable);
+  border-color: var(--s-color-border-disable);
 }

@@ -1,29 +1,29 @@
 .ui-skeleton-table {
-	width: 100%;
-	margin-bottom: 0;
-	color: var(--s-color-content-default);
-	border-spacing: 0;
-	border-collapse: separate;
+  width: 100%;
+  margin-bottom: 0;
+  color: var(--s-color-content-default);
+  border-spacing: 0;
+  border-collapse: separate;
 
-	th,
-	td {
-		padding: var(--s-spacing-x-small);
-	}
+  th,
+  td {
+    padding: var(--s-spacing-x-small);
+  }
 
-	td {
-		border-top: var(--s-border-light);
-	}
+  td {
+    border-top: var(--s-border-light);
+  }
 
-	tr,
-	th {
-		background-color: transparent;
-	}
+  tr,
+  th {
+    background-color: transparent;
+  }
 
-	&.-no-border {
-		th,
-		td {
-			border-left: none;
-			border-right: none;
-		}
-	}
+  &.-no-border {
+    th,
+    td {
+      border-left: none;
+      border-right: none;
+    }
+  }
 }

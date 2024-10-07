@@ -1,27 +1,27 @@
 .selectable-list {
-	.selectable-list-content {
-		padding: 0;
-	}
+  .selectable-list-content {
+    padding: 0;
+  }
 
-	.selectable-list-item {
-		display: flex;
-		cursor: pointer;
-		padding-bottom: var(--s-spacing-nano);
-		align-items: center;
-		gap: var(--s-spacing-nano);
-		margin: 0;
-		border-radius: var(--s-border-radius-small);
+  .selectable-list-item {
+    display: flex;
+    cursor: pointer;
+    padding-bottom: var(--s-spacing-nano);
+    align-items: center;
+    gap: var(--s-spacing-nano);
+    margin: 0;
+    border-radius: var(--s-border-radius-small);
 
-		&:last-child {
-			border: none;
-		}
+    &:last-child {
+      border: none;
+    }
 
-		label {
-			pointer-events: none;
-		}
-	}
+    label {
+      pointer-events: none;
+    }
+  }
 
-	.selectable-list-item-text {
-		flex-grow: 1;
-	}
+  .selectable-list-item-text {
+    flex-grow: 1;
+  }
 }

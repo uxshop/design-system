@@ -12,10 +12,12 @@
     "test:unit": "vitest",
     "test:check": "vitest --run --passWithNoTests",
     "lint:js": "eslint",
-    "prepare": "husky",
+    "lint:prettier": "prettier --check --log-level warn",
+    "lint:prettier:all": "prettier . --check --log-level warn",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "storybook:sass:compile": "tsx .storybook/compile.ts"
+    "storybook:sass:compile": "tsx .storybook/compile.ts",
+    "prepare": "husky"
   },
   "peerDependencies": {
     "vue": ">= 3.4.29",

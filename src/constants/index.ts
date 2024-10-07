@@ -1,3 +1,3 @@
-const MOBILE_WIDTH = 768
+const MOBILE_WIDTH = 768;
 
-export { MOBILE_WIDTH }
+export { MOBILE_WIDTH };

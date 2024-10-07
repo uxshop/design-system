@@ -1,61 +1,61 @@
 @import '../../../../scss/mixins.scss';
 
 .table-list-pagination {
-	margin-left: auto;
+  margin-left: auto;
 
-	.table-list-pagination-list {
-		line-height: 0;
-		text-align: right;
-		margin: 0;
-		display: flex;
-		align-items: center;
-	}
+  .table-list-pagination-list {
+    line-height: 0;
+    text-align: right;
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
 
-	.table-list-pagination-item {
-		display: inline-block;
-		vertical-align: top;
-		padding: 0 var(--s-spacing-quark);
-		order: 2;
+  .table-list-pagination-item {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 var(--s-spacing-quark);
+    order: 2;
 
-		&:first-child {
-			padding-left: 0;
-		}
+    &:first-child {
+      padding-left: 0;
+    }
 
-		&:last-child {
-			padding-right: 0;
-		}
+    &:last-child {
+      padding-right: 0;
+    }
 
-		&.meta {
-			padding: 0 var(--s-spacing-nano);
-			color: var(--s-color-content-light);
-		}
-	}
+    &.meta {
+      padding: 0 var(--s-spacing-nano);
+      color: var(--s-color-content-light);
+    }
+  }
 
-	@include mobile {
-		bottom: var(--s-spacing-huge);
-		border-top: var(--s-border-light);
-		background-color: var(--s-color-fill-default);
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+  @include mobile {
+    bottom: var(--s-spacing-huge);
+    border-top: var(--s-border-light);
+    background-color: var(--s-color-fill-default);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-		.table-list-pagination-list {
-			width: 100%;
-			padding: var(--s-spacing-x-small) var(--s-spacing-nano);
-			.table-list-nav-btn {
-				width: 36px;
-				height: 36px;
-			}
-		}
+    .table-list-pagination-list {
+      width: 100%;
+      padding: var(--s-spacing-x-small) var(--s-spacing-nano);
+      .table-list-nav-btn {
+        width: 36px;
+        height: 36px;
+      }
+    }
 
-		.table-list-pagination-item.prev {
-			order: 1;
-		}
+    .table-list-pagination-item.prev {
+      order: 1;
+    }
 
-		.meta{
-			width: 100%;
-			text-align: center;
-		}
-	}
+    .meta {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }

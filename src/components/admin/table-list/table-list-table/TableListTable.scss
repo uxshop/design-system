@@ -1,58 +1,58 @@
 .table-flex {
-	display: table;
-	.table-list-row,
-	.table-list-header {
-		display: flex;
-		display: table-row;
-	}
+  display: table;
+  .table-list-row,
+  .table-list-header {
+    display: flex;
+    display: table-row;
+  }
 
-	.table-list-row {
-		font-weight: normal;
-		&:hover {
-			text-decoration: none;
-			background-color: var(--s-color-fill-default-hover);
-			cursor: pointer;
-			.hover {
-				opacity: 1;
-			}
-		}
-	}
+  .table-list-row {
+    font-weight: normal;
+    &:hover {
+      text-decoration: none;
+      background-color: var(--s-color-fill-default-hover);
+      cursor: pointer;
+      .hover {
+        opacity: 1;
+      }
+    }
+  }
 
-	.table-list-header {
-		.table-list-item {
-			text-transform: uppercase;
-			font-size: var(--s-line-height-12);
-			font-weight: var(--s-font-weight-semibold);
-		}
-	}
+  .table-list-header {
+    .table-list-item {
+      text-transform: uppercase;
+      font-size: var(--s-line-height-12);
+      font-weight: var(--s-font-weight-semibold);
+    }
+  }
 
-	.table-list-item {
-		color: var(--s-color-content-default);
-		display: table-cell;
-		padding: var(--s-spacing-nano) var(--s-spacing-x-small);
-		border-top: var(--s-border-light);
-		vertical-align: middle;
+  .table-list-item {
+    color: var(--s-color-content-default);
+    display: table-cell;
+    padding: var(--s-spacing-nano) var(--s-spacing-x-small);
+    border-top: var(--s-border-light);
+    vertical-align: middle;
 
-		a {
-		color: var(--s-color-content-default);
-		}
+    a {
+      color: var(--s-color-content-default);
+    }
 
-		b,
-		strong {
-			font-weight: var(--font-weight-semibold);
-		}
+    b,
+    strong {
+      font-weight: var(--font-weight-semibold);
+    }
 
-		> .ui-icon {
-			display: flex;
-			justify-content: center;
-		}
+    > .ui-icon {
+      display: flex;
+      justify-content: center;
+    }
 
-		&.-nowrap {
-			white-space: nowrap;
-		}
+    &.-nowrap {
+      white-space: nowrap;
+    }
 
-		&.-auto {
-			width: 1px;
-		}
-	}
+    &.-auto {
+      width: 1px;
+    }
+  }
 }

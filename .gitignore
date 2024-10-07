@@ -1,26 +1,16 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-yarn.lock
-pnpm-debug.log*
-lerna-debug.log*
-
+# Dependencies
 node_modules
-.DS_Store
-dist
-dist-ssr
-coverage
-*.local
-
-/cypress/videos/
-/cypress/screenshots/
+.pnp
+.pnp.*
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*
@@ -28,8 +18,38 @@ coverage
 *.sln
 *.sw?
 
-/src/scss/tokens/stories/tokens.css
+# Build Outputs
+.next
+.nuxt
+out
+build
+dist
+dist-ssr
 
-/public/design-tokens.source.json
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-*storybook.log
+# Misc
+.DS_Store
+*.pem
+
+# Cache
+.eslintcache
+.stylelintcache
+
+# Testing
+coverage
+cypress
+vitest.config.ts.timestamp-*.mjs
+*.local
+
+
+# Project specific
+src/scss/tokens/stories/tokens.css
+public/design-tokens.source.json

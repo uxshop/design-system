@@ -1,9 +1,9 @@
 <script setup lang="ts" />
 
 <template>
-	<div class="ui-list-group-item">
-		<slot />
-	</div>
+  <div class="ui-list-group-item">
+    <slot />
+  </div>
 </template>
 
 <style lang="scss">

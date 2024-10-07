@@ -1,152 +1,152 @@
 @import '../../../scss/mixins.scss';
 
 .ui-dialog {
-	position: fixed;
-	z-index: var(--s-index-max);
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	justify-content: center;
-	overflow-x: hidden;
-	overflow-y: auto;
+  position: fixed;
+  z-index: var(--s-index-max);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-	&.-hide {
-		> .ui-dialog-wrapper > .ui-dialog-content {
-			animation: var(--s-motion-duration-default) dialogZoomOut;
-			animation-fill-mode: forwards;
-		}
+  &.-hide {
+    > .ui-dialog-wrapper > .ui-dialog-content {
+      animation: var(--s-motion-duration-default) dialogZoomOut;
+      animation-fill-mode: forwards;
+    }
 
-		> .ui-dialog-wrapper > .ui-dialog-overlay {
-			animation: var(--s-motion-duration-default) dialogFade reverse;
-		}
-	}
+    > .ui-dialog-wrapper > .ui-dialog-overlay {
+      animation: var(--s-motion-duration-default) dialogFade reverse;
+    }
+  }
 
-	&.-show {
-		> .ui-dialog-wrapper > .ui-dialog-overlay {
-			opacity: 1;
-		}
-	}
+  &.-show {
+    > .ui-dialog-wrapper > .ui-dialog-overlay {
+      opacity: 1;
+    }
+  }
 
-	.ui-dialog-wrapper {
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-		width: auto;
-		margin: 0 auto;
-		transition: transform var(--s-motion-duration-default);
-		will-change: transform;
-		padding: var(--s-spacing-small);
+  .ui-dialog-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin: 0 auto;
+    transition: transform var(--s-motion-duration-default);
+    will-change: transform;
+    padding: var(--s-spacing-small);
 
-		.ui-dialog-overlay {
-			content: '';
-			position: fixed;
-			background-color: var(--s-color-background-overlay);
-			opacity: 0;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			animation: var(--s-motion-duration-default) dialogFade;
-		}
+    .ui-dialog-overlay {
+      content: '';
+      position: fixed;
+      background-color: var(--s-color-background-overlay);
+      opacity: 0;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      animation: var(--s-motion-duration-default) dialogFade;
+    }
 
-		.ui-dialog-content {
-			box-shadow: var(--s-shadow-level-3);
-			transition: all var(--s-motion-duration-default) var(--s-motion-ease-in-out);
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-			pointer-events: auto;
-			background-clip: padding-box;
-			border-radius: var(--s-border-radius-small);
-			outline: 0;
-			margin: auto;
-			background-color: var(--s-color-fill-default);
-			animation: var(--s-motion-duration-default) dialogZoom;
-			animation-fill-mode: forwards;
-			max-width: 460px;
+    .ui-dialog-content {
+      box-shadow: var(--s-shadow-level-3);
+      transition: all var(--s-motion-duration-default) var(--s-motion-ease-in-out);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      pointer-events: auto;
+      background-clip: padding-box;
+      border-radius: var(--s-border-radius-small);
+      outline: 0;
+      margin: auto;
+      background-color: var(--s-color-fill-default);
+      animation: var(--s-motion-duration-default) dialogZoom;
+      animation-fill-mode: forwards;
+      max-width: 460px;
 
-			.ui-dialog-header {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				padding: var(--s-spacing-small);
+      .ui-dialog-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--s-spacing-small);
 
-				> .title {
-					font: var(--s-typography-heading-medium);
-					color: (--s-color-content-default);
-					margin-bottom: 0;
-				}
-			}
+        > .title {
+          font: var(--s-typography-heading-medium);
+          color: (--s-color-content-default);
+          margin-bottom: 0;
+        }
+      }
 
-			> .ui-dialog-body {
-				padding: var(--s-spacing-small);
-				padding-top: 0;
-				flex-grow: 1;
+      > .ui-dialog-body {
+        padding: var(--s-spacing-small);
+        padding-top: 0;
+        flex-grow: 1;
 
-				&:first-child {
-					padding-top: 0;
-				}
-			}
+        &:first-child {
+          padding-top: 0;
+        }
+      }
 
-			.ui-dialog-message {
-				font: var(--s-typography-paragraph-regular);
-			}
+      .ui-dialog-message {
+        font: var(--s-typography-paragraph-regular);
+      }
 
-			> .ui-dialog-footer {
-				padding: var(--s-spacing-small);
-				padding-top: 0;
-				gap: var(--s-spacing-nano);
-				display: flex;
-				justify-content: flex-start;
+      > .ui-dialog-footer {
+        padding: var(--s-spacing-small);
+        padding-top: 0;
+        gap: var(--s-spacing-nano);
+        display: flex;
+        justify-content: flex-start;
 
-				.btn-destruct {
-					min-width: 100px;
-				}
-			}
-		}
-	}
+        .btn-destruct {
+          min-width: 100px;
+        }
+      }
+    }
+  }
 
-	@include darkmode {
-		.ui-dialog-content {
-			background-color: var(--s-color-background-dark);
-		}
-	}
+  @include darkmode {
+    .ui-dialog-content {
+      background-color: var(--s-color-background-dark);
+    }
+  }
 }
 
 @keyframes dialogZoom {
-	from {
-		opacity: 0;
-		transform: scale(1.03);
-	}
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
 
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes dialogZoomOut {
-	from {
-		opacity: 1;
-		transform: scale(1);
-	}
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
 
-	to {
-		opacity: 0;
-		transform: scale(0.9);
-	}
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 }
 
 @keyframes dialogFade {
-	from {
-		opacity: 0;
-	}
+  from {
+    opacity: 0;
+  }
 
-	to {
-		opacity: 1;
-	}
+  to {
+    opacity: 1;
+  }
 }

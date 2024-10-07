@@ -1,110 +1,110 @@
 @import '../../../scss/mixins.scss';
 
 .ui-media-card {
-	--border-bottom: 0 0 var(--s-border-radius-medium) var(--s-border-radius-medium);
-	--border-top: var(--s-border-radius-medium) var(--s-border-radius-medium) 0 0;
-	--border-left: var(--s-border-radius-medium) 0 0 var(--s-border-radius-medium);
-	--border-right: 0 var(--s-border-radius-medium) var(--s-border-radius-medium) 0;
+  --border-bottom: 0 0 var(--s-border-radius-medium) var(--s-border-radius-medium);
+  --border-top: var(--s-border-radius-medium) var(--s-border-radius-medium) 0 0;
+  --border-left: var(--s-border-radius-medium) 0 0 var(--s-border-radius-medium);
+  --border-right: 0 var(--s-border-radius-medium) var(--s-border-radius-medium) 0;
 
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
 
-	.ui-card {
-		border-radius: var(--border-right);
+  .ui-card {
+    border-radius: var(--border-right);
 
-		&-header {
-			padding: var(--s-spacing-small) var(--s-spacing-small) var(--s-spacing-nano);
-		}
-	}
+    &-header {
+      padding: var(--s-spacing-small) var(--s-spacing-small) var(--s-spacing-nano);
+    }
+  }
 
-	img {
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
-		object-position: center;
-		border-radius: var(--border-left);
-	}
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--border-left);
+  }
 
-	@include mobile {
-		grid-template-columns: 1fr;
+  @include mobile {
+    grid-template-columns: 1fr;
 
-		.ui-card {
-			border-radius: var(--border-bottom);
-		}
+    .ui-card {
+      border-radius: var(--border-bottom);
+    }
 
-		img {
-			border-radius: var(--border-top);
-		}
-	}
+    img {
+      border-radius: var(--border-top);
+    }
+  }
 
-	@include desktop {
-		&.-inverted {
-			.ui-card {
-				border-radius: var(--border-left);
-			}
-			img {
-				border-radius: var(--border-right);
-			}
+  @include desktop {
+    &.-inverted {
+      .ui-card {
+        border-radius: var(--border-left);
+      }
+      img {
+        border-radius: var(--border-right);
+      }
 
-			.ui-media-card-image,
-			.ui-media-card-video {
-				order: 2;
-			}
-		}
-	}
+      .ui-media-card-image,
+      .ui-media-card-video {
+        order: 2;
+      }
+    }
+  }
 
-	&.-vertical {
-		grid-template-columns: 1fr;
-		.ui-card {
-			border-radius: var(--border-bottom);
-		}
+  &.-vertical {
+    grid-template-columns: 1fr;
+    .ui-card {
+      border-radius: var(--border-bottom);
+    }
 
-		img {
-			border-radius: var(--border-top);
-		}
-	}
+    img {
+      border-radius: var(--border-top);
+    }
+  }
 
-	iframe {
-		display: block;
-		aspect-ratio: 16 / 9;
-	}
+  iframe {
+    display: block;
+    aspect-ratio: 16 / 9;
+  }
 
-	&-video {
-		position: relative;
-	}
+  &-video {
+    position: relative;
+  }
 
-	.ui-icon {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		font-size: 6em;
-		font-variation-settings: 'FILL' 1;
-		background-color: var(--s-color-background-default);
-		border-radius: 100%;
-		cursor: pointer;
-	}
+  .ui-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6em;
+    font-variation-settings: 'FILL' 1;
+    background-color: var(--s-color-background-default);
+    border-radius: 100%;
+    cursor: pointer;
+  }
 
-	&-info {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		height: 100%;
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 
-		&-text {
-			margin: 0;
-			padding-bottom: var(--s-spacing-small);
-			font: var(--s-typography-paragraph-regular);
-		}
+    &-text {
+      margin: 0;
+      padding-bottom: var(--s-spacing-small);
+      font: var(--s-typography-paragraph-regular);
+    }
 
-		&-buttons {
-			display: flex;
-			gap: var(--s-spacing-nano);
-		}
-	}
+    &-buttons {
+      display: flex;
+      gap: var(--s-spacing-nano);
+    }
+  }
 
-	iframe {
-		min-height: 250px;
-	}
+  iframe {
+    min-height: 250px;
+  }
 }

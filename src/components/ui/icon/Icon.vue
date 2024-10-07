@@ -1,63 +1,63 @@
 <script setup lang="ts">
-import { computed, type StyleValue } from 'vue'
-import DSIcons from './snipets/ds-icons.json'
-import type { IconType, DSIconsType } from './types'
+import { computed, type StyleValue } from 'vue';
+import DSIcons from './snipets/ds-icons.json';
+import type { IconType, DSIconsType } from './types';
 
 export interface IconProps {
-	filled?: boolean
-	name?: IconType
-	size?: number | string
+  filled?: boolean;
+  name?: IconType;
+  size?: number | string;
 }
 
 const props = withDefaults(defineProps<IconProps>(), {
-	size: 16
-})
+  size: 16,
+});
 
-const isDSIcon = computed(() => !!props.name && (props.name as DSIconsType) in DSIcons)
+const isDSIcon = computed(() => !!props.name && (props.name as DSIconsType) in DSIcons);
 
 const iconStyleList = computed(() => {
-	let styles: StyleValue = {}
+  let styles: StyleValue = {};
 
-	if (props.filled) {
-		styles.fontVariationSettings = "'FILL' 1"
-	}
+  if (props.filled) {
+    styles.fontVariationSettings = "'FILL' 1";
+  }
 
-	if (props.size) {
-		styles.fontSize = props.size + 'px'
-		styles.height = props.size + 'px'
-	}
+  if (props.size) {
+    styles.fontSize = props.size + 'px';
+    styles.height = props.size + 'px';
+  }
 
-	if (isDSIcon.value) {
-		delete styles.fontSize
-		styles.width = props.size + 'px'
-	}
+  if (isDSIcon.value) {
+    delete styles.fontSize;
+    styles.width = props.size + 'px';
+  }
 
-	return styles
-})
+  return styles;
+});
 </script>
 
 <template>
-	<i
-		:class="{ 'ui-ds-icon': isDSIcon, 'ui-icon material-symbols-outlined': !isDSIcon }"
-		:style="iconStyleList"
-		v-html="isDSIcon ? DSIcons[name as DSIconsType] : name">
-	</i>
+  <i
+    :class="{ 'ui-ds-icon': isDSIcon, 'ui-icon material-symbols-outlined': !isDSIcon }"
+    :style="iconStyleList"
+    v-html="isDSIcon ? DSIcons[name as DSIconsType] : name">
+  </i>
 </template>
 
 <style lang="scss">
 .ui-ds-icon {
-	display: inline-block;
-	color: inherit;
-	fill: currentColor;
+  display: inline-block;
+  color: inherit;
+  fill: currentColor;
 }
 .ui-icon {
-	font-variation-settings:
-		'FILL' 0,
-		'wght' 400,
-		'GRAD' 200,
-		'opsz' 32;
-	width: auto;
-	align-items: center;
-	color: inherit;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 200,
+    'opsz' 32;
+  width: auto;
+  align-items: center;
+  color: inherit;
 }
 </style>

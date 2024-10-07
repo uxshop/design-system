@@ -1,71 +1,71 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
-import Icon from '../icon/Icon.vue'
+import { computed } from 'vue';
+import Icon from '../icon/Icon.vue';
 
 export interface Props {
-	disabled?: boolean
-	external?: boolean
-	href?: string
-	label?: string
-	to?: string | object
-	wrapText?: boolean
+  disabled?: boolean;
+  external?: boolean;
+  href?: string;
+  label?: string;
+  to?: string | object;
+  wrapText?: boolean;
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
 const linkComponent = computed(() => {
-	if (props.to) {
-		return 'router-link'
-	}
-	return 'a'
-})
+  if (props.to) {
+    return 'router-link';
+  }
+  return 'a';
+});
 
 const linkClassList = computed(() => {
-	let classes = []
+  let classes = [];
 
-	if (props.external) {
-		classes.push('-external')
-	}
+  if (props.external) {
+    classes.push('-external');
+  }
 
-	if (props.disabled) {
-		classes.push('-disabled')
-	}
+  if (props.disabled) {
+    classes.push('-disabled');
+  }
 
-	if (props.wrapText) {
-		classes.push('-wrap')
-	}
+  if (props.wrapText) {
+    classes.push('-wrap');
+  }
 
-	return classes
-})
+  return classes;
+});
 
 const linkAttributeList = computed(() => {
-	let attributes = {}
+  let attributes = {};
 
-	if (props.href) {
-		Object.assign(attributes, { href: props.href })
-	}
+  if (props.href) {
+    Object.assign(attributes, { href: props.href });
+  }
 
-	if (props.to) {
-		Object.assign(attributes, { to: props.to })
-	}
+  if (props.to) {
+    Object.assign(attributes, { to: props.to });
+  }
 
-	if (props.external) {
-		Object.assign(attributes, { target: '_blank' })
-	}
+  if (props.external) {
+    Object.assign(attributes, { target: '_blank' });
+  }
 
-	return attributes
-})
+  return attributes;
+});
 </script>
 
 <template>
-	<component :is="linkComponent" class="ui-link" :class="linkClassList" v-bind="linkAttributeList">
-		<span class="ui-link-content">
-			<slot>
-				{{ label }}
-			</slot>
-		</span>
-		<Icon v-if="external" name="open_in_new" class="ui-link-icon" :size="14" />
-	</component>
+  <component :is="linkComponent" class="ui-link" :class="linkClassList" v-bind="linkAttributeList">
+    <span class="ui-link-content">
+      <slot>
+        {{ label }}
+      </slot>
+    </span>
+    <Icon v-if="external" name="open_in_new" class="ui-link-icon" :size="14" />
+  </component>
 </template>
 
 <style lang="scss">

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import BrowserSelectCell from './BrowserSelectCell.vue'
+import BrowserSelectCell from './BrowserSelectCell.vue';
 
 defineProps<{
-	item: Record<string, unknown>
-}>()
+  item: Record<string, unknown>;
+}>();
 </script>
 
 <template>
-	<BrowserSelectCell> {{ item.name }}</BrowserSelectCell>
+  <BrowserSelectCell> {{ item.name }}</BrowserSelectCell>
 </template>

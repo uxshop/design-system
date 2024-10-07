@@ -1,53 +1,53 @@
 @import '../../../scss/mixins.scss';
 
 .card-info-link-wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	padding: var(--s-spacing-x-small);
-	background-color: var(--s-color-fill-default);
-	border: 1px solid var(--s-color-fill-default);
-	border-radius: var(--s-border-radius-medium);
-	gap: var(--s-spacing-nano);
-	height: 100%;
-	min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--s-spacing-x-small);
+  background-color: var(--s-color-fill-default);
+  border: 1px solid var(--s-color-fill-default);
+  border-radius: var(--s-border-radius-medium);
+  gap: var(--s-spacing-nano);
+  height: 100%;
+  min-width: 170px;
 
-	.header {
-		display: flex;
-		gap: var(--s-spacing-nano);
-		flex-direction: column;
-		> .icon-wrapper {
-			display: flex;
-			background-color: var(--s-color-fill-default-light);
-			width: fit-content;
-			justify-content: center;
-			padding: var(--s-spacing-nano);
-			border-radius: var(--s-border-radius-medium);
-		}
-	}
+  .header {
+    display: flex;
+    gap: var(--s-spacing-nano);
+    flex-direction: column;
+    > .icon-wrapper {
+      display: flex;
+      background-color: var(--s-color-fill-default-light);
+      width: fit-content;
+      justify-content: center;
+      padding: var(--s-spacing-nano);
+      border-radius: var(--s-border-radius-medium);
+    }
+  }
 
-	&:hover {
-		border-color: var(--s-color-border-highlight);
-		cursor: pointer;
-	}
+  &:hover {
+    border-color: var(--s-color-border-highlight);
+    cursor: pointer;
+  }
 
-	&.-highlighted {
-		background-color: var(--s-color-fill-highlight);
-		.title-wrapper,
-		.-no-link {
-			color: var(--s-color-content-on-color);
-		}
-		.ui-link {
-			text-decoration: none;
-			font: var(--s-typography-heading-x-small);
-			color: var(--s-color-content-on-color);
-		}
-	}
-	.description-wrapper {
-		&.-no-link {
-			> p {
-				margin-bottom: 0;
-			}
-		}
-	}
+  &.-highlighted {
+    background-color: var(--s-color-fill-highlight);
+    .title-wrapper,
+    .-no-link {
+      color: var(--s-color-content-on-color);
+    }
+    .ui-link {
+      text-decoration: none;
+      font: var(--s-typography-heading-x-small);
+      color: var(--s-color-content-on-color);
+    }
+  }
+  .description-wrapper {
+    &.-no-link {
+      > p {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

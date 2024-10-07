@@ -18,16 +18,16 @@
 
 // Clearfix
 @mixin clearfix {
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
 }
 // Scale Font Size
 @mixin font-scaled-size-up($scale) {
-    font-size: 1em * pow($font-scale, $scale);
+  font-size: 1em * pow($font-scale, $scale);
 }
 @mixin font-scaled-size-down($scale) {
-    font-size: 1em / pow($font-scale, $scale);
+  font-size: 1em / pow($font-scale, $scale);
 }

@@ -1,43 +1,43 @@
 @import '../../../scss/mixins.scss';
 
 .ui-seo {
-	--ui-seo-title-color: var(--s-color-content-highlight);
+  --ui-seo-title-color: var(--s-color-content-highlight);
 
-	&.-gray {
-		.ui-seo-card {
-			margin-top: var(--s-spacing-x-small);
-			border-radius: var(--s-border-radius-medium);
-			border: dotted 2px var(--s-color-border-default);
-			padding: var(--s-spacing-x-small);
-		}
-	}
+  &.-gray {
+    .ui-seo-card {
+      margin-top: var(--s-spacing-x-small);
+      border-radius: var(--s-border-radius-medium);
+      border: dotted 2px var(--s-color-border-default);
+      padding: var(--s-spacing-x-small);
+    }
+  }
 
-	.ui-seo-title {
-		font: var(--s-typography-heading-x-small);
-		color: var(--ui-seo-title-color);
-	}
+  .ui-seo-title {
+    font: var(--s-typography-heading-x-small);
+    color: var(--ui-seo-title-color);
+  }
 
-	.ui-seo-domain {
-		color: var(--s-color-content-success);
-		display: block;
-		overflow-wrap: break-word;
-	}
+  .ui-seo-domain {
+    color: var(--s-color-content-success);
+    display: block;
+    overflow-wrap: break-word;
+  }
 
-	.ui-seo-description {
-		display: block;
-		margin-top: var(--s-spacing-quark);
-	}
+  .ui-seo-description {
+    display: block;
+    margin-top: var(--s-spacing-quark);
+  }
 
-	@include darkmode {
-		&.-gray {
-			.ui-seo-card {
-				border-color: var(--s-color-border-dark);
-			}
-		}
+  @include darkmode {
+    &.-gray {
+      .ui-seo-card {
+        border-color: var(--s-color-border-dark);
+      }
+    }
 
-		.ui-seo-domain {
-			color: var(--s-color-content-dark-success);
-			display: block;
-		}
-	}
+    .ui-seo-domain {
+      color: var(--s-color-content-dark-success);
+      display: block;
+    }
+  }
 }

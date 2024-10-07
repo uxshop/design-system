@@ -1,60 +1,59 @@
 <script setup lang="ts">
-import { computed, type StyleValue } from 'vue'
-import Icon from '../icon/Icon.vue'
+import { computed, type StyleValue } from 'vue';
+import Icon from '../icon/Icon.vue';
 
 export interface ImageProps {
-	src?: string
-	size?: number | string
-	rounded?: boolean
+  src?: string;
+  size?: number | string;
+  rounded?: boolean;
 }
 
 const props = withDefaults(defineProps<ImageProps>(), {
-	size: 50
-})
+  size: 50,
+});
 
 const imageClassList = computed(() => {
-	let classes = []
+  let classes = [];
 
-	if (!props.src) {
-		classes.push('-no-image')
-	}
+  if (!props.src) {
+    classes.push('-no-image');
+  }
 
-	if (props.rounded) {
-		classes.push('-is-rounded')
-	}
+  if (props.rounded) {
+    classes.push('-is-rounded');
+  }
 
-	return classes
-})
+  return classes;
+});
 
 const imageStyleList = computed(() => {
-	const styles: StyleValue = {}
+  const styles: StyleValue = {};
 
-	if (props.size) {
-		styles.width = `${props.size}px`
-	}
+  if (props.size) {
+    styles.width = `${props.size}px`;
+  }
 
-	return styles
-})
+  return styles;
+});
 
 const iconStyleList = computed(() => {
-	const styles: StyleValue = {}
+  const styles: StyleValue = {};
 
-	if (props.size) {
-		styles.fontSize = `${Number(props.size) / 2.5}px`
-		styles.width = `${Number(props.size) / 2.5}px`
-		styles.height = `${Number(props.size) / 2.5}px`
-	}
+  if (props.size) {
+    styles.fontSize = `${Number(props.size) / 2.5}px`;
+    styles.width = `${Number(props.size) / 2.5}px`;
+    styles.height = `${Number(props.size) / 2.5}px`;
+  }
 
-	return styles
-})
+  return styles;
+});
 </script>
 
-
 <template>
-	<div class="ui-image" :class="imageClassList" :style="imageStyleList">
-		<img v-if="props.src" :src="props.src" class="ui-image-content" />
-		<Icon v-else name="wallpaper" class="ui-image-icon" :style="iconStyleList" />
-	</div>
+  <div class="ui-image" :class="imageClassList" :style="imageStyleList">
+    <img v-if="props.src" :src="props.src" class="ui-image-content" />
+    <Icon v-else name="wallpaper" class="ui-image-icon" :style="iconStyleList" />
+  </div>
 </template>
 
 <style lang="scss">

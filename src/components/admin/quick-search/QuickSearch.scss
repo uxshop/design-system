@@ -1,18 +1,18 @@
 .modal-container {
-	.ui-modal-dialog {
-		.ui-modal-content {
-			border-radius: var(--s-border-radius-medium);
-			padding: var(--s-spacing-nano);
-			.ui-modal-header {
-				padding: var(--s-spacing-x-small);
-			}
-			.ui-modal-body {
-				padding: var(--s-spacing-x-small);
-			}
-		}
-	}
+  .ui-modal-dialog {
+    .ui-modal-content {
+      border-radius: var(--s-border-radius-medium);
+      padding: var(--s-spacing-nano);
+      .ui-modal-header {
+        padding: var(--s-spacing-x-small);
+      }
+      .ui-modal-body {
+        padding: var(--s-spacing-x-small);
+      }
+    }
+  }
 
-	.caption-text {
-		margin: 0;
-	}
+  .caption-text {
+    margin: 0;
+  }
 }

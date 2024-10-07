@@ -12,11 +12,10 @@ $z-index-fullscreen-dropdown: 1052 !default;
 $z-index-fullscreen-overlay: 1098 !default;
 $z-index-fullscreen-modal: 1099 !default;
 
-
 // TEXT
 // ---------------------------------------------------------------------------
-$base-font-family: "Trebuchet MS", 'Helvetica Neue', Helvetica, Tahoma, sans-serif !default;
-$monospace-font-family: Consolas, Menlo, Monaco, "Courier New", monospace !default;
+$base-font-family: 'Trebuchet MS', 'Helvetica Neue', Helvetica, Tahoma, sans-serif !default;
+$monospace-font-family: Consolas, Menlo, Monaco, 'Courier New', monospace !default;
 
 // Scale
 $font-scale: 1.2 !default;
@@ -42,7 +41,6 @@ $headings-font-weight: bold !default;
 
 // Margin
 $headings-margin-bottom: 0.5em !default;
-
 
 // COLORS
 // ---------------------------------------------------------------------------
@@ -85,4 +83,4 @@ $table-background-striped: $color-aluminum !default;
 
 // OVERLAY
 // ---------------------------------------------------------------------------
-$overlay-background-color: rgba($color-black, .3) !default;
+$overlay-background-color: rgba($color-black, 0.3) !default;

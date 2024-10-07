@@ -1,82 +1,81 @@
 @import '../../../scss/mixins.scss';
 
 .animated-background {
-	border-radius: var(--s-border-radius-small);
-    background-color: var(--s-color-fill-default-light);
-    height: var(--s-spacing-x-small);
-    position: relative;
+  border-radius: var(--s-border-radius-small);
+  background-color: var(--s-color-fill-default-light);
+  height: var(--s-spacing-x-small);
+  position: relative;
+  inline-size: 100%;
+  &::before {
+    position: absolute;
+    border-radius: var(--s-border-radius-small);
+    -webkit-animation: placeHolderShimmer 3000ms ease-in-out infinite;
+    animation: placeHolderShimmer 3000ms ease-in-out infinite;
+    background: var(--s-color-fill-disable);
+    block-size: 100%;
+    content: '';
     inline-size: 100%;
-    &::before {
-        position: absolute;
-        border-radius: var(--s-border-radius-small);
-        -webkit-animation: placeHolderShimmer 3000ms ease-in-out infinite;
-        animation: placeHolderShimmer 3000ms ease-in-out infinite;
-        background: var(--s-color-fill-disable);
-        block-size: 100%;
-        content: "";
-        inline-size: 100%;
-        will-change: transform-origin, transform, opacity;
-    }
+    will-change: transform-origin, transform, opacity;
+  }
 }
 
 .ui-skeleton {
-	@extend .animated-background;
-
+  @extend .animated-background;
 }
 
 @keyframes placeHolderShimmer {
-    0% {
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transform-origin: left;
-        transform-origin: left;
-    }
-    20% {
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-        -webkit-transform-origin: left;
-        transform-origin: left;
-    }
-    28% {
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-        -webkit-transform-origin: right;
-        transform-origin: right;
-    }
-    51% {
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transform-origin: right;
-        transform-origin: right;
-    }
-    58% {
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transform-origin: right;
-        transform-origin: right;
-    }
-    82% {
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-        -webkit-transform-origin: right;
-        transform-origin: right;
-    }
-    83% {
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-        -webkit-transform-origin: left;
-        transform-origin: left;
-    }
-    96% {
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transform-origin: left;
-        transform-origin: left;
-    }
-    100% {
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transform-origin: left;
-        transform-origin: left;
-    }
+  0% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+  }
+  20% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+  }
+  28% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+  }
+  51% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+  }
+  58% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+  }
+  82% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: right;
+    transform-origin: right;
+  }
+  83% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+  }
+  96% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+  }
+  100% {
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: left;
+    transform-origin: left;
+  }
 }

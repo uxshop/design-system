@@ -1,18 +1,18 @@
 .ui-description-list {
-	width: 100%;
+  width: 100%;
 
-	&-item {
-		align-items: flex-start;
-		padding: var(--s-spacing-nano);
-		display: flex;
+  &-item {
+    align-items: flex-start;
+    padding: var(--s-spacing-nano);
+    display: flex;
 
-		+ .ui-description-list-item {
-			border-top: var(--s-border-light);
-		}
+    + .ui-description-list-item {
+      border-top: var(--s-border-light);
+    }
 
-		&-label {
-			flex: 0 1 25%;
-			font: var(--s-typography-paragraph-strong);
-		}
-	}
+    &-label {
+      flex: 0 1 25%;
+      font: var(--s-typography-paragraph-strong);
+    }
+  }
 }

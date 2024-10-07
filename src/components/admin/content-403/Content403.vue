@@ -1,37 +1,37 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue';
 
 interface OwnerInterface {
-	email?: string
+  email?: string;
 }
 
 interface Props {
-	owner?: OwnerInterface
+  owner?: OwnerInterface;
 }
 
 withDefaults(defineProps<Props>(), {
-	owner: () => ({})
-})
+  owner: () => ({}),
+});
 
 onMounted(() => {
-	document.body.classList.add('forbidden')
-})
+  document.body.classList.add('forbidden');
+});
 
 onUnmounted(() => {
-	document.body.classList.remove('forbidden')
-})
+  document.body.classList.remove('forbidden');
+});
 </script>
 
 <template>
-	<div class="content-403">
-		<div class="empty-center">
-			<div class="empty-info">
-				Você não tem permissão para acessar este conteúdo.
-				<br />Entre em contato com o administrador da <br />conta
-				<span class="text-primary">{{ owner.email }}</span>
-			</div>
-		</div>
-	</div>
+  <div class="content-403">
+    <div class="empty-center">
+      <div class="empty-info">
+        Você não tem permissão para acessar este conteúdo.
+        <br />Entre em contato com o administrador da <br />conta
+        <span class="text-primary">{{ owner.email }}</span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

@@ -1,18 +1,18 @@
 @import '../../../scss/mixins.scss';
 
 .ui-divider {
-	min-width: 100%;
-	border-width: var(--s-border-none);
-	background-color: var(--s-color-background-default);
-	height: 1px;
-	margin-top: var(--s-spacing-small);
-	margin-bottom: var(--s-spacing-small);
+  min-width: 100%;
+  border-width: var(--s-border-none);
+  background-color: var(--s-color-background-default);
+  height: 1px;
+  margin-top: var(--s-spacing-small);
+  margin-bottom: var(--s-spacing-small);
 
-	&.-transparent {
-		background-color: transparent;
-	}
+  &.-transparent {
+    background-color: transparent;
+  }
 
-	@include darkmode {
-		background-color: var(--s-color-background-dark);
-	}
+  @include darkmode {
+    background-color: var(--s-color-background-dark);
+  }
 }

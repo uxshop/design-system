@@ -1,79 +1,79 @@
 @import '../../../scss/mixins.scss';
 
 .ui-savebar {
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: var(--s-index-medium-high);
-	height: var(--s-spacing-huge);
-	align-items: center;
-	display: flex;
-	opacity: 0;
-	pointer-events: none;
-	background-color: var(--s-color-fill-default);
-	box-shadow: var(--s-shadow-level-1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: var(--s-index-medium-high);
+  height: var(--s-spacing-huge);
+  align-items: center;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  background-color: var(--s-color-fill-default);
+  box-shadow: var(--s-shadow-level-1);
 
-	* {
-		z-index: var(--s-index-low);
-	}
+  * {
+    z-index: var(--s-index-low);
+  }
 
-	&-container {
-		display: flex;
-		gap: 8px;
-		width: 100%;
-		padding: 0 var(--layout-content-padding-x);
-		justify-content: space-between;
-	}
+  &-container {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    padding: 0 var(--layout-content-padding-x);
+    justify-content: space-between;
+  }
 
-	&::after {
-		content: '';
-		border-radius: 50px;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		z-index: var(--s-index-default);
-	}
+  &::after {
+    content: '';
+    border-radius: 50px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: var(--s-index-default);
+  }
 
-	&.-show {
-		opacity: 1;
-		pointer-events: auto;
-	}
+  &.-show {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-	&-text {
-		display: flex;
-		align-items: center;
-		font: var(--s-typography-heading-x-small);
-	}
+  &-text {
+    display: flex;
+    align-items: center;
+    font: var(--s-typography-heading-x-small);
+  }
 
-	&-actions {
-		display: flex;
-		gap: inherit;
-	}
+  &-actions {
+    display: flex;
+    gap: inherit;
+  }
 
-	@include mobile {
-		left: 0;
-		height: 84px;
+  @include mobile {
+    left: 0;
+    height: 84px;
 
-		&-container {
-			flex-wrap: wrap;
-			justify-content: center;
-		}
+    &-container {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-		&-actions {
-			width: 100%;
-		}
+    &-actions {
+      width: 100%;
+    }
 
-		.ui-button.-success {
-			flex-basis: 50%;
-		}
-		&-restore {
-			flex-basis: 50%;
-		}
-	}
+    .ui-button.-success {
+      flex-basis: 50%;
+    }
+    &-restore {
+      flex-basis: 50%;
+    }
+  }
 
-	@include desktop {
-		left: var(--layout-sidebar-width);
-	}
+  @include desktop {
+    left: var(--layout-sidebar-width);
+  }
 }

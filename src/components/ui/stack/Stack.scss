@@ -1,131 +1,131 @@
 @import '../../../scss/mixins.scss';
 
 .ui-stack {
-	display: flex;
-	gap: var(--s-spacing-x-small);
+  display: flex;
+  gap: var(--s-spacing-x-small);
 
-	&.-custom-grid {
-		display: grid;
-	}
+  &.-custom-grid {
+    display: grid;
+  }
 
-	&:not(.-custom-grid) {
-		display: flex;
+  &:not(.-custom-grid) {
+    display: flex;
 
-		&:not(.-sm-horizontal) {
-			@include mobile {
-				flex-direction: column;
-			}
-		}
-	}
+    &:not(.-sm-horizontal) {
+      @include mobile {
+        flex-direction: column;
+      }
+    }
+  }
 
-	&.-align-center {
-		align-items: center;
-	}
+  &.-align-center {
+    align-items: center;
+  }
 
-	&.-align-start {
-		align-items: flex-start;
-	}
+  &.-align-start {
+    align-items: flex-start;
+  }
 
-	&.-align-end {
-		align-items: flex-end;
-	}
+  &.-align-end {
+    align-items: flex-end;
+  }
 
-	&.-distribute {
-		&-left {
-			&:not(.-vertical) {
-				justify-content: flex-start;
-			}
+  &.-distribute {
+    &-left {
+      &:not(.-vertical) {
+        justify-content: flex-start;
+      }
 
-			&.-vertical {
-				align-items: flex-start;
-			}
-		}
+      &.-vertical {
+        align-items: flex-start;
+      }
+    }
 
-		&-center {
-			&:not(.-vertical) {
-				justify-content: center;
-			}
+    &-center {
+      &:not(.-vertical) {
+        justify-content: center;
+      }
 
-			&.-vertical {
-				align-items: center;
-			}
-		}
+      &.-vertical {
+        align-items: center;
+      }
+    }
 
-		&-right {
-			&:not(.-vertical) {
-				justify-content: flex-end;
-			}
+    &-right {
+      &:not(.-vertical) {
+        justify-content: flex-end;
+      }
 
-			&.-vertical {
-				align-items: flex-end;
-			}
-		}
+      &.-vertical {
+        align-items: flex-end;
+      }
+    }
 
-		&-around {
-			justify-content: space-around;
-		}
+    &-around {
+      justify-content: space-around;
+    }
 
-		&-evenly {
-			justify-content: space-evenly;
-		}
+    &-evenly {
+      justify-content: space-evenly;
+    }
 
-		&-between {
-			justify-content: space-between;
-		}
-	}
+    &-between {
+      justify-content: space-between;
+    }
+  }
 
-	&.-spacing {
-		&-xs {
-			&:not(.-vertical) {
-				column-gap: var(--s-spacing-nano);
-			}
+  &.-spacing {
+    &-xs {
+      &:not(.-vertical) {
+        column-gap: var(--s-spacing-nano);
+      }
 
-			&.-vertical {
-				row-gap: var(--s-spacing-nano);
-			}
-		}
+      &.-vertical {
+        row-gap: var(--s-spacing-nano);
+      }
+    }
 
-		&-sm {
-			&:not(.-vertical) {
-				column-gap: var(--s-spacing-xx-small);
-			}
+    &-sm {
+      &:not(.-vertical) {
+        column-gap: var(--s-spacing-xx-small);
+      }
 
-			&.-vertical {
-				row-gap: var(--s-spacing-xx-small);
-			}
-		}
+      &.-vertical {
+        row-gap: var(--s-spacing-xx-small);
+      }
+    }
 
-		&-lg {
-			&:not(.-vertical) {
-				column-gap: var(--s-spacing-small);
-			}
+    &-lg {
+      &:not(.-vertical) {
+        column-gap: var(--s-spacing-small);
+      }
 
-			&.-vertical {
-				row-gap: var(--s-spacing-small);
-			}
-		}
+      &.-vertical {
+        row-gap: var(--s-spacing-small);
+      }
+    }
 
-		&-xl {
-			&:not(.-vertical) {
-				column-gap: var(--s-spacing-medium);
-			}
+    &-xl {
+      &:not(.-vertical) {
+        column-gap: var(--s-spacing-medium);
+      }
 
-			&.-vertical {
-				row-gap: var(--s-spacing-medium);
-			}
-		}
-	}
+      &.-vertical {
+        row-gap: var(--s-spacing-medium);
+      }
+    }
+  }
 
-	&.-vertical {
-		flex-direction: column;
-		row-gap: var(--s-spacing-x-small);
-	}
+  &.-vertical {
+    flex-direction: column;
+    row-gap: var(--s-spacing-x-small);
+  }
 
-	&:not(.-vertical) {
-		column-gap: var(--s-spacing-x-small);
-	}
+  &:not(.-vertical) {
+    column-gap: var(--s-spacing-x-small);
+  }
 
-	&.-no-wrap {
-		flex-wrap: nowrap;
-	}
+  &.-no-wrap {
+    flex-wrap: nowrap;
+  }
 }

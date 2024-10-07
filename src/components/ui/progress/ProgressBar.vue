@@ -1,23 +1,23 @@
 <script setup lang="ts">
 export interface Props {
-	height?: string
-	max?: string | number
-	value?: string | number
+  height?: string;
+  max?: string | number;
+  value?: string | number;
 }
 
 withDefaults(defineProps<Props>(), {
-	height: '3px',
-	max: 100
-})
+  height: '3px',
+  max: 100,
+});
 </script>
 
 <template>
-	<progress class="ui-progress-bar" :value="value" :max="max" />
+  <progress class="ui-progress-bar" :value="value" :max="max" />
 </template>
 
 <style lang="scss">
 .ui-progress-bar {
-	height: v-bind(height);
+  height: v-bind(height);
 }
 @import './ProgressBar.scss';
 </style>

@@ -1,71 +1,69 @@
 .ui-browser {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 
-	.ui-browser-list {
-		padding-top: var(--s-spacing-quark);
-		flex-grow: 1;
-	}
+  .ui-browser-list {
+    padding-top: var(--s-spacing-quark);
+    flex-grow: 1;
+  }
 
-	.ui-browser-list-row {
-		display: flex;
-		align-items: center;
-		cursor: pointer;
-	
-		&:hover {
-	
-			.ui-form-checkbox-checkmark {
-				border-color: var(--s-color-fill-highlight);
-			}
-		}
-	
-		+ .ui-browser-list-row {
-			border-top: var(--s-border-light);
-		}
-	}
-	
+  .ui-browser-list-row {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 
-	.ui-browser-list-cell {
-		user-select: none;
-		padding: var(--s-spacing-xx-small);
+    &:hover {
+      .ui-form-checkbox-checkmark {
+        border-color: var(--s-color-fill-highlight);
+      }
+    }
 
-		&.inactive {
-			padding-left: var(--s-spacing-small);
-		}
-	}
+    + .ui-browser-list-row {
+      border-top: var(--s-border-light);
+    }
+  }
 
-	.ui-browser-search {
-		position: sticky;
-		padding: 0 0 var(--s-spacing-small) 0;
-		z-index: var(--s-index-medium);
+  .ui-browser-list-cell {
+    user-select: none;
+    padding: var(--s-spacing-xx-small);
 
-		.ui-browser-search-input {
-			.box-icon {
-				display: flex;
-				width: var(--s-spacing-large);
-				justify-content: center;
+    &.inactive {
+      padding-left: var(--s-spacing-small);
+    }
+  }
 
-				.icon {
-					margin: 0;
-				}
-			}
-		}
+  .ui-browser-search {
+    position: sticky;
+    padding: 0 0 var(--s-spacing-small) 0;
+    z-index: var(--s-index-medium);
 
-		.form-wrapper-content-item {
-			padding-right: var(--s-spacing-xx-small);
-		}
-	}
+    .ui-browser-search-input {
+      .box-icon {
+        display: flex;
+        width: var(--s-spacing-large);
+        justify-content: center;
 
-	.ui-browser-search-loading {
-		padding: var(--s-spacing-xx-small);
-	}
+        .icon {
+          margin: 0;
+        }
+      }
+    }
 
-	.or:last-child {
-		display: none;
-	}
+    .form-wrapper-content-item {
+      padding-right: var(--s-spacing-xx-small);
+    }
+  }
 
-	.form-control{
-		padding: 0;
-	}
+  .ui-browser-search-loading {
+    padding: var(--s-spacing-xx-small);
+  }
+
+  .or:last-child {
+    display: none;
+  }
+
+  .form-control {
+    padding: 0;
+  }
 }

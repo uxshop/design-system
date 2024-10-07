@@ -1,58 +1,58 @@
 ::placeholder {
-	color: var(--s-color-content-placeholder);
+  color: var(--s-color-content-placeholder);
 }
 
 .form-control-loader {
-	position: absolute;
-	right: var(--s-spacing-x-small);
-	height: 100%;
-	display: flex;
-	align-items: center;
-	top: 0;
+  position: absolute;
+  right: var(--s-spacing-x-small);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  top: 0;
 }
 
 .invalid-feedback {
-	color: var(--s-color-content-critical);
-	padding: var(--s-spacing-quark);
-	font: var(--s-typography-caption-small);
+  color: var(--s-color-content-critical);
+  padding: var(--s-spacing-quark);
+  font: var(--s-typography-caption-small);
 }
 
 .form-control-label {
-	text-align: left;
-	margin-bottom: var(--s-spacing-quark);
-	display: inline-block;
-	font: var(--s-typography-label-medium);
-	color: var(--s-color-content-default);
+  text-align: left;
+  margin-bottom: var(--s-spacing-quark);
+  display: inline-block;
+  font: var(--s-typography-label-medium);
+  color: var(--s-color-content-default);
 }
 
 textarea {
-	&.form-control {
-		padding-top: var(--s-spacing-nano);
-	}
+  &.form-control {
+    padding-top: var(--s-spacing-nano);
+  }
 }
 
 .form-control {
-	@include form-control;
-	display: inline-flex;
-	justify-content: space-between;
+  @include form-control;
+  display: inline-flex;
+  justify-content: space-between;
 
-	&.-pill {
-		border-radius: var(--s-border-radius-pill);
-		padding-inline-start: var(--s-spacing-x-small);
-		padding-inline-end: var(--s-spacing-x-small);
-	}
+  &.-pill {
+    border-radius: var(--s-border-radius-pill);
+    padding-inline-start: var(--s-spacing-x-small);
+    padding-inline-end: var(--s-spacing-x-small);
+  }
 
-	&.-invalid {
-		color: var(--s-color-fill-critical);
-	}
+  &.-invalid {
+    color: var(--s-color-fill-critical);
+  }
 }
 
 .form-control.-select {
-	padding-right: var(--s-spacing-x-large);
+  padding-right: var(--s-spacing-x-large);
 
-	.form-select-option {
-		background-color: var(--s-color-fill-default);
-	}
+  .form-select-option {
+    background-color: var(--s-color-fill-default);
+  }
 
-	@include select-arrow;
+  @include select-arrow;
 }

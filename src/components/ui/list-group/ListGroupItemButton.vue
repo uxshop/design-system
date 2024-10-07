@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import ListGroupItem from './ListGroupItem.vue'
+import ListGroupItem from './ListGroupItem.vue';
 </script>
 
 <template>
-	<ListGroupItem class="-button">
-		<slot />
-	</ListGroupItem>
+  <ListGroupItem class="-button">
+    <slot />
+  </ListGroupItem>
 </template>
 
 <style lang="scss">

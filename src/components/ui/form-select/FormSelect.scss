@@ -1,31 +1,31 @@
 .ui-form-select {
-	select {
-		color: var(--s-color-content-default);
-		min-height: auto;
-		height: var(--s-spacing-large);
+  select {
+    color: var(--s-color-content-default);
+    min-height: auto;
+    height: var(--s-spacing-large);
 
-		&.-sm {
-			min-height: auto;
-			height: var(--s-spacing-medium);
-		}
+    &.-sm {
+      min-height: auto;
+      height: var(--s-spacing-medium);
+    }
 
-		&.-lg {
-			min-height: auto;
-			height: var(--s-spacing-xx-large);
-		}
+    &.-lg {
+      min-height: auto;
+      height: var(--s-spacing-xx-large);
+    }
 
-		&:hover {
-			cursor: pointer;
-			background-color: var(--s-color-fill-default-hover);
-		}
+    &:hover {
+      cursor: pointer;
+      background-color: var(--s-color-fill-default-hover);
+    }
 
-		.form-select-option {
-			font: var(--s-typography-paragraph-regular);
-			color: var(--s-color-content-default);
-		}
+    .form-select-option {
+      font: var(--s-typography-paragraph-regular);
+      color: var(--s-color-content-default);
+    }
 
-		&.-disabled {
-			color: var(--s-color-content-disable);
-		}
-	}
+    &.-disabled {
+      color: var(--s-color-content-disable);
+    }
+  }
 }

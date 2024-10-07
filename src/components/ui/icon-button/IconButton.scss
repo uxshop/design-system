@@ -1,34 +1,34 @@
 .ui-icon-button {
-	.ui-button-content {
-		.ui-button-label {
-			display: flex;
-		}
-	}
+  .ui-button-content {
+    .ui-button-label {
+      display: flex;
+    }
+  }
 
-	&.-sm {
-		max-height: var(--s-spacing-small);
-		max-width: var(--s-spacing-small);
-		padding: var(--s-spacing-quark);
-	}
+  &.-sm {
+    max-height: var(--s-spacing-small);
+    max-width: var(--s-spacing-small);
+    padding: var(--s-spacing-quark);
+  }
 
-	&.-md {
-		max-height: var(--s-spacing-medium);
-		max-width: var(--s-spacing-medium);
-		padding: var(--s-spacing-quark);
-	}
+  &.-md {
+    max-height: var(--s-spacing-medium);
+    max-width: var(--s-spacing-medium);
+    padding: var(--s-spacing-quark);
+  }
 
-	&.-lg {
-		max-height: var(--s-spacing-large);
-		max-width: var(--s-spacing-large);
-		padding: var(--s-spacing-x-small);
-	}
+  &.-lg {
+    max-height: var(--s-spacing-large);
+    max-width: var(--s-spacing-large);
+    padding: var(--s-spacing-x-small);
+  }
 
-	&.-fab {
-		position: absolute;
-	}
+  &.-fab {
+    position: absolute;
+  }
 
-	&.-on-color {
-		color: var(--s-color-content-on-color);
-		border-color: transparent;
-	}
+  &.-on-color {
+    color: var(--s-color-content-on-color);
+    border-color: transparent;
+  }
 }

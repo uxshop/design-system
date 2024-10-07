@@ -1,8 +1,8 @@
 .ui-list-group-item {
-	&.-button {
-		cursor: pointer;
-		&:hover {
-			background-color: var(--s-color-fill-default-hover);
-		}
-	}
+  &.-button {
+    cursor: pointer;
+    &:hover {
+      background-color: var(--s-color-fill-default-hover);
+    }
+  }
 }

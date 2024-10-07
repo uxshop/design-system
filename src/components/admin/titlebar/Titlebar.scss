@@ -1,72 +1,72 @@
 @import '../../../scss/mixins.scss';
 
 .titlebar {
-	margin: var(--s-spacing-small) 0;
-	display: flex;
-	align-items: center;
-	min-height: 40px;
+  margin: var(--s-spacing-small) 0;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
 
-	&-content {
-		display: flex;
-		align-items: center;
-		gap: var(--s-spacing-x-small);
-		color: var(--s-color-content-default);
-		overflow: hidden;
-		padding-right: var(--s-spacing-x-small);
+  &-content {
+    display: flex;
+    align-items: center;
+    gap: var(--s-spacing-x-small);
+    color: var(--s-color-content-default);
+    overflow: hidden;
+    padding-right: var(--s-spacing-x-small);
 
-		&-title {
-			display: flex;
-			flex-direction: column;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
+    &-title {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
-			&-text {
-				font: var(--s-typography-heading-large);
-				margin: 0;
-				text-overflow: ellipsis;
-				overflow: hidden;
-			}
+      &-text {
+        font: var(--s-typography-heading-large);
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
 
-			&.-mobile {
-				display: none;
-			}
-		}
-	}
+      &.-mobile {
+        display: none;
+      }
+    }
+  }
 
-	&-subtitle {
-		display: flex;
-	}
+  &-subtitle {
+    display: flex;
+  }
 
-	> .ui-icon {
-		height: 100%;
-		align-items: center;
-		display: flex;
-		flex-grow: 1;
-	}
+  > .ui-icon {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+  }
 
-	.titlebar-actions {
-		margin-left: auto;
-		white-space: nowrap;
-		display: flex;
-		align-items: center;
-		gap: 10px;
-	}
+  .titlebar-actions {
+    margin-left: auto;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-	.titlebar-actions-secondary {
-		display: flex;
-		gap: inherit;
-	}
+  .titlebar-actions-secondary {
+    display: flex;
+    gap: inherit;
+  }
 
-	@include mobile {
-		margin: var(--s-spacing-x-small) 0 var(--s-spacing-small) 0;
+  @include mobile {
+    margin: var(--s-spacing-x-small) 0 var(--s-spacing-small) 0;
 
-		&-content {
-			flex: 1;
+    &-content {
+      flex: 1;
 
-			&-title-text {
-				white-space: nowrap;
-			}
-		}
-	}
+      &-title-text {
+        white-space: nowrap;
+      }
+    }
+  }
 }

@@ -1,63 +1,63 @@
 @import '../../../scss/mixins.scss';
 
 .ui-layout {
-	height: 100vh;
-	overflow-x: hidden;
-	flex-grow: 1;
-	display: grid;
-	align-items: start;
-	grid-template-columns: var(--layout-sidebar-width) 1fr;
-	grid-template-rows: auto 1fr;
-	gap: 0px 0px;
-	grid-template-areas:
-		'ui-layout-sidebar ui-layout-navbar'
-		'ui-layout-sidebar ui-layout-content';
+  height: 100vh;
+  overflow-x: hidden;
+  flex-grow: 1;
+  display: grid;
+  align-items: start;
+  grid-template-columns: var(--layout-sidebar-width) 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    'ui-layout-sidebar ui-layout-navbar'
+    'ui-layout-sidebar ui-layout-content';
 
-	.ui-layout-navbar {
-		grid-area: ui-layout-navbar;
-		position: sticky;
-		top: 0;
-		z-index: var(--s-index-high);
-	}
+  .ui-layout-navbar {
+    grid-area: ui-layout-navbar;
+    position: sticky;
+    top: 0;
+    z-index: var(--s-index-high);
+  }
 
-	.ui-layout-content {
-		grid-area: ui-layout-content;
-		display: flex;
-		width: calc(100vw - var(--layout-sidebar-width));
-	}
+  .ui-layout-content {
+    grid-area: ui-layout-content;
+    display: flex;
+    width: calc(100vw - var(--layout-sidebar-width));
+  }
 
-	.ui-layout-sidebar {
-		grid-area: ui-layout-sidebar;
-		position: sticky;
-		top: 0;
-		z-index: var(--s-index-very-high);
-	}
+  .ui-layout-sidebar {
+    grid-area: ui-layout-sidebar;
+    position: sticky;
+    top: 0;
+    z-index: var(--s-index-very-high);
+  }
 
-	.ui-layout-content-page {
-		width: 100%;
-		flex: 1;
-		flex-grow: 1;
-		display: flex;
-		flex-direction: column;
-	}
+  .ui-layout-content-page {
+    width: 100%;
+    flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-	@include mobile {
-		grid-template-columns: 0 100%;
-		height: 100%;
+  @include mobile {
+    grid-template-columns: 0 100%;
+    height: 100%;
 
-		.ui-layout-content {
-			width: 100%;
-		}
+    .ui-layout-content {
+      width: 100%;
+    }
 
-		.ui-layout-navbar {
-			left: 0;
-			width: 100%;
-			position: fixed;
-			height: initial;
-		}
+    .ui-layout-navbar {
+      left: 0;
+      width: 100%;
+      position: fixed;
+      height: initial;
+    }
 
-		.ui-layout-content-page {
-			max-width: 100%;
-		}
-	}
+    .ui-layout-content-page {
+      max-width: 100%;
+    }
+  }
 }

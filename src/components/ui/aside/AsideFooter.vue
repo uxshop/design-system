@@ -1,5 +1,5 @@
 <template>
-	<div class="aside-footer">
-		<slot />
-	</div>
+  <div class="aside-footer">
+    <slot />
+  </div>
 </template>

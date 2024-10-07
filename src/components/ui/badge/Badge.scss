@@ -1,63 +1,63 @@
 .ui-badge {
-	display: inline-flex;
-	align-items: center;
-	border-radius: var(--s-border-radius-small);
-	color: var(--s-color-content-on-color);
-	font: var(--s-typography-label-small);
-	font-weight: var(--s-font-weight-semibold);
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--s-border-radius-small);
+  color: var(--s-color-content-on-color);
+  font: var(--s-typography-label-small);
+  font-weight: var(--s-font-weight-semibold);
 
-	& + .ui-badge {
-		margin-left: var(--s-spacing-quark);
-	}
+  & + .ui-badge {
+    margin-left: var(--s-spacing-quark);
+  }
 
-	&.-variant {
-		&-default {
-			color: var(--s-color-content-default);
-			background-color: var(--s-color-fill-default-light);
-		}
+  &.-variant {
+    &-default {
+      color: var(--s-color-content-default);
+      background-color: var(--s-color-fill-default-light);
+    }
 
-		&-highlight {
-			background-color: var(--s-color-fill-highlight);
-		}
+    &-highlight {
+      background-color: var(--s-color-fill-highlight);
+    }
 
-		&-warning {
-			background-color: var(--s-color-fill-warning);
-		}
+    &-warning {
+      background-color: var(--s-color-fill-warning);
+    }
 
-		&-success {
-			background-color: var(--s-color-fill-success);
-		}
+    &-success {
+      background-color: var(--s-color-fill-success);
+    }
 
-		&-critical {
-			background-color: var(--s-color-fill-critical);
-		}
-	}
+    &-critical {
+      background-color: var(--s-color-fill-critical);
+    }
+  }
 
-	&.-size {
-		&-sm {
-			font: var(--s-typography-caption-small);
-			font-weight: var(--s-font-weight-semibold);
-			padding: 0 var(--s-spacing-quark);
+  &.-size {
+    &-sm {
+      font: var(--s-typography-caption-small);
+      font-weight: var(--s-font-weight-semibold);
+      padding: 0 var(--s-spacing-quark);
 
-			&.-pill {
-				padding: 0 var(--s-spacing-nano);
-			}
-		}
+      &.-pill {
+        padding: 0 var(--s-spacing-nano);
+      }
+    }
 
-		&-md {
-			padding: 0 var(--s-spacing-nano);
-		}
+    &-md {
+      padding: 0 var(--s-spacing-nano);
+    }
 
-		&-lg {
-			padding: var(--s-spacing-quark) var(--s-spacing-x-small);
-		}
-	}
+    &-lg {
+      padding: var(--s-spacing-quark) var(--s-spacing-x-small);
+    }
+  }
 
-	&.-no-wrap {
-		text-wrap: nowrap;
-	}
+  &.-no-wrap {
+    text-wrap: nowrap;
+  }
 
-	&.-pill {
-		border-radius: var(--s-border-radius-large);
-	}
+  &.-pill {
+    border-radius: var(--s-border-radius-large);
+  }
 }

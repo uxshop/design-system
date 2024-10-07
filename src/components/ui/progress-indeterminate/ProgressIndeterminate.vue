@@ -1,7 +1,7 @@
 <template>
-	<div class="progress-bar">
-		<div class="progress-bar-value"></div>
-	</div>
+  <div class="progress-bar">
+    <div class="progress-bar-value"></div>
+  </div>
 </template>
 
 <style lang="scss">

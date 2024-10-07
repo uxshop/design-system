@@ -1,59 +1,59 @@
 @import '../../../scss/mixins.scss';
 
 .ui-empty-data {
-	padding: var(--s-spacing-small);
-	border-radius: var(--s-border-radius-small);
-	border: dashed 1px transparent;
-	text-align: center;
+  padding: var(--s-spacing-small);
+  border-radius: var(--s-border-radius-small);
+  border: dashed 1px transparent;
+  text-align: center;
 
-	&.-border {
-		border: dashed 1px var(--s-color-border-default);
-	}
+  &.-border {
+    border: dashed 1px var(--s-color-border-default);
+  }
 
-	&.ui-empty-data-link {
-		cursor: pointer;
-		user-select: none;
+  &.ui-empty-data-link {
+    cursor: pointer;
+    user-select: none;
 
-		&:hover {
-			text-decoration: none;
-			border-color: var(--s-color-border-default);
-			color: var(--s-color-content-default);
-			background-color: var(--s-color-fill-default-hover);
-		}
-	}
+    &:hover {
+      text-decoration: none;
+      border-color: var(--s-color-border-default);
+      color: var(--s-color-content-default);
+      background-color: var(--s-color-fill-default-hover);
+    }
+  }
 
-	.ui-empty-data-content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex-grow: 1;
-	}
+  .ui-empty-data-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
 
-	.ui-empty-data-actions {
-		display: flex;
-		gap: var(--s-spacing-nano);
-		justify-content: center;
-		margin-top: var(--s-spacing-nano);
-	}
+  .ui-empty-data-actions {
+    display: flex;
+    gap: var(--s-spacing-nano);
+    justify-content: center;
+    margin-top: var(--s-spacing-nano);
+  }
 
-	.ui-empty-data-icon {
-		margin-right: var(--s-spacing-xx-small);
-	}
+  .ui-empty-data-icon {
+    margin-right: var(--s-spacing-xx-small);
+  }
 
-	.ui-empty-data-text {
-		margin: 0;
-		text-align: center;
-		display: block;
-		font: var(--s-typography-label-small);
-	}
+  .ui-empty-data-text {
+    margin: 0;
+    text-align: center;
+    display: block;
+    font: var(--s-typography-label-small);
+  }
 
-	.ui-empty-data-caption {
-		margin-top: var(--s-spacing-nano);
-		font: var(--s-typography-caption-small);
-	}
+  .ui-empty-data-caption {
+    margin-top: var(--s-spacing-nano);
+    font: var(--s-typography-caption-small);
+  }
 
-	.ui-empty-data-icon-text {
-		display: block;
-	}
+  .ui-empty-data-icon-text {
+    display: block;
+  }
 }
