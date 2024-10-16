@@ -1,3 +1,5 @@
 {
-  "*": ["npm run lint:prettier", "npm run lint:js"]
+  "!(.scss)": ["npm run lint:prettier", "npm run lint:js"],
+  ".scss": ["npm run lint:prettier"],
+  "_comment": ["add this to .scss after erros fixed npm run lint:scss"]
 }
