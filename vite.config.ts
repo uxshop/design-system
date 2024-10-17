@@ -1,5 +1,4 @@
 import { resolve, parse } from 'path';
-import { readdirSync } from 'node:fs';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -7,6 +6,9 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 import { exit } from 'process';
 import { globSync } from 'glob';
 
+/**
+ * Create a basic Vite plugin to solves bug where build script not ending process after complete bundle
+ */
 function forceEnd() {
   return {
     name: 'force-end',
