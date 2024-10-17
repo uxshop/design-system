@@ -1,3 +1,5 @@
+import './scss/theme.scss';
+
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
