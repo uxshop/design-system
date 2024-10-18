@@ -90,7 +90,7 @@ const resetQueryParams = (params = {}) => {
 
 const emitNoFilteredData = () => emit('emptyData')
 
-const fetchData = async () => {
+const fetchData = async (forceTimestamp = false) => {
 	const params = clone(queryParams.value)
 	selected.value = []
 	loading.value = true
@@ -98,7 +98,7 @@ const fetchData = async () => {
 	setUrlParams(params)
 
 	LocalStorage.setObj(storageNameFilters, params)
-
+	if (forceTimestamp) params._ = Date.now()
 	const res = await props.config.service.get(params)
 	if (!res.data.length && isEqual(queryDefault, omit(params, '_'))) emitNoFilteredData()
 	meta.value = res.meta
@@ -270,6 +270,7 @@ defineExpose({
 
 <template>
 	<FormValidation v-model="formError" />
+	alalallallalalallalalalla
 	<Card v-if="loading && !firstGet" class="table-list-skeleton" noPadding>
 		<SkeletonTable cols="4" rows="4" />
 	</Card>
