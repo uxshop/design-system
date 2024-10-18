@@ -17,6 +17,7 @@ export * from './components/admin/gmaps';
 export * from './components/admin/home-bar';
 export * from './components/admin/media-card';
 export * from './components/admin/page';
+export * from './components/admin/page-actions';
 export * from './components/admin/page-helper';
 export * from './components/admin/page-helper-articles';
 export * from './components/admin/page-helper-video';
@@ -73,7 +74,7 @@ export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Dialog } from './components/ui/dialog/Dialog.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
-export { default as PageActions } from './components/admin/page-actions/PageActions.vue';
+
 export { default as FormColorpicker } from './components/ui/form-colorpicker/FormColorpicker.vue';
 export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue';
 export { default as FormDatepicker } from './components/ui/form-datepicker/FormDatepicker.vue';
