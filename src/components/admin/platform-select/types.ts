@@ -14,3 +14,8 @@ export interface IPlatform {
   badgeStatus?: BadgeStatusType;
   disabled?: boolean;
 }
+
+export interface PlatformSelectProps {
+  platformsList: IPlatform[];
+  badgeConfig?: Partial<BadgeConfigType>;
+}

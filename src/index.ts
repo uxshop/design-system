@@ -23,6 +23,7 @@ export * from './components/admin/page-helper-articles';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-message-support';
 export * from './components/admin/panel-skeleton';
+export * from './components/admin/platform-select';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 export * from './components/admin/seo';
@@ -90,7 +91,7 @@ export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
 export { default as RowExclude } from './components/admin/row-exclude/RowExclude.vue';
 
 export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue';
-export { default as PlatformSelect, type IPlatform } from './components/admin/platform-select/PlatformSelect.vue';
+
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 
 export { default as Savebar } from './components/admin/savebar/Savebar.vue';
