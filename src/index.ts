@@ -10,6 +10,7 @@ export * from './components/admin/card-seo';
 export * from './components/admin/codemirror';
 export * from './components/admin/content-403';
 export * from './components/admin/content-404';
+export * from './components/admin/empty-data';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -76,7 +77,7 @@ export { default as Layout } from './components/admin/layout/Layout.vue';
 export { default as FrameAnnotation } from './components/admin/frame-annotation/FrameAnnotation.vue';
 
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
-export { default as EmptyData } from './components/admin/empty-data/EmptyData.vue';
+
 export { default as FormRegister } from './components/admin/form-register/FormRegister.vue';
 
 export { default as PageMessageSupport } from './components/admin/page-message-support/PageMessageSupport.vue';
