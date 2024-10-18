@@ -8,6 +8,8 @@ export * from './components/admin/card-active';
 export * from './components/admin/card-annotation';
 export * from './components/admin/card-seo';
 export * from './components/admin/codemirror';
+export * from './components/admin/content-403';
+export * from './components/admin/content-404';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
