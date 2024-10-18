@@ -9,19 +9,22 @@
     "dev": "vite",
     "preview": "vite preview --port 5050",
     "type:check": "vue-tsc --build --force tsconfig.vitest.json",
+    "build": "vite build",
     "test:unit": "vitest",
     "test:check": "vitest --run --passWithNoTests",
     "lint:js": "eslint",
+    "lint:scss": "stylelint --cache './src/**/*.scss'",
     "lint:prettier": "prettier --check --log-level warn",
     "lint:prettier:all": "prettier . --check --log-level warn",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:sass:compile": "tsx .storybook/compile.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "npm run build"
   },
   "peerDependencies": {
-    "vue": ">= 3.4.29",
-    "typescript": ">= 5.5.0"
+    "typescript": ">= 5.5.0",
+    "vue": ">= 3.4.29"
   },
   "dependencies": {
     "@codemirror/commands": "^6.6.2",
@@ -38,11 +41,13 @@
     "apexcharts": "^3.37.1",
     "choices.js": "^10.2.0",
     "codemirror": "^6.0.1",
+    "glob": "^11.0.0",
     "globals": "^15.9.0",
     "lodash-es": "^4.17.21",
     "luxon": "^3.4.0",
     "maska": "^2.1.11",
     "perfect-scrollbar": "^1.5.5",
+    "vite-plugin-lib-inject-css": "^2.1.1",
     "vue-currency-input": "^3.1.0",
     "vue-router": "^4.4.5"
   },
@@ -81,10 +86,12 @@
     "lint-staged": "^15.2.0",
     "postcss": "^8.4.14",
     "prettier": "^3.3.0",
-    "sass": "^1.77.0",
+    "sass-embedded": "^1.79.5",
     "start-server-and-test": "^1.14.0",
     "storybook": "^8.3.3",
     "storybook-design-token": "^3.1.0",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1",
     "tsx": "^4.19.1",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.7.0",
@@ -93,6 +100,9 @@
     "vue": "^3.5.9",
     "vue-tsc": "^2.0.0"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "imports": {
     "#ds/*": [
       "./src/*",
@@ -102,10 +112,22 @@
     ]
   },
   "exports": {
-    ".": "./src/index.ts",
-    "./setup": "./src/setup.ts",
-    "./filters": "./src/filters.ts",
-    "./directives": "./src/directives.ts",
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./setup": {
+      "types": "./src/setup.ts",
+      "default": "./dist/setup.js"
+    },
+    "./filters": {
+      "types": "./src/filters.ts",
+      "default": "./dist/filter.js"
+    },
+    "./directives": {
+      "types": "./src/directives.ts",
+      "default": "./dist/directives.js"
+    },
     "./theme": "./src/scss/theme.scss"
   }
 }
