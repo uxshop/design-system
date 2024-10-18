@@ -16,9 +16,9 @@ export * from './components/admin/frame-annotation';
 export * from './components/admin/gmaps';
 export * from './components/admin/home-bar';
 export * from './components/admin/media-card';
-
-export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
+export * from './components/admin/page-helper-articles';
+export * from './components/admin/page-helper-video';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 export * from './components/admin/seo';
