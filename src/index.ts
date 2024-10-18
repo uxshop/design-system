@@ -15,6 +15,8 @@ export * from './components/admin/form-register';
 export * from './components/admin/frame-annotation';
 export * from './components/admin/gmaps';
 export * from './components/admin/home-bar';
+export * from './components/admin/media-card';
+
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -117,7 +119,7 @@ export { default as CustomScroll } from './components/ui/custom-scroll/CustomScr
 export { default as ListGroup } from './components/ui/list-group/ListGroup.vue';
 export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue';
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';
-export { default as MediaCard } from './components/admin/media-card/MediaCard.vue';
+
 export { default as UserProfileCard } from './components/admin/user-profile-card/UserProfileCard.vue';
 export { default as UserButton } from './components/admin/user-profile-card/partials/UserButton.vue';
 
