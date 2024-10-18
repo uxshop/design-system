@@ -12,6 +12,7 @@ export * from './components/admin/content-403';
 export * from './components/admin/content-404';
 export * from './components/admin/empty-data';
 export * from './components/admin/form-register';
+export * from './components/admin/frame-annotation';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -75,7 +76,6 @@ export { default as FormAutocomplete } from './components/ui/form-autocomplete/F
 export { default as FormSelect, type IFormSelectOptions } from './components/ui/form-select/FormSelect.vue';
 export { default as FormSelectOption } from './components/ui/form-select/FormSelectOption.vue';
 export { default as Layout } from './components/admin/layout/Layout.vue';
-export { default as FrameAnnotation } from './components/admin/frame-annotation/FrameAnnotation.vue';
 
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
 
