@@ -1,14 +1,20 @@
 import './scss/theme.scss';
 
+// Admin
+export * from './components/admin/apexchart';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 export * from './components/admin/sidebar';
 export * from './components/admin/table-list';
+
+// UI
 export * from './components/ui/badge';
 export * from './components/ui/dropdown';
 export * from './components/ui/infinite-scroll';
+
+// Types
 export * from './types';
 
 export { Toast as $toast } from './components/ui/toast';
@@ -59,7 +65,7 @@ export { default as FormSelect, type IFormSelectOptions } from './components/ui/
 export { default as FormSelectOption } from './components/ui/form-select/FormSelectOption.vue';
 export { default as Layout } from './components/admin/layout/Layout.vue';
 export { default as FrameAnnotation } from './components/admin/frame-annotation/FrameAnnotation.vue';
-export { default as Apexchart } from './components/admin/apexchart/Apexchart.vue';
+
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
 export { default as EmptyData } from './components/admin/empty-data/EmptyData.vue';
 export { default as FormRegister } from './components/admin/form-register/FormRegister.vue';
