@@ -13,6 +13,7 @@ export * from './components/admin/content-404';
 export * from './components/admin/empty-data';
 export * from './components/admin/form-register';
 export * from './components/admin/frame-annotation';
+export * from './components/admin/gmaps';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -105,7 +106,6 @@ export { default as Modal } from './components/ui/modal/Modal.vue';
 export { default as ModalItem } from './components/ui/modal/ModalItem.vue';
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
 
-export { default as Gmaps } from './components/admin/gmaps/Gmaps.vue';
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
 export { default as RatingStar } from './components/ui/rating-star/RatingStar.vue';
