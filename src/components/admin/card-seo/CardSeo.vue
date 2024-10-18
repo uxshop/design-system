@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import Card from '../../ui/card/Card.vue';
-import Seo, { type SeoInterface } from '../seo/Seo.vue';
+import Seo from '../seo/Seo.vue';
+import type { CardSeoProps } from './types';
 
-const props = defineProps<{
-  modelValue: SeoInterface;
-  keyTitle?: string;
-  keySubTitle?: string;
-  keyDescription?: string;
-  domain: string;
-}>();
+const props = defineProps<CardSeoProps>();
 
 const emit = defineEmits(['update:modelValue']);
 

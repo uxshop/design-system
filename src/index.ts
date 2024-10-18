@@ -6,6 +6,7 @@ export * from './components/admin/button-action';
 export * from './components/admin/button-darkmode';
 export * from './components/admin/card-active';
 export * from './components/admin/card-annotation';
+export * from './components/admin/card-seo';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -87,8 +88,7 @@ export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 export { default as Codemirror } from './components/admin/codemirror/Codemirror.vue';
 export { default as Savebar } from './components/admin/savebar/Savebar.vue';
 export { default as Topbar } from './components/admin/topbar/Topbar.vue';
-export { default as Seo } from './components/admin/seo/Seo.vue';
-export { default as CardSeo } from './components/admin/card-seo/CardSeo.vue';
+
 export { default as Card } from './components/ui/card/Card.vue';
 export { default as CardItem } from './components/ui/card/CardItem.vue';
 export { default as CardSection } from './components/ui/card/CardSection.vue';
