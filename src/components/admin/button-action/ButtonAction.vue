@@ -4,14 +4,9 @@ import dialog from '../../ui/dialog';
 import IconButton from '../../ui/icon-button/IconButton.vue';
 import TextStyle from '../../ui/text-style/TextStyle.vue';
 import Button from '../../ui/button/Button.vue';
+import type { ButtonActionProps } from './types';
 
-const props = defineProps<{
-  type: string;
-  active?: boolean;
-  size?: string;
-  deleteName?: string | null;
-  noEvents?: boolean;
-}>();
+const props = defineProps<ButtonActionProps>();
 
 const emit = defineEmits(['delete', 'inactive', 'active', 'close', 'update:active', 'toggleActive']);
 const attrs = useAttrs();

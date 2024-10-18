@@ -2,6 +2,7 @@ import './scss/theme.scss';
 
 // Admin
 export * from './components/admin/apexchart';
+export * from './components/admin/button-action';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -74,7 +75,7 @@ export { default as CardAnnotation } from './components/admin/card-annotation/Ca
 export { default as PageMessageSupport } from './components/admin/page-message-support/PageMessageSupport.vue';
 
 export { default as Page } from './components/admin/page/Page.vue';
-export { default as ButtonAction } from './components/admin/button-action/ButtonAction.vue';
+
 export { default as RowExclude } from './components/admin/row-exclude/RowExclude.vue';
 export { default as CardActive } from './components/admin/card-active/CardActive.vue';
 export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue';
@@ -93,7 +94,6 @@ export { default as ColorThumb } from './components/ui/color-thumb/ColorThumb.vu
 export { default as Container } from './components/ui/grid/container/Container.vue';
 export { default as Row } from './components/ui/grid/row/Row.vue';
 export { default as Col } from './components/ui/grid/col/Col.vue';
-export { default as ButtonActionList } from './components/admin/button-action/ButtonActionList.vue';
 
 export { default as Modal } from './components/ui/modal/Modal.vue';
 export { default as ModalItem } from './components/ui/modal/ModalItem.vue';
