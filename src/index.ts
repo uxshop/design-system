@@ -16,6 +16,7 @@ export * from './components/admin/frame-annotation';
 export * from './components/admin/gmaps';
 export * from './components/admin/home-bar';
 export * from './components/admin/media-card';
+export * from './components/admin/page';
 export * from './components/admin/page-helper';
 export * from './components/admin/page-helper-articles';
 export * from './components/admin/page-helper-video';
@@ -84,8 +85,6 @@ export { default as Layout } from './components/admin/layout/Layout.vue';
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
 
 export { default as PageMessageSupport } from './components/admin/page-message-support/PageMessageSupport.vue';
-
-export { default as Page } from './components/admin/page/Page.vue';
 
 export { default as RowExclude } from './components/admin/row-exclude/RowExclude.vue';
 
