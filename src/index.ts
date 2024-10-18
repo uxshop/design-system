@@ -7,6 +7,7 @@ export * from './components/admin/button-darkmode';
 export * from './components/admin/card-active';
 export * from './components/admin/card-annotation';
 export * from './components/admin/card-seo';
+export * from './components/admin/codemirror';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -85,7 +86,7 @@ export { default as RowExclude } from './components/admin/row-exclude/RowExclude
 export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue';
 export { default as PlatformSelect, type IPlatform } from './components/admin/platform-select/PlatformSelect.vue';
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
-export { default as Codemirror } from './components/admin/codemirror/Codemirror.vue';
+
 export { default as Savebar } from './components/admin/savebar/Savebar.vue';
 export { default as Topbar } from './components/admin/topbar/Topbar.vue';
 
