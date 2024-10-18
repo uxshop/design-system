@@ -2,17 +2,11 @@
 import { computed, ref, watch } from 'vue';
 import Skeleton from '../../ui/skeleton/Skeleton.vue';
 import SidebarHeader from '../sidebar-header/SidebarHeader.vue';
+import type { PanelSkeletonProps } from './types';
 
-const props = withDefaults(
-  defineProps<{
-    logoImage: string;
-    isLoading: boolean;
-    delayMiliseconds?: number;
-  }>(),
-  {
-    delayMiliseconds: 1,
-  }
-);
+const props = withDefaults(defineProps<PanelSkeletonProps>(), {
+  delayMiliseconds: 1,
+});
 
 const delayInSeconds = computed(() => `${props.delayMiliseconds / 1000}s`);
 
@@ -32,6 +26,7 @@ watch(
   { immediate: true }
 );
 </script>
+
 <template>
   <div v-if="isVisible" class="panel-skeleton-container" :class="{ '-show': isLoading }">
     <div class="sidebar">
@@ -68,6 +63,7 @@ watch(
     </div>
   </div>
 </template>
+
 <style lang="scss">
 @import './PanelSkeleton.scss';
 .panel-skeleton-container {
