@@ -3,6 +3,7 @@ import './scss/theme.scss';
 // Admin
 export * from './components/admin/apexchart';
 export * from './components/admin/button-action';
+export * from './components/admin/button-darkmode';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
