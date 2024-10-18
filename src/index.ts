@@ -4,6 +4,8 @@ import './scss/theme.scss';
 export * from './components/admin/apexchart';
 export * from './components/admin/button-action';
 export * from './components/admin/button-darkmode';
+export * from './components/admin/card-active';
+export * from './components/admin/card-annotation';
 export * from './components/admin/page-helper-video';
 export * from './components/admin/page-helper';
 export * from './components/admin/table';
@@ -71,14 +73,13 @@ export { default as FrameAnnotation } from './components/admin/frame-annotation/
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
 export { default as EmptyData } from './components/admin/empty-data/EmptyData.vue';
 export { default as FormRegister } from './components/admin/form-register/FormRegister.vue';
-export { default as CardAnnotation } from './components/admin/card-annotation/CardAnnotation.vue';
 
 export { default as PageMessageSupport } from './components/admin/page-message-support/PageMessageSupport.vue';
 
 export { default as Page } from './components/admin/page/Page.vue';
 
 export { default as RowExclude } from './components/admin/row-exclude/RowExclude.vue';
-export { default as CardActive } from './components/admin/card-active/CardActive.vue';
+
 export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue';
 export { default as PlatformSelect, type IPlatform } from './components/admin/platform-select/PlatformSelect.vue';
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
