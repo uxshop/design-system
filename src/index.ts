@@ -21,6 +21,7 @@ export * from './components/admin/page-actions';
 export * from './components/admin/page-helper';
 export * from './components/admin/page-helper-articles';
 export * from './components/admin/page-helper-video';
+export * from './components/admin/page-message-support';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 export * from './components/admin/seo';
@@ -84,8 +85,6 @@ export { default as FormSelectOption } from './components/ui/form-select/FormSel
 export { default as Layout } from './components/admin/layout/Layout.vue';
 
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
-
-export { default as PageMessageSupport } from './components/admin/page-message-support/PageMessageSupport.vue';
 
 export { default as RowExclude } from './components/admin/row-exclude/RowExclude.vue';
 
