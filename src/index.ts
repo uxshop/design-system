@@ -25,6 +25,7 @@ export * from './components/admin/page-message-support';
 export * from './components/admin/panel-skeleton';
 export * from './components/admin/platform-select';
 export * from './components/admin/quick-search';
+export * from './components/admin/row-exclude';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 export * from './components/admin/seo';
@@ -88,8 +89,6 @@ export { default as FormAutocomplete } from './components/ui/form-autocomplete/F
 export { default as Layout } from './components/admin/layout/Layout.vue';
 
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
-
-export { default as RowExclude } from './components/admin/row-exclude/RowExclude.vue';
 
 export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue';
 
