@@ -42,6 +42,7 @@ export * from './components/admin/user-profile-card';
 // UI
 export * from './components/ui/alert';
 export * from './components/ui/aside';
+export * from './components/ui/avatar';
 export * from './components/ui/badge';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
@@ -74,7 +75,7 @@ export { default as FormHelper } from './components/ui/form-helper/FormHelper.vu
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';
 export { default as FormValidation } from './components/ui/form-validation/FormValidation.vue';
-export { default as Avatar } from './components/ui/avatar/Avatar.vue';
+
 export { default as ProgressBar } from './components/ui/progress/ProgressBar.vue';
 export { default as Skeleton } from './components/ui/skeleton/Skeleton.vue';
 export { default as SkeletonTable } from './components/ui/skeleton-table/SkeletonTable.vue';
