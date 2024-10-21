@@ -27,10 +27,12 @@ export * from './components/admin/platform-select';
 export * from './components/admin/quick-search';
 export * from './components/admin/row-exclude';
 export * from './components/admin/savebar';
-export * from './components/admin/table';
-export * from './components/admin/browser-select';
 export * from './components/admin/seo';
 export * from './components/admin/sidebar';
+export * from './components/admin/sidebar-header';
+export * from './components/admin/table';
+export * from './components/admin/browser-select';
+
 export * from './components/admin/table-list';
 
 // UI
