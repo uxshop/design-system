@@ -51,6 +51,7 @@ export * from './components/ui/callout-card';
 export * from './components/ui/card';
 export * from './components/ui/card-info-link';
 export * from './components/ui/color-thumb';
+export * from './components/ui/custom-scroll';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -63,7 +64,6 @@ export { Dialog as $dialog } from './components/ui/dialog';
 export { default as DescriptionList } from './components/ui/description-list/DescriptionList.vue';
 export { default as DescriptionListItem } from './components/ui/description-list/components/description-list-item/DescriptionListItem.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
-
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as FormCheckbox } from './components/ui/form-checkbox/FormCheckbox.vue';
 export { default as FormTextfield } from './components/ui/form-textfield/FormTextfield.vue';
@@ -80,7 +80,6 @@ export { default as FormHelper } from './components/ui/form-helper/FormHelper.vu
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';
 export { default as FormValidation } from './components/ui/form-validation/FormValidation.vue';
-
 export { default as ProgressBar } from './components/ui/progress/ProgressBar.vue';
 export { default as Skeleton } from './components/ui/skeleton/Skeleton.vue';
 export { default as SkeletonTable } from './components/ui/skeleton-table/SkeletonTable.vue';
@@ -93,29 +92,22 @@ export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Dialog } from './components/ui/dialog/Dialog.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
-
 export { default as FormColorpicker } from './components/ui/form-colorpicker/FormColorpicker.vue';
 export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue';
 export { default as FormDatepicker } from './components/ui/form-datepicker/FormDatepicker.vue';
 export { default as FormAutocomplete } from './components/ui/form-autocomplete/FormAutocomplete.vue';
-
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
-
 export { default as Container } from './components/ui/grid/container/Container.vue';
 export { default as Row } from './components/ui/grid/row/Row.vue';
 export { default as Col } from './components/ui/grid/col/Col.vue';
-
 export { default as Modal } from './components/ui/modal/Modal.vue';
 export { default as ModalItem } from './components/ui/modal/ModalItem.vue';
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
-
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
 export { default as RatingStar } from './components/ui/rating-star/RatingStar.vue';
-
 export { default as FormLayout } from './components/ui/form-layout/FormLayout.vue';
 export { default as FormLayoutItem } from './components/ui/form-layout/FormLayoutItem.vue';
-export { default as CustomScroll } from './components/ui/custom-scroll/CustomScroll.vue';
 export { default as ListGroup } from './components/ui/list-group/ListGroup.vue';
 export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue';
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';
