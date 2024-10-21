@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { initials as filterInitials } from '../../../../filters';
-import Icon from '../../../ui/icon/Icon.vue';
+import { initials as filterInitials } from '../../../filters';
+import Icon from '../../ui/icon/Icon.vue';
+import type { UserButtonProps } from './types';
 
-const props = defineProps<{
-  userName: string;
-  caption?: string;
-  image?: string;
-  hideIcon?: boolean;
-}>();
+const props = defineProps<UserButtonProps>();
 
 const userInitials = computed(() => filterInitials(props.userName));
 </script>
+
 <template>
   <div class="user-card-btn-wrapper">
     <div class="user-card-btn-avatar">

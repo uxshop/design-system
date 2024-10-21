@@ -35,6 +35,8 @@ export * from './components/admin/stats-group';
 export * from './components/admin/table';
 export * from './components/admin/table-list';
 export * from './components/admin/titlebar';
+export * from './components/admin/topbar';
+export * from './components/admin/user-profile-card';
 
 // UI
 export * from './components/ui/badge';
@@ -94,8 +96,6 @@ export { default as Layout } from './components/admin/layout/Layout.vue';
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 
-export { default as Topbar } from './components/admin/topbar/Topbar.vue';
-
 export { default as Card } from './components/ui/card/Card.vue';
 export { default as CardItem } from './components/ui/card/CardItem.vue';
 export { default as CardSection } from './components/ui/card/CardSection.vue';
@@ -119,8 +119,5 @@ export { default as CustomScroll } from './components/ui/custom-scroll/CustomScr
 export { default as ListGroup } from './components/ui/list-group/ListGroup.vue';
 export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue';
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';
-
-export { default as UserProfileCard } from './components/admin/user-profile-card/UserProfileCard.vue';
-export { default as UserButton } from './components/admin/user-profile-card/partials/UserButton.vue';
 
 export { default as CardInfoLink, type ICardInfoLinkProps } from './components/ui/card-info-link/CardInfoLink.vue';
