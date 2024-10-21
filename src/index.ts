@@ -50,6 +50,7 @@ export * from './components/ui/button-group';
 export * from './components/ui/callout-card';
 export * from './components/ui/card';
 export * from './components/ui/card-info-link';
+export * from './components/ui/color-thumb';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -100,7 +101,6 @@ export { default as FormAutocomplete } from './components/ui/form-autocomplete/F
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 
-export { default as ColorThumb } from './components/ui/color-thumb/ColorThumb.vue';
 export { default as Container } from './components/ui/grid/container/Container.vue';
 export { default as Row } from './components/ui/grid/row/Row.vue';
 export { default as Col } from './components/ui/grid/col/Col.vue';
