@@ -1,8 +1,7 @@
 <script setup lang="ts">
-defineProps<{
-  label: string;
-  description?: string;
-}>();
+import type { DescriptionListItemProps } from './types';
+
+defineProps<DescriptionListItemProps>();
 </script>
 
 <template>

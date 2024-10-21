@@ -52,6 +52,7 @@ export * from './components/ui/card';
 export * from './components/ui/card-info-link';
 export * from './components/ui/color-thumb';
 export * from './components/ui/custom-scroll';
+export * from './components/ui/description-list';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -61,8 +62,7 @@ export * from './types';
 
 export { Toast as $toast } from './components/ui/toast';
 export { Dialog as $dialog } from './components/ui/dialog';
-export { default as DescriptionList } from './components/ui/description-list/DescriptionList.vue';
-export { default as DescriptionListItem } from './components/ui/description-list/components/description-list-item/DescriptionListItem.vue';
+
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as FormCheckbox } from './components/ui/form-checkbox/FormCheckbox.vue';
