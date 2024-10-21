@@ -2,28 +2,9 @@
 import { computed } from 'vue';
 import Spinner from '../spinner/Spinner.vue';
 import Icon from '../icon/Icon.vue';
-import type { Size, Variant } from '../../../types';
+import type { ButtonProps } from './types';
 
-export interface Props {
-  variant?: Variant;
-  label?: string;
-  leadingIcon?: string;
-  trailingIcon?: string;
-  size?: Size;
-  href?: string;
-  flush?: 'left' | 'right';
-  block?: boolean;
-  to?: object;
-  spinnerBorder?: number | string;
-  type?: string;
-  loading?: boolean;
-  outline?: boolean;
-  disclosure?: boolean;
-  target?: '_blank' | '_self';
-  disabled?: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
   spinnerBorder: 2,
   type: 'button',
   size: 'md',
