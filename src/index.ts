@@ -26,6 +26,7 @@ export * from './components/admin/panel-skeleton';
 export * from './components/admin/platform-select';
 export * from './components/admin/quick-search';
 export * from './components/admin/row-exclude';
+export * from './components/admin/savebar';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 export * from './components/admin/seo';
@@ -94,7 +95,6 @@ export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue';
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 
-export { default as Savebar } from './components/admin/savebar/Savebar.vue';
 export { default as Topbar } from './components/admin/topbar/Topbar.vue';
 
 export { default as Card } from './components/ui/card/Card.vue';
