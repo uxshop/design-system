@@ -16,6 +16,7 @@ export * from './components/admin/form-register';
 export * from './components/admin/frame-annotation';
 export * from './components/admin/gmaps';
 export * from './components/admin/home-bar';
+export * from './components/admin/layout';
 export * from './components/admin/media-card';
 export * from './components/admin/page';
 export * from './components/admin/page-actions';
@@ -91,8 +92,6 @@ export { default as FormColorpicker } from './components/ui/form-colorpicker/For
 export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue';
 export { default as FormDatepicker } from './components/ui/form-datepicker/FormDatepicker.vue';
 export { default as FormAutocomplete } from './components/ui/form-autocomplete/FormAutocomplete.vue';
-
-export { default as Layout } from './components/admin/layout/Layout.vue';
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 
