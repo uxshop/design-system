@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import type { TableListItemProps } from './types';
 
-const props = defineProps<{
-  auto?: boolean;
-  nowrap?: boolean;
-}>();
+const props = defineProps<TableListItemProps>();
 
 const classList = ref<string[]>([]);
 

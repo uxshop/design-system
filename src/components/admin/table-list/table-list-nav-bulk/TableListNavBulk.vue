@@ -7,16 +7,9 @@ import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue';
 import Dropdown from '../../../ui/dropdown/Dropdown.vue';
 import Button from '../../../ui/button/Button.vue';
 import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue';
-import type { ITableListConfig, TBulkActions } from '../types';
+import type { TableListNavBulkProps, TBulkActions } from '../types';
 
-type Props = {
-  rows: unknown[];
-  selected: number[];
-  config: ITableListConfig;
-  state: any;
-};
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TableListNavBulkProps>(), {
   selected: () => {
     return [];
   },

@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import type { ITableListState } from '../types/ITableListState';
 import IconButton from '../../../ui/icon-button/IconButton.vue';
-const props = defineProps<{
-  meta: any;
-  state: ITableListState;
-}>();
+import type { TableListNavPaginationProps } from '../types';
+const props = defineProps<TableListNavPaginationProps>();
 
 const prevPage = () => {
   let page = props.state.queryParams.page;
