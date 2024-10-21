@@ -49,6 +49,7 @@ export * from './components/ui/button';
 export * from './components/ui/button-group';
 export * from './components/ui/callout-card';
 export * from './components/ui/card';
+export * from './components/ui/card-info-link';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -118,5 +119,3 @@ export { default as CustomScroll } from './components/ui/custom-scroll/CustomScr
 export { default as ListGroup } from './components/ui/list-group/ListGroup.vue';
 export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue';
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';
-
-export { default as CardInfoLink, type ICardInfoLinkProps } from './components/ui/card-info-link/CardInfoLink.vue';
