@@ -44,6 +44,7 @@ export * from './components/ui/alert';
 export * from './components/ui/aside';
 export * from './components/ui/avatar';
 export * from './components/ui/badge';
+export * from './components/ui/breadcrumb';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-defineProps<{
-  to: Record<string, unknown>;
-}>();
+import type { BreadcrumbItemProps } from './types';
+
+defineProps<BreadcrumbItemProps>();
 </script>
 
 <template>
