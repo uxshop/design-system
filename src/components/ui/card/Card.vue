@@ -4,31 +4,11 @@ import Icon from '../icon/Icon.vue';
 import Spinner from '../spinner/Spinner.vue';
 import Button from '../button/Button.vue';
 import Link from '../link/Link.vue';
-import type { IAction } from '../../../types/IAction';
-
-export interface Props {
-  title?: string | null;
-  titleMuted?: string | null;
-  caption?: string;
-  dropdown?: boolean;
-  dropdownLabel?: string;
-  dropdownClosed?: boolean;
-  fullHeight?: boolean;
-  fullWidth?: boolean;
-  noBorder?: boolean;
-  noPadding?: boolean;
-  closeCaption?: string;
-  gray?: boolean;
-  last?: boolean;
-  loading?: boolean;
-  transparent?: boolean;
-  plain?: boolean;
-  actions?: IAction[];
-}
+import type { CardProps } from './types';
 
 const emit = defineEmits(['toggleShowBody', 'open', 'close']);
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<CardProps>(), {
   dropdownClosed: false,
 });
 

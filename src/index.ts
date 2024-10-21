@@ -47,6 +47,8 @@ export * from './components/ui/badge';
 export * from './components/ui/breadcrumb';
 export * from './components/ui/button';
 export * from './components/ui/button-group';
+export * from './components/ui/callout-card';
+export * from './components/ui/card';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -97,10 +99,6 @@ export { default as FormAutocomplete } from './components/ui/form-autocomplete/F
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 
-export { default as Card } from './components/ui/card/Card.vue';
-export { default as CardItem } from './components/ui/card/CardItem.vue';
-export { default as CardSection } from './components/ui/card/CardSection.vue';
-export { default as CardTitle } from './components/ui/card/CardTitle.vue';
 export { default as ColorThumb } from './components/ui/color-thumb/ColorThumb.vue';
 export { default as Container } from './components/ui/grid/container/Container.vue';
 export { default as Row } from './components/ui/grid/row/Row.vue';
@@ -113,7 +111,7 @@ export { default as Timeline } from './components/ui/timeline/Timeline.vue';
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
 export { default as RatingStar } from './components/ui/rating-star/RatingStar.vue';
-export { default as CalloutCard } from './components/ui/callout-card/CalloutCard.vue';
+
 export { default as FormLayout } from './components/ui/form-layout/FormLayout.vue';
 export { default as FormLayoutItem } from './components/ui/form-layout/FormLayoutItem.vue';
 export { default as CustomScroll } from './components/ui/custom-scroll/CustomScroll.vue';

@@ -2,16 +2,9 @@
 import Card from '../card/Card.vue';
 import Button from '../button/Button.vue';
 import Icon from '../icon/Icon.vue';
-import type { IAction } from '../../../types/IAction';
+import type { CalloutCardProps } from './types';
 
-export interface Props {
-  title?: string;
-  icon?: string;
-  primaryAction?: IAction;
-  justifyCardActions?: string;
-  bgColorIconPrimary?: boolean;
-}
-defineProps<Props>();
+defineProps<CalloutCardProps>();
 </script>
 
 <template>
