@@ -57,6 +57,7 @@ export * from './components/ui/dialog';
 export * from './components/ui/divider';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-autocomplete';
+export * from './components/ui/form-checkbox';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -68,7 +69,6 @@ export { default as Toast } from './components/ui/toast/Toast.vue';
 
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
-export { default as FormCheckbox } from './components/ui/form-checkbox/FormCheckbox.vue';
 export { default as FormTextfield } from './components/ui/form-textfield/FormTextfield.vue';
 export { default as FormTextarea } from './components/ui/form-textarea/FormTextarea.vue';
 export { default as FormRadio } from './components/ui/form-radio/FormRadio.vue';
