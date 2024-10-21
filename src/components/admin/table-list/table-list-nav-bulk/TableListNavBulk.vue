@@ -2,7 +2,7 @@
 import { onMounted, ref, watchEffect } from 'vue';
 import { each } from 'lodash-es';
 import { zerofill, pluralize } from '../../../../filters';
-import dialog from '../../../ui/dialog/index';
+import { $dialog } from '../../../ui/dialog';
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue';
 import Dropdown from '../../../ui/dropdown/Dropdown.vue';
 import Button from '../../../ui/button/Button.vue';
@@ -43,7 +43,7 @@ const onRemoveDialog = () => {
     return defaultMessage;
   }
 
-  dialog.open({
+  $dialog.open({
     title: props.config.dialogDelete?.title ?? 'Excluir registros',
     destructIcon: props.config.dialogDelete?.destructIcon ?? 'delete',
     destructLabel: props.config.dialogDelete?.destructLabel ?? 'Deletar registros',

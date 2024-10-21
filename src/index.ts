@@ -53,6 +53,7 @@ export * from './components/ui/card-info-link';
 export * from './components/ui/color-thumb';
 export * from './components/ui/custom-scroll';
 export * from './components/ui/description-list';
+export * from './components/ui/dialog';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -61,7 +62,7 @@ export * from './components/ui/infinite-scroll';
 export * from './types';
 
 export { Toast as $toast } from './components/ui/toast';
-export { Dialog as $dialog } from './components/ui/dialog';
+export { default as Toast } from './components/ui/toast/Toast.vue';
 
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
@@ -89,8 +90,7 @@ export { default as IconButton } from './components/ui/icon-button/IconButton.vu
 export { default as FormTags } from './components/ui/form-tags/FormTags.vue';
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
-export { default as Toast } from './components/ui/toast/Toast.vue';
-export { default as Dialog } from './components/ui/dialog/Dialog.vue';
+
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
 export { default as FormColorpicker } from './components/ui/form-colorpicker/FormColorpicker.vue';
 export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue';

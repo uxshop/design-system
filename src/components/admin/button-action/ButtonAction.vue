@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { watchEffect, ref, useAttrs, onMounted } from 'vue';
-import dialog from '../../ui/dialog';
+import { $dialog } from '../../ui/dialog';
 import IconButton from '../../ui/icon-button/IconButton.vue';
 import TextStyle from '../../ui/text-style/TextStyle.vue';
 import Button from '../../ui/button/Button.vue';
@@ -63,7 +63,7 @@ const onClick = (evt: MouseEvent) => {
 
     msg += '?';
 
-    dialog.delete({
+    $dialog.delete({
       title: 'Excluir registro',
       message: msg,
       onCallback: (val: boolean) => {

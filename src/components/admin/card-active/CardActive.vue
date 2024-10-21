@@ -4,7 +4,7 @@ import Col from '../../ui/grid/col/Col.vue';
 import Card from '../../ui/card/Card.vue';
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue';
 import IconButton from '../../ui/icon-button/IconButton.vue';
-import $dialog from '../../ui/dialog';
+import { $dialog } from '../../ui/dialog';
 import type { CardActiveProps } from './types';
 
 const emit = defineEmits(['delete', 'toggleActive', 'update:modelValue']);
