@@ -58,6 +58,7 @@ export * from './components/ui/divider';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-autocomplete';
 export * from './components/ui/form-checkbox';
+export * from './components/ui/form-colorpicker';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -93,7 +94,7 @@ export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
-export { default as FormColorpicker } from './components/ui/form-colorpicker/FormColorpicker.vue';
+
 export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue';
 export { default as FormDatepicker } from './components/ui/form-datepicker/FormDatepicker.vue';
 
