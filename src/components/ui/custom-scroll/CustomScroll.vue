@@ -19,6 +19,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@import './CustomScroll.scss';
 @import 'perfect-scrollbar/css/perfect-scrollbar.css';
+@import './CustomScroll.scss';
 </style>
