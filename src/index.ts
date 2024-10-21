@@ -46,6 +46,7 @@ export * from './components/ui/avatar';
 export * from './components/ui/badge';
 export * from './components/ui/breadcrumb';
 export * from './components/ui/button';
+export * from './components/ui/button-group';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -58,8 +59,6 @@ export { Dialog as $dialog } from './components/ui/dialog';
 export { default as DescriptionList } from './components/ui/description-list/DescriptionList.vue';
 export { default as DescriptionListItem } from './components/ui/description-list/components/description-list-item/DescriptionListItem.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
-
-export { default as ButtonGroup } from './components/ui/button-group/ButtonGroup.vue';
 
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as FormCheckbox } from './components/ui/form-checkbox/FormCheckbox.vue';
