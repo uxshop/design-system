@@ -56,6 +56,7 @@ export * from './components/ui/description-list';
 export * from './components/ui/dialog';
 export * from './components/ui/divider';
 export * from './components/ui/dropdown';
+export * from './components/ui/form-autocomplete';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -75,7 +76,6 @@ export { default as FormRange } from './components/ui/form-range/FormRange.vue';
 export { default as FormLabel } from './components/ui/form-label/FormLabel.vue';
 export { default as FormCurrency } from './components/ui/form-currency/FormCurrency.vue';
 
-export { default as Select } from './components/ui/form-autocomplete/FormAutocomplete.vue';
 export { default as Icon } from './components/ui/icon/Icon.vue';
 export { default as FormSpinbutton } from './components/ui/form-spinbutton/FormSpinbutton.vue';
 export { default as FormHelper } from './components/ui/form-helper/FormHelper.vue';
@@ -96,7 +96,7 @@ export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
 export { default as FormColorpicker } from './components/ui/form-colorpicker/FormColorpicker.vue';
 export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue';
 export { default as FormDatepicker } from './components/ui/form-datepicker/FormDatepicker.vue';
-export { default as FormAutocomplete } from './components/ui/form-autocomplete/FormAutocomplete.vue';
+
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 export { default as Container } from './components/ui/grid/container/Container.vue';
 export { default as Row } from './components/ui/grid/row/Row.vue';
