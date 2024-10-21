@@ -24,6 +24,7 @@ export * from './components/admin/page-helper-video';
 export * from './components/admin/page-message-support';
 export * from './components/admin/panel-skeleton';
 export * from './components/admin/platform-select';
+export * from './components/admin/quick-search';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 export * from './components/admin/seo';
@@ -125,4 +126,3 @@ export { default as UserProfileCard } from './components/admin/user-profile-card
 export { default as UserButton } from './components/admin/user-profile-card/partials/UserButton.vue';
 
 export { default as CardInfoLink, type ICardInfoLinkProps } from './components/ui/card-info-link/CardInfoLink.vue';
-export { default as QuickSearch, type IQuickSearchFormValue } from './components/admin/quick-search/QuickSearch.vue';
