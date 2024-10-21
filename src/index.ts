@@ -54,6 +54,7 @@ export * from './components/ui/color-thumb';
 export * from './components/ui/custom-scroll';
 export * from './components/ui/description-list';
 export * from './components/ui/dialog';
+export * from './components/ui/divider';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
@@ -73,7 +74,7 @@ export { default as FormRadio } from './components/ui/form-radio/FormRadio.vue';
 export { default as FormRange } from './components/ui/form-range/FormRange.vue';
 export { default as FormLabel } from './components/ui/form-label/FormLabel.vue';
 export { default as FormCurrency } from './components/ui/form-currency/FormCurrency.vue';
-export { default as Divider } from './components/ui/divider/Divider.vue';
+
 export { default as Select } from './components/ui/form-autocomplete/FormAutocomplete.vue';
 export { default as Icon } from './components/ui/icon/Icon.vue';
 export { default as FormSpinbutton } from './components/ui/form-spinbutton/FormSpinbutton.vue';
