@@ -1,20 +1,13 @@
 <script setup lang="ts">
-import { computed, inject } from 'vue';
+import { inject } from 'vue';
 import Breadcrumb from '../../ui/breadcrumb/UiBreadcrumb.vue';
 import BreadcrumbItem from '../../ui/breadcrumb/BreadcrumbItem.vue';
 import Icon from '../../ui/icon/Icon.vue';
-import { initials as filterInitials } from '../../../filters';
+
 import ButtonDarkmode from '../../admin/button-darkmode/ButtonDarkmode.vue';
+import type { TopbarProps } from './types';
 
-export interface Props {
-  slug?: string;
-  backlink?: any | null;
-  breadcrumb?: { to: string; name: string }[];
-  notifications?: any;
-  dropdown?: any[];
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TopbarProps>(), {
   dropdown: () => [],
 });
 
