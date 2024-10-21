@@ -2,6 +2,7 @@ import './scss/theme.scss';
 
 // Admin
 export * from './components/admin/apexchart';
+export * from './components/admin/browser-select';
 export * from './components/admin/button-action';
 export * from './components/admin/button-darkmode';
 export * from './components/admin/card-active';
@@ -32,9 +33,8 @@ export * from './components/admin/sidebar';
 export * from './components/admin/sidebar-header';
 export * from './components/admin/stats-group';
 export * from './components/admin/table';
-export * from './components/admin/browser-select';
-
 export * from './components/admin/table-list';
+export * from './components/admin/titlebar';
 
 // UI
 export * from './components/ui/badge';
@@ -91,8 +91,6 @@ export { default as FormDatepicker } from './components/ui/form-datepicker/FormD
 export { default as FormAutocomplete } from './components/ui/form-autocomplete/FormAutocomplete.vue';
 
 export { default as Layout } from './components/admin/layout/Layout.vue';
-
-export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 
