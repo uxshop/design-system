@@ -40,6 +40,7 @@ export * from './components/admin/topbar';
 export * from './components/admin/user-profile-card';
 
 // UI
+export * from './components/ui/alert';
 export * from './components/ui/badge';
 export * from './components/ui/dropdown';
 export * from './components/ui/form-select';
@@ -55,7 +56,7 @@ export { default as DescriptionListItem } from './components/ui/description-list
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Button } from './components/ui/button/Button.vue';
 export { default as ButtonGroup } from './components/ui/button-group/ButtonGroup.vue';
-export { default as Alert } from './components/ui/alert/Alert.vue';
+
 export { default as Aside } from './components/ui/aside/Aside.vue';
 export { default as AsideSection } from './components/ui/aside/AsideSection.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
