@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, nextTick, ref } from 'vue';
+import type { DropdownProps } from './types';
 
-const props = defineProps<{
-  dropUp?: boolean;
-  right?: boolean;
-  left?: boolean;
-  closeOn?: boolean;
-  noCloseOnClickTag?: string;
-  disabled?: boolean;
-}>();
+const props = defineProps<DropdownProps>();
 
 const emit = defineEmits(['show', 'hide']);
 const show = ref(false);
