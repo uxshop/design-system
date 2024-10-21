@@ -30,6 +30,7 @@ export * from './components/admin/savebar';
 export * from './components/admin/seo';
 export * from './components/admin/sidebar';
 export * from './components/admin/sidebar-header';
+export * from './components/admin/stats-group';
 export * from './components/admin/table';
 export * from './components/admin/browser-select';
 
@@ -92,8 +93,6 @@ export { default as FormAutocomplete } from './components/ui/form-autocomplete/F
 export { default as Layout } from './components/admin/layout/Layout.vue';
 
 export { default as Titlebar } from './components/admin/titlebar/Titlebar.vue';
-
-export { default as StatsGroup } from './components/admin/stats/StatsGroup.vue';
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 

@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import StatsItem from '../../ui/stats-item/StatsItem.vue';
+import type { StatsGroupProps } from './types';
 
-const props = defineProps<{
-  infos?: {
-    label: string;
-    value: string;
-    primaryAction?: { text: string; to?: object; href?: string; button?: boolean }[];
-    text: string;
-  }[];
-}>();
+const props = defineProps<StatsGroupProps>();
 </script>
 
 <template>
