@@ -1,18 +1,11 @@
 <script setup lang="ts">
-import TextStyle from '../text-style/TextStyle.vue';
 import Icon from '../../ui/icon/Icon.vue';
 import Link from '../../ui/link/Link.vue';
 import Button from '../button/Button.vue';
 import vTooltip from '../../../directives/tooltip';
+import type { StatsItemProps } from './types';
 
-defineProps<{
-  label?: string;
-  value?: string | number;
-  perc?: string | number;
-  info?: string;
-  primaryAction?: { text: string; to?: object; href?: string; button?: boolean }[];
-  text?: string;
-}>();
+defineProps<StatsItemProps>();
 
 const isMobile = window.innerWidth <= 768;
 </script>
