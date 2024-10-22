@@ -82,6 +82,7 @@ export * from './components/ui/infinite-scroll';
 export * from './components/ui/link';
 export * from './components/ui/list-group';
 export * from './components/ui/modal';
+export * from './components/ui/news-indicator';
 
 // Types
 export * from './types';
