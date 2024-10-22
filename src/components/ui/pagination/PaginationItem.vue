@@ -1,7 +1,7 @@
 <script setup lang="ts">
-defineProps<{
-  disabled?: boolean;
-}>();
+import type { PaginationItemProps } from './types';
+
+defineProps<PaginationItemProps>();
 </script>
 
 <template>
