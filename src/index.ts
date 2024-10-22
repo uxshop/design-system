@@ -72,6 +72,7 @@ export * from './components/ui/form-spinbutton';
 export * from './components/ui/form-tags';
 export * from './components/ui/form-textarea';
 export * from './components/ui/form-textfield';
+export * from './components/ui/form-validation';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -84,7 +85,7 @@ export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as Icon } from './components/ui/icon/Icon.vue';
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';
-export { default as FormValidation } from './components/ui/form-validation/FormValidation.vue';
+
 export { default as ProgressBar } from './components/ui/progress/ProgressBar.vue';
 export { default as Skeleton } from './components/ui/skeleton/Skeleton.vue';
 export { default as SkeletonTable } from './components/ui/skeleton-table/SkeletonTable.vue';

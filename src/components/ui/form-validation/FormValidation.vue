@@ -2,18 +2,10 @@
 import { each } from 'lodash-es';
 import { watchEffect } from 'vue';
 import Alert from '../alert/Alert.vue';
-
-export interface Props {
-  modelValue?: Record<string, string[]>;
-  translate?: Record<string, string | Record<string, string>>;
-  scrollToTop?: boolean;
-  title?: string;
-  hideKey?: boolean;
-  noDismissible?: boolean;
-}
+import type { FormValidationProps } from './types';
 
 const emit = defineEmits(['update:modelValue']);
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormValidationProps>(), {
   title: 'Erros encontrados',
 });
 
