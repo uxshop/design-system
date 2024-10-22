@@ -1,8 +1,9 @@
 <script setup lang="ts">
-defineProps<{
-  label?: string | null;
-}>();
+import type { FormLabelProps } from './types';
+
+defineProps<FormLabelProps>();
 </script>
+
 <template>
   <label class="form-control-label" style="display: block">
     <slot>{{ label }}</slot>

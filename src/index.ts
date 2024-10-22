@@ -62,6 +62,7 @@ export * from './components/ui/form-colorpicker';
 export * from './components/ui/form-currency';
 export * from './components/ui/form-datepicker';
 export * from './components/ui/form-helper';
+export * from './components/ui/form-label';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -77,7 +78,6 @@ export { default as FormTextfield } from './components/ui/form-textfield/FormTex
 export { default as FormTextarea } from './components/ui/form-textarea/FormTextarea.vue';
 export { default as FormRadio } from './components/ui/form-radio/FormRadio.vue';
 export { default as FormRange } from './components/ui/form-range/FormRange.vue';
-export { default as FormLabel } from './components/ui/form-label/FormLabel.vue';
 
 export { default as Icon } from './components/ui/icon/Icon.vue';
 export { default as FormSpinbutton } from './components/ui/form-spinbutton/FormSpinbutton.vue';
