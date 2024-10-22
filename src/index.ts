@@ -61,6 +61,7 @@ export * from './components/ui/form-checkbox';
 export * from './components/ui/form-colorpicker';
 export * from './components/ui/form-currency';
 export * from './components/ui/form-datepicker';
+export * from './components/ui/form-helper';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -80,7 +81,7 @@ export { default as FormLabel } from './components/ui/form-label/FormLabel.vue';
 
 export { default as Icon } from './components/ui/icon/Icon.vue';
 export { default as FormSpinbutton } from './components/ui/form-spinbutton/FormSpinbutton.vue';
-export { default as FormHelper } from './components/ui/form-helper/FormHelper.vue';
+
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';
 export { default as FormValidation } from './components/ui/form-validation/FormValidation.vue';
