@@ -5,7 +5,7 @@ import Dropdown from '../../../ui/dropdown/Dropdown.vue';
 import Button from '../../../ui/button/Button.vue';
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue';
 import DropdownSection from '../../../ui/dropdown/DropdownSection.vue';
-import toast from '../../../ui/toast';
+import { $toast } from '../../../ui/toast';
 import { slugify } from '../../../../filters';
 import isMobile from '../../../../services/MobileDetector';
 import type { TableListNavCustomFilterProps } from '../types';
@@ -74,7 +74,7 @@ const onRemoveTab = async () => {
       selectedView: 'all',
     });
 
-    toast.open('Filtro deletado com sucesso');
+    $toast.open('Filtro deletado com sucesso');
   }
 };
 
