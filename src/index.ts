@@ -69,6 +69,8 @@ export * from './components/ui/form-range';
 export * from './components/ui/form-richtext';
 export * from './components/ui/form-select';
 export * from './components/ui/form-spinbutton';
+export * from './components/ui/form-tags';
+export * from './components/ui/form-textarea';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -80,7 +82,6 @@ export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as FormTextfield } from './components/ui/form-textfield/FormTextfield.vue';
-export { default as FormTextarea } from './components/ui/form-textarea/FormTextarea.vue';
 
 export { default as Icon } from './components/ui/icon/Icon.vue';
 
@@ -93,7 +94,6 @@ export { default as SkeletonTable } from './components/ui/skeleton-table/Skeleto
 export { default as SkeletonList } from './components/ui/skeleton-list/SkeletonList.vue';
 export { default as Image } from './components/ui/image/Image.vue';
 export { default as IconButton } from './components/ui/icon-button/IconButton.vue';
-export { default as FormTags } from './components/ui/form-tags/FormTags.vue';
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 
