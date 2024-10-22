@@ -73,6 +73,7 @@ export * from './components/ui/form-tags';
 export * from './components/ui/form-textarea';
 export * from './components/ui/form-textfield';
 export * from './components/ui/form-validation';
+export * from './components/ui/form-wrapper';
 export * from './components/ui/infinite-scroll';
 
 // Types

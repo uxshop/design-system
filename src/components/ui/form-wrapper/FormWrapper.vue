@@ -3,24 +3,7 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from
 import Icon from '../icon/Icon.vue';
 import Spinner from '../spinner/Spinner.vue';
 import vTooltip from '../../../directives/tooltip';
-import type { Size } from '../../../types';
-
-export interface FormWrapperProps {
-  leadingIcon?: string;
-  trailingIcon?: string;
-  labelInfo?: string;
-  trailingText?: string;
-  state?: boolean;
-  loading?: boolean;
-  last?: boolean;
-  float?: boolean;
-  disabled?: boolean;
-  invalidFeedback?: string;
-  autofocus?: boolean;
-  size?: Size;
-  label?: string;
-  id?: string;
-}
+import type { FormWrapperProps } from './types';
 
 const props = defineProps<FormWrapperProps>();
 const elementRef = ref<Element>();
@@ -29,8 +12,7 @@ const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`);
 const slots = useSlots();
 onMounted(() => {
   nextTick(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error expected
     const input: HTMLElement[] = elementRef.value?.querySelectorAll('input, textarea, select');
 
     if (input && input[0]) {

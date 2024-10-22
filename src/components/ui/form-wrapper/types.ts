@@ -1,18 +1,18 @@
-declare interface FormWrapperInterface {
+import type { Size } from '../../../types';
+
+export interface FormWrapperProps {
   leadingIcon?: string;
   trailingIcon?: string;
   labelInfo?: string;
   trailingText?: string;
-  state?: undefined;
-  coutable?: boolean;
+  state?: boolean;
   loading?: boolean;
   last?: boolean;
   float?: boolean;
-  invalidFeedback?: string;
-  //
   disabled?: boolean;
+  invalidFeedback?: string;
   autofocus?: boolean;
-  size?: string | number;
+  size?: Size;
   label?: string;
   id?: string;
 }
