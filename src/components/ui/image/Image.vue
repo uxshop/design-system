@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
 import Icon from '../icon/Icon.vue';
-
-export interface ImageProps {
-  src?: string;
-  size?: number | string;
-  rounded?: boolean;
-}
+import type { ImageProps } from './types';
 
 const props = withDefaults(defineProps<ImageProps>(), {
   size: 50,

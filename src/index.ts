@@ -77,6 +77,7 @@ export * from './components/ui/form-wrapper';
 export * from './components/ui/grid';
 export * from './components/ui/icon';
 export * from './components/ui/icon-button';
+export * from './components/ui/image';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -92,7 +93,7 @@ export { default as ProgressBar } from './components/ui/progress/ProgressBar.vue
 export { default as Skeleton } from './components/ui/skeleton/Skeleton.vue';
 export { default as SkeletonTable } from './components/ui/skeleton-table/SkeletonTable.vue';
 export { default as SkeletonList } from './components/ui/skeleton-list/SkeletonList.vue';
-export { default as Image } from './components/ui/image/Image.vue';
+
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
