@@ -75,6 +75,7 @@ export * from './components/ui/form-textfield';
 export * from './components/ui/form-validation';
 export * from './components/ui/form-wrapper';
 export * from './components/ui/grid';
+export * from './components/ui/icon';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -84,7 +85,7 @@ export { Toast as $toast } from './components/ui/toast';
 export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
-export { default as Icon } from './components/ui/icon/Icon.vue';
+
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';
 
