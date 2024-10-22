@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import Icon from '../icon/Icon.vue';
-
-export interface TagProps {
-  label: string;
-  variant?: 'primary' | 'success' | 'danger' | 'default' | 'warning';
-}
+import type { TagProps } from './types';
 
 const props = withDefaults(defineProps<TagProps>(), {
   variant: 'default',

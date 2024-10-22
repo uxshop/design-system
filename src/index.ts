@@ -95,6 +95,7 @@ export * from './components/ui/spinner';
 export * from './components/ui/stack';
 export * from './components/ui/stats-item';
 export * from './components/ui/tab';
+export * from './components/ui/tag';
 
 // Types
 export * from './types';
@@ -102,7 +103,6 @@ export * from './types';
 export { Toast as $toast } from './components/ui/toast';
 export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
-export { default as Tag } from './components/ui/tag/Tag.vue';
-export { default as TagList } from './components/ui/tag/TagList.vue';
+
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
