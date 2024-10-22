@@ -1,3 +1,13 @@
+/**
+ * Keep this file organized:
+ *
+ * First, import main styles;
+ * Second, export the admin components alphabetically;
+ * Third, export the ui components alphabetically;
+ * Fourth, export general types;
+ *
+ */
+
 import './scss/theme.scss';
 
 // Admin
