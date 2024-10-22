@@ -66,6 +66,7 @@ export * from './components/ui/form-label';
 export * from './components/ui/form-layout';
 export * from './components/ui/form-radio';
 export * from './components/ui/form-range';
+export * from './components/ui/form-richtext';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -97,8 +98,6 @@ export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
-
-export { default as FormRichtext } from './components/ui/form-richtext/FormRichtext.vue';
 
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 export { default as Container } from './components/ui/grid/container/Container.vue';
