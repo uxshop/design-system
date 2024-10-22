@@ -81,6 +81,7 @@ export * from './components/ui/image';
 export * from './components/ui/infinite-scroll';
 export * from './components/ui/link';
 export * from './components/ui/list-group';
+export * from './components/ui/modal';
 
 // Types
 export * from './types';
@@ -98,8 +99,7 @@ export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
-export { default as Modal } from './components/ui/modal/Modal.vue';
-export { default as ModalItem } from './components/ui/modal/ModalItem.vue';
+
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
