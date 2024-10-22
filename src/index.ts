@@ -80,6 +80,7 @@ export * from './components/ui/icon-button';
 export * from './components/ui/image';
 export * from './components/ui/infinite-scroll';
 export * from './components/ui/link';
+export * from './components/ui/list-group';
 
 // Types
 export * from './types';
@@ -103,6 +104,5 @@ export { default as Timeline } from './components/ui/timeline/Timeline.vue';
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
 export { default as RatingStar } from './components/ui/rating-star/RatingStar.vue';
-export { default as ListGroup } from './components/ui/list-group/ListGroup.vue';
-export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue';
+
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';

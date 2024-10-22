@@ -1,12 +1,3 @@
-import type { ComponentOptions } from 'vue';
-import ListGroup from './ListGroup.vue';
-import ListGroupItem from './ListGroupItem.vue';
-import ListGroupItemButton from './ListGroupItemButton.vue';
-
-export default {
-  install(app: ComponentOptions, { prefix }: { prefix: string }) {
-    app.component(`${prefix}ListGroup`, ListGroup);
-    app.component(`${prefix}ListGroupItem`, ListGroupItem);
-    app.component(`${prefix}ListGroupItemButton`, ListGroupItemButton);
-  },
-};
+export { default as ListGroup } from './ListGroup.vue';
+export { default as ListGroupItem } from './ListGroupItem.vue';
+export { default as ListGroupItemButton } from './ListGroupItemButton.vue';
