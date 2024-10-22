@@ -76,6 +76,7 @@ export * from './components/ui/form-validation';
 export * from './components/ui/form-wrapper';
 export * from './components/ui/grid';
 export * from './components/ui/icon';
+export * from './components/ui/icon-button';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -85,21 +86,17 @@ export { Toast as $toast } from './components/ui/toast';
 export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
-
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';
-
 export { default as ProgressBar } from './components/ui/progress/ProgressBar.vue';
 export { default as Skeleton } from './components/ui/skeleton/Skeleton.vue';
 export { default as SkeletonTable } from './components/ui/skeleton-table/SkeletonTable.vue';
 export { default as SkeletonList } from './components/ui/skeleton-list/SkeletonList.vue';
 export { default as Image } from './components/ui/image/Image.vue';
-export { default as IconButton } from './components/ui/icon-button/IconButton.vue';
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
-
 export { default as Modal } from './components/ui/modal/Modal.vue';
 export { default as ModalItem } from './components/ui/modal/ModalItem.vue';
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
