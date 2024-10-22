@@ -63,6 +63,8 @@ export * from './components/ui/form-currency';
 export * from './components/ui/form-datepicker';
 export * from './components/ui/form-helper';
 export * from './components/ui/form-label';
+export * from './components/ui/form-layout';
+export * from './components/ui/form-radio';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -76,7 +78,7 @@ export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as FormTextfield } from './components/ui/form-textfield/FormTextfield.vue';
 export { default as FormTextarea } from './components/ui/form-textarea/FormTextarea.vue';
-export { default as FormRadio } from './components/ui/form-radio/FormRadio.vue';
+
 export { default as FormRange } from './components/ui/form-range/FormRange.vue';
 
 export { default as Icon } from './components/ui/icon/Icon.vue';
@@ -109,8 +111,7 @@ export { default as Timeline } from './components/ui/timeline/Timeline.vue';
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
 export { default as RatingStar } from './components/ui/rating-star/RatingStar.vue';
-export { default as FormLayout } from './components/ui/form-layout/FormLayout.vue';
-export { default as FormLayoutItem } from './components/ui/form-layout/FormLayoutItem.vue';
+
 export { default as ListGroup } from './components/ui/list-group/ListGroup.vue';
 export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue';
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';
