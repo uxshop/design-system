@@ -5,11 +5,9 @@ import FormTextfield from '../form-textfield/FormTextfield.vue';
 import Button from '../button/Button.vue';
 import Stack from '../stack/Stack.vue';
 import IconButton from '../icon-button/IconButton.vue';
+import type { TimelineProps } from './types';
 
-defineProps<{
-  modelValue?: any[];
-  inputMessage?: boolean;
-}>();
+defineProps<TimelineProps>();
 const emit = defineEmits(['onAddMessage', 'onRemoveMessage']);
 const note = shallowRef();
 
