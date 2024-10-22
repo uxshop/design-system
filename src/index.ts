@@ -68,6 +68,7 @@ export * from './components/ui/form-radio';
 export * from './components/ui/form-range';
 export * from './components/ui/form-richtext';
 export * from './components/ui/form-select';
+export * from './components/ui/form-spinbutton';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -82,7 +83,6 @@ export { default as FormTextfield } from './components/ui/form-textfield/FormTex
 export { default as FormTextarea } from './components/ui/form-textarea/FormTextarea.vue';
 
 export { default as Icon } from './components/ui/icon/Icon.vue';
-export { default as FormSpinbutton } from './components/ui/form-spinbutton/FormSpinbutton.vue';
 
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';

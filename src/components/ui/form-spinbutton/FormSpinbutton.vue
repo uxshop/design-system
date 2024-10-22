@@ -3,22 +3,10 @@ import { computed, ref, watchEffect } from 'vue';
 import Spinner from '../spinner/Spinner.vue';
 import Icon from '../icon/Icon.vue';
 import Button from '../button/Button.vue';
-import type { Size } from '../../../types';
-
-export interface Props {
-  modelValue: number;
-  min?: string | number;
-  max?: string | number;
-  placeholder?: string;
-  size?: Size;
-  step?: string | number;
-  loading?: boolean;
-  disabled?: boolean;
-  inputable?: boolean;
-}
+import type { FormSpinbuttonProps } from './types';
 
 const emit = defineEmits(['update:modelValue', 'change']);
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormSpinbuttonProps>(), {
   step: 1,
   modelValue: 1,
 });
