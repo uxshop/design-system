@@ -88,6 +88,7 @@ export * from './components/ui/progress';
 export * from './components/ui/progress-indeterminate';
 export * from './components/ui/rating-star';
 export * from './components/ui/select-item-card';
+export * from './components/ui/skeleton';
 
 // Types
 export * from './types';
@@ -97,7 +98,7 @@ export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
-export { default as Skeleton } from './components/ui/skeleton/Skeleton.vue';
+
 export { default as SkeletonTable } from './components/ui/skeleton-table/SkeletonTable.vue';
 export { default as SkeletonList } from './components/ui/skeleton-list/SkeletonList.vue';
 export { default as Tag } from './components/ui/tag/Tag.vue';
