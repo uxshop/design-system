@@ -1,15 +1,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import type { ColProps } from '../types';
 
-const props = defineProps<{
-  cols?: string | number;
-  sm?: string | number;
-  md?: string | number;
-  offset?: string | number;
-  offsetSm?: string | number;
-  auto?: boolean;
-}>();
-
+const props = defineProps<ColProps>();
 const classList = ref<string[]>(['ui-col']);
 
 if (props.cols == 'auto' || props.auto) {

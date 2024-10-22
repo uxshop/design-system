@@ -74,6 +74,7 @@ export * from './components/ui/form-textarea';
 export * from './components/ui/form-textfield';
 export * from './components/ui/form-validation';
 export * from './components/ui/form-wrapper';
+export * from './components/ui/grid';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -97,9 +98,7 @@ export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
-export { default as Container } from './components/ui/grid/container/Container.vue';
-export { default as Row } from './components/ui/grid/row/Row.vue';
-export { default as Col } from './components/ui/grid/col/Col.vue';
+
 export { default as Modal } from './components/ui/modal/Modal.vue';
 export { default as ModalItem } from './components/ui/modal/ModalItem.vue';
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
