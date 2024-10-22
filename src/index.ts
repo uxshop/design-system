@@ -86,6 +86,7 @@ export * from './components/ui/news-indicator';
 export * from './components/ui/pagination';
 export * from './components/ui/progress';
 export * from './components/ui/progress-indeterminate';
+export * from './components/ui/rating-star';
 
 // Types
 export * from './types';
@@ -105,5 +106,4 @@ export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
-export { default as RatingStar } from './components/ui/rating-star/RatingStar.vue';
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';
