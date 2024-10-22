@@ -65,6 +65,7 @@ export * from './components/ui/form-helper';
 export * from './components/ui/form-label';
 export * from './components/ui/form-layout';
 export * from './components/ui/form-radio';
+export * from './components/ui/form-range';
 export * from './components/ui/form-select';
 export * from './components/ui/infinite-scroll';
 
@@ -78,8 +79,6 @@ export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as FormTextfield } from './components/ui/form-textfield/FormTextfield.vue';
 export { default as FormTextarea } from './components/ui/form-textarea/FormTextarea.vue';
-
-export { default as FormRange } from './components/ui/form-range/FormRange.vue';
 
 export { default as Icon } from './components/ui/icon/Icon.vue';
 export { default as FormSpinbutton } from './components/ui/form-spinbutton/FormSpinbutton.vue';
