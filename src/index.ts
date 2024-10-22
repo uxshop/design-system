@@ -85,6 +85,7 @@ export * from './components/ui/modal';
 export * from './components/ui/news-indicator';
 export * from './components/ui/pagination';
 export * from './components/ui/progress';
+export * from './components/ui/progress-indeterminate';
 
 // Types
 export * from './types';
