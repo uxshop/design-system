@@ -94,6 +94,7 @@ export * from './components/ui/skeleton-table';
 export * from './components/ui/spinner';
 export * from './components/ui/stack';
 export * from './components/ui/stats-item';
+export * from './components/ui/tab';
 
 // Types
 export * from './types';
@@ -104,7 +105,4 @@ export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
-
 export { default as Timeline } from './components/ui/timeline/Timeline.vue';
-export { default as Tab } from './components/ui/tab/Tab.vue';
-export { default as TabItem } from './components/ui/tab/TabItem.vue';
