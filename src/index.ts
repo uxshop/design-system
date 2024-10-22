@@ -91,6 +91,7 @@ export * from './components/ui/select-item-card';
 export * from './components/ui/skeleton';
 export * from './components/ui/skeleton-list';
 export * from './components/ui/skeleton-table';
+export * from './components/ui/spinner';
 
 // Types
 export * from './types';
@@ -99,7 +100,6 @@ export { Toast as $toast } from './components/ui/toast';
 export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
-export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';

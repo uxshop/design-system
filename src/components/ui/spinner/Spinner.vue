@@ -1,21 +1,8 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
-import type { Variant } from '../../../types';
+import type { SpinnerProps } from './types';
 
-export interface Props {
-  border?: number | string;
-  color?: string;
-  size?: number | string;
-  variant?: Variant;
-}
-
-export interface Style {
-  borderWidth?: string;
-  color?: string;
-  width?: string;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SpinnerProps>(), {
   border: 3,
   size: 22,
 });
