@@ -99,6 +99,7 @@ export * from './components/ui/tag';
 export * from './components/ui/text-style';
 export * from './components/ui/timeline';
 export * from './components/ui/toast';
+export * from './components/ui/youtube-player';
 
 // Types
 export * from './types';
