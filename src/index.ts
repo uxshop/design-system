@@ -79,6 +79,7 @@ export * from './components/ui/icon';
 export * from './components/ui/icon-button';
 export * from './components/ui/image';
 export * from './components/ui/infinite-scroll';
+export * from './components/ui/link';
 
 // Types
 export * from './types';
@@ -88,12 +89,10 @@ export { default as Toast } from './components/ui/toast/Toast.vue';
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
-export { default as Link } from './components/ui/link/Link.vue';
 export { default as ProgressBar } from './components/ui/progress/ProgressBar.vue';
 export { default as Skeleton } from './components/ui/skeleton/Skeleton.vue';
 export { default as SkeletonTable } from './components/ui/skeleton-table/SkeletonTable.vue';
 export { default as SkeletonList } from './components/ui/skeleton-list/SkeletonList.vue';
-
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';

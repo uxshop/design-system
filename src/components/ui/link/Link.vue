@@ -1,17 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import Icon from '../icon/Icon.vue';
+import type { LinkProps } from './types';
 
-export interface Props {
-  disabled?: boolean;
-  external?: boolean;
-  href?: string;
-  label?: string;
-  to?: string | object;
-  wrapText?: boolean;
-}
-
-const props = defineProps<Props>();
+const props = defineProps<LinkProps>();
 
 const linkComponent = computed(() => {
   if (props.to) {
