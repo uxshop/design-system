@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import Skeleton from '../skeleton/Skeleton.vue';
-
-interface SkeletonListProps {
-  cols?: string | number;
-  rows?: string | number;
-}
+import type { SkeletonListProps } from './types';
 
 withDefaults(defineProps<SkeletonListProps>(), {
   cols: 5,
