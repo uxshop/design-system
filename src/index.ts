@@ -71,6 +71,7 @@ export * from './components/ui/form-select';
 export * from './components/ui/form-spinbutton';
 export * from './components/ui/form-tags';
 export * from './components/ui/form-textarea';
+export * from './components/ui/form-textfield';
 export * from './components/ui/infinite-scroll';
 
 // Types
@@ -78,13 +79,9 @@ export * from './types';
 
 export { Toast as $toast } from './components/ui/toast';
 export { default as Toast } from './components/ui/toast/Toast.vue';
-
 export { default as Stack } from './components/ui/stack/Stack.vue';
 export { default as Badge } from './components/ui/badge/Badge.vue';
-export { default as FormTextfield } from './components/ui/form-textfield/FormTextfield.vue';
-
 export { default as Icon } from './components/ui/icon/Icon.vue';
-
 export { default as Spinner } from './components/ui/spinner/Spinner.vue';
 export { default as Link } from './components/ui/link/Link.vue';
 export { default as FormValidation } from './components/ui/form-validation/FormValidation.vue';
@@ -96,9 +93,7 @@ export { default as Image } from './components/ui/image/Image.vue';
 export { default as IconButton } from './components/ui/icon-button/IconButton.vue';
 export { default as Tag } from './components/ui/tag/Tag.vue';
 export { default as TagList } from './components/ui/tag/TagList.vue';
-
 export { default as TextStyle } from './components/ui/text-style/TextStyle.vue';
-
 export { default as StatsItem } from './components/ui/stats-item/StatsItem.vue';
 export { default as Container } from './components/ui/grid/container/Container.vue';
 export { default as Row } from './components/ui/grid/row/Row.vue';
@@ -109,7 +104,6 @@ export { default as Timeline } from './components/ui/timeline/Timeline.vue';
 export { default as Tab } from './components/ui/tab/Tab.vue';
 export { default as TabItem } from './components/ui/tab/TabItem.vue';
 export { default as RatingStar } from './components/ui/rating-star/RatingStar.vue';
-
 export { default as ListGroup } from './components/ui/list-group/ListGroup.vue';
 export { default as ListGroupItem } from './components/ui/list-group/ListGroupItem.vue';
 export { default as SelectItemCard } from './components/ui/select-item-card/SelectItemCard.vue';
