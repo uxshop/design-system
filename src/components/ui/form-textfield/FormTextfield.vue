@@ -1,53 +1,16 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { vMaska, type MaskOptions, type MaskType } from 'maska';
+import { vMaska } from 'maska';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
 import Icon from '../icon/Icon.vue';
 import Button from '../button/Button.vue';
-import type { IAction, Size } from '../../../types';
 
-const props = withDefaults(
-  defineProps<{
-    leadingIcon?: string;
-    trailingIcon?: string;
-    labelInfo?: string;
-    trailingText?: string;
-    state?: boolean;
-    invalidFeedback?: string;
-    loading?: boolean;
-    last?: boolean;
-    float?: boolean;
-    modelValue?: string | number | null;
-    label?: string;
-    id?: string;
-    placeholder?: string;
-    step?: string | number;
-    tabindex?: string;
-    inputmode?: 'text' | 'search' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal';
-    size?: Size;
-    pattern?: string;
-    title?: string;
-    name?: string;
-    clearable?: boolean;
-    autocomplete?: string;
-    minlength?: string | number;
-    maxlength?: string | number;
-    autofocus?: boolean;
-    disabled?: boolean;
-    required?: boolean;
-    readonly?: boolean;
-    type?: string;
-    mask?: MaskType;
-    raw?: any;
-    actions?: IAction[];
-    max?: string | number;
-    min?: string | number;
-    dataMaskaTokens?: string;
-  }>(),
-  {
-    state: undefined,
-  }
-);
+import type { MaskOptions } from 'maska';
+import type { FormTextfieldProps } from './types';
+
+const props = withDefaults(defineProps<FormTextfieldProps>(), {
+  state: undefined,
+});
 
 const emit = defineEmits<{
   (e: 'update:modelValue', val: string | null): void;

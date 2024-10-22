@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import type { RowProps } from '../types';
 
-const props = defineProps<{
-  alignV?: 'center' | 'top' | 'bottom';
-}>();
-
+const props = defineProps<RowProps>();
 const classList = ref<string[]>([]);
 
 if (props.alignV) {

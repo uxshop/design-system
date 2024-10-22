@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { getCurrentInstance, provide, reactive, watchEffect } from 'vue';
-import type { TabProviderInterface } from './TabProviderInterface';
+import type { TabProps, TabProviderInterface } from './types';
 
-const props = defineProps<{
-  modelValue: any;
-}>();
-
+const props = defineProps<TabProps>();
 const emit = defineEmits(['update:modelValue']);
 const uid = `ui-tab-${getCurrentInstance()?.uid}`;
 

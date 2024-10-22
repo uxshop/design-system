@@ -1,7 +1,7 @@
 <script setup lang="ts">
-defineProps({
-  msg: String,
-});
+import type { TableListEmptyMessageProps } from '../types';
+
+defineProps<TableListEmptyMessageProps>();
 </script>
 
 <template>

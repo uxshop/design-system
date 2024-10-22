@@ -9,11 +9,9 @@ import FormRadio from '../../../ui/form-radio/FormRadio.vue';
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue';
 import FormDatepicker from '../../../ui/form-datepicker/FormDatepicker.vue';
 import BrowserSelect from '../../../admin/browser-select/BrowserSelect.vue';
+import type { TableListNavFilterSidebarProps } from '../types';
 
-const props = defineProps<{
-  filters: any;
-  currentFilters: Record<string, any>;
-}>();
+const props = defineProps<TableListNavFilterSidebarProps>();
 const emit = defineEmits(['close']);
 const selected = ref<Record<string, any>>({});
 const aside = ref(false);

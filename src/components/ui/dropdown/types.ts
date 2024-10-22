@@ -22,3 +22,12 @@ export type IDropdownItemButton = {
 export type IDropdownItem = {
   label?: string;
 };
+
+export interface DropdownProps {
+  dropUp?: boolean;
+  right?: boolean;
+  left?: boolean;
+  closeOn?: boolean;
+  noCloseOnClickTag?: string;
+  disabled?: boolean;
+}

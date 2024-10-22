@@ -1,11 +1,10 @@
 <script setup lang="ts">
+import type { TableProps } from './types';
+
 defineEmits(['click']);
-defineProps<{
-  hover?: boolean;
-  noPadding?: boolean;
-  tiny?: boolean;
-}>();
+defineProps<TableProps>();
 </script>
+
 <template>
   <div class="table-responsive">
     <div class="ui-table" :class="{ '-hover': hover, '-no-padding': noPadding, '-tiny': tiny }">

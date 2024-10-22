@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import type { AvatarProps } from './types';
 
-const props = defineProps<{
-  title?: string;
-  variant?: string;
-  size?: string | number;
-  label?: string;
-  src?: string;
-}>();
+const props = defineProps<AvatarProps>();
 
 const classList = ref<string[]>([]);
 

@@ -4,20 +4,10 @@ import IconButton from '../../ui/icon-button/IconButton.vue';
 import Dropdown from '../../ui/dropdown/Dropdown.vue';
 import DropdownItemButton from '../../ui/dropdown/DropdownItemButton.vue';
 import Button from '../../ui/button/Button.vue';
-import type { IAction } from '../../../types/IAction';
 import type { Variant } from '../../../types';
+import type { TitlebarProps } from './types';
 
-const props = defineProps<{
-  title?: string | null;
-  to?: Record<string, any>;
-  backlink?: { to: string };
-  primaryAction?: IAction;
-  secondaryActions?: IAction[];
-  groupActions?: {
-    name: string;
-    actions: IAction[];
-  };
-}>();
+const props = defineProps<TitlebarProps>();
 
 const moreBtnMobileIcon = 'more_vert';
 const checkIsDesktop = () => window.innerWidth > 768;

@@ -1,17 +1,9 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue';
 import Button from '../../ui/button/Button.vue';
-import type { IAction } from '../../../types/IAction';
+import type { EmptyDataProps } from './types';
 
-defineProps<{
-  label?: string;
-  icon?: string;
-  caption?: string;
-  iconType?: 'outlined' | 'filled' | 'rounded' | 'twotone' | undefined;
-  link?: boolean;
-  actions?: IAction;
-  noBorder?: boolean;
-}>();
+defineProps<EmptyDataProps>();
 </script>
 
 <template>

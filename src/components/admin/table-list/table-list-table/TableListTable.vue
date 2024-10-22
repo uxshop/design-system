@@ -3,14 +3,9 @@ import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue';
 import TextStyle from '../../../ui/text-style/TextStyle.vue';
 import Button from '../../../ui/button/Button.vue';
 import TableListItem from '../TableListItem.vue';
-import type { ITableListState } from '../types/ITableListState';
+import type { TableListTablePros } from '../types';
 
-const props = defineProps<{
-  state: ITableListState;
-  rows: Record<string, any>[];
-  selected: number[];
-  to?: any;
-}>();
+const props = defineProps<TableListTablePros>();
 
 const emit = defineEmits<{
   (event: 'update:selected', seleted: number[]): void;

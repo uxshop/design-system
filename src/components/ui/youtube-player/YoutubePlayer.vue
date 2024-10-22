@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import type { YoutubePlayerProps } from './types';
 
-const props = defineProps<{
-  videoId: string;
-  width?: string | number;
-  height?: string | number;
-}>();
-
+const props = defineProps<YoutubePlayerProps>();
 const player = ref();
 
 (window as any).onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;

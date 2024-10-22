@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { isObject } from 'lodash-es';
+import type { FormSelectOptionProps } from './types';
 
-defineProps<{
-  value?: string | object | number;
-}>();
+defineProps<FormSelectOptionProps>();
 
 const stringifyValue = (val?: string | object | number) => {
   if (isObject(val)) {

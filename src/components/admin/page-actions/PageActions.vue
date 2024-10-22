@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import type { IAction } from '../../../types/IAction';
 import Button from '../../ui/button/Button.vue';
+import type { PageActionsProps } from './types';
 
-defineProps<{
-  primaryAction?: IAction;
-  secondaryActions?: IAction[];
-}>();
+defineProps<PageActionsProps>();
 </script>
 
 <template>

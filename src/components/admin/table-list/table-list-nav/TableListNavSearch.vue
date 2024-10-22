@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue';
-import type { ITableListState } from '../types/ITableListState';
+import type { TableListNavSearchProps } from '../types';
 
-export interface Props {
-  state: ITableListState;
-  placeholder: string;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TableListNavSearchProps>(), {
   placeholder: 'Procurar registros',
 });
 

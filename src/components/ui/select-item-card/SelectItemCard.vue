@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import Icon from '../icon/Icon.vue';
+import type { SelectItemCardProps } from './types';
 
-defineProps<{ name: string; description?: string; icon?: string }>();
+defineProps<SelectItemCardProps>();
 </script>
 
 <template>

@@ -1,12 +1,3 @@
-import type { ComponentOptions } from 'vue';
-import Breadcrumb from './UiBreadcrumb.vue';
-import BreadcrumbItem from './BreadcrumbItem.vue';
-
-export default {
-  install(app: ComponentOptions, { prefix }: { prefix: string }) {
-    app.component(`${prefix}Breadcrumb`, Breadcrumb);
-    app.component(`${prefix}BreadcrumbItem`, BreadcrumbItem);
-  },
-};
-
-export { Breadcrumb, BreadcrumbItem };
+export { default as BreadcrumbItem } from './BreadcrumbItem.vue';
+export { default as UiBreadcrumb } from './UiBreadcrumb.vue';
+export type { BreadcrumbItemProps } from './types';

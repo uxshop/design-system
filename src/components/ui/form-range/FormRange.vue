@@ -1,16 +1,8 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, onMounted, ref, type StyleValue } from 'vue';
+import type { FormRangeProps } from './types';
 
-const props = defineProps<{
-  modelValue?: string | number;
-  required?: boolean;
-  name?: string;
-  min?: string | number;
-  max?: string | number;
-  step?: string | number;
-  width?: string | number;
-  disabled?: boolean;
-}>();
+const props = defineProps<FormRangeProps>();
 
 const uid = `ui-form-range-${getCurrentInstance()?.uid}`;
 const showBubble = ref(false);

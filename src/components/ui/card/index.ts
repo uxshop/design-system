@@ -1,14 +1,5 @@
-import type { ComponentOptions } from 'vue';
-import Card from './Card.vue';
-import CardItem from './CardItem.vue';
-import CardTitle from './CardTitle.vue';
-
-export default {
-  install(app: ComponentOptions, { prefix }: { prefix: string }) {
-    app.component(`${prefix}Card`, Card);
-    app.component(`${prefix}CardItem`, CardItem);
-    app.component(`${prefix}CardTitle`, CardTitle);
-  },
-};
-
-export { CardItem, CardTitle, Card };
+export { default as Card } from './Card.vue';
+export { default as CardItem } from './CardItem.vue';
+export { default as CardSection } from './CardSection.vue';
+export { default as CardTitle } from './CardTitle.vue';
+export type { CardProps, CardSectionProps } from './types';

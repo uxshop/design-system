@@ -4,11 +4,9 @@ import { each } from 'lodash-es';
 import TableListNavFilterSidebar from './TableListNavFilterSidebar.vue';
 import Button from '../../../ui/button/Button.vue';
 import isMobile from '../../../../services/MobileDetector';
-import type { ITableListState } from '../types/ITableListState';
+import type { TableListNavFilterProps } from '../types';
 
-const props = defineProps<{
-  state: ITableListState;
-}>();
+const props = defineProps<TableListNavFilterProps>();
 
 const filterSidebarRef = ref();
 

@@ -4,14 +4,9 @@ import Pickr from '@simonwep/pickr';
 import type PickerInterface from '@simonwep/pickr';
 import '@simonwep/pickr/dist/themes/monolith.min.css';
 import FormLabel from '../form-label/FormLabel.vue';
+import type { FormColorpickerProps } from './types';
 
-const props = defineProps<{
-  modelValue?: string | null;
-  label?: string;
-  placeholder?: string;
-  width?: string;
-  withInput?: boolean;
-}>();
+const props = defineProps<FormColorpickerProps>();
 const emit = defineEmits(['update', 'update:modelValue']);
 const uid = `colopicker-${getCurrentInstance()?.uid}`;
 const pickr = shallowRef();

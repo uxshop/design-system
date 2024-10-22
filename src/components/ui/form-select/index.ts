@@ -1,10 +1,3 @@
-import type { ComponentOptions } from 'vue';
-import FormSelect from './FormSelect.vue';
-import FormSelectOption from './FormSelectOption.vue';
-
-export default {
-  install(app: ComponentOptions, { prefix }: { prefix: string }) {
-    app.component(`${prefix}FormSelect`, FormSelect);
-    app.component(`${prefix}FormSelectOption`, FormSelectOption);
-  },
-};
+export { default as FormSelect } from './FormSelect.vue';
+export { default as FormSelectOption } from './FormSelectOption.vue';
+export type { FormSelectOptionProps, FormSelectProps, IFormSelectOptions } from './types';

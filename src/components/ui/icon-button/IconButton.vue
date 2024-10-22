@@ -2,19 +2,9 @@
 import { computed, ref } from 'vue';
 import Icon from '../icon/Icon.vue';
 import Button from '../button/Button.vue';
-import type { Size, Variant } from '../../../types';
+import type { IconButtonProps } from './types';
 
-export interface Props {
-  icon?: string;
-  variant?: Variant;
-  size?: Size;
-  fab?: boolean;
-  disabled?: boolean;
-  onColor?: boolean;
-  customClass?: string;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<IconButtonProps>(), {
   size: 'md',
 });
 

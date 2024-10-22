@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
-
-interface DividerProps {
-  height?: string;
-  margin?: string;
-  transparent?: boolean;
-}
+import type { DividerProps } from './types';
 
 const props = withDefaults(defineProps<DividerProps>(), {
   height: '2px',

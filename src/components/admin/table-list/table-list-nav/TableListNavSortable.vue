@@ -5,25 +5,19 @@ import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue';
 import FormRadio from '../../../ui/form-radio/FormRadio.vue';
 import Button from '../../../ui/button/Button.vue';
 import isMobile from '../../../../services/MobileDetector';
+import type { TableListNavSortableProps } from '../types';
 
-const props = withDefaults(
-  defineProps<{
-    setQueryParams(a: Record<string, any>): void;
-    sortable: any;
-    queryParams: any;
-  }>(),
-  {
-    sortable: () => [],
-  }
-);
+const props = withDefaults(defineProps<TableListNavSortableProps>(), {
+  sortable: () => [],
+});
 
 const dropdownRef = ref();
 
 const sortableFinal = ref<
-  Array<{
+  {
     name: string;
     sort: string;
-  }>
+  }[]
 >([]);
 
 const onSortBy = (item: any) => {

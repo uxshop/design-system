@@ -2,22 +2,7 @@
 import { watchEffect, ref, useSlots } from 'vue';
 import Button from '../button/Button.vue';
 import IconButton from '../icon-button/IconButton.vue';
-import type { IAction } from '../../../types/IAction';
-import type { Size } from '../../../types';
-
-export interface AsideProps {
-  modelValue?: boolean;
-  title?: string;
-  subtitle?: string;
-  scrollable?: boolean;
-  noCloseOnBackdrop?: boolean;
-  size?: Size;
-  tag?: string;
-  inner?: boolean;
-  primaryAction?: IAction;
-  secondaryActions?: IAction[];
-  scrollableContentId?: string;
-}
+import type { AsideProps } from './types';
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'save']);
 const props = defineProps<AsideProps>();

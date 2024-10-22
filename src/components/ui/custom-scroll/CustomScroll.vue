@@ -1,33 +1,14 @@
 <script setup lang="ts">
 import PerfectScrollbar from 'perfect-scrollbar';
-import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import { getCurrentInstance, onMounted } from 'vue';
+import type { CustomScrollProps } from './types';
 
-const props = defineProps<{
-  settings?: PerfectScrollbar.Options;
-}>();
+const props = defineProps<CustomScrollProps>();
 
 const uid = `perfect-scroll-${getCurrentInstance()?.uid}`;
-const config: PerfectScrollbar.Options = {
-  ...{
-    // handlers?: string[];
-    // maxScrollbarLength?: number;
-    // minScrollbarLength?: number;
-    // scrollingThreshold?: number;
-    // scrollXMarginOffset?: number;
-    // scrollYMarginOffset?: number;
-    // suppressScrollX?: boolean;
-    // suppressScrollY?: boolean;
-    // swipeEasing?: boolean;
-    // useBothWheelAxes?: boolean;
-    // wheelPropagation?: boolean;
-    // wheelSpeed?: number;
-  },
-  ...props.settings,
-};
 
 onMounted(() => {
-  new PerfectScrollbar(`#${uid}`, config);
+  new PerfectScrollbar(`#${uid}`, props.settings);
 });
 </script>
 
@@ -38,5 +19,6 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
+@import 'perfect-scrollbar/css/perfect-scrollbar.css';
 @import './CustomScroll.scss';
 </style>

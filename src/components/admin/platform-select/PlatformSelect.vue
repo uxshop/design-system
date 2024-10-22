@@ -4,14 +4,7 @@ import Icon from '../../ui/icon/Icon.vue';
 import Tab from '../../ui/tab/Tab.vue';
 import TabItem from '../../ui/tab/TabItem.vue';
 import Badge from '../../ui/badge/Badge.vue';
-import type { IPlatform, BadgeConfigType } from './PlatformSelectTypes';
-
-export type { IPlatform, BadgeConfigType } from './PlatformSelectTypes';
-
-interface PlatformSelectProps {
-  platformsList: IPlatform[];
-  badgeConfig?: Partial<BadgeConfigType>;
-}
+import type { BadgeConfigType, IPlatform, PlatformSelectProps } from './types';
 
 const badgeConfigDefault: BadgeConfigType = {
   beta: { variant: 'highlight', label: 'Beta' },

@@ -2,23 +2,10 @@
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue';
 import { ref, watch } from 'vue';
 import { indexOf } from 'lodash-es';
-
-export interface Rows {
-  id: number;
-  name: string;
-}
-
-export interface Props {
-  rows: any;
-  modelValue: number[];
-}
-
-interface IRow {
-  id: number;
-}
+import type { IRow, RowExcludeProps } from './types';
 
 const emit = defineEmits(['update:modelValue', 'update']);
-const props = defineProps<Props>();
+const props = defineProps<RowExcludeProps>();
 const includes = ref<number[]>([]);
 
 const onClickRowExclude = (item: IRow) => {

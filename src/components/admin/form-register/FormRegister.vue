@@ -2,13 +2,10 @@
 import { ref } from 'vue';
 import FormValidation from '../../ui/form-validation/FormValidation.vue';
 import Savebar from '../savebar/Savebar.vue';
+import type { FormRegisterProps } from './types';
 
 const emit = defineEmits(['save']);
-const props = defineProps<{
-  resource: any;
-  validate?: Record<string, Record<string, string>>;
-  editing?: boolean;
-}>();
+const props = defineProps<FormRegisterProps>();
 
 const sending = ref();
 const formError = ref<Record<string, string[]> | undefined>(undefined);

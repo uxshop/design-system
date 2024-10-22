@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import Icon from '../icon/Icon.vue';
-
-export interface Props {
-  modelValue: number;
-  size?: string | number;
-}
+import type { RatingStarProps } from './types';
 
 const emit = defineEmits(['update:modelValue', 'update']);
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<RatingStarProps>(), {
   modelValue: 1,
 });
 

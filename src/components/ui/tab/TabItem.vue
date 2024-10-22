@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { inject, ref, watchEffect } from 'vue';
-import type { TabProviderInterface } from './TabProviderInterface';
+import type { TabItemProps, TabProviderInterface } from './types';
 
-const props = defineProps<{
-  label?: string;
-  index?: any;
-  badge?: string | number;
-}>();
+const props = defineProps<TabItemProps>();
 
 const active = ref(false);
 const tabsProvider: TabProviderInterface | undefined = inject('tabs');

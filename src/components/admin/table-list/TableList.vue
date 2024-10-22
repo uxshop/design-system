@@ -22,16 +22,11 @@ import TableListEmptySearch from './snippets/TableListEmptySearch.vue';
 import TableListEmptyMessage from './snippets/TableListEmptyMessage.vue';
 import isMobile from '../../../services/MobileDetector';
 import type { TApiData } from '../../../types';
-import type { ITableListConfig } from './types';
+import type { TableListProps } from './types';
 
 type TQueryParams = Record<string, string | number>;
 
-const props = defineProps<{
-  config: ITableListConfig;
-  filters?: any;
-  placeholder?: string;
-  to?: any;
-}>();
+const props = defineProps<TableListProps>();
 
 const emit = defineEmits<{
   (event: 'clickRow', i: any): void;

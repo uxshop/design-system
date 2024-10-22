@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Spinner from '../../../ui/spinner/Spinner.vue';
-defineProps<{ loading: boolean }>();
+import type { TableListNavLoaderProps } from '../types';
+
+defineProps<TableListNavLoaderProps>();
 </script>
 
 <template>

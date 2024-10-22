@@ -1,7 +1,6 @@
-import DescriptionListItem from './components/description-list-item/DescriptionListItem.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
-
 import DescriptionList from './DescriptionList.vue';
+import DescriptionListItem from './DescriptionListItem.vue';
 
 const meta = {
   title: 'Ui/Description List',

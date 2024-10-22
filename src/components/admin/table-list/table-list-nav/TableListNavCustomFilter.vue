@@ -5,20 +5,12 @@ import Dropdown from '../../../ui/dropdown/Dropdown.vue';
 import Button from '../../../ui/button/Button.vue';
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue';
 import DropdownSection from '../../../ui/dropdown/DropdownSection.vue';
-import toast from '../../../ui/toast';
+import { $toast } from '../../../ui/toast';
 import { slugify } from '../../../../filters';
 import isMobile from '../../../../services/MobileDetector';
-import type { ITableListState } from '../types/ITableListState';
+import type { TableListNavCustomFilterProps } from '../types';
 
-const props = defineProps<{
-  state: ITableListState;
-  service: {
-    get(params: any): Promise<void>;
-    create(data: any): Promise<void>;
-    update(id: number, data: any): Promise<void>;
-    delete(id: number): Promise<void>;
-  };
-}>();
+const props = defineProps<TableListNavCustomFilterProps>();
 
 const tabs: any = [];
 const tab = ref();
@@ -82,7 +74,7 @@ const onRemoveTab = async () => {
       selectedView: 'all',
     });
 
-    toast.open('Filtro deletado com sucesso');
+    $toast.open('Filtro deletado com sucesso');
   }
 };
 

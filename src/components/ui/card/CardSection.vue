@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import Link from '../link/Link.vue';
-import type { IAction } from '../../../types/IAction';
+import type { CardSectionProps } from './types';
 
-defineProps<{
-  title?: string;
-  actions?: IAction[];
-}>();
+defineProps<CardSectionProps>();
 </script>
 
 <template>

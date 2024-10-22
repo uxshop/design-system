@@ -1,18 +1,7 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
 import Skeleton from '../skeleton/Skeleton.vue';
-
-export interface SkeletonTableProps {
-  cols?: string | number;
-  hideHeader?: boolean;
-  lines?: string | number;
-  noBorder?: boolean;
-  padding?: string;
-  rows?: string | number;
-  width?: string;
-  withAction?: boolean | string | number;
-  withAvatar?: boolean;
-}
+import type { SkeletonTableProps } from './types';
 
 const props = withDefaults(defineProps<SkeletonTableProps>(), {
   cols: 5,

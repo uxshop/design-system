@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { each, find, isFunction } from 'lodash-es';
-import type { ITableListState } from '../types/ITableListState';
 import Tag from '../../../ui/tag/Tag.vue';
 import { computed } from 'vue';
 import { omit } from 'lodash-es';
 import TagList from '../../../ui/tag/TagList.vue';
 import { DateTime } from 'luxon';
+import type { TableListTagsProps } from '../types';
 
-const props = defineProps<{
-  state: ITableListState;
-}>();
+const props = defineProps<TableListTagsProps>();
 
 const removeFilter = props.state.removeFilter;
 

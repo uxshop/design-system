@@ -7,32 +7,9 @@ import { computed, ref, watchEffect } from 'vue';
 import { slugify as _slugify, truncate } from '../../../filters';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
 import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue';
+import type { SeoProps } from './types';
 
-export interface SeoInterface {
-  meta_title?: string;
-  meta_description?: string;
-  meta_keywords?: string;
-  slug?: string;
-  name?: string;
-  [key: string]: string | undefined;
-}
-
-export interface Props {
-  title?: string;
-  domain?: string;
-  modelValue: SeoInterface;
-  viewOnly?: boolean;
-  writeOnly?: boolean;
-  isMetaTitle?: boolean;
-  gray?: boolean;
-  slugify?: boolean;
-  keyTitle?: string;
-  keySubTitle?: string;
-  keyDescription?: string;
-  metaTitle?: string;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SeoProps>(), {
   slugify: true,
   keyTitle: 'meta_title',
   keySubTitle: 'meta_subtitle',

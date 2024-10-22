@@ -5,31 +5,17 @@ import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
 import Stack from '../../ui/stack/Stack.vue';
 import Button from '../../ui/button/Button.vue';
-import FormSelect, { type IFormSelectOptions } from '../../ui/form-select/FormSelect.vue';
+import FormSelect from '../../ui/form-select/FormSelect.vue';
 import mobileDetector from '../../../services/MobileDetector';
 import { MOBILE_WIDTH } from '../../../constants';
+import type { IQuickSearchFormValue, QuickSearchProps } from './types';
 
-export interface IQuickSearchFormValue {
-  searchType: string;
-  searchKey: string;
-}
-
-const props = withDefaults(
-  defineProps<{
-    title?: string;
-    caption?: string;
-    searchOptions: IFormSelectOptions[];
-    modelValue: boolean;
-    placeholder?: string;
-    buttonLabel?: string;
-  }>(),
-  {
-    title: 'Busca rápida',
-    caption: 'Encontre o que precisa na sua loja virtual.',
-    placeholder: 'Ex: Camiseta Bagy',
-    buttonLabel: 'Pesquisar',
-  }
-);
+const props = withDefaults(defineProps<QuickSearchProps>(), {
+  title: 'Busca rápida',
+  caption: 'Encontre o que precisa na sua loja virtual.',
+  placeholder: 'Ex: Camiseta Bagy',
+  buttonLabel: 'Pesquisar',
+});
 const emit = defineEmits(['onSubmit', 'update:modelValue', 'onChangeOption']);
 
 const isMobile = mobileDetector(MOBILE_WIDTH);

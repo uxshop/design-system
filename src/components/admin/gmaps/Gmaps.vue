@@ -1,34 +1,9 @@
 <script setup lang="ts">
 import { watchEffect, ref } from 'vue';
 import Link from '../../ui/link/Link.vue';
+import type { AddressInterface, GmapsProps } from './types';
 
-interface AddressInterface {
-  id?: number | null;
-  customer_id?: number | null;
-  name?: string;
-  receiver?: string;
-  street?: string;
-  zipcode?: string | number;
-  number?: string | number;
-  district?: string;
-  state?: string;
-  city?: string;
-  detail?: string | null;
-  readonly city_ibge_id?: string;
-  readonly created_at?: string;
-  readonly updated_at?: string;
-}
-
-interface Props {
-  address: AddressInterface;
-  linkOnly?: boolean;
-  style?: string;
-  width?: string | number;
-  height?: string | number;
-  zoom?: string | number;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<GmapsProps>(), {
   width: 720,
   height: 360,
   zoom: 20,

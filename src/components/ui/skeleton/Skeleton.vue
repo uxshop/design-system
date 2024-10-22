@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
-
-export interface SkeletonProps {
-  width?: string;
-  height?: string;
-}
+import type { SkeletonProps } from './types';
 
 const props = defineProps<SkeletonProps>();
 

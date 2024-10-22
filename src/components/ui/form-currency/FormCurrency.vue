@@ -2,34 +2,10 @@
 import { computed, ref, watch } from 'vue';
 import { useCurrencyInput, type CurrencyInputOptions, CurrencyDisplay } from 'vue-currency-input';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
-import type { Size } from '../../../types';
+import type { FormCurrencyProps } from './types';
 
-export interface Props {
-  leadingIcon?: string;
-  trailingIcon?: string;
-  labelInfo?: string;
-  state?: boolean;
-  invalidFeedback?: string;
-  loading?: boolean;
-  last?: boolean;
-  float?: boolean;
-  modelValue?: string | number | null;
-  label?: string;
-  placeholder?: any;
-  size?: Size;
-  id?: string;
-  autocomplete?: string;
-  min?: number;
-  max?: number;
-  step?: string | number;
-  autofocus?: boolean;
-  disabled?: boolean;
-  required?: boolean;
-  readonly?: boolean;
-  options?: CurrencyInputOptions;
-}
 const emit = defineEmits(['update:modelValue', 'change']);
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormCurrencyProps>(), {
   state: undefined,
   placeholder: '0.00',
   max: 999999.99,

@@ -2,18 +2,9 @@
 import { ref } from 'vue';
 import PageHelper from '../page-helper/PageHelper.vue';
 import PageHelperArticleModal from '../page-helper-articles/PageHelperArticlesModal.vue';
+import type { PageHelperArticlesProps } from './types';
 
-export interface IArticle {
-  name: string;
-  url: string;
-}
-
-export interface IArticlesHelper {
-  title?: string;
-  articles?: IArticle[];
-}
-
-const props = defineProps<IArticlesHelper>();
+const props = defineProps<PageHelperArticlesProps>();
 
 const pageHelperArticleModalRef = ref();
 const openArticleModal = () => {

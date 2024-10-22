@@ -2,21 +2,14 @@
 import { onMounted, ref, watchEffect } from 'vue';
 import { each } from 'lodash-es';
 import { zerofill, pluralize } from '../../../../filters';
-import dialog from '../../../ui/dialog/index';
+import { $dialog } from '../../../ui/dialog';
 import FormCheckbox from '../../../ui/form-checkbox/FormCheckbox.vue';
 import Dropdown from '../../../ui/dropdown/Dropdown.vue';
 import Button from '../../../ui/button/Button.vue';
 import DropdownItemButton from '../../../ui/dropdown/DropdownItemButton.vue';
-import type { ITableListConfig, TBulkActions } from '../types';
+import type { TableListNavBulkProps, TBulkActions } from '../types';
 
-type Props = {
-  rows: unknown[];
-  selected: number[];
-  config: ITableListConfig;
-  state: any;
-};
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TableListNavBulkProps>(), {
   selected: () => {
     return [];
   },
@@ -50,7 +43,7 @@ const onRemoveDialog = () => {
     return defaultMessage;
   }
 
-  dialog.open({
+  $dialog.open({
     title: props.config.dialogDelete?.title ?? 'Excluir registros',
     destructIcon: props.config.dialogDelete?.destructIcon ?? 'delete',
     destructLabel: props.config.dialogDelete?.destructLabel ?? 'Deletar registros',

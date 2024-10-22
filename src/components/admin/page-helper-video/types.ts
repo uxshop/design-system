@@ -6,3 +6,12 @@ export interface IVideo {
     url: string;
   }[];
 }
+
+export interface PageHelperVideoProps {
+  video: IVideo;
+}
+
+export interface PageHelperVideoModalProps {
+  title?: string;
+  supportTitle?: string;
+}

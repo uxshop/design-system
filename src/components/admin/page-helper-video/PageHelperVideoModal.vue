@@ -4,18 +4,12 @@ import Aside from '../../ui/aside/Aside.vue';
 import Link from '../../ui/link/Link.vue';
 import AsideSection from '../../ui/aside/AsideSection.vue';
 import YoutubePlayer from '../../ui/youtube-player/YoutubePlayer.vue';
-import type { IVideo } from './types';
+import type { IVideo, PageHelperVideoModalProps } from './types';
 
-withDefaults(
-  defineProps<{
-    title?: string;
-    supportTitle?: string;
-  }>(),
-  {
-    title: 'Base de conhecimento',
-    supportTitle: 'Para encontrar ainda mais informações, explore nossos artigos disponíveis na base de conhecimento.',
-  }
-);
+withDefaults(defineProps<PageHelperVideoModalProps>(), {
+  title: 'Base de conhecimento',
+  supportTitle: 'Para encontrar ainda mais informações, explore nossos artigos disponíveis na base de conhecimento.',
+});
 
 const video = ref<IVideo>({
   video_id: '_QzHQ3zxUS4',

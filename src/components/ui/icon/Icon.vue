@@ -1,13 +1,7 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
 import DSIcons from './snipets/ds-icons.json';
-import type { IconType, DSIconsType } from './types';
-
-export interface IconProps {
-  filled?: boolean;
-  name?: IconType;
-  size?: number | string;
-}
+import type { DSIconsType, IconProps } from './types';
 
 const props = withDefaults(defineProps<IconProps>(), {
   size: 16,

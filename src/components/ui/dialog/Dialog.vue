@@ -2,11 +2,9 @@
 import { nextTick, onMounted, reactive, ref } from 'vue';
 import Button from '../button/Button.vue';
 import FormTextfield from '../form-textfield/FormTextfield.vue';
-import type { OpenDialogConfig } from '.';
+import type { DialogProps } from './types';
 
-interface OpenDialogConfigProps extends OpenDialogConfig {}
-
-const props = withDefaults(defineProps<OpenDialogConfigProps>(), {
+const props = withDefaults(defineProps<DialogProps>(), {
   promptType: 'text',
   cancelLabel: 'Cancelar',
   destructLabel: 'Deletar',

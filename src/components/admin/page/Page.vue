@@ -3,34 +3,14 @@ import { ref, computed } from 'vue';
 import Titlebar from '../titlebar/Titlebar.vue';
 import PageMessageSupport from '../page-message-support/PageMessageSupport.vue';
 import PageHelperVideo from '../page-helper-video/PageHelperVideo.vue';
-import type { IVideo } from '../page-helper-video/types';
-import PageHelperArticles, {
-  type IArticle,
-  type IArticlesHelper,
-} from '../page-helper-articles/PageHelperArticles.vue';
-import type { IAction } from '../../../types/IAction';
 
-export interface Props {
-  hideTitle?: boolean;
-  primaryAction?: IAction;
-  secondaryActions?: IAction[];
-  to?: Record<string, any>;
-  backlink?: { to: string };
-  size?: 'sm' | 'md' | 'lg' | 'full';
-  videoHelp?: IVideo;
-  articlesHelp?: IArticle[];
-  footerHelp?: any;
-  title?: string;
-  groupActions?: {
-    name: string;
-    actions: IAction[];
-  };
-}
+import type { PageProps } from './types';
+import type { PageHelperArticles, IArticle, PageHelperArticlesProps } from '../page-helper-articles';
 
-const props = defineProps<Props>();
+const props = defineProps<PageProps>();
 const classList = ref<string[]>([]);
 
-const articlesHelp = computed<IArticlesHelper>(() => {
+const articlesHelp = computed<PageHelperArticlesProps>(() => {
   const articlesHelp = {
     title: props?.title,
     articles: [] as IArticle[],
@@ -41,7 +21,7 @@ const articlesHelp = computed<IArticlesHelper>(() => {
   }
 
   articlesHelp.articles = props.videoHelp?.articles || [];
-  return articlesHelp as IArticlesHelper;
+  return articlesHelp as PageHelperArticlesProps;
 });
 
 if (props.size) {

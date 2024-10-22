@@ -1,31 +1,9 @@
 <script setup lang="ts">
 import ApexCharts from 'apexcharts';
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue';
+import type { ApexchartProps } from './types';
 
-export interface Props {
-  options?: ApexCharts.ApexOptions;
-  series: any[];
-  height?: string;
-  type:
-    | 'line'
-    | 'area'
-    | 'bar'
-    | 'pie'
-    | 'donut'
-    | 'radialBar'
-    | 'scatter'
-    | 'bubble'
-    | 'heatmap'
-    | 'candlestick'
-    | 'boxPlot'
-    | 'radar'
-    | 'polarArea'
-    | 'rangeBar'
-    | 'rangeArea'
-    | 'treemap';
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ApexchartProps>(), {
   type: 'line',
   height: 'auto',
 });

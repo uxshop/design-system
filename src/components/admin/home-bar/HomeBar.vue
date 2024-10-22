@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps<{ userName?: string; message?: string }>();
+import type { HomeBarProps } from './types';
+
+defineProps<HomeBarProps>();
 </script>
 
 <template>

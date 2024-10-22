@@ -1,4 +1,4 @@
-export interface IDropdownItem {
+export interface UserProfileCardPropsDropdownItem {
   text: string;
   caption: string;
   key?: string;
@@ -9,9 +9,25 @@ export interface IDropdownItem {
   target?: string;
   component?: any;
 }
+
 export interface UserCard {
   name: string;
   image?: {
     src?: string;
   };
+}
+
+export interface UserProfileCardProps {
+  user: UserCard;
+  caption?: string;
+  dropdown?: UserProfileCardPropsDropdownItem[];
+  label?: string;
+  dropUp?: boolean;
+}
+
+export interface UserButtonProps {
+  userName: string;
+  caption?: string;
+  image?: string;
+  hideIcon?: boolean;
 }

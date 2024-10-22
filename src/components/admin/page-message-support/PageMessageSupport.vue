@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import Icon from '../../ui/icon/Icon.vue';
 import Link from '../../ui/link/Link.vue';
+import type { PageMessageSupportProps } from './types';
 
-defineProps<{
-  name: string;
-  link: string;
-}>();
+defineProps<PageMessageSupportProps>();
 </script>
 
 <template>

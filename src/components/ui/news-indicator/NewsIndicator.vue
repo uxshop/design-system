@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import Badge from '../badge/Badge.vue';
+import type { NewsIndicatorProps } from './types';
 
-defineProps<{
-  label?: string;
-}>();
+defineProps<NewsIndicatorProps>();
 </script>
 
 <template>

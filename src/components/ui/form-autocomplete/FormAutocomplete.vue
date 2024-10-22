@@ -3,29 +3,11 @@ import { computed, getCurrentInstance, nextTick, onMounted, ref, shallowRef, wat
 import { cloneDeep } from 'lodash-es';
 import * as Choices from 'choices.js';
 import FormLabel from '../form-label/FormLabel.vue';
-import type { Size } from '../../../types';
-
-interface AutocompleteOption {
-  label: string;
-  value: string | number;
-}
-
-export interface Props {
-  modelValue?: any;
-  placeholder?: string;
-  options?: AutocompleteOption[];
-  label?: string;
-  size?: Size;
-  last?: boolean;
-  template?: any;
-  position?: 'top' | 'bottom' | 'auto';
-  config?: Record<string, any>;
-  required?: boolean;
-}
+import type { FormAutocompleteProps } from './types';
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'update']);
 const Plugin = Choices.default || Choices;
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormAutocompleteProps>(), {
   placeholder: 'Selecione',
   config: () => ({}),
   options: () => [],
@@ -131,7 +113,6 @@ onMounted(() => {
       'change',
       function (event) {
         update(element.value.getValue(true), element.value.getValue());
-        // element.value.hideDropdown()
       },
       false
     );

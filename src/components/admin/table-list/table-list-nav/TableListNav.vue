@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import TableListNavLoader from '../table-list-nav-loader/TableListNavLoader.vue';
+import type { TableListNavProps } from '../types';
 
-defineProps<{
-  loading: boolean;
-}>();
+defineProps<TableListNavProps>();
 </script>
 
 <template>

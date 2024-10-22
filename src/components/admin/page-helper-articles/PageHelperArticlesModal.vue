@@ -2,13 +2,13 @@
 import { ref } from 'vue';
 import Aside from '../../ui/aside/Aside.vue';
 import Link from '../../ui/link/Link.vue';
-import type { IArticle, IArticlesHelper } from './PageHelperArticles.vue';
+import type { IArticle, PageHelperArticlesProps } from './types';
 
 const aside = ref(false);
 const itemTitle = ref('Ajuda');
 const helperArticles = ref<IArticle[]>();
 
-const open = (item: IArticlesHelper) => {
+const open = (item: PageHelperArticlesProps) => {
   helperArticles.value = item.articles;
   if (item.title) itemTitle.value = item.title;
   aside.value = true;
@@ -37,6 +37,7 @@ defineExpose({
     </div>
   </Aside>
 </template>
+
 <style lang="scss">
 .page-helper-articles {
   &-support {

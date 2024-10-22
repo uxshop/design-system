@@ -1,8 +1,9 @@
 <script setup lang="ts">
-defineProps<{
-  group?: boolean;
-}>();
+import type { FormLayoutItemProps } from './types';
+
+defineProps<FormLayoutItemProps>();
 </script>
+
 <template>
   <div class="ui-form-layout-item" :class="{ '-group': group }">
     <slot />
