@@ -194,12 +194,12 @@ watch(
 watch(
 	() => props.modelValue,
 	(newVal) => {
-		if (newVal?.length || props.selectOne) {
+		if (newVal || props.selectOne) {
 			if (newVal == selectedIds.value) {
 				return
 			}
 
-			if (newVal) {
+			if (newVal?.length) {
 				selectedIds.value = isArray(newVal) ? newVal : [newVal]
 			} else {
 				selectedIds.value = []
