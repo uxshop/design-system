@@ -199,7 +199,7 @@ watch(
 				return
 			}
 
-			if (newVal?.length) {
+			if (newVal?.length || newVal) {
 				selectedIds.value = isArray(newVal) ? newVal : [newVal]
 			} else {
 				selectedIds.value = []
