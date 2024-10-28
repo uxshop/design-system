@@ -166,8 +166,12 @@ const pushToMemoryList = (items: any[]) => {
 const updateByModal = ({ memoryList, ids }: any) => {
 	searchBy.value = null
 	pushToMemoryList(memoryList)
-	if (ids) {
+	if (ids?.length) {
 		updateInput(ids)
+	} else {
+		selectedIds.value = []
+		rows.value = []
+		updateInput([])
 	}
 }
 
@@ -190,12 +194,12 @@ watch(
 watch(
 	() => props.modelValue,
 	(newVal) => {
-		if (newVal?.length || props.selectOne) {
+		if (newVal || props.selectOne) {
 			if (newVal == selectedIds.value) {
 				return
 			}
 
-			if (newVal) {
+			if (newVal?.length || newVal) {
 				selectedIds.value = isArray(newVal) ? newVal : [newVal]
 			} else {
 				selectedIds.value = []
