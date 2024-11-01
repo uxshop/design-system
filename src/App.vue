@@ -1,16 +1,104 @@
 <script setup lang="ts">
+import { reactive } from 'vue';
 import Page from './components/admin/page/Page.vue';
+import IndexTable from './components/ui/index-table/IndexTable.vue';
 import TextStyle from './components/ui/text-style/TextStyle.vue';
 import type { IAction } from './types';
 
 const action: IAction = {
   label: 'Bagy',
 };
+
+const show = reactive({
+  select: true,
+  reload: true,
+  search: true,
+  order: true,
+  customFilters: true,
+  filters: true,
+});
+
+const tabs = [
+  {
+    label: 'Todos',
+    key: 'all',
+    active: true,
+  },
+  {
+    label: 'Outra',
+    key: 'other',
+    active: false,
+  },
+  {
+    label: 'Alguma',
+    key: 'anyxpto',
+    active: false,
+  },
+];
+
+const ordination = [
+  {
+    key: 'name',
+    label: 'Nome (A-z)',
+    active: false,
+  },
+  {
+    key: 'updated',
+    label: 'Atualizados',
+    active: false,
+  },
+  {
+    key: 'created_at',
+    label: 'Data de criação',
+    active: true,
+  },
+];
+
+const pagination = {
+  from: 1,
+  to: 25,
+  size: 25,
+  total: 100,
+  page: 1,
+};
+
+const openTab = (key: string) => {
+  console.info('🟣 >> openTab', key);
+};
+
+const reload = () => {
+  console.info('🟣 >> reload');
+};
+
+const filters = () => {
+  console.info('🟣 >> filters');
+};
+
+const clearSearch = () => {
+  console.info('🟣 >> clearSearch');
+};
+
+const selectAll = (value: boolean) => {
+  console.info('🟣 >> selectAll', value);
+};
 </script>
 
 <template>
   <Page title="Bagy Design System" size="full" :primary-action="action">
     <TextStyle variant="muted">Inicie seus testes por aqui...</TextStyle>
+    <IndexTable
+      :show="show"
+      :tabs
+      :ordination
+      :pagination
+      :active-filter-tags="[]"
+      :bulk-actions="[]"
+      :is-loading="false"
+      @open-tab="openTab"
+      @reload="reload"
+      @filters="filters"
+      @clear-search="clearSearch"
+      @select-all="selectAll" />
   </Page>
 </template>
 

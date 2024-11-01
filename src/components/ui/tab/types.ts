@@ -1,11 +1,13 @@
 export interface TabProviderInterface {
-  tabs: any;
+  tabs: {
+    view: string;
+  };
   activeTabIndex: number | string;
   active(index: number | string, evt?: unknown): void;
 }
 
 export interface TabProps {
-  modelValue: any;
+  modelValue: string;
 }
 
 export interface TabItemProps {

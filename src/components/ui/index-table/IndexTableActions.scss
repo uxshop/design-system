@@ -1,0 +1,22 @@
+.index-table-actions-item,
+.index-table-actions-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.index-table-actions-search {
+  max-width: 300px;
+}
+
+.index-table-actions-item {
+  padding: var(--s-spacing-x-small);
+}
+
+.index-table-actions-checkbox {
+    margin-right: var(--s-spacing-nano);
+}
+
+.index-table-actions-wrapper {
+  gap: var(--s-spacing-nano);
+}
