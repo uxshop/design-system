@@ -14,7 +14,7 @@ const onRemove = () => {
 };
 
 const tagClassList = computed(() => {
-  let classes = [];
+  const classes = [];
 
   if (props.variant) {
     classes.push(`-variant-${props.variant}`);

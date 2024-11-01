@@ -68,5 +68,12 @@
         white-space: nowrap;
       }
     }
+
+    .titlebar-actions-secondary {
+      > .ui-button.-only-icon {
+        padding: var(--s-spacing-xx-small);
+        max-height: unset;
+      }
+    }
   }
 }
