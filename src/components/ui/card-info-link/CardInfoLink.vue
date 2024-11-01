@@ -1,18 +1,9 @@
 <script setup lang="ts">
 import Link from '../link/Link.vue';
 import Icon from '../icon/Icon.vue';
+import type { CardInfoLinkProps } from './types';
 
-export interface ICardInfoLinkProps {
-  iconName: string;
-  title?: string;
-  description?: string;
-  highlighted?: boolean;
-  linkLabel?: string;
-  href?: string;
-  routeName?: string;
-}
-
-const props = withDefaults(defineProps<ICardInfoLinkProps>(), {
+const props = withDefaults(defineProps<CardInfoLinkProps>(), {
   linkLabel: 'Acessar',
 });
 

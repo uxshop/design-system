@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
+import type { Content403Props } from './types';
 
-interface OwnerInterface {
-  email?: string;
-}
-
-interface Props {
-  owner?: OwnerInterface;
-}
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Content403Props>(), {
   owner: () => ({}),
 });
 

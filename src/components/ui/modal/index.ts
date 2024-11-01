@@ -1,14 +1,5 @@
-import type { ComponentOptions } from 'vue';
-import Modal from './Modal.vue';
-import ModalBody from './ModalBody.vue';
-import ModalFooter from './ModalFooter.vue';
-import ModalItem from './ModalItem.vue';
-
-export default {
-  install(app: ComponentOptions, { prefix }: { prefix: string }) {
-    app.component(`${prefix}Modal`, Modal);
-    app.component(`${prefix}ModalBody`, ModalBody);
-    app.component(`${prefix}ModalFooter`, ModalFooter);
-    app.component(`${prefix}ModalItem`, ModalItem);
-  },
-};
+export { default as Modal } from './Modal.vue';
+export { default as ModalBody } from './ModalBody.vue';
+export { default as ModalFooter } from './ModalFooter.vue';
+export { default as ModalItem } from './ModalItem.vue';
+export type { ModalProps } from './types';

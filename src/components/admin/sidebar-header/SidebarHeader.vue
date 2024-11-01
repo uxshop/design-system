@@ -1,16 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import IconButton from '../../../components/ui/icon-button/IconButton.vue';
-
-interface SidebarHeaderProps {
-  height?: string;
-  logoImage?: string;
-  logoSvg?: string;
-  actionsConfig: {
-    notification: { show: boolean; nameClass: string };
-    quickSearch: { show: boolean };
-  };
-}
+import type { SidebarHeaderProps } from './types';
 
 const props = withDefaults(defineProps<SidebarHeaderProps>(), {
   height: '32px',
@@ -21,6 +12,7 @@ const emits = defineEmits(['onQuickSearchClick', 'onLogoClick']);
 const notificationConfig = ref(props.actionsConfig.notification);
 const quickSearchConfig = ref(props.actionsConfig.quickSearch);
 </script>
+
 <template>
   <div class="sidebar-header-container">
     <div class="logo" @click="emits('onLogoClick')">

@@ -1,15 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { Variant } from '../../../types';
-
-type TextStyleVariant = Omit<Variant, 'link' | 'plain'> | 'strong' | 'muted';
-
-export interface TextStyleProps {
-  block?: boolean;
-  label?: string;
-  tag?: string;
-  variant?: TextStyleVariant;
-}
+import type { TextStyleProps } from './types';
 
 const props = withDefaults(defineProps<TextStyleProps>(), {
   tag: 'span',

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import './Layout.scss';
 
 const scrolled = ref(false);
+
 const onScroll = (e: UIEvent) => {
   const target = e.target as HTMLDivElement;
   scrolled.value = target.scrollTop > 20;
@@ -27,3 +27,7 @@ const onScroll = (e: UIEvent) => {
     </div>
   </div>
 </template>
+
+<style lang="scss">
+@import './Layout.scss';
+</style>

@@ -1,12 +1,4 @@
-import Container from './container/Container.vue';
-import Row from './row/Row.vue';
-import Col from './col/Col.vue';
-import type { ComponentOptions } from 'vue';
-
-export default {
-  install(app: ComponentOptions, { prefix }: { prefix: string }) {
-    app.component(`${prefix}Container`, Container);
-    app.component(`${prefix}Row`, Row);
-    app.component(`${prefix}Col`, Col);
-  },
-};
+export { default as Container } from './container/Container.vue';
+export { default as Row } from './row/Row.vue';
+export { default as Col } from './col/Col.vue';
+export type { RowProps, ColProps } from './types';

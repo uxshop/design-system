@@ -2,16 +2,10 @@
 import { computed } from 'vue';
 import { DropdownItem, DropdownItemButton, DropdownDivider, Dropdown } from '../../ui/dropdown';
 import Icon from '../../ui/icon/Icon.vue';
-import UserButton from './partials/UserButton.vue';
-import type { IDropdownItem, UserCard } from './types';
+import UserButton from './UserButton.vue';
+import type { UserProfileCardProps } from './types';
 
-const props = defineProps<{
-  user: UserCard;
-  caption?: string;
-  dropdown?: IDropdownItem[];
-  label?: string;
-  dropUp?: boolean;
-}>();
+const props = defineProps<UserProfileCardProps>();
 
 const dropdownItems = computed(() => {
   return props.dropdown?.map((item) => {

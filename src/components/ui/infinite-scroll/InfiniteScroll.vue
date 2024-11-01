@@ -2,13 +2,9 @@
 import { getCurrentInstance, ref, onMounted, nextTick } from 'vue';
 import TextStyle from '../text-style/TextStyle.vue';
 import Spinner from '../spinner/Spinner.vue';
-import type { IContext } from './types';
+import type { IContext, InfiniteScrollProps } from './types';
 
-const props = defineProps<{
-  load: any;
-  spinnerSize?: any;
-  scrollableElementId?: string;
-}>();
+const props = defineProps<InfiniteScrollProps>();
 
 const uid = `ui-infinite-loading-${getCurrentInstance()?.uid}`;
 const parentEl = ref<HTMLElement>();

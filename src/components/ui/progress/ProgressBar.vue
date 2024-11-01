@@ -1,11 +1,7 @@
 <script setup lang="ts">
-export interface Props {
-  height?: string;
-  max?: string | number;
-  value?: string | number;
-}
+import type { ProgressBarProps } from './types';
 
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<ProgressBarProps>(), {
   height: '3px',
   max: 100,
 });

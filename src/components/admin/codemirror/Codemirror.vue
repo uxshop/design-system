@@ -9,6 +9,7 @@ import { htmlLanguage, html } from '@codemirror/lang-html';
 import { language } from '@codemirror/language';
 import { css } from '@codemirror/lang-css';
 import { getCurrentInstance, onMounted, ref, shallowRef, watchEffect } from 'vue';
+import type { CodemirrorProps } from './types';
 
 // const isMac = /Mac/.test(navigator.platform)
 const languageConf = new Compartment();
@@ -22,10 +23,7 @@ const autoLanguage = EditorState.transactionExtender.of((tr) => {
   };
 });
 
-const props = defineProps<{
-  modelValue?: string;
-  config?: object;
-}>();
+const props = defineProps<CodemirrorProps>();
 
 const emit = defineEmits(['update:modelValue']);
 const editorRef = ref();

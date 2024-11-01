@@ -1,2 +1,2 @@
 export { default as PageHelperVideo } from './PageHelperVideo.vue';
-export { type IVideo } from './types';
+export type { IVideo, PageHelperVideoProps, PageHelperVideoModalProps } from './types';

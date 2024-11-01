@@ -2,27 +2,9 @@
 import { getCurrentInstance, onMounted, onUnmounted, watchEffect } from 'vue';
 import './redactor/redactor';
 import './redactor/plugins/alignment/alignment.js';
+import type { FormRichtextProps, TRedactor } from './types';
 
-export interface Props {
-  modelValue?: any;
-  name?: string;
-  placeholder?: string;
-  label?: string;
-  height?: string | number;
-  config?: Record<string, string>;
-  configCallbacks?: Record<string, () => {}>;
-}
-
-type TRedactor = {
-  editor: {
-    focus(): void;
-    source: {
-      setCode(val: any): void;
-    };
-  };
-} | null;
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormRichtextProps>(), {
   height: 120,
 });
 

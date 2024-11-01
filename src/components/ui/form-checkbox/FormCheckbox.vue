@@ -1,20 +1,9 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance } from 'vue';
+import type { FormCheckboxProps } from './types';
 
 const emit = defineEmits(['update:modelValue', 'update']);
-const props = defineProps<{
-  modelValue?: any;
-  value?: any;
-  switch?: boolean;
-  label?: string;
-  id?: string;
-  name?: string;
-  tabindex?: string | number;
-  required?: boolean;
-  indeterminate?: boolean;
-  noEvents?: boolean;
-  disabled?: boolean;
-}>();
+const props = defineProps<FormCheckboxProps>();
 
 const uid = props.id ?? `ui-form-checkbox-${getCurrentInstance()?.uid}`;
 const classList = computed(() => [

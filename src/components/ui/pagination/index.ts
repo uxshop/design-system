@@ -1,10 +1,3 @@
-import type { ComponentOptions } from 'vue';
-import Pagination from './UiPagination.vue';
-import PaginationItem from './PaginationItem.vue';
-
-export default {
-  install(app: ComponentOptions, { prefix }: { prefix: string }) {
-    app.component(`${prefix}Pagination`, Pagination);
-    app.component(`${prefix}PaginationItem`, PaginationItem);
-  },
-};
+export { default as PaginationItem } from './PaginationItem.vue';
+export { default as UiPagination } from './UiPagination.vue';
+export type { PaginationItemProps } from './types';

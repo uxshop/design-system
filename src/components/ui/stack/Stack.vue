@@ -1,16 +1,6 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
-import type { Alignment, Distribuition, Spacing } from '../../../types';
-
-export interface StackProps {
-  distribution?: Distribuition;
-  spacing?: Spacing;
-  alignment?: Alignment;
-  vertical?: boolean;
-  wrap?: boolean;
-  columns?: number;
-  horizontal?: boolean;
-}
+import type { StackProps } from './types';
 
 const props = defineProps<StackProps>();
 
@@ -34,6 +24,7 @@ const stackStyleList = computed(() => {
   return styles;
 });
 </script>
+
 <template>
   <div class="ui-stack" :class="stackClassList" :style="stackStyleList">
     <slot />

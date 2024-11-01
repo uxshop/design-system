@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { useSlots } from 'vue';
+import type { CardAnnotationProps } from './types';
 
-defineProps<{
-  title?: string;
-  text?: string;
-}>();
+defineProps<CardAnnotationProps>();
 
 const slots = useSlots();
 

@@ -1,17 +1,8 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance } from 'vue';
+import type { FormRadioProps } from './types';
 
-export interface Props {
-  modelValue?: any;
-  value?: any;
-  label?: string;
-  name?: string;
-  required?: boolean;
-  disabled?: boolean;
-  tabindex?: string | number;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormRadioProps>(), {
   value: true,
 });
 

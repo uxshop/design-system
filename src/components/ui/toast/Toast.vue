@@ -1,22 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref } from 'vue';
 import Icon from '../icon/Icon.vue';
-import type { Variant } from '../../../types';
-
-interface ToastProps {
-  className?: string;
-  closeable?: boolean;
-  duration?: number;
-  id?: string;
-  message?: string;
-  variant?: Variant | 'default';
-}
-
-interface StateInterface {
-  option: Record<string, string>;
-  timer: ReturnType<typeof setTimeout> | null;
-  showing: boolean;
-}
+import type { StateInterface, ToastProps } from './types';
 
 const props = withDefaults(defineProps<ToastProps>(), {
   duration: 2000,

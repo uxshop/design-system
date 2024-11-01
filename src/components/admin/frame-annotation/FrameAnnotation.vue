@@ -2,11 +2,9 @@
 import Col from '../../ui/grid/col/Col.vue';
 import Row from '../../ui/grid/row/Row.vue';
 import CardAnnotation from '../card-annotation/CardAnnotation.vue';
+import type { FrameAnnotationProps } from './types';
 
-defineProps<{
-  title?: string;
-  annotation?: string;
-}>();
+defineProps<FrameAnnotationProps>();
 </script>
 
 <template>

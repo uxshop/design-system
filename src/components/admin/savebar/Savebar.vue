@@ -3,13 +3,11 @@ import { isFunction } from 'lodash-es';
 import { computed, inject } from 'vue';
 import Button from '../../ui/button/Button.vue';
 import Container from '../../ui/grid/container/Container.vue';
+import type { SavebarProps } from './types';
 
 const register = inject<any>('register') || {};
 const emit = defineEmits(['discard', 'save']);
-const props = defineProps<{
-  loading?: boolean;
-  editing?: boolean;
-}>();
+const props = defineProps<SavebarProps>();
 
 const show = computed(() => {
   const isEditing = register.editing || props.editing || false;

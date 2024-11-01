@@ -1,29 +1,10 @@
 <script setup lang="ts">
 import { getCurrentInstance, watchEffect, ref, useSlots, shallowRef } from 'vue';
 import IconButton from '../icon-button/IconButton.vue';
-import type { Size } from '../../../types';
+import type { ModalProps } from './types';
 
-const props = defineProps<{
-  caption?: string;
-  centered?: boolean;
-  class?: string;
-  hideHeader?: boolean;
-  hideFooter?: boolean;
-  id?: string;
-  inner?: boolean;
-  modelValue?: boolean;
-  noCloseOnBackdrop?: boolean;
-  params?: Record<string, unknown>;
-  hideClose?: boolean;
-  scrollable?: boolean;
-  show?: boolean;
-  size?: Size;
-  title?: string;
-  width?: string;
-}>();
-
+const props = defineProps<ModalProps>();
 const emit = defineEmits(['update:modelValue', 'close', 'open']);
-
 const slots = useSlots();
 const showDialog = ref(false);
 const classList = ref<string[]>([]);

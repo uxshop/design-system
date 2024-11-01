@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import type { TableCellProps } from './types';
 
-const props = defineProps<{
-  action?: boolean;
-  drag?: boolean;
-  auto?: boolean;
-  handle?: boolean;
-  width?: string | number;
-  noWrap?: boolean;
-}>();
+const props = defineProps<TableCellProps>();
 
 const classList = ref<string[]>([]);
 const styleCustom = ref<{
@@ -36,6 +30,7 @@ onMounted(() => {
   }
 });
 </script>
+
 <template>
   <div class="ui-table-cell" :class="classList" :style="styleCustom">
     <slot />

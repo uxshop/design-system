@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import IconButton from '../../../ui/icon-button/IconButton.vue';
+import type { TableListNavRefreshProps } from '../types';
 
-const props = defineProps<{
-  state: any;
-}>();
+const props = defineProps<TableListNavRefreshProps>();
 
 let refreshTime: ReturnType<typeof setTimeout> | number;
 

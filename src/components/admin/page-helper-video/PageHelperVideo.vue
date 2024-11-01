@@ -2,11 +2,9 @@
 import { ref } from 'vue';
 import PageHelperVideoModal from './PageHelperVideoModal.vue';
 import Icon from '../../ui/icon/Icon.vue';
-import type { IVideo } from './types';
+import type { PageHelperVideoProps } from './types';
 
-const props = defineProps<{
-  video: IVideo;
-}>();
+const props = defineProps<PageHelperVideoProps>();
 
 const pageHelperVideoModalRef = ref();
 

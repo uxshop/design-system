@@ -1,14 +1,6 @@
 <script setup lang="ts">
 import { computed, type StyleValue } from 'vue';
-import type { Size } from '../../../types';
-
-export interface ColorThumbProps {
-  hexadecimal?: string;
-  hexadecimalSecondary?: string;
-  image?: string;
-  size?: Size;
-  width?: number | string;
-}
+import type { ColorThumbProps } from './types';
 
 const props = withDefaults(defineProps<ColorThumbProps>(), {
   size: 'md',

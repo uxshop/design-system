@@ -3,34 +3,10 @@ import { computed, getCurrentInstance, onMounted, shallowRef, watchEffect } from
 import { DateTime } from 'luxon';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
 import IconButton from '../icon-button/IconButton.vue';
-import { easepick, RangePlugin, DateTime as EasepickDateTime } from '@easepick/bundle';
-import type { Size } from '../../../types';
+import { easepick, RangePlugin } from '@easepick/bundle';
+import type { EasyPickDetails, FormDatepickerProps } from './types';
 
-type EasyPickDetails = {
-  start?: EasepickDateTime | null;
-  end?: EasepickDateTime | null;
-  date?: EasepickDateTime | null;
-};
-
-export interface Props {
-  modelValue?: string;
-  config?: Record<string, unknown>;
-  placeholder?: string;
-  label?: string;
-  range?: boolean;
-  noClear?: boolean;
-  size?: Size;
-  disabled?: boolean;
-  loading?: boolean;
-  float?: boolean;
-  labelInfo?: string;
-  state?: boolean;
-  invalidFeedback?: string;
-  last?: boolean;
-  autofocus?: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormDatepickerProps>(), {
   config: () => {
     return {};
   },

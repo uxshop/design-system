@@ -3,11 +3,9 @@ import { watch } from 'vue';
 import CustomScroll from '../../../ui/custom-scroll/CustomScroll.vue';
 import Tab from '../../../ui/tab/Tab.vue';
 import TabItem from '../../../ui/tab/TabItem.vue';
+import type { TableListTabsProps } from '../types';
 
-const props = defineProps<{
-  queryParams?: Record<string, any>;
-  state: any;
-}>();
+const props = defineProps<TableListTabsProps>();
 
 const setPresetFilter = (item: Record<string, any>, e: MouseEvent) => {
   e.preventDefault();

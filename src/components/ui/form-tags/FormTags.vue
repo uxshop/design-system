@@ -4,33 +4,12 @@ import * as Choices from 'choices.js';
 import FormLabel from '../form-label/FormLabel.vue';
 import { cloneDeep, isArray } from 'lodash-es';
 import Button from '../button/Button.vue';
-import type { IAction } from '../../../types/IAction';
-
-export interface Props {
-  modelValue?: any;
-  placeholder?: string;
-  label?: string;
-  closeOnSelect?: boolean;
-  last?: boolean;
-  actions?: IAction[];
-  options?: any;
-  create?: boolean;
-  variant?: string;
-  disabled?: boolean;
-}
-
-export interface SettingsInterface {
-  persist: boolean;
-  createOnBlur: boolean;
-  create: boolean;
-  plugins: string[];
-  onChange(val: string): void;
-}
+import type { FormTagsProps } from './types';
 
 const Plugin = Choices?.default || Choices;
 const emit = defineEmits(['update:modelValue', 'update', 'open', 'close', 'add', 'remove']);
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FormTagsProps>(), {
   placeholder: 'Criar tags',
   create: true,
   options: [],

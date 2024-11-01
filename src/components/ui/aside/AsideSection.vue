@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import type { IAction } from '../../../types/IAction';
 import Link from '../link/Link.vue';
-defineProps<{
-  title?: string;
-  actions?: IAction[];
-}>();
+import type { AsideSectionProps } from './types';
+
+defineProps<AsideSectionProps>();
 </script>
 
 <template>

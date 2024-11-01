@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import { watchEffect, ref, computed } from 'vue';
 import Icon from '../icon/Icon.vue';
-const props = defineProps<{
-  title?: string;
-  variant?: 'success' | 'danger' | 'info' | 'warning';
-  icon?: string;
-  dismissible?: boolean;
-  show?: boolean;
-  center?: boolean;
-  label?: string;
-}>();
+import type { AlertProps } from './types';
+
+const props = defineProps<AlertProps>();
 const emit = defineEmits(['dismissed']);
 const open = ref(Boolean(props.show));
 
@@ -53,6 +47,7 @@ watchEffect(() => {
   open.value = Boolean(props.show);
 });
 </script>
+
 <template>
   <div v-if="open" class="ui-alert" :class="styleClassList">
     <Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24" />
