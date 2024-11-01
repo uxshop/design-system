@@ -166,8 +166,12 @@ const pushToMemoryList = (items: any[]) => {
 const updateByModal = ({ memoryList, ids }: any) => {
   searchBy.value = null;
   pushToMemoryList(memoryList);
-  if (ids) {
+  if (ids?.length) {
     updateInput(ids);
+  } else {
+    selectedIds.value = [];
+    rows.value = [];
+    updateInput([]);
   }
 };
 

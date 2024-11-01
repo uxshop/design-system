@@ -2,6 +2,12 @@
 import { computed } from 'vue';
 import Icon from '../icon/Icon.vue';
 import type { TagProps } from './types';
+import type { Variant } from '../../../types/Types';
+
+export interface TagProps {
+  label?: string;
+  variant?: 'primary' | 'success' | 'danger' | 'default' | 'warning';
+}
 
 const props = withDefaults(defineProps<TagProps>(), {
   variant: 'default',
