@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, withDefaults } from 'vue';
+import { ref, toRaw, watch, withDefaults } from 'vue';
 import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
 import Icon from '../../ui/icon/Icon.vue';
 import Row from '../../ui/grid/row/Row.vue';
@@ -56,7 +56,7 @@ const onCheckOne = (item: TypeItem, e: MouseEvent | KeyboardEvent) => {
 };
 
 const pushOne = (item: TypeItem) => {
-  memoryList.value.push(structuredClone(item) as never);
+  memoryList.value.push(structuredClone(toRaw(item)) as never);
   if (props.selectOne) {
     ids.value = [item[props.identifier]];
     apply();
@@ -72,7 +72,7 @@ const pushOne = (item: TypeItem) => {
 };
 
 const load = async (context: IContext) => {
-  const newParams: any = structuredClone(params.value) as never;
+  const newParams: any = structuredClone(toRaw(params.value)) as never;
   newParams.q = term.value;
   const res = await props.service.get(newParams);
   params.value.page++;
@@ -130,7 +130,7 @@ const open = ({ searchBy, selectedIds }: any) => {
   resetParams();
 
   aside.value = true;
-  ids.value = structuredClone(selectedIds);
+  ids.value = structuredClone(toRaw(selectedIds));
   term.value = searchBy;
 };
 

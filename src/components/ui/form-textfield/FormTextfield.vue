@@ -88,7 +88,7 @@ const onClear = () => {
     class="ui-form-textfield">
     <slot name="before" />
     <input
-      v-maska:[maskOptions]
+      :v-maska="maskOptions"
       class="form-control"
       :mask="mask"
       :data-maska-tokens="dataMaskaTokens"
