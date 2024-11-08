@@ -13,9 +13,8 @@ const meta: Meta<typeof IndexTable> = {
     template: '<IndexTable v-bind="args" />',
   }),
   argTypes: {
-    show: { control: { type: 'object' } },
-    pagination: { control: { type: 'object' } },
     isLoading: { control: { type: 'boolean' } },
+    checkboxSelectAllValue: { control: { type: 'select' }, options: [true, false, null] },
   },
   parameters: {
     actions: { argTypesRegex: '^on.*' },

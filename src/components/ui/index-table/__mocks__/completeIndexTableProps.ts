@@ -14,14 +14,6 @@ export const completeIndexTableProps: IndexTableProps = {
     },
     { label: 'Alguma', key: 'any', active: false },
   ],
-  show: {
-    select: true,
-    reload: true,
-    search: true,
-    order: true,
-    customFilters: true,
-    filters: true,
-  },
   ordination: [
     {
       key: 'name',
@@ -46,7 +38,10 @@ export const completeIndexTableProps: IndexTableProps = {
     total: 100,
     page: 1,
   },
-  bulkActions: [],
-  activeFilterTags: [],
+  bulkActions: [
+    { label: 'Ativar registros', key: 'activate-records' },
+    { label: 'Inativar registros', key: 'inactivate-records' },
+  ],
+  activeFilterTags: [{ key: 'teste', label: 'Teste' }],
   isLoading: false,
 };

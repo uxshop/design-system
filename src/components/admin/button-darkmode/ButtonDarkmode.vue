@@ -10,7 +10,7 @@ const colorSchemeStorageName = 'ds_color_scheme';
 const setColorScheme = (val: any) => {
   document.documentElement.setAttribute('data-theme', val);
 
-  if (val == ColorScheme.dark) {
+  if (val == ColorScheme.DARK) {
     iconMode.value = 'light_mode';
   } else {
     iconMode.value = 'dark_mode';
@@ -18,7 +18,7 @@ const setColorScheme = (val: any) => {
 };
 
 const toggleDarkmode = () => {
-  const color = ColorSchemeService.get() === ColorScheme.dark ? ColorScheme.light : ColorScheme.dark;
+  const color = ColorSchemeService.get() === ColorScheme.DARK ? ColorScheme.LIGHT : ColorScheme.DARK;
   emit('changeSchemeColor', color);
   localStorage.setItem(colorSchemeStorageName, color);
   setColorScheme(color);

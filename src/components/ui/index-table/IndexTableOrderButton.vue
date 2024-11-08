@@ -23,9 +23,8 @@ const orderValue = ref(activeOrder);
     <DropdownItemButton
       v-for="item in ordination"
       :key="item.key"
-      data-close="true"
       :active="item.active"
-      @click="emit('order-by', item.key)">
+      @click.stop="emit('order-by', item.key)">
       <FormRadio v-model="orderValue" :value="item.key" :label="item.label" no-events />
     </DropdownItemButton>
   </Dropdown>
