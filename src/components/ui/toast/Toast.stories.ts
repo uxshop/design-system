@@ -20,7 +20,7 @@ const meta = {
     },
     variant: {
       control: 'select',
-      options: ['default', 'highlight', 'warning', 'success', 'critical'],
+      options: ['default', 'success', 'critical', 'warning', 'highlight'],
     },
   },
 } satisfies Meta<typeof Toast>;
@@ -29,35 +29,35 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
+export const minimum: Story = {
   args: {},
 };
 
-export const Closeable: Story = {
+export const closeable: Story = {
   args: {
     closeable: true,
   },
 };
 
-export const Highlight: Story = {
+export const highlight: Story = {
   args: {
     variant: 'highlight',
   },
 };
 
-export const Warning: Story = {
+export const warning: Story = {
   args: {
     variant: 'warning',
   },
 };
 
-export const Success: Story = {
+export const success: Story = {
   args: {
     variant: 'success',
   },
 };
 
-export const Critical: Story = {
+export const danger: Story = {
   args: {
     variant: 'critical',
   },

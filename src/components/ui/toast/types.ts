@@ -1,4 +1,4 @@
-import type { Variant } from '../../../types';
+export type ToastVariant = 'default' | 'highlight' | 'success' | 'warning' | 'critical';
 
 export interface ToastProps {
   className?: string;
@@ -6,7 +6,7 @@ export interface ToastProps {
   duration?: number;
   id?: string;
   message?: string;
-  variant?: Variant | 'default';
+  variant?: ToastVariant;
 }
 
 export interface StateInterface {

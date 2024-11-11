@@ -12,4 +12,5 @@ export type Spacing = 'xs' | 'sm' | 'default' | 'lg' | 'xl';
 
 export type Target = '_blank' | '_self';
 
+/** Tipo compartilhado entre componentes, validar alterações */
 export type Variant = 'primary' | 'success' | 'danger' | 'link' | 'plain' | 'default';
