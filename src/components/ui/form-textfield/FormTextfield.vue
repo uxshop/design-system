@@ -41,7 +41,7 @@ const update = (evt: Event) => {
 
 const maskRawValue = (evt: Event) => {
   const target = evt.target as HTMLInputElement;
-  if (props.modelValue == target.value.replace(/\.|-/g, '')) return;
+  if (props.modelValue === target.value.replace(/\.|-/g, '')) return;
   update(evt);
   emit('updateRaw', target.dataset.maskRawValue);
 };
@@ -87,6 +87,7 @@ const onClear = () => {
     :invalidFeedback="invalidFeedback"
     class="ui-form-textfield">
     <slot name="before" />
+    <!-- @vue-ignore -->
     <input
       v-maska:[maskOptions]
       class="form-control"
