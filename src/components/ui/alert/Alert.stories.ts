@@ -19,7 +19,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'info', 'success', 'warning', 'danger'],
+      options: ['info', 'success', 'warning', 'danger'],
     },
   },
 } satisfies Meta<typeof Alert>;
@@ -31,26 +31,26 @@ type Story = StoryObj<typeof meta>;
  * See https://storybook.js.org/docs/vue/api/csf
  * to learn how to use render functions.
  */
-export const Default: Story = {
+export const minimum: Story = {
   args: {},
 };
 
-export const Info: Story = {
+export const info: Story = {
   args: {
     variant: 'info',
   },
 };
-export const Success: Story = {
+export const success: Story = {
   args: {
     variant: 'success',
   },
 };
-export const Warning: Story = {
+export const warning: Story = {
   args: {
     variant: 'warning',
   },
 };
-export const Danger: Story = {
+export const danger: Story = {
   args: {
     variant: 'danger',
   },

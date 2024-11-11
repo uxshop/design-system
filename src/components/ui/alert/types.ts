@@ -1,6 +1,8 @@
+export type AlertVariant = 'success' | 'danger' | 'info' | 'warning';
+
 export interface AlertProps {
   title?: string;
-  variant?: 'success' | 'danger' | 'info' | 'warning';
+  variant?: AlertVariant;
   icon?: string;
   dismissible?: boolean;
   show?: boolean;
