@@ -33,7 +33,7 @@ const open = (text: string, config: any = {}) => {
   document.body.appendChild(toastWrapper);
 };
 
-export const Toast = {
+export const $toast = {
   open: open,
   success(text: string) {
     open(text, { type: 'success' });
