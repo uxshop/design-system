@@ -1,6 +1,12 @@
 import type { IndexTableProps } from '../types';
 
-export const completeIndexTableProps: IndexTableProps = {
+type ItemInTable = {
+  id: number;
+  name: string;
+  price: string;
+}
+
+export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
   tabs: [
     {
       label: 'Todos',
@@ -44,4 +50,9 @@ export const completeIndexTableProps: IndexTableProps = {
   ],
   activeFilterTags: [{ key: 'teste', label: 'Teste' }],
   isLoading: false,
+  items: [
+    { id: 1, name: 'Produto 1', price: 'R$ 10,00' },
+    { id: 2, name: 'Produto 2', price: 'R$ 20,00' },
+    { id: 3, name: 'Produto 3', price: 'R$ 30,00' },
+  ],
 };

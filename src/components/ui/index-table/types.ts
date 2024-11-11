@@ -94,11 +94,15 @@ export interface IndexTableActionsEmits extends IndexTableOrderButtonEmits, Inde
   (event: 'bulk-action', key: string): void;
 }
 
+export interface IndexTableListProps<T> {
+  items: T[];
+}
+
 export interface IndexTablePropShow extends ActionsToShow {
   tabs: boolean;
 }
 
-export interface IndexTableProps extends IndexTableTabsProps, Omit<IndexTableActionsProps, 'show'> {
+export interface IndexTableProps<T> extends IndexTableTabsProps, Omit<IndexTableActionsProps, 'show'>, IndexTableListProps<T> {
   show?: IndexTablePropShow;
 }
 

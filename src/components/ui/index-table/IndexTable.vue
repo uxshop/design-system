@@ -1,9 +1,10 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends object">
 import IndexTableActions from './IndexTableActions.vue';
+import IndexTableList from './IndexTableList.vue';
 import IndexTableTabs from './IndexTableTabs.vue';
 import type { IndexTableEmits, IndexTableProps, IndexTableSlots } from './types';
 
-withDefaults(defineProps<IndexTableProps>(), {
+withDefaults(defineProps<IndexTableProps<T>>(), {
   show: () => ({
     tabs: true,
     select: true,
@@ -54,5 +55,7 @@ const bulkAction = (action: string) => emit('bulk-action', action);
       @previous-page="emit('previous-page')"
       @delete-selected-items="emit('delete-selected-items')"
       @bulk-action="bulkAction" />
+
+    <IndexTableList :items ></IndexTableList>
   </div>
 </template>

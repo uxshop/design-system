@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/vue3';
 import { completeIndexTableProps } from './__mocks__/completeIndexTableProps';
 import IndexTable from './IndexTable.vue';
-import type { Meta, StoryObj } from '@storybook/vue3';
 
 const meta: Meta<typeof IndexTable> = {
   title: 'Components/IndexTable',
