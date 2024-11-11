@@ -57,7 +57,7 @@ export const success: Story = {
   },
 };
 
-export const danger: Story = {
+export const critical: Story = {
   args: {
     variant: 'critical',
   },
