@@ -64,6 +64,42 @@ const pagination = {
   page: 1,
 };
 
+const fields = [
+  {
+    key: 'name',
+    label: 'Nome',
+  },
+  {
+    key: 'updated',
+    label: 'Atualizado',
+  },
+  {
+    key: 'created_at',
+    label: 'Data de criação',
+  },
+]
+
+const items = [
+  {
+    id: 1,
+    name: 'Item 1',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+  },
+  {
+    id: 2,
+    name: 'Item 2',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+  },
+  {
+    id: 3,
+    name: 'Item 3',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+  },
+]
+
 const openTab = (key: string) => {
   console.info('🟣 >> openTab', key);
 };
@@ -118,6 +154,8 @@ setTimeout(() => {
   <Page title="Bagy Design System" size="full" :primary-action="action">
     <TextStyle variant="muted">Inicie seus testes por aqui...</TextStyle>
     <IndexTable
+      :items
+      :fields
       :show
       :tabs
       :ordination

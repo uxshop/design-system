@@ -96,6 +96,7 @@ export interface IndexTableActionsEmits extends IndexTableOrderButtonEmits, Inde
 
 export interface IndexTableListProps<T> {
   items: T[];
+  fields?: KeyLabelDefault[];
 }
 
 export interface IndexTablePropShow extends ActionsToShow {

@@ -1,4 +1,5 @@
 <script setup lang="ts" generic="T extends object">
+import { ref } from 'vue';
 import IndexTableActions from './IndexTableActions.vue';
 import IndexTableList from './IndexTableList.vue';
 import IndexTableTabs from './IndexTableTabs.vue';
@@ -23,6 +24,8 @@ const selectAll = (value: boolean | null) => emit('select-all', value);
 const search = (word: string) => emit('search', word);
 const orderBy = (key: string) => emit('order-by', key);
 const bulkAction = (action: string) => emit('bulk-action', action);
+
+const testKey = ref('name')
 </script>
 
 <template>
@@ -56,6 +59,11 @@ const bulkAction = (action: string) => emit('bulk-action', action);
       @delete-selected-items="emit('delete-selected-items')"
       @bulk-action="bulkAction" />
 
-    <IndexTableList :items ></IndexTableList>
+    <IndexTableList :items>
+      <template #[testKey]="{ item, row }">
+        Testes
+        {{ item }} -- {{ row }}
+      </template>
+    </IndexTableList>
   </div>
 </template>

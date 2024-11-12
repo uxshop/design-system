@@ -22,9 +22,13 @@ const props = defineProps<IndexTableListProps<T>>()
     </template>
 
     <TableBody>
-      <TableRow>
-        <TableCell>
-          Prop 1
+      <!-- Cada linha representa um objeto dentro do array -->
+      <TableRow v-for="(item, index) in items" :key="index">
+        <TableCell v-for="(cell, index) in Object.entries(item)" :key="index">
+          <!-- Prop 1 -->
+           <!-- TODO: o nome do slots será o atributo do objeto a ser exibido na célula -->
+          <slot v-if="$slots[`${cell[0]}`]" :name="[`${cell[0]}`]" :item="item" :row="1" ></slot>
+          <div v-else>{{ cell[1] }}</div>
         </TableCell>
 
         <TableCell>
