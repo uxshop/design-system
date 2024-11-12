@@ -94,9 +94,14 @@ export interface IndexTableActionsEmits extends IndexTableOrderButtonEmits, Inde
   (event: 'bulk-action', key: string): void;
 }
 
+export interface ColsToShow {
+  select: boolean;
+}
+
 export interface IndexTableListProps<T> {
   items: T[];
   fields?: KeyLabelDefault[];
+  show?: ColsToShow;
 }
 
 export interface IndexTablePropShow extends ActionsToShow {

@@ -6,33 +6,32 @@ import TableHeadCell from '#ds/components/admin/table/TableHeadCell.vue';
 import TableRow from '#ds/components/admin/table/TableRow.vue';
 import type { IndexTableListProps } from './types';
 
-const props = defineProps<IndexTableListProps<T>>()
+const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
+  show: () => ({
+    select: true,
+  }),
+})
 </script>
 
 <template>
   <Table>
     <template #header>
-        <TableHeadCell>
-          Header 1
+        <TableHeadCell v-if="show.select" >
         </TableHeadCell>
-
-        <TableHeadCell>
-          Header 2
+        <TableHeadCell v-for="(col, index) in fields" :key="index" >
+          <slot v-if="$slots[`col-${col.key}`]" :name="[`${col.key}`]" :data="col" ></slot>
+          <div v-else>{{ col.label }}</div>
         </TableHeadCell>
     </template>
 
     <TableBody>
-      <!-- Cada linha representa um objeto dentro do array -->
       <TableRow v-for="(item, index) in items" :key="index">
-        <TableCell v-for="(cell, index) in Object.entries(item)" :key="index">
-          <!-- Prop 1 -->
-           <!-- TODO: o nome do slots será o atributo do objeto a ser exibido na célula -->
+        <TableCell v-if="show.select" >
+          check
+        </TableCell>
+        <TableCell v-for="(cell, indexCel) in Object.entries(item)" :key="indexCel">
           <slot v-if="$slots[`${cell[0]}`]" :name="[`${cell[0]}`]" :item="item" :row="1" ></slot>
           <div v-else>{{ cell[1] }}</div>
-        </TableCell>
-
-        <TableCell>
-          Prop 2
         </TableCell>
       </TableRow>
     </TableBody>

@@ -66,6 +66,10 @@ const pagination = {
 
 const fields = [
   {
+    key: 'id',
+    label: 'ID',
+  },
+  {
     key: 'name',
     label: 'Nome',
   },

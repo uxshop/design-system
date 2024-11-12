@@ -59,10 +59,13 @@ const testKey = ref('name')
       @delete-selected-items="emit('delete-selected-items')"
       @bulk-action="bulkAction" />
 
-    <IndexTableList :items>
+    <IndexTableList
+      :items
+      :fields
+      :show="{ select: show.select }"
+    >
       <template #[testKey]="{ item, row }">
-        Testes
-        {{ item }} -- {{ row }}
+        Testes {{ item.name + row }}
       </template>
     </IndexTableList>
   </div>
