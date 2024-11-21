@@ -19,7 +19,7 @@ const meta = {
       control: 'radio',
       options: [null, 'warning', 'error', 'check_circle'],
       description:
-        'Todos os ícones disponíveis podem ser encontrados em [Material Symbols](https://fonts.google.com/icons).',
+        'Todos os ícones disponíveis são os de estilo `Outlined` encontrados em [Material Symbols](https://fonts.google.com/icons).',
     },
     variant: {
       control: 'radio',
