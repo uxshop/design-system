@@ -65,7 +65,7 @@ const testKey = ref('name')
       :show="{ select: show.select }"
     >
       <template #[testKey]="{ item, row }">
-        Testes {{ item.name + row }}
+        Testes {{ item.name + ' --  ' +  row }}
       </template>
     </IndexTableList>
   </div>

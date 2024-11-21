@@ -4,6 +4,8 @@ import TableBody from '#ds/components/admin/table/TableBody.vue';
 import TableCell from '#ds/components/admin/table/TableCell.vue';
 import TableHeadCell from '#ds/components/admin/table/TableHeadCell.vue';
 import TableRow from '#ds/components/admin/table/TableRow.vue';
+import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
+import { ref } from 'vue';
 import type { IndexTableListProps } from './types';
 
 const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
@@ -11,6 +13,8 @@ const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
     select: true,
   }),
 })
+
+ const selectedItem = ref([])
 </script>
 
 <template>
@@ -25,9 +29,10 @@ const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
     </template>
 
     <TableBody>
-      <TableRow v-for="(item, index) in items" :key="index">
+      <TableRow v-for="(item, indexRow) in items" :key="indexRow">
         <TableCell v-if="show.select" >
           check
+          <FormCheckbox :model-value="selectedItem" :value="indexRow" noEvents />
         </TableCell>
         <TableCell v-for="(cell, indexCel) in Object.entries(item)" :key="indexCel">
           <slot v-if="$slots[`${cell[0]}`]" :name="[`${cell[0]}`]" :item="item" :row="1" ></slot>
