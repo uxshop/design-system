@@ -2,11 +2,9 @@ import type { Meta, StoryObj } from '@storybook/vue3';
 
 import Alert from './Alert.vue';
 
-// More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
   title: 'Ui/Alert',
   component: Alert,
-  // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   tags: ['autodocs'],
   args: {
     show: true,
@@ -17,39 +15,54 @@ const meta = {
     dismissible: false,
   },
   argTypes: {
+    icon: {
+      control: 'radio',
+      options: [null, 'warning', 'error', 'check_circle'],
+      description:
+        'Todos os ícones disponíveis podem ser encontrados em [Material Symbols](https://fonts.google.com/icons).',
+    },
     variant: {
-      control: 'select',
-      options: ['info', 'success', 'warning', 'danger'],
+      control: 'radio',
+      options: ['info', 'default', 'success', 'warning', 'danger', 'highlight'],
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Para visualizar as cores do componente reflitadas para cada organização, alterne a organização selecionada no topo.',
+      },
     },
   },
 } satisfies Meta<typeof Alert>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/vue/api/csf
- * to learn how to use render functions.
- */
-export const minimum: Story = {
-  args: {},
-};
 
-export const info: Story = {
+export const minimum: Story = {
   args: {
-    variant: 'info',
+    variant: 'default',
   },
 };
+
+export const highlight: Story = {
+  args: {
+    variant: 'highlight',
+  },
+};
+
 export const success: Story = {
   args: {
     variant: 'success',
   },
 };
+
 export const warning: Story = {
   args: {
     variant: 'warning',
   },
 };
+
 export const danger: Story = {
   args: {
     variant: 'danger',

@@ -7,15 +7,17 @@ const props = withDefaults(defineProps<AlertProps>(), {
   show: false,
   dismissible: false,
   center: false,
-  variant: 'info',
+  variant: 'default',
 });
 const emit = defineEmits(['dismissed']);
 const open = ref(false);
 
-const iconsByVariant: Record<string, string> = {
+const iconsByVariant: Record<string, string | null> = {
+  default: null,
   success: 'check_circle',
   danger: 'error',
   warning: 'warning',
+  highlight: 'info',
 };
 
 const close = () => {
@@ -25,7 +27,7 @@ const close = () => {
 
 const currentIcon = computed(() => {
   let icon = props.icon;
-  if (!props.icon && props.variant) {
+  if (!props.icon && props.icon !== null && props.variant && iconsByVariant[props.variant]) {
     icon = iconsByVariant[props.variant];
   }
   return icon;
