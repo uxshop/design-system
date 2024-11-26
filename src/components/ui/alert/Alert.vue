@@ -1,16 +1,23 @@
 <script setup lang="ts">
-import { watchEffect, ref, computed } from 'vue';
+import { watchEffect, ref, computed, onBeforeMount } from 'vue';
 import Icon from '../icon/Icon.vue';
 import type { AlertProps } from './types';
 
-const props = defineProps<AlertProps>();
+const props = withDefaults(defineProps<AlertProps>(), {
+  show: false,
+  dismissible: false,
+  center: false,
+  variant: 'default',
+});
 const emit = defineEmits(['dismissed']);
-const open = ref(Boolean(props.show));
+const open = ref(false);
 
-const iconsByVariant: Record<string, string> = {
+const iconsByVariant: Record<string, string | null> = {
+  default: null,
   success: 'check_circle',
   danger: 'error',
   warning: 'warning',
+  highlight: 'info',
 };
 
 const close = () => {
@@ -18,29 +25,16 @@ const close = () => {
   emit('dismissed');
 };
 
-const styleClassList = computed(() => {
-  let classList = [];
-  if (props.variant) {
-    classList.push(`-${props.variant}`);
-  }
-
-  if (props.center) {
-    classList.push(`-center`);
-  }
-
-  if (props.dismissible) {
-    classList.push(`-dismissible`);
-  }
-
-  return classList;
-});
-
 const currentIcon = computed(() => {
   let icon = props.icon;
-  if (!props.icon && props.variant) {
+  if (!props.icon && props.icon !== null && props.variant && iconsByVariant[props.variant]) {
     icon = iconsByVariant[props.variant];
   }
   return icon;
+});
+
+onBeforeMount(() => {
+  open.value = props.show;
 });
 
 watchEffect(() => {
@@ -49,10 +43,17 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div v-if="open" class="ui-alert" :class="styleClassList">
+  <div
+    v-if="open"
+    class="ui-alert"
+    :class="{
+      '-dismissible': dismissible,
+      '-center': center,
+      [`-${variant}`]: true,
+    }">
     <Icon v-if="currentIcon" class="ui-alert-icon" filled :name="currentIcon" size="24" />
     <div class="ui-alert-content">
-      <h5 class="ui-alert-title" v-if="title">
+      <h5 v-if="title" class="ui-alert-title">
         {{ title }}
       </h5>
       <div class="ui-alert-text">

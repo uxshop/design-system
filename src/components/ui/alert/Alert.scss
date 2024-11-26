@@ -45,7 +45,17 @@
     }
   }
 
-  &.-info {
+  &.-default {
+    background-color: var(--s-color-fill-default-light);
+    border-color: var(--s-color-border-default);
+    color: var(--s-color-content-default);
+
+    a:hover {
+      color: var(--s-color-content-default);
+    }
+  }
+
+  &.-highlight {
     background-color: var(--s-color-fill-highlight-light);
     border-color: var(--s-color-border-highlight);
     color: var(--s-color-content-highlight);
