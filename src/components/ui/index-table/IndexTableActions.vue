@@ -46,13 +46,13 @@ const orderBy = (key: string) => emit('order-by', key);
 </script>
 
 <template>
-  <div class="index-table-actions-item">
-    <div class="index-table-actions-wrapper">
+  <div class="ui-index-table-actions-item">
+    <div class="ui-index-table-actions-wrapper">
       <FormCheckbox
         v-if="show.select"
         id="index-table-select-all"
         v-model="checkboxAllSelected"
-        class="index-table-actions-checkbox"
+        class="ui-index-table-actions-checkbox"
         :value="checkboxAllSelected"
         :required="true"
         :indeterminate="checkboxAllSelectedIndeterminate"
@@ -65,7 +65,7 @@ const orderBy = (key: string) => emit('order-by', key);
           v-if="show.search"
           id="search-action"
           v-model="search"
-          class="index-table-actions-search"
+          class="ui-index-table-actions-search"
           leading-icon="search"
           placeholder="Procurar registros"
           size="sm"

@@ -4,7 +4,7 @@ import { computed, onMounted, ref, watch } from 'vue';
 export const useActionSelectAllItems = (emit: IndexTableActionsEmits, props: IndexTableActionsProps) => {
   const showBulkActions = ref(false);
   const checkboxAllSelected = ref(false);
-  const checkboxAllSelectedIndeterminate = ref(true);
+  const checkboxAllSelectedIndeterminate = ref(false);
 
   /** Valor computado do checkbox que exibe se está indeterminate ou se está selecionado */
   const currentValueCheckboxSelectAll = computed(() => {
@@ -44,14 +44,18 @@ export const useActionSelectAllItems = (emit: IndexTableActionsEmits, props: Ind
 
   watch(
     () => props.checkboxSelectAllValue,
-    (value) => updateCheckboxAllSelected(value as boolean | null)
+    (newValue) => {
+      if (newValue === currentValueCheckboxSelectAll.value) return;
+
+      updateCheckboxAllSelected(newValue as boolean | null);
+    }
   );
 
   return {
     showBulkActions,
     checkboxAllSelected,
     checkboxAllSelectedIndeterminate,
-    currentValue: currentValueCheckboxSelectAll,
+    currentValueCheckboxSelectAll,
     setValueSelectedItemsCheckbox,
     updateCheckboxAllSelected,
   };

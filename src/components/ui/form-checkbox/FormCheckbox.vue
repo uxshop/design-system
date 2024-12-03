@@ -40,6 +40,7 @@ const update = (val: unknown) => {
       :name="name"
       :disabled="disabled"
       :true-value="true"
+      :false-value="false"
       @update:modelValue="update" />
     <span class="ui-form-checkbox-checkmark"></span>
     <div v-if="label || $slots.default" class="ui-form-checkbox-text">

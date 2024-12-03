@@ -1,22 +1,23 @@
-.index-table-actions-item,
-.index-table-actions-wrapper {
+.ui-index-table-actions-item,
+.ui-index-table-actions-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.index-table-actions-search {
+.ui-index-table-actions-search {
   max-width: 300px;
 }
 
-.index-table-actions-item {
+.ui-index-table-actions-item {
   padding: var(--s-spacing-x-small);
+  border-bottom: 1px solid var(--s-color-border-highlight);
 }
 
-.index-table-actions-checkbox {
-    margin-right: var(--s-spacing-nano);
+.ui-index-table-actions-checkbox {
+  margin-right: var(--s-spacing-nano);
 }
 
-.index-table-actions-wrapper {
+.ui-index-table-actions-wrapper {
   gap: var(--s-spacing-nano);
 }

@@ -100,18 +100,60 @@ export interface ColsToShow {
 
 export interface IndexTableListProps<T> {
   items: T[];
+  /** Define as colunas da tabela */
   fields?: KeyLabelDefault[];
   show?: ColsToShow;
+  /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */
+  checkboxSelectAllValue?: boolean | null;
 }
 
 export interface IndexTablePropShow extends ActionsToShow {
   tabs: boolean;
 }
 
-export interface IndexTableProps<T> extends IndexTableTabsProps, Omit<IndexTableActionsProps, 'show'>, IndexTableListProps<T> {
+/** Nome do item selecionado na tabela, contendo o seu indice na tabela */
+export type NameItemTableSelected = `item-${number}`;
+
+/**
+ * Emits privados usados internamente pelo componente
+ */
+export interface IndexTableListPrivateEmits {
+  /** Quando todos itens são selecionados, emite essa ação para indicar a seleção do checkbox geral para o componente superior, serve apenas para controlar isso */
+  (event: 'selected-all-items', key: boolean | null): void;
+}
+
+/**
+ * Emits públicos usados externamente pelo componente
+ */
+export interface IndexTableListPublicEmits {
+  /** Quando um item é selecionado é emitida essa ação mandando a key que consiste de uma string `item-{index}` sendo index o número do índice do item na lista  */
+  (event: 'selected-items', key: NameItemTableSelected[]): void;
+}
+
+export interface IndexTableListEmits extends IndexTableListPrivateEmits, IndexTableListPublicEmits {}
+
+interface SlotCellProps<T> {
+  item: T;
+  row: number;
+}
+
+interface SlotHeadProps {
+  field: KeyLabelDefault;
+  label: string;
+}
+
+export interface IndexTableListSlots<T> {
+  [key: `cell(${string})`]: (props: SlotCellProps<T>) => void;
+  [key: `head(${string})`]: (props: SlotHeadProps) => void;
+}
+
+export interface IndexTableProps<T>
+  extends IndexTableTabsProps,
+    Omit<IndexTableActionsProps, 'show'>,
+    IndexTableListProps<T> {
   show?: IndexTablePropShow;
 }
 
-export interface IndexTableEmits extends IndexTableTabsEmits, IndexTableActionsEmits {}
+export interface IndexTableEmits extends IndexTableTabsEmits, IndexTableActionsEmits, IndexTableListPublicEmits {}
 
-export type IndexTableSlots = IndexTableActionsSlots;
+export interface IndexTableSlots<T> extends IndexTableActionsSlots, IndexTableListSlots<T> {}

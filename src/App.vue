@@ -4,6 +4,7 @@ import Page from './components/admin/page/Page.vue';
 import IndexTable from './components/ui/index-table/IndexTable.vue';
 import TextStyle from './components/ui/text-style/TextStyle.vue';
 import type { IAction } from './types';
+import type { NameItemTableSelected } from './components/ui/index-table/types';
 
 const action: IAction = {
   label: 'Bagy',
@@ -81,7 +82,7 @@ const fields = [
     key: 'created_at',
     label: 'Data de criação',
   },
-]
+];
 
 const items = [
   {
@@ -102,7 +103,7 @@ const items = [
     updated: '2021-10-01',
     created_at: '2021-10-01',
   },
-]
+];
 
 const openTab = (key: string) => {
   console.info('🟣 >> openTab', key);
@@ -148,10 +149,11 @@ const bulkAction = (action: string) => {
   console.info('🟣 >> bulkAction', action);
 };
 
-const checkboxValue = ref<boolean | null>(null);
-setTimeout(() => {
-  checkboxValue.value = true;
-}, 5000);
+const selectedItems = (items: NameItemTableSelected[]) => {
+  console.info('🟣 >> selectedItems', items);
+};
+
+const checkboxValue = ref<boolean | null>(false);
 </script>
 
 <template>
@@ -181,7 +183,20 @@ setTimeout(() => {
       @previous-page="previousPage"
       @order-by="orderBy"
       @delete-selected-items="deleteSelectedItems"
-      @bulk-action="bulkAction" />
+      @bulk-action="bulkAction"
+      @selected-items="selectedItems">
+      <template #actions>
+        <div>Actions</div>
+      </template>
+
+      <template #head(name)="props">
+        <div>[{{ props.label }}]</div>
+      </template>
+
+      <template #cell(name)="props">
+        <div>Teste222 {{ props.row }}</div>
+      </template>
+    </IndexTable>
   </Page>
 </template>
 

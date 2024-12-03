@@ -1,48 +1,100 @@
-<script setup lang='ts' generic="T extends object">
+<script setup lang="ts" generic="T extends object">
 import Table from '#ds/components/admin/table/Table.vue';
 import TableBody from '#ds/components/admin/table/TableBody.vue';
 import TableCell from '#ds/components/admin/table/TableCell.vue';
 import TableHeadCell from '#ds/components/admin/table/TableHeadCell.vue';
 import TableRow from '#ds/components/admin/table/TableRow.vue';
 import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
-import { ref } from 'vue';
-import type { IndexTableListProps } from './types';
+import { computed, ref, watch } from 'vue';
+import type { IndexTableListEmits, IndexTableListProps, IndexTableListSlots, NameItemTableSelected } from './types';
 
 const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
   show: () => ({
     select: true,
   }),
-})
+  checkboxSelectAllValue: false,
+});
+const emit = defineEmits<IndexTableListEmits>();
+const slots = defineSlots<IndexTableListSlots<T>>();
 
- const selectedItem = ref([])
+const selectedItems = ref<NameItemTableSelected[]>([]);
+
+const prepareKeysToCell = computed(() => (items: object) => {
+  return Object.entries(items).map((item: string[]) => {
+    return {
+      key: item[0],
+      value: item[1],
+    };
+  });
+});
+
+const selectItem = (value: NameItemTableSelected[]) => {
+  const anyItem = value.length >= 1 && value.length < props.items.length;
+  emit('selected-all-items', anyItem ? null : props.items.length === value.length);
+
+  selectedItems.value = value;
+  emit('selected-items', selectedItems.value);
+};
+
+const selectAllItems = (valueOfCheckbox: boolean | null) => {
+  if (valueOfCheckbox === null) return;
+
+  const currentSelectedItems = props.items.map((item, index: number) => `item-${index}` as NameItemTableSelected);
+
+  selectedItems.value = valueOfCheckbox ? currentSelectedItems : [];
+};
+
+watch(
+  () => props.checkboxSelectAllValue,
+  (value: boolean | null) => selectAllItems(value)
+);
 </script>
 
 <template>
   <Table>
     <template #header>
-        <TableHeadCell v-if="show.select" >
-        </TableHeadCell>
-        <TableHeadCell v-for="(col, index) in fields" :key="index" >
-          <slot v-if="$slots[`col-${col.key}`]" :name="[`${col.key}`]" :data="col" ></slot>
-          <div v-else>{{ col.label }}</div>
-        </TableHeadCell>
+      <TableHeadCell v-if="show.select"></TableHeadCell>
+
+      <TableHeadCell
+        v-for="(fieldHead, index) in fields"
+        :key="index"
+        :data-test-head="`head-${fieldHead.key}`"
+        class="ui-index-table-list-head-cell">
+        <slot
+          v-if="slots[`head(${fieldHead.key})`]"
+          :name="`head(${fieldHead.key})`"
+          :field="fieldHead"
+          :label="fieldHead.label"></slot>
+
+        <div v-else>{{ fieldHead.label }}</div>
+      </TableHeadCell>
     </template>
 
     <TableBody>
       <TableRow v-for="(item, indexRow) in items" :key="indexRow">
-        <TableCell v-if="show.select" >
-          check
-          <FormCheckbox :model-value="selectedItem" :value="indexRow" noEvents />
+        <TableCell v-if="show.select" class="ui-index-table-list-all-items-checkbox">
+          <FormCheckbox
+            :id="`item-${indexRow}`"
+            v-model="selectedItems"
+            :value="`item-${indexRow}`"
+            class="ui-index-table-list-checkbox"
+            @update="selectItem" />
         </TableCell>
-        <TableCell v-for="(cell, indexCel) in Object.entries(item)" :key="indexCel">
-          <slot v-if="$slots[`${cell[0]}`]" :name="[`${cell[0]}`]" :item="item" :row="1" ></slot>
-          <div v-else>{{ cell[1] }}</div>
+
+        <TableCell
+          v-for="(cell, indexCell) in prepareKeysToCell(item)"
+          :key="indexCell"
+          :data-test-cell="`cell-${cell.key}`"
+          :class="`ui-index-table-list-cell-${cell.key}`">
+          <slot v-if="slots[`cell(${cell.key})`]" :name="`cell(${cell.key})`" :item="item" :row="indexRow"></slot>
+
+          <div v-else>{{ cell.value }}</div>
         </TableCell>
       </TableRow>
     </TableBody>
   </Table>
 </template>
 
-<style lang='scss' scoped>
-
+<style lang="scss" scoped>
+@import './IndexTableList.scss';
 </style>

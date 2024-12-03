@@ -1,11 +1,13 @@
 <script setup lang="ts" generic="T extends object">
-import { ref } from 'vue';
+import { onUnmounted, provide, ref, watch } from 'vue';
 import IndexTableActions from './IndexTableActions.vue';
 import IndexTableList from './IndexTableList.vue';
 import IndexTableTabs from './IndexTableTabs.vue';
-import type { IndexTableEmits, IndexTableProps, IndexTableSlots } from './types';
+import type { IndexTableEmits, IndexTableProps, IndexTableSlots, NameItemTableSelected } from './types';
+import { useActionSelectAllItems } from './composables/useActionSelectAllItems';
+import { onMounted } from 'vue';
 
-withDefaults(defineProps<IndexTableProps<T>>(), {
+const props = withDefaults(defineProps<IndexTableProps<T>>(), {
   show: () => ({
     tabs: true,
     select: true,
@@ -15,21 +17,36 @@ withDefaults(defineProps<IndexTableProps<T>>(), {
     filters: true,
     bulkActionDelete: true,
   }),
+  checkboxSelectAllValue: false,
 });
 const emit = defineEmits<IndexTableEmits>();
-defineSlots<IndexTableSlots>();
+defineSlots<IndexTableSlots<T>>();
+
+const checkboxAllSelected = ref<boolean | null>(false);
 
 const openTab = (key: string) => emit('open-tab', key);
-const selectAll = (value: boolean | null) => emit('select-all', value);
 const search = (word: string) => emit('search', word);
 const orderBy = (key: string) => emit('order-by', key);
 const bulkAction = (action: string) => emit('bulk-action', action);
+const selectedItems = (items: NameItemTableSelected[]) => emit('selected-items', items);
 
-const testKey = ref('name')
+const selectedAllItems = (value: boolean | null) => {
+  checkboxAllSelected.value = value;
+};
+const selectAll = (value: boolean | null) => {
+  checkboxAllSelected.value = value;
+  emit('select-all', value);
+};
+
+onMounted(() => (checkboxAllSelected.value = props.checkboxSelectAllValue));
+watch(
+  () => props.checkboxSelectAllValue,
+  (value: boolean | null) => (checkboxAllSelected.value = value)
+);
 </script>
 
 <template>
-  <div class="index-table">
+  <div class="ui-index-table">
     <IndexTableTabs v-if="show.tabs" :tabs @open-tab="openTab" />
 
     <IndexTableActions
@@ -47,7 +64,7 @@ const testKey = ref('name')
       :is-loading
       :bulk-actions
       :search-value
-      :checkbox-select-all-value
+      :checkbox-select-all-value="checkboxAllSelected"
       @select-all="selectAll"
       @clear-search="emit('clear-search')"
       @reload="emit('reload')"
@@ -57,15 +74,21 @@ const testKey = ref('name')
       @next-page="emit('next-page')"
       @previous-page="emit('previous-page')"
       @delete-selected-items="emit('delete-selected-items')"
-      @bulk-action="bulkAction" />
+      @bulk-action="bulkAction">
+      <template v-for="(slotContent, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
+        <component :is="slotContent" v-bind="slotProps" />
+      </template>
+    </IndexTableActions>
 
     <IndexTableList
       :items
       :fields
+      :checkbox-select-all-value="checkboxAllSelected"
       :show="{ select: show.select }"
-    >
-      <template #[testKey]="{ item, row }">
-        Testes {{ item.name + ' --  ' +  row }}
+      @selected-items="selectedItems"
+      @selected-all-items="selectedAllItems">
+      <template v-for="(slotContent, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
+        <component :is="slotContent" v-bind="slotProps" />
       </template>
     </IndexTableList>
   </div>
