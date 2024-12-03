@@ -1,10 +1,10 @@
 import type { IndexTableProps } from '../types';
 
-type ItemInTable = {
+export type ItemInTable = {
   id: number;
   name: string;
   price: string;
-}
+};
 
 export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
   tabs: [
@@ -14,11 +14,15 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
       active: true,
     },
     {
-      label: 'Outra',
-      key: 'other',
+      label: 'Produtos ativos',
+      key: 'active_products',
       active: false,
     },
-    { label: 'Alguma', key: 'any', active: false },
+    {
+      label: 'Produtos inativos',
+      key: 'inactive_products',
+      active: false,
+    },
   ],
   ordination: [
     {
@@ -55,4 +59,60 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
     { id: 2, name: 'Produto 2', price: 'R$ 20,00' },
     { id: 3, name: 'Produto 3', price: 'R$ 30,00' },
   ],
+  fields: [
+    {
+      key: 'id',
+      label: 'ID',
+    },
+    {
+      key: 'name',
+      label: 'Nome',
+    },
+    {
+      key: 'price',
+      label: 'Preço',
+    },
+  ],
+};
+
+export const completeIndexTableActions = {
+  onClearSearch: () => {
+    console.info('IndexTable >>>> clear-search');
+  },
+  onSearch: (value: string) => {
+    console.info('IndexTable >>>> search', value);
+  },
+  onReload: () => {
+    console.info('IndexTable >>>> reload');
+  },
+  onOpenTab: (key: string) => {
+    console.info('IndexTable >>>> open-tab', key);
+  },
+  onFilters: () => {
+    console.info('IndexTable >>>> filters');
+  },
+  onSaveCustomFilters: () => {
+    console.info('IndexTable >>>> save-custom-filters');
+  },
+  onSelectAll: (value: boolean | null) => {
+    console.info('IndexTable >>>> select-all', value);
+  },
+  onDeleteSelectedItems: () => {
+    console.info('IndexTable >>>> delete-selected-items');
+  },
+  onBulkAction: (key: string) => {
+    console.info('IndexTable >>>> bulk-action', key);
+  },
+  onNextPage: () => {
+    console.info('IndexTable >>>> next-page');
+  },
+  onPreviousPage: () => {
+    console.info('IndexTable >>>> previous-page');
+  },
+  onOrderBy: (key: string) => {
+    console.info('IndexTable >>>> order-by', key);
+  },
+  onSelectedItems: (items: ItemInTable[]) => {
+    console.info('IndexTable >>>> selected-items', items);
+  },
 };

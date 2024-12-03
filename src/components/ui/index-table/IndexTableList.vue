@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
   }),
   checkboxSelectAllValue: false,
 });
-const emit = defineEmits<IndexTableListEmits>();
+const emit = defineEmits<IndexTableListEmits<T>>();
 const slots = defineSlots<IndexTableListSlots<T>>();
 
 const selectedItems = ref<NameItemTableSelected[]>([]);
@@ -28,12 +28,22 @@ const prepareKeysToCell = computed(() => (items: object) => {
   });
 });
 
+const itemsSelectedObject = computed(() => {
+  const allIndexes = selectedItems.value.map((item) => {
+    return parseInt(item.split('-')[1]);
+  });
+
+  return allIndexes.map((index) => {
+    return props.items[index];
+  });
+});
+
 const selectItem = (value: NameItemTableSelected[]) => {
   const anyItem = value.length >= 1 && value.length < props.items.length;
   emit('selected-all-items', anyItem ? null : props.items.length === value.length);
 
   selectedItems.value = value;
-  emit('selected-items', selectedItems.value);
+  emit('selected-items', itemsSelectedObject.value);
 };
 
 const selectAllItems = (valueOfCheckbox: boolean | null) => {

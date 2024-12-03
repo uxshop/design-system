@@ -3,7 +3,7 @@ import { ref, watch } from 'vue';
 import IndexTableActions from './IndexTableActions.vue';
 import IndexTableList from './IndexTableList.vue';
 import IndexTableTabs from './IndexTableTabs.vue';
-import type { IndexTableEmits, IndexTableProps, IndexTableSlots, NameItemTableSelected } from './types';
+import type { IndexTableEmits, IndexTableProps, IndexTableSlots } from './types';
 import { onMounted } from 'vue';
 
 const props = withDefaults(defineProps<IndexTableProps<T>>(), {
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<IndexTableProps<T>>(), {
   }),
   checkboxSelectAllValue: false,
 });
-const emit = defineEmits<IndexTableEmits>();
+const emit = defineEmits<IndexTableEmits<T>>();
 defineSlots<IndexTableSlots<T>>();
 
 const checkboxAllSelected = ref<boolean | null>(false);
@@ -27,7 +27,7 @@ const openTab = (key: string) => emit('open-tab', key);
 const search = (word: string) => emit('search', word);
 const orderBy = (key: string) => emit('order-by', key);
 const bulkAction = (action: string) => emit('bulk-action', action);
-const selectedItems = (items: NameItemTableSelected[]) => emit('selected-items', items);
+const selectedItems = (items: T[]) => emit('selected-items', items);
 
 const selectedAllItems = (value: boolean | null) => {
   checkboxAllSelected.value = value;

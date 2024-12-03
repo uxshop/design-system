@@ -1,10 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { completeIndexTableProps } from './__mocks__/completeIndexTableProps';
+import {
+  completeIndexTableActions,
+  completeIndexTableProps,
+  type ItemInTable,
+} from './__mocks__/completeIndexTableProps';
 import IndexTable from './IndexTable.vue';
 
-const meta: Meta<typeof IndexTable> = {
+const meta: Meta<typeof IndexTable<ItemInTable>> = {
   title: 'Components/IndexTable',
-  component: IndexTable,
+  component: IndexTable as any,
   render: (args) => ({
     components: { IndexTable },
     setup() {
@@ -27,5 +31,6 @@ type Story = StoryObj<typeof meta>;
 export const complete: Story = {
   args: {
     ...completeIndexTableProps,
+    ...completeIndexTableActions,
   },
 };

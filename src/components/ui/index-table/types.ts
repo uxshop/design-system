@@ -99,9 +99,11 @@ export interface ColsToShow {
 }
 
 export interface IndexTableListProps<T> {
+  /** Lista de items a serem exibidos na tabela com o tipo de objeto que for desejado */
   items: T[];
   /** Define as colunas da tabela */
   fields?: KeyLabelDefault[];
+  /** Permite definir quais partes a tabela possuirá  */
   show?: ColsToShow;
   /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */
   checkboxSelectAllValue?: boolean | null;
@@ -125,12 +127,12 @@ export interface IndexTableListPrivateEmits {
 /**
  * Emits públicos usados externamente pelo componente
  */
-export interface IndexTableListPublicEmits {
+export interface IndexTableListPublicEmits<T> {
   /** Quando um item é selecionado é emitida essa ação mandando a key que consiste de uma string `item-{index}` sendo index o número do índice do item na lista  */
-  (event: 'selected-items', key: NameItemTableSelected[]): void;
+  (event: 'selected-items', items: T[]): void;
 }
 
-export interface IndexTableListEmits extends IndexTableListPrivateEmits, IndexTableListPublicEmits {}
+export interface IndexTableListEmits<T> extends IndexTableListPrivateEmits, IndexTableListPublicEmits<T> {}
 
 interface SlotCellProps<T> {
   item: T;
@@ -154,6 +156,6 @@ export interface IndexTableProps<T>
   show?: IndexTablePropShow;
 }
 
-export interface IndexTableEmits extends IndexTableTabsEmits, IndexTableActionsEmits, IndexTableListPublicEmits {}
+export interface IndexTableEmits<T> extends IndexTableTabsEmits, IndexTableActionsEmits, IndexTableListPublicEmits<T> {}
 
 export interface IndexTableSlots<T> extends IndexTableActionsSlots, IndexTableListSlots<T> {}
