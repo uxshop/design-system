@@ -1,10 +1,9 @@
 <script setup lang="ts" generic="T extends object">
-import { onUnmounted, provide, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import IndexTableActions from './IndexTableActions.vue';
 import IndexTableList from './IndexTableList.vue';
 import IndexTableTabs from './IndexTableTabs.vue';
 import type { IndexTableEmits, IndexTableProps, IndexTableSlots, NameItemTableSelected } from './types';
-import { useActionSelectAllItems } from './composables/useActionSelectAllItems';
 import { onMounted } from 'vue';
 
 const props = withDefaults(defineProps<IndexTableProps<T>>(), {
