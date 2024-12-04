@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { IndexTablePaginationItemEmits, IndexTablePaginationItemProps } from './types';
 import IconButton from '../icon-button/IconButton.vue';
+import type { IndexTablePaginationItemEmits, IndexTablePaginationItemProps } from './types';
 
 withDefaults(defineProps<IndexTablePaginationItemProps>(), {
   from: 0,
@@ -12,8 +12,8 @@ const emit = defineEmits<IndexTablePaginationItemEmits>();
 </script>
 
 <template>
-  <div class="index-table-pagination">
-    <div v-show="from" class="index-table-pagination-item">{{ from }} – {{ to }} {{ total ? 'de ' + total : '' }}</div>
+  <div class="ui-index-table-pagination">
+    <div v-show="from" class="ui-index-table-pagination-item">{{ from }} - {{ to }} {{ total ? 'de ' + total : '' }}</div>
 
     <IconButton size="md" icon="arrow_back" :disabled="1 === page" @click="emit('previous-page')" />
 

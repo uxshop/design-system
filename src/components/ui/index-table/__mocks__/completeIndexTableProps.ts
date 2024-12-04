@@ -94,8 +94,8 @@ export const completeIndexTableActions: Record<string, unknown> = {
 
 export const completeIndexTableSlots = {
   slots: {
-    actions: 'Default Actions Content',
-    'action-pagination': 'Default Header Content',
-    'bulk-actions': 'Default Footer Content',
+    // actions: 'Default Actions Content',
+    // 'action-pagination': 'Default Header Content',
+    // 'bulk-actions': 'Default Footer Content',
   },
 }

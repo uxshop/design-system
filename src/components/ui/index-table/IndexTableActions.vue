@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import FormCheckbox from '../form-checkbox/FormCheckbox.vue';
-import IconButton from '../icon-button/IconButton.vue';
-import FormTextfield from '../form-textfield/FormTextfield.vue';
-import IndexTableOrderButton from './IndexTableOrderButton.vue';
-import isMobile from '../../../services/MobileDetector';
 import Button from '../button/Button.vue';
 import Dropdown from '../dropdown/Dropdown.vue';
 import DropdownItemButton from '../dropdown/DropdownItemButton.vue';
+import FormCheckbox from '../form-checkbox/FormCheckbox.vue';
+import FormTextfield from '../form-textfield/FormTextfield.vue';
+import IconButton from '../icon-button/IconButton.vue';
+import IndexTableOrderButton from './IndexTableOrderButton.vue';
 
-import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from './types';
 import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
 import { useActionSelectAllItems } from './composables/useActionSelectAllItems';
+import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from './types';
 
 const props = withDefaults(defineProps<IndexTableActionsProps>(), {
   show: () => ({
@@ -95,12 +94,20 @@ const orderBy = (key: string) => emit('order-by', key);
         <slot name="actions" />
       </template>
       <template v-else-if="showBulkActions && !isLoading">
-        <Button
-          v-if="show.bulkActionDelete"
-          size="sm"
-          leading-icon="delete"
-          label="Deletar"
-          @click="emit('delete-selected-items')" />
+        <template v-if="show.bulkActionDelete">
+          <Button
+            class="ui-index-table-actions -desktop"
+            size="sm"
+            leading-icon="delete"
+            label="Deletar"
+            @click="emit('delete-selected-items')" />
+          <Button
+            class="ui-index-table-actions -mobile"
+            size="md"
+            leading-icon="delete"
+            label=""
+            @click="emit('delete-selected-items')" />
+        </template>
 
         <Dropdown v-if="bulkActions.length > 0" right>
           <template #button-content>

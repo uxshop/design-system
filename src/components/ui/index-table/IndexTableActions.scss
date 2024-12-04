@@ -1,3 +1,5 @@
+@import '../../../scss/mixins.scss';
+
 .ui-index-table-actions-item,
 .ui-index-table-actions-wrapper {
   display: flex;
@@ -12,6 +14,9 @@
 .ui-index-table-actions-item {
   padding: var(--s-spacing-x-small);
   border-bottom: 1px solid var(--s-color-border-highlight);
+  overflow-x: auto;
+
+  @include scrollbarStyle;
 }
 
 .ui-index-table-actions-checkbox {

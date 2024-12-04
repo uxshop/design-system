@@ -1,9 +1,11 @@
-.index-table-pagination {
+.ui-index-table-pagination {
   display: flex;
   align-items: center;
   gap: var(--s-spacing-nano);
+  margin-left: var(--s-spacing-nano);;
 }
 
-.index-table-pagination-item {
+.ui-index-table-pagination-item {
+  min-width: fit-content;
   margin-right: var(--s-spacing-nano);
 }

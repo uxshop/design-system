@@ -61,7 +61,7 @@ watch(
 </script>
 
 <template>
-  <Table>
+  <Table class="ui-index-table-list">
     <template #header>
       <TableHeadCell v-if="show.select"></TableHeadCell>
 

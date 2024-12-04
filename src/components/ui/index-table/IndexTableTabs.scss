@@ -1,0 +1,7 @@
+@import '../../../scss/mixins.scss';
+
+.ui-index-table-tabs {
+  overflow-x: auto;
+
+  @include scrollbarStyle;
+}
