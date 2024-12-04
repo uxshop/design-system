@@ -26,7 +26,12 @@ export interface ActionsToShow {
   bulkActionDelete: boolean;
 }
 
-export interface IndexTablePaginationItemProps {
+export interface IndexTableInternalLoaderProps {
+  /** Estado de carregamento interno do componente, deve ser usado para troca entre abas no componente IndexTable, ele permite a visualização do loading dentro da tabela */
+  isInternalLoading: boolean;
+}
+
+export interface IndexTablePaginationItemProps extends IndexTableInternalLoaderProps {
   from: number;
   to: number;
   page: number;
@@ -42,15 +47,22 @@ export interface IndexTableOrderButtonProps {
   ordination: null | ActionOrdination[];
 }
 
-export interface IndexTableActionsProps extends IndexTableOrderButtonProps {
+export interface ShowNotFoundMessageProp {
+  /** Valida se a mensagem de resultado não encontrado para o filtro aplicado deve ser exibida */
+  showNotFoundMessageForFilter?: boolean;
+}
+
+export interface IndexTableActionsProps
+  extends IndexTableOrderButtonProps,
+    ShowNotFoundMessageProp,
+    IndexTableInternalLoaderProps {
   show: ActionsToShow;
   /** Quando o valor null é passado libera o slot #pagination para o uso do componente desejado */
-  pagination: null | IndexTablePaginationItemProps;
+  pagination: null | Omit<IndexTablePaginationItemProps, 'isInternalLoading'>;
   /** Define quais tags de filtros estão aplicados a tabela no momento */
   activeFilterTags: KeyLabelDefault[];
   /** Define quais ações em massa serão exibidas ao selecionar itens da listagem */
   bulkActions: KeyLabelDefault[];
-  isLoading: boolean;
   /** Usado para simular a aplicação de uma busca desejada na listagem, como no caso de obter a busca de query params da URL por exemplo */
   searchValue?: string;
   /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */
@@ -100,7 +112,7 @@ export interface ColsToShow {
   select: boolean;
 }
 
-export interface IndexTableListProps<T> {
+export interface IndexTableListProps<T> extends ShowNotFoundMessageProp {
   /** Lista de items a serem exibidos na tabela com o tipo de objeto que for desejado */
   items: T[];
   /** Define as colunas da tabela */
@@ -112,6 +124,11 @@ export interface IndexTableListProps<T> {
 
 export interface IndexTablePropShow extends ActionsToShow {
   tabs: boolean;
+}
+
+export interface IndexTableEmptyMessageEmits {
+  /** Quando existem 0 itens passados para o componente e a props showNotFoundMessageForFilter está ativa e o usuário clicou no item `outra opção de filtro` emite a ação para indicar que os filtros devem ser removidos */
+  (event: 'reset-filters'): void;
 }
 
 /** Nome do item selecionado na tabela, contendo o seu indice na tabela */
@@ -128,7 +145,7 @@ export interface IndexTableListPrivateEmits {
 /**
  * Emits públicos usados externamente pelo componente
  */
-export interface IndexTableListPublicEmits<T> {
+export interface IndexTableListPublicEmits<T> extends IndexTableEmptyMessageEmits {
   /** Quando um item é selecionado é emitida essa ação mandando a key que consiste de uma string `item-{index}` sendo index o número do índice do item na lista  */
   (event: 'selected-items', items: T[]): void;
 }
@@ -160,6 +177,8 @@ export interface IndexTableProps<T>
     IndexTableListProps<T> {
   /** Define quais elementos internos serão exibidos no componente */
   show?: IndexTablePropShow;
+  /** Estado de carregamento global do componente, deve ser usado no primeiro carregamento, quando ainda não há nenhum dado carregado nas abas do IndexTable */
+  isLoading: boolean;
 }
 
 export interface IndexTableEmits<T> extends IndexTableTabsEmits, IndexTableActionsEmits, IndexTableListPublicEmits<T> {}

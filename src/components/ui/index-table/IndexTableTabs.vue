@@ -19,8 +19,13 @@ const currentTab = ref('');
 
 const activeTab = computed(() => props.tabs?.find((tab) => tab.active) ?? props.tabs[0]);
 
+const onChangeTab = (key: string) => {
+  currentTab.value = key;
+  emit('open-tab', key);
+};
+
 onMounted(() => {
-  currentTab.value = props.tabs[0].key;
+  currentTab.value = activeTab.value.key;
 });
 watch(
   () => activeTab.value,
@@ -37,7 +42,7 @@ watch(
       :key="index"
       :label="item.label"
       :index="item.key"
-      @click="emit('open-tab', item.key)" />
+      @click="onChangeTab(item.key)" />
   </Tab>
 </template>
 

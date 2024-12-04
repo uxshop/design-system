@@ -3,6 +3,11 @@
 .ui-index-table-list {
   min-width: 100%;
   min-height: 300px;
+  border-top: var(--s-border-light);
+}
+
+.ui-index-table-empty-message {
+  min-height: 300px;
 }
 
 .ui-index-table-list-all-items-checkbox {

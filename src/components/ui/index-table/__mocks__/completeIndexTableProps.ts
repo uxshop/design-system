@@ -8,16 +8,25 @@ export type ItemInTable = {
 };
 
 export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
+  show: {
+    tabs: true,
+    select: true,
+    reload: true,
+    search: true,
+    customFilters: true,
+    filters: true,
+    bulkActionDelete: true,
+  },
   tabs: [
     {
       label: 'Todos',
       key: 'all',
-      active: true,
+      active: false,
     },
     {
       label: 'Produtos ativos',
       key: 'active_products',
-      active: false,
+      active: true,
     },
     {
       label: 'Produtos inativos',
@@ -53,8 +62,12 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
     { label: 'Ativar registros', key: 'activate-records' },
     { label: 'Inativar registros', key: 'inactivate-records' },
   ],
-  activeFilterTags: [{ key: 'teste', label: 'Teste' }],
+  activeFilterTags: [{ key: 'active', label: 'Ativo' }],
+  searchValue: '',
+  checkboxSelectAllValue: false,
+  showNotFoundMessageForFilter: false,
   isLoading: false,
+  isInternalLoading: false,
   items: [
     { id: 1, name: 'Produto 1', price: 'R$ 10,00' },
     { id: 2, name: 'Produto 2', price: 'R$ 20,00' },
@@ -90,6 +103,8 @@ export const completeIndexTableActions: Record<string, unknown> = {
   onPreviousPage: fn(),
   onOrderBy: fn(),
   onSelectedItems: fn(),
+  onRemoveFilter: fn(),
+  onResetFilters: fn(),
 };
 
 export const completeIndexTableSlots = {

@@ -15,7 +15,6 @@ const show = reactive({
   select: true,
   reload: true,
   search: true,
-  order: true,
   customFilters: true,
   filters: true,
   bulkActionDelete: true,
@@ -157,6 +156,10 @@ const removeFilter = (tag: KeyLabelDefault) => {
   console.info('🟣 >> removeFilter', tag);
 };
 
+const resetFilters = () => {
+  console.info('🟣 >> resetFilters');
+};
+
 const activeFilterTags = ref<KeyLabelDefault[]>([
   {
     key: 'name_by_asc',
@@ -168,9 +171,13 @@ const activeFilterTags = ref<KeyLabelDefault[]>([
   },
 ]);
 
+const showNotFoundMessageForFilter = ref(true);
+
 const checkboxValue = ref<boolean | null>(false);
 
 const isLoading = ref(true);
+
+const isInternalLoading = ref(false);
 
 setTimeout(() => {
   isLoading.value = false;
@@ -193,7 +200,9 @@ setTimeout(() => {
         { label: 'Inativar registros', key: 'inactivate-records' },
       ]"
       :is-loading="isLoading"
+      :is-internal-loading="isInternalLoading"
       :checkbox-select-all-value="checkboxValue"
+      :show-not-found-message-for-filter="showNotFoundMessageForFilter"
       @open-tab="openTab"
       @reload="reload"
       @filters="filters"
@@ -207,7 +216,7 @@ setTimeout(() => {
       @bulk-action="bulkAction"
       @selected-items="selectedItems"
       @remove-filter="removeFilter"
-      >
+      @reset-filters="resetFilters">
       <template #actions>
         <div>Actions</div>
       </template>

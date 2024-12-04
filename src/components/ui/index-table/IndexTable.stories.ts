@@ -24,7 +24,10 @@ const meta: Meta<typeof IndexTable<ItemInTable>> = {
     `,
   }),
   argTypes: {
+    searchValue: { control: { type: 'text' } },
     isLoading: { control: { type: 'boolean' } },
+    isInternalLoading: { control: { type: 'boolean' } },
+    showNotFoundMessageForFilter: { control: { type: 'boolean' } },
     checkboxSelectAllValue: { control: { type: 'select' }, options: [true, false, null] },
   },
   parameters: {

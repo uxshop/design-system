@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
     select: true,
   }),
   checkboxSelectAllValue: false,
+  showNotFoundMessageForFilter: false,
 });
 const emit = defineEmits<IndexTableListEmits<T>>();
 const slots = defineSlots<IndexTableListSlots<T>>();
@@ -62,7 +63,10 @@ watch(
 </script>
 
 <template>
-  <IndexTableEmptyMessage v-if="!items.length" />
+  <IndexTableEmptyMessage
+    v-if="!items.length && showNotFoundMessageForFilter"
+    class="ui-index-table-empty-message"
+    @reset-filters="emit('reset-filters')" />
   <Table v-else class="ui-index-table-list">
     <template #header>
       <TableHeadCell v-if="show.select"></TableHeadCell>

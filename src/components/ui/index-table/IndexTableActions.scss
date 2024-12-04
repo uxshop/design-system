@@ -38,6 +38,10 @@
 }
 
 .ui-index-table-actions {
+  &-tags {
+    padding: var(--s-spacing-x-small);
+  }
+
   &.-mobile {
     display: none;
   }

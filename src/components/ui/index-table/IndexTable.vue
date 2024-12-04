@@ -8,7 +8,7 @@ import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
 import IndexTableTabs from './IndexTableTabs.vue';
 
 import { onMounted } from 'vue';
-import type { IndexTableEmits, IndexTableProps, IndexTableSlots } from './types';
+import type { IndexTableEmits, IndexTableProps, IndexTableSlots, KeyLabelDefault } from './types';
 
 const props = withDefaults(defineProps<IndexTableProps<T>>(), {
   show: () => ({
@@ -21,6 +21,7 @@ const props = withDefaults(defineProps<IndexTableProps<T>>(), {
     bulkActionDelete: true,
   }),
   checkboxSelectAllValue: false,
+  isInternalLoading: false,
 });
 const emit = defineEmits<IndexTableEmits<T>>();
 defineSlots<IndexTableSlots<T>>();
@@ -32,6 +33,7 @@ const search = (word: string) => emit('search', word);
 const orderBy = (key: string) => emit('order-by', key);
 const bulkAction = (action: string) => emit('bulk-action', action);
 const selectedItems = (items: T[]) => emit('selected-items', items);
+const removeFilter = (tag: KeyLabelDefault) => emit('remove-filter', tag);
 
 const selectedAllItems = (value: boolean | null) => {
   checkboxAllSelected.value = value;
@@ -81,9 +83,10 @@ watch(
           :ordination
           :pagination
           :active-filter-tags
-          :is-loading
           :bulk-actions
           :search-value
+          :show-not-found-message-for-filter
+          :is-internal-loading
           :checkbox-select-all-value="checkboxAllSelected"
           @select-all="selectAll"
           @clear-search="emit('clear-search')"
@@ -95,8 +98,7 @@ watch(
           @previous-page="emit('previous-page')"
           @delete-selected-items="emit('delete-selected-items')"
           @bulk-action="bulkAction"
-          @remove-filter="emit('remove-filter')"
-          >
+          @remove-filter="removeFilter">
           <template v-for="(slotContent, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
             <component :is="slotContent" v-bind="slotProps" />
           </template>
@@ -106,9 +108,11 @@ watch(
           :items
           :fields
           :checkbox-select-all-value="checkboxAllSelected"
+          :show-not-found-message-for-filter
           :show="{ select: show.select }"
           @selected-items="selectedItems"
-          @selected-all-items="selectedAllItems">
+          @selected-all-items="selectedAllItems"
+          @reset-filters="emit('reset-filters')">
           <template v-for="(slotContent, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
             <component :is="slotContent" v-bind="slotProps" />
           </template>
@@ -120,6 +124,7 @@ watch(
       <IndexTablePaginationItem
         v-if="pagination && !isLoading && isMobileView"
         class="-footer"
+        :is-internal-loading
         :page="pagination.page"
         :size="pagination.size"
         :total="pagination.total"

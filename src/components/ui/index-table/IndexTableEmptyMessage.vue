@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import type { IndexTableEmptyMessageProps } from './types';
+import Icon from '../icon/Icon.vue';
+import type { IndexTableEmptyMessageEmits } from './types';
 
-defineProps<IndexTableEmptyMessageProps>();
+const emit = defineEmits<IndexTableEmptyMessageEmits>();
 </script>
 
 <template>
-  <!-- eslint-disable vue/no-v-html  -> Regra desabilitada por não interferir em problemas de XSS -->
-  <div class="index-table-empty-message">
-    <h4 class="index-table-empty-message-title">Esta seção não possui registros</h4>
-    <div v-if="emptyListMessage" class="index-table-empty-message-text" v-html="emptyListMessage" ></div>
+  <div class="index-table-empty-msg">
+    <div class="index-table-empty-msg-content">
+      <div class="index-table-empty-msg-icon">
+        <Icon name="search" size="40" />
+      </div>
+      <div class="index-table-empty-msg-title">Sua pesquisa não retornou nenhum resultado</div>
+      <div class="index-table-empty-msg-text">
+        Essa opção não existe na sua loja, tente
+        <a @click="emit('reset-filters')">outra opção de filtro</a>
+      </div>
+    </div>
   </div>
 </template>
 
-<style lang="scss">
-.index-table-empty-message {
-  padding: var(--s-spacing-small);
-  border: var(--s-border-light);
-  border-radius: var(--s-border-radius-medium);
-
-  .index-table-empty-message-title {
-    margin-bottom: var(--s-spacing-xx-small);
-  }
-}
+<style lang="scss" scoped>
+@import './IndexTableEmptyMessage.scss';
 </style>
