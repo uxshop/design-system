@@ -2,7 +2,27 @@
   display: flex;
   align-items: center;
   gap: var(--s-spacing-nano);
-  margin-left: var(--s-spacing-nano);;
+  margin-left: var(--s-spacing-nano);
+
+  &.-footer {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      margin-left: 0px;
+      justify-content: space-between;
+      display: flex;
+    }
+  }
+
+  &-previous {
+    @media screen and (max-width: 768px) {
+      order: -1;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .ui-index-table-pagination-item {

@@ -9,14 +9,24 @@
 
 .ui-index-table-actions-search {
   max-width: 300px;
+
+  @media screen and (max-width: 768px) {
+    width: 180px;
+  }
+}
+
+.ui-index-table-actions-refresh {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .ui-index-table-actions-item {
   padding: var(--s-spacing-x-small);
+  border-top: var(--s-border-light);
   border-bottom: 1px solid var(--s-color-border-highlight);
-  overflow-x: auto;
-
-  @include scrollbarStyle;
+  min-width: max-content;
+  width: 100%;
 }
 
 .ui-index-table-actions-checkbox {

@@ -1,9 +1,8 @@
 @import '../../../scss/mixins.scss';
 
 .ui-index-table-list {
-  overflow-x: auto;
-
-  @include scrollbarStyle;
+  min-width: 100%;
+  min-height: 300px;
 }
 
 .ui-index-table-list-all-items-checkbox {

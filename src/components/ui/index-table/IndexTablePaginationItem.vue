@@ -13,9 +13,16 @@ const emit = defineEmits<IndexTablePaginationItemEmits>();
 
 <template>
   <div class="ui-index-table-pagination">
-    <div v-show="from" class="ui-index-table-pagination-item">{{ from }} - {{ to }} {{ total ? 'de ' + total : '' }}</div>
+    <div v-show="from" class="ui-index-table-pagination-item">
+      {{ from }} - {{ to }} {{ total ? 'de ' + total : '' }}
+    </div>
 
-    <IconButton size="md" icon="arrow_back" :disabled="1 === page" @click="emit('previous-page')" />
+    <IconButton
+      class="ui-index-table-pagination-previous"
+      size="md"
+      icon="arrow_back"
+      :disabled="1 === page"
+      @click="emit('previous-page')" />
 
     <IconButton size="md" icon="arrow_forward" :disabled="to === total" @click="emit('next-page')" />
   </div>

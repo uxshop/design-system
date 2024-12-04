@@ -98,4 +98,4 @@ export const completeIndexTableSlots = {
     // 'action-pagination': 'Default Header Content',
     // 'bulk-actions': 'Default Footer Content',
   },
-}
+};

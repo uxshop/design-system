@@ -39,6 +39,6 @@ export const complete: Story = {
   args: {
     ...completeIndexTableProps,
     ...completeIndexTableActions,
-    ...completeIndexTableSlots
+    ...completeIndexTableSlots,
   },
 };

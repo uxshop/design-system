@@ -58,7 +58,12 @@ const orderBy = (key: string) => emit('order-by', key);
         @update="updateCheckboxAllSelected" />
 
       <template v-if="!isLoading && !showBulkActions">
-        <IconButton v-if="show.reload" size="md" icon="refresh" @click="emit('reload')" />
+        <IconButton
+          v-if="show.reload"
+          class="ui-index-table-actions-refresh"
+          size="md"
+          icon="refresh"
+          @click="emit('reload')" />
 
         <FormTextfield
           v-if="show.search"
@@ -89,7 +94,6 @@ const orderBy = (key: string) => emit('order-by', key);
             leading-icon="filter_list"
             @click="emit('filters')" />
         </template>
-
 
         <slot name="actions" />
       </template>
