@@ -1,9 +1,9 @@
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
 import vitest from '@vitest/eslint-plugin';
 import prettierSkipFormattingConfig from '@vue/eslint-config-prettier/skip-formatting';
 import pluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 const globalFiles = ['**/*.{vue,js,mjs,cjs,ts}'];
 
@@ -160,7 +160,7 @@ export default [
           order: ['script', 'template', 'style'],
         },
       ],
-      'vue/multi-word-component-names': 'warn',
+      'vue/multi-word-component-names': 'off', // Desabilitada devido ao padrão do DS em que os componentes ao serem usados em outros projetos podem conter um nome composto
       'vue/block-tag-newline': 'error',
       'vue/component-api-style': ['error', ['script-setup']],
       'vue/no-setup-props-reactivity-loss': 'error',

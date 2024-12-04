@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import Button from '../button/Button.vue';
 import Dropdown from '../dropdown/Dropdown.vue';
 import DropdownItemButton from '../dropdown/DropdownItemButton.vue';
 import FormCheckbox from '../form-checkbox/FormCheckbox.vue';
 import FormTextfield from '../form-textfield/FormTextfield.vue';
 import IconButton from '../icon-button/IconButton.vue';
+import Tag from '../tag/Tag.vue';
+import TagList from '../tag/TagList.vue';
 import IndexTableOrderButton from './IndexTableOrderButton.vue';
-
 import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
+
 import { useActionSelectAllItems } from './composables/useActionSelectAllItems';
 import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from './types';
 
@@ -42,6 +44,8 @@ const { showBulkActions, checkboxAllSelected, checkboxAllSelectedIndeterminate, 
 const search = ref('');
 
 const orderBy = (key: string) => emit('order-by', key);
+
+const currentActiveFilterTags = computed(() => props.activeFilterTags);
 </script>
 
 <template>
@@ -141,6 +145,16 @@ const orderBy = (key: string) => emit('order-by', key);
         @previous-page="emit('previous-page')" />
       <slot v-else name="action-pagination" />
     </template>
+  </div>
+  <div v-if="currentActiveFilterTags.length > 0">
+    <TagList>
+      <Tag
+        v-for="(tag, index) in currentActiveFilterTags"
+        :key="index"
+        variant="primary"
+        :label="tag.label"
+        @remove="emit('remove-filter', { key: tag.key, label: tag.label})"></Tag>
+    </TagList>
   </div>
 </template>
 

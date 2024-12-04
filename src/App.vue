@@ -2,9 +2,9 @@
 import { reactive, ref } from 'vue';
 import Page from './components/admin/page/Page.vue';
 import IndexTable from './components/ui/index-table/IndexTable.vue';
+import type { KeyLabelDefault, NameItemTableSelected } from './components/ui/index-table/types';
 import TextStyle from './components/ui/text-style/TextStyle.vue';
 import type { IAction } from './types';
-import type { NameItemTableSelected } from './components/ui/index-table/types';
 
 const action: IAction = {
   label: 'Bagy',
@@ -85,24 +85,24 @@ const fields = [
 ];
 
 const items = [
-  {
-    id: 1,
-    name: 'Item 1',
-    updated: '2021-10-01',
-    created_at: '2021-10-01',
-  },
-  {
-    id: 2,
-    name: 'Item 2',
-    updated: '2021-10-01',
-    created_at: '2021-10-01',
-  },
-  {
-    id: 3,
-    name: 'Item 3',
-    updated: '2021-10-01',
-    created_at: '2021-10-01',
-  },
+  // {
+  //   id: 1,
+  //   name: 'Item 1',
+  //   updated: '2021-10-01',
+  //   created_at: '2021-10-01',
+  // },
+  // {
+  //   id: 2,
+  //   name: 'Item 2',
+  //   updated: '2021-10-01',
+  //   created_at: '2021-10-01',
+  // },
+  // {
+  //   id: 3,
+  //   name: 'Item 3',
+  //   updated: '2021-10-01',
+  //   created_at: '2021-10-01',
+  // },
 ];
 
 const openTab = (key: string) => {
@@ -153,7 +153,28 @@ const selectedItems = (items: NameItemTableSelected[]) => {
   console.info('🟣 >> selectedItems', items);
 };
 
+const removeFilter = (tag: KeyLabelDefault) => {
+  console.info('🟣 >> removeFilter', tag);
+};
+
+const activeFilterTags = ref<KeyLabelDefault[]>([
+  {
+    key: 'name_by_asc',
+    label: 'Nome (A-z)',
+  },
+  {
+    key: 'created_at_by_desc',
+    label: 'Data de criação',
+  },
+]);
+
 const checkboxValue = ref<boolean | null>(false);
+
+const isLoading = ref(true);
+
+setTimeout(() => {
+  isLoading.value = false;
+}, 3000);
 </script>
 
 <template>
@@ -166,12 +187,12 @@ const checkboxValue = ref<boolean | null>(false);
       :tabs
       :ordination
       :pagination
-      :active-filter-tags="[]"
+      :active-filter-tags="activeFilterTags"
       :bulk-actions="[
         { label: 'Ativar registros', key: 'activate-records' },
         { label: 'Inativar registros', key: 'inactivate-records' },
       ]"
-      :is-loading="false"
+      :is-loading="isLoading"
       :checkbox-select-all-value="checkboxValue"
       @open-tab="openTab"
       @reload="reload"
@@ -184,7 +205,9 @@ const checkboxValue = ref<boolean | null>(false);
       @order-by="orderBy"
       @delete-selected-items="deleteSelectedItems"
       @bulk-action="bulkAction"
-      @selected-items="selectedItems">
+      @selected-items="selectedItems"
+      @remove-filter="removeFilter"
+      >
       <template #actions>
         <div>Actions</div>
       </template>

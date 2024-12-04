@@ -6,6 +6,7 @@ import TableHeadCell from '#ds/components/admin/table/TableHeadCell.vue';
 import TableRow from '#ds/components/admin/table/TableRow.vue';
 import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
 import { computed, ref, watch } from 'vue';
+import IndexTableEmptyMessage from './IndexTableEmptyMessage.vue';
 import type { IndexTableListEmits, IndexTableListProps, IndexTableListSlots, NameItemTableSelected } from './types';
 
 const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
@@ -61,7 +62,8 @@ watch(
 </script>
 
 <template>
-  <Table class="ui-index-table-list">
+  <IndexTableEmptyMessage v-if="!items.length" />
+  <Table v-else class="ui-index-table-list">
     <template #header>
       <TableHeadCell v-if="show.select"></TableHeadCell>
 

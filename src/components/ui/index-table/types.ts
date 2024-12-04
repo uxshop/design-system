@@ -92,6 +92,8 @@ export interface IndexTableActionsEmits extends IndexTableOrderButtonEmits, Inde
   (event: 'delete-selected-items'): void;
   /** Ação disparada ao clicar em uma das ações em massa listadas por padrão no componente */
   (event: 'bulk-action', key: string): void;
+  /** Ação disparada ao clicar no botão fechar de uma tag de filtro da listagem */
+  (event: 'remove-filter', tagFilter: KeyLabelDefault): void;
 }
 
 export interface ColsToShow {
@@ -146,6 +148,10 @@ interface SlotHeadProps {
 export interface IndexTableListSlots<T> {
   [key: `cell(${string})`]: (props: SlotCellProps<T>) => void;
   [key: `head(${string})`]: (props: SlotHeadProps) => void;
+}
+
+export interface IndexTableEmptyMessageProps {
+  emptyListMessage?: string;
 }
 
 export interface IndexTableProps<T>
