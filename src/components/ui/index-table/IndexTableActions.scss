@@ -21,3 +21,23 @@
 .ui-index-table-actions-wrapper {
   gap: var(--s-spacing-nano);
 }
+
+.ui-index-table-actions {
+  &.-mobile {
+    display: none;
+  }
+
+  &.-desktop {
+    display: inline-flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    &.-mobile {
+      display: inline-flex;
+    }
+
+    &.-desktop {
+      display: none;
+    }
+  }
+}

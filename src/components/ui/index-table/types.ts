@@ -8,6 +8,7 @@ export interface Tab extends KeyLabelDefault {
 }
 
 export interface IndexTableTabsProps {
+  /** Abas a exibir no componente */
   tabs: Tab[];
 }
 
@@ -42,7 +43,6 @@ export interface IndexTableOrderButtonProps {
 }
 
 export interface IndexTableActionsProps extends IndexTableOrderButtonProps {
-  /** Define quais elementos internos serão exibidos no componente */
   show: ActionsToShow;
   /** Quando o valor null é passado libera o slot #pagination para o uso do componente desejado */
   pagination: null | IndexTablePaginationItemProps;
@@ -103,7 +103,6 @@ export interface IndexTableListProps<T> {
   items: T[];
   /** Define as colunas da tabela */
   fields?: KeyLabelDefault[];
-  /** Permite definir quais partes a tabela possuirá  */
   show?: ColsToShow;
   /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */
   checkboxSelectAllValue?: boolean | null;
@@ -153,6 +152,7 @@ export interface IndexTableProps<T>
   extends IndexTableTabsProps,
     Omit<IndexTableActionsProps, 'show'>,
     IndexTableListProps<T> {
+  /** Define quais elementos internos serão exibidos no componente */
   show?: IndexTablePropShow;
 }
 

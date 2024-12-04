@@ -76,12 +76,21 @@ const orderBy = (key: string) => emit('order-by', key);
 
         <IndexTableOrderButton v-if="ordination" :ordination @order-by="orderBy" />
 
-        <Button
-          v-if="show.filters"
-          :size="isMobile() ? 'md' : 'sm'"
-          :label="isMobile() ? '' : 'Filtros'"
-          leading-icon="filter_list"
-          @click="emit('filters')" />
+        <template v-if="show.filters">
+          <Button
+            class="ui-index-table-actions -mobile"
+            size="md"
+            label=""
+            leading-icon="filter_list"
+            @click="emit('filters')" />
+          <Button
+            class="ui-index-table-actions -desktop"
+            size="sm"
+            label="Filtros"
+            leading-icon="filter_list"
+            @click="emit('filters')" />
+        </template>
+
 
         <slot name="actions" />
       </template>

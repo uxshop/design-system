@@ -15,9 +15,10 @@ const orderValue = ref(activeOrder);
 </script>
 
 <template>
-  <Dropdown ref="dropdownRef">
+  <Dropdown ref="dropdownRef" class="ui-index-table-order-button">
     <template #button-content>
-      <Button :label="isMobile() ? '' : 'Ordenar'" :size="isMobile() ? 'md' : 'sm'" leading-icon="swap_vert" />
+      <Button class="ui-index-table-order-button-action -mobile" label="" size="md" leading-icon="swap_vert" />
+      <Button class="ui-index-table-order-button-action -desktop" label="Ordenar" size="sm" leading-icon="swap_vert" />
     </template>
 
     <DropdownItemButton
@@ -31,5 +32,5 @@ const orderValue = ref(activeOrder);
 </template>
 
 <style lang="scss" scoped>
-//@import './indexTableOrderButton.scss';
+@import './IndexTableOrderButton.scss';
 </style>

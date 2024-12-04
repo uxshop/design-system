@@ -1,3 +1,4 @@
+import { fn } from '@storybook/test';
 import type { IndexTableProps } from '../types';
 
 export type ItemInTable = {
@@ -75,44 +76,26 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
   ],
 };
 
-export const completeIndexTableActions = {
-  onClearSearch: () => {
-    console.info('IndexTable >>>> clear-search');
-  },
-  onSearch: (value: string) => {
-    console.info('IndexTable >>>> search', value);
-  },
-  onReload: () => {
-    console.info('IndexTable >>>> reload');
-  },
-  onOpenTab: (key: string) => {
-    console.info('IndexTable >>>> open-tab', key);
-  },
-  onFilters: () => {
-    console.info('IndexTable >>>> filters');
-  },
-  onSaveCustomFilters: () => {
-    console.info('IndexTable >>>> save-custom-filters');
-  },
-  onSelectAll: (value: boolean | null) => {
-    console.info('IndexTable >>>> select-all', value);
-  },
-  onDeleteSelectedItems: () => {
-    console.info('IndexTable >>>> delete-selected-items');
-  },
-  onBulkAction: (key: string) => {
-    console.info('IndexTable >>>> bulk-action', key);
-  },
-  onNextPage: () => {
-    console.info('IndexTable >>>> next-page');
-  },
-  onPreviousPage: () => {
-    console.info('IndexTable >>>> previous-page');
-  },
-  onOrderBy: (key: string) => {
-    console.info('IndexTable >>>> order-by', key);
-  },
-  onSelectedItems: (items: ItemInTable[]) => {
-    console.info('IndexTable >>>> selected-items', items);
-  },
+export const completeIndexTableActions: Record<string, unknown> = {
+  onClearSearch: fn(),
+  onSearch: fn(),
+  onReload: fn(),
+  onOpenTab: fn(),
+  onFilters: fn(),
+  onSaveCustomFilters: fn(),
+  onSelectAll: fn(),
+  onDeleteSelectedItems: fn(),
+  onBulkAction: fn(),
+  onNextPage: fn(),
+  onPreviousPage: fn(),
+  onOrderBy: fn(),
+  onSelectedItems: fn(),
 };
+
+export const completeIndexTableSlots = {
+  slots: {
+    actions: 'Default Actions Content',
+    'action-pagination': 'Default Header Content',
+    'bulk-actions': 'Default Footer Content',
+  },
+}
