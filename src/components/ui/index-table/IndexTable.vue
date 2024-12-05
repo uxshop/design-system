@@ -132,6 +132,7 @@ watch(
         :to="pagination.to"
         @next-page="emit('next-page')"
         @previous-page="emit('previous-page')" />
+        <slot name="footer-actions" />
     </footer>
   </div>
 </template>

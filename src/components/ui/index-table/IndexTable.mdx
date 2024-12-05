@@ -1,7 +1,6 @@
-import { Controls, Canvas, Meta } from '@storybook/blocks';
+import { Controls, Canvas, Meta, Markdown } from '@storybook/blocks';
 
 import * as IndexTableStories from './IndexTable.stories';
-
 
 <Meta of={IndexTableStories} />
 
@@ -12,5 +11,19 @@ import * as IndexTableStories from './IndexTable.stories';
 Um componente usado para indicar que um conteúdo está sendo carregado.
 
 <Canvas of={IndexTableStories.complete} />
+
+## Slots
+
+- `actions` - slot para adicionar ações a tabela
+- `action-pagination` - slot para substituir o componente de paginação padrão da tabela caso seja necessário. Para isso o componente não pode possuir a propriedade `pagination` atribuida.
+- `bulk-actions` - slot para adicionar ações em massa visíveis quando há itens selecionados na listagem.
+- `footer-actions` - slot para adicionar ações no rodapé da tabela caso seja necessário.
+- `cell({key})` - slot para substituir o conteúdo de uma determinada célula, onde `{key}` é a chave do campo. Ver type `SlotCellProps` que indica o conteúdo disponível para o slot.
+- `head({key})` - slot para substituir o conteúdo do cabeçalho de uma determinada coluna, onde `{key}` é a chave determinada para a coluna. Ver type `SlotHeadProps` que indica o conteúdo disponível para o slot.
+
+{/* <Markdown>
+
+</Markdown> */}
+
 
 <Controls />

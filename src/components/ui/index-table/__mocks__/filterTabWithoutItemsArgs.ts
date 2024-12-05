@@ -1,13 +1,8 @@
 import { fn } from '@storybook/test';
 import type { IndexTableProps } from '../types';
+import type { ItemInTable } from './completeIndexTableProps';
 
-export type ItemInTable = {
-  id: number;
-  name: string;
-  price: string;
-};
-
-export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
+export const filterTabWithoutItemsIndexTableProps: IndexTableProps<ItemInTable> = {
   show: {
     tabs: true,
     select: true,
@@ -89,7 +84,7 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
   ],
 };
 
-export const completeIndexTableActions: Record<string, unknown> = {
+export const filterTabWithoutItemsIndexTableActions: Record<string, unknown> = {
   onClearSearch: fn(),
   onSearch: fn(),
   onReload: fn(),
@@ -107,7 +102,7 @@ export const completeIndexTableActions: Record<string, unknown> = {
   onResetFilters: fn(),
 };
 
-export const completeIndexTableSlots = {
+export const filterTabWithoutItemsIndexTableSlots = {
   slots: {
     // actions: 'Default Actions Content',
     // 'action-pagination': 'Default Header Content',

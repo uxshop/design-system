@@ -5,6 +5,10 @@ import {
   completeIndexTableSlots,
   type ItemInTable,
 } from './__mocks__/completeIndexTableProps';
+import {
+  filterTabWithoutItemsIndexTableProps,
+  filterTabWithoutItemsIndexTableSlots,
+} from './__mocks__/filterTabWithoutItemsArgs';
 import IndexTable from './IndexTable.vue';
 
 const meta: Meta<typeof IndexTable<ItemInTable>> = {
@@ -45,3 +49,12 @@ export const complete: Story = {
     ...completeIndexTableSlots,
   },
 };
+
+export const filterTabWithoutItems: Story = {
+  args: {
+    ...filterTabWithoutItemsIndexTableProps,
+    // ...completeIndexTableActions,
+    ...filterTabWithoutItemsIndexTableSlots,
+  },
+};
+

@@ -167,10 +167,6 @@ export interface IndexTableListSlots<T> {
   [key: `head(${string})`]: (props: SlotHeadProps) => void;
 }
 
-export interface IndexTableEmptyMessageProps {
-  emptyListMessage?: string;
-}
-
 export interface IndexTableProps<T>
   extends IndexTableTabsProps,
     Omit<IndexTableActionsProps, 'show'>,
@@ -183,4 +179,6 @@ export interface IndexTableProps<T>
 
 export interface IndexTableEmits<T> extends IndexTableTabsEmits, IndexTableActionsEmits, IndexTableListPublicEmits<T> {}
 
-export interface IndexTableSlots<T> extends IndexTableActionsSlots, IndexTableListSlots<T> {}
+export interface IndexTableSlots<T> extends IndexTableActionsSlots, IndexTableListSlots<T> {
+  ['footer-actions']: () => void;
+}

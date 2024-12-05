@@ -12,8 +12,8 @@ import IndexTableOrderButton from './IndexTableOrderButton.vue';
 import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
 
 import { useActionSelectAllItems } from './composables/useActionSelectAllItems';
-import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from './types';
 import IndexTableInternalLoader from './IndexTableInternalLoader.vue';
+import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from './types';
 
 const props = withDefaults(defineProps<IndexTableActionsProps>(), {
   show: () => ({
@@ -153,9 +153,9 @@ const currentActiveFilterTags = computed(() => props.activeFilterTags);
         <slot v-else name="action-pagination" />
       </template>
     </div>
-    <div>
-      <div class="ui-index-table-actions-tags">
-        <TagList v-if="currentActiveFilterTags.length > 0 && !isInternalLoading">
+    <div class="ui-index-table-actions-tag-loader">
+      <div  v-if="currentActiveFilterTags.length > 0" class="ui-index-table-actions-tags">
+        <TagList >
           <Tag
             v-for="(tag, index) in currentActiveFilterTags"
             :key="index"
@@ -163,9 +163,8 @@ const currentActiveFilterTags = computed(() => props.activeFilterTags);
             :label="tag.label"
             @remove="emit('remove-filter', tag)"></Tag>
         </TagList>
-        <!-- TODO: terminar estilização do loading interno -->
       </div>
-      <IndexTableInternalLoader v-if="isInternalLoading" :is-internal-loading />
+      <IndexTableInternalLoader :is-internal-loading />
     </div>
   </div>
 </template>
