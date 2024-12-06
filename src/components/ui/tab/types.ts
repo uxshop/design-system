@@ -1,7 +1,5 @@
 export interface TabProviderInterface {
-  tabs: {
-    view: string;
-  };
+  tabs: (string | number)[];
   activeTabIndex: number | string;
   active(index: number | string, evt?: unknown): void;
 }
@@ -14,4 +12,5 @@ export interface TabItemProps {
   label?: string;
   index?: any;
   badge?: string | number;
+  disabled?: boolean;
 }

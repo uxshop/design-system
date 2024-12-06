@@ -5,6 +5,7 @@ export interface KeyLabelDefault {
 
 export interface Tab extends KeyLabelDefault {
   active: boolean;
+  disabled?: boolean;
 }
 
 export interface IndexTableTabsProps {
@@ -21,7 +22,6 @@ export interface ActionsToShow {
   select: boolean;
   reload: boolean;
   search: boolean;
-  customFilters: boolean;
   filters: boolean;
   bulkActionDelete: boolean;
 }
@@ -96,8 +96,6 @@ export interface IndexTableActionsEmits extends IndexTableOrderButtonEmits, Inde
   (event: 'reload'): void;
   /** Ação disparada no botão `Filtros`, não necessário se o mesmo estiver oculto. */
   (event: 'filters'): void;
-  /** Ação disparada no botão `Salvar` do dropdown pertencente aos filtros customizados do botão `Salvar filtro`, enviando os filtros customizados ativos no momento. */
-  (event: 'save-custom-filter', activeFilters: KeyLabelDefault[]): void;
   /** Ação disparada ao clicar no checkbox da seção de ações que seleciona todos os itens da listagem, não necessário se o mesmo estiver oculto. Envia o valor setado no checkbox. */
   (event: 'select-all', value: boolean | null): void;
   /** Ação disparada ao clicar no botão "Deletar" exibido ao selecionar itens da tabela */
@@ -113,10 +111,10 @@ export interface ColsToShow {
 }
 
 export interface IndexTableListProps<T> extends ShowNotFoundMessageProp {
-  /** Lista de items a serem exibidos na tabela com o tipo de objeto que for desejado */
+  /** Lista de items a serem exibidos na tabela com o tipo de objeto que for desejado. Para que os dados sejam exibidos corretamente, é necessário que o objeto tenha as chaves correspondentes aos campos de `key` definidos na prop `fields`, se uma chave não corresponder a um `field` o dado não será exibido. */
   items: T[];
-  /** Define as colunas da tabela */
-  fields?: KeyLabelDefault[];
+  /** Define as colunas da tabela, e a ordem no array define a sequência de exibição na tabela. */
+  fields: KeyLabelDefault[];
   show?: ColsToShow;
   /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */
   checkboxSelectAllValue?: boolean | null;
@@ -148,6 +146,8 @@ export interface IndexTableListPrivateEmits {
 export interface IndexTableListPublicEmits<T> extends IndexTableEmptyMessageEmits {
   /** Quando um item é selecionado é emitida essa ação mandando a key que consiste de uma string `item-{index}` sendo index o número do índice do item na lista  */
   (event: 'selected-items', items: T[]): void;
+  /** Quando um item é clicado é emitida essa ação mandando o item clicado */
+  (event: 'open-item', item: T): void;
 }
 
 export interface IndexTableListEmits<T> extends IndexTableListPrivateEmits, IndexTableListPublicEmits<T> {}

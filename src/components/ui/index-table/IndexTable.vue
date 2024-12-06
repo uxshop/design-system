@@ -16,7 +16,6 @@ const props = withDefaults(defineProps<IndexTableProps<T>>(), {
     select: true,
     reload: true,
     search: true,
-    customFilters: true,
     filters: true,
     bulkActionDelete: true,
   }),
@@ -34,6 +33,7 @@ const orderBy = (key: string) => emit('order-by', key);
 const bulkAction = (action: string) => emit('bulk-action', action);
 const selectedItems = (items: T[]) => emit('selected-items', items);
 const removeFilter = (tag: KeyLabelDefault) => emit('remove-filter', tag);
+const openItem = (item: T) => emit('open-item', item);
 
 const selectedAllItems = (value: boolean | null) => {
   checkboxAllSelected.value = value;
@@ -76,7 +76,6 @@ watch(
             select: show.select,
             reload: show.reload,
             search: show.search,
-            customFilters: show.customFilters,
             filters: show.filters,
             bulkActionDelete: show.bulkActionDelete,
           }"
@@ -110,6 +109,9 @@ watch(
           :checkbox-select-all-value="checkboxAllSelected"
           :show-not-found-message-for-filter
           :show="{ select: show.select }"
+          class=""
+          :class="{ '-without-border-top': activeFilterTags.length === 0 && !isInternalLoading }"
+          @open-item="openItem"
           @selected-items="selectedItems"
           @selected-all-items="selectedAllItems"
           @reset-filters="emit('reset-filters')">
@@ -132,7 +134,7 @@ watch(
         :to="pagination.to"
         @next-page="emit('next-page')"
         @previous-page="emit('previous-page')" />
-        <slot name="footer-actions" />
+      <slot name="footer-actions" />
     </footer>
   </div>
 </template>

@@ -4,6 +4,10 @@
   min-width: 100%;
   min-height: 300px;
   border-top: var(--s-border-light);
+
+  &.-without-border-top {
+    border-top: none;
+  }
 }
 
 .ui-index-table-empty-message {
@@ -14,4 +18,17 @@
   padding-left: var(--s-spacing-x-small);
   padding-right: var(--s-spacing-x-small);
   width: 20px;
+}
+
+.ui-index-table-body {
+  .ui-table-row {
+    transition: all var(--s-motion-duration-fast) var(--s-motion-ease-default);
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      background-color: var(--s-color-fill-default-hover);
+      cursor: pointer;
+    }
+  }
 }

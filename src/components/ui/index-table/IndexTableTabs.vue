@@ -42,6 +42,7 @@ watch(
       :key="index"
       :label="item.label"
       :index="item.key"
+      :disabled="item.disabled"
       @click="onChangeTab(item.key)" />
   </Tab>
 </template>

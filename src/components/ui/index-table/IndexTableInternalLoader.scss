@@ -15,12 +15,10 @@
   width: 100%;
   transform: translateY(-100%);
   opacity: 0;
-  visibility: hidden;
 
   &.-show {
     transform: translateY(0);
     opacity: 1;
-    visibility: visible;
   }
 
   > .table-list-loader-spinner {

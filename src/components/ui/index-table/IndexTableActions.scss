@@ -65,4 +65,9 @@
   position: relative;
   overflow: hidden;
   height: 56px;
+  transition: height var(--s-motion-duration-fast) var(--s-motion-ease-default);
+
+  &.-zero-items {
+    height: 0;
+  }
 }

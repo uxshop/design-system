@@ -21,7 +21,8 @@
     margin-top: var(--s-spacing-nano);
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     .ui-form-checkbox-checkmark {
       border-color: var(--s-color-border-highlight);
     }

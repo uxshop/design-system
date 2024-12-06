@@ -30,6 +30,7 @@ const tabs = [
     label: 'Outra',
     key: 'other',
     active: false,
+    disabled: true,
   },
   {
     label: 'Alguma',
@@ -84,24 +85,24 @@ const fields = [
 ];
 
 const items = [
-  // {
-  //   id: 1,
-  //   name: 'Item 1',
-  //   updated: '2021-10-01',
-  //   created_at: '2021-10-01',
-  // },
-  // {
-  //   id: 2,
-  //   name: 'Item 2',
-  //   updated: '2021-10-01',
-  //   created_at: '2021-10-01',
-  // },
-  // {
-  //   id: 3,
-  //   name: 'Item 3',
-  //   updated: '2021-10-01',
-  //   created_at: '2021-10-01',
-  // },
+  {
+    id: 1,
+    name: 'Item 1',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+  },
+  {
+    id: 2,
+    name: 'Item 2',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+  },
+  {
+    id: 3,
+    name: 'Item 3',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+  },
 ];
 
 const openTab = (key: string) => {
@@ -160,6 +161,10 @@ const resetFilters = () => {
   console.info('🟣 >> resetFilters');
 };
 
+const openItem = (item: object) => {
+  console.info('🟣 >> openItem', item);
+};
+
 const activeFilterTags = ref<KeyLabelDefault[]>([
   {
     key: 'name_by_asc',
@@ -171,7 +176,7 @@ const activeFilterTags = ref<KeyLabelDefault[]>([
   },
 ]);
 
-const showNotFoundMessageForFilter = ref(true);
+const showNotFoundMessageForFilter = ref(false);
 
 const checkboxValue = ref<boolean | null>(false);
 
@@ -216,12 +221,17 @@ setTimeout(() => {
       @bulk-action="bulkAction"
       @selected-items="selectedItems"
       @remove-filter="removeFilter"
-      @reset-filters="resetFilters">
+      @reset-filters="resetFilters"
+      @open-item="openItem">
       <template #actions>
         <div>Actions</div>
       </template>
 
       <template #head(name)="props">
+        <div>[{{ props.label }}]</div>
+      </template>
+
+      <template #head(id)="props">
         <div>[{{ props.label }}]</div>
       </template>
 

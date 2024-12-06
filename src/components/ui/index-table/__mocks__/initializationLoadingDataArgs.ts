@@ -1,20 +1,18 @@
 import type { IndexTableProps } from '../types';
 import { completeIndexTableProps, type ItemInTable } from './completeIndexTableArgs';
 
-export const filterTabWithoutItemsIndexTableProps: IndexTableProps<ItemInTable> = {
+export const initializationLoadingDataTableProps: IndexTableProps<ItemInTable> = {
   ...completeIndexTableProps,
-  items: [],
-  showNotFoundMessageForFilter: true,
   tabs: [
     {
       label: 'Todos',
       key: 'all',
-      active: false,
+      active: true,
     },
     {
       label: 'Produtos ativos',
       key: 'active_products',
-      active: true,
+      active: false,
     },
     {
       label: 'Produtos inativos',
@@ -22,4 +20,12 @@ export const filterTabWithoutItemsIndexTableProps: IndexTableProps<ItemInTable> 
       active: false,
     },
   ],
+  activeFilterTags: [],
+  isLoading: true,
+};
+
+export const changeLoading = (args: IndexTableProps<ItemInTable>) => {
+  setTimeout(() => {
+    args.isLoading = false;
+  }, 3000);
 };

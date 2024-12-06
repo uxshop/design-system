@@ -170,4 +170,11 @@ export default [
       'vue/padding-line-between-blocks': ['error', 'always'],
     },
   },
+  {
+    files: ['**/*.stories.ts'],
+    name: 'ds/docs',
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
 ];

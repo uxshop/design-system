@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getCurrentInstance, provide, reactive, watchEffect } from 'vue';
+import { getCurrentInstance, provide, reactive, watchEffect, computed } from 'vue';
 import type { TabProps, TabProviderInterface } from './types';
 
 const props = defineProps<TabProps>();
@@ -8,7 +8,7 @@ const uid = `ui-tab-${getCurrentInstance()?.uid}`;
 
 const state = reactive<TabProviderInterface>({
   tabs: [],
-  activeTabIndex: props.modelValue,
+  activeTabIndex: computed(() => props.modelValue).value,
   active: (index: number, evt: MouseEvent) => {
     emit('update:modelValue', index);
 
@@ -29,7 +29,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="ui-tab" :id="uid">
+  <div :id="uid" class="ui-tab">
     <slot />
   </div>
 </template>

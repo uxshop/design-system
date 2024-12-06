@@ -20,7 +20,6 @@ const props = withDefaults(defineProps<IndexTableActionsProps>(), {
     select: true,
     reload: true,
     search: true,
-    customFilters: true,
     filters: true,
     bulkActionDelete: true,
   }),
@@ -60,9 +59,9 @@ const currentActiveFilterTags = computed(() => props.activeFilterTags);
           v-model="checkboxAllSelected"
           class="ui-index-table-actions-checkbox"
           :value="checkboxAllSelected"
-          :required="true"
           :indeterminate="checkboxAllSelectedIndeterminate"
           :disabled="isInternalLoading || showNotFoundMessageForFilter"
+          tabindex="0"
           @update="updateCheckboxAllSelected" />
 
         <template v-if="!showBulkActions">
@@ -153,9 +152,11 @@ const currentActiveFilterTags = computed(() => props.activeFilterTags);
         <slot v-else name="action-pagination" />
       </template>
     </div>
-    <div class="ui-index-table-actions-tag-loader">
-      <div  v-if="currentActiveFilterTags.length > 0" class="ui-index-table-actions-tags">
-        <TagList >
+    <div
+      class="ui-index-table-actions-tag-loader"
+      :class="{ '-zero-items': currentActiveFilterTags.length === 0 && !isInternalLoading }">
+      <div v-if="currentActiveFilterTags.length > 0" class="ui-index-table-actions-tags">
+        <TagList>
           <Tag
             v-for="(tag, index) in currentActiveFilterTags"
             :key="index"

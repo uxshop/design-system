@@ -6,9 +6,11 @@ import * as IndexTableStories from './IndexTable.stories';
 
 # IndexTable
 
-> Pronto para ser usado em qualquer lugar.
+> Este é um novo componente que substitui o antigo `TableList` e foi construído para ser mais simples, flexível e customizável. Internamente ele não possui regras de negócio e funciona com base em propriedades passadas e eventos emitidos para o componente pai.
 
-Um componente usado para indicar que um conteúdo está sendo carregado.
+O componente `IndexTable` é utilizado para exibir uma listagem de itens em forma de tabela. Ele é composto por abas que podem ser usadas para exibir os itens de um determinado contexto que atendem a um conjunto de filtros específicos. Além disso, o componente possui uma barra de ações que possui ações padrões para listagens.
+
+Este componente é totalmente customizável, permitindo que o usuário oculte as partes que não deseja exibir, desde que o componente não perca sua funcionalidade. Para isso, o componente possui slots que permitem a substituição ou adição de partes específicas.
 
 <Canvas of={IndexTableStories.complete} />
 
@@ -20,10 +22,5 @@ Um componente usado para indicar que um conteúdo está sendo carregado.
 - `footer-actions` - slot para adicionar ações no rodapé da tabela caso seja necessário.
 - `cell({key})` - slot para substituir o conteúdo de uma determinada célula, onde `{key}` é a chave do campo. Ver type `SlotCellProps` que indica o conteúdo disponível para o slot.
 - `head({key})` - slot para substituir o conteúdo do cabeçalho de uma determinada coluna, onde `{key}` é a chave determinada para a coluna. Ver type `SlotHeadProps` que indica o conteúdo disponível para o slot.
-
-{/* <Markdown>
-
-</Markdown> */}
-
 
 <Controls />

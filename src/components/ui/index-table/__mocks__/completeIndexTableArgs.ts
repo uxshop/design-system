@@ -13,7 +13,6 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
     select: true,
     reload: true,
     search: true,
-    customFilters: true,
     filters: true,
     bulkActionDelete: true,
   },
@@ -53,9 +52,9 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
   ],
   pagination: {
     from: 1,
-    to: 25,
+    to: 3,
     size: 25,
-    total: 100,
+    total: 3,
     page: 1,
   },
   bulkActions: [
@@ -105,15 +104,5 @@ export const completeIndexTableActions: Record<string, unknown> = {
   onSelectedItems: fn(),
   onRemoveFilter: fn(),
   onResetFilters: fn(),
-};
-
-export const completeIndexTableSlots = {
-  slots: {
-    // actions: 'Default Actions Content',
-    // 'action-pagination': 'Default Header Content',
-    // 'bulk-actions': 'Default Footer Content',
-    // `cell(${field.key})`: 'Teste XPTO',
-    // `header(${field.key})`: 'Teste XPTO',
-    // `footer-actions`: 'Teste XPTO',
-  },
+  onOpenItem: fn(),
 };

@@ -14,7 +14,7 @@ const onRemove = () => emit('remove');
 <template>
   <span class="ui-tag" :class="{ [`-variant-${variant}`]: variant }">
     <slot>{{ label }}</slot>
-    <Icon name="close" class="ui-tag-close" @click="onRemove" />
+    <Icon name="close" size="16" class="ui-tag-close" tabindex="0" @keyup.enter="onRemove" @click="onRemove" />
   </span>
 </template>
 

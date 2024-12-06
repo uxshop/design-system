@@ -28,7 +28,7 @@ const update = (val: unknown) => {
 </script>
 
 <template>
-  <label class="ui-form-checkbox" :for="uid" :class="classList">
+  <label class="ui-form-checkbox" :for="uid" :class="classList" tabindex="0">
     <input
       v-model="model"
       type="checkbox"
