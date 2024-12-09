@@ -33,7 +33,7 @@ const update = (val: string | boolean) => {
       :checked="isChecked"
       @input="update(value)" />
     <span class="ui-form-radio-checkmark" />
-    <div  v-if="label || $slots.default" class="ui-form-radio-text">
+    <div v-if="label || $slots.default" class="ui-form-radio-text">
       <slot>{{ label }}</slot>
     </div>
   </label>

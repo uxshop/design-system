@@ -20,8 +20,12 @@ export { default as TableListRow } from './TableListRow.vue';
 export { default as TableList } from './TableList.vue';
 
 export type {
-  ITableListConfig, ITableListState, TBulkActions,
-  TDialogDelete, TableListItemProps, TableListNavBulkProps,
+  ITableListConfig,
+  ITableListState,
+  TBulkActions,
+  TDialogDelete,
+  TableListItemProps,
+  TableListNavBulkProps,
   TableListNavCustomFilterProps,
   TableListNavFilterProps,
   TableListNavFilterSidebarProps,
@@ -30,8 +34,9 @@ export type {
   TableListNavProps,
   TableListNavRefreshProps,
   TableListNavSearchProps,
-  TableListNavSortableProps, TableListProps, TableListTablePros,
+  TableListNavSortableProps,
+  TableListProps,
+  TableListTablePros,
   TableListTabsProps,
-  TableListTagsProps
+  TableListTagsProps,
 } from './types';
-

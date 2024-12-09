@@ -128,7 +128,6 @@
   -webkit-appearance: none;
 }
 
-
 @mixin scrollbarStyle {
   &::-webkit-scrollbar-track {
     border-radius: var(--s-spacing-quark);
