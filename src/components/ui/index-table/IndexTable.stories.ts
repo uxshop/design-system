@@ -30,7 +30,7 @@ const templateIndexTable = /* html */ `
 `;
 
 const meta: Meta<typeof IndexTable<ItemInTable>> = {
-  title: 'Components/IndexTable',
+  title: 'ui/IndexTable',
   component: IndexTable as any,
   render: (args) =>
     ({
