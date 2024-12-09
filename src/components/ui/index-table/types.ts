@@ -31,6 +31,7 @@ export interface IndexTableInternalLoaderProps {
   isInternalLoading: boolean;
 }
 
+/** Propriedades para determinar a paginação */
 export interface IndexTablePaginationItemProps extends IndexTableInternalLoaderProps {
   from: number;
   to: number;
@@ -44,6 +45,7 @@ export interface ActionOrdination extends KeyLabelDefault {
 }
 
 export interface IndexTableOrderButtonProps {
+  /** Define as opções de ordenação a serem exibidas no componente, sempre deve ser definida uma opção como ativa, se nenhuma for definida seleciona a primeira. A lista de opções de ordenação, não permite seleção múltipla, apenas 1 item selecionado para ordenar por vez. */
   ordination: null | ActionOrdination[];
 }
 
@@ -63,7 +65,7 @@ export interface IndexTableActionsProps
   activeFilterTags: KeyLabelDefault[];
   /** Define quais ações em massa serão exibidas ao selecionar itens da listagem */
   bulkActions: KeyLabelDefault[];
-  /** Usado para simular a aplicação de uma busca desejada na listagem, como no caso de obter a busca de query params da URL por exemplo */
+  /** Usado para simular a aplicação de uma busca inicial desejada na listagem, como no caso de obter a busca de query params da URL por exemplo */
   searchValue?: string;
   /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */
   checkboxSelectAllValue?: boolean | null;
@@ -118,6 +120,10 @@ export interface IndexTableListProps<T> extends ShowNotFoundMessageProp {
   show?: ColsToShow;
   /** Usado para definir o valor do checkbox responsável por selecionar todos os itens. Quando `null` tem o aspecto indeterminate e quando `true` é exibido como checado */
   checkboxSelectAllValue?: boolean | null;
+  /** Define uma classe para o cabeçalho da tabela com um objeto onde a chave é o nome da classe e o valor é um booleano para adicionar a tratativa de ativar ou não a classe */
+  headClass?: Record<string, boolean> | null;
+  /** Define uma classe para a célula da tabela com um objeto onde a chave é o nome da classe e o valor é um booleano para adicionar a tratativa de ativar ou não a classe */
+  cellClass?: Record<string, boolean>| null;
 }
 
 export interface IndexTablePropShow extends ActionsToShow {

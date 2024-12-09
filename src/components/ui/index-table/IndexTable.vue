@@ -7,7 +7,7 @@ import IndexTableList from './IndexTableList.vue';
 import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
 import IndexTableTabs from './IndexTableTabs.vue';
 
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import type { IndexTableEmits, IndexTableProps, IndexTableSlots, KeyLabelDefault } from './types';
 
 const props = withDefaults(defineProps<IndexTableProps<T>>(), {
@@ -19,8 +19,21 @@ const props = withDefaults(defineProps<IndexTableProps<T>>(), {
     filters: true,
     bulkActionDelete: true,
   }),
+  ordination: null,
+  pagination: () => ({
+    page: 1,
+    size: 25,
+    total: 100,
+    from: 1,
+    to: 25,
+  }),
+  bulkActions: () => [],
+  activeFilterTags: () => [],
   checkboxSelectAllValue: false,
   isInternalLoading: false,
+  searchValue: '',
+  headClass: null,
+  cellClass: null,
 });
 const emit = defineEmits<IndexTableEmits<T>>();
 defineSlots<IndexTableSlots<T>>();
@@ -56,10 +69,18 @@ onMounted(() => {
   checkboxAllSelected.value = props.checkboxSelectAllValue;
 });
 
+onUnmounted(() => {
+  window.removeEventListener('resize', checkScreenWidth);
+});
+
 watch(
   () => props.checkboxSelectAllValue,
   (value: boolean | null) => (checkboxAllSelected.value = value)
 );
+
+defineOptions({
+  inheritAttrs: false
+})
 </script>
 
 <template>
@@ -67,41 +88,43 @@ watch(
     <SkeletonTable cols="4" rows="4" />
   </Card>
   <div v-else>
-    <div :class="{ 'ui-index-table': true, '-mobile': isMobileView }">
+    <div :class="{ 'ui-index-table': true, '-mobile': isMobileView }" v-bind="$attrs">
       <div class="ui-index-table-wrapper">
-        <IndexTableTabs v-if="show.tabs" :tabs @open-tab="openTab" />
+        <div class="ui-index-table-header">
+          <IndexTableTabs v-if="show.tabs" :tabs @open-tab="openTab" />
 
-        <IndexTableActions
-          :show="{
-            select: show.select,
-            reload: show.reload,
-            search: show.search,
-            filters: show.filters,
-            bulkActionDelete: show.bulkActionDelete,
-          }"
-          :ordination
-          :pagination
-          :active-filter-tags
-          :bulk-actions
-          :search-value
-          :show-not-found-message-for-filter
-          :is-internal-loading
-          :checkbox-select-all-value="checkboxAllSelected"
-          @select-all="selectAll"
-          @clear-search="emit('clear-search')"
-          @reload="emit('reload')"
-          @filters="emit('filters')"
-          @search="search"
-          @order-by="orderBy"
-          @next-page="emit('next-page')"
-          @previous-page="emit('previous-page')"
-          @delete-selected-items="emit('delete-selected-items')"
-          @bulk-action="bulkAction"
-          @remove-filter="removeFilter">
-          <template v-for="(slotContent, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
-            <component :is="slotContent" v-bind="slotProps" />
-          </template>
-        </IndexTableActions>
+          <IndexTableActions
+            :show="{
+              select: show.select,
+              reload: show.reload,
+              search: show.search,
+              filters: show.filters,
+              bulkActionDelete: show.bulkActionDelete,
+            }"
+            :ordination
+            :pagination
+            :active-filter-tags
+            :bulk-actions
+            :search-value
+            :show-not-found-message-for-filter
+            :is-internal-loading
+            :checkbox-select-all-value="checkboxAllSelected"
+            @select-all="selectAll"
+            @clear-search="emit('clear-search')"
+            @reload="emit('reload')"
+            @filters="emit('filters')"
+            @search="search"
+            @order-by="orderBy"
+            @next-page="emit('next-page')"
+            @previous-page="emit('previous-page')"
+            @delete-selected-items="emit('delete-selected-items')"
+            @bulk-action="bulkAction"
+            @remove-filter="removeFilter">
+            <template v-for="(slotContent, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
+              <component :is="slotContent" v-bind="slotProps" />
+            </template>
+          </IndexTableActions>
+        </div>
 
         <IndexTableList
           :items
@@ -109,7 +132,9 @@ watch(
           :checkbox-select-all-value="checkboxAllSelected"
           :show-not-found-message-for-filter
           :show="{ select: show.select }"
-          class=""
+          :head-class
+          :cell-class
+          class="ui-index-table-list"
           :class="{ '-without-border-top': activeFilterTags.length === 0 && !isInternalLoading }"
           @open-item="openItem"
           @selected-items="selectedItems"

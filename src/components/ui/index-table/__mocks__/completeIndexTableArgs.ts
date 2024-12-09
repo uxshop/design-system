@@ -21,16 +21,19 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
       label: 'Todos',
       key: 'all',
       active: false,
+      disabled: false,
     },
     {
       label: 'Produtos ativos',
       key: 'active_products',
       active: true,
+      disabled: false,
     },
     {
       label: 'Produtos inativos',
       key: 'inactive_products',
       active: false,
+      disabled: false,
     },
   ],
   ordination: [

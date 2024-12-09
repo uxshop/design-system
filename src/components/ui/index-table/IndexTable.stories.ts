@@ -1,22 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
+import Button from '../button/Button.vue';
 import {
   completeIndexTableActions,
   completeIndexTableProps,
   type ItemInTable,
 } from './__mocks__/completeIndexTableArgs';
+import { customLineWidthAndHeightIndexTableProps } from './__mocks__/customLineWidthAndHeightIndexTableArgs';
+import { customSlotsIndexTableProps } from './__mocks__/customSlotsArgs';
+import './__mocks__/CustomStyleIndexTable.css';
 import { filterTabWithoutItemsIndexTableProps } from './__mocks__/filterTabWithoutItemsArgs';
-import IndexTable from './IndexTable.vue';
-import { changeLoading, initializationLoadingDataTableProps } from './__mocks__/initializationLoadingDataArgs';
 import {
   flowForChangingTabsAndRemovingFiltersIndexTableProps,
   wrapperToChangeTab,
   wrapperToRemoveFilter,
 } from './__mocks__/flowForChangingTabsAndRemovingFiltersArgs';
-import type { KeyLabelDefault } from './types';
-import { customSlotsIndexTableProps } from './__mocks__/customSlotsArgs';
-import Button from '../button/Button.vue';
+import { changeLoading, initializationLoadingDataTableProps } from './__mocks__/initializationLoadingDataArgs';
 import { minimumIndexTableProps } from './__mocks__/minimumIndexTableArgs';
-
+import { handlePageChange, paginationChangeIndexTableProps } from './__mocks__/paginationChangeIndexTableArgs';
+import { orderByName, sortItemsIndexTableProps, wrapperOrderBy } from './__mocks__/sortItemsIndexTableArgs';
+import IndexTable from './IndexTable.vue';
+import type { KeyLabelDefault } from './types';
 const templateIndexTable = /* html */ `
   <IndexTable v-bind="args">
     <template v-for="(content, name) in args.slots" #[name]="propsSlot">
@@ -37,14 +40,19 @@ const meta: Meta<typeof IndexTable<ItemInTable>> = {
       template: templateIndexTable,
     }) as any,
   argTypes: {
-    searchValue: { control: { type: 'text' } },
+    pagination: { control: { type: 'object' } },
+    ordination: { control: { type: 'object' } },
+    searchValue: { control: { type: 'text' },  if: { arg: 'show.search' } },
     isLoading: { control: { type: 'boolean' } },
     isInternalLoading: { control: { type: 'boolean' } },
     showNotFoundMessageForFilter: { control: { type: 'boolean' } },
     checkboxSelectAllValue: { control: { type: 'select' }, options: [true, false, null] },
   },
   parameters: {
-    actions: { argTypesRegex: '^on.*' },
+    controls: { expanded: true },
+    docs: {
+      controls: { exclude: '^on.*' },
+    },
   },
 };
 
@@ -155,10 +163,58 @@ export const customSlots: Story = {
 
 export const sortItems: Story = {
   args: {
-    ...customSlotsIndexTableProps,
+    ...sortItemsIndexTableProps,
     ...completeIndexTableActions,
   },
+  render: (args: any) =>
+    ({
+      components: { IndexTable },
+      setup() {
+        orderByName(args);
+        const handleSortItems = (key: string) => {
+          wrapperOrderBy(key, args);
+        };
+
+        args.onOrderBy = handleSortItems;
+
+        return { args };
+      },
+      template: templateIndexTable,
+    }) as any,
 };
+
+export const paginationChange: Story = {
+  args: {
+    ...paginationChangeIndexTableProps,
+    ...completeIndexTableActions,
+  },
+  render: (args: any) =>
+    ({
+      components: { IndexTable },
+      setup() {
+        const handleNextPage = () => {
+          handlePageChange(args, 'next-page');
+        };
+
+        const handlePreviousPage = () => {
+          handlePageChange(args, 'previous-page');
+        }
+
+        args.onNextPage = handleNextPage;
+        args.onPreviousPage = handlePreviousPage;
+
+        return { args };
+      },
+      template: templateIndexTable,
+    }) as any,
+}
+
+export const customLineWidthAndHeight: Story = {
+  args: {
+    ...customLineWidthAndHeightIndexTableProps,
+    ...completeIndexTableActions,
+  },
+}
 
 export const minimum: Story = {
   args: {
@@ -169,7 +225,6 @@ export const minimum: Story = {
 
 /** TODO:
  * - Arrumar status de focus da TAB
- * - Exemplo travando a largura da coluna da tabela e a altura das linhas, usando classes personalizadas.
- * - Testar com checkbox oculto
- * - Ajustar exemplo com ordenação de itens
+ * - Exemplo travando a altura das linhas, usando classes personalizadas.
+ * - Ajustar transição de visibilidade CSS
  */

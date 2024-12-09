@@ -15,6 +15,8 @@ const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
   }),
   checkboxSelectAllValue: false,
   showNotFoundMessageForFilter: false,
+  headClass: null,
+  cellClass: null,
 });
 const emit = defineEmits<IndexTableListEmits<T>>();
 const slots = defineSlots<IndexTableListSlots<T>>();
@@ -52,6 +54,25 @@ const itemsSelectedObject = computed(() => {
   });
 });
 
+/**
+ * Atualiza os itens selecionados pelo teclado com Enter quando o foco estiver no checkbox da
+ * tabela.
+ */
+const updateItemSelectedWithKeyboard = (item: NameItemTableSelected) => {
+  const listSelectedItems = [...selectedItems.value];
+
+  if (listSelectedItems.includes(item)) {
+    listSelectedItems.splice(listSelectedItems.indexOf(item), 1);
+  } else {
+    listSelectedItems.push(item);
+  }
+
+  selectItem(listSelectedItems);
+};
+
+/**
+ * Seleciona os itens da tabela e valida como deve emitir o evento de seleção de todos os itens.
+ */
 const selectItem = (value: NameItemTableSelected[]) => {
   const anyItem = value.length >= 1 && value.length < props.items.length;
   emit('selected-all-items', anyItem ? null : props.items.length === value.length);
@@ -60,12 +81,22 @@ const selectItem = (value: NameItemTableSelected[]) => {
   emit('selected-items', itemsSelectedObject.value);
 };
 
+/**
+ * Seleciona todos os itens da tabela ao clicar no checkbox de seleção geral.
+ */
 const selectAllItems = (valueOfCheckbox: boolean | null) => {
   if (valueOfCheckbox === null) return;
 
   const currentSelectedItems = props.items.map((item, index: number) => `item-${index}` as NameItemTableSelected);
 
   selectedItems.value = valueOfCheckbox ? currentSelectedItems : [];
+};
+
+/**
+ * Substitui underscores por hifens em uma string.
+ */
+ const formatKeyToClass = (key: string) => {
+  return key.replace(/_/g, '-');
 };
 
 watch(
@@ -86,8 +117,13 @@ watch(
       <TableHeadCell
         v-for="(fieldHead, index) in fields"
         :key="index"
-        :data-test-index-table="`head-${fieldHead.key}`"
-        class="ui-index-table-list-head-cell">
+        :data-test-index-table="`head-${formatKeyToClass(fieldHead.key)}`"
+        :class="{
+          'ui-index-table-list-head-cell': true,
+          [`ui-index-table-list-head-${formatKeyToClass(fieldHead.key)}`]: true,
+          ...(headClass ?? {}),
+        }"
+        >
         <slot
           v-if="slots[`head(${fieldHead.key})`]"
           :name="`head(${fieldHead.key})`"
@@ -107,21 +143,25 @@ watch(
         tabindex="0"
         @click="emit('open-item', item)"
         @keyup.enter="emit('open-item', item)">
-        <TableCell v-if="show.select" class="ui-index-table-list-all-items-checkbox">
+        <TableCell v-if="show.select" class="ui-index-table-list-all-items-checkbox" @click.stop>
           <FormCheckbox
             :id="`item-${indexRow}`"
             v-model="selectedItems"
             :value="`item-${indexRow}`"
             data-test-index-table="cell-checkbox"
             class="ui-index-table-list-checkbox"
-            @update="selectItem" />
+            @update="selectItem"
+            @keyup.enter="updateItemSelectedWithKeyboard(`item-${indexRow}`)"
+            @click.stop
+            />
         </TableCell>
 
         <TableCell
           v-for="(cell, indexCell) in prepareKeysToCell(item)"
           :key="indexCell"
           :data-test-index-table="`cell-${cell.key}`"
-          :class="`ui-index-table-list-cell-${cell.key}`">
+          :class="{[`ui-index-table-list-cell-${formatKeyToClass(cell.key)}`]: true, ...(cellClass ?? {})}"
+          >
           <slot v-if="slots[`cell(${cell.key})`]" :name="`cell(${cell.key})`" :item="item" :row="indexRow"></slot>
 
           <div v-else>{{ cell.value }}</div>

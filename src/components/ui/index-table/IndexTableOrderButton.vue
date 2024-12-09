@@ -1,16 +1,30 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import Button from '../button/Button.vue';
 import Dropdown from '../dropdown/Dropdown.vue';
 import DropdownItemButton from '../dropdown/DropdownItemButton.vue';
 import FormRadio from '../form-radio/FormRadio.vue';
-import type { IndexTableOrderButtonEmits, IndexTableOrderButtonProps } from './types';
+import type { ActionOrdination, IndexTableOrderButtonEmits, IndexTableOrderButtonProps } from './types';
 
-const prop = defineProps<IndexTableOrderButtonProps>();
+const props = defineProps<IndexTableOrderButtonProps>();
 const emit = defineEmits<IndexTableOrderButtonEmits>();
 
-const activeOrder = computed(() => prop.ordination?.find((item) => item.active)?.key);
-const orderValue = ref(activeOrder);
+const activeItem = computed<undefined | ActionOrdination>(() => props.ordination?.find((item) => item.active));
+const orderValue = ref();
+
+onMounted(() => {
+  if (!activeItem.value && props.ordination) {
+    orderValue.value = props.ordination[0].key;
+    return;
+  }
+
+  orderValue.value = activeItem.value?.key;
+});
+
+const onOrderBy = (key: string) => {
+  orderValue.value = key;
+  emit('order-by', key);
+};
 </script>
 
 <template>
@@ -23,9 +37,10 @@ const orderValue = ref(activeOrder);
     <DropdownItemButton
       v-for="item in ordination"
       :key="item.key"
-      :active="item.active"
-      @click="emit('order-by', item.key)">
-      <FormRadio v-model="orderValue" :value="item.key" :label="item.label" no-events />
+      :active="item.key === orderValue"
+      @click.stop.prevent="onOrderBy(item.key)"
+      >
+      <FormRadio v-model="orderValue" :value="item.key" :label="item.label"  />
     </DropdownItemButton>
   </Dropdown>
 </template>

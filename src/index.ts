@@ -44,6 +44,7 @@ export * from './components/admin/sidebar';
 export * from './components/admin/sidebar-header';
 export * from './components/admin/stats-group';
 export * from './components/admin/table';
+/** @deprecated Por favor utilize o componente IndexTable ao invés do TableList */
 export * from './components/admin/table-list';
 export * from './components/admin/titlebar';
 export * from './components/admin/topbar';

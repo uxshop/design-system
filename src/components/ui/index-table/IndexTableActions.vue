@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import Button from '../button/Button.vue';
 import Dropdown from '../dropdown/Dropdown.vue';
 import DropdownItemButton from '../dropdown/DropdownItemButton.vue';
@@ -32,9 +32,11 @@ const props = withDefaults(defineProps<IndexTableActionsProps>(), {
     to: 25,
   }),
   activeFilterTags: () => [],
+  bulkActions: () => [],
   isInternalLoading: false,
   checkboxSelectAllValue: false,
   showNotFoundMessageForFilter: false,
+  searchValue: '',
 });
 const emit = defineEmits<IndexTableActionsEmits>();
 defineSlots<IndexTableActionsSlots>();
@@ -47,6 +49,18 @@ const search = ref('');
 const orderBy = (key: string) => emit('order-by', key);
 
 const currentActiveFilterTags = computed(() => props.activeFilterTags);
+
+onMounted(() => {
+  search.value = props.searchValue;
+});
+
+watch(
+  () => props.searchValue,
+  (value) => {
+    search.value = value;
+    emit('search', search.value);
+  }
+);
 </script>
 
 <template>
