@@ -224,7 +224,5 @@ export const minimum: Story = {
 };
 
 /** TODO:
- * - Arrumar status de focus da TAB
  * - Exemplo travando a altura das linhas, usando classes personalizadas.
- * - Ajustar transição de visibilidade CSS
  */

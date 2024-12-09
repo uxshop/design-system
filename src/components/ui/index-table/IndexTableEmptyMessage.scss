@@ -3,6 +3,7 @@
   text-align: center;
   height: 100%;
   padding: var(--s-spacing-x-small);
+  transition: all var(--s-motion-ease-linear) var(--s-motion-duration-fast);
 
   .index-table-empty-msg-content {
     border-radius: var(--s-border-radius-small);
@@ -19,5 +20,11 @@
     font-weight: var(--s-font-weight-semibold);
     margin-top: var(--s-spacing-xx-small);
     margin-bottom: var(--s-spacing-quark);
+  }
+
+  .index-table-empty-msg-link {
+    &:focus {
+      text-decoration: underline;
+    }
   }
 }

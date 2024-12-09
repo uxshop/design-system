@@ -8,6 +8,8 @@
 }
 
 .ui-index-table-actions-search {
+  position: relative;
+  min-width: 180px;
   max-width: 300px;
 
   @media screen and (max-width: 768px) {

@@ -4,3 +4,5 @@
 # Folders
 .husky/*
 .vscode/*
+
+*.yml

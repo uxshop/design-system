@@ -14,7 +14,13 @@ const emit = defineEmits<IndexTableEmptyMessageEmits>();
       <div class="index-table-empty-msg-title">Sua pesquisa não retornou nenhum resultado</div>
       <div class="index-table-empty-msg-text">
         Essa opção não existe na sua loja, tente
-        <a @click="emit('reset-filters')">outra opção de filtro</a>
+        <a
+          class="index-table-empty-msg-link"
+          tabindex="0"
+          @click="emit('reset-filters')"
+          @keyup.enter="emit('reset-filters')"
+          >outra opção de filtro</a
+        >
       </div>
     </div>
   </div>
