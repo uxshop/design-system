@@ -14,5 +14,5 @@ $semantic-borders-radius: (
   small: tokens.getPrimitiveVar($primitive-borders, radius, 4px),
   medium: tokens.getPrimitiveVar($primitive-borders, radius, 8px),
   large: tokens.getPrimitiveVar($primitive-borders, radius, 16px),
-  pill: tokens.getPrimitiveVar($primitive-borders, radius, 50%),
+  pill: tokens.getPrimitiveVar($primitive-borders, radius, 1500px),
 );

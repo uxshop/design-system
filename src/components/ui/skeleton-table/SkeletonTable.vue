@@ -28,19 +28,19 @@ const skeletonTableStyleList = computed(() => {
         <th v-for="c in Number(cols)" :key="c">
           <Skeleton />
         </th>
-        <th width="1" v-for="c in Number(withAction)" :key="c" />
+        <th v-for="c in Number(withAction)" :key="c" width="1" />
       </tr>
     </thead>
     <tbody>
       <tr v-for="r in Number(rows)" :key="r">
-        <td width="1" v-if="withAvatar">
+        <td v-if="withAvatar" width="1">
           <Skeleton width="30px" height="30px" style="border-radius: 100%" />
         </td>
         <td v-for="c in Number(cols)" :key="c">
           <Skeleton width="85%" />
-          <Skeleton style="margin-top: 4px" width="40%" height="14px" v-if="Number(lines) > 1" />
+          <Skeleton v-if="Number(lines) > 1" style="margin-top: 4px" width="40%" height="14px" />
         </td>
-        <td width="1" v-for="c in Number(withAction)" :key="c">
+        <td v-for="c in Number(withAction)" :key="c" width="1">
           <Skeleton width="32px" />
         </td>
       </tr>

@@ -9,7 +9,7 @@ const getComponent = () => {
 </script>
 
 <template>
-  <component :is="getComponent()" class="ui-table-row" :to="to" :class="{ '-head': head }">
+  <component :is="getComponent()" class="ui-table-row" :to="to" :class="{ '-head': head }" tabindex="0">
     <slot />
   </component>
 </template>

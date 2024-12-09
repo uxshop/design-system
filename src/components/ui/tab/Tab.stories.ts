@@ -17,18 +17,34 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
+export const minimum: Story = {
   render: (args) => ({
     components: { Tab, TabItem },
     setup() {
-      let tab = 'main';
+      const tab = 'main';
       return { args, tab };
     },
     template: `
     <Tab v-bind="args" v-model="tab" >
       <TabItem label="Tab item" index="main" />
-      <TabItem label="Tab item" badge="badge" index="second" />
+      <TabItem label="Tab item" badge="Badge" index="second" />
       <TabItem label="Tab item" index="third" />
+    </Tab>`,
+  }),
+};
+
+export const withDisabled: Story = {
+  render: (args) => ({
+    components: { Tab, TabItem },
+    setup() {
+      const tab = 'second';
+      return { args, tab };
+    },
+    template: `
+    <Tab v-bind="args" v-model="tab" >
+      <TabItem label="Tab item" index="main" />
+      <TabItem label="Tab item" index="second" />
+      <TabItem label="Tab item disabled" index="third" :disabled="true" />
     </Tab>`,
   }),
 };

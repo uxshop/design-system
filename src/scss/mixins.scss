@@ -127,3 +127,24 @@
   /* Corrects inability to style clickable `input` types in iOS */
   -webkit-appearance: none;
 }
+
+@mixin scrollbarStyle {
+  &::-webkit-scrollbar-track {
+    border-radius: var(--s-spacing-quark);
+  }
+
+  &::-webkit-scrollbar {
+    width: var(--s-spacing-quark);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--s-color-fill-default-light);
+    border-radius: var(--s-spacing-quark);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--s-color-fill-default-light) transparent;
+  }
+}

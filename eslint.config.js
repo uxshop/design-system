@@ -1,9 +1,9 @@
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
 import vitest from '@vitest/eslint-plugin';
 import prettierSkipFormattingConfig from '@vue/eslint-config-prettier/skip-formatting';
 import pluginVue from 'eslint-plugin-vue';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 const globalFiles = ['**/*.{vue,js,mjs,cjs,ts}'];
 
@@ -108,10 +108,11 @@ export default [
           memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
         },
       ],
+      '@typescript-eslint/no-empty-object-type': 'off', // Permite interfaces com uso de extends apenas
     },
   },
   {
-    files: ['**/*.spec.ts'],
+    files: ['**/*.{test,spec}.ts'],
     plugins: {
       vitest,
     },
@@ -123,6 +124,7 @@ export default [
       'vitest/valid-title': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/naming-convention': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   ...pluginVue.configs['flat/recommended'],
@@ -160,7 +162,7 @@ export default [
           order: ['script', 'template', 'style'],
         },
       ],
-      'vue/multi-word-component-names': 'warn',
+      'vue/multi-word-component-names': 'off', // Desabilitada devido ao padrão do DS em que os componentes ao serem usados em outros projetos podem conter um nome composto
       'vue/block-tag-newline': 'error',
       'vue/component-api-style': ['error', ['script-setup']],
       'vue/no-setup-props-reactivity-loss': 'error',
@@ -168,6 +170,13 @@ export default [
       'vue/no-unused-emit-declarations': 'error',
       'vue/no-useless-v-bind': 'error',
       'vue/padding-line-between-blocks': ['error', 'always'],
+    },
+  },
+  {
+    files: ['**/*.stories.ts'],
+    name: 'ds/docs',
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ];

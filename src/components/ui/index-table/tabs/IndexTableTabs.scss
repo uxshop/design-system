@@ -1,0 +1,12 @@
+@import '../../../../scss/mixins.scss';
+
+.ui-index-table-tabs {
+  overflow: hidden;
+  height: 100%;
+
+  @include scrollbarStyle;
+
+  &.ui-tab {
+    border-bottom: none;
+  }
+}

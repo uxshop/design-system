@@ -1,0 +1,13 @@
+.custom-width.ui-index-table-list-head-price {
+  width: 20%;
+  min-width: 100px;
+}
+
+.custom-width.ui-index-table-list-head-id {
+  width: 5%;
+  max-width: 25px;
+}
+
+.custom-cell.ui-index-table-list-cell-name {
+  min-width: 230px;
+}
