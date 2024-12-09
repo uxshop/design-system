@@ -6,11 +6,14 @@ import * as IndexTableStories from './IndexTable.stories';
 
 # IndexTable
 
-> Este é um novo componente que substitui o antigo `TableList` e foi construído para ser mais simples, flexível e customizável. Internamente ele não possui regras de negócio e funciona com base em propriedades passadas e eventos emitidos para o componente pai.
+> Este é um novo componente que substitui o antigo `TableList` e foi construído para ser mais simples, flexível e customizável. Internamente, o componente IndexTable não possui regras de negócio e funciona com base em propriedades passadas e eventos emitidos para o componente pai.
 
-O componente `IndexTable` é utilizado para exibir uma listagem de itens em forma de tabela. Ele é composto por abas que podem ser usadas para exibir os itens de um determinado contexto que atendem a um conjunto de filtros específicos. Além disso, o componente possui uma barra de ações que possui ações padrões para listagens.
+O **IndexTable** é utilizado para exibir uma listagem de itens em forma de tabela. Ele é composto por abas que podem ser usadas para exibir os itens de um determinado contexto que atendem a um conjunto de filtros específicos. Além disso, o componente possui uma barra de ações com ações padrão para listagens.
 
-Este componente é totalmente customizável, permitindo que o usuário oculte as partes que não deseja exibir, desde que o componente não perca sua funcionalidade. Para isso, o componente possui slots que permitem a substituição ou adição de partes específicas.
+Uma das principais melhorias deste componente é na acessibilidade, pois ele inclui tratativas para garantir uma navegação completa por teclado, o que melhora a experiência de uso em geral.
+
+O componente também é totalmente customizável, permitindo que o usuário oculte as partes que não deseja exibir, desde que não se comprometa a funcionalidade essencial. Para isso, o IndexTable oferece slots que permitem a substituição ou adição de partes específicas da interface.
+
 
 <Canvas of={IndexTableStories.complete} />
 
