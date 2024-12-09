@@ -20,6 +20,7 @@ import { handlePageChange, paginationChangeIndexTableProps } from './__mocks__/p
 import { orderByName, sortItemsIndexTableProps, wrapperOrderBy } from './__mocks__/sortItemsIndexTableArgs';
 import IndexTable from './IndexTable.vue';
 import type { KeyLabelDefault } from './types';
+
 const templateIndexTable = /* html */ `
   <IndexTable v-bind="args">
     <template v-for="(content, name) in args.slots" #[name]="propsSlot">
@@ -222,7 +223,3 @@ export const minimum: Story = {
     ...completeIndexTableActions,
   },
 };
-
-/** TODO:
- * - Exemplo travando a altura das linhas, usando classes personalizadas.
- */

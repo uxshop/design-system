@@ -66,12 +66,6 @@
     &:after {
       background-color: var(--s-color-fill-highlight);
     }
-
-    &:focus {
-      .ui-tab-item-content {
-        outline: none;
-      }
-    }
   }
 
   &-content {
@@ -85,9 +79,11 @@
   }
 
   &-badge {
-    background-color: var(--s-color-fill-default);
+    background-color: var(--s-color-fill-default-light);
     border-radius: var(--s-border-radius-pill);
     padding: 0 var(--s-spacing-nano);
+    line-height: var(--s-line-height-16);
     font: var(--s-typography-label-small);
+    color: var(--s-color-content-default);
   }
 }

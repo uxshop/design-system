@@ -2,10 +2,10 @@
 import { ref, watch } from 'vue';
 import Card from '../card/Card.vue';
 import SkeletonTable from '../skeleton-table/SkeletonTable.vue';
-import IndexTableActions from './IndexTableActions.vue';
-import IndexTableList from './IndexTableList.vue';
-import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
-import IndexTableTabs from './IndexTableTabs.vue';
+import IndexTableActions from './actions/IndexTableActions.vue';
+import IndexTableList from './list/IndexTableList.vue';
+import IndexTablePaginationItem from './actions/IndexTablePaginationItem.vue';
+import IndexTableTabs from './tabs/IndexTableTabs.vue';
 
 import { onMounted, onUnmounted } from 'vue';
 import type { IndexTableEmits, IndexTableProps, IndexTableSlots, KeyLabelDefault } from './types';

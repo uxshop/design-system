@@ -108,10 +108,11 @@ export default [
           memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
         },
       ],
+      '@typescript-eslint/no-empty-object-type': 'off', // Permite interfaces com uso de extends apenas
     },
   },
   {
-    files: ['**/*.spec.ts'],
+    files: ['**/*.{test,spec}.ts'],
     plugins: {
       vitest,
     },
@@ -123,6 +124,7 @@ export default [
       'vitest/valid-title': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/naming-convention': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   ...pluginVue.configs['flat/recommended'],

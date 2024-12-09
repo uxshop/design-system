@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
-import Button from '../button/Button.vue';
-import Dropdown from '../dropdown/Dropdown.vue';
-import DropdownItemButton from '../dropdown/DropdownItemButton.vue';
-import FormCheckbox from '../form-checkbox/FormCheckbox.vue';
-import FormTextfield from '../form-textfield/FormTextfield.vue';
-import IconButton from '../icon-button/IconButton.vue';
-import Tag from '../tag/Tag.vue';
-import TagList from '../tag/TagList.vue';
+import Button from '#ds/components/ui/button/Button.vue';
+import Dropdown from '#ds/components/ui/dropdown/Dropdown.vue';
+import DropdownItemButton from '#ds/components/ui/dropdown/DropdownItemButton.vue';
+import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
+import FormTextfield from '#ds/components/ui/form-textfield/FormTextfield.vue';
+import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
+import Tag from '#ds/components/ui/tag/Tag.vue';
+import TagList from '#ds/components/ui/tag/TagList.vue';
 import IndexTableOrderButton from './IndexTableOrderButton.vue';
 import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
 
-import { useActionSelectAllItems } from './composables/useActionSelectAllItems';
+import { useActionSelectAllItems } from '../composables/useActionSelectAllItems';
 import IndexTableInternalLoader from './IndexTableInternalLoader.vue';
-import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from './types';
+import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from '../types';
 
 const props = withDefaults(defineProps<IndexTableActionsProps>(), {
   show: () => ({
@@ -72,11 +72,13 @@ watch(
           id="index-table-select-all"
           v-model="checkboxAllSelected"
           class="ui-index-table-actions-checkbox"
+          data-test-index-table="action-checkbox-all"
           :value="checkboxAllSelected"
           :indeterminate="checkboxAllSelectedIndeterminate"
           :disabled="isInternalLoading || showNotFoundMessageForFilter"
           tabindex="0"
-          @update="updateCheckboxAllSelected" />
+          @update="updateCheckboxAllSelected"
+          @keyup.enter="updateCheckboxAllSelected(checkboxAllSelected === null ? false : !checkboxAllSelected)" />
 
         <template v-if="!showBulkActions">
           <IconButton
@@ -84,6 +86,7 @@ watch(
             class="ui-index-table-actions-refresh"
             size="md"
             icon="refresh"
+            data-test-index-table="action-refresh"
             :disabled="isInternalLoading"
             @click="emit('reload')" />
 
@@ -92,6 +95,7 @@ watch(
             id="search-action"
             v-model="search"
             class="ui-index-table-actions-search"
+            data-test-index-table="action-search"
             leading-icon="search"
             placeholder="Procurar registros"
             size="sm"
@@ -100,7 +104,11 @@ watch(
             @clear="emit('clear-search')"
             @keydown-enter="emit('search', search)" />
 
-          <IndexTableOrderButton v-if="ordination" :ordination @order-by="orderBy" />
+          <IndexTableOrderButton
+            v-if="ordination"
+            :ordination
+            data-test-index-table="action-ordination"
+            @order-by="orderBy" />
 
           <template v-if="show.filters">
             <Button
@@ -109,6 +117,7 @@ watch(
               label=""
               leading-icon="filter_list"
               :disabled="isInternalLoading"
+              data-test-index-table="action-filters"
               @click="emit('filters')" />
             <Button
               class="ui-index-table-actions -desktop"
@@ -116,6 +125,7 @@ watch(
               label="Filtros"
               leading-icon="filter_list"
               :disabled="isInternalLoading"
+              data-test-index-table="action-filters"
               @click="emit('filters')" />
           </template>
 
@@ -129,6 +139,7 @@ watch(
               leading-icon="delete"
               label="Deletar"
               :disabled="isInternalLoading"
+              data-test-index-table="bulk-action-delete"
               @click="emit('delete-selected-items')" />
             <Button
               class="ui-index-table-actions -mobile"
@@ -136,10 +147,11 @@ watch(
               leading-icon="delete"
               label=""
               :disabled="isInternalLoading"
+              data-test-index-table="bulk-action-delete"
               @click="emit('delete-selected-items')" />
           </template>
 
-          <Dropdown v-if="bulkActions.length > 0" right>
+          <Dropdown v-if="bulkActions.length > 0" right data-test-index-table="bulk-actions-list">
             <template #button-content>
               <Button size="sm" leading-icon="unfold_more" label="Ação em massa" :disabled="isInternalLoading" />
             </template>
@@ -147,6 +159,7 @@ watch(
               v-for="action in bulkActions"
               :key="action.label"
               :label="action.label"
+              :data-test-index-table="`bulk-action-item-${action.key}`"
               @click.stop="emit('bulk-action', action.key)" />
           </Dropdown>
           <slot name="bulk-actions" />
@@ -161,6 +174,7 @@ watch(
           :total="pagination.total"
           :from="pagination.from"
           :to="pagination.to"
+          data-test-index-table="action-pagination"
           @next-page="emit('next-page')"
           @previous-page="emit('previous-page')" />
         <slot v-else name="action-pagination" />
@@ -176,6 +190,7 @@ watch(
             :key="index"
             variant="primary"
             :label="tag.label"
+            :data-test-index-table="`tag-${tag.key}`"
             @remove="emit('remove-filter', tag)"></Tag>
         </TagList>
       </div>

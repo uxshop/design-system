@@ -1,5 +1,6 @@
 # Files
 *.md
+*.mdx
 
 # Folders
 .husky/*

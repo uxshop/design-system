@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, defineProps, onMounted, ref, watch } from 'vue';
-import Tab from '../tab/Tab.vue';
-import TabItem from '../tab/TabItem.vue';
-import type { IndexTableTabsEmits, IndexTableTabsProps } from './types';
+import Tab from '#ds/components/ui/tab/Tab.vue';
+import TabItem from '#ds/components/ui/tab/TabItem.vue';
+import type { IndexTableTabsEmits, IndexTableTabsProps } from '../types';
 
 const props = withDefaults(defineProps<IndexTableTabsProps>(), {
   tabs: () => [
@@ -36,13 +36,15 @@ watch(
 </script>
 
 <template>
-  <Tab v-model="currentTab" class="ui-index-table-tabs">
+  <Tab v-model="currentTab" class="ui-index-table-tabs" data-test-index-table="tabs">
     <TabItem
       v-for="(item, index) in tabs"
       :key="index"
       :label="item.label"
       :index="item.key"
       :disabled="item.disabled"
+      :badge="item.badge"
+      :data-test-index-table="`tab-${item.key}`"
       @click="onChangeTab(item.key)" />
   </Tab>
 </template>

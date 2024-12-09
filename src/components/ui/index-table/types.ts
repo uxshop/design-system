@@ -3,14 +3,15 @@ export interface KeyLabelDefault {
   key: string;
 }
 
-export interface Tab extends KeyLabelDefault {
+export interface TabIndexTable extends KeyLabelDefault {
   active: boolean;
   disabled?: boolean;
+  badge?: string;
 }
 
 export interface IndexTableTabsProps {
-  /** Abas a exibir no componente */
-  tabs: Tab[];
+  /** Abas a exibir no componente que podem ser desabilitadas ou definidas como ativas conforme necessidade e também disponibiliza a `badge` da mesma forma que o componente `TabItem` */
+  tabs: TabIndexTable[];
 }
 
 export interface IndexTableTabsEmits {
@@ -31,8 +32,10 @@ export interface IndexTableInternalLoaderProps {
   isInternalLoading: boolean;
 }
 
-/** Propriedades para determinar a paginação */
-export interface IndexTablePaginationItemProps extends IndexTableInternalLoaderProps {
+/** Propriedades para determinar a paginação no componente interno */
+export type IndexTablePaginationItemProps = IndexTableInternalLoaderProps & IndexTablePaginationProp;
+
+export interface IndexTablePaginationProp {
   from: number;
   to: number;
   page: number;
@@ -45,7 +48,7 @@ export interface ActionOrdination extends KeyLabelDefault {
 }
 
 export interface IndexTableOrderButtonProps {
-  /** Define as opções de ordenação a serem exibidas no componente, sempre deve ser definida uma opção como ativa, se nenhuma for definida seleciona a primeira. A lista de opções de ordenação, não permite seleção múltipla, apenas 1 item selecionado para ordenar por vez. */
+  /** Define as opções de ordenação a serem exibidas no componente, sempre deve ser definida uma opção como ativa, se nenhuma for definida seleciona a primeira. Uma característica da lista de opções de ordenação é não permitir seleção múltipla, assim ao selecionar uma opção desmarca a anterior. */
   ordination: null | ActionOrdination[];
 }
 
@@ -59,9 +62,9 @@ export interface IndexTableActionsProps
     ShowNotFoundMessageProp,
     IndexTableInternalLoaderProps {
   show: ActionsToShow;
-  /** Quando o valor null é passado libera o slot #pagination para o uso do componente desejado */
-  pagination: null | Omit<IndexTablePaginationItemProps, 'isInternalLoading'>;
-  /** Define quais tags de filtros estão aplicados a tabela no momento */
+  /** Quando o valor `null` é passado libera o slot `#pagination` para o uso do componente desejado, se houver. Interface para implementação da prop `pagination` é a `IndexTablePaginationProp`. */
+  pagination: null | IndexTablePaginationProp;
+  /** Define quais tags de filtros estão aplicados a tabela no momento. Interface para implementação é a `KeyLabelDefault[]`. */
   activeFilterTags: KeyLabelDefault[];
   /** Define quais ações em massa serão exibidas ao selecionar itens da listagem */
   bulkActions: KeyLabelDefault[];

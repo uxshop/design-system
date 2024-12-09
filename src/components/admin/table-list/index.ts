@@ -16,7 +16,6 @@ export { default as TableListTags } from './table-list-tags/TableListTags.vue';
 export { default as TableListHeader } from './TableListHeader.vue';
 export { default as TableListItem } from './TableListItem.vue';
 export { default as TableListRow } from './TableListRow.vue';
-/** @deprecated Por favor utilize o componente IndexTable ao invés do TableList */
 export { default as TableList } from './TableList.vue';
 
 export type {

@@ -44,7 +44,6 @@ export * from './components/admin/sidebar';
 export * from './components/admin/sidebar-header';
 export * from './components/admin/stats-group';
 export * from './components/admin/table';
-/** @deprecated Por favor utilize o componente IndexTable ao invés do TableList */
 export * from './components/admin/table-list';
 export * from './components/admin/titlebar';
 export * from './components/admin/topbar';
@@ -111,6 +110,7 @@ export * from './components/ui/text-style';
 export * from './components/ui/timeline';
 export * from './components/ui/toast';
 export * from './components/ui/youtube-player';
+export * from './components/ui/index-table';
 
 // Types
 export * from './types';

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Icon from '../icon/Icon.vue';
-import type { IndexTableEmptyMessageEmits } from './types';
+import Icon from '../../icon/Icon.vue';
+import type { IndexTableEmptyMessageEmits } from '../types';
 
 const emit = defineEmits<IndexTableEmptyMessageEmits>();
 </script>
 
 <template>
-  <div class="index-table-empty-msg">
+  <div class="index-table-empty-msg" data-test-index-table="empty-message">
     <div class="index-table-empty-msg-content">
       <div class="index-table-empty-msg-icon">
         <Icon name="search" size="40" />
@@ -17,6 +17,7 @@ const emit = defineEmits<IndexTableEmptyMessageEmits>();
         <a
           class="index-table-empty-msg-link"
           tabindex="0"
+          data-test-index-table="action-reset-filters-empty-message"
           @click="emit('reset-filters')"
           @keyup.enter="emit('reset-filters')"
           >outra opção de filtro</a

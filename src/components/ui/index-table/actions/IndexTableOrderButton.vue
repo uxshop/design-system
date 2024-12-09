@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
-import Button from '../button/Button.vue';
-import Dropdown from '../dropdown/Dropdown.vue';
-import DropdownItemButton from '../dropdown/DropdownItemButton.vue';
-import FormRadio from '../form-radio/FormRadio.vue';
-import type { ActionOrdination, IndexTableOrderButtonEmits, IndexTableOrderButtonProps } from './types';
+import Button from '#ds/components/ui/button/Button.vue';
+import Dropdown from '#ds/components/ui/dropdown/Dropdown.vue';
+import DropdownItemButton from '#ds/components/ui/dropdown/DropdownItemButton.vue';
+import FormRadio from '#ds/components/ui/form-radio/FormRadio.vue';
+import type { ActionOrdination, IndexTableOrderButtonEmits, IndexTableOrderButtonProps } from '../types';
 
 const props = defineProps<IndexTableOrderButtonProps>();
 const emit = defineEmits<IndexTableOrderButtonEmits>();
