@@ -89,6 +89,8 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
       label: 'Preço',
     },
   ],
+  headClass: {},
+  cellClass: {},
 };
 
 export const completeIndexTableActions: Record<string, unknown> = {

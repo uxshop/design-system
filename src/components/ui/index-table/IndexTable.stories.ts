@@ -42,7 +42,7 @@ const meta: Meta<typeof IndexTable<ItemInTable>> = {
   argTypes: {
     pagination: { control: { type: 'object' } },
     ordination: { control: { type: 'object' } },
-    searchValue: { control: { type: 'text' },  if: { arg: 'show.search' } },
+    searchValue: { control: { type: 'text' }, if: { arg: 'show.search' } },
     isLoading: { control: { type: 'boolean' } },
     isInternalLoading: { control: { type: 'boolean' } },
     showNotFoundMessageForFilter: { control: { type: 'boolean' } },
@@ -198,7 +198,7 @@ export const paginationChange: Story = {
 
         const handlePreviousPage = () => {
           handlePageChange(args, 'previous-page');
-        }
+        };
 
         args.onNextPage = handleNextPage;
         args.onPreviousPage = handlePreviousPage;
@@ -207,14 +207,14 @@ export const paginationChange: Story = {
       },
       template: templateIndexTable,
     }) as any,
-}
+};
 
 export const customLineWidthAndHeight: Story = {
   args: {
     ...customLineWidthAndHeightIndexTableProps,
     ...completeIndexTableActions,
   },
-}
+};
 
 export const minimum: Story = {
   args: {

@@ -79,8 +79,8 @@ watch(
 );
 
 defineOptions({
-  inheritAttrs: false
-})
+  inheritAttrs: false,
+});
 </script>
 
 <template>

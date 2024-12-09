@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import Icon from '../../ui/icon/Icon.vue';
 import Tab from '../../ui/tab/Tab.vue';
 import TabItem from '../../ui/tab/TabItem.vue';
@@ -15,7 +15,11 @@ const props = defineProps<PlatformSelectProps>();
 
 const badgeConfigMerged = computed(() => ({ ...badgeConfigDefault, ...(props.badgeConfig ?? {}) }));
 
-const tab = ref(props.platformsList.find((item) => item.active)?.key);
+const tab = ref('');
+
+onMounted(() => {
+  tab.value = props.platformsList.find((item) => item.active)?.key ?? props.platformsList[0].key;
+});
 
 const emits = defineEmits(['change:platform']);
 
@@ -29,14 +33,15 @@ const hasBadge = (platform: IPlatform) => !!platform.badgeStatus;
 <template>
   <Tab v-model="tab" class="tab-container">
     <TabItem
-      v-for="platform in platformsList"
+      v-for="(platform, index) in platformsList"
+      :key="index"
       class="tab-item-btn"
       :class="{ '-item-disabled': platform.disabled }"
       :label="platform.name"
       :index="platform.key"
       @click="onChangeTab(platform)">
       <div class="tab-item-container">
-        <div class="badge-container" v-if="hasBadge(platform)">
+        <div v-if="hasBadge(platform)" class="badge-container">
           <Badge pill v-bind="badgeConfigMerged[platform.badgeStatus!]" />
         </div>
         <Icon :name="platform.icon" />

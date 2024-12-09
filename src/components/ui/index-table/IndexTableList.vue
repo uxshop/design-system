@@ -95,7 +95,7 @@ const selectAllItems = (valueOfCheckbox: boolean | null) => {
 /**
  * Substitui underscores por hifens em uma string.
  */
- const formatKeyToClass = (key: string) => {
+const formatKeyToClass = (key: string) => {
   return key.replace(/_/g, '-');
 };
 
@@ -122,8 +122,7 @@ watch(
           'ui-index-table-list-head-cell': true,
           [`ui-index-table-list-head-${formatKeyToClass(fieldHead.key)}`]: true,
           ...(headClass ?? {}),
-        }"
-        >
+        }">
         <slot
           v-if="slots[`head(${fieldHead.key})`]"
           :name="`head(${fieldHead.key})`"
@@ -152,16 +151,14 @@ watch(
             class="ui-index-table-list-checkbox"
             @update="selectItem"
             @keyup.enter="updateItemSelectedWithKeyboard(`item-${indexRow}`)"
-            @click.stop
-            />
+            @click.stop />
         </TableCell>
 
         <TableCell
           v-for="(cell, indexCell) in prepareKeysToCell(item)"
           :key="indexCell"
           :data-test-index-table="`cell-${cell.key}`"
-          :class="{[`ui-index-table-list-cell-${formatKeyToClass(cell.key)}`]: true, ...(cellClass ?? {})}"
-          >
+          :class="{ [`ui-index-table-list-cell-${formatKeyToClass(cell.key)}`]: true, ...(cellClass ?? {}) }">
           <slot v-if="slots[`cell(${cell.key})`]" :name="`cell(${cell.key})`" :item="item" :row="indexRow"></slot>
 
           <div v-else>{{ cell.value }}</div>

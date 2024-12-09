@@ -25,7 +25,7 @@ const ordination = [
     label: 'Data de criação',
     active: false,
   },
-]
+];
 
 export const sortItemsIndexTableProps: IndexTableProps<ItemSortItemsInTable> = {
   ...completeIndexTableProps,
@@ -34,12 +34,18 @@ export const sortItemsIndexTableProps: IndexTableProps<ItemSortItemsInTable> = {
       label: 'Todos',
       key: 'all',
       active: true,
-    }
+    },
   ],
   ordination,
   activeFilterTags: [{ key: ordination[0].key, label: ordination[0].label }],
   items: [
-    { id: 1, name: 'Smartphone Samsung Galaxy A10', price: 'R$ 1.000,00', created_at: '2021-01-01', updated: '2021-01-01' },
+    {
+      id: 1,
+      name: 'Smartphone Samsung Galaxy A10',
+      price: 'R$ 1.000,00',
+      created_at: '2021-01-01',
+      updated: '2021-01-01',
+    },
     { id: 2, name: 'Iphone 11', price: 'R$ 5.000,00', created_at: '2022-03-01', updated: '2022-04-01' },
     { id: 3, name: 'Motorola Moto G', price: 'R$ 1.200,00', created_at: '2022-07-01', updated: '2021-01-01' },
     { id: 4, name: 'Samsung Galaxy S21', price: 'R$ 2.000,00', created_at: '2023-09-29', updated: '2024-12-04' },
@@ -48,21 +54,20 @@ export const sortItemsIndexTableProps: IndexTableProps<ItemSortItemsInTable> = {
   ],
 };
 
-
 export const orderByName = (args: IndexTableProps<ItemSortItemsInTable>) => {
   const items = args.items!.sort((a, b) => a.name.localeCompare(b.name));
   args.items = items;
-}
+};
 
 const orderByUpdated = (args: IndexTableProps<ItemSortItemsInTable>) => {
   const items = args.items!.sort((a, b) => a.updated.localeCompare(b.updated));
   args.items = items;
-}
+};
 
 const orderByCreated = (args: IndexTableProps<ItemSortItemsInTable>) => {
   const items = args.items!.sort((a, b) => a.created_at.localeCompare(b.created_at));
   args.items = items;
-}
+};
 
 export const wrapperOrderBy = (key: string, args: IndexTableProps<ItemSortItemsInTable>) => {
   args.isInternalLoading = true;
@@ -76,9 +81,7 @@ export const wrapperOrderBy = (key: string, args: IndexTableProps<ItemSortItemsI
     return item;
   });
 
-
   args.activeFilterTags = [{ key, label: args.ordination!.find((item) => item.key === key)!.label }];
-
 
   if (key === 'order_by_name') {
     orderByName(args);
@@ -97,4 +100,4 @@ export const wrapperOrderBy = (key: string, args: IndexTableProps<ItemSortItemsI
   setTimeout(() => {
     args.isInternalLoading = false;
   }, 1000);
-}
+};

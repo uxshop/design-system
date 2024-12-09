@@ -123,7 +123,7 @@ export interface IndexTableListProps<T> extends ShowNotFoundMessageProp {
   /** Define uma classe para o cabeçalho da tabela com um objeto onde a chave é o nome da classe e o valor é um booleano para adicionar a tratativa de ativar ou não a classe */
   headClass?: Record<string, boolean> | null;
   /** Define uma classe para a célula da tabela com um objeto onde a chave é o nome da classe e o valor é um booleano para adicionar a tratativa de ativar ou não a classe */
-  cellClass?: Record<string, boolean>| null;
+  cellClass?: Record<string, boolean> | null;
 }
 
 export interface IndexTablePropShow extends ActionsToShow {

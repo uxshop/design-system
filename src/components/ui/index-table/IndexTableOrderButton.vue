@@ -38,9 +38,8 @@ const onOrderBy = (key: string) => {
       v-for="item in ordination"
       :key="item.key"
       :active="item.key === orderValue"
-      @click.stop.prevent="onOrderBy(item.key)"
-      >
-      <FormRadio v-model="orderValue" :value="item.key" :label="item.label"  />
+      @click.stop.prevent="onOrderBy(item.key)">
+      <FormRadio v-model="orderValue" :value="item.key" :label="item.label" />
     </DropdownItemButton>
   </Dropdown>
 </template>

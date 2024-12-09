@@ -77,7 +77,7 @@ export const paginationChangeIndexTableProps: IndexTableProps<ItemInTable> = {
       label: 'Todos',
       key: 'all',
       active: true,
-    }
+    },
   ],
   activeFilterTags: [],
   items: itemsPage1,
@@ -87,11 +87,11 @@ export const paginationChangeIndexTableProps: IndexTableProps<ItemInTable> = {
     size: 25,
     total: itemsPage1.length + itemsPage2.length + itemsPage3.length,
     page: 1,
-  }
+  },
 };
 
 export const handlePageChange = (args: IndexTableProps<ItemInTable>, event: 'next-page' | 'previous-page') => {
-  console.info("Evento disparado:", event)
+  console.info('Evento disparado:', event);
   args.isInternalLoading = true;
   const currentPage = args.pagination?.page || 1;
   const isFirstPage = currentPage === 1;
@@ -121,4 +121,3 @@ export const handlePageChange = (args: IndexTableProps<ItemInTable>, event: 'nex
     args.isInternalLoading = false;
   }, 1000);
 };
-

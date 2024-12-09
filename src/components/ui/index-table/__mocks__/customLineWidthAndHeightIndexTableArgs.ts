@@ -36,7 +36,7 @@ export const customLineWidthAndHeightIndexTableProps: IndexTableProps<ItemInTabl
       label: 'Todos',
       key: 'all',
       active: true,
-    }
+    },
   ],
   activeFilterTags: [],
   items,
@@ -54,4 +54,3 @@ export const customLineWidthAndHeightIndexTableProps: IndexTableProps<ItemInTabl
     'custom-cell': true,
   },
 };
-
