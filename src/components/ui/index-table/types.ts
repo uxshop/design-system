@@ -30,6 +30,8 @@ export interface ActionsToShow {
 export interface IndexTableInternalLoaderProps {
   /** Estado de carregamento interno do componente, deve ser usado para troca entre abas no componente IndexTable, ele permite a visualização do loading dentro da tabela */
   isInternalLoading: boolean;
+  /** Texto para o estado de carregamento interno do componente, se nada for passado assume um valor padrão */
+  loadingText?: string;
 }
 
 /** Propriedades para determinar a paginação no componente interno */

@@ -19,9 +19,9 @@ const emit = defineEmits<IndexTableEmptyMessageEmits>();
           tabindex="0"
           data-test-index-table="action-reset-filters-empty-message"
           @click="emit('reset-filters')"
-          @keyup.enter="emit('reset-filters')"
-          >outra opção de filtro</a
-        >
+          @keyup.enter="emit('reset-filters')">
+          outra opção de filtro
+        </a>
       </div>
     </div>
   </div>

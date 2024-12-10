@@ -22,6 +22,10 @@ const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
 const emit = defineEmits<IndexTableListEmits<T>>();
 const slots = defineSlots<IndexTableListSlots<T>>();
 
+const onOpenItem = (item: T) => {
+  emit('open-item', item);
+};
+
 const {
   selectedItems,
   prepareKeysToCell,
@@ -73,8 +77,8 @@ watch(
         :key="indexRow"
         class="ui-index-table-row"
         :data-test-index-table="`row-${indexRow}`"
-        @click="emit('open-item', item)"
-        @keyup.enter="emit('open-item', item)">
+        @click="onOpenItem(item)"
+        @keyup.enter="onOpenItem(item)">
         <TableCell v-if="show.select" class="ui-index-table-list-all-items-checkbox" @click.stop>
           <FormCheckbox
             :id="`item-${indexRow}`"

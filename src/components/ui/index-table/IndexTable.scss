@@ -9,7 +9,7 @@
   border-bottom-right-radius: var(--s-border-radius-small);
   @include scrollbarStyle;
 
-  &.-mobile {
+  &.-large {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
   }

@@ -6,7 +6,6 @@ import IndexTableActions from './actions/IndexTableActions.vue';
 import IndexTableList from './list/IndexTableList.vue';
 import IndexTablePaginationItem from './actions/IndexTablePaginationItem.vue';
 import IndexTableTabs from './tabs/IndexTableTabs.vue';
-
 import { onMounted, onUnmounted } from 'vue';
 import type { IndexTableEmits, IndexTableProps, IndexTableSlots, KeyLabelDefault } from './types';
 
@@ -88,7 +87,7 @@ defineOptions({
     <SkeletonTable cols="4" rows="4" />
   </Card>
   <div v-else>
-    <div :class="{ 'ui-index-table': true, '-mobile': isMobileView }" v-bind="$attrs">
+    <div :class="{ 'ui-index-table': true, '-large': !isMobileView }" v-bind="$attrs">
       <div class="ui-index-table-wrapper">
         <div class="ui-index-table-header">
           <IndexTableTabs v-if="show.tabs" :tabs @open-tab="openTab" />

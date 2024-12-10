@@ -23,7 +23,7 @@
     "postinstall": "npm run build"
   },
   "peerDependencies": {
-    "typescript": "5.5.0",
+    "typescript": ">= 5.5.0 < 5.7.0",
     "vue": ">= 3.4.29"
   },
   "dependencies": {

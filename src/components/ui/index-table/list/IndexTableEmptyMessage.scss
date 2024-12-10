@@ -5,7 +5,7 @@
   padding: var(--s-spacing-x-small);
   transition: all var(--s-motion-ease-linear) var(--s-motion-duration-fast);
 
-  .index-table-empty-msg-content {
+  &-content {
     border-radius: var(--s-border-radius-small);
     background-color: var(--s-color-fill-default-light);
     padding: var(--s-spacing-x-small);
@@ -15,14 +15,14 @@
     justify-content: center;
   }
 
-  .index-table-empty-msg-title {
+  &-title {
     font: var(--s-typography-heading-large);
     font-weight: var(--s-font-weight-semibold);
     margin-top: var(--s-spacing-xx-small);
     margin-bottom: var(--s-spacing-quark);
   }
 
-  .index-table-empty-msg-link {
+  &-link {
     &:focus {
       text-decoration: underline;
     }

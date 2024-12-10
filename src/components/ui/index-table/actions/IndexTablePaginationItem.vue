@@ -10,6 +10,13 @@ withDefaults(defineProps<IndexTablePaginationItemProps>(), {
   page: 1,
 });
 const emit = defineEmits<IndexTablePaginationItemEmits>();
+
+const onNextPage = () => {
+  emit('next-page');
+};
+const onPreviousPage = () => {
+  emit('previous-page');
+};
 </script>
 
 <template>
@@ -24,14 +31,14 @@ const emit = defineEmits<IndexTablePaginationItemEmits>();
       icon="arrow_back"
       :disabled="1 === page || isInternalLoading"
       data-test-index-table="pagination-previous-page"
-      @click="emit('previous-page')" />
+      @click="onPreviousPage" />
 
     <IconButton
       size="md"
       icon="arrow_forward"
       :disabled="to === total || isInternalLoading"
       data-test-index-table="pagination-next-page"
-      @click="emit('next-page')" />
+      @click="onNextPage" />
   </div>
 </template>
 
