@@ -20,12 +20,12 @@
     }
   }
 
+  &-item {
+    min-width: fit-content;
+    margin-right: var(--s-spacing-nano);
+  }
+
   @media screen and (max-width: 768px) {
     display: none;
   }
-}
-
-.ui-index-table-pagination-item {
-  min-width: fit-content;
-  margin-right: var(--s-spacing-nano);
 }
