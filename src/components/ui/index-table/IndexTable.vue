@@ -50,6 +50,12 @@ const bulkAction = (action: string) => emit('bulk-action', action);
 const selectedItems = (items: T[]) => emit('selected-items', items);
 const removeFilter = (tag: KeyLabelDefault) => emit('remove-filter', tag);
 const openItem = (item: T) => emit('open-item', item);
+const nextPage = () => emit('next-page');
+const previousPage = () => emit('previous-page');
+const resetFilters = () => emit('reset-filters');
+const reload = () => emit('reload');
+const filters = () => emit('filters');
+const clearSearch = () => emit('clear-search');
 
 const selectedAllItems = (value: boolean | null) => {
   checkboxAllSelected.value = value;
@@ -114,13 +120,13 @@ defineOptions({
             :loading-text
             :checkbox-select-all-value="checkboxAllSelected"
             @select-all="selectAll"
-            @clear-search="emit('clear-search')"
-            @reload="emit('reload')"
-            @filters="emit('filters')"
+            @clear-search="clearSearch"
+            @reload="reload"
+            @filters="filters"
             @search="search"
             @order-by="orderBy"
-            @next-page="emit('next-page')"
-            @previous-page="emit('previous-page')"
+            @next-page="nextPage"
+            @previous-page="previousPage"
             @delete-selected-items="emit('delete-selected-items')"
             @bulk-action="bulkAction"
             @remove-filter="removeFilter">
@@ -143,7 +149,7 @@ defineOptions({
           @open-item="openItem"
           @selected-items="selectedItems"
           @selected-all-items="selectedAllItems"
-          @reset-filters="emit('reset-filters')">
+          @reset-filters="resetFilters">
           <template v-for="(slotContent, slotName) in $slots" :key="slotName" #[slotName]="slotProps">
             <component :is="slotContent" v-bind="slotProps" />
           </template>
@@ -162,8 +168,8 @@ defineOptions({
         :total="pagination.total"
         :from="pagination.from"
         :to="pagination.to"
-        @next-page="emit('next-page')"
-        @previous-page="emit('previous-page')" />
+        @next-page="nextPage"
+        @previous-page="previousPage" />
 
       <slot name="footer-actions" />
     </footer>
