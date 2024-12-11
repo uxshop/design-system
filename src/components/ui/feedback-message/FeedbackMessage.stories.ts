@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import FeeedbackMessage from './FeedbackMessage.vue';
+import { fn } from '@storybook/test';
 
 const meta: Meta<typeof FeeedbackMessage> = {
   title: 'ui/FeeedbackMessage',
@@ -34,5 +35,6 @@ export const minimum: Story = {
     },
     showIcon: true,
     showButton: true,
+    onAction: fn(),
   },
 };
