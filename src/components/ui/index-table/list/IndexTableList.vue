@@ -1,11 +1,11 @@
 <script setup lang="ts" generic="T extends object">
+import { watch } from 'vue';
 import Table from '#ds/components/admin/table/Table.vue';
 import TableBody from '#ds/components/admin/table/TableBody.vue';
 import TableCell from '#ds/components/admin/table/TableCell.vue';
 import TableHeadCell from '#ds/components/admin/table/TableHeadCell.vue';
 import TableRow from '#ds/components/admin/table/TableRow.vue';
 import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
-import { watch } from 'vue';
 import IndexTableEmptyMessage from './IndexTableEmptyMessage.vue';
 import { useIndexTableList } from '../composables/useIndexTableList';
 import type { IndexTableListEmits, IndexTableListProps, IndexTableListSlots } from '../types';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
 import { computed } from 'vue';
+import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
 import type { IndexTablePaginationItemEmits, IndexTablePaginationItemProps } from '../types';
 
 const props = withDefaults(defineProps<IndexTablePaginationItemProps>(), {

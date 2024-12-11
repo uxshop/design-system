@@ -1,12 +1,11 @@
 <script setup lang="ts" generic="T extends object">
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import Card from '../card/Card.vue';
 import SkeletonTable from '../skeleton-table/SkeletonTable.vue';
 import IndexTableActions from './actions/IndexTableActions.vue';
 import IndexTableList from './list/IndexTableList.vue';
 import IndexTablePaginationItem from './actions/IndexTablePaginationItem.vue';
 import IndexTableTabs from './tabs/IndexTableTabs.vue';
-import { onMounted, onUnmounted } from 'vue';
 import type { IndexTableEmits, IndexTableProps, IndexTableSlots, KeyLabelDefault } from './types';
 import { defaultPropEmptyResultDisplay } from './list/defaultPropEmptyResultDisplay';
 import { widthLessThan } from '#ds/services/MobileDetector.js';
