@@ -51,8 +51,8 @@ watch(
     :subtitle="emptyResultDisplay.subtitle"
     :button="emptyResultDisplay.button"
     :icon="emptyResultDisplay.icon"
-    :show-icon="emptyResultDisplay.showIcon"
-    :show-action="emptyResultDisplay.showAction"
+    :show-icon="emptyResultDisplay.showIcon ?? true"
+    :show-button="emptyResultDisplay.showButton ?? true"
     class="ui-index-table-empty-message"
     @reset-filters="emit('reset-filters')" />
   <Table v-else class="ui-index-table-list">

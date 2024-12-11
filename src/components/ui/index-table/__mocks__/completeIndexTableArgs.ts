@@ -68,7 +68,6 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
   searchValue: '',
   checkboxSelectAllValue: false,
   emptyResultDisplay: {
-    title: '',
     show: false,
   },
   isLoading: false,

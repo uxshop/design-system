@@ -11,7 +11,7 @@ withDefaults(defineProps<IndexTableEmptyMessageProps>(), {
     variant: 'primary',
   }),
   showIcon: true,
-  showAction: true,
+  showButton: true,
 });
 const emit = defineEmits<IndexTableEmptyMessageEmits>();
 
@@ -29,7 +29,7 @@ const onResetFilters = () => {
         :subtitle
         :button
         :show-icon
-        :show-action
+        :show-button
         data-test-index-table="action-reset-filters-empty-message"
         @action="onResetFilters" />
     </div>

@@ -30,7 +30,7 @@ export interface ActionsToShow {
 }
 
 export interface IndexTableInternalLoaderProps {
-  /** Estado de carregamento interno do componente, deve ser usado para troca entre abas no componente IndexTable, ele permite a visualização do loading dentro da tabela */
+  /** Estado de carregamento interno do componente, deve ser usado para troca entre abas no componente IndexTable, ele permite a visualização do loading dentro do componente */
   isInternalLoading: boolean;
   /** Texto para o estado de carregamento interno do componente, se nada for passado assume um valor padrão */
   loadingText?: string;
@@ -55,7 +55,7 @@ export interface IndexTableOrderButtonProps {
 
 export interface IndexTableEmptyMessageProps extends FeedbackMessageProps {}
 
-export interface IndexTableEmptyResultProps extends IndexTableEmptyMessageProps {
+export interface IndexTableEmptyResultProps extends Partial<IndexTableEmptyMessageProps> {
   /** Define se irá exibir a visualização do resultado de pesquisa vazio */
   show: boolean;
 }

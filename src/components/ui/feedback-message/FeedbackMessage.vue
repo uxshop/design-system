@@ -36,7 +36,7 @@ const onAction = () => emit('action');
     </div>
 
     <Button
-      v-if="showAction"
+      v-if="showButton"
       class="ui-feedback-message-action"
       :type="button?.type"
       :label="button?.label"

@@ -33,6 +33,6 @@ export const minimum: Story = {
       variant: 'primary',
     },
     showIcon: true,
-    showAction: true,
+    showButton: true,
   },
 };

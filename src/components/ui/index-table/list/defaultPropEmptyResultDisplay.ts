@@ -1,4 +1,4 @@
-import type { IndexTableEmptyResultProps } from '../types';
+import type { IndexTableEmptyResultProps, IndexTableEmptyMessageProps } from '../types';
 
 export const defaultPropEmptyResultDisplay: IndexTableEmptyResultProps = {
   title: 'Nenhum resultado encontrado',
@@ -9,6 +9,14 @@ export const defaultPropEmptyResultDisplay: IndexTableEmptyResultProps = {
     variant: 'primary',
   },
   showIcon: true,
-  showAction: true,
+  showButton: true,
   show: false,
+};
+
+export const defaultPropIndexTableEmptyMessage: IndexTableEmptyMessageProps = {
+  title: defaultPropEmptyResultDisplay.title,
+  subtitle: defaultPropEmptyResultDisplay.subtitle,
+  button: defaultPropEmptyResultDisplay.button,
+  showIcon: defaultPropEmptyResultDisplay.showIcon ?? true,
+  showButton: defaultPropEmptyResultDisplay.showButton ?? true,
 };

@@ -17,5 +17,5 @@ export interface FeedbackMessageProps {
   /** Define se o ícone será exibido */
   showIcon: boolean;
   /** Define se o botão de ação será exibido */
-  showAction: boolean;
+  showButton: boolean;
 }

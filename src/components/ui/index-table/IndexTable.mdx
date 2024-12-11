@@ -36,6 +36,8 @@ O componente também é totalmente customizável, permitindo que o usuário ocul
 - `pagination` - Quando o valor `null` é passado libera o slot `#pagination` para o uso do componente desejado, se houver. Interface para implementação da prop `pagination` é a `IndexTablePaginationProp`.
 - `bulkActions` - Define quais ações em massa serão exibidas ao selecionar itens da listagem no botão de `Ação em massa`. Interface para implementação é a `KeyLabelDefault[]`.
 - `activeFilterTags` - Define quais tags de filtros estão aplicados a tabela no momento. Interface para implementação é a `KeyLabelDefault[]`.
+- `loadingText` - Texto para o estado de carregamento interno do componente, se nada for passado assume um valor padrão.
+- `isInternalLoading` - Estado de carregamento interno do componente, deve ser usado para troca entre abas no componente IndexTable, ele permite a visualização do loading dentro do componente.
 
 ## Exemplo de uso no código
 
@@ -214,8 +216,6 @@ const activeFilterTags = ref<KeyLabelDefault[]>([
 ]);
 
 const emptyResultDisplay = reactive({
-  showIcon: true,
-  showAction: true,
   show: false
 });
 
