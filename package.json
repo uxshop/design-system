@@ -1,9 +1,13 @@
 {
-  "name": "design-system",
-  "version": "4.0.0-alpha",
+  "name": "@uxshop/design-system",
+  "version": "4.0.0-beta",
   "type": "module",
   "engines": {
     "node": ">=20.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxshop/design-system.git"
   },
   "scripts": {
     "dev": "vite",
@@ -19,8 +23,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:sass:compile": "tsx .storybook/compile.ts",
-    "prepare": "husky",
-    "postinstall": "npm run build"
+    "prepare": "husky"
   },
   "peerDependencies": {
     "typescript": ">= 5.5.0",
