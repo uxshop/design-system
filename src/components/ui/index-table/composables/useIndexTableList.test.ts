@@ -12,6 +12,9 @@ describe('useIndexTableList', () => {
       fields: [{ key: 'name', label: 'Name' }],
       items: [{ name: 'Item 1' }, { name: 'Item 2' }],
       checkboxSelectAllValue: false,
+      emptyResultDisplay: {
+        show: false,
+      },
     };
   });
 
