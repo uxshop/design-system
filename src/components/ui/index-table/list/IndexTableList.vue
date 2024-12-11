@@ -9,13 +9,14 @@ import { watch } from 'vue';
 import IndexTableEmptyMessage from './IndexTableEmptyMessage.vue';
 import { useIndexTableList } from '../composables/useIndexTableList';
 import type { IndexTableListEmits, IndexTableListProps, IndexTableListSlots } from '../types';
+import { defaultPropEmptyResultDisplay } from './defaultPropEmptyResultDisplay';
 
 const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
   show: () => ({
     select: true,
   }),
+  emptyResultDisplay: () => defaultPropEmptyResultDisplay,
   checkboxSelectAllValue: false,
-  showNotFoundMessageForFilter: false,
   headClass: null,
   cellClass: null,
 });
@@ -45,7 +46,13 @@ watch(
 
 <template>
   <IndexTableEmptyMessage
-    v-if="!items.length && showNotFoundMessageForFilter"
+    v-if="!items.length && emptyResultDisplay.show"
+    :title="emptyResultDisplay.title"
+    :subtitle="emptyResultDisplay.subtitle"
+    :button="emptyResultDisplay.button"
+    :icon="emptyResultDisplay.icon"
+    :show-icon="emptyResultDisplay.showIcon"
+    :show-action="emptyResultDisplay.showAction"
     class="ui-index-table-empty-message"
     @reset-filters="emit('reset-filters')" />
   <Table v-else class="ui-index-table-list">

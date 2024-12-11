@@ -1,3 +1,5 @@
+import type { FeedbackMessageProps } from '../feedback-message/types';
+
 export interface KeyLabelDefault {
   label: string;
   key: string;
@@ -34,9 +36,6 @@ export interface IndexTableInternalLoaderProps {
   loadingText?: string;
 }
 
-/** Propriedades para determinar a paginação no componente interno */
-export type IndexTablePaginationItemProps = IndexTableInternalLoaderProps & IndexTablePaginationProp;
-
 export interface IndexTablePaginationProp {
   from: number;
   to: number;
@@ -54,14 +53,26 @@ export interface IndexTableOrderButtonProps {
   ordination: null | ActionOrdination[];
 }
 
-export interface ShowNotFoundMessageProp {
-  /** Valida se a mensagem de resultado não encontrado para o filtro aplicado deve ser exibida */
-  showNotFoundMessageForFilter?: boolean;
+export interface IndexTableEmptyMessageProps extends FeedbackMessageProps {}
+
+export interface IndexTableEmptyResultProps extends IndexTableEmptyMessageProps {
+  /** Define se irá exibir a visualização do resultado de pesquisa vazio */
+  show: boolean;
 }
+
+interface IndexTableEmptyResultDisplayProps {
+  /** Permite configurar se será exibido o resultado de pesquisa vazio e personalizar a mensagem, ícone e botão de acordo com a necessidade. */
+  emptyResultDisplay: IndexTableEmptyResultProps;
+}
+
+/** Propriedades para determinar a paginação no componente interno */
+export type IndexTablePaginationItemProps = IndexTableInternalLoaderProps &
+  IndexTablePaginationProp &
+  IndexTableEmptyResultDisplayProps;
 
 export interface IndexTableActionsProps
   extends IndexTableOrderButtonProps,
-    ShowNotFoundMessageProp,
+    IndexTableEmptyResultDisplayProps,
     IndexTableInternalLoaderProps {
   show: ActionsToShow;
   /** Quando o valor `null` é passado libera o slot `#pagination` para o uso do componente desejado, se houver. Interface para implementação da prop `pagination` é a `IndexTablePaginationProp`. */
@@ -117,7 +128,7 @@ export interface ColsToShow {
   select: boolean;
 }
 
-export interface IndexTableListProps<T> extends ShowNotFoundMessageProp {
+export interface IndexTableListProps<T> extends IndexTableEmptyResultDisplayProps {
   /** Lista de items a serem exibidos na tabela com o tipo de objeto que for desejado. Para que os dados sejam exibidos corretamente, é necessário que o objeto tenha as chaves correspondentes aos campos de `key` definidos na prop `fields`, se uma chave não corresponder a um `field` o dado não será exibido. */
   items: T[];
   /** Define as colunas da tabela, e a ordem no array define a sequência de exibição na tabela. */
@@ -136,7 +147,7 @@ export interface IndexTablePropShow extends ActionsToShow {
 }
 
 export interface IndexTableEmptyMessageEmits {
-  /** Quando existem 0 itens passados para o componente e a props showNotFoundMessageForFilter está ativa e o usuário clicou no item `outra opção de filtro` emite a ação para indicar que os filtros devem ser removidos */
+  /** Quando existem 0 itens passados para o componente e a props emptyResultDisplay.show está ativa e o usuário clicou no item `outra opção de filtro` emite a ação para indicar que os filtros devem ser removidos */
   (event: 'reset-filters'): void;
 }
 
@@ -163,19 +174,19 @@ export interface IndexTableListPublicEmits<T> extends IndexTableEmptyMessageEmit
 
 export interface IndexTableListEmits<T> extends IndexTableListPrivateEmits, IndexTableListPublicEmits<T> {}
 
-interface SlotCellProps<T> {
+interface IndexTableSlotCellProps<T> {
   item: T;
   row: number;
 }
 
-interface SlotHeadProps {
+interface IndexTableSlotHeadProps {
   field: KeyLabelDefault;
   label: string;
 }
 
 export interface IndexTableListSlots<T> {
-  [key: `cell(${string})`]: (props: SlotCellProps<T>) => void;
-  [key: `head(${string})`]: (props: SlotHeadProps) => void;
+  [key: `cell(${string})`]: (props: IndexTableSlotCellProps<T>) => void;
+  [key: `head(${string})`]: (props: IndexTableSlotHeadProps) => void;
 }
 
 export interface IndexTableProps<T>

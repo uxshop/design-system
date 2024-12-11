@@ -1,0 +1,15 @@
+import { Controls, Canvas, Meta } from '@storybook/blocks';
+
+import * as FeedbackMessageStories from './FeedbackMessage.stories';
+
+<Meta of={FeedbackMessageStories} />
+
+# FeedbackMessage
+
+O **FeedbackMessage** é um componente utilizado para exibir mensagens de feedback para o usuário. Ele é composto por um ícone, um texto e um botão de ação. É opcional exibir o botão de ação e o ícone.
+
+A sua finalidade é a de fornecer um bloco visual e textual padronizado, que ajude a guiar o usuário sobre o que está acontecendo (por exemplo, não há dados disponíveis ou ocorreu um problema que precisa ser resolvido) e quais próximos passos podem ser tomados. Assim garantimos que o usuário tenha uma experiência familiar e coerente, independentemente de qual produto ou seção esteja utilizando.
+
+<Canvas of={FeedbackMessageStories.minimum} />
+
+<Controls />

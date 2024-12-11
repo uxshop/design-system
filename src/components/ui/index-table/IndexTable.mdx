@@ -23,8 +23,8 @@ O componente também é totalmente customizável, permitindo que o usuário ocul
 - `action-pagination` - slot para substituir o componente de paginação padrão da tabela caso seja necessário. Para isso o componente deve possuir a propriedade `pagination` com o valor `null`.
 - `bulk-actions` - slot para adicionar ações em massa, bloco visível quando há itens selecionados na listagem.
 - `footer-actions` - slot para adicionar ações no rodapé da tabela caso seja necessário.
-- `cell({key})` - slot para substituir o conteúdo de uma determinada célula, onde `{key}` é a chave do campo. Ver type `SlotCellProps` que indica o conteúdo disponível para o slot.
-- `head({key})` - slot para substituir o conteúdo do cabeçalho de uma determinada coluna, onde `{key}` é a chave determinada para a coluna. Ver type `SlotHeadProps` que indica o conteúdo disponível para o slot.
+- `cell({key})` - slot para substituir o conteúdo de uma determinada célula, onde `{key}` é a chave do campo. O conteúdo disponível para o slot é `{ item: T, row: number }`, sendo `T` o mesmo tipo genérico atribuito para os items do componente.
+- `head({key})` - slot para substituir o conteúdo do cabeçalho de uma determinada coluna, onde `{key}` é a chave determinada para a coluna. O conteúdo disponível para o slot é `{ field: { key: string, label: string }, label: string }`.
 
 <Controls />
 
@@ -213,7 +213,11 @@ const activeFilterTags = ref<KeyLabelDefault[]>([
   },
 ]);
 
-const showNotFoundMessageForFilter = ref(false);
+const emptyResultDisplay = reactive({
+  showIcon: true,
+  showAction: true,
+  show: false
+});
 
 const checkboxValue = ref<boolean | null>(false);
 
@@ -242,7 +246,7 @@ setTimeout(() => {
     :is-loading="isLoading"
     :is-internal-loading="isInternalLoading"
     :checkbox-select-all-value="checkboxValue"
-    :show-not-found-message-for-filter="showNotFoundMessageForFilter"
+    :empty-result-display="emptyResultDisplay"
     @open-tab="openTab"
     @reload="reload"
     @filters="filters"

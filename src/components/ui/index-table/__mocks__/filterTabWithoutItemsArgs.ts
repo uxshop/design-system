@@ -4,7 +4,9 @@ import { completeIndexTableProps, type ItemInTable } from './completeIndexTableA
 export const filterTabWithoutItemsIndexTableProps: IndexTableProps<ItemInTable> = {
   ...completeIndexTableProps,
   items: [],
-  showNotFoundMessageForFilter: true,
+  emptyResultDisplay: {
+    show: true,
+  },
   tabs: [
     {
       label: 'Todos',

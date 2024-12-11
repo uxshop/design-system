@@ -8,6 +8,8 @@ import IndexTablePaginationItem from './actions/IndexTablePaginationItem.vue';
 import IndexTableTabs from './tabs/IndexTableTabs.vue';
 import { onMounted, onUnmounted } from 'vue';
 import type { IndexTableEmits, IndexTableProps, IndexTableSlots, KeyLabelDefault } from './types';
+import { defaultPropEmptyResultDisplay } from './list/defaultPropEmptyResultDisplay';
+import { widthLessThan } from '#ds/services/MobileDetector.js';
 
 const props = withDefaults(defineProps<IndexTableProps<T>>(), {
   show: () => ({
@@ -28,6 +30,8 @@ const props = withDefaults(defineProps<IndexTableProps<T>>(), {
   }),
   bulkActions: () => [],
   activeFilterTags: () => [],
+  emptyResultDisplay: () => defaultPropEmptyResultDisplay,
+  loadingText: 'Carregando dados da tabela',
   checkboxSelectAllValue: false,
   isInternalLoading: false,
   searchValue: '',
@@ -58,7 +62,7 @@ const selectAll = (value: boolean | null) => {
 const isMobileView = ref(false);
 
 const checkScreenWidth = () => {
-  isMobileView.value = window.innerWidth < 768;
+  isMobileView.value = widthLessThan(768);
 };
 
 onMounted(() => {
@@ -105,8 +109,9 @@ defineOptions({
             :active-filter-tags
             :bulk-actions
             :search-value
-            :show-not-found-message-for-filter
+            :empty-result-display
             :is-internal-loading
+            :loading-text
             :checkbox-select-all-value="checkboxAllSelected"
             @select-all="selectAll"
             @clear-search="emit('clear-search')"
@@ -129,7 +134,7 @@ defineOptions({
           :items
           :fields
           :checkbox-select-all-value="checkboxAllSelected"
-          :show-not-found-message-for-filter
+          :empty-result-display
           :show="{ select: show.select }"
           :head-class
           :cell-class
@@ -151,6 +156,7 @@ defineOptions({
         v-if="pagination && !isLoading && isMobileView"
         class="-footer"
         :is-internal-loading
+        :empty-result-display
         :page="pagination.page"
         :size="pagination.size"
         :total="pagination.total"
@@ -158,6 +164,7 @@ defineOptions({
         :to="pagination.to"
         @next-page="emit('next-page')"
         @previous-page="emit('previous-page')" />
+
       <slot name="footer-actions" />
     </footer>
   </div>

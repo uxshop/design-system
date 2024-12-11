@@ -10,10 +10,10 @@ import Tag from '#ds/components/ui/tag/Tag.vue';
 import TagList from '#ds/components/ui/tag/TagList.vue';
 import IndexTableOrderButton from './IndexTableOrderButton.vue';
 import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
-
 import { useActionSelectAllItems } from '../composables/useActionSelectAllItems';
 import IndexTableInternalLoader from './IndexTableInternalLoader.vue';
 import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from '../types';
+import { defaultPropEmptyResultDisplay } from '../list/defaultPropEmptyResultDisplay';
 
 const props = withDefaults(defineProps<IndexTableActionsProps>(), {
   show: () => ({
@@ -35,7 +35,8 @@ const props = withDefaults(defineProps<IndexTableActionsProps>(), {
   bulkActions: () => [],
   isInternalLoading: false,
   checkboxSelectAllValue: false,
-  showNotFoundMessageForFilter: false,
+  emptyResultDisplay: () => defaultPropEmptyResultDisplay,
+  loadingText: 'Carregando dados da tabela',
   searchValue: '',
 });
 const emit = defineEmits<IndexTableActionsEmits>();
@@ -75,7 +76,7 @@ watch(
           data-test-index-table="action-checkbox-all"
           :value="checkboxAllSelected"
           :indeterminate="checkboxAllSelectedIndeterminate"
-          :disabled="isInternalLoading || showNotFoundMessageForFilter"
+          :disabled="isInternalLoading || emptyResultDisplay.show"
           tabindex="0"
           @update="updateCheckboxAllSelected"
           @keyup.enter="updateCheckboxAllSelected(checkboxAllSelected === null ? false : !checkboxAllSelected)" />
@@ -169,6 +170,7 @@ watch(
         <IndexTablePaginationItem
           v-if="pagination"
           :is-internal-loading
+          :empty-result-display
           :page="pagination.page"
           :size="pagination.size"
           :total="pagination.total"
@@ -194,7 +196,7 @@ watch(
             @remove="emit('remove-filter', tag)"></Tag>
         </TagList>
       </div>
-      <IndexTableInternalLoader :is-internal-loading />
+      <IndexTableInternalLoader :is-internal-loading :loading-text />
     </div>
   </div>
 </template>

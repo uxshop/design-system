@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
+import { computed } from 'vue';
 import type { IndexTablePaginationItemEmits, IndexTablePaginationItemProps } from '../types';
 
-withDefaults(defineProps<IndexTablePaginationItemProps>(), {
+const props = withDefaults(defineProps<IndexTablePaginationItemProps>(), {
   isInternalLoading: false,
   from: 0,
   to: 0,
@@ -10,6 +11,11 @@ withDefaults(defineProps<IndexTablePaginationItemProps>(), {
   page: 1,
 });
 const emit = defineEmits<IndexTablePaginationItemEmits>();
+
+/**
+ * Valida automaticamente se deve exibir ou ocultar a quantidade de itens na paginação
+ */
+const shouldShowNumberOfPagination = computed(() => !props.emptyResultDisplay.show);
 
 const onNextPage = () => {
   emit('next-page');
@@ -21,7 +27,10 @@ const onPreviousPage = () => {
 
 <template>
   <div class="ui-index-table-pagination" data-test-index-table="pagination-item">
-    <div v-show="from" class="ui-index-table-pagination-item" data-test-index-table="pagination-quantity">
+    <div
+      v-show="from && shouldShowNumberOfPagination"
+      class="ui-index-table-pagination-item"
+      data-test-index-table="pagination-quantity">
       {{ from }} - {{ to }} {{ total ? 'de ' + total : '' }}
     </div>
 

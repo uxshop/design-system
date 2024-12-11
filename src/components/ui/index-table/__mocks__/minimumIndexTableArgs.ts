@@ -39,7 +39,9 @@ export const minimumIndexTableProps: IndexTableProps<ItemInTable> = {
   activeFilterTags: [],
   searchValue: '',
   checkboxSelectAllValue: false,
-  showNotFoundMessageForFilter: false,
+  emptyResultDisplay: {
+    show: false,
+  },
   isLoading: false,
   isInternalLoading: false,
   items: [

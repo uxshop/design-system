@@ -67,7 +67,10 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
   activeFilterTags: [{ key: 'active', label: 'Ativo' }],
   searchValue: '',
   checkboxSelectAllValue: false,
-  showNotFoundMessageForFilter: false,
+  emptyResultDisplay: {
+    title: '',
+    show: false,
+  },
   isLoading: false,
   isInternalLoading: false,
   items: [
