@@ -14,7 +14,7 @@
 
 Para usar o Design System no seu projeto, siga os passos abaixo:
 
-1. Crie um arquivo `.npmrc` na raiz do seu projeot;
+1. Crie um arquivo `.npmrc` na raiz do seu projeto;
 2. Adicione o seguinte conteúdo nele: `@uxshop:registry=https://npm.pkg.github.com`;
 3. Adicione o pacote como dependência: `npm install --save-dev @uxshop/design-system`;
 
