@@ -17,6 +17,8 @@ type Props = {
 	state: any
 }
 
+const emit = defineEmits(['duplicate'])
+
 const props = withDefaults(defineProps<Props>(), {
 	selected: () => {
 		return []
@@ -60,6 +62,10 @@ const onRemoveDialog = () => {
 	})
 }
 
+const onDuplicate = () => {
+	emit('duplicate')
+}
+
 const remove = () => props.state.removeSelected()
 const active = () => props.state.toggleActiveSelected(true)
 const inactive = () => props.state.toggleActiveSelected(false)
@@ -97,6 +103,14 @@ onMounted(() => {
 				label: 'Remover registros',
 				variant: 'danger',
 				onAction: onRemoveDialog
+			})
+		}
+
+		if (props.config.allowDuplication && item == 'duplicate') {
+			bulkActions.value.push({
+				label: 'Duplicar registros',
+				variant: 'danger',
+				onAction: onDuplicate
 			})
 		}
 	})
