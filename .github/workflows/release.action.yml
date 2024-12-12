@@ -1,11 +1,8 @@
-name: 'Release DS'
+name: 'Publish'
 
 on:
   release:
     types: [published]
-  push:
-    branches:
-      - 'feature/package-release'
 
 env:
   NODE_VERSION: 20.x
