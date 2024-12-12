@@ -132,5 +132,9 @@
       "default": "./dist/directives.js"
     },
     "./theme": "./src/scss/theme.scss"
-  }
+  },
+  "files": [
+    "./dist",
+    "./src"
+  ]
 }

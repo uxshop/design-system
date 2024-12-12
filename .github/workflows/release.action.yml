@@ -45,6 +45,6 @@ jobs:
           scope: '@uxshop'
           cache: 'npm'
       - run: npm ci
-      - run: ls dist/
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
