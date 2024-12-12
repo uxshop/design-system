@@ -18,6 +18,7 @@ const preview: Preview = {
     schema,
     brand,
   },
+  tags: ['autodocs'],
 };
 
 export default preview;

@@ -1,4 +1,4 @@
-const widthLessThan = (width: number) => {
+export const widthLessThan = (width: number) => {
   return window.innerWidth <= width;
 };
 

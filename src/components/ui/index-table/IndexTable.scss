@@ -1,0 +1,33 @@
+@import '../../../scss/mixins.scss';
+
+.ui-index-table {
+  overflow-x: auto;
+  background-color: var(--s-color-fill-default);
+  border-top-left-radius: var(--s-border-radius-small);
+  border-top-right-radius: var(--s-border-radius-small);
+  border-bottom-left-radius: var(--s-border-radius-small);
+  border-bottom-right-radius: var(--s-border-radius-small);
+  @include scrollbarStyle;
+
+  &.-large {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  &-wrapper {
+    min-width: fit-content;
+  }
+
+  &-footer {
+    background-color: var(--s-color-fill-default);
+    border-top: var(--s-border-light);
+    padding: var(--s-spacing-x-small) var(--s-spacing-nano);
+    order: 1;
+    border-bottom-left-radius: var(--s-border-radius-small);
+    border-bottom-right-radius: var(--s-border-radius-small);
+
+    &:empty {
+      display: none;
+    }
+  }
+}

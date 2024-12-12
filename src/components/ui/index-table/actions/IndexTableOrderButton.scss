@@ -1,0 +1,19 @@
+.ui-index-table-order-button-action {
+  &.-mobile {
+    display: none;
+  }
+
+  &.-desktop {
+    display: inline-flex;
+  }
+
+  @media screen and (max-width: 768px) {
+    &.-mobile {
+      display: inline-flex;
+    }
+
+    &.-desktop {
+      display: none;
+    }
+  }
+}

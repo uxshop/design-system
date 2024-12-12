@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { TableProps } from './types';
 
-defineEmits(['click']);
 defineProps<TableProps>();
 </script>
 

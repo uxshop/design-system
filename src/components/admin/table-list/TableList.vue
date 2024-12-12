@@ -1,3 +1,13 @@
+<script lang="ts">
+/**
+ * ### TableList Component
+ *
+ * @deprecated Este componente está depreciado e será removido em versões futuras.
+ * Por favor, use o novo componente `IndexTable` em vez deste.
+ */
+export default {};
+</script>
+
 <script setup lang="ts">
 import { onMounted, watch, ref, reactive, onBeforeMount, computed } from 'vue';
 import { union, clone, omit, concat, isEqual } from 'lodash-es';
@@ -202,6 +212,8 @@ onMounted(() => {
   } else {
     queryParams.value = assignDefaultQueryParams();
   }
+
+  console.warn('ds - TableList is deprecated and will be removed in future versions. Please use IndexTable instead.');
 });
 
 let timerQ: ReturnType<typeof setTimeout>;

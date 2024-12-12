@@ -1,0 +1,22 @@
+.index-table-empty-msg {
+  display: grid;
+  text-align: center;
+  height: 100%;
+  padding: var(--s-spacing-x-small);
+  transition: all var(--s-motion-ease-linear) var(--s-motion-duration-fast);
+
+  &-content {
+    border-radius: var(--s-border-radius-small);
+    background-color: var(--s-color-fill-default-light);
+    padding: var(--s-spacing-x-small);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 320px;
+  }
+
+  &-feedback {
+    height: fit-content;
+  }
+}

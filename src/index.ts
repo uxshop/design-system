@@ -110,6 +110,7 @@ export * from './components/ui/text-style';
 export * from './components/ui/timeline';
 export * from './components/ui/toast';
 export * from './components/ui/youtube-player';
+export * from './components/ui/index-table';
 
 // Types
 export * from './types';

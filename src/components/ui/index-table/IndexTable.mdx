@@ -1,0 +1,278 @@
+import { Controls, Canvas, Meta, Markdown } from '@storybook/blocks';
+
+import * as IndexTableStories from './IndexTable.stories';
+
+<Meta of={IndexTableStories} />
+
+# IndexTable
+
+> Este é um novo componente que substitui o antigo `TableList` e foi construído para ser mais simples, flexível e customizável. Internamente, o componente IndexTable não possui regras de negócio e funciona com base em propriedades passadas e eventos emitidos para o componente pai.
+
+O **IndexTable** é utilizado para exibir uma listagem de itens em forma de tabela. Ele é composto por abas que podem ser usadas para exibir os itens de um determinado contexto que atendem a um conjunto de filtros específicos. Além disso, o componente possui uma barra de ações com ações padrão para listagens.
+
+Uma das principais melhorias deste componente é na acessibilidade, pois ele inclui tratativas para garantir uma navegação completa por teclado, o que melhora a experiência de uso em geral.
+
+O componente também é totalmente customizável, permitindo que o usuário oculte as partes que não deseja exibir, desde que não se comprometa a funcionalidade essencial. Para isso, o IndexTable oferece slots que permitem a substituição ou adição de partes específicas da interface.
+
+
+<Canvas of={IndexTableStories.complete} />
+
+## Slots
+
+- `actions` - slot para adicionar ações a tabela
+- `action-pagination` - slot para substituir o componente de paginação padrão da tabela caso seja necessário. Para isso o componente deve possuir a propriedade `pagination` com o valor `null`.
+- `bulk-actions` - slot para adicionar ações em massa, bloco visível quando há itens selecionados na listagem.
+- `footer-actions` - slot para adicionar ações no rodapé da tabela caso seja necessário.
+- `cell({key})` - slot para substituir o conteúdo de uma determinada célula, onde `{key}` é a chave do campo. O conteúdo disponível para o slot é `{ item: T, row: number }`, sendo `T` o mesmo tipo genérico atribuito para os items do componente.
+- `head({key})` - slot para substituir o conteúdo do cabeçalho de uma determinada coluna, onde `{key}` é a chave determinada para a coluna. O conteúdo disponível para o slot é `{ field: { key: string, label: string }, label: string }`.
+
+<Controls />
+
+> Observação: a tabela acima não representa os slots disponíveis para o componente, para isso consulte a documentação acima no item [Slots](#slots). Além disso algumas das props disponíveis não estão sendo documentadas adequadamente na tabela acima, para isso consulte o complemento abaixo:
+
+### Complemento de Props
+
+- `ordination` - Define as opções de ordenação a serem exibidas no componente, sempre deve ser definida uma opção como ativa, se nenhuma for definida seleciona a primeira. Uma característica da lista de opções de ordenação é não permitir seleção múltipla, assim ao selecionar uma opção desmarca a anterior.
+- `pagination` - Quando o valor `null` é passado libera o slot `#pagination` para o uso do componente desejado, se houver. Interface para implementação da prop `pagination` é a `IndexTablePaginationProp`.
+- `bulkActions` - Define quais ações em massa serão exibidas ao selecionar itens da listagem no botão de `Ação em massa`. Interface para implementação é a `KeyLabelDefault[]`.
+- `activeFilterTags` - Define quais tags de filtros estão aplicados a tabela no momento. Interface para implementação é a `KeyLabelDefault[]`.
+- `loadingText` - Texto para o estado de carregamento interno do componente, se nada for passado assume um valor padrão.
+- `isInternalLoading` - Estado de carregamento interno do componente, deve ser usado para troca entre abas no componente IndexTable, ele permite a visualização do loading dentro do componente.
+
+## Exemplo de uso no código
+
+```vue
+<script setup lang="ts">
+import { reactive, ref } from 'vue';
+import { IndexTable, type KeyLabelDefault, type NameItemTableSelected } from 'design-system';
+
+const show = reactive({
+  tabs: true,
+  select: true,
+  reload: true,
+  search: true,
+  customFilters: true,
+  filters: true,
+  bulkActionDelete: true,
+});
+
+const tabs = [
+  {
+    label: 'Todos',
+    key: 'all',
+    active: true,
+  },
+  {
+    label: 'Outra',
+    key: 'other',
+    active: false,
+    disabled: true,
+  },
+  {
+    label: 'Alguma',
+    key: 'anyxpto',
+    active: false,
+  },
+];
+
+const ordination = [
+  {
+    key: 'name',
+    label: 'Nome (A-z)',
+    active: false,
+  },
+  {
+    key: 'updated',
+    label: 'Atualizados',
+    active: false,
+  },
+  {
+    key: 'created_at',
+    label: 'Data de criação',
+    active: true,
+  },
+];
+
+const pagination = {
+  from: 1,
+  to: 25,
+  size: 25,
+  total: 100,
+  page: 1,
+};
+
+const fields = [
+  {
+    key: 'id',
+    label: 'ID',
+  },
+  {
+    key: 'name',
+    label: 'Nome',
+  },
+  {
+    key: 'updated',
+    label: 'Atualizado',
+  },
+  {
+    key: 'created_at',
+    label: 'Data de criação',
+  },
+];
+
+const items = [
+  {
+    id: 1,
+    name: 'Item 1',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+    image: 'https://via.placeholder.com/150',
+  },
+  {
+    id: 2,
+    name: 'Item 2',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+    image: 'https://via.placeholder.com/120',
+  },
+  {
+    id: 3,
+    name: 'Item 3',
+    updated: '2021-10-01',
+    created_at: '2021-10-01',
+    image: 'https://via.placeholder.com/130',
+  },
+];
+
+const openTab = (key: string) => {
+  console.info('>> openTab', key);
+};
+
+const reload = () => {
+  console.info('>> reload');
+};
+
+const filters = () => {
+  console.info('>> filters');
+};
+
+const clearSearch = () => {
+  console.info('>> clearSearch');
+};
+
+const selectAll = (value: boolean) => {
+  console.info('>> selectAll', value);
+};
+
+const search = (word: string) => {
+  console.info('>> search', word);
+};
+
+const nextPage = () => {
+  console.info('>> nextPage');
+};
+
+const previousPage = () => {
+  console.info('>> previousPage');
+};
+
+const orderBy = (key: string) => {
+  console.info('>> orderBy', key);
+};
+
+const deleteSelectedItems = () => {
+  console.info('>> deleteSelectedItems');
+};
+
+const bulkAction = (action: string) => {
+  console.info('>> bulkAction', action);
+};
+
+const selectedItems = (items: NameItemTableSelected[]) => {
+  console.info('>> selectedItems', items);
+};
+
+const removeFilter = (tag: KeyLabelDefault) => {
+  console.info('>> removeFilter', tag);
+};
+
+const resetFilters = () => {
+  console.info('>> resetFilters');
+};
+
+const openItem = (item: object) => {
+  console.info('>> openItem', item);
+};
+
+const activeFilterTags = ref<KeyLabelDefault[]>([
+  {
+    key: 'name_by_asc',
+    label: 'Nome (A-z)',
+  },
+  {
+    key: 'created_at_by_desc',
+    label: 'Data de criação',
+  },
+]);
+
+const emptyResultDisplay = reactive({
+  show: false
+});
+
+const checkboxValue = ref<boolean | null>(false);
+
+const isLoading = ref(true);
+
+const isInternalLoading = ref(false);
+
+setTimeout(() => {
+  isLoading.value = false;
+}, 3000);
+</script>
+
+<template>
+  <IndexTable
+    :items
+    :fields
+    :show
+    :tabs
+    :ordination
+    :pagination
+    :active-filter-tags="activeFilterTags"
+    :bulk-actions="[
+      { label: 'Ativar registros', key: 'activate-records' },
+      { label: 'Inativar registros', key: 'inactivate-records' },
+    ]"
+    :is-loading="isLoading"
+    :is-internal-loading="isInternalLoading"
+    :checkbox-select-all-value="checkboxValue"
+    :empty-result-display="emptyResultDisplay"
+    @open-tab="openTab"
+    @reload="reload"
+    @filters="filters"
+    @search="search"
+    @clear-search="clearSearch"
+    @select-all="selectAll"
+    @next-page="nextPage"
+    @previous-page="previousPage"
+    @order-by="orderBy"
+    @delete-selected-items="deleteSelectedItems"
+    @bulk-action="bulkAction"
+    @selected-items="selectedItems"
+    @remove-filter="removeFilter"
+    @reset-filters="resetFilters"
+    @open-item="openItem">
+    <template #actions>
+      <div>Alguma Ação a adicionar</div>
+    </template>
+
+    <template #head(id)="props">
+      <div>[{{ props.label }}]</div>
+    </template>
+
+    <template #cell(name)="props">
+      <div>{{ props.item.image }} {{ props.row }}</div>
+    </template>
+  </IndexTable>
+</template>
+```

@@ -10,7 +10,7 @@ const emit = defineEmits(['update:modelValue', 'update']);
 const uid = `ui-form-radio-${getCurrentInstance()?.uid}`;
 
 const isChecked = computed(() => {
-  return JSON.stringify(props.value) == JSON.stringify(props.modelValue);
+  return JSON.stringify(props.value) === JSON.stringify(props.modelValue);
 });
 
 const update = (val: string | boolean) => {
@@ -22,8 +22,8 @@ const update = (val: string | boolean) => {
 <template>
   <label class="ui-form-radio" :for="uid" :class="{ '-disabled': disabled }">
     <input
-      type="radio"
       :id="uid"
+      type="radio"
       :modelValue="modelValue"
       :value="value"
       :tabindex="tabindex"
@@ -33,7 +33,7 @@ const update = (val: string | boolean) => {
       :checked="isChecked"
       @input="update(value)" />
     <span class="ui-form-radio-checkmark" />
-    <div class="ui-form-radio-text" v-if="label || $slots.default">
+    <div v-if="label || $slots.default" class="ui-form-radio-text">
       <slot>{{ label }}</slot>
     </div>
   </label>
