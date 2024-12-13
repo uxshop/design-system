@@ -37,6 +37,7 @@ const emit = defineEmits<{
 	(event: 'clickRow', i: any): void
 	(event: 'emptyData'): void
 	(event: 'deletedItem', deletedItemIds: number[]): number[]
+	(event: 'duplicatedItem', duplicatedItemIds: number[]): number[]
 }>()
 
 const tableListNavFilterRef = ref()
@@ -50,7 +51,7 @@ const queryParams = ref<TQueryParams>({})
 const route = useRoute()
 const loading = ref(false)
 const meta = ref({})
-const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false }, props.config)
+const cfg = Object.assign({ actions: ['duplicate', 'active', 'remove'], hideCheckbox: false }, props.config)
 const storageNameFilters = `adm_table_filters_${String(route.name)}`
 const formError = ref<Record<string, string> | null>(null)
 const hasQueryParams = ref()
@@ -190,6 +191,10 @@ const assignDefaultQueryParams = () => {
 	return Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams
 }
 
+const onDuplicate = () => {
+	emit('duplicatedItem', selected.value)
+}
+
 onBeforeMount(() => {
 	hasQueryParams.value = route.query.sort
 })
@@ -277,7 +282,7 @@ defineExpose({
 	<div v-else class="table-list" v-show="firstGet">
 		<TableListTabs v-if="!props.config.hideTabsFilter" :state="state" />
 		<TableListNav :loading="loading">
-			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
+			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" @duplicate="onDuplicate" />
 			<TableListNavRefresh v-if="!isMobile()" :state="state" />
 			<TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
 			<TableListNavCustomFilter

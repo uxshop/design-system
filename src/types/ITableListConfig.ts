@@ -37,4 +37,5 @@ export interface ITableListConfig {
 	dialogDelete?: DialogDelete
 	hideTabsFilter?: boolean
 	hideButtonFilter?: boolean
+	allowDuplication?: boolean
 }
