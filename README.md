@@ -8,7 +8,7 @@
   <p>
 </p>
 
-### Como usar
+## Como usar
 
 Para usar o Design System no seu projeto, execute o comando:
 
@@ -16,7 +16,7 @@ Para usar o Design System no seu projeto, execute o comando:
 npm install @tray-tecnologia/design-system
 ```
 
-### Importações
+#### Importações
 
 Todos os componentes podem ser importados individualmente pelo nome global do pacote.
 
@@ -50,12 +50,13 @@ import '@tray-tecnologia/design-system/theme';
 
 Vale ressaltar que a importação acima não engloba os estilos individuais dos componentes, somente a base usada por todo o Design System. Estão incluídos: normalização, helpers, mixins, tokens, variáveis, formulários, tabelas e tooltips.
 
-### Versões
+## Versões
 
 Para as últimas alterações e versões, visite [releases](https://github.com/uxshop/design-system/releases).
 
+## Desenvolvimento
 
-### Ambiente para desenvolvimento
+#### Configuração básica
 
 Para auxiliar no desenvolvimento desse pacote, siga os passos abaixo para executá-lo em sem ambiente local.
 
@@ -65,4 +66,17 @@ Para auxiliar no desenvolvimento desse pacote, siga os passos abaixo para execut
 
 O projeto inclui uma instalação básica do Vue no qual poderá testar os componentes criados.
 
-O projeto também inclui o Storybook com instruções de uso dos componentes já criados. Para executar o Storybook basta executar `npm run storybook`.
+#### Usando localmente com outros projetos
+
+Caso esteja trabalhando em alguma funcionalidade para o Design System e queira testar em outro projeto, siga os passos descritos.
+
+1. Execute `npm install` para instalar as dependencias;
+2. Execute `npm link` para criar um link simbólico do pacote no seu ambiente global;
+3. Acesse a pasta do outro projeto que deseja usar o Design System;
+4. Execute `npm link @tray-tecnologia/design-system` para usar a cópia do Design System loca no projeto;
+
+Nesse modo, qualquer alteração realizada na pasta local do Design System deve refletir automaticamente no outro projeo.
+
+#### Documentação
+
+O projeto inclui o Storybook, com instruções de uso dos componentes já criados. Para executar o Storybook basta executar `npm run storybook`.
