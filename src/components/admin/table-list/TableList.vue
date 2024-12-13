@@ -10,7 +10,7 @@ export default {};
 
 <script setup lang="ts">
 import { onMounted, watch, ref, reactive, onBeforeMount, computed } from 'vue';
-import { union, clone, omit, concat, isEqual } from 'lodash-es';
+import { union, clone, omit, isEqual } from 'lodash-es';
 import { useRoute } from 'vue-router';
 import HistoryReplaceState from '../../../services/HistoryReplaceState';
 import LocalStorage from '../../../services/LocalStorage';
@@ -42,6 +42,7 @@ const emit = defineEmits<{
   (event: 'clickRow', i: any): void;
   (event: 'emptyData'): void;
   (event: 'deletedItem', deletedItemIds: number[]): number[];
+  (event: 'duplicatedItem', duplicatedItemIds: number[]): number[];
 }>();
 
 const tableListNavFilterRef = ref();
@@ -55,7 +56,10 @@ const queryParams = ref<TQueryParams>({});
 const route = useRoute();
 const loading = ref(false);
 const meta = ref({});
-const cfg = Object.assign({ actions: ['remove', 'active'], hideCheckbox: false, placeholder: '' }, props.config);
+const cfg = Object.assign(
+  { actions: ['duplicate', 'active', 'remove'], hideCheckbox: false, placeholder: '' },
+  props.config
+);
 const storageNameFilters = `adm_table_filters_${String(route.name)}`;
 const formError = ref<Record<string, string[]> | undefined>(undefined);
 const hasQueryParams = ref();
@@ -198,6 +202,10 @@ const assignDefaultQueryParams = () => {
   return Object.assign(clone(queryDefault), clone(useRoute().query)) as TQueryParams;
 };
 
+const onDuplicate = () => {
+  emit('duplicatedItem', selected.value);
+};
+
 onBeforeMount(() => {
   hasQueryParams.value = route.query.sort;
 });
@@ -287,9 +295,9 @@ defineExpose({
   <div v-else class="table-list" v-show="firstGet">
     <TableListTabs v-if="!props.config.hideTabsFilter" :state="state" />
     <TableListNav :loading="loading">
-      <TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" />
+      <TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" @duplicate="onDuplicate" />
       <TableListNavRefresh v-if="!isMobile()" :state="state" />
-      <TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
+      <TableListNavSearch :placeholder="cfg.placeholder" @refresh="fetchData" :state="state" />
       <TableListNavCustomFilter
         v-if="config.customFilterService"
         :service="config.customFilterService"
