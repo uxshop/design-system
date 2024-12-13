@@ -30,7 +30,7 @@ export default [
     rules: {
       eqeqeq: 'error',
       '@typescript-eslint/naming-convention': [
-        'error',
+        'warn',
         {
           selector: 'default',
           format: ['camelCase'],
@@ -109,6 +109,17 @@ export default [
         },
       ],
       '@typescript-eslint/no-empty-object-type': 'off', // Permite interfaces com uso de extends apenas
+      'no-restricted-imports': [
+        'warn',
+        {
+          paths: [
+            {
+              name: 'vue-router',
+              message: 'Vue Router dependency is deprected and will be removed in next version.',
+            },
+          ],
+        },
+      ],
     },
   },
   {

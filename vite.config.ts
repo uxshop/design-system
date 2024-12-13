@@ -58,10 +58,11 @@ export default defineConfig({
     copyPublicDir: false,
     minify: false,
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'vue-router'],
       output: {
         globals: {
           vue: 'Vue',
+          'vue-router': 'VueRouter',
         },
         preserveModules: false,
         chunkFileNames: 'chunks/[name].[hash].js',

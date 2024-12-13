@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import 'youtube';
 import type { YoutubePlayerProps } from './types';
 
 const props = defineProps<YoutubePlayerProps>();
 const player = ref();
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
 function onYouTubeIframeAPIReady() {
@@ -31,6 +33,7 @@ function addYoutubeScriptTag() {
 }
 
 onMounted(() => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if (!(window as any).onYTReady) addYoutubeScriptTag();
   else onYouTubeIframeAPIReady();
 });
