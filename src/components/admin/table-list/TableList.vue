@@ -281,7 +281,7 @@ const state = reactive({
 
 defineExpose({
   unshiftItem: unshiftItem,
-  refresh: fetchData,
+  refresh: (forceTimestamp?: boolean) => fetchData(forceTimestamp),
   openFilterSidebar: () => tableListNavFilterRef.value.openFilterSidebar(),
 });
 </script>
