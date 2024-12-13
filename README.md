@@ -1,59 +1,82 @@
-# design-system
+<p align="center">  
+  <img src="public/icon.svg" width="100"/>
+  <h1 align="center">
+    Design System
+  </h1>
+  <p align="center">
+    O Design System é um conjunto de diretrizes, componentes e padrões visuais e de código, criado para garantir consistência e eficiência, auxiliando no desenvolvemento de aplicações de excelente qualidade.
+  <p>
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+## Como usar
 
-## Recommended IDE Setup
+Para usar o Design System no seu projeto, execute o comando:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```
+npm install @tray-tecnologia/design-system
 ```
 
-### Compile and Hot-Reload for Development
+#### Importações
 
-```sh
-npm run dev
+Todos os componentes podem ser importados individualmente pelo nome global do pacote.
+
+```ts
+import { Button } from '@tray-tecnologia/design-system';
 ```
 
-### Type-Check, Compile and Minify for Production
+Caso deseja adicionar o Design System como um plugin da sua aplicação Vue com as diretivas já instaladas, use:
 
-```sh
-npm run build
+```ts
+import { DS } from '@tray-tecnologia/design-system/setup';
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Caso desejar importar os filtros ou as diretivas disponibilizadas pelo Design System:
 
-```sh
-npm run test:unit
+```ts
+import { initials } from '@tray-tecnologia/design-system/filters';
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+Caso deseja usar somente as diretivas:
 
-```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
+```ts
+import directives from '@tray-tecnologia/design-system/directives';
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+Caso precisar qualquer coisa relacionada aos estilos disponibilizados:
 
-```sh
-npm run lint
+```scss
+import '@tray-tecnologia/design-system/theme';
 ```
+
+Vale ressaltar que a importação acima não engloba os estilos individuais dos componentes, somente a base usada por todo o Design System. Estão incluídos: normalização, helpers, mixins, tokens, variáveis, formulários, tabelas e tooltips.
+
+## Versões
+
+Para as últimas alterações e versões, visite [releases](https://github.com/uxshop/design-system/releases).
+
+## Desenvolvimento
+
+#### Configuração básica
+
+Para auxiliar no desenvolvimento desse pacote, siga os passos abaixo para executá-lo em sem ambiente local.
+
+1. Clone esse repositório;
+2. Execute `npm install` para instalar as dependencias;
+3. Execute `npm run dev` para iniciar o desenvolvimento.
+
+O projeto inclui uma instalação básica do Vue no qual poderá testar os componentes criados.
+
+#### Usando localmente com outros projetos
+
+Caso esteja trabalhando em alguma funcionalidade para o Design System e queira testar em outro projeto, siga os passos descritos.
+
+1. Execute `npm install` para instalar as dependencias;
+2. Execute `npm link` para criar um link simbólico do pacote no seu ambiente global;
+3. Acesse a pasta do outro projeto que deseja usar o Design System;
+4. Execute `npm link @tray-tecnologia/design-system` para usar a cópia do Design System loca no projeto;
+
+Nesse modo, qualquer alteração realizada na pasta local do Design System deve refletir automaticamente no outro projeo.
+
+#### Documentação
+
+O projeto inclui o Storybook, com instruções de uso dos componentes já criados. Para executar o Storybook basta executar `npm run storybook`.
