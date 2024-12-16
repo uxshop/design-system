@@ -24,7 +24,8 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:sass:compile": "tsx .storybook/compile.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "npm run build"
   },
   "peerDependencies": {
     "typescript": ">= 5.5.0 < 5.7.0",
