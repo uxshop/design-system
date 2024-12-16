@@ -3,7 +3,14 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.codeActionsOnSave.rules": [
+  "eslint.options": {
+    "fixTypes": [
+      "problem",
+      "suggestion",
+      "layout"
+    ]
+  },
+  "eslint.codeActionsOnSave.rules": [    
     "sort/imports"
   ],
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
