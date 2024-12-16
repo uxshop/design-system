@@ -1,7 +1,7 @@
 {
   "name": "@tray-tecnologia/design-system",
   "description": "Conjunto de diretrizes, componentes e padrões visuais e de código.",
-  "version": "4.0.0-rc.2",
+  "version": "4.0.0-rc.3",
   "type": "module",
   "engines": {
     "node": ">=20.10.0"
@@ -24,8 +24,7 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:sass:compile": "tsx .storybook/compile.ts",
-    "prepare": "husky",
-    "postinstall": "npm run build"
+    "prepare": "husky"
   },
   "peerDependencies": {
     "typescript": ">= 5.5.0 < 5.7.0",
