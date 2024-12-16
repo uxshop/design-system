@@ -1,4 +1,5 @@
 export interface TableRowProps {
+  /** @deprecated Essa propriedade está depreciada e será removida em breve. Trate via evento. */
   to?: any;
   head?: boolean;
 }

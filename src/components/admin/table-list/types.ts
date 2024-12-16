@@ -37,6 +37,7 @@ export interface ITableListConfig {
   dialogDelete?: TDialogDelete;
   hideTabsFilter?: boolean;
   hideButtonFilter?: boolean;
+  allowDuplication?: boolean;
 }
 
 export interface ITableListState {

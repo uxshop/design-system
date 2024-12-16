@@ -16,6 +16,7 @@ export type IDropdownItemButton = {
   iconFilled?: boolean;
   iconSize?: string;
   href?: string;
+  /** @deprecated Essa propriedade está depreciada e será removida em breve. Use o href no lugar ou trate via evento. */
   to?: object;
 };
 
