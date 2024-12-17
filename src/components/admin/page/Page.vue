@@ -5,7 +5,8 @@ import PageMessageSupport from '../page-message-support/PageMessageSupport.vue';
 import PageHelperVideo from '../page-helper-video/PageHelperVideo.vue';
 
 import type { PageProps } from './types';
-import type { PageHelperArticles, IArticle, PageHelperArticlesProps } from '../page-helper-articles';
+import { PageHelperArticles } from '../page-helper-articles';
+import type { IArticle, PageHelperArticlesProps } from '../page-helper-articles';
 
 const props = defineProps<PageProps>();
 const classList = ref<string[]>([]);
