@@ -5,7 +5,7 @@ export interface TabProviderInterface {
 }
 
 export interface TabProps {
-  modelValue: string;
+  modelValue: number | string;
 }
 
 export interface TabItemProps {

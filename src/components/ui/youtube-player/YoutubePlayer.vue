@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import type { Player, PlayerEvent, PlayerOptions } from 'youtube';
 import type { YoutubePlayerProps } from './types';
 
 const props = defineProps<YoutubePlayerProps>();
@@ -10,7 +9,7 @@ const player = ref();
 (window as any).onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
 function onYouTubeIframeAPIReady() {
-  const options: PlayerOptions = {
+  const options = {
     height: props.height || '360',
     width: props.width || '640',
     videoId: props.videoId,
@@ -20,10 +19,11 @@ function onYouTubeIframeAPIReady() {
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  player.value = new (window as any).YT.Player('player', options) as Player;
+  player.value = new (window as any).YT.Player('player', options);
 }
 
-function onPlayerReady(event: PlayerEvent) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function onPlayerReady(event: any) {
   event.target.playVideo();
 }
 
