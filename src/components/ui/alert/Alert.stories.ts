@@ -23,7 +23,7 @@ const meta = {
     },
     variant: {
       control: 'radio',
-      options: ['info', 'default', 'success', 'warning', 'danger', 'highlight'],
+      options: ['default', 'success', 'warning', 'danger', 'highlight'],
     },
   },
   parameters: {
