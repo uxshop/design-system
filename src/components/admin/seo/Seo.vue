@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Row from '../../ui/grid/row/Row.vue';
-import Col from '../../ui/grid/col/Col.vue';
-import Alert from '../../ui/alert/Alert.vue';
-import AlertTitle from '../../ui/alert/AlertTitle.vue';
 import { computed, ref, watchEffect } from 'vue';
 import { slugify as _slugify, truncate } from '../../../filters';
-import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
+import Alert from '../../ui/alert/Alert.vue';
+import AlertTitle from '../../ui/alert/AlertTitle.vue';
 import FormLayoutItem from '../../ui/form-layout/FormLayoutItem.vue';
+import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
+import Col from '../../ui/grid/col/Col.vue';
+import Row from '../../ui/grid/row/Row.vue';
 import type { SeoProps } from './types';
 
 const props = withDefaults(defineProps<SeoProps>(), {
@@ -74,7 +74,7 @@ watchEffect(() => {
             v-model="seoModelValue.meta_description"
             placeholder="Meta description"
             label="Meta description"
-            maxlength="250"
+            :maxlength="250"
             type="textarea" />
         </FormLayoutItem>
         <FormLayoutItem>
@@ -82,7 +82,7 @@ watchEffect(() => {
             v-model="seoModelValue.meta_keywords"
             placeholder="Ex: palavra1, palavra2"
             label="Meta keywords"
-            maxlength="200" />
+            :maxlength="200" />
         </FormLayoutItem>
         <FormLayoutItem>
           <FormTextfield v-model="seoModelValue.slug" placeholder="Ex: minha-url-amigavel" label="Url amigável" />
