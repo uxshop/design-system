@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
-import { useCurrencyInput, type CurrencyInputOptions, CurrencyDisplay } from 'vue-currency-input';
+import { computed, onMounted, ref, watch } from 'vue';
+import { CurrencyDisplay, useCurrencyInput, type CurrencyInputOptions } from 'vue-currency-input';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
-import type { FormCurrencyProps } from './types';
+import type { FormCurrencyEmits, FormCurrencyProps } from './types';
 
-const emit = defineEmits(['update:modelValue', 'change']);
 const props = withDefaults(defineProps<FormCurrencyProps>(), {
   state: undefined,
   placeholder: '0.00',
   max: 999999.99,
 });
-const focused = ref(props.autofocus ?? false);
+const emit = defineEmits<FormCurrencyEmits>();
+const focused = ref(false);
 
 const classList = computed(() => [
   'form-control',
@@ -19,31 +19,40 @@ const classList = computed(() => [
 
 /* @see https://dm4t2.github.io/vue-currency-input/config.html */
 const settings: CurrencyInputOptions = {
-  ...props.options,
-  ...{
-    locale: 'pt-BR',
-    currency: 'BRL',
-    currencyDisplay: CurrencyDisplay.symbol,
-    hideCurrencySymbolOnFocus: false,
-    hideGroupingSeparatorOnFocus: false,
-    hideNegligibleDecimalDigitsOnFocus: false,
-    autoDecimalDigits: true,
-    useGrouping: true,
-    accountingSign: false,
-    valueRange: {
-      min: props.min,
-      max: props.max,
-    },
-  },
+  locale: 'pt-BR',
+  currency: 'BRL',
+  currencyDisplay: CurrencyDisplay.symbol,
+  hideCurrencySymbolOnFocus: false,
+  hideGroupingSeparatorOnFocus: false,
+  hideNegligibleDecimalDigitsOnFocus: false,
+  autoDecimalDigits: true,
+  useGrouping: true,
+  accountingSign: false,
 };
 
-const { inputRef, setValue } = useCurrencyInput(settings);
+const { inputRef, setValue, setOptions } = useCurrencyInput(settings);
+
+onMounted(() => {
+  if (props.autofocus) focused.value = props.autofocus;
+
+  if (props.options) {
+    setOptions({
+      ...props.options,
+      valueRange: {
+        min: props.min,
+        max: props.max,
+      },
+    });
+  }
+});
 
 watch(
   () => props.modelValue,
   (newVal: any) => {
     if (newVal === null) return;
+
     setValue(parseFloat(newVal));
+    emit('update:modelValue', newVal);
   },
   { immediate: true }
 );
@@ -56,33 +65,35 @@ watch(
   },
   { immediate: true }
 );
+
+/** Necessário desativar devido a incompatibilidade atual com este componente e algumas props do `FormWrapper` */
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
 
 <template>
   <FormWrapper
     :id="id"
-    :leadingIcon="leadingIcon"
-    :trailingIcon="trailingIcon"
-    :label="label"
-    :loading="loading"
-    :last="last"
-    :disabled="disabled"
-    :labelInfo="labelInfo"
-    :float="float"
-    :state="state"
-    :size="size"
-    :invalidFeedback="invalidFeedback">
+    :leading-icon
+    :trailing-icon
+    :label
+    :loading
+    :last
+    :disabled
+    :label-info
+    :float
+    :size
+    :invalid-feedback>
     <input
-      :min="min"
-      :step="step"
       ref="inputRef"
       :class="classList"
       :placeholder="float ? '' : placeholder"
+      :disabled
+      :required
+      :readonly
+      :autocomplete
       @focus="focused = true"
-      @blur="focused = false"
-      :disabled="disabled"
-      :required="required"
-      :readonly="readonly"
-      :autocomplete="autocomplete" />
+      @blur="focused = false" />
   </FormWrapper>
 </template>

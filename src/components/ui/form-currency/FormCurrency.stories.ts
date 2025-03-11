@@ -1,12 +1,17 @@
-import FormCurrency from './FormCurrency.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
+import { completeEventsForm } from '../form-wrapper/__mocks__/completeEventsForm';
+import FormCurrency from './FormCurrency.vue';
 
-/** A currency field is an enhanced input field that only allows users to enter an amount of money. */
+/**
+ * Um campo de moeda é um campo de entrada aprimorado que permite que os usuários insiram apenas um
+ * valor monetário.
+ */
 const meta: Meta<typeof FormCurrency> = {
   title: 'Ui/Form/FormCurrency',
   component: FormCurrency,
   tags: ['autodocs'],
   args: {
+    ...completeEventsForm,
     state: undefined,
     invalidFeedback: '',
     float: false,
@@ -16,6 +21,9 @@ const meta: Meta<typeof FormCurrency> = {
     label: 'Label',
   },
   argTypes: {
+    modelValue: {
+      control: 'number',
+    },
     size: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
@@ -44,52 +52,52 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const minimum: Story = {};
 
-export const Float: Story = {
+export const float: Story = {
   args: {
     float: true,
   },
 };
 
-export const Loading: Story = {
+export const loading: Story = {
   args: {
     loading: true,
   },
 };
 
-export const Disabled: Story = {
+export const disabled: Story = {
   args: {
     disabled: true,
   },
 };
 
-export const LeadingIcon: Story = {
+export const leadingIcon: Story = {
   args: {
     leadingIcon: 'paid',
   },
 };
 
-export const TrailingIcon: Story = {
+export const trailingIcon: Story = {
   args: {
     trailingIcon: 'paid',
   },
 };
 
-export const LabelInfo: Story = {
+export const labelInfo: Story = {
   args: {
     labelInfo: 'Label Info',
   },
 };
 
-export const InvalidFeedback: Story = {
+export const invalidFeedback: Story = {
   args: {
     state: false,
     invalidFeedback: 'Campo inválido',
   },
 };
 
-export const MinAndMax: Story = {
+export const minAndMax: Story = {
   args: {
     min: 10,
     max: 100,

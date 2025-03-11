@@ -1,5 +1,5 @@
+import type { Size } from '#ds/types/general';
 import type { CurrencyInputOptions } from 'vue-currency-input';
-import type { Size } from '../../../types';
 
 export interface FormCurrencyProps {
   leadingIcon?: string;
@@ -24,4 +24,9 @@ export interface FormCurrencyProps {
   required?: boolean;
   readonly?: boolean;
   options?: CurrencyInputOptions;
+}
+
+export interface FormCurrencyEmits {
+  (event: 'update:modelValue', value: string | number | null): void;
+  (event: 'change', value: boolean): void;
 }
