@@ -1,12 +1,18 @@
-import FormTextarea from './FormTextarea.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
+import { completeEventsForm } from '../form-wrapper/__mocks__/completeEventsForm';
+import FormTextarea from './FormTextarea.vue';
+import { completeEventsTextArea } from './__mocks__/completeEventsTextArea';
 
-/** A text area input allows users to write and edit multiple lines of text, making it suitable for entering longer messages or detailed information. */
+/**
+ * Um campo de texto permite que os usuários escrevam e editem várias linhas de texto, tornando-o adequado para inserir mensagens mais longas ou informações detalhadas.
+ */
 const meta: Meta<typeof FormTextarea> = {
   title: 'Ui/Form/FormTextarea',
   component: FormTextarea,
   tags: ['autodocs'],
   args: {
+    ...completeEventsForm,
+    ...completeEventsTextArea,
     state: undefined,
     invalidFeedback: '',
     label: 'Label',
@@ -35,48 +41,82 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const minimum: Story = {};
 
-export const Float: Story = {
+export const float: Story = {
   args: {
     float: true,
   },
 };
 
-export const Loading: Story = {
+export const loading: Story = {
   args: {
     loading: true,
   },
 };
 
-export const Disabled: Story = {
+export const disabled: Story = {
   args: {
     disabled: true,
   },
 };
 
-export const LeadingIcon: Story = {
+export const leadingIcon: Story = {
   args: {
     leadingIcon: 'check',
   },
 };
 
-export const TrailingIcon: Story = {
+export const trailingIcon: Story = {
   args: {
     trailingIcon: 'check',
   },
 };
 
-export const LabelInfo: Story = {
+export const labelInfo: Story = {
   args: {
     labelInfo: 'Label Info',
   },
 };
 
-export const InvalidFeedback: Story = {
+export const invalidFeedback: Story = {
   args: {
     label: 'My Label',
     state: false,
     invalidFeedback: 'Campo inválido',
+  },
+};
+
+export const helpFeedback: Story = {
+  args: {
+    modelValue: '',
+    label: 'Descrição',
+    helpFeedback: 'Não use caracteres especiais',
+  },
+};
+
+export const maxlengthWithCounter: Story = {
+  args: {
+    modelValue: '',
+    label: 'Descrição',
+    maxlength: 10,
+  },
+};
+
+export const maxlengthWithCounterMaximumNotExceeded: Story = {
+  args: {
+    label: 'Descrição',
+    modelValue: '1234567890',
+    maxlength: 10,
+    allowExceedMaxLength: false,
+  },
+};
+
+export const maxlengthWithCounterMaximumExceeded: Story = {
+  args: {
+    label: 'Descrição',
+    modelValue: '1234567890123',
+    maxlength: 10,
+    allowExceedMaxLength: true,
   },
 };
