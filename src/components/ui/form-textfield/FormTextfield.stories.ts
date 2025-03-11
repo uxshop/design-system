@@ -20,6 +20,7 @@ const meta: Meta<typeof FormTextfield> = {
     float: false,
     disabled: false,
     size: 'md',
+    placeholder: 'Digite um texto',
   },
   render: (args) => ({
     components: { FormTextfield },
