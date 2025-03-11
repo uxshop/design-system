@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, shallowRef, watchEffect } from 'vue';
+import { easepick, RangePlugin } from '@easepick/bundle';
 import { DateTime } from 'luxon';
+import { computed, getCurrentInstance, onMounted, shallowRef, watchEffect } from 'vue';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
 import IconButton from '../icon-button/IconButton.vue';
-import { easepick, RangePlugin } from '@easepick/bundle';
 import type { EasyPickDetails, FormDatepickerProps } from './types';
 
 const props = withDefaults(defineProps<FormDatepickerProps>(), {
@@ -96,6 +96,11 @@ const clearDate = () => {
 defineExpose({
   clearDate,
 });
+
+/** Necessário desativar devido a incompatibilidade atual com este componente e algumas props do `FormWrapper` */
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
 
 <template>
@@ -104,18 +109,18 @@ defineExpose({
     class="ui-form-datepicker"
     :class="classList"
     :state="state"
-    :invalidFeedback="invalidFeedback"
-    leadingIcon="event"
+    :invalid-feedback
+    leading-icon="event"
     :disabled="disabled"
     :loading="loading"
     :float="float"
     :label="label"
-    :labelInfo="labelInfo"
+    :label-info
     :last="last"
     :autofocus="autofocus">
-    <input class="form-control" :id="uid" autocomplete="off" :placeholder="placeholder" readonly :class="classList" />
-    <template #trailingIcon v-if="!noClear && !loading">
-      <IconButton v-if="modelValue" icon="close" @click="clearDate" variant="plain" size="sm" class="btn-remove" />
+    <input :id="uid" class="form-control" autocomplete="off" :placeholder="placeholder" readonly :class="classList" />
+    <template v-if="!noClear && !loading" #trailingIcon>
+      <IconButton v-if="modelValue" icon="close" variant="plain" size="sm" class="btn-remove" @click="clearDate" />
     </template>
   </FormWrapper>
 </template>
