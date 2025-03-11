@@ -25,6 +25,13 @@
 
     &-head-cell.ui-table-cell {
       padding: var(--s-spacing-nano) var(--s-spacing-x-small);
+      color: var(--s-color-content-default);
+    }
+
+    &-head-icon {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
     }
   }
 

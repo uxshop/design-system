@@ -143,6 +143,7 @@ defineOptions({
           :show="{ select: show.select }"
           :head-class
           :cell-class
+          :ordination
           class="ui-index-table-list"
           :class="{ '-without-border-top': activeFilterTags.length === 0 && !isInternalLoading }"
           @open-item="openItem"

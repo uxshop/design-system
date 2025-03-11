@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
 import Button from '#ds/components/ui/button/Button.vue';
 import Dropdown from '#ds/components/ui/dropdown/Dropdown.vue';
 import DropdownItemButton from '#ds/components/ui/dropdown/DropdownItemButton.vue';
@@ -8,12 +7,13 @@ import FormTextfield from '#ds/components/ui/form-textfield/FormTextfield.vue';
 import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
 import Tag from '#ds/components/ui/tag/Tag.vue';
 import TagList from '#ds/components/ui/tag/TagList.vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import { useActionSelectAllItems } from '../composables/useActionSelectAllItems';
+import { defaultPropEmptyResultDisplay } from '../list/defaultPropEmptyResultDisplay';
+import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from '../types';
+import IndexTableInternalLoader from './IndexTableInternalLoader.vue';
 import IndexTableOrderButton from './IndexTableOrderButton.vue';
 import IndexTablePaginationItem from './IndexTablePaginationItem.vue';
-import { useActionSelectAllItems } from '../composables/useActionSelectAllItems';
-import IndexTableInternalLoader from './IndexTableInternalLoader.vue';
-import type { IndexTableActionsEmits, IndexTableActionsProps, IndexTableActionsSlots } from '../types';
-import { defaultPropEmptyResultDisplay } from '../list/defaultPropEmptyResultDisplay';
 
 const props = withDefaults(defineProps<IndexTableActionsProps>(), {
   show: () => ({

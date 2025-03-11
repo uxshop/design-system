@@ -1,6 +1,6 @@
-import { describe, test, expect, beforeEach, vi } from 'vitest';
-import { useIndexTableList } from './useIndexTableList';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 import type { IndexTableListProps, NameItemTableSelected } from '../types';
+import { useIndexTableList } from './useIndexTableList';
 
 describe('useIndexTableList', () => {
   let emit: any;
@@ -15,6 +15,18 @@ describe('useIndexTableList', () => {
       emptyResultDisplay: {
         show: false,
       },
+      ordination: [
+        {
+          key: 'name|asc',
+          label: 'Name (A-z)',
+          active: true,
+        },
+        {
+          key: 'name|desc',
+          label: 'Name (Z-a)',
+          active: false,
+        },
+      ],
     };
   });
 
@@ -74,5 +86,40 @@ describe('useIndexTableList', () => {
 
     expect(emit).toHaveBeenCalledWith('selected-all-items', true);
     expect(emit).toHaveBeenCalledWith('selected-items', [{ name: 'Item 1' }, { name: 'Item 2' }]);
+  });
+
+  describe('isOrdinationActive', () => {
+    test('Dado uma ordenação ativa Quando verificar se está ativa para o campo correto Então deve retornar true', () => {
+      const { isOrdinationActive } = useIndexTableList(props, emit);
+
+      const result = isOrdinationActive.value('name', 'asc');
+
+      expect(result).toBe(true);
+    });
+
+    test('Dado uma ordenação ativa Quando verificar se está ativa para um campo diferente Então deve retornar false', () => {
+      const { isOrdinationActive } = useIndexTableList(props, emit);
+
+      const result = isOrdinationActive.value('other_field', 'asc');
+
+      expect(result).toBe(false);
+    });
+
+    test('Dado uma ordenação ativa ascendente Quando verificar se está ativa como descendente Então deve retornar false', () => {
+      const { isOrdinationActive } = useIndexTableList(props, emit);
+
+      const result = isOrdinationActive.value('name', 'desc');
+
+      expect(result).toBe(false);
+    });
+
+    test('Dado nenhuma ordenação ativa Quando verificar qualquer campo Então deve retornar false', () => {
+      props.ordination = [];
+      const { isOrdinationActive } = useIndexTableList(props, emit);
+
+      const result = isOrdinationActive.value('name', 'asc');
+
+      expect(result).toBe(false);
+    });
   });
 });

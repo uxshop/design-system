@@ -49,7 +49,19 @@ export interface ActionOrdination extends KeyLabelDefault {
 }
 
 export interface IndexTableOrderButtonProps {
-  /** Define as opções de ordenação a serem exibidas no componente, sempre deve ser definida uma opção como ativa, se nenhuma for definida seleciona a primeira. Uma característica da lista de opções de ordenação é não permitir seleção múltipla, assim ao selecionar uma opção desmarca a anterior. */
+  /**
+   * Define as opções de ordenação a serem exibidas no componente, sempre deve ser
+   * definida uma opção como ativa, se nenhuma for definida seleciona a primeira. Uma
+   * característica da lista de opções de ordenação é não permitir seleção múltipla,
+   * assim ao selecionar uma opção desmarca a anterior.
+   *
+   * O padrão da `key` para cada opção de ordenação deve ser `field|direction` onde `field` é a
+   * chave do campo a ser ordenado e `direction` é a direção da ordenação, podendo ser `asc` ou
+   * `desc`. Exemplo de key válida para ordenação: `name|asc`.
+   *
+   * Ao configurar a key com esse padrão
+   * a tabela será capaz de indicar com um ícone qual coluna está ordenada e a direção da ordenação.
+   */
   ordination: null | ActionOrdination[];
 }
 
@@ -128,7 +140,7 @@ export interface ColsToShow {
   select: boolean;
 }
 
-export interface IndexTableListProps<T> extends IndexTableEmptyResultDisplayProps {
+export interface IndexTableListProps<T> extends IndexTableEmptyResultDisplayProps, IndexTableOrderButtonProps {
   /** Lista de items a serem exibidos na tabela com o tipo de objeto que for desejado. Para que os dados sejam exibidos corretamente, é necessário que o objeto tenha as chaves correspondentes aos campos de `key` definidos na prop `fields`, se uma chave não corresponder a um `field` o dado não será exibido. */
   items: T[];
   /**

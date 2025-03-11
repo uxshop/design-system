@@ -24,33 +24,43 @@ export const completeIndexTableProps: IndexTableProps<ItemInTable> = {
       disabled: false,
     },
     {
-      label: 'Produtos ativos',
-      key: 'active_products',
+      label: 'Ativos',
+      key: 'active',
       active: true,
       disabled: false,
     },
     {
-      label: 'Produtos inativos',
-      key: 'inactive_products',
+      label: 'Inativos',
+      key: 'inactive',
       active: false,
       disabled: false,
     },
   ],
   ordination: [
     {
-      key: 'name',
+      key: 'name|asc',
       label: 'Nome (A-z)',
       active: false,
     },
     {
-      key: 'updated',
-      label: 'Atualizados',
+      key: 'name|desc',
+      label: 'Nome (Z-a)',
       active: false,
     },
     {
-      key: 'created_at',
-      label: 'Data de criação',
-      active: true,
+      key: 'price|asc',
+      label: 'Preço (menor primeiro)',
+      active: false,
+    },
+    {
+      key: 'price|desc',
+      label: 'Preço (maior primeiro)',
+      active: false,
+    },
+    {
+      key: 'updated|desc',
+      label: 'Data de atualização (novos primeiro)',
+      active: false,
     },
   ],
   pagination: {
