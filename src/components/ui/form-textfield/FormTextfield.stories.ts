@@ -1,5 +1,11 @@
-import FormTextfield from './FormTextfield.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
+import { completeEventsForm } from '../form-wrapper/__mocks__/completeEventsForm';
+import FormTextfield from './FormTextfield.vue';
+import { completeEventsTextField } from './__mocks__/completeEventsTextField';
+
+const templateFormTextfield = /* html */ `
+  <FormTextfield v-bind="args" v-model="args.modelValue" ></FormTextfield>
+`;
 
 /** A text input field is a space where users can type and enter short pieces of information, such as names, addresses, or other brief text. */
 const meta: Meta<typeof FormTextfield> = {
@@ -7,14 +13,21 @@ const meta: Meta<typeof FormTextfield> = {
   component: FormTextfield,
   tags: ['autodocs'],
   args: {
+    ...completeEventsForm,
+    ...completeEventsTextField,
     state: undefined,
-    invalidFeedback: '',
     label: 'Label',
-    modelValue: 'Input value',
     float: false,
     disabled: false,
     size: 'md',
   },
+  render: (args) => ({
+    components: { FormTextfield },
+    setup() {
+      return { args };
+    },
+    template: templateFormTextfield,
+  }),
   argTypes: {
     state: {
       control: 'radio',
@@ -35,62 +48,95 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const minimum: Story = {};
 
-export const Float: Story = {
+export const float: Story = {
   args: {
+    modelValue: 'Input value',
     float: true,
   },
 };
 
-export const Loading: Story = {
+export const loading: Story = {
   args: {
+    modelValue: 'Input value',
     loading: true,
   },
 };
 
-export const Disabled: Story = {
+export const disabled: Story = {
   args: {
+    modelValue: 'Input value',
     disabled: true,
   },
 };
 
-export const LeadingIcon: Story = {
+export const leadingIcon: Story = {
   args: {
+    modelValue: 'Input value',
     leadingIcon: 'search',
   },
 };
 
-export const TrailingIcon: Story = {
+export const trailingIcon: Story = {
   args: {
+    modelValue: 'Input value',
     trailingIcon: 'search',
   },
 };
 
-export const LabelInfo: Story = {
+export const labelInfo: Story = {
   args: {
+    modelValue: 'Input value',
     labelInfo: 'Label Info',
   },
 };
 
-export const InvalidFeedback: Story = {
+export const invalidFeedback: Story = {
   args: {
+    modelValue: 'Input value',
     label: 'My Label',
     state: false,
     invalidFeedback: 'Campo inválido',
   },
 };
 
-export const Mask: Story = {
+export const mask: Story = {
   args: {
     modelValue: '19999999999',
     mask: ['(##) ####-####', '(##) #####-####'],
   },
 };
 
-export const Clearable: Story = {
+export const clearable: Story = {
   args: {
     clearable: true,
     modelValue: 'Clearable',
+  },
+};
+
+export const maxlengthWithCounter: Story = {
+  args: {
+    modelValue: '',
+    label: 'Descrição',
+    maxlength: 10,
+  },
+};
+
+export const maxlengthWithCounterMaximumNotExceeded: Story = {
+  args: {
+    label: 'Descrição',
+    modelValue: '1234567890',
+    maxlength: 10,
+    allowExceedMaxLength: false,
+  },
+};
+
+export const maxlengthWithCounterMaximumExceeded: Story = {
+  args: {
+    label: 'Descrição',
+    modelValue: '1234567890123',
+    maxlength: 10,
+    allowExceedMaxLength: true,
   },
 };

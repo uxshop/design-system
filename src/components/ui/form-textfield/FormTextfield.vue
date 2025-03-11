@@ -1,27 +1,42 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { vMaska } from 'maska';
+import { computed } from 'vue';
+import Button from '../button/Button.vue';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
 import Icon from '../icon/Icon.vue';
-import Button from '../button/Button.vue';
 
 import type { MaskOptions } from 'maska';
-import type { FormTextfieldProps } from './types';
+import { useMaxLength } from '../form-wrapper/composables/useMaxLength';
+import type { ValueOfFormText } from '../form-wrapper/types';
+import type { FormTextfieldEmits, FormTextfieldProps } from './types';
 
+const model = defineModel<ValueOfFormText>();
 const props = withDefaults(defineProps<FormTextfieldProps>(), {
   state: undefined,
+  type: 'text',
+  loading: false,
+  disabled: false,
+  autofocus: false,
+  float: false,
+  allowExceedMaxLength: false,
+  textsCounter: () => ({
+    counterInitialLimit: 'Você pode digitar até {{amount}} {{element}}',
+    counterRemaining: 'Você tem {{amount}} {{element}} {{remaining}}',
+    counterExceeded: 'Você atingiu o limite de {{element}}',
+    counterReachedLimit: 'Você excedeu o limite em {{amount}} {{element}}',
+    wordRemaining: {
+      singular: 'restante',
+      plural: 'restantes',
+    },
+    wordElement: {
+      singular: 'caractere',
+      plural: 'caracteres',
+    },
+  }),
 });
+const emit = defineEmits<FormTextfieldEmits>();
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', val: string | null): void;
-  (e: 'update', val: any): void;
-  (e: 'focus', event: Event): void;
-  (e: 'blur', event: Event): void;
-  (e: 'keydown', event: Event): void;
-  (e: 'keydownEnter', event: Event): void;
-  (e: 'clear'): void;
-  (e: 'updateRaw', val: any): void;
-}>();
+const { currentMaxLength } = useMaxLength<FormTextfieldProps>(props);
 
 const classList = computed(() => [props.size ? `-${props.size}` : '']);
 
@@ -35,13 +50,14 @@ const maskOptions = computed<MaskOptions>(() => {
 const update = (evt: Event) => {
   const target = evt.target as HTMLInputElement;
   const val = target.value;
-  emit('update:modelValue', val);
+
   emit('update', val);
 };
 
 const maskRawValue = (evt: Event) => {
   const target = evt.target as HTMLInputElement;
-  if (props.modelValue === target.value.replace(/\.|-/g, '')) return;
+  if (model.value === target.value.replace(/\.|-/g, '')) return;
+
   update(evt);
   emit('updateRaw', target.dataset.maskRawValue);
 };
@@ -63,66 +79,80 @@ const onEnter = (event: Event) => {
 };
 
 const onClear = () => {
+  model.value = null;
+
   emit('clear');
-  emit('update:modelValue', null);
   emit('update', null);
+};
+
+const onInternalState = (state: boolean | undefined) => {
+  emit('internal-state', state);
 };
 </script>
 
 <template>
   <FormWrapper
-    :id="id"
-    :leadingIcon="leadingIcon"
-    :trailingIcon="trailingIcon"
-    :trailingText="trailingText"
-    :label="label"
-    :loading="loading"
-    :last="last"
-    :disabled="disabled"
-    :float="float"
-    :state="state"
-    :labelInfo="labelInfo"
-    :autofocus="autofocus"
-    :size="size"
-    :invalidFeedback="invalidFeedback"
-    class="ui-form-textfield">
+    :id
+    v-model="model"
+    class="ui-form-textfield"
+    :leading-icon
+    :trailing-icon
+    :trailing-text
+    :label
+    :loading
+    :last
+    :disabled
+    :float
+    :state
+    :label-info
+    :autofocus
+    :size
+    :texts-counter
+    :allow-exceed-max-length
+    :invalid-feedback
+    :help-feedback
+    :minlength
+    :maxlength
+    @internal-state="onInternalState">
     <slot name="before" />
-    <!-- @vue-ignore -->
+    <!-- @vue-ignore
+      Ignora o erro do v-maska
+    -->
     <input
+      :id
+      v-model="model"
       v-maska:[maskOptions]
       class="form-control"
       :mask="mask"
       :data-maska-tokens="dataMaskaTokens"
+      :class="classList"
+      :placeholder="!float ? placeholder : ''"
+      :type
+      :step
+      :inputmode
+      :autocomplete
+      :disabled
+      :minlength
+      :maxlength="currentMaxLength"
+      :pattern
+      :autofocus
+      :readonly
+      :tabindex
+      :name
+      :title
+      :max
+      :min
+      :required
       @focus="onFocus"
       @blur="onBlur"
       @keydown="onKeydown"
       @keydown.enter="onEnter"
-      @maska="maskRawValue"
-      :value="modelValue"
-      :class="classList"
-      :placeholder="!float ? placeholder : ''"
-      :type="type"
-      :step="step"
-      :inputmode="inputmode"
-      :autocomplete="autocomplete"
-      :disabled="disabled"
-      :minlength="minlength"
-      :maxlength="maxlength"
-      :pattern="pattern"
-      :autofocus="autofocus"
-      :readonly="readonly"
-      :tabindex="tabindex"
-      :name="name"
-      :title="title"
-      :id="id"
-      :max="max"
-      :min="min"
-      :required="required" />
+      @maska="maskRawValue" />
     <slot name="after" />
-    <div v-if="clearable && modelValue" class="close" @click="onClear">
+    <div v-if="clearable && model" class="close" @click="onClear">
       <Icon name="cancel" filled size="24" />
     </div>
-    <template #append v-if="$slots.append || actions">
+    <template v-if="$slots.append || actions" #append>
       <div v-if="actions" class="actions">
         <Button
           v-for="item in actions"
@@ -130,7 +160,7 @@ const onClear = () => {
           :variant="item.variant"
           :type="item.type"
           :label="item.label"
-          :leadingIcon="item.leadingIcon"
+          :leading-icon="item.leadingIcon"
           @click="item.onAction" />
       </div>
       <slot name="append" />

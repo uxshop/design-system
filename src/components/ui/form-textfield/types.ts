@@ -1,34 +1,28 @@
-import type { MaskType } from 'maska';
-import type { Size } from '../../../types';
 import type { ActionButton } from '#ds/types';
+import type { MaskType } from 'maska';
+import type { FormWrapperProps } from '../form-wrapper';
+import type { FormWrapperEmits } from '../form-wrapper/types';
 
-export interface FormTextfieldProps {
-  leadingIcon?: string;
-  trailingIcon?: string;
-  labelInfo?: string;
-  trailingText?: string;
-  state?: boolean;
-  invalidFeedback?: string;
-  loading?: boolean;
-  last?: boolean;
-  float?: boolean;
-  modelValue?: string | number | null;
-  label?: string;
-  id?: string;
+export interface FormTextfieldEmits extends FormWrapperEmits {
+  (event: 'update', value: any): void;
+  (e: 'focus', event: Event): void;
+  (e: 'blur', event: Event): void;
+  (e: 'keydown', event: Event): void;
+  (e: 'keydownEnter', event: Event): void;
+  (e: 'clear'): void;
+  (e: 'updateRaw', val: any): void;
+}
+
+export interface FormTextfieldProps extends FormWrapperProps {
   placeholder?: string;
   step?: string | number;
   tabindex?: string;
   inputmode?: 'text' | 'search' | 'none' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal';
-  size?: Size;
   pattern?: string;
   title?: string;
   name?: string;
   clearable?: boolean;
   autocomplete?: string;
-  minlength?: string | number;
-  maxlength?: string | number;
-  autofocus?: boolean;
-  disabled?: boolean;
   required?: boolean;
   readonly?: boolean;
   type?: string;
