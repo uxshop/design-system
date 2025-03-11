@@ -1,33 +1,58 @@
 <script setup lang="ts">
-import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots } from 'vue';
+import { computed, getCurrentInstance, nextTick, onMounted, ref, useSlots, watch } from 'vue';
+import vTooltip from '../../../directives/tooltip';
 import Icon from '../icon/Icon.vue';
 import Spinner from '../spinner/Spinner.vue';
-import vTooltip from '../../../directives/tooltip';
-import type { FormWrapperProps } from './types';
+import { useCharacterCount } from './composables/useCharacterCount';
+import type { FormWrapperEmits, FormWrapperProps, ValueOfFormText } from './types';
 
-const props = defineProps<FormWrapperProps>();
+const model = defineModel<ValueOfFormText>();
+const props = withDefaults(defineProps<FormWrapperProps>(), {
+  state: undefined,
+  loading: false,
+  disabled: false,
+  autofocus: false,
+  float: false,
+  allowExceedMaxLength: false,
+  textsCounter: () => ({
+    counterInitialLimit: 'Você pode digitar até {{amount}} {{element}}',
+    counterRemaining: 'Você tem {{amount}} {{element}} {{remaining}}',
+    counterExceeded: 'Você atingiu o limite de {{element}}',
+    counterReachedLimit: 'Você excedeu o limite em {{amount}} {{element}}',
+    wordRemaining: {
+      singular: 'restante',
+      plural: 'restantes',
+    },
+    wordElement: {
+      singular: 'caractere',
+      plural: 'caracteres',
+    },
+  }),
+});
+const emit = defineEmits<FormWrapperEmits>();
+
 const elementRef = ref<Element>();
-const uid = ref(props.id || `__VID__${getCurrentInstance()?.uid}`);
-
+const uid = ref<string>(crypto.randomUUID());
 const slots = useSlots();
+
 onMounted(() => {
+  uid.value = props.id || `__VID__${getCurrentInstance()?.uid}`;
+
   nextTick(() => {
-    // @ts-expect-error expected
-    const input: HTMLElement[] = elementRef.value?.querySelectorAll('input, textarea, select');
+    const element: undefined | NodeListOf<HTMLInputElement> =
+      elementRef.value?.querySelectorAll('input, textarea, select');
 
-    if (input && input[0]) {
-      input[0].setAttribute('id', uid.value);
+    if (element && element[0]) {
+      element[0].setAttribute('id', uid.value);
 
-      if (props.autofocus) {
-        input[0].focus();
-      }
+      if (props.autofocus) element[0].focus();
 
-      if (props.float) {
-        input[0].setAttribute('placeholder', ' ');
-      }
+      if (props.float) element[0].setAttribute('placeholder', ' ');
     }
   });
 });
+
+const { counterText, shouldShowCounterText, internalState } = useCharacterCount(model, props);
 
 const classList = computed(() => [
   'ui-form-wrapper',
@@ -38,14 +63,20 @@ const classList = computed(() => [
   (props.disabled || props.loading) && '-disabled',
   props.float && '-float',
   props.size && `-${props.size}`,
+  {
+    '-valid': internalState.value === true,
+    '-invalid': internalState.value === false,
+  },
 ]);
 
-const inputValidation = computed(() => (props.state === true ? '-valid' : props.state === false ? '-invalid' : ''));
+watch(internalState, (newState) => {
+  emit('internal-state', newState);
+});
 </script>
 
 <template>
-  <div ref="elementRef" :class="[...classList, inputValidation]">
-    <div class="form-wrapper-label" v-if="!float && props.label">
+  <div ref="elementRef" :class="classList">
+    <div v-if="!float && props.label" class="form-wrapper-label">
       <label class="form-control-label" :for="uid" v-html="props.label"></label>
       <span v-if="labelInfo" v-tooltip:top="labelInfo" class="form-wrapper-label-icon">
         <Icon name="help" class="icon" :size="14" />
@@ -54,34 +85,47 @@ const inputValidation = computed(() => (props.state === true ? '-valid' : props.
 
     <div class="ui-form-wrapper-main">
       <div class="form-wrapper-content-item form-wrapper-content-bx">
-        <Icon class="leading-icon" :name="leadingIcon" v-if="leadingIcon" :size="20" />
+        <Icon v-if="leadingIcon" class="leading-icon" :name="leadingIcon" :size="20" />
         <slot />
 
         <div class="form-wrapper-notched">
           <div class="form-wrapper-notched-prepend"></div>
-          <div class="form-wrapper-notched-label" v-if="float">
-            <label class="form-wrapper-label" :for="uid" v-html="props.label"></label>
+          <div v-if="float" class="form-wrapper-notched-label">
+            <label :for="uid" class="form-wrapper-label" v-html="props.label"></label>
           </div>
           <div class="form-wrapper-notched-append"></div>
         </div>
 
         <div class="trailing-wrapper">
-          <Icon class="trailing-icon" :name="trailingIcon" v-if="trailingIcon && !loading" :size="20" />
-          <span class="trailing-icon-text" v-if="trailingText">{{ trailingText }}</span>
+          <Icon v-if="trailingIcon && !loading" class="trailing-icon" :name="trailingIcon" :size="20" />
+          <span v-if="trailingText" class="trailing-icon-text">{{ trailingText }}</span>
           <slot name="trailingIcon" />
         </div>
 
-        <div class="form-control-loader" v-if="loading">
+        <div v-if="loading" class="form-control-loader">
           <Spinner class="form-control-loader-spinner" />
         </div>
       </div>
-      <div class="form-wrapper-append" v-if="slots.append">
+      <div v-if="slots.append" class="form-wrapper-append">
         <slot name="append" />
       </div>
     </div>
 
-    <div class="form-invalid-feedback" v-if="state === false && invalidFeedback">
-      {{ invalidFeedback }}
+    <div v-if="internalState === false" class="form-invalid-feedback">
+      <template v-if="invalidFeedback">
+        {{ invalidFeedback }}
+      </template>
+      <template v-else-if="shouldShowCounterText('invalid')">
+        {{ counterText }}
+      </template>
+    </div>
+    <div v-else-if="internalState !== true" class="form-help-feedback">
+      <template v-if="helpFeedback">
+        {{ helpFeedback }}
+      </template>
+      <template v-else-if="shouldShowCounterText('help')">
+        {{ counterText }}
+      </template>
     </div>
   </div>
 </template>
