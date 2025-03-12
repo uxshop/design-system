@@ -30,11 +30,8 @@
   }
 
   &-tag-loader {
-    @include scrollbarStyle;
     position: relative;
-    height: 56px;
-    max-height: 56px;
-    overflow-y: auto;
+    overflow: hidden;
     transition: height var(--s-motion-duration-fast) var(--s-motion-ease-default);
 
     &.-zero-items {
