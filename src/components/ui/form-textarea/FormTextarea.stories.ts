@@ -100,6 +100,8 @@ export const maxlengthWithCounter: Story = {
     modelValue: '',
     label: 'Descrição',
     maxlength: 10,
+    allowExceedMaxLength: false,
+    showCounter: true,
   },
 };
 
@@ -109,6 +111,7 @@ export const maxlengthWithCounterMaximumNotExceeded: Story = {
     modelValue: '1234567890',
     maxlength: 10,
     allowExceedMaxLength: false,
+    showCounter: true,
   },
 };
 
@@ -118,5 +121,6 @@ export const maxlengthWithCounterMaximumExceeded: Story = {
     modelValue: '1234567890123',
     maxlength: 10,
     allowExceedMaxLength: true,
+    showCounter: true,
   },
 };

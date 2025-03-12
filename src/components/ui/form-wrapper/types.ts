@@ -32,6 +32,12 @@ export interface FormWrapperProps {
   loading?: boolean;
   last?: boolean;
   /**
+   * Se definido como true e houver um `maxlength` definido com valor maior que 0 exibe um contador
+   * de caracteres no campo de texto. Por padrão é false. Caso seja utilizado as props
+   * `invalidFeedback` ou `helpFeedback` o contador de caracteres será ocultado.
+   */
+  showCounter?: boolean;
+  /**
    * Altera o label do campo para a posição flutuante embutida no campo.
    */
   float?: boolean;
@@ -57,9 +63,9 @@ export interface FormWrapperProps {
   minlength?: number;
   /**
    * Tamanho máximo de caracteres que o campo pode aceitar.
-   * Quando houver um valor definido o campo exibirá um contador de caracteres no local das
-   * mensagens de feedback. Caso seja utilizado as props `invalidFeedback` ou `helpFeedback` o
-   * contador de caracteres será ocultado.
+   * Quando houver um valor definido o campo e o `showCounter` for igual a `true` exibirá um
+   * contador de caracteres no local das mensagens de feedback. Caso seja utilizado as props
+   * `invalidFeedback` ou `helpFeedback` o contador de caracteres será ocultado.
    */
   maxlength?: number;
   /**

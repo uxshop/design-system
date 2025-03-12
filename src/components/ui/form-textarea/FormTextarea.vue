@@ -2,31 +2,13 @@
 import { computed } from 'vue';
 import { useMaxLength } from '../form-wrapper/composables/useMaxLength';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
+import { valuesDefaultOfFormWrapperProps } from '../form-wrapper/valuesDefaultOfFormWrapperProps';
 import type { FormTextareaEmits, FormTextareaProps } from './types';
 
 const model = defineModel<string>();
 const props = withDefaults(defineProps<FormTextareaProps>(), {
   rows: 4,
-  state: undefined,
-  loading: false,
-  disabled: false,
-  autofocus: false,
-  float: false,
-  allowExceedMaxLength: false,
-  textsCounter: () => ({
-    counterInitialLimit: 'Você pode digitar até {{amount}} {{element}}',
-    counterRemaining: 'Você tem {{amount}} {{element}} {{remaining}}',
-    counterExceeded: 'Você atingiu o limite de {{element}}',
-    counterReachedLimit: 'Você excedeu o limite em {{amount}} {{element}}',
-    wordRemaining: {
-      singular: 'restante',
-      plural: 'restantes',
-    },
-    wordElement: {
-      singular: 'caractere',
-      plural: 'caracteres',
-    },
-  }),
+  ...valuesDefaultOfFormWrapperProps,
 });
 const emit = defineEmits<FormTextareaEmits>();
 
@@ -63,6 +45,7 @@ const onInternalState = (state: boolean | undefined) => {
     :help-feedback
     :minlength
     :maxlength
+    :show-counter
     @internal-state="onInternalState">
     <textarea
       :id

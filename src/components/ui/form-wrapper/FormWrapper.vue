@@ -5,30 +5,10 @@ import Icon from '../icon/Icon.vue';
 import Spinner from '../spinner/Spinner.vue';
 import { useCharacterCount } from './composables/useCharacterCount';
 import type { FormWrapperEmits, FormWrapperProps, ValueOfFormText } from './types';
+import { valuesDefaultOfFormWrapperProps } from './valuesDefaultOfFormWrapperProps';
 
 const model = defineModel<ValueOfFormText>();
-const props = withDefaults(defineProps<FormWrapperProps>(), {
-  state: undefined,
-  loading: false,
-  disabled: false,
-  autofocus: false,
-  float: false,
-  allowExceedMaxLength: false,
-  textsCounter: () => ({
-    counterInitialLimit: 'Você pode digitar até {{amount}} {{element}}',
-    counterRemaining: 'Você tem {{amount}} {{element}} {{remaining}}',
-    counterExceeded: 'Você atingiu o limite de {{element}}',
-    counterReachedLimit: 'Você excedeu o limite em {{amount}} {{element}}',
-    wordRemaining: {
-      singular: 'restante',
-      plural: 'restantes',
-    },
-    wordElement: {
-      singular: 'caractere',
-      plural: 'caracteres',
-    },
-  }),
-});
+const props = withDefaults(defineProps<FormWrapperProps>(), valuesDefaultOfFormWrapperProps);
 const emit = defineEmits<FormWrapperEmits>();
 
 const elementRef = ref<Element>();
@@ -52,7 +32,7 @@ onMounted(() => {
   });
 });
 
-const { counterText, shouldShowCounterText, internalState } = useCharacterCount(model, props);
+const { counterText, shouldShowCounterText, shouldShowCounter, internalState } = useCharacterCount(model, props);
 
 const classList = computed(() => [
   'ui-form-wrapper',
@@ -115,7 +95,7 @@ watch(internalState, (newState) => {
       <template v-if="invalidFeedback">
         {{ invalidFeedback }}
       </template>
-      <template v-else-if="shouldShowCounterText('invalid')">
+      <template v-else-if="shouldShowCounterText('invalid') && shouldShowCounter">
         {{ counterText }}
       </template>
     </div>
@@ -123,7 +103,7 @@ watch(internalState, (newState) => {
       <template v-if="helpFeedback">
         {{ helpFeedback }}
       </template>
-      <template v-else-if="shouldShowCounterText('help')">
+      <template v-else-if="shouldShowCounterText('help') && shouldShowCounter">
         {{ counterText }}
       </template>
     </div>

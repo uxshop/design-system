@@ -15,6 +15,7 @@ describe('useCharacterCount', () => {
     const defaultProps: FormWrapperProps = {
       maxlength: 100,
       allowExceedMaxLength: false,
+      showCounter: true,
       textsCounter: {
         counterInitialLimit: 'Você pode digitar até {{amount}} {{element}}',
         counterRemaining: 'Você tem {{amount}} {{element}} {{remaining}}',
@@ -140,32 +141,18 @@ describe('useCharacterCount', () => {
   });
 
   describe('Exibição do texto do contador', () => {
-    test('shouldShowCounterText("help") deve retornar true quando não há helpFeedback e o texto não excede o limite', () => {
+    test('shouldShowCounterText("help") deve retornar true quando o texto não excede o limite', () => {
       const { getComposable } = createTestSetup('a'.repeat(50));
       const { shouldShowCounterText } = getComposable();
 
       expect(shouldShowCounterText('help').value).toBe(true);
     });
 
-    test('shouldShowCounterText("help") deve retornar false quando há helpFeedback', () => {
-      const { getComposable } = createTestSetup('a'.repeat(50), { helpFeedback: 'Texto de ajuda' });
-      const { shouldShowCounterText } = getComposable();
-
-      expect(shouldShowCounterText('help').value).toBe(false);
-    });
-
-    test('shouldShowCounterText("invalid") deve retornar true quando não há invalidFeedback e o texto excede o limite', () => {
+    test('shouldShowCounterText("invalid") deve retornar true quando o texto excede o limite', () => {
       const { getComposable } = createTestSetup('a'.repeat(101));
       const { shouldShowCounterText } = getComposable();
 
       expect(shouldShowCounterText('invalid').value).toBe(true);
-    });
-
-    test('shouldShowCounterText("invalid") deve retornar false quando há invalidFeedback', () => {
-      const { getComposable } = createTestSetup('a'.repeat(101), { invalidFeedback: 'Texto inválido' });
-      const { shouldShowCounterText } = getComposable();
-
-      expect(shouldShowCounterText('invalid').value).toBe(false);
     });
   });
 

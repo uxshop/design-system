@@ -111,6 +111,26 @@ describe('FormTextfield', () => {
     });
   });
 
+  describe('Contador de caracteres com showCounter', () => {
+    test('Dado um componente FormTextfield com showCounter=false, Quando é renderizado, Então não deve passar showCounter=false para FormWrapper', () => {
+      const { formWrapper } = createComponent({
+        maxlength: 100,
+        showCounter: false,
+      });
+
+      expect(formWrapper().props('showCounter')).toBe(false);
+    });
+
+    test('Dado um componente FormTextfield com showCounter=true, Quando é renderizado, Então deve passar showCounter=true para FormWrapper', () => {
+      const { formWrapper } = createComponent({
+        maxlength: 100,
+        showCounter: true,
+      });
+
+      expect(formWrapper().props('showCounter')).toBe(true);
+    });
+  });
+
   describe('Estado de input', () => {
     test('Dado um componente FormTextfield, Quando está disabled, Então o input deve estar desabilitado', () => {
       const { input } = createComponent({ disabled: true });

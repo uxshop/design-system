@@ -80,10 +80,19 @@ export function useCharacterCount(model: ModelRef<string | number | null | undef
   });
 
   /**
+   * Determina se o contador de caracteres deve ser exibido, com base nas duas props necessárias
+   */
+  const shouldShowCounter = computed(() => {
+    if (!props.maxlength) return false;
+
+    return props.showCounter;
+  });
+
+  /**
    * Determina o estado do campo baseado nas regras de validação
    */
   const internalState = computed<undefined | boolean>(() => {
-    if (!props.maxlength) return props.state;
+    if (!shouldShowCounter.value) return props.state;
 
     if (isExceeded.value) return false;
 
@@ -95,15 +104,13 @@ export function useCharacterCount(model: ModelRef<string | number | null | undef
    */
   const shouldShowCounterText = (type: 'help' | 'invalid') =>
     computed(() => {
-      if (!props.maxlength) return false;
-
-      const isHelpType = type === 'help';
-
-      if (!isHelpType) {
-        return isExceeded.value && !props.allowExceedMaxLength && !props.invalidFeedback;
+      const isInvalidType = type === 'invalid';
+      if (isInvalidType) {
+        const shouldShowInvalid = isExceeded.value && !props.allowExceedMaxLength;
+        return shouldShowCounter.value && shouldShowInvalid;
       }
 
-      return (!isExceeded.value || props.allowExceedMaxLength) && !props.helpFeedback;
+      return shouldShowCounter.value;
     });
 
   return {
@@ -113,5 +120,6 @@ export function useCharacterCount(model: ModelRef<string | number | null | undef
     isExceeded,
     counterText,
     shouldShowCounterText,
+    shouldShowCounter,
   };
 }

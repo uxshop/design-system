@@ -10,6 +10,7 @@ describe('FormWrapper (Teste Integrado)', () => {
       modelValue: '',
       'onUpdate:modelValue': (e: any) => wrapper.setProps({ modelValue: e }),
       label: 'Campo de texto',
+      showCounter: true,
     };
 
     Object.assign(props, customProps);
@@ -216,6 +217,108 @@ describe('FormWrapper (Teste Integrado)', () => {
 
       await nextTick();
       expect(getHelpFeedback().text()).toContain('Ainda 7 caracteres disponíveis');
+    });
+  });
+
+  describe('Contador de caracteres com prop showCounter', () => {
+    test('Quando showCounter é true e maxlength está definido, Então deve mostrar o contador de caracteres', async () => {
+      const { getHelpFeedback } = createComponent({
+        maxlength: 20,
+        showCounter: true,
+      });
+
+      await nextTick();
+
+      expect(getHelpFeedback().exists()).toBe(true);
+      expect(getHelpFeedback().text()).toContain('Você pode digitar até 20 caracteres');
+    });
+
+    test('Quando showCounter é false e maxlength está definido, Então não deve mostrar o contador de caracteres', async () => {
+      const { getHelpFeedback } = createComponent({
+        maxlength: 20,
+        showCounter: false,
+      });
+
+      await nextTick();
+
+      expect(getHelpFeedback().exists()).toBe(true);
+      expect(getHelpFeedback().text()).toContain('');
+    });
+
+    test('Quando showCounter é false, e o `state` é `false` e o texto excede o limite, Então não deve mostrar feedback de erro relacionado ao contador mas o campo terá o estado de erro devido ao `state` passado', async () => {
+      const { wrapper, getInvalidFeedback } = createComponent({
+        maxlength: 10,
+        allowExceedMaxLength: true,
+        showCounter: false,
+        state: false,
+      });
+
+      wrapper.setProps({ modelValue: 'Este texto tem mais de 10 caracteres' });
+      await nextTick();
+
+      expect(getInvalidFeedback().exists()).toBe(true);
+      expect(getInvalidFeedback().text()).toContain('');
+      expect(wrapper.classes()).toContain('-invalid');
+    });
+
+    test('Quando showCounter é false mas há invalidFeedback, Então deve mostrar o invalidFeedback independente do contador', async () => {
+      const { wrapper, getInvalidFeedback } = createComponent({
+        maxlength: 10,
+        showCounter: false,
+        state: false,
+        invalidFeedback: 'Campo com erro personalizado',
+      });
+
+      await nextTick();
+
+      expect(getInvalidFeedback().exists()).toBe(true);
+      expect(getInvalidFeedback().text()).toBe('Campo com erro personalizado');
+      expect(wrapper.classes()).toContain('-invalid');
+    });
+
+    test('Quando showCounter é false mas há helpFeedback, Então deve mostrar o helpFeedback independente do contador', async () => {
+      const { getHelpFeedback } = createComponent({
+        maxlength: 10,
+        showCounter: false,
+        helpFeedback: 'Texto de ajuda personalizado',
+      });
+
+      await nextTick();
+
+      expect(getHelpFeedback().exists()).toBe(true);
+      expect(getHelpFeedback().text()).toBe('Texto de ajuda personalizado');
+    });
+
+    test('Quando showCounter muda de false para true, Então o texto do contador deve ser exibido', async () => {
+      const { wrapper, getHelpFeedback } = createComponent({
+        maxlength: 20,
+        showCounter: false,
+      });
+
+      expect(getHelpFeedback().exists()).toBe(true);
+      expect(getHelpFeedback().text()).toContain('');
+
+      wrapper.setProps({ showCounter: true });
+      await nextTick();
+
+      expect(getHelpFeedback().exists()).toBe(true);
+      expect(getHelpFeedback().text()).toContain('Você pode digitar até 20 caracteres');
+    });
+
+    test('Quando showCounter muda de true para false, Então o texto do contador deve ser ocultado', async () => {
+      const { wrapper, getHelpFeedback } = createComponent({
+        maxlength: 20,
+        showCounter: true,
+      });
+
+      expect(getHelpFeedback().exists()).toBe(true);
+      expect(getHelpFeedback().text()).toContain('Você pode digitar até 20 caracteres');
+
+      wrapper.setProps({ showCounter: false });
+      await nextTick();
+
+      expect(getHelpFeedback().exists()).toBe(true);
+      expect(getHelpFeedback().text()).toContain('');
     });
   });
 });

@@ -8,31 +8,13 @@ import Icon from '../icon/Icon.vue';
 import type { MaskOptions } from 'maska';
 import { useMaxLength } from '../form-wrapper/composables/useMaxLength';
 import type { ValueOfFormText } from '../form-wrapper/types';
+import { valuesDefaultOfFormWrapperProps } from '../form-wrapper/valuesDefaultOfFormWrapperProps';
 import type { FormTextfieldEmits, FormTextfieldProps } from './types';
 
 const model = defineModel<ValueOfFormText>();
 const props = withDefaults(defineProps<FormTextfieldProps>(), {
-  state: undefined,
   type: 'text',
-  loading: false,
-  disabled: false,
-  autofocus: false,
-  float: false,
-  allowExceedMaxLength: false,
-  textsCounter: () => ({
-    counterInitialLimit: 'Você pode digitar até {{amount}} {{element}}',
-    counterRemaining: 'Você tem {{amount}} {{element}} {{remaining}}',
-    counterExceeded: 'Você atingiu o limite de {{element}}',
-    counterReachedLimit: 'Você excedeu o limite em {{amount}} {{element}}',
-    wordRemaining: {
-      singular: 'restante',
-      plural: 'restantes',
-    },
-    wordElement: {
-      singular: 'caractere',
-      plural: 'caracteres',
-    },
-  }),
+  ...valuesDefaultOfFormWrapperProps,
 });
 const emit = defineEmits<FormTextfieldEmits>();
 
@@ -113,6 +95,7 @@ const onInternalState = (state: boolean | undefined) => {
     :help-feedback
     :minlength
     :maxlength
+    :show-counter
     @internal-state="onInternalState">
     <slot name="before" />
     <!-- @vue-ignore
