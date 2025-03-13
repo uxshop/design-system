@@ -78,8 +78,10 @@ watch(
             :label="fieldHead.label"></slot>
           <div v-else>{{ fieldHead.label }}</div>
 
-          <Icon v-if="isOrdinationActive(fieldHead.key, 'asc')" name="arrow_drop_down" size="20" />
-          <Icon v-if="isOrdinationActive(fieldHead.key, 'desc')" name="arrow_drop_up" size="20" />
+          <Transition name="bounce">
+            <Icon v-if="isOrdinationActive(fieldHead.key, 'asc')" name="arrow_drop_down" size="20" />
+            <Icon v-else-if="isOrdinationActive(fieldHead.key, 'desc')" name="arrow_drop_up" size="20" />
+          </Transition>
         </div>
       </TableHeadCell>
     </template>
