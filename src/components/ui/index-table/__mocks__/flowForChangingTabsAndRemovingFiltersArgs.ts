@@ -88,13 +88,13 @@ export const flowForChangingTabsAndRemovingFiltersIndexTableProps: IndexTablePro
       active: true,
     },
     {
-      label: 'Produtos ativos',
-      key: 'active_products',
+      label: 'Ativos',
+      key: 'active',
       active: false,
     },
     {
-      label: 'Produtos inativos',
-      key: 'inactive_products',
+      label: 'Inativos',
+      key: 'inactive',
       active: false,
     },
   ],
@@ -108,12 +108,12 @@ export const wrapperToChangeTab = (key: string, args: IndexTableProps<ItemInTabl
   // TODO: adicionar troca de paginação
 
   setTimeout(() => {
-    if (key === 'active_products') {
+    if (key === 'active') {
       args.activeFilterTags = filterTagsActiveTab;
       args.items = itemsActive;
     }
 
-    if (key === 'inactive_products') {
+    if (key === 'inactive') {
       args.activeFilterTags = filterTagsInactiveTab;
       args.items = itemsInactive;
     }

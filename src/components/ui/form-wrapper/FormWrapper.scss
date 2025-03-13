@@ -174,6 +174,12 @@
     padding: var(--s-spacing-quark);
   }
 
+  .form-help-feedback {
+    font: var(--s-typography-caption-small);
+    color: var(--s-color-content-default);
+    padding: var(--s-spacing-quark);
+  }
+
   .form-wrapper-notched {
     display: flex;
     position: absolute;
@@ -252,6 +258,12 @@
     }
   }
 
+  select::placeholder,
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--s-color-content-placeholder);
+  }
+
   .form-control:focus,
   input:not(:placeholder-shown),
   select:not(:placeholder-shown),
@@ -311,7 +323,12 @@
 
       label,
       i,
-      input {
+      input,
+      textarea {
+        color: var(--s-color-content-critical);
+      }
+
+      .form-wrapper-content-item > .form-control {
         color: var(--s-color-content-critical);
       }
     }

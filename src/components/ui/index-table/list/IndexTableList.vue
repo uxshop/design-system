@@ -1,15 +1,16 @@
 <script setup lang="ts" generic="T extends object">
-import { watch } from 'vue';
 import Table from '#ds/components/admin/table/Table.vue';
 import TableBody from '#ds/components/admin/table/TableBody.vue';
 import TableCell from '#ds/components/admin/table/TableCell.vue';
 import TableHeadCell from '#ds/components/admin/table/TableHeadCell.vue';
 import TableRow from '#ds/components/admin/table/TableRow.vue';
 import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
-import IndexTableEmptyMessage from './IndexTableEmptyMessage.vue';
+import Icon from '#ds/components/ui/icon/Icon.vue';
+import { watch } from 'vue';
 import { useIndexTableList } from '../composables/useIndexTableList';
 import type { IndexTableListEmits, IndexTableListProps, IndexTableListSlots } from '../types';
 import { defaultPropEmptyResultDisplay } from './defaultPropEmptyResultDisplay';
+import IndexTableEmptyMessage from './IndexTableEmptyMessage.vue';
 
 const props = withDefaults(defineProps<IndexTableListProps<T>>(), {
   show: () => ({
@@ -34,6 +35,7 @@ const {
   updateItemSelectedWithKeyboard,
   selectItem,
   formatKeyToClass,
+  isOrdinationActive,
 } = useIndexTableList<T>(props, emit);
 
 watch(
@@ -68,13 +70,19 @@ watch(
           [`ui-index-table-list-head-${formatKeyToClass(fieldHead.key)}`]: true,
           ...(headClass ?? {}),
         }">
-        <slot
-          v-if="slots[`head(${fieldHead.key})`]"
-          :name="`head(${fieldHead.key})`"
-          :field="fieldHead"
-          :label="fieldHead.label"></slot>
+        <div class="ui-index-table-list-head-icon">
+          <slot
+            v-if="slots[`head(${fieldHead.key})`]"
+            :name="`head(${fieldHead.key})`"
+            :field="fieldHead"
+            :label="fieldHead.label"></slot>
+          <div v-else>{{ fieldHead.label }}</div>
 
-        <div v-else>{{ fieldHead.label }}</div>
+          <Transition name="bounce">
+            <Icon v-if="isOrdinationActive(fieldHead.key, 'asc')" name="arrow_drop_down" size="20" />
+            <Icon v-else-if="isOrdinationActive(fieldHead.key, 'desc')" name="arrow_drop_up" size="20" />
+          </Transition>
+        </div>
       </TableHeadCell>
     </template>
 

@@ -1,2 +1,2 @@
 export { default as FormWrapper } from './FormWrapper.vue';
-export type { FormWrapperProps } from './types';
+export type { FormWrapperProps as FormWrapperProps } from './types';

@@ -75,6 +75,34 @@ export function useIndexTableList<T>(props: IndexTableListProps<T>, emit: IndexT
     return key.replace(/_/g, '-');
   };
 
+  /**
+   * Mapeia a atual ordenação ativa, retornando a ordem e a chave da ordenação
+   */
+  const activeOrdination = computed<null | { order: 'asc' | 'desc'; key: string }>(() => {
+    const active = props.ordination?.find((item) => item.active);
+    if (!active) return null;
+
+    const key = active?.key.split('|').at(0) ?? null;
+    const order = active.key.split('|').at(-1) ?? null;
+    if (!order || !key || (order !== 'asc' && order !== 'desc')) return null;
+
+    return {
+      order,
+      key,
+    };
+  });
+
+  /**
+   * Verifica se há uma ordenação ativa e se a o tipo de ordenação é a esperada
+   */
+  const isOrdinationActive = computed(() => {
+    return (fieldKey: string, order?: 'asc' | 'desc') => {
+      const isActive = activeOrdination.value && activeOrdination.value.key === fieldKey;
+
+      return Boolean(isActive && activeOrdination.value.order === order);
+    };
+  });
+
   return {
     selectedItems,
     prepareKeysToCell,
@@ -83,5 +111,6 @@ export function useIndexTableList<T>(props: IndexTableListProps<T>, emit: IndexT
     selectItem,
     selectAllItems,
     formatKeyToClass,
+    isOrdinationActive,
   };
 }

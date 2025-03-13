@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { isObject } from 'lodash-es';
-import { computed, ref, watchEffect } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
 import type { FormSelectProps } from './types';
 
@@ -37,7 +37,11 @@ const update = (evt: Event) => {
   model.value = target.value;
 };
 
-const model = ref(stringifyValue(props.modelValue));
+const model = ref('');
+onMounted(() => {
+  model.value = stringifyValue(props.modelValue);
+});
+
 const classList = computed(() => [
   props.size && `-${props.size}`,
   props.float && '-float',
@@ -56,28 +60,33 @@ const updateModelValue = () => {
 };
 
 watchEffect(updateModelValue);
+
+/** Necessário desativar devido a incompatibilidade atual com este componente e algumas props do `FormWrapper` */
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
 
 <template>
   <FormWrapper
     :id="id"
-    :leadingIcon="leadingIcon"
-    :trailingIcon="trailingIcon"
-    :trailingText="trailingText"
-    :label="label"
-    :loading="loading"
-    :last="last"
-    :disabled="disabled"
-    :float="float"
-    :labelInfo="labelInfo"
-    :autofocus="autofocus"
-    :size="size"
-    :state="state"
-    :invalidFeedback="invalidFeedback"
+    :leading-icon
+    :trailing-icon
+    :trailing-text
+    :label
+    :loading
+    :last
+    :disabled
+    :float
+    :label-info
+    :invalid-feedback
+    :autofocus
+    :size
+    :state
     class="ui-form-select">
     <select
+      :id="id"
       v-model="model"
-      @input="update"
       class="form-control -select"
       :class="classList"
       :autofocus="autofocus"
@@ -85,17 +94,17 @@ watchEffect(updateModelValue);
       :tabindex="tabindex"
       :name="name"
       :title="title"
-      :id="id"
       :required="required"
-      :disabled="disabled">
-      <option class="form-select-option" value selected disabled v-if="placeholder">{{ placeholder }}</option>
+      :disabled="disabled"
+      @input="update">
+      <option v-if="placeholder" class="form-select-option" value selected disabled>{{ placeholder }}</option>
       <slot />
       <option
-        class="form-select-option"
-        v-show="options.length"
         v-for="item in options"
-        :value="stringifyValue(item.value)"
+        v-show="options.length"
         :key="item.value"
+        class="form-select-option"
+        :value="stringifyValue(item.value)"
         :disabled="item.disabled">
         {{ item.label }}
       </option>

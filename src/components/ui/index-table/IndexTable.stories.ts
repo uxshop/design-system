@@ -44,7 +44,7 @@ const meta: Meta<typeof IndexTable<ItemInTable>> = {
   argTypes: {
     pagination: { control: { type: 'object' } },
     ordination: { control: { type: 'object' } },
-    searchValue: { control: { type: 'text' }, if: { arg: 'show.search' } },
+    searchValue: { control: { type: 'text' } },
     isLoading: { control: { type: 'boolean' } },
     isInternalLoading: { control: { type: 'boolean' } },
     emptyResultDisplay: { control: { type: 'object' } },
@@ -66,6 +66,21 @@ export const complete: Story = {
     ...completeIndexTableProps,
     ...completeIndexTableActions,
   },
+  render: (args: any) =>
+    ({
+      components: { IndexTable },
+      setup() {
+        orderByName(args);
+        const handleSortItems = (key: string) => {
+          wrapperOrderBy(key, args);
+        };
+
+        args.onOrderBy = handleSortItems;
+
+        return { args };
+      },
+      template: templateIndexTable,
+    }) as any,
 };
 
 export const filterTabWithoutItems: Story = {
@@ -215,6 +230,29 @@ export const customLineWidthAndHeight: Story = {
   args: {
     ...customLineWidthAndHeightIndexTableProps,
     ...completeIndexTableActions,
+  },
+};
+
+export const withManyTags: Story = {
+  args: {
+    ...customLineWidthAndHeightIndexTableProps,
+    ...completeIndexTableActions,
+    activeFilterTags: [
+      { key: 'active', label: 'Ativo' },
+      { key: 'inactive', label: 'Inativo' },
+      { key: 'pending', label: 'Pendente' },
+      { key: 'canceled', label: 'Cancelado' },
+      { key: 'completed', label: 'Concluído' },
+      { key: 'waiting', label: 'Aguardando' },
+      { key: 'approved', label: 'Aprovado' },
+      { key: 'disapproved', label: 'Reprovado' },
+      { key: 'inProgress', label: 'Em andamento' },
+      { key: 'finished', label: 'Finalizado' },
+      { key: 'suspended', label: 'Suspenso' },
+      { key: 'archived', label: 'Arquivado' },
+      { key: 'deleted', label: 'Deletado' },
+      { key: 'etc', label: 'Um teste de label grande para garantir que está exibindo corretamente' },
+    ],
   },
 };
 

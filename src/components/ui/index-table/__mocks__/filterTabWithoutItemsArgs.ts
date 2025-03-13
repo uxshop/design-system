@@ -14,13 +14,13 @@ export const filterTabWithoutItemsIndexTableProps: IndexTableProps<ItemInTable> 
       active: false,
     },
     {
-      label: 'Produtos ativos',
-      key: 'active_products',
+      label: 'Ativos',
+      key: 'active',
       active: true,
     },
     {
-      label: 'Produtos inativos',
-      key: 'inactive_products',
+      label: 'Inativos',
+      key: 'inactive',
       active: false,
     },
   ],

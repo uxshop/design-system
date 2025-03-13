@@ -10,13 +10,13 @@ export const initializationLoadingDataTableProps: IndexTableProps<ItemInTable> =
       active: true,
     },
     {
-      label: 'Produtos ativos',
-      key: 'active_products',
+      label: 'Ativos',
+      key: 'active',
       active: false,
     },
     {
-      label: 'Produtos inativos',
-      key: 'inactive_products',
+      label: 'Inativos',
+      key: 'inactive',
       active: false,
     },
   ],

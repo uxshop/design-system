@@ -11,18 +11,28 @@ export interface ItemSortItemsInTable {
 
 const ordination = [
   {
-    key: 'order_by_name',
+    key: 'name|asc',
     label: 'Nome (A-z)',
+    active: true,
+  },
+  {
+    key: 'name|desc',
+    label: 'Nome (Z-a)',
     active: false,
   },
   {
-    key: 'order_by_updated',
-    label: 'Data de atualização',
+    key: 'price|asc',
+    label: 'Preço (menor primeiro)',
     active: false,
   },
   {
-    key: 'order_by_created_at',
-    label: 'Data de criação',
+    key: 'price|desc',
+    label: 'Preço (maior primeiro)',
+    active: false,
+  },
+  {
+    key: 'updated_at|desc',
+    label: 'Data de atualização (recentes primeiro)',
     active: false,
   },
 ];
@@ -37,7 +47,7 @@ export const sortItemsIndexTableProps: IndexTableProps<ItemSortItemsInTable> = {
     },
   ],
   ordination,
-  activeFilterTags: [{ key: ordination[0].key, label: ordination[0].label }],
+  activeFilterTags: [],
   items: [
     {
       id: 1,
@@ -54,18 +64,34 @@ export const sortItemsIndexTableProps: IndexTableProps<ItemSortItemsInTable> = {
   ],
 };
 
-export const orderByName = (args: IndexTableProps<ItemSortItemsInTable>) => {
-  const items = args.items!.sort((a, b) => a.name.localeCompare(b.name));
+export const orderByName = (args: IndexTableProps<ItemSortItemsInTable>, order?: string) => {
+  if (!order) return;
+
+  const items = args.items!.sort((a, b) => {
+    const comparison = a.name.localeCompare(b.name);
+    return order === 'asc' ? comparison : -comparison;
+  });
   args.items = items;
 };
 
-const orderByUpdated = (args: IndexTableProps<ItemSortItemsInTable>) => {
-  const items = args.items!.sort((a, b) => a.updated.localeCompare(b.updated));
+const orderByUpdated = (args: IndexTableProps<ItemSortItemsInTable>, order?: string) => {
+  if (!order) return;
+
+  const items = args.items!.sort((a, b) => {
+    const comparison = a.updated.localeCompare(b.name);
+    return order === 'asc' ? comparison : -comparison;
+  });
   args.items = items;
 };
 
-const orderByCreated = (args: IndexTableProps<ItemSortItemsInTable>) => {
-  const items = args.items!.sort((a, b) => a.created_at.localeCompare(b.created_at));
+const orderByPrice = (args: IndexTableProps<ItemSortItemsInTable>, order?: string) => {
+  if (!order) return;
+
+  const items = args.items!.sort((a, b) => {
+    const comparison = a.price.localeCompare(b.name);
+    return order === 'asc' ? comparison : -comparison;
+  });
+
   args.items = items;
 };
 
@@ -75,24 +101,26 @@ export const wrapperOrderBy = (key: string, args: IndexTableProps<ItemSortItemsI
   const currentOrdination = args.ordination;
 
   const newOrdination = currentOrdination!.map((item) => {
-    if (item.key === key) {
-      item.active = !item.active;
-    }
-    return item;
+    return {
+      ...item,
+      active: item.key === key ? !item.active : false,
+    };
   });
 
-  args.activeFilterTags = [{ key, label: args.ordination!.find((item) => item.key === key)!.label }];
+  const currentKey = key.split('|').at(0);
+  const currentOrder = key.split('|').at(-1);
+  if (!currentOrder) return;
 
-  if (key === 'order_by_name') {
-    orderByName(args);
+  if (currentKey === 'name') {
+    orderByName(args, currentOrder);
   }
 
-  if (key === 'order_by_updated') {
-    orderByUpdated(args);
+  if (currentKey === 'updated_at') {
+    orderByUpdated(args, currentOrder);
   }
 
-  if (key === 'order_by_created_at') {
-    orderByCreated(args);
+  if (currentKey === 'price') {
+    orderByPrice(args, currentOrder);
   }
 
   args.ordination = newOrdination;

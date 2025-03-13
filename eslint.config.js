@@ -181,6 +181,7 @@ export default [
       'vue/no-unused-emit-declarations': 'error',
       'vue/no-useless-v-bind': 'error',
       'vue/padding-line-between-blocks': ['error', 'always'],
+      'vue/no-v-html': 'off', // Desabilitado porque não temos esse controle do que pode sofrer XSS em um DS
     },
   },
   {

@@ -1,59 +1,71 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useMaxLength } from '../form-wrapper/composables/useMaxLength';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
-import type { FormTextareaProps } from './types';
+import { valuesDefaultOfFormWrapperProps } from '../form-wrapper/valuesDefaultOfFormWrapperProps';
+import type { FormTextareaEmits, FormTextareaProps } from './types';
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', val: string): void;
-  (e: 'update', val: string): void;
-}>();
-
+const model = defineModel<string>();
 const props = withDefaults(defineProps<FormTextareaProps>(), {
   rows: 4,
-  state: undefined,
+  ...valuesDefaultOfFormWrapperProps,
 });
+const emit = defineEmits<FormTextareaEmits>();
 
 const classList = computed(() => [props.state === true ? '-valid' : props.state === false ? '-invalid' : '']);
 
+const { currentMaxLength } = useMaxLength<FormTextareaProps>(props);
+
 const update = (evt: Event) => {
   const target = evt.target as HTMLTextAreaElement;
-  emit('update:modelValue', target.value);
   emit('update', target.value);
+};
+
+const onInternalState = (state: boolean | undefined) => {
+  emit('internal-state', state);
 };
 </script>
 
 <template>
   <FormWrapper
-    :id="id"
-    :leadingIcon="leadingIcon"
-    :trailingIcon="trailingIcon"
-    :label="label"
-    :loading="loading"
-    :last="last"
-    :disabled="disabled"
-    :float="float"
-    :state="state"
-    :labelInfo="labelInfo"
-    :invalidFeedback="invalidFeedback">
+    :id
+    v-model="model"
+    :leading-icon
+    :trailing-icon
+    :label
+    :loading
+    :last
+    :disabled
+    :float
+    :state
+    :label-info
+    :texts-counter
+    :allow-exceed-max-length
+    :invalid-feedback
+    :help-feedback
+    :minlength
+    :maxlength
+    :show-counter
+    @internal-state="onInternalState">
     <textarea
+      :id
+      v-model="model"
       class="form-control"
-      @input="update"
-      :value="modelValue"
       :class="classList"
       :inputmode="inputmode"
       :autocomplete="autocomplete"
       :autofocus="autofocus"
       :disabled="disabled"
       :minlength="minlength"
-      :maxlength="maxlength"
+      :maxlength="currentMaxLength"
       :pattern="pattern"
       :placeholder="placeholder"
       :readonly="readonly"
       :tabindex="tabindex"
       :name="name"
       :title="title"
-      :id="id"
       :required="required"
-      :rows="rows" />
+      :rows="rows"
+      @input="update" />
   </FormWrapper>
 </template>
