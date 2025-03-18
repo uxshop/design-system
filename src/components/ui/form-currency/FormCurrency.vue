@@ -83,6 +83,7 @@ defineOptions({
     :disabled
     :label-info
     :float
+    :state
     :size
     :invalid-feedback>
     <input
