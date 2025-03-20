@@ -38,6 +38,7 @@ const emit = defineEmits<{
 	(event: 'emptyData'): void
 	(event: 'deletedItem', deletedItemIds: number[]): number[]
 	(event: 'duplicatedItem', duplicatedItemIds: number[]): number[]
+	(event: 'onStatusUpdateError'): void
 }>()
 
 const tableListNavFilterRef = ref()
@@ -199,6 +200,7 @@ const onStatusUpdateError = () => {
 	formError.value = {
 		erro: ['Ocorreu um erro ao atualizar o status']
 	}
+	emit('onStatusUpdateError')
 }
 
 onBeforeMount(() => {
