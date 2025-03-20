@@ -31,7 +31,6 @@ const onActiveOne = async (item: any) => {
 		item.active = newStatus
 	} catch (error) {
 		emit('onStatusUpdateError')
-		console.error(error)
 	}
 }
 
