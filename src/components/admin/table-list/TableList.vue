@@ -195,6 +195,12 @@ const onDuplicate = () => {
 	emit('duplicatedItem', selected.value)
 }
 
+const onStatusUpdateError = () => {
+	formError.value = {
+		erro: ['Ocorreu um erro ao atualizar o status']
+	}
+}
+
 onBeforeMount(() => {
 	hasQueryParams.value = route.query.sort
 })
@@ -298,7 +304,12 @@ defineExpose({
 
 		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
-			<TableListTable v-model:selected="selected" :rows="rows" :state="state" :to="to">
+			<TableListTable
+				v-model:selected="selected"
+				:rows="rows"
+				:state="state"
+				:to="to"
+				@on-status-update-error="onStatusUpdateError">
 				<template #head v-if="$slots.head">
 					<slot name="head" />
 				</template>
