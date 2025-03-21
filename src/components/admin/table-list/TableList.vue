@@ -197,9 +197,6 @@ const onDuplicate = () => {
 }
 
 const onStatusUpdateError = () => {
-	formError.value = {
-		erro: ['Ocorreu um erro ao atualizar o status']
-	}
 	emit('onStatusUpdateError')
 }
 
