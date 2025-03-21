@@ -38,6 +38,7 @@ const emit = defineEmits<{
 	(event: 'emptyData'): void
 	(event: 'deletedItem', deletedItemIds: number[]): number[]
 	(event: 'duplicatedItem', duplicatedItemIds: number[]): number[]
+	(event: 'onStatusUpdateError'): void
 }>()
 
 const tableListNavFilterRef = ref()
@@ -195,6 +196,10 @@ const onDuplicate = () => {
 	emit('duplicatedItem', selected.value)
 }
 
+const onStatusUpdateError = () => {
+	emit('onStatusUpdateError')
+}
+
 onBeforeMount(() => {
 	hasQueryParams.value = route.query.sort
 })
@@ -298,7 +303,12 @@ defineExpose({
 
 		<div class="table-list-wrapper" @scroll="onScrollHorizontal" :class="{ '-scroll': scrollLeft }">
 			<TableListEmptySearch v-show="!rows.length && !loading" @resetQueryParams="resetQueryParams" />
-			<TableListTable v-model:selected="selected" :rows="rows" :state="state" :to="to">
+			<TableListTable
+				v-model:selected="selected"
+				:rows="rows"
+				:state="state"
+				:to="to"
+				@on-status-update-error="onStatusUpdateError">
 				<template #head v-if="$slots.head">
 					<slot name="head" />
 				</template>

@@ -14,7 +14,7 @@ export interface ITableListState {
 	removeFilter(params: any): void
 	removeSelected(params: any): void
 	toggleActiveSelected(i: boolean): void
-	activeOne(item: any, i: boolean): void
+	activeOne(item: any, i: boolean): Promise<void>
 	deleteOne(item: any): void
 	clickRow(item: any): void
 }
