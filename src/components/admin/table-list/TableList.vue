@@ -38,7 +38,7 @@ const emit = defineEmits<{
 	(event: 'emptyData'): void
 	(event: 'deletedItem', deletedItemIds: number[]): number[]
 	(event: 'duplicatedItem', duplicatedItemIds: number[]): number[]
-	(event: 'onStatusUpdateError'): void
+	(event: 'onStatusUpdateError', error: any): void
 }>()
 
 const tableListNavFilterRef = ref()
@@ -196,8 +196,8 @@ const onDuplicate = () => {
 	emit('duplicatedItem', selected.value)
 }
 
-const onStatusUpdateError = () => {
-	emit('onStatusUpdateError')
+const onStatusUpdateError = (error: any) => {
+	emit('onStatusUpdateError', error)
 }
 
 onBeforeMount(() => {
