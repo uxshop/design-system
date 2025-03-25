@@ -14,7 +14,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
 	(event: 'update:selected', seleted: number[]): void
-	(event: 'onStatusUpdateError'): void
+	(event: 'onStatusUpdateError', error: any): void
 }>()
 
 const onClickRow = (event: any, item: any) => {
@@ -30,7 +30,7 @@ const onActiveOne = async (item: any) => {
 		await props.state.activeOne(item, newStatus)
 		item.active = newStatus
 	} catch (error) {
-		emit('onStatusUpdateError')
+		emit('onStatusUpdateError', error)
 	}
 }
 
