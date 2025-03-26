@@ -42,6 +42,11 @@ const meta: Meta<typeof FormTextfield> = {
       control: 'select',
       options: ['sm', 'md', 'lg'],
     },
+    ignoreChars: {
+      control: 'text',
+      description:
+        'Caracteres a serem ignorados do valor de entrada antes de comparar com `modelValue`. Útil para desconsiderar símbolos de formatação como `.` ou `-`.',
+    },
   },
 };
 

@@ -68,6 +68,14 @@ describe('FormTextfield', () => {
 
       expect(wrapper.vm.text).toBe('Novo valor');
     });
+
+    test('Dado um componente FormTextfield com ignoreChars, Quando o usuário digita caracteres ignorados, Então eles são desconsiderados na comparação, mas mantidos no modelValue', async () => {
+      const { wrapper, input } = createComponent({
+        ignoreChars: '.-',
+      });
+      await input().setValue('123.456-789');
+      expect(wrapper.props('modelValue')).toBe('123.456-789');
+    });
   });
 
   describe('Eventos', () => {

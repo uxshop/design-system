@@ -38,7 +38,14 @@ const update = (evt: Event) => {
 
 const maskRawValue = (evt: Event) => {
   const target = evt.target as HTMLInputElement;
-  if (model.value === target.value.replace(/\.|-/g, '')) return;
+
+  let targetValue = target.value;
+  if (props.ignoreChars) {
+    const regex = new RegExp(`[${props.ignoreChars.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')}]`, 'g');
+    targetValue = targetValue.replace(regex, '');
+  }
+
+  if (model.value === targetValue) return;
 
   update(evt);
   emit('updateRaw', target.dataset.maskRawValue);
