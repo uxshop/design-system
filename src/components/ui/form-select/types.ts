@@ -1,37 +1,27 @@
-import type { Size } from '../../../types';
+import type { FormWrapperDefaultProps, FormWrapperEmits } from '../form-wrapper/types';
 
-export interface IFormSelectOptions {
+export interface FormSelectOptionsProp {
   value: any;
   label?: string;
   disabled?: boolean;
 }
 
-export interface FormSelectProps {
-  leadingIcon?: string;
-  trailingIcon?: string;
-  labelInfo?: string;
-  trailingText?: string;
-  loading?: boolean;
-  last?: boolean;
-  float?: boolean;
+export interface FormSelectProps extends FormWrapperDefaultProps {
   modelValue?: any;
   value?: any;
   placeholder?: string;
-  label?: string;
-  id?: string;
-  size?: Size;
-  autofocus?: boolean;
   readonly?: boolean;
   tabindex?: string;
   name?: string;
   title?: string;
   required?: boolean;
-  options?: IFormSelectOptions[];
-  disabled?: boolean;
-  state?: boolean;
-  invalidFeedback?: string;
+  options?: FormSelectOptionsProp[];
 }
 
 export interface FormSelectOptionProps {
   value?: string | object | number;
+}
+
+export interface FormSelectEmits extends FormWrapperEmits<any> {
+  (event: 'update', value: any): void;
 }

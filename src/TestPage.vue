@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Page, TextStyle } from '#ds/index';
 import type { ActionButton } from '#ds/index';
+import { Page, TextStyle } from '#ds/index';
 
 const action: ActionButton = {
   label: 'Bagy',

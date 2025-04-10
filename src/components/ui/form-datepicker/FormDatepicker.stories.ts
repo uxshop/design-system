@@ -1,5 +1,5 @@
-import FormDatepicker from './FormDatepicker.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
+import FormDatepicker from './FormDatepicker.vue';
 
 /** Data picker is used to select a single or a range of dates. */
 const meta: Meta<typeof FormDatepicker> = {
@@ -36,41 +36,48 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const minimum: Story = {};
 
-export const DateRange: Story = {
+export const dateRange: Story = {
   args: {
     range: true,
   },
 };
 
-export const Float: Story = {
+export const float: Story = {
   args: {
     float: true,
   },
 };
 
-export const Loading: Story = {
+export const loading: Story = {
   args: {
     loading: true,
   },
 };
 
-export const Disabled: Story = {
+export const disabled: Story = {
   args: {
     disabled: true,
   },
 };
 
-export const LabelInfo: Story = {
+export const labelInfo: Story = {
   args: {
     labelInfo: 'Label Info',
   },
 };
 
-export const InvalidFeedback: Story = {
+export const invalidFeedback: Story = {
   args: {
     state: false,
     invalidFeedback: 'Campo inválido',
+  },
+};
+
+export const helpFeedback: Story = {
+  args: {
+    state: undefined,
+    helpFeedback: 'Selecione uma data do mês de abril',
   },
 };

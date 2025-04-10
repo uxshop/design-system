@@ -22,41 +22,35 @@ export interface TextsCounter {
   };
 }
 
-export interface FormWrapperProps {
+export interface FormWrapperDefaultProps {
   id?: string;
   leadingIcon?: string;
   trailingIcon?: string;
-  labelInfo?: string;
   trailingText?: string;
+  labelInfo?: string;
   state?: boolean;
   loading?: boolean;
   last?: boolean;
-  /**
-   * Se definido como true e houver um `maxlength` definido com valor maior que 0 exibe um contador
-   * de caracteres no campo de texto. Por padrão é false. Caso seja utilizado as props
-   * `invalidFeedback` ou `helpFeedback` o contador de caracteres será ocultado.
-   */
-  showCounter?: boolean;
+  disabled?: boolean;
+  autofocus?: boolean;
+  size?: Size;
+  label?: string;
   /**
    * Altera o label do campo para a posição flutuante embutida no campo.
    */
   float?: boolean;
-  disabled?: boolean;
   /**
-   * Texto que será exibido quando o campo estiver inválido. `state === false`
-   * Esse campo tem prioridade em relação a exibição do contador de caracteres, ou seja, se esse
-   * campo for definido o contador de caracteres no `state === false` não será exibido.
+   * Texto que será exibido quando o campo estiver inválido, `state === false`.
    */
   invalidFeedback?: string;
   /**
-   * Texto de ajuda que será exibido quando o campo estiver sem estado definido. `state === undefined`
-   * Esse campo tem prioridade em relação a exibição do contador de caracteres, ou seja, se esse
-   * campo for definido o contador de caracteres no `state === undefined` não será exibido.
+   * Texto de ajuda que será exibido quando o campo estiver sem estado definido,
+   * `state === undefined`.
    */
   helpFeedback?: string;
-  autofocus?: boolean;
-  size?: Size;
-  label?: string;
+}
+
+export interface FormWrapperCounterProps {
   /**
    * Tamanho mínimo de caracteres que o campo pode aceitar.
    */
@@ -79,4 +73,30 @@ export interface FormWrapperProps {
    * no componente. Caso não seja definido aplica os textos padrões em pt-BR.
    */
   textsCounter?: TextsCounter;
+  /**
+   * Se definido como true e houver um `maxlength` definido com valor maior que 0 exibe um contador
+   * de caracteres no campo de texto. Por padrão é false. Caso seja utilizado as props
+   * `invalidFeedback` ou `helpFeedback` o contador de caracteres será ocultado.
+   */
+  showCounter?: boolean;
+}
+
+export interface FormWrapperProps
+  extends Omit<FormWrapperDefaultProps, 'invalidFeedback' | 'helpFeedback'>,
+    FormWrapperCounterProps {
+  /**
+   * Texto que será exibido quando o campo estiver inválido, `state === false`.
+   * Caso o componente possua um contador de caracteres definido, o campo `invalidFeedback` terá
+   * prioridade, ou seja, se essa propriedade for definida e tiver `state === false` o contador
+   * não será exibido.
+   */
+  invalidFeedback?: string;
+  /**
+   * Texto de ajuda que será exibido quando o campo estiver sem estado definido,
+   * `state === undefined`.
+   * Caso o componente possua um contador de caracteres definido, o campo `helpFeedback` terá
+   * prioridade, ou seja, se essa propriedade for definida e tiver `state === undefined` o contador
+   * não será exibido.
+   */
+  helpFeedback?: string;
 }

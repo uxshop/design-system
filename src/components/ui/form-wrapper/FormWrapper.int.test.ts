@@ -33,8 +33,8 @@ describe('FormWrapper (Teste Integrado)', () => {
     return {
       wrapper,
       getLabel: () => wrapper.find('.form-control-label'),
-      getHelpFeedback: () => wrapper.find('.form-help-feedback'),
-      getInvalidFeedback: () => wrapper.find('.form-invalid-feedback'),
+      getHelpFeedback: () => wrapper.find('[data-form="help-feedback"]'),
+      getInvalidFeedback: () => wrapper.find('[data-form="invalid-feedback"]'),
     };
   }
 

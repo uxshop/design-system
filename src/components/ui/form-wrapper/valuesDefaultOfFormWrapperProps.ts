@@ -1,9 +1,13 @@
-export const valuesDefaultOfFormWrapperProps = {
+export const valuesDefaultOfFormWrapperBaseProps = {
   state: undefined,
   loading: false,
   disabled: false,
   autofocus: false,
   float: false,
+} as const;
+
+export const valuesDefaultOfFormWrapperProps = {
+  ...valuesDefaultOfFormWrapperBaseProps,
   allowExceedMaxLength: false,
   showCounter: false,
   textsCounter: () => ({

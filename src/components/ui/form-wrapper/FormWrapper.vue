@@ -7,7 +7,8 @@ import { useCharacterCount } from './composables/useCharacterCount';
 import type { FormWrapperEmits, FormWrapperProps, ValueOfFormText } from './types';
 import { valuesDefaultOfFormWrapperProps } from './valuesDefaultOfFormWrapperProps';
 
-const model = defineModel<ValueOfFormText>();
+/** O modelValue é opcional nesse componente, sendo necessário apenas ao utilizar o contador de caracteres do mesmo */
+const model = defineModel<ValueOfFormText | undefined>({ required: false });
 const props = withDefaults(defineProps<FormWrapperProps>(), valuesDefaultOfFormWrapperProps);
 const emit = defineEmits<FormWrapperEmits>();
 
@@ -91,7 +92,7 @@ watch(internalState, (newState) => {
       </div>
     </div>
 
-    <div v-if="internalState === false" class="form-invalid-feedback">
+    <div v-if="internalState === false" data-form="invalid-feedback" class="form-invalid-feedback">
       <template v-if="invalidFeedback">
         {{ invalidFeedback }}
       </template>
@@ -99,7 +100,10 @@ watch(internalState, (newState) => {
         {{ counterText }}
       </template>
     </div>
-    <div v-else-if="internalState !== true" class="form-help-feedback">
+    <div
+      v-else-if="internalState !== true"
+      data-form="help-feedback"
+      :class="{ 'form-help-feedback': shouldShowCounter || helpFeedback }">
       <template v-if="helpFeedback">
         {{ helpFeedback }}
       </template>

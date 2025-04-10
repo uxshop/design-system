@@ -1,32 +1,18 @@
-import type { Size } from '#ds/types/general';
 import type { CurrencyInputOptions } from 'vue-currency-input';
+import type { FormWrapperDefaultProps, FormWrapperEmits } from '../form-wrapper/types';
 
-export interface FormCurrencyProps {
-  leadingIcon?: string;
-  trailingIcon?: string;
-  labelInfo?: string;
-  state?: boolean;
-  invalidFeedback?: string;
-  loading?: boolean;
-  last?: boolean;
-  float?: boolean;
+export interface FormCurrencyProps extends FormWrapperDefaultProps {
   modelValue?: string | number | null;
-  label?: string;
-  placeholder?: any;
-  size?: Size;
-  id?: string;
+  placeholder?: string;
   autocomplete?: string;
-  min?: number;
+  min: number;
   max?: number;
   step?: string | number;
-  autofocus?: boolean;
-  disabled?: boolean;
   required?: boolean;
   readonly?: boolean;
   options?: CurrencyInputOptions;
 }
 
-export interface FormCurrencyEmits {
-  (event: 'update:modelValue', value: string | number | null): void;
+export interface FormCurrencyEmits extends FormWrapperEmits<string | number | null> {
   (event: 'change', value: boolean): void;
 }

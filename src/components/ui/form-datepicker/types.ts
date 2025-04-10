@@ -1,26 +1,26 @@
 import { DateTime as EasepickDateTime } from '@easepick/bundle';
-import type { Size } from '../../../types';
+import type { FormWrapperDefaultProps, FormWrapperEmits } from '../form-wrapper/types';
 
-export interface FormDatepickerProps {
+export interface EasepickCofigsProp {
+  singleMode?: boolean;
+  numberOfMonths?: number;
+  numberOfColumns?: number;
+}
+
+export interface FormDatepickerProps extends FormWrapperDefaultProps {
   modelValue?: string;
-  config?: Record<string, unknown>;
+  config?: Record<string, unknown> & EasepickCofigsProp;
   placeholder?: string;
-  label?: string;
   range?: boolean;
   noClear?: boolean;
-  size?: Size;
-  disabled?: boolean;
-  loading?: boolean;
-  float?: boolean;
-  labelInfo?: string;
-  state?: boolean;
-  invalidFeedback?: string;
-  last?: boolean;
-  autofocus?: boolean;
 }
 
 export interface EasyPickDetails {
   start?: EasepickDateTime | null;
   end?: EasepickDateTime | null;
   date?: EasepickDateTime | null;
+}
+
+export interface FormDatepickerEmits extends FormWrapperEmits<string | null> {
+  (event: 'update', value: string | null): void;
 }
