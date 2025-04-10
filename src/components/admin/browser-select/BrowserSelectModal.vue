@@ -7,19 +7,19 @@ export default {};
 
 <script setup lang="ts">
 import { ref, toRaw, watch, withDefaults } from 'vue';
-import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
-import Icon from '../../ui/icon/Icon.vue';
-import Row from '../../ui/grid/row/Row.vue';
-import Col from '../../ui/grid/col/Col.vue';
+import { zerofill } from '../../../filters';
+import Aside from '../../ui/aside/Aside.vue';
 import Button from '../../ui/button/Button.vue';
 import FormCheckbox from '../../ui/form-checkbox/FormCheckbox.vue';
-import Spinner from '../../ui/spinner/Spinner.vue';
-import { zerofill } from '../../../filters';
-import BrowserSelectDefaultVue from './snippets/BrowserSelectDefault.vue';
-import Aside from '../../ui/aside/Aside.vue';
-import InfiniteScroll from '../../ui/infinite-scroll/InfiniteScroll.vue';
-import type { BrowserSelectProps } from './types';
+import FormTextfield from '../../ui/form-textfield/FormTextfield.vue';
+import Col from '../../ui/grid/col/Col.vue';
+import Row from '../../ui/grid/row/Row.vue';
+import Icon from '../../ui/icon/Icon.vue';
 import type { IContext } from '../../ui/infinite-scroll';
+import InfiniteScroll from '../../ui/infinite-scroll/InfiniteScroll.vue';
+import Spinner from '../../ui/spinner/Spinner.vue';
+import BrowserSelectDefaultVue from './snippets/BrowserSelectDefault.vue';
+import type { BrowserSelectProps } from './types';
 
 const templates = {
   default: BrowserSelectDefaultVue,
@@ -161,7 +161,7 @@ defineExpose({
               <FormTextfield v-model="term" placeholder="Procurar" autofocus last size="md" autocomplete="off">
                 <template #before>
                   <div class="box-icon">
-                    <Spinner v-show="typing" class="icon" size="16" border="2" variant="primary" />
+                    <Spinner v-show="typing" class="icon" size="16" border="2" variant="highlight" />
                     <Icon v-show="!typing" class="icon" name="search" size="20" />
                   </div>
                 </template>

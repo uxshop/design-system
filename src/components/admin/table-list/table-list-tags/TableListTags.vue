@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { each, find, isFunction } from 'lodash-es';
-import Tag from '../../../ui/tag/Tag.vue';
-import { computed } from 'vue';
-import { omit } from 'lodash-es';
-import TagList from '../../../ui/tag/TagList.vue';
+import { each, find, isFunction, omit } from 'lodash-es';
 import { DateTime } from 'luxon';
+import { computed } from 'vue';
+import Tag from '../../../ui/tag/Tag.vue';
+import TagList from '../../../ui/tag/TagList.vue';
 import type { TableListTagsProps } from '../types';
 
 const props = defineProps<TableListTagsProps>();
 
-const removeFilter = props.state.removeFilter;
-
 const translateKey = (item: string) => {
   let val = item;
   each(props.state.config.filters, (filter, key) => {
-    if (item == key) {
+    if (item === key) {
       val = filter.name;
     }
   });
@@ -43,11 +40,11 @@ const translateValue = (item: any, key: string) => {
     return item;
   }
 
-  if (key == 'created_at') {
+  if (key === 'created_at') {
     return dateFormat(item);
   }
 
-  if (key == 'q' || key == 'category_ids') {
+  if (key === 'q' || key === 'category_ids') {
     return item;
   }
 
@@ -62,7 +59,7 @@ const translateValue = (item: any, key: string) => {
   }
 
   each(props.state.config.filters, (item, k) => {
-    if (k == key) {
+    if (k === key) {
       if (isFunction(item.filters)) {
         item.filters = item.filters();
       }
@@ -91,14 +88,14 @@ const showTags = computed(() => {
 </script>
 
 <template>
-  <TagList class="table-list-tags" v-if="showTags">
+  <TagList v-if="showTags" class="table-list-tags">
     <Tag
-      variant="primary"
-      label=""
-      @remove="removeFilter(String(key))"
       v-for="(item, key) in state.omitFilters"
       v-show="String(key) != 'q'"
-      :key="item">
+      :key="item"
+      variant="highlight"
+      label=""
+      @remove="state.removeFilter(String(key))">
       {{ translateKey(String(key)) }}: {{ translateValue(item, String(key)) }}
     </Tag>
   </TagList>
