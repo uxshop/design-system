@@ -93,7 +93,6 @@ defineOptions({ inheritAttrs: false });
     data-form="currency"
     :leading-icon
     :trailing-icon
-    :trailing-text
     :label
     :loading
     :last

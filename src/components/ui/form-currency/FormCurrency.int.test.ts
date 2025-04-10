@@ -116,11 +116,10 @@ describe('FormCurrency', () => {
     });
 
     test('Dado um componente FormCurrency, Quando é renderizado, Então deve passar todas as props necessárias para FormWrapper', () => {
-      const testProps: Required<FormWrapperDefaultProps> = {
+      const testProps: Required<Omit<FormWrapperDefaultProps, 'trailingText'>> = {
         id: 'test-id',
         leadingIcon: 'cash',
         trailingIcon: 'arrow-down',
-        trailingText: 'R$',
         label: 'Valor monetário',
         loading: true,
         last: true,

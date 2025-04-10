@@ -1,4 +1,4 @@
-import type { IFormSelectOptions } from '../../ui/form-select';
+import type { FormSelectOptionsProp } from '../../ui/form-select';
 
 export interface IQuickSearchFormValue {
   searchType: string;
@@ -8,7 +8,7 @@ export interface IQuickSearchFormValue {
 export interface QuickSearchProps {
   title?: string;
   caption?: string;
-  searchOptions: IFormSelectOptions[];
+  searchOptions: FormSelectOptionsProp[];
   modelValue: boolean;
   placeholder?: string;
   buttonLabel?: string;

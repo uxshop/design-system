@@ -1,7 +1,7 @@
 import type { CurrencyInputOptions } from 'vue-currency-input';
 import type { FormWrapperDefaultProps, FormWrapperEmits } from '../form-wrapper/types';
 
-export interface FormCurrencyProps extends FormWrapperDefaultProps {
+export interface FormCurrencyProps extends Omit<FormWrapperDefaultProps, 'trailingText'> {
   modelValue?: string | number | null;
   placeholder?: string;
   autocomplete?: string;
