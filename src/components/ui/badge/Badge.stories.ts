@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-
 import Badge from './Badge.vue';
+import './ExampleVariantCustom.css';
 
 const meta = {
   title: 'Ui/Badge',
@@ -31,14 +31,14 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
+export const minimum: Story = {
   args: {
     pill: true,
     size: 'md',
   },
 };
 
-export const Highlight: Story = {
+export const highlight: Story = {
   args: {
     variant: 'highlight',
     pill: true,
@@ -46,7 +46,7 @@ export const Highlight: Story = {
   },
 };
 
-export const Warning: Story = {
+export const warning: Story = {
   args: {
     variant: 'warning',
     pill: true,
@@ -54,7 +54,7 @@ export const Warning: Story = {
   },
 };
 
-export const Success: Story = {
+export const success: Story = {
   args: {
     variant: 'success',
     pill: true,
@@ -62,9 +62,17 @@ export const Success: Story = {
   },
 };
 
-export const Critical: Story = {
+export const critical: Story = {
   args: {
     variant: 'critical',
+    pill: true,
+    size: 'md',
+  },
+};
+
+export const custom: Story = {
+  args: {
+    variant: 'custom',
     pill: true,
     size: 'md',
   },

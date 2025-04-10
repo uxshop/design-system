@@ -17,7 +17,7 @@ const meta = {
     size: { control: 'number', description: 'number | string' },
     variant: {
       control: 'select',
-      options: ['default', 'highlight', 'warning', 'danger', 'success'],
+      options: ['default', 'highlight', 'warning', 'critical', 'success'],
     },
     color: { control: 'color' },
   },
@@ -27,29 +27,29 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
+export const minimum: Story = {
   args: {},
 };
 
-export const Highlight: Story = {
+export const highlight: Story = {
   args: {
     variant: 'highlight',
   },
 };
 
-export const Warning: Story = {
+export const warning: Story = {
   args: {
     variant: 'warning',
   },
 };
 
-export const Success: Story = {
+export const success: Story = {
   args: {
     variant: 'success',
   },
 };
 
-export const Critical: Story = {
+export const critical: Story = {
   args: {
     variant: 'critical',
   },

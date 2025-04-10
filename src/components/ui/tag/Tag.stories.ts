@@ -12,7 +12,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['warning', 'success', 'danger', 'primary', 'default'],
+      options: ['default', 'highlight', 'warning', 'critical', 'success'],
     },
   },
 } satisfies Meta<typeof Tag>;
@@ -21,28 +21,28 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {};
+export const minimum: Story = {};
 
-export const Primary: Story = {
+export const highlight: Story = {
   args: {
-    variant: 'primary',
+    variant: 'highlight',
   },
 };
 
-export const Warning: Story = {
+export const warning: Story = {
   args: {
     variant: 'warning',
   },
 };
 
-export const Success: Story = {
+export const success: Story = {
   args: {
     variant: 'success',
   },
 };
 
-export const Danger: Story = {
+export const critical: Story = {
   args: {
-    variant: 'danger',
+    variant: 'critical',
   },
 };

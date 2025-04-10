@@ -190,7 +190,7 @@ watch(
           <Tag
             v-for="(tag, index) in currentActiveFilterTags"
             :key="index"
-            variant="primary"
+            variant="highlight"
             :label="tag.label"
             :data-test-index-table="`tag-${tag.key}`"
             @remove="emit('remove-filter', tag)"></Tag>

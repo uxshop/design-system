@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<SpinnerProps>(), {
 });
 
 const spinnerClassList = computed(() => {
-  let classes = [];
+  const classes = [];
 
   if (props.variant) {
     classes.push(`-variant-${props.variant}`);
@@ -18,7 +18,7 @@ const spinnerClassList = computed(() => {
 });
 
 const spinnerStyleList = computed(() => {
-  let styles: StyleValue = {};
+  const styles: StyleValue = {};
 
   if (props.border) {
     styles.borderWidth = props.border + 'px';
