@@ -1,8 +1,8 @@
-export type SpinnerVariant = 'default' | 'highlight' | 'success' | 'critical' | 'warning';
+import type { VariantsStandard } from '#ds/types/general.js';
 
 export interface SpinnerProps {
   border?: number | string;
   color?: string;
   size?: number | string;
-  variant?: SpinnerVariant;
+  variant?: VariantsStandard;
 }

@@ -1,4 +1,4 @@
-import type { Size } from '../../../types';
+import type { Size, VariantsStandard } from '#ds/types';
 
 export interface BadgeProps {
   label?: string | number;
@@ -10,5 +10,5 @@ export interface BadgeProps {
    * Quando definido com `custom` adiciona uma classe `-variant-custom` que pode ser customizada
    * para a cor desejável com css.
    */
-  variant?: 'highlight' | 'warning' | 'success' | 'critical' | 'default' | 'custom';
+  variant?: VariantsStandard | 'custom';
 }

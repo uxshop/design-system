@@ -65,7 +65,9 @@ export * from './components/ui/custom-scroll';
 export * from './components/ui/description-list';
 export * from './components/ui/dialog';
 export * from './components/ui/divider';
+export * from './components/ui/drop-files';
 export * from './components/ui/dropdown';
+export * from './components/ui/feedback-message';
 export * from './components/ui/form-autocomplete';
 export * from './components/ui/form-checkbox';
 export * from './components/ui/form-colorpicker';
@@ -88,6 +90,7 @@ export * from './components/ui/grid';
 export * from './components/ui/icon';
 export * from './components/ui/icon-button';
 export * from './components/ui/image';
+export * from './components/ui/index-table';
 export * from './components/ui/infinite-scroll';
 export * from './components/ui/link';
 export * from './components/ui/list-group';
@@ -110,9 +113,6 @@ export * from './components/ui/text-style';
 export * from './components/ui/timeline';
 export * from './components/ui/toast';
 export * from './components/ui/youtube-player';
-export * from './components/ui/index-table';
-export * from './components/ui/feedback-message';
-export * from './components/ui/drop-files';
 
 // Types
 export * from './types';

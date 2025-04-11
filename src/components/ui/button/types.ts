@@ -1,6 +1,6 @@
-import type { Size } from '../../../types';
+import type { Size, VariantsStandard } from '../../../types';
 
-export type ButtonVariant = 'default' | 'highlight' | 'plain' | 'link' | 'success' | 'critical';
+export type ButtonVariant = Exclude<VariantsStandard, 'warning'> | 'plain' | 'link';
 
 export interface ButtonProps {
   variant?: ButtonVariant;
