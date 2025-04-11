@@ -1,4 +1,4 @@
-@import '../../../scss/mixins.scss';
+@use '../../../scss/mixins.scss';
 
 .ui-tag {
   display: inline-flex;
@@ -12,11 +12,11 @@
 
   &.-variant {
     &-default {
-      color: var(--s-color-content-on-color);
+      color: var(--s-color-content-default);
       background-color: var(--s-color-fill-default-light);
     }
 
-    &-primary {
+    &-highlight {
       background-color: var(--s-color-fill-highlight);
     }
 
@@ -28,7 +28,7 @@
       background-color: var(--s-color-fill-success);
     }
 
-    &-danger {
+    &-critical {
       background-color: var(--s-color-fill-critical);
     }
   }
@@ -40,7 +40,7 @@
 
     &:hover,
     &:focus {
-      background-color: rgba(0, 0, 0, 0.24);
+      background-color: rgb(0 0 0 / 24%);
     }
   }
 }

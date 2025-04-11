@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
+import { VariantStandard } from '#ds/constants';
 import Tag from './Tag.vue';
 
 const meta = {
@@ -12,7 +13,13 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'highlight', 'warning', 'critical', 'success'],
+      options: [
+        VariantStandard.DEFAULT,
+        VariantStandard.HIGHLIGHT,
+        VariantStandard.SUCCESS,
+        VariantStandard.WARNING,
+        VariantStandard.CRITICAL,
+      ],
     },
   },
 } satisfies Meta<typeof Tag>;
@@ -25,7 +32,7 @@ export const minimum: Story = {};
 
 export const highlight: Story = {
   args: {
-    variant: 'highlight',
+    variant: VariantStandard.HIGHLIGHT,
   },
 };
 

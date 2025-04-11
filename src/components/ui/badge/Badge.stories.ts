@@ -1,6 +1,17 @@
+import { VariantStandard } from '#ds/constants';
 import type { Meta, StoryObj } from '@storybook/vue3';
 import Badge from './Badge.vue';
 import './ExampleVariantCustom.css';
+import type { BadgeVariants } from './types';
+
+const variants: BadgeVariants[] = [
+  VariantStandard.DEFAULT,
+  VariantStandard.HIGHLIGHT,
+  VariantStandard.SUCCESS,
+  VariantStandard.WARNING,
+  VariantStandard.CRITICAL,
+  'custom',
+];
 
 const meta = {
   title: 'Ui/Badge',
@@ -22,7 +33,7 @@ const meta = {
     },
     variant: {
       control: 'select',
-      options: ['default', 'highlight', 'warning', 'success', 'critical'],
+      options: variants,
     },
   },
 } satisfies Meta<typeof Badge>;
@@ -40,7 +51,7 @@ export const minimum: Story = {
 
 export const highlight: Story = {
   args: {
-    variant: 'highlight',
+    variant: VariantStandard.HIGHLIGHT,
     pill: true,
     size: 'md',
   },
@@ -48,7 +59,7 @@ export const highlight: Story = {
 
 export const warning: Story = {
   args: {
-    variant: 'warning',
+    variant: VariantStandard.WARNING,
     pill: true,
     size: 'md',
   },
@@ -56,7 +67,7 @@ export const warning: Story = {
 
 export const success: Story = {
   args: {
-    variant: 'success',
+    variant: VariantStandard.SUCCESS,
     pill: true,
     size: 'md',
   },
@@ -64,7 +75,7 @@ export const success: Story = {
 
 export const critical: Story = {
   args: {
-    variant: 'critical',
+    variant: VariantStandard.CRITICAL,
     pill: true,
     size: 'md',
   },

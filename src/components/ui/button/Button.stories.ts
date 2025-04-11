@@ -1,9 +1,17 @@
-import Button from './Button.vue';
-import Icon from '../icon/Icon.vue';
+import { VariantStandard } from '#ds/constants/VariantStandard.enum.js';
 import type { Meta, StoryObj } from '@storybook/vue3';
+import Icon from '../icon/Icon.vue';
+import Button from './Button.vue';
 import type { ButtonVariant } from './types';
 
-const variants: ButtonVariant[] = ['highlight', 'success', 'critical', 'plain', 'link', 'default'];
+const variants: ButtonVariant[] = [
+  VariantStandard.DEFAULT,
+  VariantStandard.HIGHLIGHT,
+  VariantStandard.SUCCESS,
+  VariantStandard.CRITICAL,
+  'plain',
+  'link',
+];
 
 /** Buttons are used to initialize an action. The words on a button tell you what will happen when you click it. */
 const meta: Meta<typeof Button> = {

@@ -27,5 +27,5 @@ const badgeClassList = computed(() => {
 </template>
 
 <style lang="scss">
-@import './Badge.scss';
+@use 'Badge.scss';
 </style>

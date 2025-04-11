@@ -20,5 +20,5 @@ const onRemove = () => emit('remove');
 </template>
 
 <style lang="scss">
-@import './Tag.scss';
+@use 'Tag.scss';
 </style>
