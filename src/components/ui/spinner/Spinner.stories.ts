@@ -1,6 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 
+import { VariantStandard } from '#ds/constants';
+import type { VariantsStandard } from '#ds/types';
 import Spinner from './Spinner.vue';
+
+const variants: VariantsStandard[] = [
+  VariantStandard.DEFAULT,
+  VariantStandard.HIGHLIGHT,
+  VariantStandard.SUCCESS,
+  VariantStandard.WARNING,
+  VariantStandard.CRITICAL,
+];
 
 const meta = {
   title: 'Ui/Spinner',
@@ -17,7 +27,7 @@ const meta = {
     size: { control: 'number', description: 'number | string' },
     variant: {
       control: 'select',
-      options: ['default', 'highlight', 'warning', 'danger', 'success'],
+      options: variants,
     },
     color: { control: 'color' },
   },
@@ -27,30 +37,30 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
+export const minimum: Story = {
   args: {},
 };
 
-export const Highlight: Story = {
+export const highlight: Story = {
   args: {
-    variant: 'highlight',
+    variant: VariantStandard.HIGHLIGHT,
   },
 };
 
-export const Warning: Story = {
+export const warning: Story = {
   args: {
-    variant: 'warning',
+    variant: VariantStandard.WARNING,
   },
 };
 
-export const Success: Story = {
+export const success: Story = {
   args: {
-    variant: 'success',
+    variant: VariantStandard.SUCCESS,
   },
 };
 
-export const Critical: Story = {
+export const critical: Story = {
   args: {
-    variant: 'critical',
+    variant: VariantStandard.CRITICAL,
   },
 };

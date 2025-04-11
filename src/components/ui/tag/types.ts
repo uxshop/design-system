@@ -1,4 +1,6 @@
+import type { VariantsStandard } from '#ds/types';
+
 export interface TagProps {
   label?: string;
-  variant?: 'primary' | 'success' | 'danger' | 'default' | 'warning';
+  variant?: VariantsStandard;
 }

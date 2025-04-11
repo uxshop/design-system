@@ -6,9 +6,9 @@ export default {};
 </script>
 
 <script setup lang="ts">
-import { getCurrentInstance, ref, onMounted, nextTick } from 'vue';
-import TextStyle from '../text-style/TextStyle.vue';
+import { getCurrentInstance, nextTick, onMounted, ref } from 'vue';
 import Spinner from '../spinner/Spinner.vue';
+import TextStyle from '../text-style/TextStyle.vue';
 import type { IContext, InfiniteScrollProps } from './types';
 
 const props = defineProps<InfiniteScrollProps>();
@@ -65,7 +65,7 @@ defineExpose({
 </script>
 
 <template>
-  <div className="ui-infinite-loading" :id="uid">
+  <div :id="uid" className="ui-infinite-loading">
     <div className="ui-infinite-loading-content">
       <div v-if="noMore" className="ui-infinite-loading-no-more">
         <TextStyle variant="muted" label="Sem mais resultados" />

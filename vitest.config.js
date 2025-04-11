@@ -12,7 +12,7 @@ export default mergeConfig(
       coverage: {
         enabled: true,
         include: ['src/**/*.{ts,vue}'],
-        exclude: [],
+        exclude: ['src/**/*.{type,enum}.*'],
         reporter: ['html'],
       },
       exclude: [...configDefaults.exclude, 'e2e/**'],

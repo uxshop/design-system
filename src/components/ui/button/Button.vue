@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import { VariantStandard } from '#ds/constants';
 import { computed } from 'vue';
-import Spinner from '../spinner/Spinner.vue';
 import Icon from '../icon/Icon.vue';
+import Spinner from '../spinner/Spinner.vue';
 import type { ButtonProps } from './types';
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   spinnerBorder: 2,
-  variant: 'default',
+  variant: VariantStandard.DEFAULT,
   type: 'button',
   size: 'md',
   loading: false,

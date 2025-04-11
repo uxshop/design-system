@@ -1,14 +1,16 @@
 <script setup lang="ts">
+import { VariantStandard } from '#ds/constants';
 import { computed, type StyleValue } from 'vue';
 import type { SpinnerProps } from './types';
 
 const props = withDefaults(defineProps<SpinnerProps>(), {
   border: 3,
   size: 22,
+  variant: VariantStandard.DEFAULT,
 });
 
 const spinnerClassList = computed(() => {
-  let classes = [];
+  const classes = [];
 
   if (props.variant) {
     classes.push(`-variant-${props.variant}`);
@@ -18,7 +20,7 @@ const spinnerClassList = computed(() => {
 });
 
 const spinnerStyleList = computed(() => {
-  let styles: StyleValue = {};
+  const styles: StyleValue = {};
 
   if (props.border) {
     styles.borderWidth = props.border + 'px';

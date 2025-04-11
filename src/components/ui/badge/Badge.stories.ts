@@ -1,6 +1,17 @@
+import { VariantStandard } from '#ds/constants';
 import type { Meta, StoryObj } from '@storybook/vue3';
-
 import Badge from './Badge.vue';
+import './ExampleVariantCustom.css';
+import type { BadgeVariants } from './types';
+
+const variants: BadgeVariants[] = [
+  VariantStandard.DEFAULT,
+  VariantStandard.HIGHLIGHT,
+  VariantStandard.SUCCESS,
+  VariantStandard.WARNING,
+  VariantStandard.CRITICAL,
+  'custom',
+];
 
 const meta = {
   title: 'Ui/Badge',
@@ -22,7 +33,7 @@ const meta = {
     },
     variant: {
       control: 'select',
-      options: ['default', 'highlight', 'warning', 'success', 'critical'],
+      options: variants,
     },
   },
 } satisfies Meta<typeof Badge>;
@@ -31,41 +42,65 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Default: Story = {
+export const minimum: Story = {
   args: {
     pill: true,
     size: 'md',
   },
 };
 
-export const Highlight: Story = {
+export const highlight: Story = {
   args: {
-    variant: 'highlight',
+    variant: VariantStandard.HIGHLIGHT,
     pill: true,
     size: 'md',
   },
 };
 
-export const Warning: Story = {
+export const warning: Story = {
   args: {
-    variant: 'warning',
+    variant: VariantStandard.WARNING,
     pill: true,
     size: 'md',
   },
 };
 
-export const Success: Story = {
+export const success: Story = {
   args: {
-    variant: 'success',
+    variant: VariantStandard.SUCCESS,
     pill: true,
     size: 'md',
   },
 };
 
-export const Critical: Story = {
+export const critical: Story = {
   args: {
-    variant: 'critical',
+    variant: VariantStandard.CRITICAL,
     pill: true,
     size: 'md',
   },
+};
+
+export const custom: Story = {
+  args: {
+    variant: 'custom',
+    pill: true,
+    size: 'md',
+  },
+  render: (args) =>
+    ({
+      components: { Badge },
+      setup() {
+        return { args };
+      },
+      template: /* html */ `
+        <Badge v-bind="args" /><br>
+        <pre>
+        // CSS adicionado para personalizar a cor do badge:
+        .ui-badge.-variant-custom {
+          background-color: #9747ff;
+        }
+        <pre>
+      `,
+    }) as any,
 };

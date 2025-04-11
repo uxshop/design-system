@@ -7,6 +7,7 @@ import FormTextfield from '#ds/components/ui/form-textfield/FormTextfield.vue';
 import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
 import Tag from '#ds/components/ui/tag/Tag.vue';
 import TagList from '#ds/components/ui/tag/TagList.vue';
+import { VariantStandard } from '#ds/constants';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useActionSelectAllItems } from '../composables/useActionSelectAllItems';
 import { defaultPropEmptyResultDisplay } from '../list/defaultPropEmptyResultDisplay';
@@ -190,7 +191,7 @@ watch(
           <Tag
             v-for="(tag, index) in currentActiveFilterTags"
             :key="index"
-            variant="primary"
+            :variant="VariantStandard.HIGHLIGHT"
             :label="tag.label"
             :data-test-index-table="`tag-${tag.key}`"
             @remove="emit('remove-filter', tag)"></Tag>

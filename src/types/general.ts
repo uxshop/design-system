@@ -1,3 +1,5 @@
+import type { VariantStandard } from '#ds/constants';
+
 export type Alignment = 'start' | 'center' | 'end' | 'fill';
 
 export type Distribuition = 'center' | 'right' | 'around' | 'evenly' | 'between' | 'default';
@@ -14,3 +16,9 @@ export type Target = '_blank' | '_self';
 
 /** Tipo compartilhado entre componentes, validar alterações */
 export type Variant = 'primary' | 'success' | 'danger' | 'link' | 'plain' | 'default';
+
+/**
+ * Variantes padrão do design system, usado em múltiplos componentes.
+ * Use apenas se o componente não tiver uma variante específica e usar diretamente esse tipo.
+ */
+export type VariantsStandard = Lowercase<keyof typeof VariantStandard>;

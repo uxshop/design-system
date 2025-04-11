@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { VariantStandard } from '#ds/constants';
 import Icon from '../icon/Icon.vue';
 import type { TagProps } from './types';
 
 withDefaults(defineProps<TagProps>(), {
-  variant: 'default',
+  variant: VariantStandard.DEFAULT,
 });
 
 const emit = defineEmits(['remove']);
@@ -19,5 +20,5 @@ const onRemove = () => emit('remove');
 </template>
 
 <style lang="scss">
-@import './Tag.scss';
+@use 'Tag.scss';
 </style>

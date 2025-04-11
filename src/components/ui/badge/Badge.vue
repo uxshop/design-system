@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { VariantStandard } from '#ds/constants';
 import { computed } from 'vue';
 import type { BadgeProps } from './types';
 
 const props = withDefaults(defineProps<BadgeProps>(), {
   size: 'md',
-  variant: 'default',
+  variant: VariantStandard.DEFAULT,
 });
 
 const badgeClassList = computed(() => {
@@ -26,5 +27,5 @@ const badgeClassList = computed(() => {
 </template>
 
 <style lang="scss">
-@import './Badge.scss';
+@use 'Badge.scss';
 </style>
