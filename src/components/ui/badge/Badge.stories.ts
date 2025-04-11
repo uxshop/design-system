@@ -87,4 +87,20 @@ export const custom: Story = {
     pill: true,
     size: 'md',
   },
+  render: (args) =>
+    ({
+      components: { Badge },
+      setup() {
+        return { args };
+      },
+      template: /* html */ `
+        <Badge v-bind="args" /><br>
+        <pre>
+        // CSS adicionado para personalizar a cor do badge:
+        .ui-badge.-variant-custom {
+          background-color: #9747ff;
+        }
+        <pre>
+      `,
+    }) as any,
 };
