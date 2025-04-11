@@ -6,6 +6,7 @@ export default {};
 </script>
 
 <script setup lang="ts">
+import { VariantStandard } from '#ds/constants';
 import { ref, toRaw, watch, withDefaults } from 'vue';
 import { zerofill } from '../../../filters';
 import Aside from '../../ui/aside/Aside.vue';
@@ -161,7 +162,7 @@ defineExpose({
               <FormTextfield v-model="term" placeholder="Procurar" autofocus last size="md" autocomplete="off">
                 <template #before>
                   <div class="box-icon">
-                    <Spinner v-show="typing" class="icon" size="16" border="2" variant="highlight" />
+                    <Spinner v-show="typing" class="icon" size="16" border="2" :variant="VariantStandard.HIGHLIGHT" />
                     <Icon v-show="!typing" class="icon" name="search" size="20" />
                   </div>
                 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { VariantStandard } from '#ds/constants';
 import { each, find, isFunction, omit } from 'lodash-es';
 import { DateTime } from 'luxon';
 import { computed } from 'vue';
@@ -93,7 +94,7 @@ const showTags = computed(() => {
       v-for="(item, key) in state.omitFilters"
       v-show="String(key) != 'q'"
       :key="item"
-      variant="highlight"
+      :variant="VariantStandard.HIGHLIGHT"
       label=""
       @remove="state.removeFilter(String(key))">
       {{ translateKey(String(key)) }}: {{ translateValue(item, String(key)) }}
