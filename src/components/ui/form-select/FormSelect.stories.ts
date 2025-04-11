@@ -1,5 +1,5 @@
-import FormSelect from './FormSelect.vue';
 import type { Meta, StoryObj } from '@storybook/vue3';
+import FormSelect from './FormSelect.vue';
 
 /** A select allows users to choose one option from a list of values. */
 const meta: Meta<typeof FormSelect> = {
@@ -48,46 +48,54 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-export const Float: Story = {
+export const minimum: Story = {};
+
+export const float: Story = {
   args: {
     float: true,
   },
 };
 
-export const Loading: Story = {
+export const loading: Story = {
   args: {
     loading: true,
   },
 };
 
-export const Disabled: Story = {
+export const disabled: Story = {
   args: {
     disabled: true,
   },
 };
 
-export const LeadingIcon: Story = {
+export const leadingIcon: Story = {
   args: {
     leadingIcon: 'check',
   },
 };
 
-export const TrailingIcon: Story = {
+export const trailingIcon: Story = {
   args: {
     trailingIcon: 'check',
   },
 };
 
-export const LabelInfo: Story = {
+export const labelInfo: Story = {
   args: {
     labelInfo: 'Label Info',
   },
 };
 
-export const InvalidFeedback: Story = {
+export const invalidFeedback: Story = {
   args: {
     state: false,
     invalidFeedback: 'Campo inválido',
+  },
+};
+
+export const helpFeedback: Story = {
+  args: {
+    state: undefined,
+    helpFeedback: 'Itens não existentes no catálogo não serão listados',
   },
 };

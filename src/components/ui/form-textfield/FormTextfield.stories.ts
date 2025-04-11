@@ -21,6 +21,7 @@ const meta: Meta<typeof FormTextfield> = {
     disabled: false,
     size: 'md',
     placeholder: 'Digite um texto',
+    mask: [],
   },
   render: (args) => ({
     components: { FormTextfield },
@@ -99,6 +100,15 @@ export const invalidFeedback: Story = {
     label: 'My Label',
     state: false,
     invalidFeedback: 'Campo inválido',
+  },
+};
+
+export const helpFeedback: Story = {
+  args: {
+    modelValue: 'Input value',
+    label: 'My Label',
+    state: undefined,
+    helpFeedback: 'Digite seu nome completo, sem abreviações',
   },
 };
 

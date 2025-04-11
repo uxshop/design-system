@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { isObject } from 'lodash-es';
-import { computed, onMounted, ref, watchEffect } from 'vue';
+import { computed, onMounted, ref, useAttrs, watchEffect } from 'vue';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
-import type { FormSelectProps } from './types';
+import { valuesDefaultOfFormWrapperBaseProps } from '../form-wrapper/valuesDefaultOfFormWrapperProps';
+import type { FormSelectEmits, FormSelectProps } from './types';
 
 const props = withDefaults(defineProps<FormSelectProps>(), {
   options: () => {
     return [];
   },
-  state: undefined,
+  ...valuesDefaultOfFormWrapperBaseProps,
 });
-
-const emit = defineEmits(['update:modelValue', 'update']);
+const emit = defineEmits<FormSelectEmits>();
 
 const parseValue = (val: string) => {
   if (/\{/.test(val)) {
@@ -61,15 +61,27 @@ const updateModelValue = () => {
 
 watchEffect(updateModelValue);
 
-/** Necessário desativar devido a incompatibilidade atual com este componente e algumas props do `FormWrapper` */
-defineOptions({
-  inheritAttrs: false,
-});
+const onInternalState = (state: boolean | undefined) => {
+  emit('internal-state', state);
+};
+
+const attrs = useAttrs();
+const attrsToBind = {
+  class: ['ui-form-select', attrs.class],
+  style: attrs.style,
+  tabindex: attrs.tabindex,
+};
+
+/**
+ * Necessário desativar porque este componente não é compatível com todas as props do `FormWrapper`
+ */
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
   <FormWrapper
     :id="id"
+    v-bind="attrsToBind"
     :leading-icon
     :trailing-icon
     :trailing-text
@@ -83,7 +95,8 @@ defineOptions({
     :autofocus
     :size
     :state
-    class="ui-form-select">
+    :help-feedback
+    @internal-state="onInternalState">
     <select
       :id="id"
       v-model="model"

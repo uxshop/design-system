@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, useAttrs, watch } from 'vue';
 import { CurrencyDisplay, useCurrencyInput, type CurrencyInputOptions } from 'vue-currency-input';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
+import { valuesDefaultOfFormWrapperBaseProps } from '../form-wrapper/valuesDefaultOfFormWrapperProps';
 import type { FormCurrencyEmits, FormCurrencyProps } from './types';
 
 const props = withDefaults(defineProps<FormCurrencyProps>(), {
-  state: undefined,
   placeholder: '0.00',
   max: 999999.99,
+  ...valuesDefaultOfFormWrapperBaseProps,
 });
 const emit = defineEmits<FormCurrencyEmits>();
 const focused = ref(false);
@@ -48,8 +49,10 @@ onMounted(() => {
 
 watch(
   () => props.modelValue,
-  (newVal: any) => {
-    if (newVal === null) return;
+  (newVal: string | number | null | undefined) => {
+    if (!newVal) return;
+
+    if (typeof newVal === 'number') newVal = newVal.toString();
 
     setValue(parseFloat(newVal));
     emit('update:modelValue', newVal);
@@ -59,22 +62,35 @@ watch(
 
 watch(
   () => focused.value,
-  (newVal: any) => {
+  (newVal: boolean) => {
     if (!newVal) return;
     emit('change', newVal);
   },
   { immediate: true }
 );
 
-/** Necessário desativar devido a incompatibilidade atual com este componente e algumas props do `FormWrapper` */
-defineOptions({
-  inheritAttrs: false,
-});
+const onInternalState = (state: boolean | undefined) => {
+  emit('internal-state', state);
+};
+
+const attrs = useAttrs();
+const attrsToBind = {
+  class: attrs.class,
+  style: attrs.style,
+  tabindex: attrs.tabindex,
+};
+
+/**
+ * Necessário desativar porque este componente não é compatível com todas as props do `FormWrapper`
+ */
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
   <FormWrapper
     :id="id"
+    v-bind="attrsToBind"
+    data-form="currency"
     :leading-icon
     :trailing-icon
     :label
@@ -84,8 +100,11 @@ defineOptions({
     :label-info
     :float
     :state
+    :autofocus
     :size
-    :invalid-feedback>
+    :invalid-feedback
+    :help-feedback
+    @internal-state="onInternalState">
     <input
       ref="inputRef"
       :class="classList"

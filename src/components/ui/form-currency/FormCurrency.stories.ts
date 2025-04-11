@@ -19,6 +19,8 @@ const meta: Meta<typeof FormCurrency> = {
     disabled: false,
     size: 'md',
     label: 'Label',
+    min: 1,
+    max: 100,
   },
   argTypes: {
     modelValue: {
@@ -94,6 +96,13 @@ export const invalidFeedback: Story = {
   args: {
     state: false,
     invalidFeedback: 'Campo inválido',
+  },
+};
+
+export const helpFeedback: Story = {
+  args: {
+    state: undefined,
+    helpFeedback: 'Recomendado: R$ 25,00',
   },
 };
 
