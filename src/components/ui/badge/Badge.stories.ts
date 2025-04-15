@@ -1,7 +1,7 @@
 import { VariantStandard } from '#ds/constants';
 import type { Meta, StoryObj } from '@storybook/vue3';
 import Badge from './Badge.vue';
-import './ExampleVariantCustom.css';
+import './VariantCustom.example.css';
 import type { BadgeVariants } from './types';
 
 const variants: BadgeVariants[] = [
@@ -100,7 +100,7 @@ export const custom: Story = {
         .ui-badge.-variant-custom {
           background-color: #9747ff;
         }
-        <pre>
+        </pre>
       `,
     }) as any,
 };
