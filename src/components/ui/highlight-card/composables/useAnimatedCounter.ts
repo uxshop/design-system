@@ -15,6 +15,8 @@ export function useAnimatedCounter(props: HighlightCardProps) {
    * Função de animação principal que atualiza o valor da animação
    */
   const animate = () => {
+    if (typeof props.value !== 'number') return;
+
     if (!startTime.value) {
       startTime.value = performance.now();
     }
@@ -63,9 +65,16 @@ export function useAnimatedCounter(props: HighlightCardProps) {
     animating.value = false;
   };
 
+  /**
+   * Define o valor a ser exibido, se o valor for uma string, retorna o valor original,
+   * se a animação estiver desabilitada e o valor for um número, retorna o valor
+   * formatado, caso contrário, retorna o valor da animação formatado.
+   */
   const displayValue = computed(() => {
-    if (!props.animationEnabled) {
-      return props.valueFormatter?.(props.value || 0);
+    if (typeof props.value === 'string') return props.value;
+
+    if (!props.animationEnabled && typeof props.value === 'number') {
+      return props.valueFormatter?.(props.value);
     }
 
     return props.valueFormatter?.(currentValue.value);

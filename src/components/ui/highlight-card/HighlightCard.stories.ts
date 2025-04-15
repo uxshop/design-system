@@ -15,9 +15,21 @@ const variants: VariantsStandard[] = [
 ];
 
 /**
- * O componente HighlightCard apresenta dados de forma destacada e organizada.
- * Ele combina label, valor e ícone, sendo amplamente usado para resumos de métricas ou
- * informações-chave, com variações visuais que atendem a diferentes necessidades.
+ * > O componente HighlightCard apresenta dados de forma destacada e organizada.
+ * > Ele combina label, valor e ícone, sendo amplamente usado para resumos de métricas ou
+ * > informações-chave, com variações visuais que atendem a diferentes necessidades.
+ *
+ * Este componente pode ser utilizado para exibir no valor em destaque um valor numérico
+ * ou um texto, e o valor numérico por padrão possui uma animação de contagem até o valor
+ * final.
+ *
+ * ## Slots possíveis
+ *
+ * - **`icon`**: Slot para substituir o ícone do componente.
+ * - **`value`**: Slot para substituir o valor do componente. Nesse slot é possível
+ * acessar o `displayValue` para exibir o valor formatado.
+ * - **`label`**: Slot para substituir a label do componente. Nesse slot é possível
+ *  acessar o `label` e `labelInfo` para exibir a label e a informação adicional para tooltip.
  */
 const meta: Meta<typeof HighlightCard> = {
   title: 'Ui/HighlightCard',
@@ -52,6 +64,17 @@ export const minimum: Story = {
     label: 'Vendas mensais',
     icon: 'shopping_cart',
     value: 15000,
+    valueFormatter: (value: number) =>
+      new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value),
+  },
+};
+
+export const defaultNegativeValue: Story = {
+  args: {
+    variant: VariantStandard.DEFAULT,
+    label: 'Vendas perdidas',
+    icon: 'shopping_cart',
+    value: -800,
     valueFormatter: (value: number) =>
       new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value),
   },
@@ -94,6 +117,34 @@ export const critical: Story = {
     label: 'Pedidos cancelados',
     value: 7,
   },
+};
+
+export const withTextValue: Story = {
+  args: {
+    variant: VariantStandard.SUCCESS,
+    icon: 'leaderboard',
+    label: 'Cliente com ticket médio mais alto',
+    value: 'João da Silva',
+  },
+};
+
+export const withLabelInfo: Story = {
+  args: {
+    icon: 'shopping_cart',
+    label: 'Pedidos cancelados',
+    value: 7,
+    labelInfo: 'Pedidos com informações incorretas ou cancelados manualmente',
+  },
+  render: (args) =>
+    ({
+      components: { HighlightCard, Icon },
+      setup() {
+        return { args };
+      },
+      template: /* html */ `
+        <HighlightCard v-bind="args" style="margin-top: 80px;" />
+      `,
+    }) as any,
 };
 
 export const loading: Story = {

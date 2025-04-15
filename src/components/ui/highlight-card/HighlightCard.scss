@@ -69,9 +69,20 @@
     }
   }
 
+  &-tooltip {
+    color: var(--s-color-content-light);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
   &-label {
     color: var(--s-color-content-light);
     font: var(--s-typography-paragraph-regular);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--s-spacing-quark);
 
     &-skeleton {
       height: 20px;

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VariantStandard } from '#ds/constants';
+import vTooltip from '../../../directives/tooltip';
 import { Icon, Skeleton } from '#ds/index';
 import { withDefaults } from 'vue';
 import type { HighlightCardProps, HighlightCardSlots } from './types';
@@ -9,8 +10,9 @@ const props = withDefaults(defineProps<HighlightCardProps>(), {
   value: 0,
   variant: VariantStandard.DEFAULT,
   loading: false,
+  icon: 'adjust',
   animationEnabled: true,
-  animationDuration: 3000,
+  animationDuration: 1500,
   animationDecimals: 0,
   valueFormatter: (value: number) => value.toString(),
 });
@@ -40,13 +42,18 @@ const { displayValue } = useAnimatedCounter(props);
     <div class="highlight-card-info-container">
       <Skeleton v-if="loading" class="highlight-card-value-skeleton" />
       <p v-else class="highlight-card-value">
-        {{ displayValue }}
+        <slot name="value" :display-value="displayValue">
+          {{ displayValue }}
+        </slot>
       </p>
 
       <Skeleton v-if="loading" class="highlight-card-label-skeleton" />
       <p v-else :id="`${uid}-${label}`" class="highlight-card-label">
-        <slot name="label">
+        <slot name="label" :label="label" :label-info="labelInfo">
           {{ label }}
+          <span v-if="labelInfo" v-tooltip:top="labelInfo" class="highlight-card-tooltip">
+            <Icon name="help" size="16" />
+          </span>
         </slot>
       </p>
     </div>
