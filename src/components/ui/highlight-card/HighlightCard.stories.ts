@@ -32,7 +32,7 @@ const variants: VariantsStandard[] = [
  *  acessar o `label` e `labelInfo` para exibir a label e a informação adicional para tooltip.
  */
 const meta: Meta<typeof HighlightCard> = {
-  title: 'Ui/HighlightCard',
+  title: 'ui/HighlightCard',
   tags: ['beta'],
   component: HighlightCard,
   argTypes: {

@@ -85,7 +85,7 @@ describe('HighlightCard', () => {
     });
 
     test('Dado um componente HighlightCard, Quando é renderizado sem um icon, Então não deve renderizar o componente Icon', () => {
-      const { icon } = createComponent({ icon: undefined });
+      const { icon } = createComponent({ icon: null });
 
       expect(icon().exists()).toBe(false);
     });
