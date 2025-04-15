@@ -187,6 +187,11 @@ export const customSlots: Story = {
 };
 
 export const withHighlightCardGroup: Story = {
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
   render: (args) => ({
     components: { HighlightCard, HighlightCardGroup },
     setup() {

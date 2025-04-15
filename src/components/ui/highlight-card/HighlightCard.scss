@@ -93,7 +93,7 @@
   &-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: var(--s-spacing-x-small);
 
     > * {
       flex: 1 0 calc(33.333% - (32px / 3));
