@@ -5,6 +5,7 @@ import HighlightCardGroup from './HighlightCardGroup.vue';
 import { Icon } from '#ds/index';
 import './HighlightCard.scss';
 import type { VariantsStandard } from '#ds/types';
+import { ref, onMounted } from 'vue';
 
 const variants: VariantsStandard[] = [
   VariantStandard.DEFAULT,
@@ -229,6 +230,49 @@ export const withHighlightCardGroup: Story = {
           :value="23"
         />
       </HighlightCardGroup>
+    </div>
+    `,
+  }),
+};
+
+export const transitionLoadingToData: Story = {
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  args: {
+    variant: VariantStandard.SUCCESS,
+    value: 24893.75,
+    label: 'Faturamento mensal',
+    icon: 'monitoring',
+  },
+  render: (args) => ({
+    components: { HighlightCard },
+    setup() {
+      const isLoading = ref(true);
+
+      onMounted(() => {
+        setTimeout(() => {
+          isLoading.value = false;
+        }, 3000);
+      });
+
+      const formatCurrency = (value: number) => {
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+      };
+
+      return { isLoading, formatCurrency, args };
+    },
+    template: /* html */ `
+    <div>
+      <p style="margin-bottom: 8px; font-size: 14px;">Esta demonstração mostra a transição do estado de carregamento para dados reais após 3 segundos.</p>
+      <HighlightCard
+        v-bind="args"
+        :loading="isLoading"
+        :value-formatter="formatCurrency"
+        animationDecimals="2"
+      />
     </div>
     `,
   }),

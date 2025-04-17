@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { watchEffect, ref, computed } from 'vue';
 import Button from '../button/Button.vue';
-import IconButton from '../icon-button/IconButton.vue';
 import type { AsideProps } from './types';
 
 const emit = defineEmits(['update:modelValue', 'open', 'close', 'save']);
@@ -87,7 +86,7 @@ watchEffect(() => {
               </h4>
               <p v-if="subtitle" class="d-block text-muted mb-0">{{ subtitle }}</p>
             </div>
-            <IconButton id="btn-close" icon="close" variant="plain" type="rounded" @click="onClose" />
+            <Button id="btn-close" leading-icon="close" variant="plain" type="rounded" only-icon @click="onClose" />
           </div>
 
           <div class="ui-aside-body">

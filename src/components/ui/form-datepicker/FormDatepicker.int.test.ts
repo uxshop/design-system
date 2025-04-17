@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import { describe, expect, test, vi } from 'vitest';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
 import type { FormWrapperDefaultProps } from '../form-wrapper/types';
-import IconButton from '../icon-button/IconButton.vue';
+import Button from '../button/Button.vue';
 import FormDatepicker from './FormDatepicker.vue';
 
 vi.mock('@easepick/bundle', () => ({
@@ -28,7 +28,7 @@ describe('FormDatepicker', () => {
       ...mountOptions,
       global: {
         stubs: {
-          IconButton: true,
+          Button: true,
         },
       },
     });
@@ -37,7 +37,7 @@ describe('FormDatepicker', () => {
       wrapper,
       input: () => wrapper.find('[data-form="input"]'),
       formWrapper: () => wrapper.findComponent(FormWrapper),
-      iconButton: () => wrapper.find('[data-icon="button"]'),
+      button: () => wrapper.findComponent(Button),
     };
   }
 
@@ -56,22 +56,23 @@ describe('FormDatepicker', () => {
     });
 
     test('Dado um componente FormDatepicker com valor, Quando é renderizado, Então deve mostrar o botão de limpar', () => {
-      const { iconButton } = createComponent({ modelValue: '2023-12-25' });
+      const { button } = createComponent({ modelValue: '2023-12-25' });
+      console.log(button().html());
 
-      expect(iconButton().exists()).toBe(true);
-      expect(iconButton().attributes('icon')).toBe('close');
+      expect(button().exists()).toBe(true);
+      expect(button().attributes('leadingicon')).toBe('close');
     });
 
     test('Dado um componente FormDatepicker sem valor, Quando é renderizado, Então não deve mostrar o botão de limpar', () => {
       const { wrapper } = createComponent({ modelValue: '' });
 
-      expect(wrapper.findComponent(IconButton).exists()).toBe(false);
+      expect(wrapper.findComponent(Button).exists()).toBe(false);
     });
 
     test('Dado um componente FormDatepicker com noClear=true, Quando é renderizado, Então não deve mostrar o botão de limpar mesmo com valor definido', () => {
       const { wrapper } = createComponent({ modelValue: '2023-12-25', noClear: true });
 
-      expect(wrapper.findComponent(IconButton).exists()).toBe(false);
+      expect(wrapper.findComponent(Button).exists()).toBe(false);
     });
   });
 

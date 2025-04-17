@@ -3,7 +3,7 @@ import { easepick, RangePlugin } from '@easepick/bundle';
 import { DateTime } from 'luxon';
 import { computed, getCurrentInstance, onMounted, ref, shallowRef, useAttrs, watchEffect } from 'vue';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
-import IconButton from '../icon-button/IconButton.vue';
+import Button from '../button/Button.vue';
 import type { EasyPickDetails, FormDatepickerEmits, FormDatepickerProps } from './types';
 
 const props = withDefaults(defineProps<FormDatepickerProps>(), {
@@ -161,12 +161,13 @@ defineOptions({ inheritAttrs: false });
       readonly
       :class="classList" />
     <template v-if="!noClear && !loading" #trailingIcon>
-      <IconButton
+      <Button
         v-if="modelValue"
         data-icon="button"
-        icon="close"
+        leading-icon="close"
         variant="plain"
         size="sm"
+        only-icon
         class="btn-remove"
         @click="clearDate" />
     </template>

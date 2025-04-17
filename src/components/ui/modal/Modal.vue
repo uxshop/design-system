@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getCurrentInstance, watchEffect, ref, onMounted, shallowRef } from 'vue';
-import IconButton from '../icon-button/IconButton.vue';
+import Button from '../button/Button.vue';
 import type { ModalProps } from './types';
 
 type SlotType = {
@@ -102,14 +102,15 @@ watchEffect(() => {
               <slot name="caption" />
             </div>
 
-            <IconButton
+            <Button
               v-if="!hideClose"
               class="ui-modal-close"
               id="btn-close"
               @click="close"
               size="md"
               variant="plain"
-              icon="close" />
+              leading-icon="close"
+              only-icon />
           </div>
 
           <div class="ui-modal-body">
