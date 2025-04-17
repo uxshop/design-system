@@ -19,7 +19,7 @@
   transition: outline var(--s-motion-ease-linear) var(--s-motion-duration-fast);
   padding-bottom: var(--s-spacing-nano);
 
-  &:hover:not(.-active) {
+  &:hover:not(.-active):not(:disabled) {
     &:after {
       background: var(--s-color-border-highlight);
     }
@@ -52,7 +52,7 @@
     transition: height 0.2s ease;
   }
 
-  &:hover:not(.-active)::before {
+  &:hover:not(.-active):not(:disabled)::before {
     height: 2px;
   }
 
