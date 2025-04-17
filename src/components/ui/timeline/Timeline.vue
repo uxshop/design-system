@@ -4,7 +4,6 @@ import Link from '../link/Link.vue';
 import FormTextfield from '../form-textfield/FormTextfield.vue';
 import Button from '../button/Button.vue';
 import Stack from '../stack/Stack.vue';
-import IconButton from '../icon-button/IconButton.vue';
 import type { TimelineProps } from './types';
 
 defineProps<TimelineProps>();
@@ -52,7 +51,7 @@ function onSavePost(): void {
 
               <small class="ui-timeline-item-date">{{ item.date }}</small>
             </div>
-            <IconButton @click="$emit('onRemoveMessage', item)" icon="close" size="sm" variant="plain" />
+            <Button leading-icon="close" size="sm" variant="plain" only-icon @click="$emit('onRemoveMessage', item)" />
           </div>
         </div>
       </li>

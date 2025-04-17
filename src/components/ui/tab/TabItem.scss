@@ -17,8 +17,9 @@
   position: relative;
   font: var(--s-typography-paragraph-regular);
   transition: outline var(--s-motion-ease-linear) var(--s-motion-duration-fast);
+  padding-bottom: var(--s-spacing-nano);
 
-  &:hover:not(.-active) {
+  &:hover:not(.-active):not(:disabled) {
     &:after {
       background: var(--s-color-border-highlight);
     }
@@ -31,12 +32,6 @@
       font-weight: var(--s-font-weight-regular);
       color: var(--s-color-content-disable);
     }
-
-    &:hover:not(.-active) {
-      &:after {
-        background: transparent;
-      }
-    }
   }
 
   &:focus {
@@ -46,25 +41,28 @@
     }
   }
 
-  &::after {
+  &::before {
     content: '';
-    height: 2px;
-    background: transparent;
-    width: 100%;
     position: absolute;
-    bottom: -1px;
-    display: block;
+    bottom: 0;
     left: 0;
-    transition: var(--s-motion-ease-linear) var(--s-motion-duration-fast);
-    border-radius: var(--s-border-radius-medium);
+    width: 100%;
+    height: 0;
+    background-color: var(--s-color-fill-highlight);
+    transition: height 0.2s ease;
+  }
+
+  &:hover:not(.-active):not(:disabled)::before {
+    height: 2px;
   }
 
   &.-active {
     color: var(--s-color-content-highlight);
     font: var(--s-typography-paragraph-strong);
 
-    &:after {
-      background-color: var(--s-color-fill-highlight);
+    &::before {
+      height: 2px;
+      box-shadow: 0 1px 0 0 var(--s-color-fill-highlight);
     }
   }
 

@@ -33,7 +33,7 @@ onUnmounted(() => {
 <template>
   <div class="titlebar">
     <div class="titlebar-content">
-      <IconButton v-if="backlink" :to="{ name: backlink.to }" icon="arrow_back" size="lg" />
+      <Button v-if="backlink" :to="{ name: backlink.to }" leading-icon="arrow_back" size="lg" />
       <div class="titlebar-content-title">
         <h2 class="titlebar-content-title-text">{{ title }}</h2>
         <slot v-if="$slots['titlebar-subtitle']" name="titlebar-subtitle" class="titlebar-subtitle"></slot>

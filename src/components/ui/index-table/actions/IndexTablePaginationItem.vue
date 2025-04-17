@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
+import { Button } from '#ds/index';
 import type { IndexTablePaginationItemEmits, IndexTablePaginationItemProps } from '../types';
 
 const props = withDefaults(defineProps<IndexTablePaginationItemProps>(), {
@@ -34,17 +34,19 @@ const onPreviousPage = () => {
       {{ from }} - {{ to }} {{ total ? 'de ' + total : '' }}
     </div>
 
-    <IconButton
+    <Button
       class="ui-index-table-pagination-previous"
       size="md"
-      icon="arrow_back"
+      leading-icon="arrow_back"
+      only-icon
       :disabled="1 === page || isInternalLoading"
       data-test-index-table="pagination-previous-page"
       @click="onPreviousPage" />
 
-    <IconButton
+    <Button
       size="md"
-      icon="arrow_forward"
+      leading-icon="arrow_forward"
+      only-icon
       :disabled="to === total || isInternalLoading"
       data-test-index-table="pagination-next-page"
       @click="onNextPage" />

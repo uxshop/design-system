@@ -32,30 +32,36 @@ const { displayValue } = useAnimatedCounter(props);
     }"
     tabindex="0"
     :aria-labelledby="`${uid}-${label}`">
-    <Skeleton v-if="loading" class="highlight-card-icon-container-skeleton" />
-    <div v-else class="highlight-card-icon-container">
-      <slot name="icon" :variant="variant">
-        <Icon v-if="icon" :name="icon" size="16" />
-      </slot>
-    </div>
+    <Transition name="fade" mode="out-in">
+      <Skeleton v-if="loading" class="highlight-card-icon-container-skeleton" />
+      <div v-else class="highlight-card-icon-container">
+        <slot name="icon" :variant="variant">
+          <Icon v-if="icon" :name="icon" size="16" />
+        </slot>
+      </div>
+    </Transition>
 
     <div class="highlight-card-info-container">
-      <Skeleton v-if="loading" class="highlight-card-value-skeleton" />
-      <p v-else class="highlight-card-value">
-        <slot name="value" :display-value="displayValue">
-          {{ displayValue }}
-        </slot>
-      </p>
+      <Transition name="fade" mode="out-in">
+        <Skeleton v-if="loading" class="highlight-card-value-skeleton" />
+        <p v-else class="highlight-card-value">
+          <slot name="value" :display-value="displayValue">
+            {{ displayValue }}
+          </slot>
+        </p>
+      </Transition>
 
-      <Skeleton v-if="loading" class="highlight-card-label-skeleton" />
-      <p v-else :id="`${uid}-${label}`" class="highlight-card-label">
-        <slot name="label" :label="label" :label-info="labelInfo">
-          {{ label }}
-          <span v-if="labelInfo" v-tooltip:top="labelInfo" class="highlight-card-tooltip">
-            <Icon name="help" size="16" />
-          </span>
-        </slot>
-      </p>
+      <Transition name="fade" mode="out-in">
+        <Skeleton v-if="loading" class="highlight-card-label-skeleton" />
+        <p v-else :id="`${uid}-${label}`" class="highlight-card-label">
+          <slot name="label" :label="label" :label-info="labelInfo">
+            {{ label }}
+            <span v-if="labelInfo" v-tooltip:top="labelInfo" class="highlight-card-tooltip">
+              <Icon name="help" size="16" />
+            </span>
+          </slot>
+        </p>
+      </Transition>
     </div>
   </article>
 </template>

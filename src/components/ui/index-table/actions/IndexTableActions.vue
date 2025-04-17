@@ -4,7 +4,6 @@ import Dropdown from '#ds/components/ui/dropdown/Dropdown.vue';
 import DropdownItemButton from '#ds/components/ui/dropdown/DropdownItemButton.vue';
 import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
 import FormTextfield from '#ds/components/ui/form-textfield/FormTextfield.vue';
-import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
 import Tag from '#ds/components/ui/tag/Tag.vue';
 import TagList from '#ds/components/ui/tag/TagList.vue';
 import { VariantStandard } from '#ds/constants';
@@ -83,11 +82,12 @@ watch(
           @keyup.enter="updateCheckboxAllSelected(checkboxAllSelected === null ? false : !checkboxAllSelected)" />
 
         <template v-if="!showBulkActions">
-          <IconButton
+          <Button
             v-if="show.reload"
             class="ui-index-table-actions-refresh"
             size="md"
-            icon="refresh"
+            leading-icon="refresh"
+            only-icon
             data-test-index-table="action-refresh"
             :disabled="isInternalLoading"
             @click="emit('reload')" />
