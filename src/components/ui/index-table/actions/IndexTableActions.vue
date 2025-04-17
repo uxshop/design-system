@@ -83,11 +83,12 @@ watch(
           @keyup.enter="updateCheckboxAllSelected(checkboxAllSelected === null ? false : !checkboxAllSelected)" />
 
         <template v-if="!showBulkActions">
-          <IconButton
+          <Button
             v-if="show.reload"
             class="ui-index-table-actions-refresh"
             size="md"
-            icon="refresh"
+            leading-icon="refresh"
+            only-icon
             data-test-index-table="action-refresh"
             :disabled="isInternalLoading"
             @click="emit('reload')" />
