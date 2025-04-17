@@ -126,3 +126,13 @@
     }
   }
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--s-motion-duration-fast) var(--s-motion-ease-linear);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

@@ -57,7 +57,6 @@ describe('FormDatepicker', () => {
 
     test('Dado um componente FormDatepicker com valor, Quando é renderizado, Então deve mostrar o botão de limpar', () => {
       const { button } = createComponent({ modelValue: '2023-12-25' });
-      console.log(button().html());
 
       expect(button().exists()).toBe(true);
       expect(button().attributes('leadingicon')).toBe('close');

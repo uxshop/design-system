@@ -20,6 +20,7 @@ describe('HighlightCard', () => {
         stubs: {
           Icon: true,
           Skeleton: true,
+          Transition: true,
         },
       },
     });
