@@ -4,7 +4,6 @@ import Dropdown from '#ds/components/ui/dropdown/Dropdown.vue';
 import DropdownItemButton from '#ds/components/ui/dropdown/DropdownItemButton.vue';
 import FormCheckbox from '#ds/components/ui/form-checkbox/FormCheckbox.vue';
 import FormTextfield from '#ds/components/ui/form-textfield/FormTextfield.vue';
-import IconButton from '#ds/components/ui/icon-button/IconButton.vue';
 import Tag from '#ds/components/ui/tag/Tag.vue';
 import TagList from '#ds/components/ui/tag/TagList.vue';
 import { VariantStandard } from '#ds/constants';
