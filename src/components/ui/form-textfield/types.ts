@@ -31,5 +31,4 @@ export interface FormTextfieldProps extends FormWrapperProps {
   actions?: ActionButton[];
   max?: string | number;
   min?: string | number;
-  dataMaskaTokens?: string;
 }
