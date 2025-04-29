@@ -98,14 +98,6 @@ onMounted(() => {
 			})
 		}
 
-		if (item == 'remove') {
-			bulkActions.value.push({
-				label: 'Remover registros',
-				variant: 'danger',
-				onAction: onRemoveDialog
-			})
-		}
-
 		if (props.config.allowDuplication && item == 'duplicate') {
 			bulkActions.value.push({
 				label: 'Duplicar registros',
