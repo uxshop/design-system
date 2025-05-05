@@ -10,6 +10,7 @@ export interface FormTextfieldEmits extends FormWrapperEmits {
   (e: 'keydown', event: Event): void;
   (e: 'keydownEnter', event: Event): void;
   (e: 'clear'): void;
+  /** Emite o valor inserido no FormTextfield sem máscaras */
   (e: 'updateRaw', val: string | undefined): void;
 }
 
