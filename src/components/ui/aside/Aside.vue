@@ -89,7 +89,9 @@ watchEffect(() => {
 					<div class="ui-aside-header" :style="subtitle? 'align-items: flex-start' : 'align-items: center'">
 						<div class="header-wrapper">
 							<h4 class="title">
-								{{ title }}
+								<slot name="title">
+									{{ title }}
+								</slot>
 							</h4>
 							<p class="d-block text-muted mb-0" v-if="subtitle">{{ subtitle }}</p>
 						</div>
