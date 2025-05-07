@@ -88,7 +88,7 @@ watchEffect(() => {
 				<div class="ui-aside-content" :id="scrollableContentId">
 					<div class="ui-aside-header" :style="subtitle? 'align-items: flex-start' : 'align-items: center'">
 						<div class="header-wrapper">
-							<h4 class="title">
+							<h4 class="title" :class="{ '-has-slot': haveSlot('title') }">
 								<slot name="title">
 									{{ title }}
 								</slot>

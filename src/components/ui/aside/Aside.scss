@@ -154,6 +154,10 @@
 				display: inline-block;
 				max-width: 420px;
 				margin: 0;
+
+				&.-has-slot {
+					max-width: none;
+				}
 			}
 		}
 
