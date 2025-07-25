@@ -18,11 +18,10 @@ const onClickRow = (event: any, item: any) => {
   props.state.clickRow(item);
 };
 
-
 const onActiveOne = async (item: any) => {
-	await props.state.activeOne(item, !item.active)
-	item.active = !item.active
-}
+  await props.state.activeOne(item, !item.active);
+  item.active = !item.active;
+};
 
 const onCheckOne = (e: MouseEvent, item: any) => {
   if (props.selected.includes(item.id)) {
