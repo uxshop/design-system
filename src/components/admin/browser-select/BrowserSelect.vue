@@ -273,7 +273,11 @@ defineExpose({ onClickSearch })
 		:selectOne="selectOne"
 		:identifier="identifier"
 		:limit="limit"
-		:title="title" />
+		:title="title">
+		<template #pre-search>
+			<slot name="pre-search" />
+		</template>
+	</BrowserSelectModal>
 </template>
 
 <style lang="scss">
