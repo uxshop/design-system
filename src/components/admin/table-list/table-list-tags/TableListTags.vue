@@ -45,7 +45,7 @@ const translateValue = (item: any, key: string) => {
 		return item
 	}
 
-	if (key == 'created_at') {
+	if (key == 'updated_at' || key == 'created_at') {
 		return dateFormat(item)
 	}
 
