@@ -155,6 +155,7 @@ defineExpose({
 
 <template>
 	<Aside v-model="aside" :title="title" scrollable noCloseOnBackdrop scrollable-content-id="browser-select-scrollable">
+		<slot name="pre-search" />
 		<div class="ui-browser">
 			<div class="ui-browser-search">
 				<Row alignV="center">
