@@ -2,8 +2,6 @@
 import { ref } from 'vue'
 import { each, clone, isFunction, keys } from 'lodash-es'
 import Icon from '../../../ui/icon/Icon.vue'
-import Row from '../../../ui/grid/row/Row.vue'
-import Col from '../../../ui/grid/col/Col.vue'
 import Button from '../../../ui/button/Button.vue'
 import Aside from '../../../ui/aside/Aside.vue'
 import FormTextfield from '../../../ui/form-textfield/FormTextfield.vue'
@@ -13,7 +11,7 @@ import FormDatepicker from '../../../ui/form-datepicker/FormDatepicker.vue'
 import BrowserSelect from '../../../admin/browser-select/BrowserSelect.vue'
 
 const props = defineProps<{
-	filters: any
+	filters: Record<string | number, any>
 	currentFilters: Record<string, any>
 }>()
 const emit = defineEmits(['close'])
@@ -21,12 +19,13 @@ const selected = ref<Record<string, any>>({})
 const aside = ref(false)
 const accordion = ref<Record<string, any>>({})
 let selectedDefault: Record<string, any> | null = null
-const datePickerRef = ref([])
+const datePickerRef = ref<InstanceType<typeof FormDatepicker>[]>([])
+const datePickerUpdateAtRef = ref<InstanceType<typeof FormDatepicker>[]>([])
 
 const reset = () => {
 	const newSelected: Record<string, any> = {}
 	each(props.filters, (filter, key) => {
-		clearPickerDate()
+		clearPickerDate(key)
 		if (filter.type == 'checkbox') {
 			newSelected[key] = []
 		} else {
@@ -63,7 +62,7 @@ const onClearFilter = (filter: { type: string }, key: string | number) => {
 			break
 
 		case 'date_range':
-			clearPickerDate()
+			clearPickerDate(key as string)
 			break
 
 		default:
@@ -72,8 +71,12 @@ const onClearFilter = (filter: { type: string }, key: string | number) => {
 	}
 }
 
-const clearPickerDate = () => {
-	datePickerRef.value[0] && datePickerRef.value[0].clearDate()
+const clearPickerDate = (key: string) => {
+	if (key == 'updated_at') {
+		datePickerUpdateAtRef.value[0] && datePickerUpdateAtRef.value[0].clearDate()
+	} else {
+		datePickerRef.value[0] && datePickerRef.value[0].clearDate()
+	}
 }
 
 const hasFilterSelected = (filter: { type: string }, key: string | number) => {
@@ -137,7 +140,10 @@ defineExpose({
 						</div>
 
 						<div v-if="filter.type == 'date_range'">
-							<FormDatepicker ref="datePickerRef" v-model="selected[key]" range />
+							<FormDatepicker
+								:ref="key == 'updated_at' ? 'datePickerUpdateAtRef' : 'datePickerRef'"
+								v-model="selected[key]"
+								range />
 						</div>
 
 						<div v-else-if="['text', 'number'].indexOf(filter.type) >= 0">
@@ -177,8 +183,6 @@ defineExpose({
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</form>
 		<template #footer>
