@@ -49,7 +49,7 @@ const translateValue = (item: any, key: string) => {
 		return dateFormat(item)
 	}
 
-	if (key == 'q' || key == 'category_ids') {
+	if (key == 'q') {
 		return item
 	}
 
