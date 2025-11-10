@@ -10,7 +10,7 @@ const props = defineProps<{
 	state: ITableListState
 }>()
 
-const filterSidebarRef = ref()
+const filterSidebarRef = ref<InstanceType<typeof TableListNavFilterSidebar>>()
 
 const closeFilter = (resFilters: Record<string, any>) => {
 	const current: Record<string, any> = {}
@@ -27,11 +27,10 @@ const closeFilter = (resFilters: Record<string, any>) => {
 	})
 
 	props.state.resetQueryParams(current)
-	filterSidebarRef.value.open()
 }
 
 defineExpose({
-	openFilterSidebar: () => filterSidebarRef.value.open()
+	openFilterSidebar: async () => filterSidebarRef.value?.open()
 })
 </script>
 
@@ -41,7 +40,7 @@ defineExpose({
 			:size="isMobile() ? 'md' : 'sm'"
 			:label="isMobile() ? '' : 'Filtros'"
 			leadingIcon="filter_list"
-			@click="filterSidebarRef.open()"
+			@click="filterSidebarRef?.open()"
 			class="table-list-nav-btn" />
 		<TableListNavFilterSidebar
 			ref="filterSidebarRef"

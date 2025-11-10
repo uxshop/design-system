@@ -41,7 +41,7 @@ const emit = defineEmits<{
 	(event: 'onStatusUpdateError', error: any): void
 }>()
 
-const tableListNavFilterRef = ref()
+const tableListNavFilterRef = ref<InstanceType<typeof TableListNavFilter>>()
 const rows = ref<TApiData[]>([])
 const scrollLeft = ref(false)
 const selected = ref<number[]>([])
@@ -274,7 +274,7 @@ const state = reactive({
 defineExpose({
 	unshiftItem: unshiftItem,
 	refresh: (forceTimestamp?: boolean) => fetchData(forceTimestamp),
-	openFilterSidebar: () => tableListNavFilterRef.value.openFilterSidebar()
+	openFilterSidebar: async () => tableListNavFilterRef.value?.openFilterSidebar()
 })
 </script>
 
