@@ -79,6 +79,8 @@ const translateValue = async (item: any, key: string) => {
 				const obj = find(props.state.config.filters[k]?.filters, { value: v })
 				if (obj) {
 					val.push(obj.name)
+				} else {
+					props.state.removeFilter(k)
 				}
 			})
 		}
