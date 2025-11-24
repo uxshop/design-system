@@ -63,6 +63,7 @@ const onClearFilter = (filter: { type: string }, key: string | number) => {
 
 		case 'date_range':
 			clearPickerDate(key as string)
+			selected.value[key] = null
 			break
 
 		default:
