@@ -126,25 +126,30 @@ const getItemsList = async () => {
 }
 
 const fetch = async () => {
-	loading.value = true
-	let newRows: unknown[] = []
+	try {
+		loading.value = true
+		let newRows: unknown[] = []
 
-	if (selectedIds.value.length) {
-		getFromMemoryList(newRows)
+		if (selectedIds.value.length) {
+			getFromMemoryList(newRows)
 
-		if (newRows.length != selectedIds.value.length) {
-			if (props.selectOne) {
-				const id = selectedIds.value[0]
-				newRows = await props.service.first(id)
-				newRows = [newRows]
-			} else {
-				newRows = await getItemsList()
+			if (newRows.length != selectedIds.value.length) {
+				if (props.selectOne) {
+					const id = selectedIds.value[0]
+					newRows = await props.service.first(id)
+					newRows = [newRows]
+				} else {
+					newRows = await getItemsList()
+				}
 			}
 		}
-	}
 
-	rows.value = newRows
-	loading.value = false
+		rows.value = newRows
+	} catch (error) {
+		console.error(error)
+	} finally {
+		loading.value = false
+	}
 }
 
 const populateList = (newVal: any) => {
