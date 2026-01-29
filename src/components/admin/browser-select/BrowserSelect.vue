@@ -6,6 +6,7 @@ import Button from '../../ui/button/Button.vue'
 import IconButton from '../../ui/icon-button/IconButton.vue'
 import Link from '../../ui/link/Link.vue'
 import BrowserSelectModal from './BrowserSelectModal.vue'
+import SkeletonList from '../../ui/skeleton-list/SkeletonList.vue'
 
 export interface Props {
 	modelValue: any
@@ -50,6 +51,7 @@ const memoryList = ref([])
 const paginateStart = ref(0)
 const paginateLimit = ref(props.paginateListLimit)
 const browserSelectModalRef = ref()
+const loading = ref(false)
 
 const onClickSearch = () => {
 	browserSelectModalRef.value.open({
@@ -71,8 +73,6 @@ const nextPage = async () => {
 }
 
 const onRemoveItem = (item: any) => {
-	emit('remove', item)
-
 	if (find(rows.value, { [props.identifier]: item[props.identifier] })) {
 		rows.value = rows.value.filter((obj) => {
 			return obj[props.identifier] != item[props.identifier]
@@ -86,6 +86,7 @@ const onRemoveItem = (item: any) => {
 	})
 
 	updateInput(selectedIds.value)
+	emit('remove', item)
 }
 
 const updateInput = (ids: number[]) => {
@@ -125,23 +126,30 @@ const getItemsList = async () => {
 }
 
 const fetch = async () => {
-	let newRows: unknown[] = []
+	try {
+		loading.value = true
+		let newRows: unknown[] = []
 
-	if (selectedIds.value.length) {
-		getFromMemoryList(newRows)
+		if (selectedIds.value.length) {
+			getFromMemoryList(newRows)
 
-		if (newRows.length != selectedIds.value.length) {
-			if (props.selectOne) {
-				const id = selectedIds.value[0]
-				newRows = await props.service.first(id)
-				newRows = [newRows]
-			} else {
-				newRows = await getItemsList()
+			if (newRows.length != selectedIds.value.length) {
+				if (props.selectOne) {
+					const id = selectedIds.value[0]
+					newRows = await props.service.first(id)
+					newRows = [newRows]
+				} else {
+					newRows = await getItemsList()
+				}
 			}
 		}
-	}
 
-	rows.value = newRows
+		rows.value = newRows
+	} catch (error) {
+		console.error(error)
+	} finally {
+		loading.value = false
+	}
 }
 
 const populateList = (newVal: any) => {
@@ -245,6 +253,7 @@ defineExpose({ onClickSearch })
 
 			<div class="ui-browser-list" v-if="!hideList && rows.length">
 				<div
+					v-if="!loading"
 					v-for="item in rows.slice(0, paginateLimit)"
 					class="ui-browser-list-row"
 					:class="{ '-no-button': hideExcludeButton }"
@@ -256,6 +265,9 @@ defineExpose({ onClickSearch })
 					<div v-if="!hideExcludeButton" class="ui-browser-list-cell -auto">
 						<IconButton variant="plain" size="sm" icon="close" @click="onRemoveItem(item)" />
 					</div>
+				</div>
+				<div v-if="loading">
+					<SkeletonList :rows="3" />
 				</div>
 				<div v-if="rows.length > paginateLimit" class="ui-browser-list-more">
 					<Link @click="nextPage" label="Exibir mais" />

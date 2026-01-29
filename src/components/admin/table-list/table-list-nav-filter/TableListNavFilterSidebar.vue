@@ -104,6 +104,10 @@ const setCurrentFilters = async () => {
 	}
 }
 
+const onBrowserSelectRemoveItem = (item: any, key: string) => {
+	selected.value[key] = selected.value[key].filter((id: number) => id !== item.id)
+}
+
 const open = async () => {
 	reset()
 	await setCurrentFilters()
@@ -132,6 +136,8 @@ defineExpose({
 						<div v-if="filter.type == 'browser'">
 							<BrowserSelect
 								v-model="selected[key]"
+								:list="selected[key]"
+								@remove="(item) => onBrowserSelectRemoveItem(item, key)"
 								:name="`check_${key}`"
 								:type="filter.model"
 								:service="filter.service"
