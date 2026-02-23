@@ -9,7 +9,7 @@ const globalFiles = ['**/*.{vue,js,mjs,cjs,ts}'];
 
 export default [
   {
-    ignores: ['**/*.{config,old_doc}.{js,mjs,cjs,ts}', '**/redactor/', 'coverage'],
+    ignores: ['**/*.{config,old_doc}.{js,mjs,cjs,ts}', '**/redactor/', 'coverage', 'mcp/bin/**'],
   },
   {
     languageOptions: {

@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/uxshop/design-system.git"
   },
+  "bin": {
+    "ds-mcp-stdio": "./mcp/bin/start-stdio.mjs",
+    "ds-mcp-http": "./mcp/bin/start-http.mjs"
+  },
   "scripts": {
     "dev": "vite",
     "preview": "vite preview --port 5050",
@@ -24,7 +28,10 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "storybook:tokens:parse": "tsx ./.storybook/parser.ts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "mcp:build": "node_modules/.bin/esbuild mcp/start-http.ts --bundle --platform=node --format=esm --outdir=mcp/bin --out-extension:.js=.mjs --external:sass --external:@modelcontextprotocol/sdk --external:zod \"--banner:js=#!/usr/bin/env node\" && node_modules/.bin/esbuild mcp/start-stdio.ts --bundle --platform=node --format=esm --outdir=mcp/bin --out-extension:.js=.mjs --external:sass --external:@modelcontextprotocol/sdk --external:zod \"--banner:js=#!/usr/bin/env node\"",
+    "mcp:stdio": "node ./mcp/bin/start-stdio.mjs",
+    "mcp:http": "node ./mcp/bin/start-http.mjs"
   },
   "peerDependencies": {
     "typescript": ">= 5.5.0 < 5.7.0",
@@ -52,7 +59,10 @@
     "luxon": "^3.4.0",
     "maska": "^2.1.11",
     "perfect-scrollbar": "^1.5.5",
-    "vue-currency-input": "^3.1.0"
+    "vue-currency-input": "^3.1.0",
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "sass": "^1.49.9",
+    "zod": "4.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
@@ -136,6 +146,7 @@
     "./theme": "./dist/scss/theme.scss"
   },
   "files": [
-    "./dist"
+    "./dist",
+    "./mcp/bin"
   ]
 }

@@ -50,6 +50,47 @@ import '@tray-tecnologia/design-system/theme';
 
 Vale ressaltar que a importação acima não engloba os estilos individuais dos componentes, somente a base usada por todo o Design System. Estão incluídos: normalização, helpers, mixins, tokens, variáveis, formulários, tabelas e tooltips.
 
+## MCP Server (Cursor / Claude)
+
+O Design System inclui um servidor MCP que expõe os componentes, tokens e prompts do design system diretamente para IAs no Cursor ou qualquer cliente compatível com o protocolo MCP.
+
+#### Ferramentas disponíveis
+
+| Tool | Descrição |
+|------|-----------|
+| `list_components` | Lista todos os componentes com metadados |
+| `search_components` | Busca por nome ou conceito em português |
+| `get_component_bundle` | Retorna código Vue, props, stories e SCSS de um componente |
+| `get_design_tokens` | Retorna tokens CSS `--s-*` por categoria e brand |
+
+#### Configuração no Cursor
+
+Adicione ao `.cursor/mcp.json` do seu projeto (ou nas configurações globais do Cursor):
+
+```json
+{
+  "mcpServers": {
+    "design-system": {
+      "command": "npx",
+      "args": ["--yes", "--package", "github:uxshop/design-system", "ds-mcp-stdio"]
+    }
+  }
+}
+```
+
+Para usar o modo HTTP (útil para múltiplos clientes simultâneos), substitua `ds-mcp-stdio` por `ds-mcp-http`. O servidor HTTP sobe por padrão na porta `3100` (configurável via variável de ambiente `MCP_HTTP_PORT`) e expõe os endpoints:
+
+- `http://localhost:3100/mcp` — endpoint MCP (Streamable HTTP)
+- `http://localhost:3100/health` — health check
+
+#### Scripts disponíveis
+
+```bash
+npm run mcp:build  # Compila os binários em mcp/bin/
+npm run mcp:stdio  # Inicia o servidor no modo stdio
+npm run mcp:http   # Inicia o servidor no modo HTTP
+```
+
 ## Versões
 
 Para as últimas alterações e versões, visite [releases](https://github.com/uxshop/design-system/releases).
