@@ -18,24 +18,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
 
-      - name: Debug auth
-        run: |
-          echo "=== .npmrc ==="
-          cat ~/.npmrc || echo "no ~/.npmrc"
-          echo "=== npm config ==="
-          npm config list
-          echo "=== npm whoami ==="
-          npm whoami --registry https://registry.npmjs.org || echo "not authenticated"
-    
-      - run: npm ci
-      - run: npm run build
-      - run: npm publish --access public
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build lib
+        run: npm run build
+      
+      - name: Publish to npm
+        env:
+           NPM_CONFIG_PROVENANCE: true
+        run: npm publish --provenance --access public
+        
       - uses: actions/upload-artifact@v7
         with:
           name: ds-build
