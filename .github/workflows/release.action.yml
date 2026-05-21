@@ -3,6 +3,7 @@ name: 'Publish NPM'
 on:
   release:
     types: [published]
+  workflow_dispatch: # temporário
 
 permissions:
   id-token: write  # Required for OIDC
@@ -22,6 +23,16 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
           cache: 'npm'
+
+      - name: Debug auth
+        run: |
+          echo "=== .npmrc ==="
+          cat ~/.npmrc || echo "no ~/.npmrc"
+          echo "=== npm config ==="
+          npm config list
+          echo "=== npm whoami ==="
+          npm whoami --registry https://registry.npmjs.org || echo "not authenticated"
+    
       - run: npm ci
       - run: npm run build
       - run: npm publish --access public
