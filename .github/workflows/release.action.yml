@@ -3,7 +3,6 @@ name: 'Publish NPM'
 on:
   release:
     types: [published]
-  workflow_dispatch: # temporário
 
 permissions:
   id-token: write # Required for OIDC
@@ -26,7 +25,7 @@ jobs:
           package-manager-cache: false  # never use caching in release builds
 
       - name: Update npm
-        run: npm install -g npm@latest
+        run: npm install -g npm@latest  # get latest compatible npm version
 
       - name: Install dependencies
         run: npm ci
