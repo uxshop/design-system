@@ -7,3 +7,6 @@
 .vscode/*
 
 *.yml
+
+# Scripts
+scripts/generate-component-docs.js
