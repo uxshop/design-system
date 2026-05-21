@@ -46,6 +46,50 @@ Complete index of all Tray Design System components. Each component is documente
 
 ---
 
+## Admin Components
+
+| Component | Purpose | Props | Slots | Events | Status | Docs |
+|-----------|---------|-------|-------|--------|--------|------|
+| Layout | Root admin shell with sidebar + navbar slots | 0 | sidebar, navbar | - | ✅ Stable | [→](components/admin/layout.md) |
+| Page | Standard admin page wrapper with title, breadcrumb, and helper support | 4 | titlebar-subtitle, default | - | ✅ Stable | [→](components/admin/page.md) |
+| Titlebar | Page title bar with action buttons and breadcrumb | 2 | titlebar-subtitle | - | ✅ Stable | [→](components/admin/titlebar.md) |
+| Topbar | Top navigation bar with logo and actions | 3 | logo-mobile, topbar-actions | toggle, search, logout | ⚠️ Deprecated | [→](components/admin/topbar.md) |
+| Sidebar | Navigation sidebar with collapsible menu items | 0 | logo, select-button, top-content, footer | onClickItem | ✅ Stable | [→](components/admin/sidebar.md) |
+| SidebarHeader | Sidebar header with logo and collapse toggle | 4 | - | onClickCollapse, onClickButton | ✅ Stable | [→](components/admin/sidebar-header.md) |
+| HomeBar | Full-width content banner with heading slot | 2 | content | - | ✅ Stable | [→](components/admin/home-bar.md) |
+| Savebar | Sticky save/cancel bar for edit pages | 2 | - | onSave, onCancel | ✅ Stable | [→](components/admin/savebar.md) |
+| CardActive | Toggle-active + delete card for list items | 2 | - | onActivate, onDeactivate, onDelete | ✅ Stable | [→](components/admin/card-active.md) |
+| CardAnnotation | Card with annotation slot | 2 | annotation | - | ⚠️ Deprecated | [→](components/admin/card-annotation.md) |
+| CardSeo | Collapsible card wrapping the SEO editor | 5 | - | onChange | ✅ Stable | [→](components/admin/card-seo.md) |
+| MediaCard | Image/video preview card with optional overlay | 10 | - | - | ✅ Stable | [→](components/admin/media-card.md) |
+| StatsGroup | Grid of stats items from data array | 1 | default | - | ⚠️ Deprecated | [→](components/admin/stats-group.md) |
+| EmptyData | Empty-state placeholder with icon, title, and CTA | 7 | default, action | - | ✅ Stable | [→](components/admin/empty-data.md) |
+| PanelSkeleton | Full-panel loading skeleton with fade-out delay | 3 | - | - | ✅ Stable | [→](components/admin/panel-skeleton.md) |
+| PageHelper | Clickable "Precisa de ajuda?" banner | 0 | - | onClickLink | ✅ Stable | [→](components/admin/page-helper.md) |
+| PageHelperArticles | PageHelper + aside drawer with article links | 2 | - | - | ✅ Stable | [→](components/admin/page-helper-articles.md) |
+| PageHelperVideo | PageHelper + aside drawer with embedded YouTube video | 1 | - | - | ✅ Stable | [→](components/admin/page-helper-video.md) |
+| PageMessageSupport | Inline "Saiba mais" support link message | 2 | - | - | ✅ Stable | [→](components/admin/page-message-support.md) |
+| PageActions | Bottom action bar with primary + secondary buttons | 2 | - | - | ✅ Stable | [→](components/admin/page-actions.md) |
+| FormRegister | Form wrapper integrating Savebar + FormValidation | 3 | default | save | ✅ Stable | [→](components/admin/form-register.md) |
+| ButtonAction | Deprecated action button with remove/active/delete variants | 5 | - | onRemove, onActive, onDelete, onClickButton, onDelete2, update:active | ⚠️ Deprecated | [→](components/admin/button-action.md) |
+| ButtonDarkmode | Deprecated dark-mode toggle button | 0 | default | changeSchemeColor | ⚠️ Deprecated | [→](components/admin/button-darkmode.md) |
+| BrowserSelect | Modal browser for selecting items from a remote service | 8 | default | select, selectOne, remove, open | ✅ Stable | [→](components/admin/browser-select.md) |
+| PlatformSelect | Tab-based platform picker | 2 | - | change:platform | ✅ Stable | [→](components/admin/platform-select.md) |
+| QuickSearch | Modal quick-search form with configurable filters | 6 | default | onSubmit, onOpen, onClose | ✅ Stable | [→](components/admin/quick-search.md) |
+| Table | Slot-based BEM div table with responsive wrapper | 2 | header, body | - | ✅ Stable | [→](components/admin/table.md) |
+| TableList | Full-featured data table with pagination, search, and filters | 4 | default | - | ⚠️ Deprecated | [→](components/admin/table-list.md) |
+| RowExclude | Inverse-selection row exclude control | 2 | - | update:modelValue, update | ✅ Stable | [→](components/admin/row-exclude.md) |
+| Apexchart | ApexCharts wrapper for admin dashboards | 3 | - | - | ✅ Stable | [→](components/admin/apexchart.md) |
+| Codemirror | CodeMirror 6 code editor wrapper | 2 | - | update:modelValue | ✅ Stable | [→](components/admin/codemirror.md) |
+| Gmaps | Google Maps Static API image wrapper | 6 | - | - | ✅ Stable | [→](components/admin/gmaps.md) |
+| Seo | Composite SEO editor with live Google preview | 12 | - | onChange | ✅ Stable | [→](components/admin/seo.md) |
+| FrameAnnotation | Deprecated 4/8 column layout with annotation card | 2 | annotation | - | ⚠️ Deprecated | [→](components/admin/frame-annotation.md) |
+| UserProfileCard | Dropdown user profile widget for nav bars | 5 | user-links | - | ✅ Stable | [→](components/admin/user-profile-card.md) |
+| Content403 | 403 Forbidden error page | 1 | - | - | ✅ Stable | [→](components/admin/content-403.md) |
+| Content404 | 404 Not Found error page | 0 | - | - | ✅ Stable | [→](components/admin/content-404.md) |
+
+---
+
 ## How to Use This Catalog
 
 1. **Find by name:** Search `Ctrl+F` for component name (e.g., "Button")
@@ -58,4 +102,4 @@ Complete index of all Tray Design System components. Each component is documente
 **Component Docs Location:** `components/<category>/<name>.md`  
 **Storybook (for humans):** Run `npm run storybook`  
 **Version:** v3.1.29  
-**Last Updated:** 2026-05-15
+**Last Updated:** 2026-05-21

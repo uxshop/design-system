@@ -230,10 +230,61 @@ function generateDocs() {
   console.log('\n✓ Documentation generation complete!');
 }
 
+const ADMIN_COMPONENTS_DIR = path.join(__dirname, '../src/components/admin');
+const ADMIN_DOCS_DIR = path.join(__dirname, '../docs/components/admin');
+
+const ADMIN_COMPONENTS = [
+  'layout', 'page', 'titlebar', 'topbar', 'sidebar', 'sidebar-header',
+  'home-bar', 'savebar', 'card-active', 'card-annotation', 'card-seo',
+  'media-card', 'stats-group', 'empty-data', 'panel-skeleton',
+  'page-helper', 'page-helper-articles', 'page-helper-video',
+  'page-message-support', 'page-actions', 'form-register', 'button-action',
+  'button-darkmode', 'browser-select', 'platform-select', 'quick-search',
+  'table', 'table-list', 'row-exclude', 'apexchart', 'codemirror',
+  'gmaps', 'seo', 'frame-annotation', 'user-profile-card',
+  'content-403', 'content-404'
+];
+
+function generateAdminDocs() {
+  if (!fs.existsSync(ADMIN_DOCS_DIR)) {
+    fs.mkdirSync(ADMIN_DOCS_DIR, { recursive: true });
+  }
+
+  console.log(`Processing ${ADMIN_COMPONENTS.length} admin components...\n`);
+
+  ADMIN_COMPONENTS.forEach(componentName => {
+    const componentDir = path.join(ADMIN_COMPONENTS_DIR, componentName);
+    const vuePath = findComponentFile(componentDir, componentName);
+    const typesPath = path.join(componentDir, 'types.ts');
+
+    if (!vuePath) {
+      console.warn(`⚠ Skipping ${componentName}: .vue file not found`);
+      return;
+    }
+
+    const props = extractPropsFromTypes(typesPath);
+    const slots = extractSlotsFromVue(vuePath);
+    const events = extractEmitsFromVue(vuePath);
+
+    const markdown = generateMarkdown(componentName, props, slots, events);
+    const docPath = path.join(ADMIN_DOCS_DIR, `${componentName}.md`);
+
+    fs.writeFileSync(docPath, markdown, 'utf-8');
+    console.log(`✓ ${componentName}: ${props.length} props, ${slots.length} slots, ${events.length} events`);
+  });
+
+  console.log('\n✓ Admin documentation generation complete!');
+}
+
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   try {
-    generateDocs();
+    const isAdmin = process.argv.includes('--admin');
+    if (isAdmin) {
+      generateAdminDocs();
+    } else {
+      generateDocs();
+    }
   } catch (error) {
     console.error('Error:', error.message);
     process.exit(1);
