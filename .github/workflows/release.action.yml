@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
-          cache: 'npm'
+          package-manager-cache: false  # never use caching in release builds
 
       - name: Update npm
         run: npm install -g npm@latest
