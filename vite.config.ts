@@ -23,6 +23,7 @@ const getEntries = (): Record<string, string> => {
     index: resolve(__dirname, './src/index.ts'),
     setup: resolve(__dirname, './src/setup.ts'),
     filters: resolve(__dirname, './src/filters.ts'),
+    services: resolve(__dirname, './src/services.ts'),
     directives: resolve(__dirname, './src/directives.ts'),
     ...remaped,
   };
