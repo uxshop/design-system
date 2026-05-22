@@ -35,6 +35,7 @@ export default defineConfig({
     vueJsx(),
     libInjectCss(),
     copy(['./src/scss'], '../scss'),
+    copy(['./docs'], '../docs'),
     dts({
       tsconfigPath: './tsconfig.build.json',
       outDir: './dist/types',
