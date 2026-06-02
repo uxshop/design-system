@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { vMaska } from 'maska';
-import { computed } from 'vue';
+import { computed, reactive } from 'vue';
 import Button from '../button/Button.vue';
 import FormWrapper from '../form-wrapper/FormWrapper.vue';
 import Icon from '../icon/Icon.vue';
@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<FormTextfieldProps>(), {
 });
 const emit = defineEmits<FormTextfieldEmits>();
 
+const maskaObject = reactive<{ unmasked?: string }>({});
 const { currentMaxLength } = useMaxLength<FormTextfieldProps>(props);
 
 const classList = computed(() => [props.size ? `-${props.size}` : '']);
@@ -29,19 +30,10 @@ const maskOptions = computed<MaskOptions>(() => {
   };
 });
 
-const update = (evt: Event) => {
-  const target = evt.target as HTMLInputElement;
-  const val = target.value;
-
-  emit('update', val);
-};
-
 const maskRawValue = (evt: Event) => {
   const target = evt.target as HTMLInputElement;
-  if (model.value === target.value.replace(/\.|-/g, '')) return;
-
-  update(evt);
-  emit('updateRaw', target.dataset.maskRawValue);
+  emit('update', target.value);
+  emit('updateRaw', maskaObject.unmasked);
 };
 
 const onFocus = (event: Event) => {
@@ -104,10 +96,8 @@ const onInternalState = (state: boolean | undefined) => {
     <input
       :id
       v-model="model"
-      v-maska:[maskOptions]
+      v-maska:[maskOptions]="maskaObject"
       class="form-control"
-      :mask="mask"
-      :data-maska-tokens="dataMaskaTokens"
       :class="classList"
       :placeholder="!float ? placeholder : ''"
       :type
