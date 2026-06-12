@@ -48,6 +48,7 @@ const onClear = () => {
 					leadingIcon="search"
 					clearable
 					@clear="onClear"
+					@update="update"
 					v-model="state.term"
 					id="term"
 					:placeholder="placeholder"

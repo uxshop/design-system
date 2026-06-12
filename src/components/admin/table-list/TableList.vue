@@ -220,21 +220,19 @@ let timerQ: ReturnType<typeof setTimeout>
 
 watch(
 	() => queryParams.value,
-	(newVal: any, oldVal) => {
+	(newVal: any) => {
 		clearTimeout(timerQ)
-		if (newVal != oldVal) {
-			timerQ = setTimeout(() => {
-				if (newVal.q) {
-					state.term = newVal.q
-				}
+		timerQ = setTimeout(() => {
+			if (newVal.q) {
+				state.term = newVal.q
+			}
 
-				if (!newVal.selectedView && !newVal.customFilterId) {
-					newVal.selectedView = 'all'
-				}
+			if (!newVal.selectedView && !newVal.customFilterId) {
+				newVal.selectedView = 'all'
+			}
 
-				fetchData()
-			}, 100)
-		}
+			fetchData()
+		}, 100)
 	},
 	{ deep: true }
 )
