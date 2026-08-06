@@ -274,7 +274,9 @@ const state = reactive({
 defineExpose({
 	unshiftItem: unshiftItem,
 	refresh: (forceTimestamp?: boolean) => fetchData(forceTimestamp),
-	openFilterSidebar: () => tableListNavFilterRef.value.openFilterSidebar()
+	openFilterSidebar: () => tableListNavFilterRef.value.openFilterSidebar(),
+	setQueryParams: setQueryParams,
+	removeFilter: removeFilter
 })
 </script>
 
@@ -290,6 +292,7 @@ defineExpose({
 			<TableListNavBulk :state="state" :selected="selected" :config="cfg" :rows="rows" @duplicate="onDuplicate" />
 			<TableListNavRefresh v-if="!isMobile()" :state="state" />
 			<TableListNavSearch @refresh="fetchData" :placeholder="cfg.placeholder" :state="state" />
+			<slot name="nav-extra" />
 			<TableListNavCustomFilter
 				v-if="config.customFilterService"
 				:service="config.customFilterService"
