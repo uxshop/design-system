@@ -36,10 +36,10 @@ const reset = () => {
 	selectedDefault = Object.assign({}, clone(newSelected))
 }
 
-const onCollapse = (key: string) => {
+const onCollapse = async (key: string) => {
 	if (!accordion.value[key]) {
 		if (isFunction(props.filters[key].filters)) {
-			props.filters[key].filters = props.filters[key].filters()
+			props.filters[key].filters = await props.filters[key].filters()
 		}
 	}
 	accordion.value[key] = !accordion.value[key]
@@ -63,6 +63,7 @@ const onClearFilter = (filter: { type: string }, key: string | number) => {
 
 		case 'date_range':
 			clearPickerDate(key as string)
+			selected.value[key] = null
 			break
 
 		default:
@@ -86,7 +87,7 @@ const hasFilterSelected = (filter: { type: string }, key: string | number) => {
 	return selected.value[key] !== null && selected.value[key] !== undefined
 }
 
-const setCurrentFilters = () => {
+const setCurrentFilters = async () => {
 	const newCurrentFilters: Record<string, any> = {}
 	each(props.currentFilters, (item, key) => {
 		if (props.filters[key] !== undefined && ['checkbox', 'browser'].indexOf(props.filters[key].type) >= 0) {
@@ -99,13 +100,17 @@ const setCurrentFilters = () => {
 
 	if (Object.keys(props.filters).length == 1) {
 		const key = keys(props.filters)[0]
-		onCollapse(key)
+		await onCollapse(key)
 	}
 }
 
-const open = () => {
+const onBrowserSelectRemoveItem = (item: any, key: string) => {
+	selected.value[key] = selected.value[key].filter((id: number) => id !== item.id)
+}
+
+const open = async () => {
 	reset()
-	setCurrentFilters()
+	await setCurrentFilters()
 	aside.value = true
 }
 
@@ -131,6 +136,8 @@ defineExpose({
 						<div v-if="filter.type == 'browser'">
 							<BrowserSelect
 								v-model="selected[key]"
+								:list="selected[key]"
+								@remove="(item) => onBrowserSelectRemoveItem(item, key)"
 								:name="`check_${key}`"
 								:type="filter.model"
 								:service="filter.service"

@@ -2,7 +2,7 @@
 import { each, find, isFunction } from 'lodash-es'
 import type { ITableListState } from '../types/ITableListState'
 import Tag from '../../../ui/tag/Tag.vue'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { omit } from 'lodash-es'
 import TagList from '../../../ui/tag/TagList.vue'
 import { DateTime } from 'luxon'
@@ -12,6 +12,8 @@ const props = defineProps<{
 }>()
 
 const removeFilter = props.state.removeFilter
+
+const translatedValues = ref<Record<string, string>>({})
 
 const translateKey = (item: string) => {
 	let val = item
@@ -37,7 +39,7 @@ const dateFormat = (date: any) => {
 	return dates
 }
 
-const translateValue = (item: any, key: string) => {
+const translateValue = async (item: any, key: string) => {
 	const val: string[] = []
 	let values: number[] = []
 
@@ -63,10 +65,10 @@ const translateValue = (item: any, key: string) => {
 		values = [item]
 	}
 
-	each(props.state.config.filters, (item, k) => {
+	const promises = Object.keys(props.state.config.filters).map(async (k: string) => {
 		if (k == key) {
-			if (isFunction(item.filters)) {
-				item.filters = item.filters()
+			if (isFunction(props.state.config.filters[k]?.filters)) {
+				props.state.config.filters[k].filters = await props.state.config.filters[k].filters()
 			}
 
 			each(values, (v) => {
@@ -74,13 +76,17 @@ const translateValue = (item: any, key: string) => {
 					v = Number(v)
 				}
 
-				const obj = find(item.filters, { value: v })
+				const obj = find(props.state.config.filters[k]?.filters, { value: v })
 				if (obj) {
 					val.push(obj.name)
+				} else {
+					props.state.removeFilter(k)
 				}
 			})
 		}
 	})
+
+	await Promise.all(promises)
 
 	return val.join(', ')
 }
@@ -90,6 +96,24 @@ const showTags = computed(() => {
 
 	return Object.keys(filters).length > 0
 })
+
+const updateTranslatedValues = async () => {
+	const filters = omit(props.state.omitFilters, ['q'])
+	const newTranslatedValues: Record<string, string> = {}
+
+	const promises = Object.keys(filters).map(async (key) => {
+		if (key !== 'q') {
+			const item = filters[key]
+			const translated = await translateValue(item, String(key))
+			newTranslatedValues[`${key}:${item}`] = translated
+		}
+	})
+
+	await Promise.all(promises)
+	translatedValues.value = newTranslatedValues
+}
+
+watch(() => props.state.omitFilters, updateTranslatedValues, { immediate: true, deep: true })
 </script>
 
 <template>
@@ -100,7 +124,7 @@ const showTags = computed(() => {
 			v-for="(item, key) in state.omitFilters"
 			v-show="String(key) != 'q'"
 			:key="item">
-			{{ translateKey(String(key)) }}: {{ translateValue(item, String(key)) }}
+			{{ translateKey(String(key)) }}: {{ translatedValues[`${key}:${item}`] || item }}
 		</Tag>
 	</TagList>
 </template>
